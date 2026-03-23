@@ -490,11 +490,11 @@
         "tenantHeader": "X-Tenant-Id"
       },
       "comingSoon": false,
-      "externalLink": "https://soft-offer.aiskills.icu/",
+      "externalLink": "https://soft.ai-skills.ai",
       "invocationMode": "external-link",
       "invocation": {
         "type": "external-link",
-        "externalLink": "https://soft-offer.aiskills.icu/"
+        "externalLink": "https://soft.ai-skills.ai"
       }
     },
     {
