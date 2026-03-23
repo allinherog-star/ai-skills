@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "link"
+  ],
+  "properties": {
+    "link": {
+      "type": "string",
+      "title": "分享链接",
+      "format": "uri"
+    },
+    "platform": {
+      "type": "string",
+      "title": "平台",
+      "enum": [
+        "douyin",
+        "xhs",
+        "bilibili",
+        "kuaishou"
+      ]
+    }
+  }
+}

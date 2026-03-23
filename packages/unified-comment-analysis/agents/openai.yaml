@@ -1,0 +1,7 @@
+interface:
+  display_name: "各平台舆情监控和运营洞察大盘"
+  short_description: "复制抖音、小红书、B站、快手分享链接，一键查看舆情态势、转化潜力、用户画像与运营建议。"
+  default_prompt: "Use $unified-comment-analysis to help with 复制抖音、小红书、B站、快手分享链接，一键查看舆情态势、转化潜力、用户画像与运营建议。"
+
+policy:
+  allow_implicit_invocation: true

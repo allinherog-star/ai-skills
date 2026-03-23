@@ -1,0 +1,17 @@
+{
+  "skill_name": "bilibili-sentiment-dashboard",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "帮我看看这个B站视频的评论反响：https://www.bilibili.com/video/BV1xx411c7mD",
+      "expected_output": "返回B站视频舆情分析报告，包含情感倾向、弹幕密度分析（仅B站特色）、用户画像、三连率和up主运营建议",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "这个B站视频的弹幕好像有点不对劲，帮我分析下：https://b23.tv/xyz789",
+      "expected_output": "识别平台为B站，从短链接解析，返回弹幕和评论的舆情分析，并提示B站弹幕需结合语境解读中性评论",
+      "files": []
+    }
+  ]
+}

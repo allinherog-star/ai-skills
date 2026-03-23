@@ -1,0 +1,7 @@
+interface:
+  display_name: "想直接生成 AI 视频?"
+  short_description: "AI 视频生成"
+  default_prompt: "Use $ai-video-generate to help with AI 视频生成"
+
+policy:
+  allow_implicit_invocation: true

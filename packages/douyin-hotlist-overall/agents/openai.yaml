@@ -1,0 +1,7 @@
+interface:
+  display_name: "现在最热门的是什么？"
+  short_description: "抖音全网实时热点"
+  default_prompt: "Use $douyin-hotlist-overall to help with 抖音全网实时热点"
+
+policy:
+  allow_implicit_invocation: true

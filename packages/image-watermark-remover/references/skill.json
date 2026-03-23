@@ -1,0 +1,33 @@
+{
+  "id": "image-watermark-remover",
+  "slug": "image-watermark-remover",
+  "name": "图片有水印不好处理?",
+  "description": "图片去水印",
+  "tags": [
+    "图片去水印",
+    "AI",
+    "在线工具"
+  ],
+  "profession": [
+    "technical",
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "externalLink": "https://www.dzine.ai/tools/ai-watermark-remover/",
+  "invocationMode": "external-link",
+  "invocation": {
+    "type": "external-link",
+    "externalLink": "https://www.dzine.ai/tools/ai-watermark-remover/"
+  }
+}

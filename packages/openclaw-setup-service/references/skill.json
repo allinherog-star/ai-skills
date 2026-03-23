@@ -1,0 +1,33 @@
+{
+  "id": "openclaw-setup-service",
+  "slug": "openclaw-setup-service",
+  "name": "大家都在养大龙虾🦞?",
+  "description": "OpenClaw 装机服务",
+  "tags": [
+    "OpenClaw",
+    "Clawdbot",
+    "Mac Mini",
+    "装机"
+  ],
+  "profession": [
+    "technical"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "externalLink": "https://clawdbotsetup.pro/",
+  "externalLinkLabel": "OpenClaw 装机服务",
+  "invocationMode": "external-link",
+  "invocation": {
+    "type": "external-link",
+    "externalLink": "https://clawdbotsetup.pro/",
+    "externalLinkLabel": "OpenClaw 装机服务"
+  }
+}

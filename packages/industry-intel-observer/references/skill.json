@@ -1,0 +1,32 @@
+{
+  "id": "industry-intel-observer",
+  "slug": "industry-intel-observer",
+  "name": "行业情报第一观察员",
+  "description": "行业动态、竞品监控与市场趋势情报能力，即将上线",
+  "tags": [
+    "情报",
+    "行业动态",
+    "竞品"
+  ],
+  "profession": [
+    "management",
+    "operations"
+  ],
+  "industry": [
+    "software",
+    "media",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": true,
+  "invocationMode": "manual",
+  "invocation": {
+    "type": "manual",
+    "reason": "coming-soon"
+  }
+}

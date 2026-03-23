@@ -1,0 +1,30 @@
+{
+  "id": "free-https-cert",
+  "slug": "free-https-cert",
+  "name": "网站还没 HTTPS?",
+  "description": "免费 HTTPS 证书",
+  "tags": [
+    "HTTPS",
+    "SSL",
+    "证书"
+  ],
+  "profession": [
+    "technical"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "externalLink": "https://freessl.cn/",
+  "invocationMode": "external-link",
+  "invocation": {
+    "type": "external-link",
+    "externalLink": "https://freessl.cn/"
+  }
+}

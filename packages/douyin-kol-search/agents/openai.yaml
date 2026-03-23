@@ -1,0 +1,7 @@
+interface:
+  display_name: "谁是最会卖货的博主?"
+  short_description: "抖音最具商业价值 KOL"
+  default_prompt: "Use $douyin-kol-search to help with 抖音最具商业价值 KOL"
+
+policy:
+  allow_implicit_invocation: true

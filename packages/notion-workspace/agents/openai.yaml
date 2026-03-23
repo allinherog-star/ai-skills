@@ -1,0 +1,7 @@
+interface:
+  display_name: "文档和知识库太乱?"
+  short_description: "Notion 文档管理工作台"
+  default_prompt: "Use $notion-workspace to help with Notion 文档管理工作台"
+
+policy:
+  allow_implicit_invocation: true

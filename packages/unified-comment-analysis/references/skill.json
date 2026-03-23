@@ -1,0 +1,56 @@
+{
+  "id": "unified-comment-analysis",
+  "slug": "unified-comment-analysis",
+  "name": "各平台舆情监控和运营洞察大盘",
+  "description": "复制抖音、小红书、B站、快手分享链接，一键查看舆情态势、转化潜力、用户画像与运营建议。",
+  "tags": [
+    "多平台",
+    "舆情监控",
+    "评论洞察",
+    "AI分析"
+  ],
+  "profession": [
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce"
+  ],
+  "hidden": true,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "invocationMode": "comment-analysis-task",
+  "invocation": {
+    "type": "comment-analysis-task",
+    "parseLinkPath": "/api/v1/comment-analysis/parse-link",
+    "createTaskPath": "/api/v1/comment-analysis/tasks",
+    "getTaskPath": "/api/v1/comment-analysis/tasks/:id"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [
+      "link"
+    ],
+    "properties": {
+      "link": {
+        "type": "string",
+        "title": "分享链接",
+        "format": "uri"
+      },
+      "platform": {
+        "type": "string",
+        "title": "平台",
+        "enum": [
+          "douyin",
+          "xhs",
+          "bilibili",
+          "kuaishou"
+        ]
+      }
+    }
+  }
+}

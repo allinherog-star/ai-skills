@@ -1,0 +1,35 @@
+{
+  "skill_name": "unified-comment-analysis",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "帮我分析下这个抖音视频的评论：https://www.douyin.com/video/7381234567890123456",
+      "expected_output": "返回舆情分析报告，包含情感倾向、用户画像、运营建议",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "这是我小红书笔记的链接，想看看大家的反馈怎么样",
+      "expected_output": "识别平台为小红书，返回笔记舆情分析",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我看看这个B站视频的评论反响：https://www.bilibili.com/video/BV1xx411c7mD",
+      "expected_output": "识别平台为B站，返回弹幕和评论的舆情分析",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "这是我快手视频的链接，帮我分析下评论：https://www.kuaishou.com/video/3x4c7e9f2g1h",
+      "expected_output": "识别平台为快手，返回视频舆情分析报告",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "帮我分析一下这个链接的评论：https://v.douyin.com/abc123",
+      "expected_output": "从短链接识别平台为抖音，返回舆情分析",
+      "files": []
+    }
+  ]
+}

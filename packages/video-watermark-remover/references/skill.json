@@ -1,0 +1,36 @@
+{
+  "id": "video-watermark-remover",
+  "slug": "video-watermark-remover",
+  "name": "AI生成的视频有水印?",
+  "description": "视频去水印",
+  "tags": [
+    "视频去水印",
+    "免费",
+    "AI",
+    "在线工具"
+  ],
+  "profession": [
+    "technical",
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "externalLink": "https://ezremove.ai/zh/video-watermark-remover/#video-watermark-remover",
+  "externalLinkLabel": "免费去水印",
+  "invocationMode": "external-link",
+  "invocation": {
+    "type": "external-link",
+    "externalLink": "https://ezremove.ai/zh/video-watermark-remover/#video-watermark-remover",
+    "externalLinkLabel": "免费去水印"
+  }
+}

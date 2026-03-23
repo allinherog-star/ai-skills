@@ -1,0 +1,17 @@
+{
+  "skill_name": "xhs-sentiment-dashboard",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "这是我小红书笔记的链接，想看看大家的反馈怎么样：https://www.xiaohongshu.com/explore/67890abcdef",
+      "expected_output": "返回小红书笔记舆情分析报告，包含情感倾向、用户画像、收藏率分析（小红书核心指标）、互动指标和种草建议",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "帮我看看这篇小红书笔记的评论，最近好像有点翻车：https://xhslink.com/abc123",
+      "expected_output": "识别平台为小红书，从短链接解析，返回舆情分析并重点关注负面评论归因和舆情引导建议",
+      "files": []
+    }
+  ]
+}

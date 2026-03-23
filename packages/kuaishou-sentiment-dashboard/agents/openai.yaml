@@ -1,0 +1,7 @@
+interface:
+  display_name: "快手短视频如何运营?"
+  short_description: "快手短视频运营增长助手"
+  default_prompt: "Use $kuaishou-sentiment-dashboard to help with 快手短视频运营增长助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,17 @@
+{
+  "skill_name": "kuaishou-sentiment-dashboard",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "这是我快手视频的链接，帮我分析下评论：https://www.kuaishou.com/video/3x4c7e9f2g1h",
+      "expected_output": "返回快手视频舆情分析报告，包含情感倾向、用户画像（下沉市场特点）、价格敏感度、老铁文化特色分析和转化路径建议",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "帮我看看这次快手直播的老铁们都说了什么：https://v.kuaishou.com/live123",
+      "expected_output": "识别平台为快手，从短链接解析，返回直播舆情分析并包含直播特有指标（峰值在线人数）和老铁互动建议",
+      "files": []
+    }
+  ]
+}
