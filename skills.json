@@ -31,13 +31,6 @@
       "packagePath": "packages/douyin-kol-search"
     },
     {
-      "slug": "unified-comment-analysis",
-      "name": "各平台舆情监控和运营洞察大盘",
-      "description": "复制抖音、小红书、B站、快手分享链接，一键查看舆情态势、转化潜力、用户画像与运营建议。",
-      "invocationMode": "comment-analysis-task",
-      "packagePath": "packages/unified-comment-analysis"
-    },
-    {
       "slug": "douyin-sentiment-dashboard",
       "name": "抖音短视频怎么运营?",
       "description": "抖音短视频运营增长大盘",
