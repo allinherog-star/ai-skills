@@ -1,7 +1,0 @@
-interface:
-  display_name: "图片有水印不好处理?"
-  short_description: "图片去水印"
-  default_prompt: "Use $image-watermark-remover to help with 图片去水印"
-
-policy:
-  allow_implicit_invocation: true

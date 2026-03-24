@@ -1,7 +1,0 @@
-interface:
-  display_name: "职业情报第一观察员"
-  short_description: "职场趋势、岗位变化与技能需求情报能力，即将上线"
-  default_prompt: "Use $career-intel-observer to help with 职场趋势、岗位变化与技能需求情报能力，即将上线"
-
-policy:
-  allow_implicit_invocation: true

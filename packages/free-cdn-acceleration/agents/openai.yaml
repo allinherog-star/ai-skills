@@ -1,7 +1,0 @@
-interface:
-  display_name: "网站访问太慢?"
-  short_description: "免费 CDN 加速"
-  default_prompt: "Use $free-cdn-acceleration to help with 免费 CDN 加速"
-
-policy:
-  allow_implicit_invocation: true

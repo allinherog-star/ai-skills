@@ -1,7 +1,0 @@
-interface:
-  display_name: "AI生成的视频有水印?"
-  short_description: "视频去水印"
-  default_prompt: "Use $video-watermark-remover to help with 视频去水印"
-
-policy:
-  allow_implicit_invocation: true

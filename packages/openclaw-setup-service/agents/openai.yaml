@@ -1,7 +1,0 @@
-interface:
-  display_name: "大家都在养大龙虾🦞?"
-  short_description: "OpenClaw 装机服务"
-  default_prompt: "Use $openclaw-setup-service to help with OpenClaw 装机服务"
-
-policy:
-  allow_implicit_invocation: true

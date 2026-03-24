@@ -1,7 +1,0 @@
-interface:
-  display_name: "TikTok 直播 IP 合规吗?"
-  short_description: "TikTok 直播 IP 合规检测"
-  default_prompt: "Use $tiktok-live-ip-compliance to help with TikTok 直播 IP 合规检测"
-
-policy:
-  allow_implicit_invocation: true

@@ -1,7 +1,0 @@
-interface:
-  display_name: "行业情报第一观察员"
-  short_description: "行业动态、竞品监控与市场趋势情报能力，即将上线"
-  default_prompt: "Use $industry-intel-observer to help with 行业动态、竞品监控与市场趋势情报能力，即将上线"
-
-policy:
-  allow_implicit_invocation: true

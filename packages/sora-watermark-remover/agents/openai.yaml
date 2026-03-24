@@ -1,7 +1,0 @@
-interface:
-  display_name: "Sora 2 水印去不掉?"
-  short_description: "Sora 2 顽固水印去除"
-  default_prompt: "Use $sora-watermark-remover to help with Sora 2 顽固水印去除"
-
-policy:
-  allow_implicit_invocation: true

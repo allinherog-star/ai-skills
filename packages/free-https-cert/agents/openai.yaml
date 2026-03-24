@@ -1,7 +1,0 @@
-interface:
-  display_name: "网站还没 HTTPS?"
-  short_description: "免费 HTTPS 证书"
-  default_prompt: "Use $free-https-cert to help with 免费 HTTPS 证书"
-
-policy:
-  allow_implicit_invocation: true

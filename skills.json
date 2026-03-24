@@ -1,5 +1,5 @@
 {
-  "totalSkills": 22,
+  "totalSkills": 9,
   "generatedFrom": "ai-skills-export",
   "skills": [
     {
@@ -64,90 +64,6 @@
       "description": "软件成本评估看板",
       "invocationMode": "external-link",
       "packagePath": "packages/software-dev-cost-dashboard"
-    },
-    {
-      "slug": "video-watermark-remover",
-      "name": "AI生成的视频有水印?",
-      "description": "视频去水印",
-      "invocationMode": "external-link",
-      "packagePath": "packages/video-watermark-remover"
-    },
-    {
-      "slug": "image-watermark-remover",
-      "name": "图片有水印不好处理?",
-      "description": "图片去水印",
-      "invocationMode": "external-link",
-      "packagePath": "packages/image-watermark-remover"
-    },
-    {
-      "slug": "sora-watermark-remover",
-      "name": "Sora 2 水印去不掉?",
-      "description": "Sora 2 顽固水印去除",
-      "invocationMode": "external-link",
-      "packagePath": "packages/sora-watermark-remover"
-    },
-    {
-      "slug": "ai-video-generate",
-      "name": "想直接生成 AI 视频?",
-      "description": "AI 视频生成",
-      "invocationMode": "external-link",
-      "packagePath": "packages/ai-video-generate"
-    },
-    {
-      "slug": "free-https-cert",
-      "name": "网站还没 HTTPS?",
-      "description": "免费 HTTPS 证书",
-      "invocationMode": "external-link",
-      "packagePath": "packages/free-https-cert"
-    },
-    {
-      "slug": "tiktok-live-ip-compliance",
-      "name": "TikTok 直播 IP 合规吗?",
-      "description": "TikTok 直播 IP 合规检测",
-      "invocationMode": "external-link",
-      "packagePath": "packages/tiktok-live-ip-compliance"
-    },
-    {
-      "slug": "free-cdn-acceleration",
-      "name": "网站访问太慢?",
-      "description": "免费 CDN 加速",
-      "invocationMode": "external-link",
-      "packagePath": "packages/free-cdn-acceleration"
-    },
-    {
-      "slug": "notion-workspace",
-      "name": "文档和知识库太乱?",
-      "description": "Notion 文档管理工作台",
-      "invocationMode": "external-link",
-      "packagePath": "packages/notion-workspace"
-    },
-    {
-      "slug": "openclaw-setup-service",
-      "name": "大家都在养大龙虾🦞?",
-      "description": "OpenClaw 装机服务",
-      "invocationMode": "external-link",
-      "packagePath": "packages/openclaw-setup-service"
-    },
-    {
-      "slug": "public-intel-observer",
-      "name": "公共情报第一观察员",
-      "description": "公共舆情与热点情报观察能力，即将上线",
-      "invocationMode": "manual",
-      "packagePath": "packages/public-intel-observer"
-    },
-    {
-      "slug": "industry-intel-observer",
-      "name": "行业情报第一观察员",
-      "description": "行业动态、竞品监控与市场趋势情报能力，即将上线",
-      "invocationMode": "manual",
-      "packagePath": "packages/industry-intel-observer"
-    },
-    {
-      "slug": "career-intel-observer",
-      "name": "职业情报第一观察员",
-      "description": "职场趋势、岗位变化与技能需求情报能力，即将上线",
-      "invocationMode": "manual",
-      "packagePath": "packages/career-intel-observer"
     }
   ]
 }
