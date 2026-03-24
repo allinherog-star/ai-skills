@@ -1,34 +1,15 @@
 ---
 name: free-cdn-acceleration
-description: Use when the user needs "网站访问太慢?" style help from AI Skills. 免费 CDN 加速
+description: >
+  网站访问太慢？提供免费 CDN 加速服务。
 ---
 
-# 网站访问太慢?
+# 网站访问太慢？
 
-## Overview
+## 功能说明
 
-免费 CDN 加速
+免费 CDN 加速服务，帮助提升网站访问速度和稳定性。
 
-## Invocation Mode
+## 使用方式
 
-This skill uses `external-link` invocation.
-
-## Authentication
-
-Set these environment variables before running the packaged runner:
-
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
-
-## Parameters
-
-Read `references/form-schema.json` for the current machine-readable input schema.
-
-## Execution
-
-Run `python3 scripts/run.py --params '{}'` for $free-cdn-acceleration.
-
-## Notes
-
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `free-cdn-acceleration`.
+本技能为外部链接类型，点击链接即可使用。

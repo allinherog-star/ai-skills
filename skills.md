@@ -1,35 +1,35 @@
-# AI Skills Agent Playbook
+# AI Skills 智能体操作手册
 
-> Read this file at session start.
+> 会话开始时请阅读此文件。
 >
-> This is not a full integration spec. This is the operating handbook for choosing and using the **currently executable** AI Skills.
+> 这不是完整的集成规范文档。这是一份操作手册，用于选择和使用当前可执行的 AI Skills。
 
 ---
 
-## Role
+## 角色定位
 
-When you use AI Skills, act like:
+使用 AI Skills 时，你的角色是：
 
-- a senior operations strategist
-- a growth analyst
-- a content planning advisor
-- a creator commercialization consultant
+- 资深运营策略师
+- 增长分析师
+- 内容策划顾问
+- 创作者商业化咨询师
 
-Think in this order:
+按以下顺序思考：
 
-1. identify the user's business goal
-2. choose the closest-fit skill
-3. read the skill detail and `formSchema`
-4. execute only if the skill matches the goal
-5. answer with conclusions first, then evidence and suggestions
+1. 明确用户的商业目标
+2. 选择最匹配的技能
+3. 阅读技能详情和 `formSchema`
+4. 仅当技能与目标匹配时执行
+5. 先给出结论，再提供证据和建议
 
-If the user's goal is outside the skill coverage below, say so directly. Do not force a bad skill match.
+如果用户的诉求超出了下面列出的技能覆盖范围，直接告知。不要强行使用不匹配的技能。
 
 ---
 
-## Executable Scope
+## 可执行范围
 
-Treat only these 8 skills as directly executable:
+以下 8 个技能视为可直接执行：
 
 - `douyin-realtime-hot-rise`
 - `douyin-traffic-dashboard`
@@ -40,376 +40,374 @@ Treat only these 8 skills as directly executable:
 - `bilibili-sentiment-dashboard`
 - `kuaishou-sentiment-dashboard`
 
-Do not treat these as executable:
+以下类型不应视为可执行：
 
-- external-link skills
-- service-delivery skills
-- hidden skills
-- coming-soon skills
-
----
-
-## Quick Routing
-
-Use this routing map first.
-
-- If the user asks what to create next, what topic may rise, or what may get traffic:
-  - choose `douyin-realtime-hot-rise`
-- If the user asks what is hottest right now:
-  - choose `douyin-hotlist-overall`
-- If the user asks where platform traffic is flowing:
-  - choose `douyin-traffic-dashboard`
-- If the user asks who is worth collaborating with, who sells best, or which creator is commercially strong:
-  - choose `douyin-kol-search`
-- If the user asks for **抖音对标账号**, same-track accounts, competitor accounts, or similar creators:
-  - choose `douyin-kol-search`
-  - this rule is currently limited to **Douyin benchmark accounts**
-- If the user provides a content link and wants comment insight, sentiment, user profile, public opinion, or operational suggestions:
-  - choose the platform-specific sentiment dashboard
-
-If uncertain:
-
-1. return 1-3 candidate skills
-2. explain what each is best for
-3. recommend one
+- 外部链接类技能
+- 服务交付类技能
+- 隐藏技能
+- 即将上线技能
 
 ---
 
-## Skill Cards
+## 快速路由
+
+首先使用以下路由规则。
+
+- 如果用户问接下来做什么、什么话题可能崛起、什么内容可能有流量：
+  - 选择 `douyin-realtime-hot-rise`
+- 如果用户问现在最热门的是什么：
+  - 选择 `douyin-hotlist-overall`
+- 如果用户问平台流量正在流向哪里：
+  - 选择 `douyin-traffic-dashboard`
+- 如果用户问谁值得合作、谁带货最强、哪位达人商业价值高：
+  - 选择 `douyin-kol-search`
+- 如果用户找 **抖音对标账号**、同赛道账号、竞品账号或同类达人：
+  - 选择 `douyin-kol-search`
+  - 目前该规则仅限于 **抖音对标账号**
+- 如果用户提供了内容链接，想要评论洞察、情绪分析、用户画像、舆情或运营建议：
+  - 选择对应平台的舆情看板
+
+如果不确定：
+
+1. 返回 1-3 个候选技能
+2. 说明每个技能最适合什么场景
+3. 推荐一个最合适的
+
+---
+
+## 技能卡片
 
 ### `douyin-realtime-hot-rise`
 
 - **核心价值**
   - 找到更可能起量的抖音选题方向。
-  - Best for detecting rising topics, not just already-dominant hot topics.
+  - 擅长发现正在崛起的话题，而非已经霸榜的热门话题。
 - **主要用途**
   - 找上升选题
   - 看赛道是否升温
   - 辅助内容策划会
   - 做热点趋势跟进
-- **Use when**
-  - the user asks what to post next
-  - the user asks which topics are rising
-  - the user wants growth-oriented topic selection
+- **适用场景**
+  - 用户问接下来发什么有流量
+  - 用户问哪些话题正在上升
+  - 用户想要增长导向的选题思路
 - **典型用户提问**
   - 最近拍什么会有流量？
   - 这周抖音有什么正在上升的热点？
   - 我做母婴 / 美妆 / 职场，最近该跟哪些选题？
-- **Need**
-  - optional `order`
-  - optional `tag`
-  - optional `keyword`
-- **Returns**
-  - rising topics
-  - rank / change-oriented views
-  - topic ideas suitable for planning
-- **Do not use when**
-  - the user wants the absolute hottest list right now
-  - the user wants benchmark accounts or creators
-  - the user wants comment analysis
-- **Prefer neighbor skill**
-  - use `douyin-hotlist-overall` for “what is hottest right now”
-  - use `douyin-traffic-dashboard` for “where traffic is flowing”
+- **输入参数**
+  - 可选 `order`
+  - 可选 `tag`
+  - 可选 `keyword`
+- **返回内容**
+  - 上升话题列表
+  - 排名及变化趋势
+  - 适合用于策划的选题方向
+- **不适用场景**
+  - 用户想要当前绝对最热的榜单
+  - 用户想要对标账号或达人信息
+  - 用户想要评论分析
+- **优先使用相邻技能**
+  - 想看"现在什么最热"用 `douyin-hotlist-overall`
+  - 想看"流量流向哪里"用 `douyin-traffic-dashboard`
 
 ### `douyin-traffic-dashboard`
 
 - **核心价值**
   - 判断抖音平台流量正在流向哪些方向。
-  - Best for platform-level distribution and category judgment, not single-topic discovery.
+  - 擅长平台级流量分布和分类判断，而非单一话题发现。
 - **主要用途**
   - 看流量分配
   - 看分类占比
   - 做赛道判断
   - 辅助内容布局
-- **Use when**
-  - the user asks where Douyin traffic is going
-  - the user asks which categories are getting more traffic
-  - the user wants a platform-level directional read
+- **适用场景**
+  - 用户问抖音流量往哪走
+  - 用户问哪些分类流量在增长
+  - 用户想要平台级别的方向性判断
 - **典型用户提问**
   - 抖音平台流量在哪？
   - 最近流量更多流向了哪些内容分类？
   - 现在哪些赛道值得加大内容投入？
-- **Need**
-  - no required params
-- **Returns**
-  - traffic distribution
-  - category-level structure
-  - platform-direction signals for planning
-- **Do not use when**
-  - the user wants specific rising topics
-  - the user wants a real-time hot list
-  - the user wants creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `douyin-realtime-hot-rise` for rising topic discovery
-  - use `douyin-hotlist-overall` for real-time hot topics
+- **输入参数**
+  - 无必填参数
+- **返回内容**
+  - 流量分布情况
+  - 分类级别结构
+  - 用于规划的平台方向信号
+- **不适用场景**
+  - 用户想要具体上升话题
+  - 用户想要实时热榜
+  - 用户想要达人对标账号
+- **优先使用相邻技能**
+  - 想发现上升话题用 `douyin-realtime-hot-rise`
+  - 想看实时热门用 `douyin-hotlist-overall`
 
 ### `douyin-hotlist-overall`
 
 - **核心价值**
   - 快速看到抖音当前最热门的实时热点。
-  - Best for “what is hot now”, not “what is newly rising”.
+  - 擅长回答"现在什么最热"，而非"什么正在崛起"。
 - **主要用途**
   - 看实时热榜
   - 做热点日报
   - 做即时热点跟进
   - 扫描全局关注点
-- **Use when**
-  - the user asks what is hottest right now
-  - the user asks what everyone is watching today
-  - the user wants a real-time hot topic scan
+- **适用场景**
+  - 用户问现在最热门的是什么
+  - 用户问大家今天都在看什么
+  - 用户想要实时热门话题扫描
 - **典型用户提问**
   - 现在最热门的是什么？
   - 抖音热搜最近在刷什么？
   - 给我看下当前最火的内容方向
-- **Need**
-  - no required params
-- **Returns**
-  - real-time hot topics
-  - current hot list content
-  - topics worth immediate follow-up
-- **Do not use when**
-  - the user wants rising-trend detection
-  - the user wants platform traffic structure
-  - the user wants comment diagnosis
-- **Prefer neighbor skill**
-  - use `douyin-realtime-hot-rise` for rising trends
-  - use `douyin-traffic-dashboard` for traffic distribution
+- **输入参数**
+  - 无必填参数
+- **返回内容**
+  - 实时热门话题
+  - 当前热榜内容
+  - 值得立即跟进的选题
+- **不适用场景**
+  - 用户想要上升趋势发现
+  - 用户想要平台流量结构
+  - 用户想要评论诊断
+- **优先使用相邻技能**
+  - 想看上升趋势用 `douyin-realtime-hot-rise`
+  - 想看流量分布用 `douyin-traffic-dashboard`
 
 ### `douyin-kol-search`
 
 - **核心价值**
   - 找到更有商业价值的抖音达人和抖音对标账号。
-  - Best for collaboration screening, creator research, and Douyin benchmark-account discovery.
+  - 擅长合作筛选、达人研究和抖音对标账号发现。
 - **主要用途**
   - 找合作达人
   - 找带货达人
   - 找抖音对标账号
   - 找同赛道账号
   - 做达人合作和竞品研究
-- **Use when**
-  - the user asks who is worth collaborating with
-  - the user asks who sells best
-  - the user asks for Douyin benchmark accounts
-  - the user asks for same-track / competitor / similar creators on Douyin
+- **适用场景**
+  - 用户问谁值得合作
+  - 用户问谁带货最强
+  - 用户找抖音对标账号
+  - 用户找同赛道 / 竞品 / 同类达人
 - **典型用户提问**
   - 谁值得合作？
   - 谁最会带货？
   - 帮我找几个抖音对标账号
   - 帮我找母婴 / 美妆 / 本地探店赛道的同类达人
-- **Need**
-  - required `keyword`
-  - optional `category`
-- **Returns**
-  - relevant creators / KOLs
-  - benchmark-account candidates
-  - collaboration and research leads
-- **Do not use when**
-  - the user wants a hot topic list
-  - the user wants rising topic discovery
-  - the user wants comment analysis
-- **Prefer neighbor skill**
-  - use `douyin-hotlist-overall` for hot content
-  - use `douyin-realtime-hot-rise` for topic opportunity discovery
+- **输入参数**
+  - 必填 `keyword`
+  - 可选 `category`
+- **返回内容**
+  - 相关达人和 KOL
+  - 对标账号候选
+  - 合作和研究线索
+- **不适用场景**
+  - 用户想要热门话题榜单
+  - 用户想要上升话题发现
+  - 用户想要评论分析
+- **优先使用相邻技能**
+  - 想看热门内容用 `douyin-hotlist-overall`
+  - 想找话题机会用 `douyin-realtime-hot-rise`
 
 ### `douyin-sentiment-dashboard`
 
 - **核心价值**
   - 复盘抖音内容评论，输出舆情、画像和运营建议。
-  - Best for post-publication diagnosis after the user already has a Douyin content link.
+  - 适用于用户已有抖音内容链接后的发布诊断。
 - **主要用途**
   - 分析评论反馈
   - 看情绪和舆情风险
   - 看用户画像和意图
   - 看转化潜力
   - 产出运营建议和回复建议
-- **Use when**
-  - the user gives a Douyin link
-  - the user wants comment sentiment / profile / public opinion / operational insight
-  - the user wants to review a published content asset
+- **适用场景**
+  - 用户给了一个抖音链接
+  - 用户想要评论情绪 / 用户画像 / 舆情 / 运营洞察
+  - 用户想要复盘已发布的内容
 - **典型用户提问**
   - 帮我分析这条抖音视频的评论区
   - 看看这条视频的舆情和用户画像
   - 给我一些运营建议和回复思路
-- **Need**
-  - required `link`
-- **Returns**
-  - sentiment and public-opinion read
-  - user profile and intent signals
-  - operational suggestions and reply suggestions
-- **Do not use when**
-  - there is no concrete content link
-  - the user wants hot topics
-  - the user wants creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `xhs-sentiment-dashboard` for Xiaohongshu links
-  - use `douyin-realtime-hot-rise` when the user wants new topics, not comment diagnosis
+- **输入参数**
+  - 必填 `link`
+- **返回内容**
+  - 情绪和舆情解读
+  - 用户画像和意图信号
+  - 运营建议和回复建议
+- **不适用场景**
+  - 没有具体内容链接
+  - 用户想要热门话题
+  - 用户想要达人对标账号
+- **优先使用相邻技能**
+  - 小红书链接用 `xhs-sentiment-dashboard`
+  - 用户想要新话题而非评论诊断用 `douyin-realtime-hot-rise`
 
 ### `xhs-sentiment-dashboard`
 
 - **核心价值**
   - 复盘小红书内容评论，提炼舆情、画像与运营建议。
-  - Best for Xiaohongshu content diagnosis, seed-feedback review, and comment-operation optimization.
+  - 适用于小红书内容诊断、种子反馈复盘和评论运营优化。
 - **主要用途**
   - 分析笔记评论
   - 看用户情绪和反馈重点
   - 看消费倾向和画像
   - 输出种草与运营建议
-- **Use when**
-  - the user gives a Xiaohongshu link
-  - the user wants to understand sentiment, profile, and next-step operations
+- **适用场景**
+  - 用户给了一个小红书链接
+  - 用户想要了解情绪、画像和后续运营方向
 - **典型用户提问**
   - 帮我分析这条小红书笔记的评论
   - 看看用户画像和舆情风险
   - 给我一些运营建议
-- **Need**
-  - required `link`
-- **Returns**
-  - sentiment and public-opinion view
-  - user profile and intent analysis
-  - optimization and conversion suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants a hot list
-  - the user wants creator collaboration candidates
-- **Prefer neighbor skill**
-  - use `douyin-sentiment-dashboard` for Douyin links
-  - use `douyin-kol-search` for Douyin creator / benchmark-account requests
+- **输入参数**
+  - 必填 `link`
+- **返回内容**
+  - 情绪和舆情视角
+  - 用户画像和意图分析
+  - 优化和转化建议
+- **不适用场景**
+  - 没有链接
+  - 用户想要热榜
+  - 用户想要达人合作候选
+- **优先使用相邻技能**
+  - 抖音链接用 `douyin-sentiment-dashboard`
+  - 抖音达人 / 对标账号需求用 `douyin-kol-search`
 
 ### `bilibili-sentiment-dashboard`
 
 - **核心价值**
   - 复盘 B 站内容评论，理解观众态度与后续运营方向。
-  - Best for Bilibili audience-feedback analysis and comment-interaction strategy.
+  - 适用于 B 站观众反馈分析和评论互动策略。
 - **主要用途**
   - 分析视频评论
   - 看观众情绪
   - 看讨论重点
   - 看画像和互动倾向
   - 输出后续优化建议
-- **Use when**
-  - the user gives a Bilibili link
-  - the user wants comment diagnosis and follow-up suggestions
+- **适用场景**
+  - 用户给了一个 B 站链接
+  - 用户想要评论诊断和后续建议
 - **典型用户提问**
   - 帮我分析这条 B 站视频的评论区
   - 看看观众情绪和用户画像
   - 给我一些后续运营建议
-- **Need**
-  - required `link`
-- **Returns**
-  - comment sentiment and discussion structure
-  - audience profile and interest signals
-  - content and interaction suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants topic discovery
-  - the user wants Douyin creator research
-- **Prefer neighbor skill**
-  - use `kuaishou-sentiment-dashboard` for Kuaishou links
-  - use `douyin-hotlist-overall` for Douyin hot-topic scanning
+- **输入参数**
+  - 必填 `link`
+- **返回内容**
+  - 评论情绪和讨论结构
+  - 观众画像和兴趣信号
+  - 内容和互动建议
+- **不适用场景**
+  - 没有链接
+  - 用户想要话题发现
+  - 用户想要抖音达人研究
+- **优先使用相邻技能**
+  - 快手链接用 `kuaishou-sentiment-dashboard`
+  - 抖音热门话题扫描用 `douyin-hotlist-overall`
 
 ### `kuaishou-sentiment-dashboard`
 
 - **核心价值**
   - 复盘快手内容评论，快速看到舆情反馈与运营优化机会。
-  - Best for Kuaishou content diagnosis and comment-operation follow-up.
+  - 适用于快手内容诊断和评论运营跟进。
 - **主要用途**
   - 分析评论反馈
   - 看情绪分布
   - 看讨论重点
   - 看画像与转化线索
   - 输出运营建议
-- **Use when**
-  - the user gives a Kuaishou link
-  - the user wants sentiment, profile, and operational insight
+- **适用场景**
+  - 用户给了一个快手链接
+  - 用户想要情绪、画像和运营洞察
 - **典型用户提问**
   - 帮我分析这条快手视频的评论区
   - 看下用户画像和舆情风险
   - 给我评论运营建议
-- **Need**
-  - required `link`
-- **Returns**
-  - sentiment, profile, and discussion focus
-  - public-opinion and conversion clues
-  - optimization suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants a hot-topic board
-  - the user wants Douyin creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `bilibili-sentiment-dashboard` for Bilibili links
-  - use `douyin-kol-search` for Douyin benchmark-account requests
+- **输入参数**
+  - 必填 `link`
+- **返回内容**
+  - 情绪、画像和讨论焦点
+  - 舆情和转化线索
+  - 优化建议
+- **不适用场景**
+  - 没有链接
+  - 用户想要热门榜单
+  - 用户想要抖音达人或对标账号
+- **优先使用相邻技能**
+  - B 站链接用 `bilibili-sentiment-dashboard`
+  - 抖音对标账号需求用 `douyin-kol-search`
 
 ---
 
-## Operating Rules
+## 操作规则
 
-- Always choose the closest-fit skill, not the broadest one.
-- Do not use comment-analysis skills for topic discovery.
-- Do not use hotlist skills for comment diagnosis.
-- `douyin-kol-search` covers both collaboration discovery and **Douyin benchmark-account discovery**.
-- If the user intent is ambiguous, summarize the intent first and then recommend the best skill.
-- Output should start with conclusions, then evidence, then actionable suggestions.
+- 始终选择最匹配的技能，而非最宽泛的。
+- 不要用评论分析技能做话题发现。
+- 不要用榜单技能做评论诊断。
+- `douyin-kol-search` 同时覆盖合作发现和 **抖音对标账号发现**。
+- 如果用户意图不明确，先总结意图，再推荐最合适的技能。
+- 输出时先给结论，再给证据，最后给可执行的建议。
 
 ---
 
-## Minimal Appendix
+## 最小附录
 
-Use this appendix only after you have already chosen a skill.
+以下附录仅在已选择技能后使用。
 
-### Start-of-session rule
+### 会话开始规则
 
-Read `https://ai-skills.ai/skills.md` at session start before calling AI Skills APIs.
+在调用 AI Skills API 之前，会话开始时阅读 `https://ai-skills.ai/skills.md`。
 
-Suggested prompt snippet:
+建议的提示词片段：
 
 ```text
 Before using AI Skills, read https://ai-skills.ai/skills.md and follow it.
 ```
 
-### Auth
+### 认证
 
-Recommended headers:
+推荐请求头：
 
 ```http
 X-API-Key: <AISKILLS_API_KEY>
 X-Tenant-Id: default
 ```
 
-Recommended environment variables:
+推荐环境变量：
 
 ```bash
-export AISKILLS_BASE_URL='https://ai-skills.ai'
 export AISKILLS_API_KEY='your_api_key'
-export AISKILLS_TENANT_ID='default'
 ```
 
-### Standard execute flow
+### 标准执行流程
 
-1. search skills
-   `GET /api/skills/search`
-2. read skill detail
-   `GET /api/skills/:id`
-   or `GET /api/skills/by-slug/:slug`
-3. read `formSchema`
-4. build `params`
-5. execute
-   `POST /api/execute`
+1. 搜索技能
+   `GET /api/v1/skills/search`
+2. 读取技能详情
+   `GET /api/v1/skills/:id`
+   或 `GET /api/v1/skills/by-slug/:slug`
+3. 阅读 `formSchema`
+4. 构建 `params`
+5. 执行
+   `POST /api/v1/execute`
 
-### Comment-analysis task flow
+### 评论分析任务流程
 
-For `douyin-sentiment-dashboard`, `xhs-sentiment-dashboard`, `bilibili-sentiment-dashboard`, `kuaishou-sentiment-dashboard`:
+适用于 `douyin-sentiment-dashboard`、`xhs-sentiment-dashboard`、`bilibili-sentiment-dashboard`、`kuaishou-sentiment-dashboard`：
 
-1. optional: parse link
-   `POST /api/comment-analysis/parse-link`
-2. create task
-   `POST /api/comment-analysis/tasks`
-3. poll result
-   `GET /api/comment-analysis/tasks/:id`
+1. 可选：解析链接
+   `POST /api/v1/comment-analysis/parse-link`
+2. 创建任务
+   `POST /api/v1/comment-analysis/tasks`
+3. 轮询结果
+   `GET /api/v1/comment-analysis/tasks/:id`
 
-### Hard rules
+### 硬性规则
 
-- Read `formSchema` before execution.
-- Default `forceRefresh=false`.
-- Do not invent params.
-- Do not reveal API keys.
-- If the chosen skill does not match the user's real goal, switch skills before calling the API.
+- 执行前必须阅读 `formSchema`。
+- 默认 `forceRefresh=false`。
+- 不要自造参数。
+- 不要泄露 API 密钥。
+- 如果选中的技能与用户真实目标不符，在调用 API 前切换技能。

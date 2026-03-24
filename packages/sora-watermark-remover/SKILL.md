@@ -1,34 +1,15 @@
 ---
 name: sora-watermark-remover
-description: Use when the user needs "Sora 2 水印去不掉?" style help from AI Skills. Sora 2 顽固水印去除
+description: >
+  Sora 2 水印去不掉？提供 Sora 2 顽固水印去除功能。
 ---
 
-# Sora 2 水印去不掉?
+# Sora 2 水印去不掉？
 
-## Overview
+## 功能说明
 
-Sora 2 顽固水印去除
+Sora 2 顽固水印去除工具，解决 AI 生成视频中的顽固水印问题。
 
-## Invocation Mode
+## 使用方式
 
-This skill uses `external-link` invocation.
-
-## Authentication
-
-Set these environment variables before running the packaged runner:
-
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
-
-## Parameters
-
-Read `references/form-schema.json` for the current machine-readable input schema.
-
-## Execution
-
-Run `python3 scripts/run.py --params '{}'` for $sora-watermark-remover.
-
-## Notes
-
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `sora-watermark-remover`.
+本技能为外部链接类型，点击链接即可使用。

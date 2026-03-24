@@ -1,34 +1,15 @@
 ---
 name: image-watermark-remover
-description: Use when the user needs "图片有水印不好处理?" style help from AI Skills. 图片去水印
+description: >
+  图片有水印不好处理？提供图片去水印功能，帮助用户去除图片中的水印。
 ---
 
-# 图片有水印不好处理?
+# 图片有水印不好处理？
 
-## Overview
+## 功能说明
 
-图片去水印
+AI 图片去水印工具，帮助去除图片中的水印标识。
 
-## Invocation Mode
+## 使用方式
 
-This skill uses `external-link` invocation.
-
-## Authentication
-
-Set these environment variables before running the packaged runner:
-
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
-
-## Parameters
-
-Read `references/form-schema.json` for the current machine-readable input schema.
-
-## Execution
-
-Run `python3 scripts/run.py --params '{}'` for $image-watermark-remover.
-
-## Notes
-
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `image-watermark-remover`.
+本技能为外部链接类型，点击链接即可使用。

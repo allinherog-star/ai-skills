@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 import argparse
 import json
-import os
 import sys
 import urllib.error
 import urllib.request
 
 SKILL_ID = "douyin-traffic-dashboard"
+BASE_URL = "https://ai-skills.ai"
+TENANT_ID = "default"
 EXECUTE_PATH = "/api/v1/execute"
 
 def fail(message):
@@ -19,29 +20,73 @@ def load_params(raw):
     except json.JSONDecodeError as exc:
         fail(f"Invalid params JSON: {exc}")
 
+def format_markdown(result):
+    if isinstance(result, dict):
+        data = result.get("data", {})
+        if isinstance(data, dict) and "result" in data:
+            items = data["result"]
+            if isinstance(items, list) and len(items) > 0:
+                lines = ["## 抖音流量分配大盘\n"]
+                lines.append("| 排名 | 分类 | 流量占比 | 趋势 | 热度值 |")
+                lines.append("|------|------|----------|------|--------|")
+                for item in items[:10]:
+                    title = item.get("title", "-")
+                    rank = item.get("rank", "-")
+                    traffic_share = item.get("traffic_share", "-")
+                    rank_diff = item.get("rank_diff", 0)
+                    hot_value = item.get("hot_value", "-")
+                    if rank_diff >= 5:
+                        trend = "↑上升"
+                    elif rank_diff <= -5:
+                        trend = "↓下降"
+                    else:
+                        trend = "→平稳"
+                    lines.append(f"| #{rank} | {title} | {traffic_share}% | {trend} | {hot_value} |")
+                lines.append("")
+                suggestions = data.get("suggestions", [])
+                if suggestions:
+                    lines.append("**建议：**")
+                    for s in suggestions:
+                        lines.append(f"- {s}")
+                return "\n".join(lines)
+    return json.dumps(result, ensure_ascii=False, indent=2)
+
 def request_json(method, path, payload):
-    base_url = os.getenv("AISKILLS_BASE_URL", "https://ai-skills.ai").rstrip("/")
-    api_key = os.getenv("AISKILLS_API_KEY", "").strip()
-    tenant_id = os.getenv("AISKILLS_TENANT_ID", "default").strip() or "default"
+    api_key = __import__("os").getenv("AISKILLS_API_KEY", "").strip()
     if not api_key:
-        fail("AISKILLS_API_KEY is required")
+        print("[CONFIG_MISSING] AISKILLS_API_KEY 未配置。\n\n请运行以下命令配置：\n\n  export AISKILLS_API_KEY='your_api_key'\n\n配置完成后重新运行即可。")
+        sys.exit(1)
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
-        f"{base_url}{path}",
+        f"{BASE_URL}{path}",
         data=body,
         method=method,
         headers={
             "Content-Type": "application/json",
             "X-API-Key": api_key,
-            "X-Tenant-Id": tenant_id,
+            "X-Tenant-Id": TENANT_ID,
         },
     )
     try:
         with urllib.request.urlopen(req) as response:
-            print(response.read().decode("utf-8"))
+            result = json.loads(response.read().decode("utf-8"))
+            if not result.get("success"):
+                err = result.get("error", {})
+                if err.get("code") == "QUOTA_EXCEEDED":
+                    print("[QUOTA_EXCEEDED] 电量已用完。\n\n请前往以下地址购买电量包为技能充电：\n\n  https://ai-skills.ai\n")
+                    sys.exit(1)
+            print(format_markdown(result))
     except urllib.error.HTTPError as exc:
-        payload = exc.read().decode("utf-8")
-        print(payload or json.dumps({"success": False, "error": {"code": f"HTTP_{exc.code}", "message": str(exc)}}, ensure_ascii=False))
+        payload_text = exc.read().decode("utf-8")
+        try:
+            parsed = json.loads(payload_text)
+        except json.JSONDecodeError:
+            parsed = {"success": False, "error": {"code": f"HTTP_{exc.code}", "message": str(exc)}}
+        err = parsed.get("error", {})
+        if err.get("code") == "QUOTA_EXCEEDED":
+            print("[QUOTA_EXCEEDED] 电量已用完。\n\n请前往以下地址购买电量包为技能充电：\n\n  https://ai-skills.ai\n")
+            sys.exit(1)
+        print(json.dumps(parsed, ensure_ascii=False, indent=2))
         sys.exit(1)
 
 def main():
