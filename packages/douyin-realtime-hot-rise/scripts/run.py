@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
@@ -9,9 +10,10 @@ SKILL_ID = "douyin-realtime-hot-rise"
 BASE_URL = "https://ai-skills.ai"
 TENANT_ID = "default"
 EXECUTE_PATH = "/api/v1/execute"
+REQUEST_TIMEOUT_SECONDS = 15
 
-def fail(message):
-    print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
+def fail(message, code="RUNNER_ERROR"):
+    print(json.dumps({"success": False, "error": {"code": code, "message": message}}, ensure_ascii=False))
     sys.exit(1)
 
 def load_params(raw):
@@ -19,6 +21,13 @@ def load_params(raw):
         return json.loads(raw or "{}")
     except json.JSONDecodeError as exc:
         fail(f"Invalid params JSON: {exc}")
+
+def build_api_url(path):
+    if not BASE_URL.startswith("https://"):
+        fail("BASE_URL must use HTTPS", "CONFIG_ERROR")
+    if not path.startswith("/api/"):
+        fail(f"Unsupported API path: {path}", "CONFIG_ERROR")
+    return f"{BASE_URL}{path}"
 
 def format_markdown(result):
     if isinstance(result, dict):
@@ -47,13 +56,13 @@ def format_markdown(result):
     return json.dumps(result, ensure_ascii=False, indent=2)
 
 def request_json(method, path, payload):
-    api_key = __import__("os").getenv("AISKILLS_API_KEY", "").strip()
+    api_key = os.getenv("AISKILLS_API_KEY", "").strip()
     if not api_key:
         print("[CONFIG_MISSING] AISKILLS_API_KEY 未配置。\n\n请运行以下命令配置：\n\n  export AISKILLS_API_KEY='your_api_key'\n\n配置完成后重新运行即可。")
         sys.exit(1)
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
-        f"{BASE_URL}{path}",
+        build_api_url(path),
         data=body,
         method=method,
         headers={
@@ -63,7 +72,7 @@ def request_json(method, path, payload):
         },
     )
     try:
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT_SECONDS) as response:
             result = json.loads(response.read().decode("utf-8"))
             if not result.get("success"):
                 err = result.get("error", {})
@@ -83,6 +92,9 @@ def request_json(method, path, payload):
             sys.exit(1)
         print(json.dumps(parsed, ensure_ascii=False, indent=2))
         sys.exit(1)
+    except urllib.error.URLError as exc:
+        reason = getattr(exc, "reason", str(exc))
+        fail(f"网络请求失败: {reason}", "NETWORK_ERROR")
 
 def main():
     parser = argparse.ArgumentParser()

@@ -5,6 +5,7 @@ import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 FIXED_PLATFORM = "bilibili"
@@ -13,9 +14,10 @@ TENANT_ID = "default"
 PARSE_LINK_PATH = "/api/v1/comment-analysis/parse-link"
 CREATE_TASK_PATH = "/api/v1/comment-analysis/tasks"
 GET_TASK_PATH_TEMPLATE = "/api/v1/comment-analysis/tasks/{task_id}"
+REQUEST_TIMEOUT_SECONDS = 15
 
-def fail(message):
-    print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
+def fail(message, code="RUNNER_ERROR"):
+    print(json.dumps({"success": False, "error": {"code": code, "message": message}}, ensure_ascii=False))
     sys.exit(1)
 
 def load_params(raw):
@@ -23,6 +25,18 @@ def load_params(raw):
         return json.loads(raw or "{}")
     except json.JSONDecodeError as exc:
         fail(f"Invalid params JSON: {exc}")
+
+def build_api_url(path):
+    if not BASE_URL.startswith("https://"):
+        fail("BASE_URL must use HTTPS", "CONFIG_ERROR")
+    if not path.startswith("/api/"):
+        fail(f"Unsupported API path: {path}", "CONFIG_ERROR")
+    return f"{BASE_URL}{path}"
+
+def validate_link(link):
+    parsed = urllib.parse.urlparse(link)
+    if parsed.scheme != "https" or not parsed.netloc:
+        fail("link 参数必须是合法的 https 链接", "INVALID_PARAMS")
 
 def build_headers():
     api_key = os.getenv("AISKILLS_API_KEY", "").strip()
@@ -38,13 +52,13 @@ def build_headers():
 def request_json(method, path, payload=None):
     body = None if payload is None else json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
-        f"{BASE_URL}{path}",
+        build_api_url(path),
         data=body,
         method=method,
         headers=build_headers(),
     )
     try:
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT_SECONDS) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         payload_text = exc.read().decode("utf-8")
@@ -58,6 +72,9 @@ def request_json(method, path, payload=None):
             sys.exit(1)
         print(json.dumps(parsed, ensure_ascii=False, indent=2))
         sys.exit(1)
+    except urllib.error.URLError as exc:
+        reason = getattr(exc, "reason", str(exc))
+        fail(f"网络请求失败: {reason}", "NETWORK_ERROR")
 
 def format_markdown(result):
     platform_name = "B站"
@@ -123,6 +140,7 @@ def main():
     link = str(params.get("link", "")).strip()
     if not link:
         fail("link 参数必填")
+    validate_link(link)
     parsed = request_json("POST", PARSE_LINK_PATH, {"input": link, "platform": FIXED_PLATFORM})
     parsed_data = parsed.get("data", {})
     create_payload = {
