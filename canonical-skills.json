@@ -1,20 +1,20 @@
 {
   "meta": {
-    "totalSkills": 22
+    "totalSkills": 9
   },
   "stats": {
     "byInvocationMode": {
       "execute": 4,
-      "comment-analysis-task": 5,
-      "external-link": 10,
-      "manual": 3
+      "comment-analysis-task": 4,
+      "external-link": 1,
+      "manual": 0
     }
   },
   "skills": [
     {
       "id": "douyin-realtime-hot-rise",
       "slug": "douyin-realtime-hot-rise",
-      "name": "拍什么会有流量？",
+      "name": "douyin-realtime-hot-rise",
       "description": "抖音上升热点选题助手",
       "tags": [
         "抖音",
@@ -41,7 +41,7 @@
       "invocationMode": "execute",
       "invocation": {
         "type": "execute",
-        "executePath": "/api/v1/execute"
+        "executePath": "/api/execute"
       },
       "formSchema": {
         "type": "object",
@@ -62,7 +62,42 @@
           "tag": {
             "type": "string",
             "title": "热点分类",
-            "x-component": "CategorySelect"
+            "description": "热点分类 tag，传入数字 id 或逗号分隔的 id 组合。运行时以最新分类接口为准，当前默认映射可参考 x-direction-map。",
+            "x-component": "CategorySelect",
+            "x-direction-map": {
+              "娱乐": "2001,2002,2003,2004,2005,2006,2007,2008,2012",
+              "游戏": "12000,12001",
+              "二次元": "13000",
+              "音乐": "29000,29001",
+              "舞蹈": "28000,28001",
+              "剧情": "18000",
+              "颜值": "30000",
+              "美食": "9000",
+              "旅行": "10000",
+              "萌宠": "8000",
+              "时尚": "16000",
+              "体育": "5000",
+              "汽车": "11000",
+              "房产家居": "17000,17001",
+              "母婴": "19000",
+              "情感": "23000",
+              "科技": "6000",
+              "财经": "7000",
+              "教育": "14000,14001",
+              "健康": "15000",
+              "人文": "24000",
+              "法律": "27000",
+              "职场": "26000",
+              "社会": "4003,4005",
+              "时政": "3001,3002",
+              "军事": "21000",
+              "站内玩法": "1001,1002,1003",
+              "话题互动": "20002,20003,20005",
+              "才艺": "25000",
+              "三农": "22000",
+              "户外运动": "31000",
+              "银发生活": "32000"
+            }
           },
           "keyword": {
             "type": "string",
@@ -83,7 +118,7 @@
     {
       "id": "douyin-traffic-dashboard",
       "slug": "douyin-traffic-dashboard",
-      "name": "抖音平台流量在哪?",
+      "name": "douyin-traffic-dashboard",
       "description": "抖音流量分配大盘",
       "tags": [
         "抖音",
@@ -109,7 +144,7 @@
       "invocationMode": "execute",
       "invocation": {
         "type": "execute",
-        "executePath": "/api/v1/execute"
+        "executePath": "/api/execute"
       },
       "formSchema": {
         "type": "object",
@@ -125,7 +160,7 @@
     {
       "id": "douyin-hotlist-overall",
       "slug": "douyin-hotlist-overall",
-      "name": "现在最热门的是什么？",
+      "name": "douyin-hotlist-overall",
       "description": "抖音全网实时热点",
       "tags": [
         "抖音",
@@ -151,7 +186,7 @@
       "invocationMode": "execute",
       "invocation": {
         "type": "execute",
-        "executePath": "/api/v1/execute"
+        "executePath": "/api/execute"
       },
       "formSchema": {
         "type": "object",
@@ -166,7 +201,7 @@
     {
       "id": "douyin-kol-search",
       "slug": "douyin-kol-search",
-      "name": "谁是最会卖货的博主?",
+      "name": "douyin-kol-search",
       "description": "抖音最具商业价值 KOL",
       "tags": [
         "抖音",
@@ -192,7 +227,7 @@
       "invocationMode": "execute",
       "invocation": {
         "type": "execute",
-        "executePath": "/api/v1/execute"
+        "executePath": "/api/execute"
       },
       "formSchema": {
         "type": "object",
@@ -218,65 +253,9 @@
       }
     },
     {
-      "id": "unified-comment-analysis",
-      "slug": "unified-comment-analysis",
-      "name": "各平台舆情监控和运营洞察大盘",
-      "description": "复制抖音、小红书、B站、快手分享链接，一键查看舆情态势、转化潜力、用户画像与运营建议。",
-      "tags": [
-        "多平台",
-        "舆情监控",
-        "评论洞察",
-        "AI分析"
-      ],
-      "profession": [
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": true,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "invocationMode": "comment-analysis-task",
-      "invocation": {
-        "type": "comment-analysis-task",
-        "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-        "createTaskPath": "/api/v1/comment-analysis/tasks",
-        "getTaskPath": "/api/v1/comment-analysis/tasks/:id"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "link"
-        ],
-        "properties": {
-          "link": {
-            "type": "string",
-            "title": "分享链接",
-            "format": "uri"
-          },
-          "platform": {
-            "type": "string",
-            "title": "平台",
-            "enum": [
-              "douyin",
-              "xhs",
-              "bilibili",
-              "kuaishou"
-            ]
-          }
-        }
-      }
-    },
-    {
       "id": "douyin-sentiment-dashboard",
       "slug": "douyin-sentiment-dashboard",
-      "name": "抖音短视频怎么运营?",
+      "name": "douyin-sentiment-dashboard",
       "description": "抖音短视频运营增长大盘",
       "tags": [
         "舆情监控",
@@ -302,9 +281,9 @@
       "invocationMode": "comment-analysis-task",
       "invocation": {
         "type": "comment-analysis-task",
-        "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-        "createTaskPath": "/api/v1/comment-analysis/tasks",
-        "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+        "parseLinkPath": "/api/comment-analysis/parse-link",
+        "createTaskPath": "/api/comment-analysis/tasks",
+        "getTaskPath": "/api/comment-analysis/tasks/:id",
         "fixedPlatform": "douyin"
       },
       "formSchema": {
@@ -324,7 +303,7 @@
     {
       "id": "xhs-sentiment-dashboard",
       "slug": "xhs-sentiment-dashboard",
-      "name": "小红书短视频怎么运营?",
+      "name": "xhs-sentiment-dashboard",
       "description": "小红书短视频运营增长助手",
       "tags": [
         "舆情监控",
@@ -350,9 +329,9 @@
       "invocationMode": "comment-analysis-task",
       "invocation": {
         "type": "comment-analysis-task",
-        "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-        "createTaskPath": "/api/v1/comment-analysis/tasks",
-        "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+        "parseLinkPath": "/api/comment-analysis/parse-link",
+        "createTaskPath": "/api/comment-analysis/tasks",
+        "getTaskPath": "/api/comment-analysis/tasks/:id",
         "fixedPlatform": "xhs"
       },
       "formSchema": {
@@ -372,7 +351,7 @@
     {
       "id": "bilibili-sentiment-dashboard",
       "slug": "bilibili-sentiment-dashboard",
-      "name": "B站短视频怎么运营?",
+      "name": "bilibili-sentiment-dashboard",
       "description": "B站短视频运营增长助手",
       "tags": [
         "舆情监控",
@@ -398,9 +377,9 @@
       "invocationMode": "comment-analysis-task",
       "invocation": {
         "type": "comment-analysis-task",
-        "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-        "createTaskPath": "/api/v1/comment-analysis/tasks",
-        "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+        "parseLinkPath": "/api/comment-analysis/parse-link",
+        "createTaskPath": "/api/comment-analysis/tasks",
+        "getTaskPath": "/api/comment-analysis/tasks/:id",
         "fixedPlatform": "bilibili"
       },
       "formSchema": {
@@ -420,7 +399,7 @@
     {
       "id": "kuaishou-sentiment-dashboard",
       "slug": "kuaishou-sentiment-dashboard",
-      "name": "快手短视频如何运营?",
+      "name": "kuaishou-sentiment-dashboard",
       "description": "快手短视频运营增长助手",
       "tags": [
         "舆情监控",
@@ -446,9 +425,9 @@
       "invocationMode": "comment-analysis-task",
       "invocation": {
         "type": "comment-analysis-task",
-        "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-        "createTaskPath": "/api/v1/comment-analysis/tasks",
-        "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+        "parseLinkPath": "/api/comment-analysis/parse-link",
+        "createTaskPath": "/api/comment-analysis/tasks",
+        "getTaskPath": "/api/comment-analysis/tasks/:id",
         "fixedPlatform": "kuaishou"
       },
       "formSchema": {
@@ -468,7 +447,7 @@
     {
       "id": "software-dev-cost-dashboard",
       "slug": "software-dev-cost-dashboard",
-      "name": "软件开发成本不可控?",
+      "name": "software-dev-cost-dashboard",
       "description": "软件成本评估看板",
       "tags": [
         "成本评估",
@@ -495,394 +474,6 @@
       "invocation": {
         "type": "external-link",
         "externalLink": "https://soft.ai-skills.ai"
-      }
-    },
-    {
-      "id": "video-watermark-remover",
-      "slug": "video-watermark-remover",
-      "name": "AI生成的视频有水印?",
-      "description": "视频去水印",
-      "tags": [
-        "视频去水印",
-        "免费",
-        "AI",
-        "在线工具"
-      ],
-      "profession": [
-        "technical",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce",
-        "education"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://ezremove.ai/zh/video-watermark-remover/#video-watermark-remover",
-      "externalLinkLabel": "免费去水印",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://ezremove.ai/zh/video-watermark-remover/#video-watermark-remover",
-        "externalLinkLabel": "免费去水印"
-      }
-    },
-    {
-      "id": "image-watermark-remover",
-      "slug": "image-watermark-remover",
-      "name": "图片有水印不好处理?",
-      "description": "图片去水印",
-      "tags": [
-        "图片去水印",
-        "AI",
-        "在线工具"
-      ],
-      "profession": [
-        "technical",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce",
-        "education"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://www.dzine.ai/tools/ai-watermark-remover/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://www.dzine.ai/tools/ai-watermark-remover/"
-      }
-    },
-    {
-      "id": "sora-watermark-remover",
-      "slug": "sora-watermark-remover",
-      "name": "Sora 2 水印去不掉?",
-      "description": "Sora 2 顽固水印去除",
-      "tags": [
-        "Sora",
-        "视频去水印",
-        "AI"
-      ],
-      "profession": [
-        "technical",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://www.removesorawatermark.online/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://www.removesorawatermark.online/"
-      }
-    },
-    {
-      "id": "ai-video-generate",
-      "slug": "ai-video-generate",
-      "name": "想直接生成 AI 视频?",
-      "description": "AI 视频生成",
-      "tags": [
-        "AI 视频",
-        "生成式 AI",
-        "短视频"
-      ],
-      "profession": [
-        "technical",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce",
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://jimeng.jianying.com/ai-tool/generate",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://jimeng.jianying.com/ai-tool/generate"
-      }
-    },
-    {
-      "id": "free-https-cert",
-      "slug": "free-https-cert",
-      "name": "网站还没 HTTPS?",
-      "description": "免费 HTTPS 证书",
-      "tags": [
-        "HTTPS",
-        "SSL",
-        "证书"
-      ],
-      "profession": [
-        "technical"
-      ],
-      "industry": [
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://freessl.cn/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://freessl.cn/"
-      }
-    },
-    {
-      "id": "tiktok-live-ip-compliance",
-      "slug": "tiktok-live-ip-compliance",
-      "name": "TikTok 直播 IP 合规吗?",
-      "description": "TikTok 直播 IP 合规检测",
-      "tags": [
-        "TikTok",
-        "IP",
-        "直播",
-        "检测"
-      ],
-      "profession": [
-        "technical",
-        "operations"
-      ],
-      "industry": [
-        "ecommerce",
-        "media",
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://ipdata.co/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://ipdata.co/"
-      }
-    },
-    {
-      "id": "free-cdn-acceleration",
-      "slug": "free-cdn-acceleration",
-      "name": "网站访问太慢?",
-      "description": "免费 CDN 加速",
-      "tags": [
-        "CDN",
-        "网站加速",
-        "网络"
-      ],
-      "profession": [
-        "technical"
-      ],
-      "industry": [
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://www.dogecloud.com/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://www.dogecloud.com/"
-      }
-    },
-    {
-      "id": "notion-workspace",
-      "slug": "notion-workspace",
-      "name": "文档和知识库太乱?",
-      "description": "Notion 文档管理工作台",
-      "tags": [
-        "Notion",
-        "文档管理",
-        "知识库"
-      ],
-      "profession": [
-        "management",
-        "operations",
-        "technical"
-      ],
-      "industry": [
-        "software",
-        "education",
-        "media"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://www.notion.com/",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://www.notion.com/"
-      }
-    },
-    {
-      "id": "openclaw-setup-service",
-      "slug": "openclaw-setup-service",
-      "name": "大家都在养大龙虾🦞?",
-      "description": "OpenClaw 装机服务",
-      "tags": [
-        "OpenClaw",
-        "Clawdbot",
-        "Mac Mini",
-        "装机"
-      ],
-      "profession": [
-        "technical"
-      ],
-      "industry": [
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://clawdbotsetup.pro/",
-      "externalLinkLabel": "OpenClaw 装机服务",
-      "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://clawdbotsetup.pro/",
-        "externalLinkLabel": "OpenClaw 装机服务"
-      }
-    },
-    {
-      "id": "public-intel-observer",
-      "slug": "public-intel-observer",
-      "name": "公共情报第一观察员",
-      "description": "公共舆情与热点情报观察能力，即将上线",
-      "tags": [
-        "情报",
-        "公共舆情"
-      ],
-      "profession": [
-        "management",
-        "operations"
-      ],
-      "industry": [
-        "media"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": true,
-      "invocationMode": "manual",
-      "invocation": {
-        "type": "manual",
-        "reason": "coming-soon"
-      }
-    },
-    {
-      "id": "industry-intel-observer",
-      "slug": "industry-intel-observer",
-      "name": "行业情报第一观察员",
-      "description": "行业动态、竞品监控与市场趋势情报能力，即将上线",
-      "tags": [
-        "情报",
-        "行业动态",
-        "竞品"
-      ],
-      "profession": [
-        "management",
-        "operations"
-      ],
-      "industry": [
-        "software",
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": true,
-      "invocationMode": "manual",
-      "invocation": {
-        "type": "manual",
-        "reason": "coming-soon"
-      }
-    },
-    {
-      "id": "career-intel-observer",
-      "slug": "career-intel-observer",
-      "name": "职业情报第一观察员",
-      "description": "职场趋势、岗位变化与技能需求情报能力，即将上线",
-      "tags": [
-        "情报",
-        "职业趋势",
-        "技能需求"
-      ],
-      "profession": [
-        "management",
-        "operations"
-      ],
-      "industry": [
-        "software",
-        "education",
-        "media"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": true,
-      "invocationMode": "manual",
-      "invocation": {
-        "type": "manual",
-        "reason": "coming-soon"
       }
     }
   ]

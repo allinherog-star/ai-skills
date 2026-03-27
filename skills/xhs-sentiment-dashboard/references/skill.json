@@ -1,7 +1,7 @@
 {
   "id": "xhs-sentiment-dashboard",
   "slug": "xhs-sentiment-dashboard",
-  "name": "小红书短视频怎么运营?",
+  "name": "xhs-sentiment-dashboard",
   "description": "小红书短视频运营增长助手",
   "tags": [
     "舆情监控",
@@ -27,9 +27,9 @@
   "invocationMode": "comment-analysis-task",
   "invocation": {
     "type": "comment-analysis-task",
-    "parseLinkPath": "/api/v1/comment-analysis/parse-link",
-    "createTaskPath": "/api/v1/comment-analysis/tasks",
-    "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+    "parseLinkPath": "/api/comment-analysis/parse-link",
+    "createTaskPath": "/api/comment-analysis/tasks",
+    "getTaskPath": "/api/comment-analysis/tasks/:id",
     "fixedPlatform": "xhs"
   },
   "formSchema": {

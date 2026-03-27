@@ -1,7 +1,7 @@
 {
   "id": "douyin-hotlist-overall",
   "slug": "douyin-hotlist-overall",
-  "name": "现在最热门的是什么？",
+  "name": "douyin-hotlist-overall",
   "description": "抖音全网实时热点",
   "tags": [
     "抖音",
@@ -27,7 +27,7 @@
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
-    "executePath": "/api/v1/execute"
+    "executePath": "/api/execute"
   },
   "formSchema": {
     "type": "object",

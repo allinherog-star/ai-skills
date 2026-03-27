@@ -1,5 +1,5 @@
 interface:
-  display_name: "小红书短视频怎么运营?"
+  display_name: "xhs-sentiment-dashboard"
   short_description: "小红书短视频运营增长助手"
   default_prompt: "Use $xhs-sentiment-dashboard to help with 小红书短视频运营增长助手"
 

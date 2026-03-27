@@ -1,7 +1,7 @@
 {
   "id": "douyin-traffic-dashboard",
   "slug": "douyin-traffic-dashboard",
-  "name": "抖音平台流量在哪?",
+  "name": "douyin-traffic-dashboard",
   "description": "抖音流量分配大盘",
   "tags": [
     "抖音",
@@ -27,7 +27,7 @@
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
-    "executePath": "/api/v1/execute"
+    "executePath": "/api/execute"
   },
   "formSchema": {
     "type": "object",

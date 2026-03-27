@@ -1,0 +1,69 @@
+{
+  "totalSkills": 9,
+  "generatedFrom": "ai-skills-export",
+  "skills": [
+    {
+      "slug": "douyin-realtime-hot-rise",
+      "name": "douyin-realtime-hot-rise",
+      "description": "抖音上升热点选题助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-realtime-hot-rise"
+    },
+    {
+      "slug": "douyin-traffic-dashboard",
+      "name": "douyin-traffic-dashboard",
+      "description": "抖音流量分配大盘",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-traffic-dashboard"
+    },
+    {
+      "slug": "douyin-hotlist-overall",
+      "name": "douyin-hotlist-overall",
+      "description": "抖音全网实时热点",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-hotlist-overall"
+    },
+    {
+      "slug": "douyin-kol-search",
+      "name": "douyin-kol-search",
+      "description": "抖音最具商业价值 KOL",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-kol-search"
+    },
+    {
+      "slug": "douyin-sentiment-dashboard",
+      "name": "douyin-sentiment-dashboard",
+      "description": "抖音短视频运营增长大盘",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/douyin-sentiment-dashboard"
+    },
+    {
+      "slug": "xhs-sentiment-dashboard",
+      "name": "xhs-sentiment-dashboard",
+      "description": "小红书短视频运营增长助手",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/xhs-sentiment-dashboard"
+    },
+    {
+      "slug": "bilibili-sentiment-dashboard",
+      "name": "bilibili-sentiment-dashboard",
+      "description": "B站短视频运营增长助手",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/bilibili-sentiment-dashboard"
+    },
+    {
+      "slug": "kuaishou-sentiment-dashboard",
+      "name": "kuaishou-sentiment-dashboard",
+      "description": "快手短视频运营增长助手",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/kuaishou-sentiment-dashboard"
+    },
+    {
+      "slug": "software-dev-cost-dashboard",
+      "name": "software-dev-cost-dashboard",
+      "description": "软件成本评估看板",
+      "invocationMode": "external-link",
+      "packagePath": "skills/software-dev-cost-dashboard"
+    }
+  ]
+}

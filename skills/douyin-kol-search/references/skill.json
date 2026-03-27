@@ -1,7 +1,7 @@
 {
   "id": "douyin-kol-search",
   "slug": "douyin-kol-search",
-  "name": "谁是最会卖货的博主?",
+  "name": "douyin-kol-search",
   "description": "抖音最具商业价值 KOL",
   "tags": [
     "抖音",
@@ -27,7 +27,7 @@
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
-    "executePath": "/api/v1/execute"
+    "executePath": "/api/execute"
   },
   "formSchema": {
     "type": "object",
