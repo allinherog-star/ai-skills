@@ -1,7 +1,0 @@
-interface:
-  display_name: "抖音短视频怎么运营?"
-  short_description: "抖音短视频运营增长大盘"
-  default_prompt: "Use $douyin-sentiment-dashboard to help with 抖音短视频运营增长大盘"
-
-policy:
-  allow_implicit_invocation: true
