@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "order": {
+      "type": "string",
+      "title": "排序方式",
+      "enum": [
+        "rank",
+        "rank_diff"
+      ],
+      "enumNames": [
+        "热度排序",
+        "变化排序"
+      ],
+      "default": "rank"
+    },
+    "tag": {
+      "type": "string",
+      "title": "热点分类",
+      "x-component": "CategorySelect"
+    },
+    "keyword": {
+      "type": "string",
+      "title": "搜索词"
+    }
+  }
+}

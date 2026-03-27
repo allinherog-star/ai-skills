@@ -1,0 +1,48 @@
+{
+  "id": "xhs-sentiment-dashboard",
+  "slug": "xhs-sentiment-dashboard",
+  "name": "小红书短视频怎么运营?",
+  "description": "小红书短视频运营增长助手",
+  "tags": [
+    "舆情监控",
+    "评论洞察",
+    "AI分析",
+    "运营建议"
+  ],
+  "profession": [
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce"
+  ],
+  "platform": "xhs",
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "invocationMode": "comment-analysis-task",
+  "invocation": {
+    "type": "comment-analysis-task",
+    "parseLinkPath": "/api/v1/comment-analysis/parse-link",
+    "createTaskPath": "/api/v1/comment-analysis/tasks",
+    "getTaskPath": "/api/v1/comment-analysis/tasks/:id",
+    "fixedPlatform": "xhs"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [
+      "link"
+    ],
+    "properties": {
+      "link": {
+        "type": "string",
+        "title": "分享链接",
+        "format": "uri"
+      }
+    }
+  }
+}
