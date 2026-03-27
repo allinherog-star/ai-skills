@@ -11,6 +11,7 @@ PARSE_LINK_PATH = "/api/comment-analysis/parse-link"
 CREATE_TASK_PATH = "/api/comment-analysis/tasks"
 GET_TASK_PATH_TEMPLATE = "/api/comment-analysis/tasks/{task_id}"
 FIXED_PLATFORM = "kuaishou"
+DEFAULT_BASE_URL = "https://ai-skills.ai"
 
 def fail(message):
     print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
@@ -21,6 +22,9 @@ def load_params(raw):
         return json.loads(raw or "{}")
     except json.JSONDecodeError as exc:
         fail(f"Invalid params JSON: {exc}")
+
+def build_base_url():
+    return os.getenv("AISKILLS_BASE_URL", DEFAULT_BASE_URL).rstrip("/")
 
 def build_headers():
     api_key = os.getenv("AISKILLS_API_KEY", "").strip()
@@ -34,9 +38,13 @@ def build_headers():
     }
 
 def request_json(method, path, payload):
-    base_url = os.getenv("AISKILLS_BASE_URL", "https://ai-skills.ai").rstrip("/")
     body = None if payload is None else json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(f"{base_url}{path}", data=body, method=method, headers=build_headers())
+    req = urllib.request.Request(
+        f"{build_base_url()}{path}",
+        data=body,
+        method=method,
+        headers=build_headers(),
+    )
     try:
         with urllib.request.urlopen(req) as response:
             return json.loads(response.read().decode("utf-8"))
@@ -68,11 +76,13 @@ def main():
     link = str(params.get("link", "")).strip()
     if not link:
         fail("link is required")
+
     parse_payload = {"input": link}
     if FIXED_PLATFORM:
         parse_payload["platform"] = FIXED_PLATFORM
     elif params.get("platform"):
         parse_payload["platform"] = params["platform"]
+
     parsed = request_json("POST", PARSE_LINK_PATH, parse_payload)
     parsed_data = parsed.get("data", {})
     create_payload = {
