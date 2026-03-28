@@ -1,34 +1,53 @@
 ---
 name: software-dev-cost-dashboard
-description: Use when the user needs "软件开发成本不可控?" style help from AI Skills. 软件成本评估看板
+description: "软件成本评估看板。当用户提到软件开发成本评估、项目报价、工时估算、成本分析、立项评估、软件预算时，务必使用此技能。适用于项目经理、技术负责人评估软件开发项目成本、生成报价方案。此技能直接跳转到外部软件成本评估工具。"
 ---
 
-# 软件开发成本不可控?
+# software-dev-cost-dashboard
 
-## Overview
+## 概述
 
-软件成本评估看板
+此技能为软件成本评估看板的快捷入口，帮助用户快速访问专业的软件开发成本评估工具，生成项目报价和工时估算。
 
-## Invocation Mode
+## 访问方式
 
-This skill uses `external-link` invocation.
+**外部链接**: [https://soft.ai-skills.ai](https://soft.ai-skills.ai)
 
-## Authentication
+直接引导用户访问软件成本评估看板。
 
-Set these environment variables before running the packaged runner:
+## 使用场景
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+- 项目立项前的成本预算
+- 客户项目的工时与报价评估
+- 研发团队的资源规划
+- 多方案比选（不同规模/不同技术栈的成本对比）
 
-## Parameters
+## 执行流程
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+1. **确认意图**：用户需要评估软件开发成本
+2. **提供入口**：直接展示外部链接或提供跳转说明
+3. **补充说明**：如有必要，提供使用该工具的基本指引
 
-## Execution
+## 输出格式
 
-Run `python3 scripts/run.py --params '{}'` for $software-dev-cost-dashboard.
+```
+# 软件开发成本评估
 
-## Notes
+请访问以下链接使用软件成本评估工具：
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `software-dev-cost-dashboard`.
+🔗 [https://soft.ai-skills.ai](https://soft.ai-skills.ai)
+
+## 使用指引
+
+1. 输入项目基本信息（类型、规模、技术栈）
+2. 选择功能模块和复杂度
+3. 获取工时估算和成本报价
+4. 导出评估报告
+
+如需进一步定制化评估，请联系客服。
+```
+
+## 注意事项
+
+- 此技能不调用后端 API，直接提供外部工具入口
+- 如链接失效，请在对话中告知用户

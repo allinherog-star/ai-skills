@@ -1,34 +1,48 @@
 ---
 name: douyin-hotlist-overall
-description: Use when the user needs "现在最热门的是什么？" style help from AI Skills. 抖音全网实时热点
+description: "抖音全网实时热点/热搜榜。当用户提到抖音热搜、抖音热榜、全网热点、热点榜单、实时热搜时，务必使用此技能。也适用于运营人员监控舆情、内容创作者追踪热点。通过 TikHub API 获取抖音全网实时热搜数据。"
 ---
 
-# 现在最热门的是什么？
+# douyin-hotlist-overall
 
-## Overview
+## 概述
 
-抖音全网实时热点
+此技能帮助用户获取抖音全网实时热搜榜单数据，监控热点事件和舆情趋势。
 
-## Invocation Mode
+## API 调用
 
-This skill uses `execute` invocation.
+**Endpoint**: `POST /api/v1/douyin/app/v3/fetch_hot_search_list`
+**Provider**: TikHub
+**认证**: `X-API-Key` header
 
-## Authentication
+### 请求参数
 
-Set these environment variables before running the packaged runner:
+此接口无需额外参数，返回抖音全网实时热搜列表。
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+## 执行流程
 
-## Parameters
+1. **构建请求**：调用 TikHub 抖音热搜 API
+2. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
+3. **解析响应**：提取热搜条目列表（标题、排名、热度、话题标签等）
+4. **格式化输出**：以表格或结构化文本展示热搜榜单
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+## 输出格式
 
-## Execution
+```
+# 抖音全网实时热点
 
-Run `python3 scripts/run.py --params '{}'` for $douyin-hotlist-overall.
+**更新时间**: YYYY-MM-DD HH:mm
 
-## Notes
+| 排名 | 热搜词 | 热度指数 | 话题标签 |
+|------|--------|----------|----------|
+| 1    | xxx    | 999999   | #话题   |
+| ...  | ...    | ...      | ...      |
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-hotlist-overall`.
+共 [N] 条热搜
+```
+
+## 错误处理
+
+- **401 Unauthorized**: 检查 API Key 是否有效
+- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
+- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示

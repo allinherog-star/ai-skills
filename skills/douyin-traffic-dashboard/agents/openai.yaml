@@ -1,7 +1,0 @@
-interface:
-  display_name: "douyin-traffic-dashboard"
-  short_description: "抖音流量分配大盘"
-  default_prompt: "Use $douyin-traffic-dashboard to help with 抖音流量分配大盘"
-
-policy:
-  allow_implicit_invocation: true

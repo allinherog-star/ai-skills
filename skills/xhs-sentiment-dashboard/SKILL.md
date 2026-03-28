@@ -1,34 +1,77 @@
 ---
 name: xhs-sentiment-dashboard
-description: Use when the user needs "小红书短视频怎么运营?" style help from AI Skills. 小红书短视频运营增长助手
+description: "小红书短视频运营增长助手/评论情感分析。当用户提到小红书评论分析、小红书舆情、小红书数据分析、xhs sentiment、笔记分析、评论区洞察时，务必使用此技能。适用于运营人员分析小红书笔记评论区情感趋势、了解用户反馈。通过评论分析任务 API 对小红书笔记链接进行 AI 情感分析。"
 ---
 
-# 小红书短视频怎么运营?
+# xhs-sentiment-dashboard
 
-## Overview
+## 概述
 
-小红书短视频运营增长助手
+此技能帮助用户对小红书笔记的评论区进行 AI 情感分析，生成舆情洞察报告，辅助运营决策。
 
-## Invocation Mode
+## 工作原理
 
-This skill uses `comment-analysis-task` invocation.
+通过 **评论分析任务（comment-analysis-task）** 模式：
 
-## Authentication
+1. **解析链接**：调用 `/api/comment-analysis/parse-link` 解析小红书笔记分享链接
+2. **创建任务**：调用 `/api/comment-analysis/tasks` 创建分析任务
+3. **查询进度**：轮询 `/api/comment-analysis/tasks/:id` 获取分析进度
+4. **展示结果**：分析完成后展示情感分析报告
 
-Set these environment variables before running the packaged runner:
+**固定平台**: `xhs`
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+## 请求参数
 
-## Parameters
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `link` | string | **是** | 小红书笔记分享链接（格式：uri） |
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+## 执行流程
 
-## Execution
+1. **校验输入**：确认 link 存在且为有效的小红书链接格式
+2. **解析链接**：调用 parse-link 接口获取笔记元信息
+3. **创建任务**：调用 create-task 接口，传入解析后的笔记 ID
+4. **轮询结果**：每 2-3 秒轮询任务状态，直至完成（`status: completed`）
+5. **格式化输出**：展示情感分析报告（正面/中性/负面占比、关键词、高频情绪、运营建议等）
 
-Run `python3 scripts/run.py --params '{}'` for $xhs-sentiment-dashboard.
+## 输出格式
 
-## Notes
+```
+# 小红书笔记评论情感分析
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `xhs-sentiment-dashboard`.
+**笔记标题**: [标题]
+**笔记ID**: [id]
+**分析时间**: YYYY-MM-DD HH:mm
+
+## 情感分布
+
+| 情感类别 | 数量 | 占比 |
+|----------|------|------|
+| 正面 | 120  | 60%  |
+| 中性 | 50   | 25%  |
+| 负面 | 30   | 15%  |
+
+## 高频关键词
+
+[关键词1] [关键词2] [关键词3] ...
+
+## 核心洞察
+
+- 评论区整体情感偏正面
+- 笔记在小红书平台的用户反馈集中在 [方面]
+- 需关注：[具体问题]
+
+## 运营建议
+
+- [建议1]
+- [建议2]
+```
+
+## 错误处理
+
+- **400 Bad Request**: link 参数缺失或格式无效
+- **401 Unauthorized**: 检查 API Key 是否有效
+- **404 Not Found**: 链接解析失败，笔记可能已删除或链接无效
+- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
+- **500/502/503**: 服务异常，记录错误并返回友好提示
+- **任务超时**: 分析任务超过 60 秒未完成，返回部分结果或友好提示

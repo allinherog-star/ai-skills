@@ -1,34 +1,93 @@
 ---
 name: douyin-realtime-hot-rise
-description: Use when the user needs "拍什么会有流量？" style help from AI Skills. 抖音上升热点选题助手
+description: "抖音上升热点选题助手。当用户提到抖音热点、上升热点、飙升话题、实时热点趋势、热点选题、抖音热搜飙升榜时，务必使用此技能。也适用于内容创作者寻找热点选题灵感、运营人员追踪抖音热点趋势。调用 TikHub 抖音热搜飙升榜 API 获取实时数据。"
 ---
 
-# 拍什么会有流量？
+# douyin-realtime-hot-rise
 
-## Overview
+## 概述
 
-抖音上升热点选题助手
+此技能帮助用户获取抖音实时热搜飙升榜单数据，用于热点选题和内容创作参考。
 
-## Invocation Mode
+## API 调用
 
-This skill uses `execute` invocation.
+**Endpoint**: `POST /api/v1/douyin/billboard/fetch_hot_rise_list`
+**Provider**: TikHub
+**认证**: `X-API-Key` header
 
-## Authentication
+### 请求参数
 
-Set these environment variables before running the packaged runner:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `page` | integer | 否 | 页码，默认 1 |
+| `page_size` | integer | 否 | 每页数量，默认 50 |
+| `order` | string | 否 | 排序方式：`rank`（热度排序）或 `rank_diff`（变化排序），默认 `rank` |
+| `tag` | string | 否 | 热点分类，支持多选（逗号分隔）。参考分类映射见下方 |
+| `keyword` | string | 否 | 搜索词，模糊匹配热点词 |
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+### 分类 tag 映射
 
-## Parameters
+| 分类名 | tag 值 |
+|--------|--------|
+| 娱乐 | 2001,2002,2003,2004,2005,2006,2007,2008,2012 |
+| 游戏 | 12000,12001 |
+| 二次元 | 13000 |
+| 音乐 | 29000,29001 |
+| 舞蹈 | 28000,28001 |
+| 剧情 | 18000 |
+| 颜值 | 30000 |
+| 美食 | 9000 |
+| 旅行 | 10000 |
+| 萌宠 | 8000 |
+| 时尚 | 16000 |
+| 体育 | 5000 |
+| 汽车 | 11000 |
+| 房产家居 | 17000,17001 |
+| 母婴 | 19000 |
+| 情感 | 23000 |
+| 科技 | 6000 |
+| 财经 | 7000 |
+| 教育 | 14000,14001 |
+| 健康 | 15000 |
+| 人文 | 24000 |
+| 法律 | 27000 |
+| 职场 | 26000 |
+| 社会 | 4003,4005 |
+| 时政 | 3001,3002 |
+| 军事 | 21000 |
+| 站内玩法 | 1001,1002,1003 |
+| 话题互动 | 20002,20003,20005 |
+| 才艺 | 25000 |
+| 三农 | 22000 |
+| 户外运动 | 31000 |
+| 银发生活 | 32000 |
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+## 执行流程
 
-## Execution
+1. **构建请求**：将用户提供的参数组织为 API 请求体
+2. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
+3. **解析响应**：提取热搜条目列表（标题、排名、变化、热度等）
+4. **格式化输出**：以表格或结构化文本展示结果
 
-Run `python3 scripts/run.py --params '{}'` for $douyin-realtime-hot-rise.
+## 输出格式
 
-## Notes
+```
+# 抖音热搜飙升榜
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-realtime-hot-rise`.
+**更新时间**: YYYY-MM-DD HH:mm
+
+## 分类: [娱乐] | 排序: [热度排序]
+
+| 排名 | 热搜词 | 变化 | 热度指数 |
+|------|--------|------|----------|
+| 1    | xxx    | ↑12  | 999999   |
+| ...  | ...    | ...  | ...      |
+
+共 [N] 条结果
+```
+
+## 错误处理
+
+- **401 Unauthorized**: 检查 API Key 是否有效
+- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
+- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示

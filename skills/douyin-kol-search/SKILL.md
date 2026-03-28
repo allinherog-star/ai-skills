@@ -1,34 +1,54 @@
 ---
 name: douyin-kol-search
-description: Use when the user needs "谁是最会卖货的博主?" style help from AI Skills. 抖音最具商业价值 KOL
+description: "抖音最具商业价值 KOL 搜索。当用户提到抖音 KOL、抖音达人、达人搜索、带货达人、找博主、kol 搜索时，务必使用此技能。适用于品牌方/商家寻找带货达人、MCN 机构发现潜力博主、营销人员筛选合作 KOL。通过 TikHub API 搜索抖音达人。"
 ---
 
-# 谁是最会卖货的博主?
+# douyin-kol-search
 
-## Overview
+## 概述
 
-抖音最具商业价值 KOL
+此技能帮助用户搜索抖音平台最具商业价值的 KOL（达人），用于合作筛选和达人营销。
 
-## Invocation Mode
+## API 调用
 
-This skill uses `execute` invocation.
+**Endpoint**: `POST /api/v1/douyin/web/fetch_user_search`
+**Provider**: TikHub
+**认证**: `X-API-Key` header
 
-## Authentication
+### 请求参数
 
-Set these environment variables before running the packaged runner:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `keyword` | string | **是** | 搜索关键词（达人名称、领域、内容标签等） |
+| `category` | string | 否 | 内容分类，用于筛选特定领域的达人 |
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+## 执行流程
 
-## Parameters
+1. **参数校验**：确认 `keyword` 必填参数存在
+2. **构建请求**：将 keyword 和可选的 category 组织为 API 请求体
+3. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
+4. **解析响应**：提取达人列表（昵称、粉丝数、带货数据、内容类型等）
+5. **格式化输出**：以结构化表格展示达人搜索结果
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+## 输出格式
 
-## Execution
+```
+# 抖音 KOL 搜索结果
 
-Run `python3 scripts/run.py --params '{}'` for $douyin-kol-search.
+**关键词**: [keyword] | **分类**: [category/不限]
+**更新时间**: YYYY-MM-DD HH:mm
 
-## Notes
+| 序号 | 达人昵称 | 粉丝数 | 内容分类 | 带货能力 | 商业价值 |
+|------|----------|--------|----------|----------|----------|
+| 1    | @xxx     | 520万  | 美食     | 高       | ⭐⭐⭐⭐⭐ |
+| ...  | ...      | ...    | ...      | ...      | ...      |
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-kol-search`.
+共找到 [N] 位达人
+```
+
+## 错误处理
+
+- **400 Bad Request**: keyword 参数缺失，提示用户输入搜索词
+- **401 Unauthorized**: 检查 API Key 是否有效
+- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
+- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示

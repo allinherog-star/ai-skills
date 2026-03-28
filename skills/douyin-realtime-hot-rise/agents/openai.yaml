@@ -1,7 +1,0 @@
-interface:
-  display_name: "douyin-realtime-hot-rise"
-  short_description: "抖音上升热点选题助手"
-  default_prompt: "Use $douyin-realtime-hot-rise to help with 抖音上升热点选题助手"
-
-policy:
-  allow_implicit_invocation: true
