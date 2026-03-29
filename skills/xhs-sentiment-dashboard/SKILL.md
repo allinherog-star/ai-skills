@@ -1,77 +1,107 @@
 ---
 name: xhs-sentiment-dashboard
-description: "小红书短视频运营增长助手/评论情感分析。当用户提到小红书评论分析、小红书舆情、小红书数据分析、xhs sentiment、笔记分析、评论区洞察时，务必使用此技能。适用于运营人员分析小红书笔记评论区情感趋势、了解用户反馈。通过评论分析任务 API 对小红书笔记链接进行 AI 情感分析。"
+description: "使用此技能分析小红书笔记评论区的情感倾向和用户态度。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。此技能不提供笔记内容下载或抓取。"
 ---
 
 # xhs-sentiment-dashboard
 
 ## 概述
 
-此技能帮助用户对小红书笔记的评论区进行 AI 情感分析，生成舆情洞察报告，辅助运营决策。
+对小红书笔记评论区进行 AI 情感分析，生成舆情洞察报告。
 
-## 工作原理
+## 工作流（三步）
 
-通过 **评论分析任务（comment-analysis-task）** 模式：
+### Step 1 — 解析链接（公开，无需认证）
 
-1. **解析链接**：调用 `/api/comment-analysis/parse-link` 解析小红书笔记分享链接
-2. **创建任务**：调用 `/api/comment-analysis/tasks` 创建分析任务
-3. **查询进度**：轮询 `/api/comment-analysis/tasks/:id` 获取分析进度
-4. **展示结果**：分析完成后展示情感分析报告
+```bash
+curl -X POST https://ai-skills.ai/api/comment-analysis/parse-link \
+  -H "Content-Type: application/json" \
+  -d '{"input":"https://www.xiaohongshu.com/explore/xxxxx"}'
+```
 
-**固定平台**: `xhs`
+### Step 2 — 创建分析任务
 
-## 请求参数
+```bash
+curl -X POST https://ai-skills.ai/api/comment-analysis/tasks \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d '{"platform":"xhs","contentId":"$CONTENT_ID"}'
+```
 
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `link` | string | **是** | 小红书笔记分享链接（格式：uri） |
+### Step 3 — 轮询任务状态
 
-## 执行流程
+```bash
+curl https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default"
+```
 
-1. **校验输入**：确认 link 存在且为有效的小红书链接格式
-2. **解析链接**：调用 parse-link 接口获取笔记元信息
-3. **创建任务**：调用 create-task 接口，传入解析后的笔记 ID
-4. **轮询结果**：每 2-3 秒轮询任务状态，直至完成（`status: completed`）
-5. **格式化输出**：展示情感分析报告（正面/中性/负面占比、关键词、高频情绪、运营建议等）
+## 一键脚本
+
+```bash
+#!/bin/bash
+LINK="https://www.xiaohongshu.com/explore/xxxxx"
+
+CONTENT_ID=$(curl -s -X POST https://ai-skills.ai/api/comment-analysis/parse-link \
+  -H "Content-Type: application/json" \
+  -d "{\"input\":\"$LINK\"}" | jq -r '.data.contentId')
+
+TASK=$(curl -s -X POST https://ai-skills.ai/api/comment-analysis/tasks \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d "{\"platform\":\"xhs\",\"contentId\":\"$CONTENT_ID\"}")
+TASK_ID=$(echo $TASK | jq -r '.data.taskId')
+
+while true; do
+  STATUS=$(curl -s https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
+    -H "X-API-Key: $AISKILLS_API_KEY" \
+    -H "X-Tenant-Id: default" | jq -r '.data.status')
+  [ "$STATUS" = "completed" ] && break
+  sleep 3
+done
+
+curl -s https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" | jq '.data.result'
+```
+
+## 分析结果结构
+
+```json
+{
+  "platform": "xhs",
+  "contentId": "64f1a66e0000000039005297",
+  "noteTitle": "笔记标题",
+  "analyzeTime": "2026-03-28T12:00:00Z",
+  "sentiment": {
+    "positive": { "count": 150, "percentage": 65 },
+    "neutral": { "count": 50, "percentage": 22 },
+    "negative": { "count": 30, "percentage": 13 }
+  },
+  "keywords": ["干货", "种草", "回购"],
+  "topEmotions": [
+    { "emotion": "喜欢", "count": 90 },
+    { "emotion": "认可", "count": 60 }
+  ],
+  "insights": "用户反馈积极，主要集中在产品功效和使用体验..."
+}
+```
+
+## 配额说明
+
+Step 2 和 Step 3 使用认证接口，若返回配额不足错误，告知用户：
+
+> ⚠️ 电量配额已用完，当前无法继续分析评论。
+> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
 
 ## 输出格式
 
-```
-# 小红书笔记评论情感分析
+将分析结果以结构化表格形式呈现：
 
-**笔记标题**: [标题]
-**笔记ID**: [id]
-**分析时间**: YYYY-MM-DD HH:mm
-
-## 情感分布
-
-| 情感类别 | 数量 | 占比 |
-|----------|------|------|
-| 正面 | 120  | 60%  |
-| 中性 | 50   | 25%  |
-| 负面 | 30   | 15%  |
-
-## 高频关键词
-
-[关键词1] [关键词2] [关键词3] ...
-
-## 核心洞察
-
-- 评论区整体情感偏正面
-- 笔记在小红书平台的用户反馈集中在 [方面]
-- 需关注：[具体问题]
-
-## 运营建议
-
-- [建议1]
-- [建议2]
-```
-
-## 错误处理
-
-- **400 Bad Request**: link 参数缺失或格式无效
-- **401 Unauthorized**: 检查 API Key 是否有效
-- **404 Not Found**: 链接解析失败，笔记可能已删除或链接无效
-- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
-- **500/502/503**: 服务异常，记录错误并返回友好提示
-- **任务超时**: 分析任务超过 60 秒未完成，返回部分结果或友好提示
+- **情感分布**：表格列：情感类别 | 评论数 | 占比；正面用绿色标识，负面用红色标识
+- **情绪关键词**：列表展示 `keywords`，按热度/频次排列
+- **Top 情绪**：表格列：情绪词 | 出现次数
+- **舆情洞察**：`insights` 以段落文字呈现，综合评价笔记口碑
+- 整体情感判断：偏正面 / 偏负面 / 中性，给出简要总结

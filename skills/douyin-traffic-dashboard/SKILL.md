@@ -1,58 +1,67 @@
 ---
 name: douyin-traffic-dashboard
-description: "抖音流量分配大盘。当用户提到抖音流量分配、流量大盘、流量趋势、抖音运营数据、视频流量分析时，务必使用此技能。适用于运营人员分析抖音账号流量分配、内容创作者了解视频流量来源。通过 TikHub API 获取抖音流量分布数据。"
+description: "分析抖音平台各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。"
 ---
 
 # douyin-traffic-dashboard
 
 ## 概述
 
-此技能帮助用户获取抖音流量分配大盘数据，分析视频/账号的流量来源与分布。
+获取抖音平台各内容分类的实时流量占比，用于分析流量分配趋势。
 
-## API 调用
+## API
 
-**Endpoint**: `POST /api/v1/douyin/billboard/fetch_hot_rise_list`
-**Provider**: TikHub
-**认证**: `X-API-Key` header
-**聚合模式**: `traffic-distribution`
+**执行技能** `POST /api/execute`
 
-### 请求参数
+```bash
+curl -X POST https://ai-skills.ai/api/execute \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d '{"skillId":"douyin-traffic-dashboard","params":{}}'
+```
 
-此接口无额外参数，返回抖音平台整体流量分布数据。
+## 响应
 
-## 执行流程
+```json
+{
+  "success": true,
+  "data": {
+    "categories": [
+      {
+        "label": "娱乐",
+        "value": "2001,2002,2003",
+        "hotCount": 42,
+        "percentage": 28.5,
+        "icon": "🎭",
+        "group": "entertainment"
+      }
+    ],
+    "total": 15,
+    "timeRange": "抖音平台实时流量占比",
+    "updateTime": "2026-03-28T12:00:00Z"
+  },
+  "meta": {
+    "executionTime": 2000,
+    "cached": false,
+    "quotaRemaining": 990,
+    "quotaType": "api_key_trial"
+  }
+}
+```
 
-1. **构建请求**：使用 `aggregateMode: traffic-distribution` 参数调用 TikHub API
-2. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
-3. **解析响应**：提取流量分布数据（各来源占比、趋势等）
-4. **格式化输出**：以结构化文本或图表展示流量大盘
+## 配额说明
+
+响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
+
+> ⚠️ 电量配额已用完，当前无法继续调用此技能。
+> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
 
 ## 输出格式
 
-```
-# 抖音流量分配大盘
+将返回数据以表格形式呈现，优先使用 Markdown 表格：
 
-**更新时间**: YYYY-MM-DD HH:mm
-
-## 流量来源分布
-
-| 来源类型 | 占比 | 趋势 |
-|----------|------|------|
-| 推荐feed | 45%  | ↑3%  |
-| 关注 | 20%  | ↓1%  |
-| 搜索 | 15%  | ↑5%  |
-| 同城 | 8%   | →    |
-| 其他 | 12%  | ↓2%  |
-
-## 关键洞察
-
-- 推荐feed流量占比最高，达 45%
-- 搜索流量呈上升趋势（+5%），建议优化关键词
-- ...
-```
-
-## 错误处理
-
-- **401 Unauthorized**: 检查 API Key 是否有效
-- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
-- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示
+- **流量分布**：`categories` → 表格列：排名 | 分类（带图标） | 热度内容数 | 流量占比%
+- 按 `percentage` 从高到低排序
+- 附注更新时间（`updateTime`）
+- 可额外绘制文本柱状图展示占比分布（如 `[██████░░░░] 28.5%`）

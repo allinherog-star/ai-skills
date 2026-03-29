@@ -1,48 +1,72 @@
 ---
 name: douyin-hotlist-overall
-description: "抖音全网实时热点/热搜榜。当用户提到抖音热搜、抖音热榜、全网热点、热点榜单、实时热搜时，务必使用此技能。也适用于运营人员监控舆情、内容创作者追踪热点。通过 TikHub API 获取抖音全网实时热搜数据。"
+description: "查询抖音热搜榜单。当用户想了解抖音当前有哪些热门内容、实时热搜词、上升热点或热榜排名时，使用此技能获取最新数据。"
 ---
 
 # douyin-hotlist-overall
 
 ## 概述
 
-此技能帮助用户获取抖音全网实时热搜榜单数据，监控热点事件和舆情趋势。
+获取抖音全网实时热搜榜单，监控热点事件和舆情趋势。
 
-## API 调用
+## API
 
-**Endpoint**: `POST /api/v1/douyin/app/v3/fetch_hot_search_list`
-**Provider**: TikHub
-**认证**: `X-API-Key` header
+**执行技能** `POST /api/execute`
 
-### 请求参数
+```bash
+curl -X POST https://ai-skills.ai/api/execute \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d '{"skillId":"douyin-hotlist-overall","params":{}}'
+```
 
-此接口无需额外参数，返回抖音全网实时热搜列表。
+## 响应
 
-## 执行流程
+```json
+{
+  "success": true,
+  "data": {
+    "wordList": [
+      {
+        "word": "热搜词",
+        "rank": 1,
+        "hotValue": 999999,
+        "label": "热",
+        "wordCover": "https://..."
+      }
+    ],
+    "trendingList": [
+      {
+        "word": "上升热点",
+        "rank": 1,
+        "hotValue": 888888
+      }
+    ],
+    "updateTime": "20260328234500"
+  },
+  "meta": {
+    "executionTime": 2000,
+    "cached": false,
+    "quotaRemaining": 990,
+    "quotaType": "api_key_trial"
+  }
+}
+```
 
-1. **构建请求**：调用 TikHub 抖音热搜 API
-2. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
-3. **解析响应**：提取热搜条目列表（标题、排名、热度、话题标签等）
-4. **格式化输出**：以表格或结构化文本展示热搜榜单
+## 配额说明
+
+响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
+
+> ⚠️ 电量配额已用完，当前无法继续调用此技能。
+> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
 
 ## 输出格式
 
-```
-# 抖音全网实时热点
+将返回数据以表格形式呈现，优先使用 Markdown 表格：
 
-**更新时间**: YYYY-MM-DD HH:mm
+- **热搜榜**：`wordList` → 表格列：排名 | 热搜词 | 热度指数 | 标签
+- **上升热点**：`trendingList` → 表格列：排名 | 上升热点词 | 热度指数
+- 热度数值较大时使用「万」「亿」单位换算（如 `999999` → `99.9万`）
+- 每条数据附带原始链接（`wordCover`）供点击跳转
 
-| 排名 | 热搜词 | 热度指数 | 话题标签 |
-|------|--------|----------|----------|
-| 1    | xxx    | 999999   | #话题   |
-| ...  | ...    | ...      | ...      |
-
-共 [N] 条热搜
-```
-
-## 错误处理
-
-- **401 Unauthorized**: 检查 API Key 是否有效
-- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
-- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示

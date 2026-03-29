@@ -1,54 +1,79 @@
 ---
 name: douyin-kol-search
-description: "抖音最具商业价值 KOL 搜索。当用户提到抖音 KOL、抖音达人、达人搜索、带货达人、找博主、kol 搜索时，务必使用此技能。适用于品牌方/商家寻找带货达人、MCN 机构发现潜力博主、营销人员筛选合作 KOL。通过 TikHub API 搜索抖音达人。"
+description: "使用此技能在抖音平台搜索和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。"
 ---
 
 # douyin-kol-search
 
 ## 概述
 
-此技能帮助用户搜索抖音平台最具商业价值的 KOL（达人），用于合作筛选和达人营销。
+搜索抖音平台最具商业价值的 KOL，用于合作筛选和达人营销，对标账号。
 
-## API 调用
+## API
 
-**Endpoint**: `POST /api/v1/douyin/web/fetch_user_search`
-**Provider**: TikHub
-**认证**: `X-API-Key` header
+**执行技能** `POST /api/execute`
 
-### 请求参数
+```bash
+# 关键词搜索达人
+curl -X POST https://ai-skills.ai/api/execute \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d '{"skillId":"douyin-kol-search","params":{"keyword":"美妆"}}'
+
+# 指定分类筛选
+curl -X POST https://ai-skills.ai/api/execute \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $AISKILLS_API_KEY" \
+  -H "X-Tenant-Id: default" \
+  -d '{"skillId":"douyin-kol-search","params":{"keyword":"美食","category":"美食"}}'
+```
+
+## 参数
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `keyword` | string | **是** | 搜索关键词（达人名称、领域、内容标签等） |
-| `category` | string | 否 | 内容分类，用于筛选特定领域的达人 |
+| `keyword` | string | **是** | 搜索关键词（达人名称/领域/内容标签） |
+| `category` | string | 否 | 内容分类筛选 |
 
-## 执行流程
+## 响应
 
-1. **参数校验**：确认 `keyword` 必填参数存在
-2. **构建请求**：将 keyword 和可选的 category 组织为 API 请求体
-3. **调用 API**：通过 Gateway `/api/execute` 转发至 TikHub
-4. **解析响应**：提取达人列表（昵称、粉丝数、带货数据、内容类型等）
-5. **格式化输出**：以结构化表格展示达人搜索结果
+```json
+{
+  "success": true,
+  "data": {
+    "users": [
+      {
+        "nickname": "达人昵称",
+        "uid": "123456789",
+        "followersCount": 5200000,
+        "category": "美食",
+        "awemeCount": 328,
+        "followingCount": 120
+      }
+    ]
+  },
+  "meta": {
+    "executionTime": 2000,
+    "cached": false,
+    "quotaRemaining": 990,
+    "quotaType": "api_key_trial"
+  }
+}
+```
+
+## 配额说明
+
+响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
+
+> ⚠️ 电量配额已用完，当前无法继续调用此技能。
+> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
 
 ## 输出格式
 
-```
-# 抖音 KOL 搜索结果
+将返回数据以表格形式呈现，优先使用 Markdown 表格：
 
-**关键词**: [keyword] | **分类**: [category/不限]
-**更新时间**: YYYY-MM-DD HH:mm
-
-| 序号 | 达人昵称 | 粉丝数 | 内容分类 | 带货能力 | 商业价值 |
-|------|----------|--------|----------|----------|----------|
-| 1    | @xxx     | 520万  | 美食     | 高       | ⭐⭐⭐⭐⭐ |
-| ...  | ...      | ...    | ...      | ...      | ...      |
-
-共找到 [N] 位达人
-```
-
-## 错误处理
-
-- **400 Bad Request**: keyword 参数缺失，提示用户输入搜索词
-- **401 Unauthorized**: 检查 API Key 是否有效
-- **429 Rate Limit**: 请求过于频繁，提示用户稍后重试
-- **500/502/503**: TikHub 服务异常，记录错误并返回友好提示
+- **达人列表**：`users` → 表格列：达人昵称 | 粉丝数 | 内容分类 | 作品数 | 关注数
+- 粉丝数超过 100 万显示为「X万」或「X百万」
+- 按粉丝数从高到低排序
+- 带货类达人在分类列标注「带货」
