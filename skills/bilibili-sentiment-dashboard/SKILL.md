@@ -1,6 +1,6 @@
 ---
 name: bilibili-sentiment-dashboard
-description: "B站/哔哩哔哩视频评论和弹幕情感分析。当用户询问B站/B站视频/Bilibili的评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。"
+description: "B站/哔哩哔哩视频运营分析。当用户询问B站/B站视频/Bilibili的视频运营分析，评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。"
 ---
 
 # bilibili-sentiment-dashboard

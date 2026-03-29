@@ -5,7 +5,7 @@
     {
       "slug": "douyin-hotlist-overall",
       "name": "douyin-hotlist-overall",
-      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题和上升热点。",
+      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题。",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-hotlist-overall"
     },
@@ -19,7 +19,7 @@
     {
       "slug": "douyin-kol-search",
       "name": "douyin-kol-search",
-      "description": "使用此技能在抖音平台搜索和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。",
+      "description": "使用此技能在抖音平台搜索对标账号和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-kol-search"
     },
@@ -40,28 +40,28 @@
     {
       "slug": "douyin-sentiment-dashboard",
       "name": "douyin-sentiment-dashboard",
-      "description": "分析抖音视频评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
+      "description": "分析抖音视频运营分析，评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/douyin-sentiment-dashboard"
     },
     {
       "slug": "bilibili-sentiment-dashboard",
       "name": "bilibili-sentiment-dashboard",
-      "description": "B站/哔哩哔哩视频评论和弹幕情感分析。当用户询问B站/B站视频/Bilibili的评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。",
+      "description": "B站/哔哩哔哩视频运营分析。当用户询问B站/B站视频/Bilibili的视频运营分析，评论情绪、评论区情感、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/bilibili-sentiment-dashboard"
     },
     {
       "slug": "kuaishou-sentiment-dashboard",
       "name": "kuaishou-sentiment-dashboard",
-      "description": "快手视频评论情感分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。",
+      "description": "快手视频评论视频运营分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/kuaishou-sentiment-dashboard"
     },
     {
       "slug": "xhs-sentiment-dashboard",
       "name": "xhs-sentiment-dashboard",
-      "description": "使用此技能分析小红书笔记评论区的情感倾向和用户态度。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
+      "description": "小红书视频运营分析。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/xhs-sentiment-dashboard"
     }

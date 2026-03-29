@@ -15,10 +15,21 @@
       "id": "douyin-hotlist-overall",
       "slug": "douyin-hotlist-overall",
       "name": "douyin-hotlist-overall",
-      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题和上升热点。",
-      "tags": ["抖音", "热搜", "热榜", "实时"],
-      "profession": ["blogger-individual", "operations"],
-      "industry": ["media", "ecommerce"],
+      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题。",
+      "tags": [
+        "抖音",
+        "热搜",
+        "热榜",
+        "实时"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "hidden": false,
       "auth": {
         "type": "api-key",
@@ -47,9 +58,21 @@
       "slug": "douyin-realtime-hot-rise",
       "name": "douyin-realtime-hot-rise",
       "description": "使用此技能获取抖音实时上升热点、飙升榜单。当用户询问哪些内容正在抖音快速走红、最新上升热点、热度上升最快的话题、爆款内容排行、实时上升趋势时使用。",
-      "tags": ["抖音", "热点", "趋势", "内容创作", "流量"],
-      "profession": ["blogger-individual", "operations"],
-      "industry": ["media", "ecommerce"],
+      "tags": [
+        "抖音",
+        "热点",
+        "趋势",
+        "内容创作",
+        "流量"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "hidden": false,
       "auth": {
         "type": "api-key",
@@ -68,8 +91,14 @@
           "order": {
             "type": "string",
             "title": "排序方式",
-            "enum": ["rank", "rank_diff"],
-            "enumNames": ["热度排序", "变化排序"],
+            "enum": [
+              "rank",
+              "rank_diff"
+            ],
+            "enumNames": [
+              "热度排序",
+              "变化排序"
+            ],
             "default": "rank"
           },
           "tag": {
@@ -130,9 +159,20 @@
       "slug": "douyin-traffic-dashboard",
       "name": "douyin-traffic-dashboard",
       "description": "分析抖音平台各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。",
-      "tags": ["抖音", "流量分配", "热点", "大盘"],
-      "profession": ["blogger-individual", "operations"],
-      "industry": ["media", "ecommerce"],
+      "tags": [
+        "抖音",
+        "流量分配",
+        "热点",
+        "大盘"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "hidden": false,
       "auth": {
         "type": "api-key",
@@ -161,9 +201,21 @@
       "slug": "douyin-kol-search",
       "name": "douyin-kol-search",
       "description": "使用此技能在抖音平台搜索和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。",
-      "tags": ["抖音", "KOL", "达人", "带货"],
-      "profession": ["blogger-individual", "operations"],
-      "industry": ["media", "ecommerce"],
+      "tags": [
+        "抖音",
+        "KOL",
+        "达人",
+        "对标账号",
+        "带货"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "hidden": false,
       "auth": {
         "type": "api-key",
@@ -178,7 +230,9 @@
       },
       "formSchema": {
         "type": "object",
-        "required": ["keyword"],
+        "required": [
+          "keyword"
+        ],
         "properties": {
           "category": {
             "type": "string",
@@ -202,10 +256,20 @@
       "id": "douyin-sentiment-dashboard",
       "slug": "douyin-sentiment-dashboard",
       "name": "douyin-sentiment-dashboard",
-      "description": "分析抖音视频评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
-      "tags": ["舆情监控", "评论洞察", "AI分析", "运营建议"],
-      "profession": ["operations"],
-      "industry": ["media", "ecommerce"],
+      "description": "分析抖音视频运营分析，评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
+      "tags": [
+        "舆情监控",
+        "评论洞察",
+        "AI分析",
+        "运营建议"
+      ],
+      "profession": [
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "platform": "douyin",
       "hidden": false,
       "auth": {
@@ -224,7 +288,9 @@
       },
       "formSchema": {
         "type": "object",
-        "required": ["link"],
+        "required": [
+          "link"
+        ],
         "properties": {
           "link": {
             "type": "string",
@@ -244,10 +310,20 @@
       "id": "xhs-sentiment-dashboard",
       "slug": "xhs-sentiment-dashboard",
       "name": "xhs-sentiment-dashboard",
-      "description": "使用此技能分析小红书笔记评论区的情感倾向和用户态度。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
-      "tags": ["舆情监控", "评论洞察", "AI分析", "运营建议"],
-      "profession": ["operations"],
-      "industry": ["media", "ecommerce"],
+      "description": "小红书视频运营分析。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
+      "tags": [
+        "舆情监控",
+        "评论洞察",
+        "AI分析",
+        "运营建议"
+      ],
+      "profession": [
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "platform": "xhs",
       "hidden": false,
       "auth": {
@@ -266,7 +342,9 @@
       },
       "formSchema": {
         "type": "object",
-        "required": ["link"],
+        "required": [
+          "link"
+        ],
         "properties": {
           "link": {
             "type": "string",
@@ -287,9 +365,19 @@
       "slug": "bilibili-sentiment-dashboard",
       "name": "bilibili-sentiment-dashboard",
       "description": "B站/哔哩哔哩视频评论和弹幕情感分析。当用户询问B站/B站视频/Bilibili的评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。",
-      "tags": ["舆情监控", "评论洞察", "AI分析", "运营建议"],
-      "profession": ["operations"],
-      "industry": ["media", "ecommerce"],
+      "tags": [
+        "舆情监控",
+        "评论洞察",
+        "AI分析",
+        "运营建议"
+      ],
+      "profession": [
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "platform": "bilibili",
       "hidden": false,
       "auth": {
@@ -308,7 +396,9 @@
       },
       "formSchema": {
         "type": "object",
-        "required": ["link"],
+        "required": [
+          "link"
+        ],
         "properties": {
           "link": {
             "type": "string",
@@ -329,9 +419,19 @@
       "slug": "kuaishou-sentiment-dashboard",
       "name": "kuaishou-sentiment-dashboard",
       "description": "快手视频评论情感分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。",
-      "tags": ["舆情监控", "评论洞察", "AI分析", "运营建议"],
-      "profession": ["operations"],
-      "industry": ["media", "ecommerce"],
+      "tags": [
+        "舆情监控",
+        "评论洞察",
+        "AI分析",
+        "运营建议"
+      ],
+      "profession": [
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
       "platform": "kuaishou",
       "hidden": false,
       "auth": {
@@ -350,7 +450,9 @@
       },
       "formSchema": {
         "type": "object",
-        "required": ["link"],
+        "required": [
+          "link"
+        ],
         "properties": {
           "link": {
             "type": "string",
@@ -371,9 +473,19 @@
       "slug": "software-dev-cost-dashboard",
       "name": "software-dev-cost-dashboard",
       "description": "使用此技能评估软件开发项目的成本、工时和报价。当用户询问「做一个X系统/软件/App要多少钱」、「开发X需要多少工时」、「X项目报价」等类似问题时，必须使用此技能。",
-      "tags": ["成本评估", "项目管理", "立项", "报价"],
-      "profession": ["management", "technical"],
-      "industry": ["software"],
+      "tags": [
+        "成本评估",
+        "项目管理",
+        "立项",
+        "报价"
+      ],
+      "profession": [
+        "management",
+        "technical"
+      ],
+      "industry": [
+        "software"
+      ],
       "hidden": false,
       "auth": {
         "type": "api-key",

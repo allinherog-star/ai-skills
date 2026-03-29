@@ -1,6 +1,6 @@
 ---
 name: douyin-traffic-dashboard
-description: "分析抖音平台各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。"
+description: "分析抖音各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。"
 ---
 
 # douyin-traffic-dashboard
