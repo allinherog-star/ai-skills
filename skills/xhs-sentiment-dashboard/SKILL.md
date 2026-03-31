@@ -1,6 +1,16 @@
 ---
 name: xhs-sentiment-dashboard
 description: "使用此技能分析小红书笔记评论区的情感倾向和用户态度。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。此技能不提供笔记内容下载或抓取。"
+requiredEnvVars:
+  - name: AISKILLS_API_KEY
+    description: "从 https://ai-skills.ai 获取的 API Key。Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。"
+security:
+  thirdPartyDomain: ai-skills.ai
+  dataSent:
+    - "skillId（技能标识符）"
+    - "params（技能参数，含用户提供的笔记链接，Step 2/3 需认证）"
+    - "X-API-Key（认证密钥，仅 Step 2/3 发送）"
+  warning: "此技能会将用户提供的笔记链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
 ---
 
 # xhs-sentiment-dashboard
@@ -94,7 +104,7 @@ curl -s https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
 Step 2 和 Step 3 使用认证接口，若返回配额不足错误，告知用户：
 
 > ⚠️ 电量配额已用完，当前无法继续分析评论。
-> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
+> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
 
 ## 输出格式
 

@@ -1,6 +1,12 @@
 ---
 name: software-dev-cost-dashboard
 description: "软件成本评估看板。当用户提到软件开发成本评估、项目报价、工时估算、成本分析、立项评估、软件预算时，务必使用此技能。"
+requiredEnvVars: []
+security:
+  thirdPartyDomain: soft.ai-skills.ai
+  dataSent:
+    - "用户在浏览器中直接访问 https://soft.ai-skills.ai 输入的内容（技能本身不传递任何数据）"
+  warning: "此技能为外部链接跳转（external-link 模式），不通过 API 调用。用户直接在浏览器中访问 soft.ai-skills.ai，数据安全政策取决于目标网站。请确认您信任该平台后再使用。"
 ---
 
 # software-dev-cost-dashboard

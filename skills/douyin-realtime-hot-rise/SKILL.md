@@ -1,6 +1,16 @@
 ---
 name: douyin-realtime-hot-rise
 description: '当用户在抖音上寻找正在走红的视频、涨粉最快的话题、实时飙升榜单、新晋爆款内容，或想了解"哪些视频在抖音火起来了"、"最近抖音流行什么"时，使用此技能。此技能专用于抖音内容热度上升趋势分析，不适用于微博热搜、快手热点、达人搜索、视频播放量统计或情感分析等其他场景。'
+requiredEnvVars:
+  - name: AISKILLS_API_KEY
+    description: "从 https://ai-skills.ai 获取的 API Key，用于调用抖音飙升榜单数据接口。API Key 会随每次请求发送至 ai-skills.ai 服务器。"
+security:
+  thirdPartyDomain: ai-skills.ai
+  dataSent:
+    - "skillId（技能标识符）"
+    - "params（技能参数如关键词、分类、页码等，不含用户对话上下文）"
+    - "X-API-Key（认证密钥）"
+  warning: "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
 ---
 
 # douyin-realtime-hot-rise
@@ -92,7 +102,7 @@ curl -X POST https://ai-skills.ai/api/execute \
 响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
 
 > ⚠️ 电量配额已用完，当前无法继续调用此技能。
-> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
+> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
 
 ## 输出格式
 

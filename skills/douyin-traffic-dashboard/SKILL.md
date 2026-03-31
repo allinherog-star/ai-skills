@@ -1,6 +1,16 @@
 ---
 name: douyin-traffic-dashboard
 description: "分析抖音各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。"
+requiredEnvVars:
+  - name: AISKILLS_API_KEY
+    description: "从 https://ai-skills.ai 获取的 API Key，用于调用抖音流量分布数据接口。API Key 会随每次请求发送至 ai-skills.ai 服务器。"
+security:
+  thirdPartyDomain: ai-skills.ai
+  dataSent:
+    - "skillId（技能标识符）"
+    - "params（技能参数如分类、页码等，不含用户对话上下文）"
+    - "X-API-Key（认证密钥）"
+  warning: "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
 ---
 
 # douyin-traffic-dashboard
@@ -55,7 +65,7 @@ curl -X POST https://ai-skills.ai/api/execute \
 响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
 
 > ⚠️ 电量配额已用完，当前无法继续调用此技能。
-> 请前往 [https://ai-skills.ai](https://ai-skills.ai) 购买电量包，充值后即可继续使用。
+> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
 
 ## 输出格式
 
