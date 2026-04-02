@@ -8,7 +8,7 @@
 > 更新时间：2026-03-25
 > 标签：抖音 / 流量分配 / 账号定位 / 方向判断 / 周复盘
 
-![封面图](https://cdn.aiskillsbest.com/guides/douyin-traffic-dashboard/cover.png)
+![封面图](./douyin-traffic-dashboard-direction-judgment-2026/cover.png)
 
 ## 摘要
 
@@ -64,7 +64,7 @@
 
 换句话说，`douyin-traffic-dashboard` 解决的是 **方向判断**，不是 **单题选题**，也不是 **评论诊断**。
 
-![平台流量分配大盘适合作为起号和方向判断的第一步](https://cdn.aiskillsbest.com/guides/douyin-traffic-dashboard/scene-map.png)
+![平台流量分配大盘适合作为起号和方向判断的第一步](./douyin-traffic-dashboard-direction-judgment-2026/scene-map.png)
 
 ## 场景一：起号前，先判断平台主流流量往哪里走
 
@@ -108,7 +108,7 @@
 
 这一步的价值在于，它能帮你避免“把执行优化用在错误方向上”。有时候不是你不够努力，而是你在一个当前平台资源并不集中的方向里，试图靠更勤奋来抵消方向差。
 
-![用平台流量分配对比账号当前投入方向，判断问题是在执行还是方向](https://cdn.aiskillsbest.com/guides/douyin-traffic-dashboard/scene-diagnose.png)
+![用平台流量分配对比账号当前投入方向，判断问题是在执行还是方向](./douyin-traffic-dashboard-direction-judgment-2026/scene-diagnose.png)
 
 ## 场景三：把它放进每周复盘，而不是临时起意才看
 
@@ -130,7 +130,7 @@
 
 这样做的价值是，团队不会再只围绕“哪条视频好、哪条视频差”争论，而是先统一对 **平台方向变化** 的判断。
 
-![把平台流量分配大盘纳入每周复盘流程，做更稳的方向资源分配](https://cdn.aiskillsbest.com/guides/douyin-traffic-dashboard/scene-review.png)
+![把平台流量分配大盘纳入每周复盘流程，做更稳的方向资源分配](./douyin-traffic-dashboard-direction-judgment-2026/scene-review.png)
 
 ## 一个够用的判断表
 

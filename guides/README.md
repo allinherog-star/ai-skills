@@ -13,18 +13,21 @@
 - Do not hand-edit files under `skills-package/guides/<locale>/<pillar>/`.
 - Change guide title, summary, cover, links, or body only in `web/content/guides`.
 - After any guide content change, rerun the export command so the synced markdown stays aligned.
-- Exported markdown rewrites page links to `https://ai-skills.ai/...` and image assets to `https://cdn.aiskillsbest.com/...` for GitHub compatibility.
+- Exported markdown rewrites page links to `https://ai-skills.ai/...`.
+- Exported guide images are copied into the matching article directory and referenced with relative paths for GitHub compatibility.
 
 ## Output Shape
 
-Generated files mirror the site content path:
+Generated files mirror the site content path, and each article may have a same-name asset directory:
 
 ```text
 skills-package/guides/<locale>/<pillar>/<slug>.md
+skills-package/guides/<locale>/<pillar>/<slug>/
 ```
 
 Example:
 
 ```text
 skills-package/guides/zh/data-insights/douyin-traffic-dashboard-direction-judgment-2026.md
+skills-package/guides/zh/data-insights/douyin-traffic-dashboard-direction-judgment-2026/
 ```
