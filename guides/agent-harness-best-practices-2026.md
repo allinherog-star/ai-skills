@@ -1,0 +1,148 @@
+---
+title: "2026 Agent Harness 实战：工具越少越准"
+description: "2026 最火的不是模型，是 Agent Harness。本文用 LangChain、Vercel、Anthropic 的实测数据，讲清四层结构、工具最小化、观察设计、上下文预算、权限分级五条实战法则，并给出 METR 的反例提醒。"
+slug: "agent-harness-best-practices-2026"
+date: "2026-04-20"
+keywords: ["Agent Harness", "AI Agent 最佳实践", "Claude Code", "工具设计", "Agent Computer Interface", "ACI", "LangChain", "AI 工程"]
+cover: "./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp"
+covers:
+  wechat:       "./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp"
+  square:       "./images/agent-harness-best-practices-2026/cover-square-1x1.webp"
+  landscape:    "./images/agent-harness-best-practices-2026/cover-landscape-16x9.webp"
+  wx_xhs:       "./images/agent-harness-best-practices-2026/cover-wx-xhs-3x4.webp"
+  douyin_wxsph: "./images/agent-harness-best-practices-2026/cover-douyin-wxsph-9x16.webp"
+author: "yangzhou"
+publisher: "AiProject"
+---
+
+
+# 2026 Agent Harness 实战：工具越少越准
+
+> 2025 年大家都在选模型，2026 年工程师已经在卷 Harness。同一个模型，LangChain 把 Terminal Bench 成绩从 52.8% 拉到 66.5%，Vercel 砍掉 80% 的工具后反而更准——这不是玄学，是 Harness 设计的硬实力。这篇把 2026 年主流的实战经验梳理成一张清单。
+
+![cover](./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp)
+
+## 模型见顶，Harness 接棒
+
+![content-01](./images/agent-harness-best-practices-2026/content-01.webp)
+
+2026 年 AI 工程圈达成了一个新的共识：决定 agent 靠不靠谱的，已经不是它底下挂的是 Opus 还是 GPT-5.4，而是包着模型跑的那一层 Harness。所谓 Harness，就是负责生命周期、上下文、工具调用、验证和安全的基础设施层——一个简洁的等式是 **Agent = Model + Harness**。
+
+几个同期公开的数据很能说明问题：
+
+- **LangChain**：在不换模型的前提下，仅通过重构 Harness，Terminal Bench 2.0 的分数从 52.8% 提升到 66.5%，排名从 Top 30 冲进 Top 5。
+- **Manus**：同一套模型，Harness 推倒重写了 5 次，每一版可靠性都在往上走。
+- **Vercel**：把原本挂在 agent 身上的工具砍掉 80%，剩下的结果反而更好。
+- **Harness 框架实测**：15 项 Claude Code 任务中，代码质量平均分从 49.5 拉到 79.3（+60%），而且任务越难、差距越大——基础任务 +23.8 分，进阶 +29.6 分，专家级 +36.2 分。
+
+结论很直接：2026 年想做出差异化的 agent 产品，优先预算不该花在「换更强的模型」上，而是花在 Harness 设计上。
+
+## 四层 Harness 结构：职责边界清楚
+
+Claude Code 走红之后，社区逐渐收敛出一套「四层 Harness」的分法。每一层解决什么问题、什么时候用哪一层，必须先搞清楚，否则很容易把 skill 当 hook 用、把 hook 当 subagent 用。
+
+| 层级 | 定位 | 触发方式 | 典型用法 |
+| --- | --- | --- | --- |
+| **CLAUDE.md / AGENTS.md** | 跨 session 的长期记忆 | 每次会话自动加载 | 技术栈、代码规范、架构约定 |
+| **Skills** | 按需加载的领域流程 | 关键词触发 / 显式调用 | 复杂多步任务 playbook |
+| **Hooks** | 确定性执行闸门 | 事件匹配自动触发 | pre-commit 格式化、写入前过滤 |
+| **Subagents** | 隔离的并行执行环境 | 主 agent 发起 | 并行调研、代码审阅、独立试验 |
+
+判断口诀：**「每次都要的」放 CLAUDE.md，「偶尔才用的」拆成 skill，「不能漏的」写成 hook，「需要干净上下文的」交给 subagent。** 一个最常见的错误是把某个 500 行的项目规范整段塞进 CLAUDE.md，占满了 system prompt 预算——这些内容应该挪进按需加载的 skill。
+
+## 工具设计第一原则：原子原语优于集成
+
+![content-02](./images/agent-harness-best-practices-2026/content-02.webp)
+
+2026 年最被低估的一条经验，是 Anthropic 在做 SWE-bench agent 时总结的：**花在 tool description 上的时间，应该和花在 prompt 上一样多。** 他们团队只是重写了工具描述，任务完成时间就减少了 40%。这种「工具即接口」的视角，被业内叫做 **ACI（Agent-Computer Interface）**，是一门和 prompt engineering 同等重要的工程学科。
+
+ACI 下的几条硬规则：
+
+1. **原子原语优于高阶集成**：Claude Code 之所以强，是因为只给了 agent 五把刀——`read` / `ls` / `grep` / `edit` / `bash`。这五个原语可以组合出几乎所有开发行为，而不是给它 50 个「ReadReactComponent」「WriteAPIRoute」这种高耦合工具。
+2. **4-5 个工具起步，不是 50 个**：Vercel 砍掉 80% 工具反而提分，就是因为过多语义重叠的工具让模型在「选哪个」上浪费推理。一个 agent 对应一个有边界的任务，工具控制在 5 个以内。
+3. **工具名和参数必须稳定、显式、收窄**：别写 `do_action(cmd, opts)` 这种万能函数，应该是 `run_migration(name, env)`，参数 schema-first，返回 shape 固定。
+4. **高风险操作微工具化**：部署、迁移、权限变更这种一步翻车的操作，要拆成最小动作单元，每个都有独立的确认与回滚路径。
+
+按照这个原则重做一遍工具清单，通常能砍掉一半，完成率反而上升。
+
+## 观察设计：让每次调用都能自己回到正轨
+
+![content-03](./images/agent-harness-best-practices-2026/content-03.webp)
+
+很多团队把时间花在「让 agent 选对工具」上，却忽略了「工具返回什么给 agent」——这部分其实更重要。因为 agent 的每一步决策，都依赖上一步的观察结果。
+
+一个可复用的 tool response schema：
+
+```json
+{
+  "status": "success | warning | error",
+  "summary": "一行话结果：什么成功/失败了",
+  "next_actions": ["下一步建议 1", "下一步建议 2"],
+  "artifacts": ["./path/to/file.ts", "id:xxx"]
+}
+```
+
+错误路径尤其要讲究——每一条 error 都必须带上三件套：
+
+- **root cause hint**：不是 stack trace，是人话版的「为什么错」
+- **safe retry instruction**：告诉 agent 在什么前提下可以重试、不要改什么
+- **explicit stop condition**：什么情况下必须停，不要自己硬撞
+
+最常见的反模式是：工具只在成功时返回数据，失败时只丢一句 error message，agent 被迫靠瞎猜继续下一步，然后陷入重试风暴。加一个 `next_actions` 字段，往往就能把重试次数砍一半。
+
+## 上下文预算：在阶段边界 compact，不是 token 阈值
+
+Harness 的第四块地基，是上下文预算管理。2026 年的主流做法已经从「token 快满了就 compact」进化到「按任务阶段边界 compact」：
+
+- **system prompt 保持最小且不变**：变动频繁的内容一律外挂成 skill 或 reference 文件。
+- **大段指南按需加载**：用 skill 机制，让 agent 在匹配到关键词时再拉进上下文，而不是一上来就全塞进去。
+- **引用优于内联**：长文档给路径，不给全文。让 agent 用 `read` 自己取。
+- **在阶段切换时主动 compact**：例如「调研阶段 → 实现阶段」、「实现 → 验证」这种边界，是最天然的压缩时机，保留决策与产物、抛弃过程噪声。
+
+这样做的好处是上下文里永远只有「本阶段需要的东西」，模型的注意力不被过去的 tool call 历史稀释。很多团队做完这一步，同样的模型能跑的任务长度直接翻倍。
+
+## 权限分级：给 agent 一张最小权限通行证
+
+真正上生产的 Harness，必须有一层权限中间件，而不是把一串 root 凭证直接丢给模型。2026 年主流的做法是分三档：
+
+| 档位 | 示例动作 | 策略 |
+| --- | --- | --- |
+| **safe** | 读文件、查文档、跑单测 | 自动放行，记录审计日志 |
+| **moderate** | 写文件、发网络请求、改配置 | 记录 + 明确二次确认规则 |
+| **dangerous** | 部署、迁移、删数据、改权限 | 强制人审 + 回滚脚本 + 只允许在隔离环境 |
+
+配合每个 agent 一个 scoped identity，权限只覆盖它当前任务必需的那几个工具——别为了省事发「全能 token」。做得好的团队还会给每次 agent 运行留一份完整的 trace，方便事后回放、定位问题、打 eval。
+
+## 别盲信 Harness：METR 研究的反面声音
+
+![content-04](./images/agent-harness-best-practices-2026/content-04.webp)
+
+讲了这么多 Harness 的好处，也必须给一个清醒剂。**METR 的一项对照研究发现，像 Claude Code 这种专用脚手架，在 Time Horizon 指标上只在 50.7% 的任务上打赢通用 ReAct 循环——跟随机掷硬币没有统计差异。**
+
+这说明两件事：
+
+1. **Harness 优势是任务相关的**：长时程、工具密集、需要跨文件协作的任务，Harness 帮助很大；短平快的单轮任务，好 prompt + 基础 ReAct 可能就够了。
+2. **不要先改 Harness，再看数据**——应该先建 eval，基线跑一次，再改一条 Harness 规则、再跑一次，留出对照。没有 eval 的 Harness 优化基本等于迷信。
+
+这条也是 2026 年严肃团队和「跟风团队」的分水岭：前者先花两周把 eval 工程搭好，后者花两周调整 CLAUDE.md 然后「感觉更好了」。
+
+## FAQ
+
+**Q1：Harness 和 Agent 框架（LangGraph / CrewAI）是一回事吗？**
+答：不完全是。Agent 框架提供执行原语（状态机、工具编排），Harness 是更上一层的「工程决策组合」——包括你怎么定义工具、写观察、分权限、管上下文。框架是积木，Harness 是搭法。
+
+**Q2：从哪一层开始优化最划算？**
+答：优先级按顺序：① 工具最小化（砍到 5 个以内）② 观察 schema（status/summary/next_actions）③ CLAUDE.md 瘦身 ④ Hooks 兜底 ⑤ Subagent 并行。前两条通常一天内就能看到完成率提升。
+
+**Q3：工具要多微才算微？一个 `git commit` 算不算微工具？**
+答：按「单次失败的损失大小」判断。`git commit` 在本地分支上属于中等粒度，直接放开；但 `git push --force` 必须微工具化，单独包一层、带二次确认。
+
+**Q4：小团队也需要这么重的 Harness 吗？**
+答：不需要一次到位。先用一个 CLAUDE.md + 5 个工具 + 一个 eval 脚本跑起来，能落地比完美更重要。业界公开的数据里，最大的提升都来自「从 0 到 1」那一步，不是从 1 到 10。
+
+**Q5：怎么判断自己的 Harness 还有优化空间？**
+答：看三个指标——每个任务的平均 tool call 次数、重试次数、失败时的 error 是否带下一步建议。前两个偏高或第三个缺失，就是红线。
+
+## 结论
+
+2026 年的 Harness 设计，本质是把工程师过去五年积累的「接口设计 / 错误处理 / 权限管理」能力，搬到 agent 这个新舞台上。模型会继续进步，但有一套精心打磨的 Harness，你永远能比同行多吃 30-60% 的模型红利。先建 eval，再动 Harness——这是今年最值得记住的一条规矩。
