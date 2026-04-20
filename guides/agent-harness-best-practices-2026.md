@@ -1,21 +1,3 @@
----
-title: "2026 Agent Harness 实战：工具越少越准"
-description: "2026 最火的不是模型，是 Agent Harness。本文用 LangChain、Vercel、Anthropic 的实测数据，讲清四层结构、工具最小化、观察设计、上下文预算、权限分级五条实战法则，并给出 METR 的反例提醒。"
-slug: "agent-harness-best-practices-2026"
-date: "2026-04-20"
-keywords: ["Agent Harness", "AI Agent 最佳实践", "Claude Code", "工具设计", "Agent Computer Interface", "ACI", "LangChain", "AI 工程"]
-cover: "./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat:       "./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp"
-  square:       "./images/agent-harness-best-practices-2026/cover-square-1x1.webp"
-  landscape:    "./images/agent-harness-best-practices-2026/cover-landscape-16x9.webp"
-  wx_xhs:       "./images/agent-harness-best-practices-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/agent-harness-best-practices-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
-
 # 2026 Agent Harness 实战：工具越少越准
 
 > 2025 年大家都在选模型，2026 年工程师已经在卷 Harness。同一个模型，LangChain 把 Terminal Bench 成绩从 52.8% 拉到 66.5%，Vercel 砍掉 80% 的工具后反而更准——这不是玄学，是 Harness 设计的硬实力。这篇把 2026 年主流的实战经验梳理成一张清单。
