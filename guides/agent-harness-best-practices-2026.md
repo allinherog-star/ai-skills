@@ -1,3 +1,12 @@
+---
+title: "2026 Agent Harness 实战：工具越少越准"
+description: "2026 年决定 agent 能不能打的不再是模型，而是包着模型跑的 Harness：工具最小化、观察 schema、上下文预算、权限分级四件事做到位，同一个模型能直接拉出 30-60% 的质量差。本文把主流团队的实战经验梳理成一份可执行清单。"
+slug: "agent-harness-best-practices-2026"
+date: "2026-04-20"
+keywords: ["AI Agent", "Harness", "Claude Code", "Agent 工程", "工具设计", "ACI", "tool call"]
+cover: "./images/agent-harness-best-practices-2026/cover-wechat-2_35x1.webp"
+---
+
 # 2026 Agent Harness 实战：工具越少越准
 
 > 2025 年大家都在选模型，2026 年工程师已经在卷 Harness。同一个模型，LangChain 把 Terminal Bench 成绩从 52.8% 拉到 66.5%，Vercel 砍掉 80% 的工具后反而更准——这不是玄学，是 Harness 设计的硬实力。这篇把 2026 年主流的实战经验梳理成一张清单。

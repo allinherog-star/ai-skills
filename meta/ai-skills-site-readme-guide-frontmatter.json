@@ -1,0 +1,40 @@
+{
+  "$comment": "Reviewed meta for ai-skills-site-readme. See .agents/skills/guide-release-sync/references/frontmatter-mapping.md for enum values.",
+  "pillar": "ai-basics",
+  "tags": [
+    "AI Skills",
+    "AI 技能库",
+    "站点导览",
+    "职业 AI 路径",
+    "行业 AI 路径"
+  ],
+  "audience": [
+    "AI 新手用户",
+    "产品经理",
+    "运营与增长岗",
+    "企业采购决策人"
+  ],
+  "valuePoints": [
+    "用一张地图看懂 AI Skills 站点的四个主入口和检索姿势",
+    "理解 Skill 和 Prompt 的本质差别，不再把 Skill 当 prompt 合集",
+    "按职业 / 行业 / 应用场景三条路径找到适合自己岗位的 AI 技能"
+  ],
+  "relatedSkills": [
+    "douyin-traffic-dashboard",
+    "douyin-realtime-hot-rise"
+  ],
+  "professions": [
+    "通用"
+  ],
+  "industries": [
+    "通用"
+  ],
+  "subProfessions": null,
+  "summary": "AI Skills（ai-skills.ai）是面向职业成长与行业竞争力的 AI 技能库：把大模型能力拆成一条条能直接跑的 Skill。本文一次讲清站点定位、四个主入口、适用人群与三种接入方式。",
+  "updated": "2026-04-20",
+  "authorId": "yangzhou",
+  "draft": false,
+  "featured": true,
+  "translationKey": "guides-ai-skills-site-readme",
+  "locale": "zh"
+}
