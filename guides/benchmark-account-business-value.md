@@ -4,11 +4,13 @@ description: "找对标账号最大的浪费不是没找到，而是找了一堆
 slug: "benchmark-account-business-value"
 date: "2026-04-19"
 keywords: ["找对标账号", "对标账号筛选", "商业价值评估", "自媒体冷启动", "试错成本"]
-cover: "./images/benchmark-account-business-value/cover-wechat.jpg"
+cover: "./images/benchmark-account-business-value/cover-wechat-2_35x1.webp"
 covers:
-  wechat:    "./images/benchmark-account-business-value/cover-wechat.jpg"
-  square:    "./images/benchmark-account-business-value/cover-square.jpg"
-  landscape: "./images/benchmark-account-business-value/cover-landscape.jpg"
+  wechat:       "./images/benchmark-account-business-value/cover-wechat-2_35x1.webp"
+  square:       "./images/benchmark-account-business-value/cover-square-1x1.webp"
+  landscape:    "./images/benchmark-account-business-value/cover-landscape-16x9.webp"
+  wx_xhs:       "./images/benchmark-account-business-value/cover-wx-xhs-3x4.webp"
+  douyin_wxsph: "./images/benchmark-account-business-value/cover-douyin-wxsph-9x16.webp"
 author: "yangzhou"
 publisher: "AiProject"
 ---
@@ -21,9 +23,11 @@ publisher: "AiProject"
   "headline": "找对标账号别只看粉丝数：4 个信号帮你避开 90% 的踩坑",
   "description": "找对标账号最大的浪费不是没找到，而是找了一堆只能学样子学不会赚钱的账号。本文给你 4 个商业价值信号 + 30 分钟可执行的筛选流程，把试错成本压到最低。",
   "image": [
-    "./images/benchmark-account-business-value/cover-wechat.jpg",
-    "./images/benchmark-account-business-value/cover-square.jpg",
-    "./images/benchmark-account-business-value/cover-landscape.jpg"
+    "./images/benchmark-account-business-value/cover-wechat-2_35x1.webp",
+    "./images/benchmark-account-business-value/cover-square-1x1.webp",
+    "./images/benchmark-account-business-value/cover-landscape-16x9.webp",
+    "./images/benchmark-account-business-value/cover-wx-xhs-3x4.webp",
+    "./images/benchmark-account-business-value/cover-douyin-wxsph-9x16.webp"
   ],
   "datePublished": "2026-04-19",
   "keywords": [
@@ -48,9 +52,11 @@ publisher: "AiProject"
 
 > 选错对标账号，等于给自己挖了一个三个月的坑：内容方向是对的、数据也涨了，但就是不赚钱。问题不在执行，而在你一开始挑对标的标准就错了——你看的是流量，应该看的是商业价值。
 
-![cover](./images/benchmark-account-business-value/cover-wechat.jpg)
+![cover](./images/benchmark-account-business-value/cover-wechat-2_35x1.webp)
 
 ## 误区：粉丝数是最容易骗自己的指标
+
+![content-01](./images/benchmark-account-business-value/content-01.webp)
 
 大部分人找对标的第一反应是『搜行业关键词，按粉丝数排序，挑前十个跟着抄』。这套流程看起来很科学，但只对 MCN 拼播放量有用，对一个想靠这个账号赚钱的个体来说，是最危险的起点。
 
@@ -68,6 +74,8 @@ publisher: "AiProject"
 
 ## 4 个商业价值信号怎么看
 
+![content-02](./images/benchmark-account-business-value/content-02.webp)
+
 下面 4 个信号按优先级排序，建议每个候选对标账号都按这张表打一次分：
 
 | 信号 | 怎么看 | 不及格红线 |
@@ -83,6 +91,8 @@ publisher: "AiProject"
 
 ## 3 步执行清单：30 分钟筛出能复用的对标
 
+![content-03](./images/benchmark-account-business-value/content-03.webp)
+
 这套流程亲测每周一次，每次 30 分钟，可以稳定产出 3-5 个高质量对标。
 
 1. **建池子（10 分钟）**：用 3 个长尾关键词在目标平台搜，每个关键词翻 50 条，把『不是头部又有持续更新』的账号收进表格，初筛 30 个。
@@ -92,6 +102,8 @@ publisher: "AiProject"
 做完这 30 分钟，你不再是『有几个对标账号』，而是 **有几条可以马上跑的商业链路**——这是天差地别的两件事。
 
 ## 5 个一票否决的对标特征
+
+![content-04](./images/benchmark-account-business-value/content-04.webp)
 
 看到下列任一特征，直接划掉，不要心存侥幸：
 
