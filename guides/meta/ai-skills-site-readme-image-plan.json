@@ -1,0 +1,70 @@
+{
+  "slug": "ai-skills-site-readme",
+  "covers": [
+    {
+      "name": "cover-wechat-2_35x1",
+      "title": "AI Skills：各行各业的 AI 技能库",
+      "viewpoint": "把大模型能力拆成一条条能直接跑的 Skill，像查字典一样调出来用",
+      "context": "AI Skills（ai-skills.ai）是一个面向职业成长与行业竞争力的 AI 技能库。不是 prompt 合集，而是把 AI 能力打包成可执行的流程：每个 Skill 都有核心价值、主要用途、使用技能三栏，按钮式使用。四个主入口（正在被大量使用的 Skills / 职业 AI 路径 / 行业 AI 路径 / Skills 应用场景）覆盖新媒体、SEO、运营、销售、法律、医疗等岗位，让任何人都能找到匹配自己工作的 Skill。",
+      "aspect_ratio": "2.35:1"
+    },
+    {
+      "name": "cover-square-1x1",
+      "title": "AI Skills：像查字典一样用 AI",
+      "viewpoint": "AI 技能库不等于 prompt 合集，每条 Skill 都能被真的跑起来",
+      "context": "AI Skills 站点把 AI 能力按职业、行业和应用场景三种姿势分类，每个 Skill 点进去就是可执行的流程而不是一段需要自己 debug 的 prompt 模板。抖音创作者看流量分配大盘、SEO 岗位跑站内外诊断、销售用话术生成——同一套库对应不同岗位，可在网页直接用，也可挂进 Claude Code、Cursor 或企业自建 Agent。",
+      "aspect_ratio": "1:1"
+    },
+    {
+      "name": "cover-landscape-16x9",
+      "title": "AI Skills 站点导览：用技能驱动职业成长",
+      "viewpoint": "不堆 Skill 数量，堆每个 Skill 能交付的结果",
+      "context": "AI Skills（ai-skills.ai）的产品态度写在 footer：面向职业成长与行业竞争力场景，强调可执行结果与持续能力沉淀。底层接阿里云、豆包、OpenAI、Anthropic、Kimi、DeepSeek、火山引擎等模型源，上层保证每条 Skill 都真的能跑通并持续迭代。企业有批量需求时，可走企业服务入口做私有化部署。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "cover-wx-xhs-3x4",
+      "title": "AI Skills 站点 README",
+      "viewpoint": "Prompt 给你一段文本，Skill 给你一份能交付的结果",
+      "context": "很多人用 AI 还停在问一句答一句。AI Skills 想换一种姿势：把 AI 能力拆成一条条可执行的 Skill。每条 Skill 包含触发条件、上下文收集、工具调用、输出约束和适用边界。新媒体、SEO、运营、法律、医疗等岗位都有对口 Skill，点击即用，0 门槛上手。",
+      "aspect_ratio": "3:4"
+    },
+    {
+      "name": "cover-douyin-wxsph-9x16",
+      "title": "AI Skills：不做 prompt 合集",
+      "viewpoint": "下班前这个报表怎么交？让 Skill 替你跑完整条流程",
+      "context": "AI Skills 站点把各行各业的 AI 用法拆成可执行的 Skill，覆盖抖音选题、流量大盘、SEO 审计、竞品分析、销售话术等具体任务。每条 Skill 都是一个 mini Agent，结果稳定、可复用、可被二次集成。网页直接用、Agent 挂载、企业定制三种姿势任选。",
+      "aspect_ratio": "9:16"
+    }
+  ],
+  "contents": [
+    {
+      "name": "content-01",
+      "title": "AI Skills 是什么：一个能直接查的技能库",
+      "viewpoint": "不放论文，不讲 PPT，只放明天就能用上的 AI 技能",
+      "context": "AI Skills 首屏的定义很直接：为你的职业发展、行业竞争力，增加更多可能。每个 Skill 都有三个固定栏目——核心价值、主要用途、使用技能。例如抖音赛道的三个 Skill：抖音流量分配大盘、全网实时热点、上升热点选题助手，分别回答平台流量在哪、现在最热是什么、拍什么会有流量。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-02",
+      "title": "Skill 不是 Prompt：中间差了一整套流程",
+      "viewpoint": "Prompt 是一句话，Skill 是一个能被执行的流程",
+      "context": "很多人以为 AI 技能库就是 prompt 合集。这是常见误会。Skill 至少包含触发条件、上下文收集、工具调用、输出约束和适用边界。同样的关键词，prompt 给你一段文本，Skill 给你一份可交付结果。这让边际质量稳定，也让同一个 Skill 能被放进不同客户端做二次集成——网页、Agent、企业系统都能挂。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-03",
+      "title": "四个主入口：技能列表 / 职业 / 行业 / 应用场景",
+      "viewpoint": "四种找技能的姿势，都收敛到同一个 Skill 页",
+      "context": "AI Skills 顶部导航给出四条主线：正在被大量使用的 Skills 按热度排序，职业 AI 路径按岗位切入，行业 AI 路径按垂直行业切入，Skills 应用场景按要解决的问题反查。不同角色用不同姿势找到目标 Skill，企业客户还有专门的企业服务入口对接定制需求。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-04",
+      "title": "怎么接入：三种典型用法",
+      "viewpoint": "同一个 Skill 库，三种触达方式：网页、Agent、企业",
+      "context": "0 门槛用户直接在 ai-skills.ai 搜索并点击使用技能即可。进阶用户可以把 Skill 挂进 Claude Code、Cursor 或自建 Agent 框架，按 SKILL.md 结构作为可被调用的流程。企业有批量化、定制化需求时，可通过页脚企业服务与企微二维码走私有化部署。底下跑的是同一套执行流程，只是包装不同。",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

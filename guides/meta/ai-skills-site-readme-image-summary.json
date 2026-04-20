@@ -1,0 +1,54 @@
+{
+  "slug": "ai-skills-site-readme",
+  "out_dir": "images/ai-skills-site-readme",
+  "total": 9,
+  "ok": 9,
+  "failed": 0,
+  "results": {
+    "cover-landscape-16x9": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/cover-landscape-16x9.webp",
+      "rel": "images/ai-skills-site-readme/cover-landscape-16x9.webp"
+    },
+    "cover-wechat-2_35x1": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/cover-wechat-2_35x1.webp",
+      "rel": "images/ai-skills-site-readme/cover-wechat-2_35x1.webp"
+    },
+    "cover-square-1x1": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/cover-square-1x1.webp",
+      "rel": "images/ai-skills-site-readme/cover-square-1x1.webp"
+    },
+    "cover-wx-xhs-3x4": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/cover-wx-xhs-3x4.webp",
+      "rel": "images/ai-skills-site-readme/cover-wx-xhs-3x4.webp"
+    },
+    "content-01": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/content-01.webp",
+      "rel": "images/ai-skills-site-readme/content-01.webp"
+    },
+    "content-02": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/content-02.webp",
+      "rel": "images/ai-skills-site-readme/content-02.webp"
+    },
+    "cover-douyin-wxsph-9x16": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/cover-douyin-wxsph-9x16.webp",
+      "rel": "images/ai-skills-site-readme/cover-douyin-wxsph-9x16.webp"
+    },
+    "content-04": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/content-04.webp",
+      "rel": "images/ai-skills-site-readme/content-04.webp"
+    },
+    "content-03": {
+      "ok": true,
+      "path": "images/ai-skills-site-readme/content-03.webp",
+      "rel": "images/ai-skills-site-readme/content-03.webp"
+    }
+  }
+}
