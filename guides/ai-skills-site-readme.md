@@ -1,5 +1,5 @@
 ---
-title: "AI Skills 站点导览：像查字典一样用 AI"
+title: "AI Skills 技能库：为每一个场景做真正有价值的AI技能库"
 description: "AI Skills（ai-skills.ai）是面向职业成长与行业竞争力的 AI 技能库：把大模型能力拆成一条条能直接跑的 Skill。本文一次讲清站点定位、四个主入口、适用人群与三种接入方式。"
 slug: "ai-skills-site-readme"
 date: "2026-04-20"
@@ -16,7 +16,7 @@ publisher: "AiProject"
 ---
 
 
-# AI Skills 站点导览：像查字典一样用 AI
+# AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
 > 大多数人用 AI 还停在「问一句答一句」。AI Skills（ai-skills.ai）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。这篇 README 讲清楚这个站点是什么、装了什么、谁应该怎么用它。
 
