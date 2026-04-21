@@ -23,7 +23,8 @@
   "relatedSkills": [
     "douyin-sentiment-dashboard",
     "xhs-sentiment-dashboard",
-    "kuaishou-sentiment-dashboard"
+    "kuaishou-sentiment-dashboard",
+    "bilibili-sentiment-dashboard"
   ],
   "professions": [
     "operations",

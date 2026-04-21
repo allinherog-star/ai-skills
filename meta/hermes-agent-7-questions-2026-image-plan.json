@@ -1,0 +1,70 @@
+{
+  "slug": "hermes-agent-7-questions-2026",
+  "covers": [
+    {
+      "name": "cover-wechat-2_35x1",
+      "title": "Hermes Agent最热7问",
+      "viewpoint": "真正拉开差距的不是一次回答，而是能不能常驻、记忆、多平台接入并把成本压住",
+      "context": "面向 2026 年还在观望 Hermes Agent 的用户，文章聚焦 7 个最关心的问题：值不值得装、Windows 怎么装、模型怎么选、记忆靠不靠谱、Gateway 有多强、Skills 和 MCP 值不值投入、多 Agent 和长期成本有哪些坑。画面要有未来感的 agent 控制台与多平台工作流。",
+      "aspect_ratio": "2.35:1"
+    },
+    {
+      "name": "cover-square-1x1",
+      "title": "Hermes Agent最热7问",
+      "viewpoint": "先看 7 个真问题，再决定要不要把 Hermes 装进工作流",
+      "context": "这是一篇高点击率问题拆解文，不是流水账教程。画面要让人一眼看到：Hermes 是一个跨终端、跨聊天平台、有记忆和技能库的长期助手，但也伴随安装、模型、成本等现实权衡。",
+      "aspect_ratio": "1:1"
+    },
+    {
+      "name": "cover-landscape-16x9",
+      "title": "Hermes Agent最热7问",
+      "viewpoint": "用户最关心的，从来不是功能表，而是它到底能不能长期好用",
+      "context": "文章从官方文档和最新公开 issue 中提炼出用户最关心的 7 个 Hermes Agent 话题，强调多平台常驻、Persistent Memory、Skills、MCP、多 Agent 与长期成本这些真实决策点。画面要兼具技术感与新闻感。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "cover-wx-xhs-3x4",
+      "title": "Hermes Agent最热7问",
+      "viewpoint": "别只看它会不会写代码，先看它能不能成为你的长期助手",
+      "context": "内容面向技术人、独立开发者和自动化重度用户，核心主题是 Hermes Agent 是否值得装，以及在 2026 年最该先搞明白的 7 个关键问题。画面适合公众号和小红书竖版传播。",
+      "aspect_ratio": "3:4"
+    },
+    {
+      "name": "cover-douyin-wxsph-9x16",
+      "title": "Hermes Agent最热7问",
+      "viewpoint": "安装、记忆、Gateway、MCP、多 Agent、成本，7 个问题决定你会不会长期用 Hermes",
+      "context": "这是面向短视频封面的 Hermes Agent 热门问题盘点图，视觉上要突出 7 个问题卡片、多平台消息流、终端和记忆模块，形成强烈的信息密度与点击欲望。",
+      "aspect_ratio": "9:16"
+    }
+  ],
+  "contents": [
+    {
+      "name": "content-01",
+      "title": "话题一：安装门槛到底高不高",
+      "viewpoint": "Windows 不是不能装，而是接受 WSL2 才能少踩坑",
+      "context": "这一节聚焦 Hermes Agent 的安装门槛。官方 Quickstart 支持 Linux、macOS、WSL2 和 Android Termux，Windows 用户被明确引导到先装 WSL2。社区最新 issue 又集中暴露了 hermes-for-win、WSL2 文件桥接、ACP 路径转换等安装和路径痛点。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-02",
+      "title": "话题三：记忆到底是不是它的核心优势",
+      "viewpoint": "Hermes 的优势不是无限记忆，而是把重要偏好稳定带进下一次会话",
+      "context": "这一节解释 Hermes Agent 的记忆边界。内置 MEMORY.md 和 USER.md 都是有严格字符上限的精炼长期记忆，而且只在 session 开始时以冻结快照注入 system prompt。用户最关心的是：它到底记得住什么、记不住什么，以及为什么还要外部 memory provider。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-03",
+      "title": "话题四：为什么大家最看重 Gateway",
+      "viewpoint": "真正让人上头的不是 CLI，而是 Telegram 和 Slack 上随时叫得动的常驻助手",
+      "context": "这一节聚焦 Messaging Gateway 的差异化价值。Hermes Agent 可以作为后台常驻进程，连接 Telegram、Discord、Slack、WhatsApp、Signal、Email、Feishu/Lark、WeCom、Weixin、QQ 等平台，处理消息、session、cron 和语音，这才是它和很多 IDE AI 工具真正拉开差距的地方。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-04",
+      "title": "话题七：长期跑会不会被成本和压缩反噬",
+      "viewpoint": "Hermes 能长期跑，但先把 token 固定开销、usage 可见性和隐藏压缩看明白",
+      "context": "这一节讨论长期使用 Hermes Agent 的现实问题：工具 schema 和 system prompt 带来的固定 token 开销、网关消息里缺少持久 usage / cost 可见性，以及长会话在消息数阈值下被静默 compact 的风险。画面需要体现成本曲线、上下文压缩和消息洪流。",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

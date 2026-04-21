@@ -21,8 +21,9 @@
     "识别 5 个一票否决的对标特征，避开靠 IP、独家渠道、买量撑起来的伪参考"
   ],
   "relatedSkills": [
-    "douyin-traffic-dashboard",
-    "douyin-realtime-hot-rise"
+    "douyin-kol-search",
+    "douyin-realtime-hot-rise",
+    "douyin-traffic-dashboard"
   ],
   "professions": [
     "blogger-individual",
