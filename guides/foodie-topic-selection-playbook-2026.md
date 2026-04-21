@@ -1,20 +1,3 @@
----
-title: "探店号先追哪类题材"
-description: "咖啡、烧烤、地域夜市都在抖音上升，但美食并不是当前大盘里的高占比赛道。本文帮探店号判断什么题材值得追、什么题材只会卷死自己，并给出一套看大盘、拆热点、找对标的筛选表。"
-slug: "foodie-topic-selection-playbook-2026"
-date: "2026-04-21"
-keywords: ["探店号", "美食热点", "抖音探店", "咖啡选题", "烧烤内容", "本地生活"]
-cover: "./images/foodie-topic-selection-playbook-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/foodie-topic-selection-playbook-2026/cover-wechat-2_35x1.webp"
-  square: "./images/foodie-topic-selection-playbook-2026/cover-square-1x1.webp"
-  landscape: "./images/foodie-topic-selection-playbook-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/foodie-topic-selection-playbook-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/foodie-topic-selection-playbook-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
 # 探店号先追哪类题材
 
 > 这一轮抖音热词里，`贵州烧烤大排档真的不一样`、`上天入地我最爱喝咖啡` 这类内容都在冒头。但平台流量分配大盘里，美食并不是高占比赛道。这代表一个现实：探店号不是不能做，而是不能再拍“这家店真好吃”这种没有结构的内容。

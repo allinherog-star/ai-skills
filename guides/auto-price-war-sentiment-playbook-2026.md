@@ -1,20 +1,3 @@
----
-title: "车价战先看评论再追"
-description: "截至 2026-04-21，“`近70款车集体降价`”冲上抖音上升热点。对汽车内容和门店运营来说，真正有价值的不是转发热搜，而是看评论里用户到底在担心什么。本文给出热搜发现加评论舆情验证的实操流程。"
-slug: "auto-price-war-sentiment-playbook-2026"
-date: "2026-04-21"
-keywords: ["车价战", "汽车降价", "评论舆情", "抖音热点", "小红书评论", "B站评论"]
-cover: "./images/auto-price-war-sentiment-playbook-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/auto-price-war-sentiment-playbook-2026/cover-wechat-2_35x1.webp"
-  square: "./images/auto-price-war-sentiment-playbook-2026/cover-square-1x1.webp"
-  landscape: "./images/auto-price-war-sentiment-playbook-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/auto-price-war-sentiment-playbook-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/auto-price-war-sentiment-playbook-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
 # 车价战先看评论再追
 
 > 2026 年 4 月 21 日，`近70款车集体降价` 进入抖音上升热点。很多账号看到这种词就会立刻做热搜复述，但汽车内容真正值钱的不是“发生了降价”，而是用户在评论里到底在问什么、怕什么、卡在哪一步不下单。

@@ -1,20 +1,3 @@
----
-title: "五一前怎么抢旅行流量"
-description: "截至 2026-04-21，抖音旅行类上升热点里“`五一来新疆开启一场自由之旅`”“`用colorwalk解锁城市`”“`全国赏花地图大公开`”都在涨，但旅行并不是平台大盘里的最大类。本文给你一套先看大盘、再拆热点、再排执行的五一流量打法。"
-slug: "mayday-travel-traffic-playbook-2026"
-date: "2026-04-21"
-keywords: ["五一流量", "旅行热点", "抖音选题", "旅行赛道", "内容策划", "上升热点"]
-cover: "./images/mayday-travel-traffic-playbook-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/mayday-travel-traffic-playbook-2026/cover-wechat-2_35x1.webp"
-  square: "./images/mayday-travel-traffic-playbook-2026/cover-square-1x1.webp"
-  landscape: "./images/mayday-travel-traffic-playbook-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/mayday-travel-traffic-playbook-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/mayday-travel-traffic-playbook-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
 # 五一前怎么抢旅行流量
 
 > 2026 年 4 月 21 日这轮旅行上升词很集中：`五一来新疆开启一场自由之旅`、`用colorwalk解锁城市`、`全国赏花地图大公开` 都在涨。但抖音流量分配大盘里，旅行只占约 2%。这说明它更像一个窗口机会，而不是全年都能闭眼重投的主赛道。

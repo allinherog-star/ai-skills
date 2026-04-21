@@ -1,20 +1,3 @@
----
-title: "家电口碑战怎么拆评论"
-description: "“`格力海信真铜实料之争背后`”进入抖音上升热点后，品牌口水战又成了内容流量口。本文教你用抖音、小红书、快手评论舆情技能拆出用户真正关心的点，避免只放大争议却拿不到转化。"
-slug: "appliance-comment-intelligence-playbook-2026"
-date: "2026-04-21"
-keywords: ["家电口碑", "评论舆情", "品牌争议", "抖音评论", "小红书评论", "快手评论"]
-cover: "./images/appliance-comment-intelligence-playbook-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/appliance-comment-intelligence-playbook-2026/cover-wechat-2_35x1.webp"
-  square: "./images/appliance-comment-intelligence-playbook-2026/cover-square-1x1.webp"
-  landscape: "./images/appliance-comment-intelligence-playbook-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/appliance-comment-intelligence-playbook-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/appliance-comment-intelligence-playbook-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
 # 家电口碑战怎么拆评论
 
 > `格力海信真铜实料之争背后` 这种品牌争议，一上热榜就很容易变成流量口。但对家电品牌、经销商和内容团队来说，真正有价值的不是蹭一句口水战，而是尽快看懂：用户到底在讨论参数真假、价格、售后，还是品牌信任。

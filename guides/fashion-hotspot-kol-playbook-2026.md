@@ -1,20 +1,3 @@
----
-title: "穿搭热点别只抄爆款"
-description: "截至 2026-04-21，抖音时尚类上升热点集中在“`非遗穿进日常的N种方式`”“`黑色吊带裙万能穿搭公式`”“`上手就很高级的白月光美甲`”“`出游穿搭看我的`”这类可复制模板。本文教你用热点加 KOL 搜索分清能抄的结构和不能抄的一次性爆款。"
-slug: "fashion-hotspot-kol-playbook-2026"
-date: "2026-04-21"
-keywords: ["穿搭热点", "抖音穿搭", "KOL 搜索", "春夏穿搭", "选题策划", "时尚赛道"]
-cover: "./images/fashion-hotspot-kol-playbook-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/fashion-hotspot-kol-playbook-2026/cover-wechat-2_35x1.webp"
-  square: "./images/fashion-hotspot-kol-playbook-2026/cover-square-1x1.webp"
-  landscape: "./images/fashion-hotspot-kol-playbook-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/fashion-hotspot-kol-playbook-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/fashion-hotspot-kol-playbook-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
 # 穿搭热点别只抄爆款
 
 > 2026 年 4 月 21 日的时尚上升热点很说明问题：在涨的不是“某个女明星同款”，而是“穿搭公式”“白月光美甲”“出游穿搭”“非遗穿进日常”这类可复制结构。对做穿搭内容的人来说，真正该抄的不是爆款本身，而是爆款背后的模板。
