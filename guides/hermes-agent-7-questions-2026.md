@@ -1,21 +1,4 @@
----
-title: "Hermes Agent最热7问"
-description: "Hermes Agent 到底值不值得装、Windows 能不能跑、记忆靠不靠谱、Skills 和 MCP 值不值用、多 Agent 成本会不会失控？我把官方文档、官网和最近公开 issue 里最集中的问题浓缩成 7 个高频答案。"
-slug: "hermes-agent-7-questions-2026"
-date: "2026-04-21"
-keywords: ["Hermes Agent", "Hermes Agent 安装", "Hermes Agent memory", "Hermes Agent gateway", "Hermes Agent MCP"]
-cover: "./images/hermes-agent-7-questions-2026/cover-wechat-2_35x1.webp"
-covers:
-  wechat: "./images/hermes-agent-7-questions-2026/cover-wechat-2_35x1.webp"
-  square: "./images/hermes-agent-7-questions-2026/cover-square-1x1.webp"
-  landscape: "./images/hermes-agent-7-questions-2026/cover-landscape-16x9.webp"
-  wx_xhs: "./images/hermes-agent-7-questions-2026/cover-wx-xhs-3x4.webp"
-  douyin_wxsph: "./images/hermes-agent-7-questions-2026/cover-douyin-wxsph-9x16.webp"
-author: "yangzhou"
-publisher: "AiProject"
----
-
-# Hermes Agent最热7问
+# Hermes Agent大家都关心的7个问题
 
 > 截至 2026 年 4 月 21 日，我把 Hermes Agent 官方 Quickstart、Memory / Messaging / Skills 文档、官网首页和 4 月中旬公开 issue 里最密集的问题翻了一遍。下面这 7 个问题，基本就是大家现在最关心、也最影响你要不要装、怎么装、值不值得长期用的地方。
 
