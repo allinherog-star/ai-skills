@@ -1,0 +1,63 @@
+{
+  "slug": "foodie-topic-selection-playbook-2026",
+  "covers": [
+    {
+      "name": "cover-wechat-2_35x1",
+      "title": "探店号先追哪类题材",
+      "viewpoint": "探店不是不能做，而是不能再拍没有地域感、动作感和情绪感的流水账。",
+      "context": "当前热词里咖啡、烧烤、大排档都在涨，但美食不是平台高占比主赛道。文章核心是教探店号先看大盘，再判断哪些美食题材值得追。",
+      "aspect_ratio": "2.35:1"
+    },
+    {
+      "name": "cover-square-1x1",
+      "title": "探店号先追哪类题材",
+      "viewpoint": "先挑题材，再决定拍哪家店。",
+      "context": "封面要突出探店、夜市、咖啡、烧烤和内容筛选感。",
+      "aspect_ratio": "1:1"
+    },
+    {
+      "name": "cover-landscape-16x9",
+      "title": "探店号先追哪类题材",
+      "viewpoint": "大盘不大时，越要把题材拍得有棱角。",
+      "context": "表现本地生活运营围绕热点和大盘做判断的场景。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "cover-wx-xhs-3x4",
+      "title": "探店号先追哪类题材",
+      "viewpoint": "别再只拍门头和上菜了。",
+      "context": "竖版封面强调夜市氛围、探店清单和选题筛选。",
+      "aspect_ratio": "3:4"
+    },
+    {
+      "name": "cover-douyin-wxsph-9x16",
+      "title": "探店号先追哪类题材",
+      "viewpoint": "用户要的不是夸店，而是帮他做选择。",
+      "context": "强观点竖屏封面，突出本地生活、咖啡、烧烤、探店号内容升级。",
+      "aspect_ratio": "9:16"
+    }
+  ],
+  "contents": [
+    {
+      "name": "content-01",
+      "title": "为什么普通探店越来越难起量",
+      "viewpoint": "门头、菜单、上菜式流水账已经很难再驱动收藏和行动。",
+      "context": "表现普通探店内容的同质化问题，与更有差异的地域和夜市题材形成对比。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-02",
+      "title": "先看大盘，决定要不要重投",
+      "viewpoint": "美食不是当前高占比主赛道，所以选题结构比赛道红利更重要。",
+      "context": "表现运营团队对大盘和账号定位进行判断，决定是否加码探店内容。",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "name": "content-03",
+      "title": "现在更值得追的三类探店题材",
+      "viewpoint": "夜间题材、玩法题材和节日出行绑定题材，更容易被用户带入。",
+      "context": "用三张风格卡片展示夜市、咖啡玩法、节日前后探店路线的差异。",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

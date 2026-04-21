@@ -1,0 +1,50 @@
+{
+  "$comment": "Meta for foodie-topic-selection-playbook-2026. See .agents/skills/guide-release-sync/references/frontmatter-mapping.md for enum values.",
+  "pillar": "content-creation",
+  "tags": [
+    "探店号",
+    "美食热点",
+    "本地生活",
+    "咖啡选题",
+    "烧烤内容",
+    "探店策划"
+  ],
+  "audience": [
+    "探店博主",
+    "本地生活运营",
+    "餐饮内容团队",
+    "短视频创作者"
+  ],
+  "valuePoints": [
+    "看懂为什么普通探店难起量，而地域感、动作感、情绪感强的题材更容易被放大",
+    "知道在美食不是大盘高占比时，探店内容该如何判断是否值得重投",
+    "拿到一套看大盘、追热点、找中腰部样本的探店选题筛选表"
+  ],
+  "relatedSkills": [
+    "douyin-traffic-dashboard",
+    "douyin-realtime-hot-rise",
+    "douyin-kol-search"
+  ],
+  "professions": [
+    "blogger-individual",
+    "operations",
+    "seller"
+  ],
+  "subProfessions": [
+    "blogger",
+    "content-creator",
+    "brand-owner"
+  ],
+  "industries": [
+    "media",
+    "ecommerce",
+    "retail"
+  ],
+  "summary": "美食内容还有机会，但不能再拍成流水账。本文用当前咖啡、烧烤、夜市等上升题材说明探店号应该先追什么，再给出一套更稳的题材筛选方法。",
+  "updated": "2026-04-21",
+  "authorId": "yangzhou",
+  "draft": false,
+  "featured": false,
+  "translationKey": "guides-foodie-topic-selection-playbook-2026",
+  "locale": "zh"
+}

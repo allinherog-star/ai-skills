@@ -1,0 +1,50 @@
+{
+  "$comment": "Meta for mayday-travel-traffic-playbook-2026. See .agents/skills/guide-release-sync/references/frontmatter-mapping.md for enum values.",
+  "pillar": "content-creation",
+  "tags": [
+    "五一流量",
+    "旅行选题",
+    "抖音热点",
+    "内容策划",
+    "上升热点",
+    "周边游"
+  ],
+  "audience": [
+    "短视频创作者",
+    "本地生活运营",
+    "旅行内容团队",
+    "城市号主理人"
+  ],
+  "valuePoints": [
+    "看懂为什么旅行在五一前值得做，但不应该被误判成全年主赛道",
+    "拿到一套把旅行热点拆成地点、玩法、情绪三类模板的实操方法",
+    "学会用大盘、上升热点和 KOL 搜索串成五一前一周的排期流程"
+  ],
+  "relatedSkills": [
+    "douyin-traffic-dashboard",
+    "douyin-realtime-hot-rise",
+    "douyin-kol-search"
+  ],
+  "professions": [
+    "blogger-individual",
+    "operations",
+    "seller"
+  ],
+  "subProfessions": [
+    "blogger",
+    "content-creator",
+    "brand-owner"
+  ],
+  "industries": [
+    "media",
+    "ecommerce",
+    "culture"
+  ],
+  "summary": "五一前旅行热点明显升温，但旅行在平台大盘里并不是最大类。本文把“看大盘、拆热点、排执行”串成一套可复用打法，帮你在节前窗口期更稳地抢到旅行流量。",
+  "updated": "2026-04-21",
+  "authorId": "yangzhou",
+  "draft": false,
+  "featured": true,
+  "translationKey": "guides-mayday-travel-traffic-playbook-2026",
+  "locale": "zh"
+}
