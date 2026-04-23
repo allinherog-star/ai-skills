@@ -7,7 +7,7 @@
   <img src="./guides/images/ai-skills-site-readme/mobile/技能列表mobile.jpg" alt="AI Skills 技能列表页（Mobile）" width="15%" />
   <img src="./guides/images/ai-skills-site-readme/mobile/平台流量mobile.jpg" alt="AI Skills 平台流量页（Mobile）" width="15%" />
   <img src="./guides/images/ai-skills-site-readme/mobile/上升热点mobile.png" alt="AI Skills 上升热点页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/找对标账号mobile.jpg" alt="AI Skills 找对标账号页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/找对标账号mobile2.jpg" alt="AI Skills 找对标账号页（Mobile）" width="15%" />
   <img src="./guides/images/ai-skills-site-readme/mobile/视频运营分析.jpg" alt="AI Skills 视频运营分析页（Mobile）" width="15%" />
 </p>
 
