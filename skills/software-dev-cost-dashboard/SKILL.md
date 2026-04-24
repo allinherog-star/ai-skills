@@ -53,13 +53,52 @@ security:
 
 软件成本评估看板
 
-### 使用方式
+### 调用方式
 
-直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai)
+当前技能为 external-link 模式，请直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai) 完成操作。
 
-### 说明
+### 命令示例
 
-当前技能为 external-link 模式，不通过导出的 `python3 scripts/run.py` 直接请求 API，而是引导用户进入外部站点完成操作。
+当前技能不通过 `python3 scripts/run.py` 直接调用，请直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai)。
+
+### 参数说明
+
+当前技能不通过本地 runner 传参，直接在目标站点内完成输入与操作。
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+当前技能不解析本地 JSON 参数，请直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai) 完成后续操作。
+
+### 示例请求
+
+当前技能为 external-link 模式，不适用 CLI 请求示例。请直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai)。
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "invocationMode": "external-link",
+    "externalLink": "https://soft.ai-skills.ai",
+    "externalLinkLabel": "软件开发成本不可控?",
+    "message": "Open this external-link target to continue."
+  }
+}
+```
+
+### 结果重点看什么
+
+- `data.externalLink`：外部站点入口，打开后继续使用技能。
+- `data.externalLinkLabel`：目标站点显示名称，便于在市场中识别跳转目标。
+
+### 运行前准备
+
+- 当前技能不依赖本地 API Key 环境变量。
 
 ### 备注
 

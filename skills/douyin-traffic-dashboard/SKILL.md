@@ -63,7 +63,7 @@ security:
 
 ### 命令示例
 
-**基础调用**
+**查看全站流量分布**
 
 ```bash
 python3 scripts/run.py --params '{}'
@@ -76,6 +76,71 @@ python3 scripts/run.py --params '{}'
 ```bash
 python3 scripts/run.py --params '{}'
 ```
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+当前技能直接接收 JSON 参数，不涉及分享链接解析。
+
+### 示例请求
+
+下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
+
+```bash
+python3 scripts/run.py --params '{}'
+```
+
+等价的 `--params` JSON：
+
+```json
+{}
+```
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "categories": [
+      {
+        "label": "美食",
+        "value": "9000",
+        "hotCount": 128,
+        "percentage": 14,
+        "icon": "utensils",
+        "description": "探店、烹饪、美食测评",
+        "group": "life"
+      },
+      {
+        "label": "体育",
+        "value": "5000",
+        "hotCount": 96,
+        "percentage": 11,
+        "icon": "dumbbell",
+        "description": "赛事、运动员、训练内容",
+        "group": "knowledge"
+      }
+    ],
+    "total": 32,
+    "timeRange": "抖音平台实时流量占比",
+    "updateTime": "2026-04-24T11:30:00.000Z"
+  },
+  "meta": {
+    "executionTime": 842,
+    "cached": false
+  }
+}
+```
+
+### 结果重点看什么
+
+- `data.categories`：平台流量分类列表，重点看 `percentage` 和 `hotCount`。
+- `category.value`：分类编码，可直接复用到其它技能的筛选参数。
+- `data.updateTime`：流量分布快照时间。
 
 ### 运行前准备
 

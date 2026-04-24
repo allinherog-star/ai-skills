@@ -62,10 +62,10 @@ B站短视频运营增长助手
 
 ### 命令示例
 
-**按必填参数调用**
+**分析 B 站视频评论**
 
 ```bash
-python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
+python3 scripts/run.py --params '{"link":"https://www.bilibili.com/video/BV1xx411c7mD"}'
 ```
 
 ### 参数说明
@@ -75,6 +75,99 @@ python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
 | `link` | string | 是 | - | 分享链接；需要传可访问的完整 URL |
 
 完整机器可读参数结构见 `references/form-schema.json`。
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+粘贴B站分享链接或 BV 号，以下格式都可以直接尝试：
+
+- `https://www.bilibili.com/video/BV1GJ411x7h7`
+- `https://b23.tv/BV1GJ411x7h7`
+- `BV1GJ411x7h7`
+
+### 示例请求
+
+下面的示例参数直接传给 `scripts/run.py` 即可，脚本会自动完成解析链接、创建任务、轮询结果。
+
+```bash
+python3 scripts/run.py --params '{"link":"https://www.bilibili.com/video/BV1xx411c7mD"}'
+```
+
+等价的 `--params` JSON：
+
+```json
+{
+  "link": "https://www.bilibili.com/video/BV1xx411c7mD"
+}
+```
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "task": {
+      "id": "task_demo_123",
+      "platform": "bilibili",
+      "contentId": "7505866362912425270",
+      "contentTitle": "B 站运营拆解示例",
+      "status": "completed",
+      "progress": 100,
+      "progressMessage": "分析完成",
+      "result": {
+        "summary": {
+          "analyzedComments": 168,
+          "timeRange": {
+            "start": "2026-04-23T00:00:00.000Z",
+            "end": "2026-04-24T00:00:00.000Z"
+          },
+          "platform": "bilibili",
+          "contentId": "7505866362912425270",
+          "contentTitle": "B 站运营拆解示例",
+          "analyzedAt": "2026-04-24T11:35:00.000Z"
+        },
+        "aiInsights": {
+          "summary": "评论区更在意细节证明、对比实验和补充资料，适合继续加强知识密度与长尾问题回应。",
+          "sentiment": {
+            "trend": "mixed",
+            "label": "正向为主",
+            "riskLevel": "low"
+          },
+          "operationAdvice": [
+            {
+              "category": "content",
+              "priority": "P1",
+              "title": "补证据链",
+              "detail": "下一版补充数据来源和对比图，回应评论区对细节证明的需求。",
+              "reason": "B 站用户更关注论证过程，补证据链能显著提升信任感。"
+            }
+          ]
+        },
+        "labeledComments": [
+          {
+            "id": "comment_1",
+            "content": "能不能把你提到的对比数据和资料出处也放出来？",
+            "sentiment": "positive",
+            "likes": 26
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### 结果重点看什么
+
+- `task.status`：任务状态，`completed` 表示已经拿到完整分析结果。
+- `task.result.summary`：评论样本量、分析时间范围、内容标题等基础信息。
+- `task.result.aiInsights.summary`：对评论区的一句话总结，适合快速判断内容口碑和运营方向。
+- `task.result.aiInsights.operationAdvice`：最值得优先执行的运营建议，建议先看 `priority` 和 `detail`。
+- `task.result.labeledComments`：带标签的原始评论样本，可用来回看用户真实反馈。
 
 ### 运行前准备
 

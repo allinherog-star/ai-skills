@@ -62,10 +62,10 @@ security:
 
 ### 命令示例
 
-**按必填参数调用**
+**分析小红书内容评论**
 
 ```bash
-python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
+python3 scripts/run.py --params '{"link":"https://www.xiaohongshu.com/explore/66f12345000000001c023abc"}'
 ```
 
 ### 参数说明
@@ -75,6 +75,99 @@ python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
 | `link` | string | 是 | - | 分享链接；需要传可访问的完整 URL |
 
 完整机器可读参数结构见 `references/form-schema.json`。
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+粘贴小红书分享链接或笔记 ID，以下格式都可以直接尝试：
+
+- `https://www.xiaohongshu.com/explore/6789abcd1234567890abcdef`
+- `https://xhslink.com/xxxxxx`
+- `6789abcd1234567890abcdef`
+
+### 示例请求
+
+下面的示例参数直接传给 `scripts/run.py` 即可，脚本会自动完成解析链接、创建任务、轮询结果。
+
+```bash
+python3 scripts/run.py --params '{"link":"https://www.xiaohongshu.com/explore/66f12345000000001c023abc"}'
+```
+
+等价的 `--params` JSON：
+
+```json
+{
+  "link": "https://www.xiaohongshu.com/explore/66f12345000000001c023abc"
+}
+```
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "task": {
+      "id": "task_demo_123",
+      "platform": "xhs",
+      "contentId": "7505866362912425270",
+      "contentTitle": "小红书运营拆解示例",
+      "status": "completed",
+      "progress": 100,
+      "progressMessage": "分析完成",
+      "result": {
+        "summary": {
+          "analyzedComments": 168,
+          "timeRange": {
+            "start": "2026-04-23T00:00:00.000Z",
+            "end": "2026-04-24T00:00:00.000Z"
+          },
+          "platform": "xhs",
+          "contentId": "7505866362912425270",
+          "contentTitle": "小红书运营拆解示例",
+          "analyzedAt": "2026-04-24T11:35:00.000Z"
+        },
+        "aiInsights": {
+          "summary": "评论区更关注清单、价格、避坑点，说明种草内容更适合做模板化和合集化输出。",
+          "sentiment": {
+            "trend": "mixed",
+            "label": "正向为主",
+            "riskLevel": "low"
+          },
+          "operationAdvice": [
+            {
+              "category": "content",
+              "priority": "P1",
+              "title": "补充清单版",
+              "detail": "把正文里的推荐项整理成清单模板，方便用户收藏和二次传播。",
+              "reason": "高赞评论集中在“求清单”“求链接”，典型是种草型内容诉求。"
+            }
+          ]
+        },
+        "labeledComments": [
+          {
+            "id": "comment_1",
+            "content": "求一个可直接照着买的清单，收藏了。",
+            "sentiment": "positive",
+            "likes": 26
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### 结果重点看什么
+
+- `task.status`：任务状态，`completed` 表示已经拿到完整分析结果。
+- `task.result.summary`：评论样本量、分析时间范围、内容标题等基础信息。
+- `task.result.aiInsights.summary`：对评论区的一句话总结，适合快速判断内容口碑和运营方向。
+- `task.result.aiInsights.operationAdvice`：最值得优先执行的运营建议，建议先看 `priority` 和 `detail`。
+- `task.result.labeledComments`：带标签的原始评论样本，可用来回看用户真实反馈。
 
 ### 运行前准备
 

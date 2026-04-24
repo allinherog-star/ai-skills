@@ -1,17 +1,56 @@
 {
   "type": "object",
-  "required": [
-    "keyword"
+  "x-at-least-one-of": [
+    "keyword",
+    "contentTag"
   ],
   "properties": {
-    "category": {
+    "contentTag": {
       "type": "string",
       "title": "内容分类",
-      "x-component": "CategorySelect"
+      "description": "内容标签编码，传入 tag-{id}。可只填该字段按赛道搜索，具体映射见下方「contentTag 取值参考」。",
+      "x-component": "CategorySelect",
+      "x-direction-map": {
+        "美妆": "tag-1",
+        "时尚": "tag-6",
+        "萌宠": "tag-11",
+        "测评": "tag-15",
+        "游戏": "tag-23",
+        "二次元": "tag-25",
+        "旅行": "tag-27",
+        "汽车": "tag-31",
+        "生活": "tag-36",
+        "音乐": "tag-41",
+        "舞蹈": "tag-46",
+        "美食": "tag-48",
+        "母婴亲子": "tag-55",
+        "运动健身": "tag-60",
+        "科技数码": "tag-64",
+        "教育培训": "tag-68",
+        "颜值达人": "tag-72",
+        "才艺技能": "tag-79",
+        "影视娱乐": "tag-85",
+        "艺术文化": "tag-87",
+        "财经投资": "tag-91",
+        "三农": "tag-95",
+        "剧情搞笑": "tag-97",
+        "情感": "tag-100",
+        "园艺": "tag-102",
+        "随拍": "tag-130",
+        "房产": "tag-139",
+        "生活家居": "tag-1001",
+        "媒体号": "tag-1002"
+      }
     },
     "keyword": {
       "type": "string",
-      "title": "搜索词"
+      "title": "搜索词",
+      "description": "赛道关键词，如「深圳烧烤酒吧」。与 `contentTag` 至少填写一个。"
+    },
+    "followerRange": {
+      "type": "string",
+      "title": "粉丝范围",
+      "description": "格式为「最小值-最大值」，单位是万，例如 `10-100` 表示 10 万到 100 万粉丝。"
     }
   }
 }

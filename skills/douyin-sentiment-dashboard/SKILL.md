@@ -62,7 +62,7 @@ security:
 
 ### 命令示例
 
-**按必填参数调用**
+**分析抖音视频评论**
 
 ```bash
 python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
@@ -75,6 +75,99 @@ python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
 | `link` | string | 是 | - | 分享链接；需要传可访问的完整 URL |
 
 完整机器可读参数结构见 `references/form-schema.json`。
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+粘贴抖音分享链接或视频 ID，以下格式都可以直接尝试：
+
+- `https://www.douyin.com/video/7462574818594200872`
+- `https://v.douyin.com/iNsVxxx/`
+- `7462574818594200872`
+
+### 示例请求
+
+下面的示例参数直接传给 `scripts/run.py` 即可，脚本会自动完成解析链接、创建任务、轮询结果。
+
+```bash
+python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
+```
+
+等价的 `--params` JSON：
+
+```json
+{
+  "link": "https://v.douyin.com/xxxxx"
+}
+```
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "task": {
+      "id": "task_demo_123",
+      "platform": "douyin",
+      "contentId": "7505866362912425270",
+      "contentTitle": "抖音运营拆解示例",
+      "status": "completed",
+      "progress": 100,
+      "progressMessage": "分析完成",
+      "result": {
+        "summary": {
+          "analyzedComments": 168,
+          "timeRange": {
+            "start": "2026-04-23T00:00:00.000Z",
+            "end": "2026-04-24T00:00:00.000Z"
+          },
+          "platform": "douyin",
+          "contentId": "7505866362912425270",
+          "contentTitle": "抖音运营拆解示例",
+          "analyzedAt": "2026-04-24T11:35:00.000Z"
+        },
+        "aiInsights": {
+          "summary": "评论区主要在追问选题拆解、发布时间和账号定位，适合继续做系列内容。",
+          "sentiment": {
+            "trend": "mixed",
+            "label": "正向为主",
+            "riskLevel": "low"
+          },
+          "operationAdvice": [
+            {
+              "category": "content",
+              "priority": "P1",
+              "title": "继续做系列",
+              "detail": "围绕这条内容延展 3 个具体场景，继续承接评论区追问。",
+              "reason": "高频评论集中在“下一条怎么做”，说明用户有连续追更意愿。"
+            }
+          ]
+        },
+        "labeledComments": [
+          {
+            "id": "comment_1",
+            "content": "讲得很清楚，想看你下一条怎么实操。",
+            "sentiment": "positive",
+            "likes": 26
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### 结果重点看什么
+
+- `task.status`：任务状态，`completed` 表示已经拿到完整分析结果。
+- `task.result.summary`：评论样本量、分析时间范围、内容标题等基础信息。
+- `task.result.aiInsights.summary`：对评论区的一句话总结，适合快速判断内容口碑和运营方向。
+- `task.result.aiInsights.operationAdvice`：最值得优先执行的运营建议，建议先看 `priority` 和 `detail`。
+- `task.result.labeledComments`：带标签的原始评论样本，可用来回看用户真实反馈。
 
 ### 运行前准备
 

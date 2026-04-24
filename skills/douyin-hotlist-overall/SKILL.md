@@ -63,7 +63,7 @@ security:
 
 ### 命令示例
 
-**基础调用**
+**获取实时热榜**
 
 ```bash
 python3 scripts/run.py --params '{}'
@@ -76,6 +76,76 @@ python3 scripts/run.py --params '{}'
 ```bash
 python3 scripts/run.py --params '{}'
 ```
+
+### 参数取值参考
+
+当前技能没有需要额外查表的分类参数。
+
+### 支持的输入格式
+
+当前技能直接接收 JSON 参数，不涉及分享链接解析。
+
+### 示例请求
+
+下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
+
+```bash
+python3 scripts/run.py --params '{}'
+```
+
+等价的 `--params` JSON：
+
+```json
+{}
+```
+
+### 返回结果示例
+
+```json
+{
+  "success": true,
+  "data": {
+    "title": "抖音热搜总榜",
+    "updateTime": "2026-04-24T11:30:00.000Z",
+    "wordList": [
+      {
+        "position": 1,
+        "word": "奥运开幕式",
+        "hotValue": 9876543,
+        "label": 1,
+        "videoCount": 12860,
+        "eventTime": "2026-04-24T11:28:00.000Z",
+        "sentenceTag": 5000,
+        "groupId": "1",
+        "sentenceId": "743001"
+      }
+    ],
+    "trendingList": [
+      {
+        "position": 2,
+        "word": "巴黎街采",
+        "hotValue": 6321880,
+        "label": 0,
+        "videoCount": 5840,
+        "eventTime": "2026-04-24T11:25:00.000Z",
+        "sentenceTag": 10000,
+        "groupId": "2",
+        "sentenceId": "743002"
+      }
+    ]
+  },
+  "meta": {
+    "executionTime": 842,
+    "cached": false
+  }
+}
+```
+
+### 结果重点看什么
+
+- `data.wordList`：抖音热搜总榜主列表，优先看前几名关键词和热度值。
+- `data.trendingList`：实时上升中的热点，适合抓新趋势和临时选题。
+- `data.updateTime`：本次榜单更新时间，便于判断结果新鲜度。
 
 ### 运行前准备
 
