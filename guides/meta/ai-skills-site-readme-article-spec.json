@@ -4,7 +4,7 @@
   "slug": "ai-skills-site-readme",
   "date": "2026-04-20",
   "keywords": ["AI Skills", "AI 技能库", "ai-skills.ai", "职业 AI 路径", "行业 AI 路径", "AI 技能", "企业 AI"],
-  "author": "yangzhou",
+  "author": "AI Skills",
   "publisher": "AiProject",
   "lede": "大多数人用 AI 还停在「问一句答一句」。AI Skills（ai-skills.ai）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。这篇 README 讲清楚这个站点是什么、装了什么、谁应该怎么用它。",
   "content_image_assignments": [

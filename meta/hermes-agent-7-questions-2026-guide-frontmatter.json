@@ -38,7 +38,7 @@
   ],
   "summary": "Hermes Agent 不是一个只在 IDE 里帮你补全代码的工具，而是一个能常驻聊天平台、带长期记忆、支持 Skills 和 MCP 的长期助手。这篇把 2026 年用户最关心的 7 个问题拆开讲清楚，帮你判断它值不值得装、该怎么装、哪些坑最该先避开。",
   "updated": "2026-04-21",
-  "authorId": "yangzhou",
+  "authorId": "ai-skills",
   "draft": false,
   "featured": true,
   "translationKey": "guides-hermes-agent-7-questions-2026",

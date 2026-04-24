@@ -10,7 +10,7 @@
     "Hermes Agent gateway",
     "Hermes Agent MCP"
   ],
-  "author": "yangzhou",
+  "author": "AI Skills",
   "publisher": "AiProject",
   "lede": "截至 2026 年 4 月 21 日，我把 Hermes Agent 官方 Quickstart、Memory / Messaging / Skills 文档、官网首页和 4 月中旬公开 issue 里最密集的问题翻了一遍。下面这 7 个问题，基本就是大家现在最关心、也最影响你要不要装、怎么装、值不值得长期用的地方。",
   "sources": [

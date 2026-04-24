@@ -13,7 +13,7 @@
     "LangChain",
     "AI 工程"
   ],
-  "author": "yangzhou",
+  "author": "AI Skills",
   "publisher": "AiProject",
   "lede": "2025 年大家都在选模型，2026 年工程师已经在卷 Harness。同一个模型，LangChain 把 Terminal Bench 成绩从 52.8% 拉到 66.5%，Vercel 砍掉 80% 的工具后反而更准——这不是玄学，是 Harness 设计的硬实力。这篇把 2026 年主流的实战经验梳理成一张清单。",
   "content_image_assignments": [
