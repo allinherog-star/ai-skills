@@ -41,7 +41,7 @@
 
 ### 4. 执行安装命令
 
-![在终端执行 AI Skills 安装命令](./guides/images/ai-skills-site-readme/step/4、安装命令.png)
+![在终端执行 AI Skills 安装命令](./guides/images/ai-skills-site-readme/step/4、安装命令2.png)
 
 回到终端执行安装命令。CLI 会负责写入 `AISKILLS_API_KEY`，并继续调用下游 `skills add` 完成技能安装，减少不同客户端的接入差异。
 

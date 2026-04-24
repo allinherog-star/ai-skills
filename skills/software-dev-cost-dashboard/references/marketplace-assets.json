@@ -39,7 +39,7 @@
       "alt": "在终端执行 AI Skills 安装命令",
       "description": "回到终端执行安装命令，CLI 会写入 AISKILLS_API_KEY，并调用下游 skills add 完成技能安装。",
       "relativePath": "assets/marketplace/4-run-install-command.png",
-      "cdnUrl": "https://cdn.aiskillsbest.com/guides/ai-skills-site-readme/step/4%E3%80%81%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4.png"
+      "cdnUrl": "https://cdn.aiskillsbest.com/guides/ai-skills-site-readme/step/4%E3%80%81%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A42.png"
     },
     {
       "step": 5,
