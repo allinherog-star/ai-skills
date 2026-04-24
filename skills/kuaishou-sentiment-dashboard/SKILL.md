@@ -1,6 +1,15 @@
 ---
 name: kuaishou-sentiment-dashboard
-description: Use when the user needs "快手短视频如何运营?" style help from AI Skills. 快手短视频运营增长助手
+description: "快手短视频运营增长助手"
+requiredEnvVars:
+  - name: AISKILLS_API_KEY
+    description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
+security:
+  thirdPartyDomain: ai-skills.ai
+  dataSent:
+    - "params（技能参数，含用户提供的分享链接）"
+    - "X-API-Key（认证密钥）"
+  warning: "此技能会将用户提供的分享链接发送至 ai-skills.ai 进行解析和评论分析。启用前请确认您信任该平台的数据安全政策。"
 ---
 
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
@@ -43,30 +52,36 @@ description: Use when the user needs "快手短视频如何运营?" style help f
 
 ## 当前技能：kuaishou-sentiment-dashboard
 
-### Overview
+### 概述
 
 快手短视频运营增长助手
 
-### Invocation Mode
+### 调用方式
 
-This skill uses `comment-analysis-task` invocation.
+运行脚本后会自动完成三步：解析分享链接、创建分析任务、轮询直到任务完成。
 
-### Authentication
+### 命令示例
 
-Set these environment variables before running the packaged runner:
+**按必填参数调用**
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+```bash
+python3 scripts/run.py --params '{"link":"https://v.douyin.com/xxxxx"}'
+```
 
-### Parameters
+### 参数说明
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+| 参数 | 类型 | 必填 | 默认 | 说明 |
+| --- | --- | --- | --- | --- |
+| `link` | string | 是 | - | 分享链接；需要传可访问的完整 URL |
 
-### Execution
+完整机器可读参数结构见 `references/form-schema.json`。
 
-Run `python3 scripts/run.py --params '{}'` for $kuaishou-sentiment-dashboard.
+### 运行前准备
 
-### Notes
+- `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
+- `AISKILLS_API_KEY`：必填，用于认证调用
+- `AISKILLS_TENANT_ID`：默认 `default`
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `kuaishou-sentiment-dashboard`.
+### 备注
+
+当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `kuaishou-sentiment-dashboard` 对应的 AI Skills API/工作流。

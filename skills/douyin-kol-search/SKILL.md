@@ -1,6 +1,16 @@
 ---
 name: douyin-kol-search
-description: Use when the user needs "谁是最会卖货的博主?" style help from AI Skills. 抖音最具商业价值 KOL
+description: "抖音最具商业价值 KOL"
+requiredEnvVars:
+  - name: AISKILLS_API_KEY
+    description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
+security:
+  thirdPartyDomain: ai-skills.ai
+  dataSent:
+    - "skillId（技能标识符）"
+    - "params（技能参数，不含用户对话上下文）"
+    - "X-API-Key（认证密钥）"
+  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
 ---
 
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
@@ -43,30 +53,37 @@ description: Use when the user needs "谁是最会卖货的博主?" style help f
 
 ## 当前技能：douyin-kol-search
 
-### Overview
+### 概述
 
 抖音最具商业价值 KOL
 
-### Invocation Mode
+### 调用方式
 
-This skill uses `execute` invocation.
+通过导出的 Python runner 直接调用 AI Skills API：
 
-### Authentication
+### 命令示例
 
-Set these environment variables before running the packaged runner:
+**按必填参数调用**
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+```bash
+python3 scripts/run.py --params '{"keyword":"奥运"}'
+```
 
-### Parameters
+### 参数说明
 
-Read `references/form-schema.json` for the current machine-readable input schema.
+| 参数 | 类型 | 必填 | 默认 | 说明 |
+| --- | --- | --- | --- | --- |
+| `category` | string | 否 | - | 内容分类 |
+| `keyword` | string | 是 | - | 搜索词 |
 
-### Execution
+完整机器可读参数结构见 `references/form-schema.json`。
 
-Run `python3 scripts/run.py --params '{}'` for $douyin-kol-search.
+### 运行前准备
 
-### Notes
+- `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
+- `AISKILLS_API_KEY`：必填，用于认证调用
+- `AISKILLS_TENANT_ID`：默认 `default`
 
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-kol-search`.
+### 备注
+
+当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `douyin-kol-search` 对应的 AI Skills API/工作流。

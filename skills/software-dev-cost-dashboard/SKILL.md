@@ -1,6 +1,12 @@
 ---
 name: software-dev-cost-dashboard
-description: Use when the user needs "软件开发成本不可控?" style help from AI Skills. 软件成本评估看板
+description: "软件成本评估看板"
+requiredEnvVars: []
+security:
+  thirdPartyDomain: soft.ai-skills.ai
+  dataSent:
+    - "用户在浏览器中直接访问 https://soft.ai-skills.ai 输入的内容（技能本身不经导出 runner 传递数据）"
+  warning: "此技能为 external-link 模式，不通过导出 runner 直接调用 API。请在访问目标站点前确认其数据安全与隐私政策。"
 ---
 
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
@@ -43,30 +49,18 @@ description: Use when the user needs "软件开发成本不可控?" style help f
 
 ## 当前技能：software-dev-cost-dashboard
 
-### Overview
+### 概述
 
 软件成本评估看板
 
-### Invocation Mode
+### 使用方式
 
-This skill uses `external-link` invocation.
+直接访问 [https://soft.ai-skills.ai](https://soft.ai-skills.ai)
 
-### Authentication
+### 说明
 
-Set these environment variables before running the packaged runner:
+当前技能为 external-link 模式，不通过导出的 `python3 scripts/run.py` 直接请求 API，而是引导用户进入外部站点完成操作。
 
-- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
-- `AISKILLS_API_KEY` (required for authenticated API calls)
-- `AISKILLS_TENANT_ID` (default: `default`)
+### 备注
 
-### Parameters
-
-Read `references/form-schema.json` for the current machine-readable input schema.
-
-### Execution
-
-Run `python3 scripts/run.py --params '{}'` for $software-dev-cost-dashboard.
-
-### Notes
-
-This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `software-dev-cost-dashboard`.
+当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `software-dev-cost-dashboard` 对应的 AI Skills API/工作流。
