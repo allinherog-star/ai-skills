@@ -1,6 +1,6 @@
 ---
 name: douyin-hotlist-overall
-description: "抖音全网实时热点"
+description: "抖音全网实时热点. Use this skill when the user asks what is hottest right now; the user asks what everyone is watching today; the user wants a real-time hot topic scan. Do not use when the user wants rising-trend detection; the user wants platform traffic structure."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -56,6 +56,31 @@ security:
 ### 概述
 
 抖音全网实时热点
+
+### 什么时候使用
+
+**适用场景**
+
+- the user asks what is hottest right now
+- the user asks what everyone is watching today
+- the user wants a real-time hot topic scan
+
+**典型用户提问**
+
+- 现在最热门的是什么？
+- 抖音热搜最近在刷什么？
+- 给我看下当前最火的内容方向
+
+**不要用于**
+
+- the user wants rising-trend detection
+- the user wants platform traffic structure
+- the user wants comment diagnosis
+
+**相邻技能选择**
+
+- use `douyin-realtime-hot-rise` for rising trends
+- use `douyin-traffic-dashboard` for traffic distribution
 
 ### 调用方式
 

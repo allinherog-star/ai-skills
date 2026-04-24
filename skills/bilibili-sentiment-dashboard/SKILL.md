@@ -1,6 +1,6 @@
 ---
 name: bilibili-sentiment-dashboard
-description: "B站短视频运营增长助手"
+description: "B站短视频运营增长助手. Use this skill when the user gives a Bilibili link; the user wants comment diagnosis and follow-up suggestions. Do not use when there is no link; the user wants topic discovery."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -55,6 +55,30 @@ security:
 ### 概述
 
 B站短视频运营增长助手
+
+### 什么时候使用
+
+**适用场景**
+
+- the user gives a Bilibili link
+- the user wants comment diagnosis and follow-up suggestions
+
+**典型用户提问**
+
+- 帮我分析这条 B 站视频的评论区
+- 看看观众情绪和用户画像
+- 给我一些后续运营建议
+
+**不要用于**
+
+- there is no link
+- the user wants topic discovery
+- the user wants Douyin creator research
+
+**相邻技能选择**
+
+- use `kuaishou-sentiment-dashboard` for Kuaishou links
+- use `douyin-hotlist-overall` for Douyin hot-topic scanning
 
 ### 调用方式
 

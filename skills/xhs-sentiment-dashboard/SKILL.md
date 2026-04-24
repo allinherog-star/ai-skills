@@ -1,6 +1,6 @@
 ---
 name: xhs-sentiment-dashboard
-description: "小红书短视频运营增长助手"
+description: "小红书短视频运营增长助手. Use this skill when the user gives a Xiaohongshu link; the user wants to understand sentiment, profile, and next-step operations. Do not use when there is no link; the user wants a hot list."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -55,6 +55,30 @@ security:
 ### 概述
 
 小红书短视频运营增长助手
+
+### 什么时候使用
+
+**适用场景**
+
+- the user gives a Xiaohongshu link
+- the user wants to understand sentiment, profile, and next-step operations
+
+**典型用户提问**
+
+- 帮我分析这条小红书笔记的评论
+- 看看用户画像和舆情风险
+- 给我一些运营建议
+
+**不要用于**
+
+- there is no link
+- the user wants a hot list
+- the user wants creator collaboration candidates
+
+**相邻技能选择**
+
+- use `douyin-sentiment-dashboard` for Douyin links
+- use `douyin-kol-search` for Douyin creator / benchmark-account requests
 
 ### 调用方式
 

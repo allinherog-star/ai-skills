@@ -1,6 +1,6 @@
 ---
 name: software-dev-cost-dashboard
-description: "软件成本评估看板"
+description: "软件成本评估看板. Use this skill when the user asks for software project cost estimation; the user wants a budget or quote planning dashboard; the user can continue in the external web app. Do not use when the user expects an API-executable agent skill; the user wants Douyin / Xiaohongshu / Bilibili / Kuaishou content analysis."
 requiredEnvVars: []
 security:
   thirdPartyDomain: soft.ai-skills.ai
@@ -52,6 +52,29 @@ security:
 ### 概述
 
 软件成本评估看板
+
+### 什么时候使用
+
+**适用场景**
+
+- the user asks for software project cost estimation
+- the user wants a budget or quote planning dashboard
+- the user can continue in the external web app
+
+**典型用户提问**
+
+- 这个软件项目大概要多少钱？
+- 帮我评估一下开发成本
+- 我需要一个立项预算看板
+
+**不要用于**
+
+- the user expects an API-executable agent skill
+- the user wants Douyin / Xiaohongshu / Bilibili / Kuaishou content analysis
+
+**相邻技能选择**
+
+- use the executable social-media skills for traffic, hot-topic, creator, and comment-analysis tasks
 
 ### 调用方式
 

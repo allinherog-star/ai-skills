@@ -1,6 +1,6 @@
 ---
 name: douyin-traffic-dashboard
-description: "抖音流量分配大盘"
+description: "抖音流量分配大盘. Use this skill when the user asks where Douyin traffic is going; the user asks which categories are getting more traffic; the user wants a platform-level directional read. Do not use when the user wants specific rising topics; the user wants a real-time hot list."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -56,6 +56,31 @@ security:
 ### 概述
 
 抖音流量分配大盘
+
+### 什么时候使用
+
+**适用场景**
+
+- the user asks where Douyin traffic is going
+- the user asks which categories are getting more traffic
+- the user wants a platform-level directional read
+
+**典型用户提问**
+
+- 抖音平台流量在哪？
+- 最近流量更多流向了哪些内容分类？
+- 现在哪些赛道值得加大内容投入？
+
+**不要用于**
+
+- the user wants specific rising topics
+- the user wants a real-time hot list
+- the user wants creators or benchmark accounts
+
+**相邻技能选择**
+
+- use `douyin-realtime-hot-rise` for rising topic discovery
+- use `douyin-hotlist-overall` for real-time hot topics
 
 ### 调用方式
 

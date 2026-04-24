@@ -1,6 +1,6 @@
 ---
 name: douyin-realtime-hot-rise
-description: "抖音上升热点选题助手"
+description: "抖音上升热点选题助手. Use this skill when the user asks what to post next; the user asks which topics are rising; the user wants growth-oriented topic selection. Do not use when the user wants the absolute hottest list right now; the user wants benchmark accounts or creators."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -56,6 +56,31 @@ security:
 ### 概述
 
 抖音上升热点选题助手
+
+### 什么时候使用
+
+**适用场景**
+
+- the user asks what to post next
+- the user asks which topics are rising
+- the user wants growth-oriented topic selection
+
+**典型用户提问**
+
+- 最近拍什么会有流量？
+- 这周抖音有什么正在上升的热点？
+- 我做母婴 / 美妆 / 职场，最近该跟哪些选题？
+
+**不要用于**
+
+- the user wants the absolute hottest list right now
+- the user wants benchmark accounts or creators
+- the user wants comment analysis
+
+**相邻技能选择**
+
+- use `douyin-hotlist-overall` for "what is hottest right now"
+- use `douyin-traffic-dashboard` for "where traffic is flowing"
 
 ### 调用方式
 

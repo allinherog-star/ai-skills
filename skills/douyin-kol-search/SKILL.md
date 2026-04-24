@@ -1,6 +1,6 @@
 ---
 name: douyin-kol-search
-description: "抖音最具商业价值 KOL"
+description: "抖音最具商业价值 KOL. Use this skill when the user asks who is worth collaborating with; the user asks who sells best; the user asks for Douyin benchmark accounts; the user asks for same-track / competitor / similar creators on Douyin. Do not use when the user wants a hot topic list; the user wants rising topic discovery."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -56,6 +56,33 @@ security:
 ### 概述
 
 抖音最具商业价值 KOL
+
+### 什么时候使用
+
+**适用场景**
+
+- the user asks who is worth collaborating with
+- the user asks who sells best
+- the user asks for Douyin benchmark accounts
+- the user asks for same-track / competitor / similar creators on Douyin
+
+**典型用户提问**
+
+- 谁值得合作？
+- 谁最会带货？
+- 帮我找几个抖音对标账号
+- 帮我找母婴 / 美妆 / 本地探店赛道的同类达人
+
+**不要用于**
+
+- the user wants a hot topic list
+- the user wants rising topic discovery
+- the user wants comment analysis
+
+**相邻技能选择**
+
+- use `douyin-hotlist-overall` for hot content
+- use `douyin-realtime-hot-rise` for topic opportunity discovery
 
 ### 调用方式
 

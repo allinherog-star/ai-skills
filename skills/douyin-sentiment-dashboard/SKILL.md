@@ -1,6 +1,6 @@
 ---
 name: douyin-sentiment-dashboard
-description: "抖音短视频运营增长大盘"
+description: "抖音短视频运营增长大盘. Use this skill when the user gives a Douyin link; the user wants comment sentiment / profile / public opinion / operational insight; the user wants to review a published content asset. Do not use when there is no concrete content link; the user wants hot topics."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -55,6 +55,31 @@ security:
 ### 概述
 
 抖音短视频运营增长大盘
+
+### 什么时候使用
+
+**适用场景**
+
+- the user gives a Douyin link
+- the user wants comment sentiment / profile / public opinion / operational insight
+- the user wants to review a published content asset
+
+**典型用户提问**
+
+- 帮我分析这条抖音视频的评论区
+- 看看这条视频的舆情和用户画像
+- 给我一些运营建议和回复思路
+
+**不要用于**
+
+- there is no concrete content link
+- the user wants hot topics
+- the user wants creators or benchmark accounts
+
+**相邻技能选择**
+
+- use `xhs-sentiment-dashboard` for Xiaohongshu links
+- use `douyin-realtime-hot-rise` when the user wants new topics, not comment diagnosis
 
 ### 调用方式
 

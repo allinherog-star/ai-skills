@@ -1,6 +1,6 @@
 ---
 name: kuaishou-sentiment-dashboard
-description: "快手短视频运营增长助手"
+description: "快手短视频运营增长助手. Use this skill when the user gives a Kuaishou link; the user wants sentiment, profile, and operational insight. Do not use when there is no link; the user wants a hot-topic board."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -55,6 +55,30 @@ security:
 ### 概述
 
 快手短视频运营增长助手
+
+### 什么时候使用
+
+**适用场景**
+
+- the user gives a Kuaishou link
+- the user wants sentiment, profile, and operational insight
+
+**典型用户提问**
+
+- 帮我分析这条快手视频的评论区
+- 看下用户画像和舆情风险
+- 给我评论运营建议
+
+**不要用于**
+
+- there is no link
+- the user wants a hot-topic board
+- the user wants Douyin creators or benchmark accounts
+
+**相邻技能选择**
+
+- use `bilibili-sentiment-dashboard` for Bilibili links
+- use `douyin-kol-search` for Douyin benchmark-account requests
 
 ### 调用方式
 
