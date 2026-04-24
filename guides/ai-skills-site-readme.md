@@ -4,7 +4,7 @@
 
 ![AI Skills 官网场景导览图](./images/ai-skills-site-readme/content-01.webp)
 
-## 5 步接入 AI Skills
+## 快速开始
 
 无论你最终是在官网、skills.sh、ClawHub 还是其他 Skill Hub 市场里点击到某条 Skill，接入动作都可以统一成下面这 5 步。
 

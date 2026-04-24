@@ -18,7 +18,7 @@ security:
 
 ![AI Skills 官网场景导览图](./assets/marketplace/content-01.webp)
 
-## 5 步接入 AI Skills
+## 快速开始
 
 ### 1. 扫码登录
 
