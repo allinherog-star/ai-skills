@@ -1,3 +1,18 @@
+> 官网站点：[ai-skills.ai](https://ai-skills.ai/)
+>
+> AI Skills 官网是整个技能库的统一入口，可以按技能、职业、行业和应用场景查找内容，也能直接进入具体 Skill 的介绍与使用页面。下面用一组移动端截图快速看一下站点形态。
+
+<p align="center">
+  <img src="./guides/images/ai-skills-site-readme/mobile/首页mobile.jpg" alt="AI Skills 官网首页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/技能列表mobile.jpg" alt="AI Skills 技能列表页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/平台流量mobile.jpg" alt="AI Skills 平台流量页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/上升热点mobile.png" alt="AI Skills 上升热点页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/找对标账号mobile2.jpg" alt="AI Skills 找对标账号页（Mobile）" width="15%" />
+  <img src="./guides/images/ai-skills-site-readme/mobile/视频运营分析.jpg" alt="AI Skills 视频运营分析页（Mobile）" width="15%" />
+</p>
+
+<p align="center"><sub>官网首页 · 技能列表 · 平台流量 · 上升热点 · 找对标账号 · 视频运营分析</sub></p>
+
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
 > 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，这里都先给你同一套品牌开场和接入步骤，再进入具体 Skill 与站点内容。
@@ -35,21 +50,6 @@
 ![AI Skills 技能安装成功界面](./guides/images/ai-skills-site-readme/step/5、成功get技能.png)
 
 当界面提示成功后，你就能在自己的 agent 技能列表里看到对应 Skill，并继续把它串进更完整的工作流。
-
-> 官网站点：[ai-skills.ai](https://ai-skills.ai/)
->
-> AI Skills 官网是整个技能库的统一入口，可以按技能、职业、行业和应用场景查找内容，也能直接进入具体 Skill 的介绍与使用页面。下面用一组移动端截图快速看一下站点形态。
-
-<p align="center">
-  <img src="./guides/images/ai-skills-site-readme/mobile/首页mobile.jpg" alt="AI Skills 官网首页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/技能列表mobile.jpg" alt="AI Skills 技能列表页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/平台流量mobile.jpg" alt="AI Skills 平台流量页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/上升热点mobile.png" alt="AI Skills 上升热点页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/找对标账号mobile2.jpg" alt="AI Skills 找对标账号页（Mobile）" width="15%" />
-  <img src="./guides/images/ai-skills-site-readme/mobile/视频运营分析.jpg" alt="AI Skills 视频运营分析页（Mobile）" width="15%" />
-</p>
-
-<p align="center"><sub>官网首页 · 技能列表 · 平台流量 · 上升热点 · 找对标账号 · 视频运营分析</sub></p>
 
 ## AI Skills 是什么：一个能直接查的技能库
 
