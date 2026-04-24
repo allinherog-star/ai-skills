@@ -1,509 +1,69 @@
 {
-  "meta": {
-    "totalSkills": 9
-  },
-  "stats": {
-    "byInvocationMode": {
-      "execute": 4,
-      "comment-analysis-task": 4,
-      "external-link": 1,
-      "manual": 0
-    }
-  },
+  "totalSkills": 9,
+  "generatedFrom": "ai-skills-export",
   "skills": [
     {
-      "id": "douyin-hotlist-overall",
-      "slug": "douyin-hotlist-overall",
-      "name": "douyin-hotlist-overall",
-      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题。",
-      "tags": [
-        "抖音",
-        "热搜",
-        "热榜",
-        "实时"
-      ],
-      "profession": [
-        "blogger-individual",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "invocationMode": "execute",
-      "invocation": {
-        "type": "execute",
-        "executePath": "/api/execute"
-      },
-      "formSchema": {
-        "type": "object",
-        "properties": {}
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-hotlist-overall"
-      }
-    },
-    {
-      "id": "douyin-realtime-hot-rise",
       "slug": "douyin-realtime-hot-rise",
       "name": "douyin-realtime-hot-rise",
-      "description": "使用此技能获取抖音实时上升热点、飙升榜单。当用户询问哪些内容正在抖音快速走红、最新上升热点、热度上升最快的话题、爆款内容排行、实时上升趋势时使用。",
-      "tags": [
-        "抖音",
-        "热点",
-        "趋势",
-        "内容创作",
-        "流量"
-      ],
-      "profession": [
-        "blogger-individual",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "抖音上升热点选题助手",
       "invocationMode": "execute",
-      "invocation": {
-        "type": "execute",
-        "executePath": "/api/execute"
-      },
-      "formSchema": {
-        "type": "object",
-        "properties": {
-          "order": {
-            "type": "string",
-            "title": "排序方式",
-            "enum": [
-              "rank",
-              "rank_diff"
-            ],
-            "enumNames": [
-              "热度排序",
-              "变化排序"
-            ],
-            "default": "rank"
-          },
-          "tag": {
-            "type": "string",
-            "title": "热点分类",
-            "description": "热点分类 tag，传入数字 id 或逗号分隔的 id 组合",
-            "x-component": "CategorySelect",
-            "x-direction-map": {
-              "娱乐": "2001,2002,2003,2004,2005,2006,2007,2008,2012",
-              "游戏": "12000,12001",
-              "二次元": "13000",
-              "音乐": "29000,29001",
-              "舞蹈": "28000,28001",
-              "剧情": "18000",
-              "颜值": "30000",
-              "美食": "9000",
-              "旅行": "10000",
-              "萌宠": "8000",
-              "时尚": "16000",
-              "体育": "5000",
-              "汽车": "11000",
-              "房产家居": "17000,17001",
-              "母婴": "19000",
-              "情感": "23000",
-              "科技": "6000",
-              "财经": "7000",
-              "教育": "14000,14001",
-              "健康": "15000",
-              "人文": "24000",
-              "法律": "27000",
-              "职场": "26000",
-              "社会": "4003,4005",
-              "时政": "3001,3002",
-              "军事": "21000",
-              "站内玩法": "1001,1002,1003",
-              "话题互动": "20002,20003,20005",
-              "才艺": "25000",
-              "三农": "22000",
-              "户外运动": "31000",
-              "银发生活": "32000"
-            }
-          },
-          "keyword": {
-            "type": "string",
-            "title": "搜索词"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-realtime-hot-rise"
-      }
+      "packagePath": "skills/douyin-realtime-hot-rise"
     },
     {
-      "id": "douyin-traffic-dashboard",
       "slug": "douyin-traffic-dashboard",
       "name": "douyin-traffic-dashboard",
-      "description": "分析抖音平台各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。",
-      "tags": [
-        "抖音",
-        "流量分配",
-        "热点",
-        "大盘"
-      ],
-      "profession": [
-        "blogger-individual",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "抖音流量分配大盘",
       "invocationMode": "execute",
-      "invocation": {
-        "type": "execute",
-        "executePath": "/api/execute"
-      },
-      "formSchema": {
-        "type": "object",
-        "properties": {}
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-traffic-dashboard"
-      }
+      "packagePath": "skills/douyin-traffic-dashboard"
     },
     {
-      "id": "douyin-kol-search",
+      "slug": "douyin-hotlist-overall",
+      "name": "douyin-hotlist-overall",
+      "description": "抖音全网实时热点",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-hotlist-overall"
+    },
+    {
       "slug": "douyin-kol-search",
       "name": "douyin-kol-search",
-      "description": "使用此技能在抖音平台搜索和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。",
-      "tags": [
-        "抖音",
-        "KOL",
-        "达人",
-        "对标账号",
-        "带货"
-      ],
-      "profession": [
-        "blogger-individual",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "抖音最具商业价值 KOL",
       "invocationMode": "execute",
-      "invocation": {
-        "type": "execute",
-        "executePath": "/api/execute"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "keyword"
-        ],
-        "properties": {
-          "category": {
-            "type": "string",
-            "title": "内容分类",
-            "x-component": "CategorySelect"
-          },
-          "keyword": {
-            "type": "string",
-            "title": "搜索词"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-kol-search"
-      }
+      "packagePath": "skills/douyin-kol-search"
     },
     {
-      "id": "douyin-sentiment-dashboard",
       "slug": "douyin-sentiment-dashboard",
       "name": "douyin-sentiment-dashboard",
-      "description": "分析抖音视频运营分析，评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
-      "tags": [
-        "舆情监控",
-        "评论洞察",
-        "AI分析",
-        "运营建议"
-      ],
-      "profession": [
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "platform": "douyin",
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "抖音短视频运营增长大盘",
       "invocationMode": "comment-analysis-task",
-      "invocation": {
-        "type": "comment-analysis-task",
-        "parseLinkPath": "/api/comment-analysis/parse-link",
-        "createTaskPath": "/api/comment-analysis/tasks",
-        "getTaskPath": "/api/comment-analysis/tasks/:id",
-        "fixedPlatform": "douyin"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "link"
-        ],
-        "properties": {
-          "link": {
-            "type": "string",
-            "title": "分享链接",
-            "format": "uri"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "douyin-sentiment-dashboard"
-      }
+      "packagePath": "skills/douyin-sentiment-dashboard"
     },
     {
-      "id": "xhs-sentiment-dashboard",
       "slug": "xhs-sentiment-dashboard",
       "name": "xhs-sentiment-dashboard",
-      "description": "小红书视频运营分析。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
-      "tags": [
-        "舆情监控",
-        "评论洞察",
-        "AI分析",
-        "运营建议"
-      ],
-      "profession": [
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "platform": "xhs",
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "小红书短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
-      "invocation": {
-        "type": "comment-analysis-task",
-        "parseLinkPath": "/api/comment-analysis/parse-link",
-        "createTaskPath": "/api/comment-analysis/tasks",
-        "getTaskPath": "/api/comment-analysis/tasks/:id",
-        "fixedPlatform": "xhs"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "link"
-        ],
-        "properties": {
-          "link": {
-            "type": "string",
-            "title": "分享链接",
-            "format": "uri"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "xhs-sentiment-dashboard"
-      }
+      "packagePath": "skills/xhs-sentiment-dashboard"
     },
     {
-      "id": "bilibili-sentiment-dashboard",
       "slug": "bilibili-sentiment-dashboard",
       "name": "bilibili-sentiment-dashboard",
-      "description": "B站/哔哩哔哩视频评论和弹幕情感分析。当用户询问B站/B站视频/Bilibili的评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。",
-      "tags": [
-        "舆情监控",
-        "评论洞察",
-        "AI分析",
-        "运营建议"
-      ],
-      "profession": [
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "platform": "bilibili",
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "B站短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
-      "invocation": {
-        "type": "comment-analysis-task",
-        "parseLinkPath": "/api/comment-analysis/parse-link",
-        "createTaskPath": "/api/comment-analysis/tasks",
-        "getTaskPath": "/api/comment-analysis/tasks/:id",
-        "fixedPlatform": "bilibili"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "link"
-        ],
-        "properties": {
-          "link": {
-            "type": "string",
-            "title": "分享链接",
-            "format": "uri"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "bilibili-sentiment-dashboard"
-      }
+      "packagePath": "skills/bilibili-sentiment-dashboard"
     },
     {
-      "id": "kuaishou-sentiment-dashboard",
       "slug": "kuaishou-sentiment-dashboard",
       "name": "kuaishou-sentiment-dashboard",
-      "description": "快手视频评论情感分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。",
-      "tags": [
-        "舆情监控",
-        "评论洞察",
-        "AI分析",
-        "运营建议"
-      ],
-      "profession": [
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "platform": "kuaishou",
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
+      "description": "快手短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
-      "invocation": {
-        "type": "comment-analysis-task",
-        "parseLinkPath": "/api/comment-analysis/parse-link",
-        "createTaskPath": "/api/comment-analysis/tasks",
-        "getTaskPath": "/api/comment-analysis/tasks/:id",
-        "fixedPlatform": "kuaishou"
-      },
-      "formSchema": {
-        "type": "object",
-        "required": [
-          "link"
-        ],
-        "properties": {
-          "link": {
-            "type": "string",
-            "title": "分享链接",
-            "format": "uri"
-          }
-        }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "kuaishou-sentiment-dashboard"
-      }
+      "packagePath": "skills/kuaishou-sentiment-dashboard"
     },
     {
-      "id": "software-dev-cost-dashboard",
       "slug": "software-dev-cost-dashboard",
       "name": "software-dev-cost-dashboard",
-      "description": "使用此技能评估软件开发项目的成本、工时和报价。当用户询问「做一个X系统/软件/App要多少钱」、「开发X需要多少工时」、「X项目报价」等类似问题时，必须使用此技能。",
-      "tags": [
-        "成本评估",
-        "项目管理",
-        "立项",
-        "报价"
-      ],
-      "profession": [
-        "management",
-        "technical"
-      ],
-      "industry": [
-        "software"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "comingSoon": false,
-      "externalLink": "https://soft.ai-skills.ai",
+      "description": "软件成本评估看板",
       "invocationMode": "external-link",
-      "invocation": {
-        "type": "external-link",
-        "externalLink": "https://soft.ai-skills.ai"
-      },
-      "providerType": "external",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "https://soft.ai-skills.ai"
-      }
+      "packagePath": "skills/software-dev-cost-dashboard"
     }
   ]
 }

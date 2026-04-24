@@ -1,0 +1,7 @@
+interface:
+  display_name: "software-dev-cost-dashboard"
+  short_description: "软件成本评估看板"
+  default_prompt: "Use $software-dev-cost-dashboard to help with 软件成本评估看板"
+
+policy:
+  allow_implicit_invocation: true

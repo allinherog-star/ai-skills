@@ -15,7 +15,7 @@
     "企业采购决策人"
   ],
   "valuePoints": [
-    "用一张地图看懂 AI Skills 站点的四个主入口和检索姿势",
+    "看懂从登录、申请 API Key 到安装成功的 5 步工作流，直接复用到 skills.sh、ClawHub 等市场",
     "理解 Skill 和 Prompt 的本质差别，不再把 Skill 当 prompt 合集",
     "按职业 / 行业 / 应用场景三条路径找到适合自己岗位的 AI 技能"
   ],
@@ -31,8 +31,8 @@
     "通用"
   ],
   "subProfessions": null,
-  "summary": "AI Skills（ai-skills.ai）是面向职业成长与行业竞争力的 AI 技能库：把大模型能力拆成一条条能直接跑的 Skill。本文一次讲清站点定位、四个主入口、适用人群与三种接入方式。",
-  "updated": "2026-04-20",
+  "summary": "AI Skills（ai-skills.ai）是面向职业成长与行业竞争力的 AI 技能库：把大模型能力拆成一条条能直接跑的 Skill。本文一次讲清站点定位、跨市场接入 5 步、四个主入口与三种使用方式。",
+  "updated": "2026-04-24",
   "authorId": "yangzhou",
   "draft": false,
   "featured": true,

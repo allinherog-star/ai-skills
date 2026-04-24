@@ -1,0 +1,41 @@
+{
+  "id": "douyin-hotlist-overall",
+  "slug": "douyin-hotlist-overall",
+  "name": "douyin-hotlist-overall",
+  "description": "抖音全网实时热点",
+  "tags": [
+    "抖音",
+    "热搜",
+    "热榜",
+    "实时"
+  ],
+  "profession": [
+    "blogger-individual",
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "properties": {}
+  },
+  "providerType": "api",
+  "providerConfig": {
+    "apiSource": "tikhub",
+    "endpoint": "/api/v1/douyin/app/v3/fetch_hot_search_list"
+  }
+}

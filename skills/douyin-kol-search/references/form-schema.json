@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": [
+    "keyword"
+  ],
+  "properties": {
+    "category": {
+      "type": "string",
+      "title": "内容分类",
+      "x-component": "CategorySelect"
+    },
+    "keyword": {
+      "type": "string",
+      "title": "搜索词"
+    }
+  }
+}

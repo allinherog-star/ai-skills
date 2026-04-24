@@ -1,82 +1,72 @@
 ---
 name: douyin-hotlist-overall
-description: "查询抖音热搜榜单。当用户想了解抖音当前有哪些热门内容、实时热搜词、上升热点或热榜排名时，使用此技能获取最新数据。"
-requiredEnvVars:
-  - name: AISKILLS_API_KEY
-    description: "从 https://ai-skills.ai 获取的 API Key，用于调用抖音热搜数据接口。API Key 会随每次请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
+description: Use when the user needs "现在最热门的是什么？" style help from AI Skills. 抖音全网实时热点
 ---
 
-# douyin-hotlist-overall
+# AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
-## 概述
+> 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，先按这 5 步完成接入，再继续看当前技能说明。
 
-获取抖音全网实时热搜榜单，监控热点事件和舆情趋势。
+![AI Skills 官网场景导览图](./assets/marketplace/content-01.webp)
 
-## API
+## 5 步接入 AI Skills
 
-**执行技能** `POST /api/execute`
+### 1. 扫码登录
 
-```bash
-curl -X POST https://ai-skills.ai/api/execute \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d '{"skillId":"douyin-hotlist-overall","params":{}}'
-```
+![扫码登录 AI Skills 账号](./assets/marketplace/1-scan-login.png)
 
-## 响应
+先在 AI Skills 官网完成扫码登录，确保后续 API Key、安装命令和技能调用都绑定到同一个账号。
 
-```json
-{
-  "success": true,
-  "data": {
-    "wordList": [
-      {
-        "word": "热搜词",
-        "rank": 1,
-        "hotValue": 999999,
-        "label": "热",
-        "wordCover": "https://..."
-      }
-    ],
-    "trendingList": [
-      {
-        "word": "上升热点",
-        "rank": 1,
-        "hotValue": 888888
-      }
-    ],
-    "updateTime": "20260328234500"
-  },
-  "meta": {
-    "executionTime": 2000,
-    "cached": false,
-    "quotaRemaining": 990,
-    "quotaType": "api_key_trial"
-  }
-}
-```
+### 2. 申请 API Key
 
-## 配额说明
+![在 AI Skills 站点申请 API Key](./assets/marketplace/2-request-api-key.png)
 
-响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
+登录后进入 API Key 页面申请密钥，后续 CLI 安装和运行技能都会读取 AISKILLS_API_KEY。
 
-> ⚠️ 电量配额已用完，当前无法继续调用此技能。
-> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
+### 3. 复制安装命令
 
-## 输出格式
+![复制 AI Skills 技能安装命令](./assets/marketplace/3-copy-install-command.png)
 
-将返回数据以表格形式呈现，优先使用 Markdown 表格：
+在 AI Skills 官网、skills.sh 或 ClawHub 页面复制安装命令，优先使用官方 CLI，避免手动拼接参数。
 
-- **热搜榜**：`wordList` → 表格列：排名 | 热搜词 | 热度指数 | 标签
-- **上升热点**：`trendingList` → 表格列：排名 | 上升热点词 | 热度指数
-- 热度数值较大时使用「万」「亿」单位换算（如 `999999` → `99.9万`）
-- 每条数据附带原始链接（`wordCover`）供点击跳转
+### 4. 执行安装命令
 
+![在终端执行 AI Skills 安装命令](./assets/marketplace/4-run-install-command.png)
+
+回到终端执行安装命令，CLI 会写入 AISKILLS_API_KEY，并调用下游 skills add 完成技能安装。
+
+### 5. 成功获取技能
+
+![AI Skills 技能安装成功界面](./assets/marketplace/5-install-success.png)
+
+安装成功后，你会在 agent 的技能列表里看到对应 Skill，可以直接调用并复用到工作流中。
+
+## 当前技能：douyin-hotlist-overall
+
+### Overview
+
+抖音全网实时热点
+
+### Invocation Mode
+
+This skill uses `execute` invocation.
+
+### Authentication
+
+Set these environment variables before running the packaged runner:
+
+- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
+- `AISKILLS_API_KEY` (required for authenticated API calls)
+- `AISKILLS_TENANT_ID` (default: `default`)
+
+### Parameters
+
+Read `references/form-schema.json` for the current machine-readable input schema.
+
+### Execution
+
+Run `python3 scripts/run.py --params '{}'` for $douyin-hotlist-overall.
+
+### Notes
+
+This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-hotlist-overall`.

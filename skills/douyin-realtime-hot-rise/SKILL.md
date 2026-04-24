@@ -1,114 +1,72 @@
 ---
 name: douyin-realtime-hot-rise
-description: '当用户在抖音上寻找正在走红的视频、涨粉最快的话题、实时飙升榜单、新晋爆款内容，或想了解"哪些视频在抖音火起来了"、"最近抖音流行什么"时，使用此技能。此技能专用于抖音内容热度上升趋势分析，不适用于微博热搜、快手热点、达人搜索、视频播放量统计或情感分析等其他场景。'
-requiredEnvVars:
-  - name: AISKILLS_API_KEY
-    description: "从 https://ai-skills.ai 获取的 API Key，用于调用抖音飙升榜单数据接口。API Key 会随每次请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数如关键词、分类、页码等，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
+description: Use when the user needs "拍什么会有流量？" style help from AI Skills. 抖音上升热点选题助手
 ---
 
-# douyin-realtime-hot-rise
+# AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
-## 概述
+> 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，先按这 5 步完成接入，再继续看当前技能说明。
 
-获取抖音实时热搜飙升榜单，用于热点选题和内容创作参考。
+![AI Skills 官网场景导览图](./assets/marketplace/content-01.webp)
 
-## API
+## 5 步接入 AI Skills
 
-**执行技能** `POST /api/execute`
+### 1. 扫码登录
 
-```bash
-# 完整热搜飙升榜（热度排序）
-curl -X POST https://ai-skills.ai/api/execute \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d '{"skillId":"douyin-realtime-hot-rise","params":{}}'
+![扫码登录 AI Skills 账号](./assets/marketplace/1-scan-login.png)
 
-# 关键词搜索（筛选包含"奥运"的热点）
-curl -X POST https://ai-skills.ai/api/execute \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d '{"skillId":"douyin-realtime-hot-rise","params":{"keyword":"奥运"}}'
+先在 AI Skills 官网完成扫码登录，确保后续 API Key、安装命令和技能调用都绑定到同一个账号。
 
-# 指定分类 + 变化排序
-curl -X POST https://ai-skills.ai/api/execute \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d '{"skillId":"douyin-realtime-hot-rise","params":{"tag":"2001,2002","order":"rank_diff","page_size":20}}'
-```
+### 2. 申请 API Key
 
-## 参数
+![在 AI Skills 站点申请 API Key](./assets/marketplace/2-request-api-key.png)
 
-| 参数 | 类型 | 默认 | 说明 |
-|------|------|------|------|
-| `keyword` | string | - | 关键词模糊搜索 |
-| `tag` | string | - | 分类ID，多个逗号分隔 |
-| `order` | string | `rank` | `rank`=热度排序，`rank_diff`=变化排序 |
-| `page` | integer | `1` | 页码 |
-| `page_size` | integer | `50` | 每页数量 |
+登录后进入 API Key 页面申请密钥，后续 CLI 安装和运行技能都会读取 AISKILLS_API_KEY。
 
-## 分类 tag
+### 3. 复制安装命令
 
-| 分类 | tag |
-|------|-----|
-| 娱乐 | `2001,2002,2003,2004,2005,2006,2007,2008,2012` |
-| 游戏 | `12000,12001` |
-| 美食 | `9000` |
-| 科技 | `6000` |
-| 体育 | `5000` |
-| 社会 | `4003,4005` |
-| 时尚 | `16000` |
-| 音乐 | `29000,29001` |
+![复制 AI Skills 技能安装命令](./assets/marketplace/3-copy-install-command.png)
 
-## 响应
+在 AI Skills 官网、skills.sh 或 ClawHub 页面复制安装命令，优先使用官方 CLI，避免手动拼接参数。
 
-```json
-{
-  "success": true,
-  "data": {
-    "title": "抖音全网实时热点上升榜",
-    "updateTime": "20260328234500",
-    "pagination": { "page": 1, "pageSize": 30, "total": 4018 },
-    "items": [
-      {
-        "rank": 53,
-        "rankDiff": 3889,
-        "keyword": "一起野个好身材",
-        "hotScore": 6880738,
-        "tagName": "话题互动"
-      }
-    ]
-  },
-  "meta": {
-    "executionTime": 3743,
-    "cached": false,
-    "quotaRemaining": 994,
-    "quotaType": "api_key_trial"
-  }
-}
-```
+### 4. 执行安装命令
 
-## 配额说明
+![在终端执行 AI Skills 安装命令](./assets/marketplace/4-run-install-command.png)
 
-响应中 `meta.quotaRemaining` 表示剩余电量次数。当电量耗尽（`quotaRemaining` 接近 0 或接口返回配额错误）时，告知用户：
+回到终端执行安装命令，CLI 会写入 AISKILLS_API_KEY，并调用下游 skills add 完成技能安装。
 
-> ⚠️ 电量配额已用完，当前无法继续调用此技能。
-> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
+### 5. 成功获取技能
 
-## 输出格式
+![AI Skills 技能安装成功界面](./assets/marketplace/5-install-success.png)
 
-将返回数据以表格形式呈现，优先使用 Markdown 表格：
+安装成功后，你会在 agent 的技能列表里看到对应 Skill，可以直接调用并复用到工作流中。
 
-- **飙升榜**：`items` → 表格列：当前排名 | 排名变化(↑↓) | 热搜词/话题 | 热度指数 | 分类标签
-- `rankDiff` 为正数显示「↑数值」，为负数显示「↓数值」
-- 热度数值较大时使用「万」「亿」单位换算
-- `rankDiff` 变化幅度大的热点用 🔥 或 ⚡ 标注
+## 当前技能：douyin-realtime-hot-rise
+
+### Overview
+
+抖音上升热点选题助手
+
+### Invocation Mode
+
+This skill uses `execute` invocation.
+
+### Authentication
+
+Set these environment variables before running the packaged runner:
+
+- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
+- `AISKILLS_API_KEY` (required for authenticated API calls)
+- `AISKILLS_TENANT_ID` (default: `default`)
+
+### Parameters
+
+Read `references/form-schema.json` for the current machine-readable input schema.
+
+### Execution
+
+Run `python3 scripts/run.py --params '{}'` for $douyin-realtime-hot-rise.
+
+### Notes
+
+This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `douyin-realtime-hot-rise`.

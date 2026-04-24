@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": [
+    "link"
+  ],
+  "properties": {
+    "link": {
+      "type": "string",
+      "title": "分享链接",
+      "format": "uri"
+    }
+  }
+}

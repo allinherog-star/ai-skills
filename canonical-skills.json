@@ -12,69 +12,10 @@
   },
   "skills": [
     {
-      "id": "douyin-hotlist-overall",
-      "slug": "douyin-hotlist-overall",
-      "name": "douyin-hotlist-overall",
-      "description": "查询抖音热搜榜单。获取当前抖音实时热搜词、热搜排名和热度指数。查看抖音热榜、热点话题。",
-      "tags": [
-        "抖音",
-        "热搜",
-        "热榜",
-        "实时"
-      ],
-      "profession": [
-        "blogger-individual",
-        "operations"
-      ],
-      "industry": [
-        "media",
-        "ecommerce"
-      ],
-      "hidden": false,
-      "auth": {
-        "type": "api-key",
-        "header": "X-API-Key",
-        "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：API Key 会随每次请求发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数如关键词、分类、页码等，不含用户对话上下文）",
-          "X-API-Key（认证密钥）"
-        ],
-        "dataReceived": ["抖音热搜榜单数据"],
-        "warning": "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
-      },
-      "comingSoon": false,
-      "invocationMode": "execute",
-      "invocation": {
-        "type": "execute",
-        "executePath": "/api/execute"
-      },
-      "formSchema": {
-        "type": "object",
-        "properties": {}
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-hotlist-overall"
-      }
-    },
-    {
       "id": "douyin-realtime-hot-rise",
       "slug": "douyin-realtime-hot-rise",
       "name": "douyin-realtime-hot-rise",
-      "description": "使用此技能获取抖音实时上升热点、飙升榜单。当用户询问哪些内容正在抖音快速走红、最新上升热点、热度上升最快的话题、爆款内容排行、实时上升趋势时使用。",
+      "description": "抖音上升热点选题助手",
       "tags": [
         "抖音",
         "热点",
@@ -95,23 +36,6 @@
         "type": "api-key",
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：API Key 会随每次请求发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数如关键词、分类、页码等，不含用户对话上下文）",
-          "X-API-Key（认证密钥）"
-        ],
-        "dataReceived": ["抖音实时飙升榜单数据"],
-        "warning": "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
       },
       "comingSoon": false,
       "invocationMode": "execute",
@@ -138,7 +62,7 @@
           "tag": {
             "type": "string",
             "title": "热点分类",
-            "description": "热点分类 tag，传入数字 id 或逗号分隔的 id 组合",
+            "description": "热点分类 tag，传入数字 id 或逗号分隔的 id 组合。运行时以最新分类接口为准，当前默认映射可参考 x-direction-map。",
             "x-component": "CategorySelect",
             "x-direction-map": {
               "娱乐": "2001,2002,2003,2004,2005,2006,2007,2008,2012",
@@ -183,16 +107,19 @@
       },
       "providerType": "api",
       "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-realtime-hot-rise"
+        "apiSource": "tikhub",
+        "endpoint": "/api/v1/douyin/billboard/fetch_hot_rise_list",
+        "fixedParams": {
+          "page": 1,
+          "page_size": 50
+        }
       }
     },
     {
       "id": "douyin-traffic-dashboard",
       "slug": "douyin-traffic-dashboard",
       "name": "douyin-traffic-dashboard",
-      "description": "分析抖音平台各类内容的播放量占比与流量分布趋势。查询抖音内容分类播放数据、流量排名、赛道流量对比、流量大盘趋势时使用此技能。",
+      "description": "抖音流量分配大盘",
       "tags": [
         "抖音",
         "流量分配",
@@ -213,23 +140,6 @@
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
       },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：API Key 会随每次请求发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数如分类、页码等，不含用户对话上下文）",
-          "X-API-Key（认证密钥）"
-        ],
-        "dataReceived": ["抖音流量分布数据"],
-        "warning": "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
-      },
       "comingSoon": false,
       "invocationMode": "execute",
       "invocation": {
@@ -242,22 +152,21 @@
       },
       "providerType": "api",
       "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-traffic-dashboard"
+        "apiSource": "tikhub",
+        "endpoint": "/api/v1/douyin/billboard/fetch_hot_rise_list",
+        "aggregateMode": "traffic-distribution"
       }
     },
     {
-      "id": "douyin-kol-search",
-      "slug": "douyin-kol-search",
-      "name": "douyin-kol-search",
-      "description": "使用此技能在抖音平台搜索和筛选 KOL、达人、博主。用户想找/搜索/推荐/筛选某个领域的达人，或想找带货博主、带货达人、找合作达人进行商业合作时，使用此技能。",
+      "id": "douyin-hotlist-overall",
+      "slug": "douyin-hotlist-overall",
+      "name": "douyin-hotlist-overall",
+      "description": "抖音全网实时热点",
       "tags": [
         "抖音",
-        "KOL",
-        "达人",
-        "对标账号",
-        "带货"
+        "热搜",
+        "热榜",
+        "实时"
       ],
       "profession": [
         "blogger-individual",
@@ -273,22 +182,46 @@
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
       },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：API Key 会随每次请求发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
+      "comingSoon": false,
+      "invocationMode": "execute",
+      "invocation": {
+        "type": "execute",
+        "executePath": "/api/execute"
+      },
+      "formSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "providerType": "api",
+      "providerConfig": {
+        "apiSource": "tikhub",
+        "endpoint": "/api/v1/douyin/app/v3/fetch_hot_search_list"
+      }
+    },
+    {
+      "id": "douyin-kol-search",
+      "slug": "douyin-kol-search",
+      "name": "douyin-kol-search",
+      "description": "抖音最具商业价值 KOL",
+      "tags": [
+        "抖音",
+        "KOL",
+        "达人",
+        "带货"
       ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数如搜索关键词、达人分类等，不含用户对话上下文）",
-          "X-API-Key（认证密钥）"
-        ],
-        "dataReceived": ["抖音 KOL 搜索结果数据"],
-        "warning": "启用前请确认您信任 ai-skills.ai 的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
+      "hidden": false,
+      "auth": {
+        "type": "api-key",
+        "header": "X-API-Key",
+        "tenantHeader": "X-Tenant-Id"
       },
       "comingSoon": false,
       "invocationMode": "execute",
@@ -315,16 +248,15 @@
       },
       "providerType": "api",
       "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/execute",
-        "skillId": "douyin-kol-search"
+        "apiSource": "tikhub",
+        "endpoint": "/api/v1/douyin/xingtu/search_kol_v2"
       }
     },
     {
       "id": "douyin-sentiment-dashboard",
       "slug": "douyin-sentiment-dashboard",
       "name": "douyin-sentiment-dashboard",
-      "description": "分析抖音视频运营分析，评论情绪、情感和整体口碑。当用户想了解评论是正面的还是负面的、分析评论区整体舆情、评估视频是否受欢迎，或提取评论洞察时，使用此技能。",
+      "description": "抖音短视频运营增长大盘",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -344,23 +276,6 @@
         "type": "api-key",
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数，含用户提供的视频链接，Step 2/3 需认证）",
-          "X-API-Key（认证密钥，仅 Step 2/3 发送）"
-        ],
-        "dataReceived": ["抖音视频评论分析结果"],
-        "warning": "此技能会将用户提供的视频链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
       },
       "comingSoon": false,
       "invocationMode": "comment-analysis-task",
@@ -383,19 +298,13 @@
             "format": "uri"
           }
         }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "douyin-sentiment-dashboard"
       }
     },
     {
       "id": "xhs-sentiment-dashboard",
       "slug": "xhs-sentiment-dashboard",
       "name": "xhs-sentiment-dashboard",
-      "description": "小红书视频运营分析。提供情感分类、正负面评论占比、情绪关键词提取和舆情洞察。当用户发送小红书笔记链接或 note ID 并要求分析评论区时使用。",
+      "description": "小红书短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -415,23 +324,6 @@
         "type": "api-key",
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数，含用户提供的笔记链接，Step 2/3 需认证）",
-          "X-API-Key（认证密钥，仅 Step 2/3 发送）"
-        ],
-        "dataReceived": ["小红书笔记评论分析结果"],
-        "warning": "此技能会将用户提供的笔记链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
       },
       "comingSoon": false,
       "invocationMode": "comment-analysis-task",
@@ -454,19 +346,13 @@
             "format": "uri"
           }
         }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "xhs-sentiment-dashboard"
       }
     },
     {
       "id": "bilibili-sentiment-dashboard",
       "slug": "bilibili-sentiment-dashboard",
       "name": "bilibili-sentiment-dashboard",
-      "description": "B站/哔哩哔哩视频评论和弹幕情感分析。当用户询问B站/B站视频/Bilibili的评论情绪、评论区情感、弹幕情绪、口碑、正评负评、好评差评时触发。支持BV号、AV号或视频链接。",
+      "description": "B站短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -486,23 +372,6 @@
         "type": "api-key",
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数，含用户提供的视频链接/BV号，Step 2/3 需认证）",
-          "X-API-Key（认证密钥，仅 Step 2/3 发送）"
-        ],
-        "dataReceived": ["B站视频评论及弹幕分析结果"],
-        "warning": "此技能会将用户提供的视频链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
       },
       "comingSoon": false,
       "invocationMode": "comment-analysis-task",
@@ -525,19 +394,13 @@
             "format": "uri"
           }
         }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "bilibili-sentiment-dashboard"
       }
     },
     {
       "id": "kuaishou-sentiment-dashboard",
       "slug": "kuaishou-sentiment-dashboard",
       "name": "kuaishou-sentiment-dashboard",
-      "description": "快手视频评论情感分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。",
+      "description": "快手短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -557,23 +420,6 @@
         "type": "api-key",
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
-      },
-      "requiredEnvVars": [
-        {
-          "name": "AISKILLS_API_KEY",
-          "description": "从 https://ai-skills.ai 获取的 API Key。注意：Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。",
-          "required": true
-        }
-      ],
-      "privacy": {
-        "thirdPartyDomain": "ai-skills.ai",
-        "dataSent": [
-          "skillId（技能标识符）",
-          "params（技能参数，含用户提供的视频链接，Step 2/3 需认证）",
-          "X-API-Key（认证密钥，仅 Step 2/3 发送）"
-        ],
-        "dataReceived": ["快手视频评论分析结果"],
-        "warning": "此技能会将用户提供的视频链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
       },
       "comingSoon": false,
       "invocationMode": "comment-analysis-task",
@@ -596,19 +442,13 @@
             "format": "uri"
           }
         }
-      },
-      "providerType": "api",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "/api/comment-analysis/tasks",
-        "skillId": "kuaishou-sentiment-dashboard"
       }
     },
     {
       "id": "software-dev-cost-dashboard",
       "slug": "software-dev-cost-dashboard",
       "name": "software-dev-cost-dashboard",
-      "description": "使用此技能评估软件开发项目的成本、工时和报价。当用户询问「做一个X系统/软件/App要多少钱」、「开发X需要多少工时」、「X项目报价」等类似问题时，必须使用此技能。",
+      "description": "软件成本评估看板",
       "tags": [
         "成本评估",
         "项目管理",
@@ -628,24 +468,12 @@
         "header": "X-API-Key",
         "tenantHeader": "X-Tenant-Id"
       },
-      "requiredEnvVars": [],
-      "privacy": {
-        "thirdPartyDomain": "soft.ai-skills.ai",
-        "dataSent": ["用户在浏览器中直接访问 https://soft.ai-skills.ai 输入的内容"],
-        "dataReceived": [],
-        "warning": "此技能为外部链接跳转（external-link 模式），不通过 API 调用。用户直接在浏览器中访问 soft.ai-skills.ai，技能本身不传递任何数据。数据安全政策取决于目标网站。"
-      },
       "comingSoon": false,
       "externalLink": "https://soft.ai-skills.ai",
       "invocationMode": "external-link",
       "invocation": {
         "type": "external-link",
         "externalLink": "https://soft.ai-skills.ai"
-      },
-      "providerType": "external",
-      "providerConfig": {
-        "apiSource": "ai-skills.ai",
-        "endpoint": "https://soft.ai-skills.ai"
       }
     }
   ]

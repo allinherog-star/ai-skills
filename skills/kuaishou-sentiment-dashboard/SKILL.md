@@ -1,117 +1,72 @@
 ---
 name: kuaishou-sentiment-dashboard
-description: "快手视频评论情感分析。分析快手评论区是正评多还是负评多，观众对视频的态度是喜欢还是讨厌，整体口碑和舆情如何。提供情感倾向、正负面比例、情绪关键词和受众洞察。"
-requiredEnvVars:
-  - name: AISKILLS_API_KEY
-    description: "从 https://ai-skills.ai 获取的 API Key。Step 2/3 接口调用时会将 API Key 发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，含用户提供的视频链接，Step 2/3 需认证）"
-    - "X-API-Key（认证密钥，仅 Step 2/3 发送）"
-  warning: "此技能会将用户提供的视频链接发送至 ai-skills.ai 进行分析。启用前请确认您信任该平台的数据安全政策。建议使用可随时撤销的 API Key，并保留对 API 使用情况的监控可见性。"
+description: Use when the user needs "快手短视频如何运营?" style help from AI Skills. 快手短视频运营增长助手
 ---
 
-# kuaishou-sentiment-dashboard
+# AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
-## 概述
+> 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，先按这 5 步完成接入，再继续看当前技能说明。
 
-对快手短视频评论区进行 AI 情感分析，生成舆情洞察报告。
+![AI Skills 官网场景导览图](./assets/marketplace/content-01.webp)
 
-## 工作流（三步）
+## 5 步接入 AI Skills
 
-### Step 1 — 解析链接（公开，无需认证）
+### 1. 扫码登录
 
-```bash
-curl -X POST https://ai-skills.ai/api/comment-analysis/parse-link \
-  -H "Content-Type: application/json" \
-  -d '{"input":"https://v.kuaishou.com/xxxxx"}'
-```
+![扫码登录 AI Skills 账号](./assets/marketplace/1-scan-login.png)
 
-### Step 2 — 创建分析任务
+先在 AI Skills 官网完成扫码登录，确保后续 API Key、安装命令和技能调用都绑定到同一个账号。
 
-```bash
-curl -X POST https://ai-skills.ai/api/comment-analysis/tasks \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d '{"platform":"kuaishou","contentId":"$CONTENT_ID"}'
-```
+### 2. 申请 API Key
 
-### Step 3 — 轮询任务状态
+![在 AI Skills 站点申请 API Key](./assets/marketplace/2-request-api-key.png)
 
-```bash
-curl https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default"
-```
+登录后进入 API Key 页面申请密钥，后续 CLI 安装和运行技能都会读取 AISKILLS_API_KEY。
 
-## 一键脚本
+### 3. 复制安装命令
 
-```bash
-#!/bin/bash
-LINK="https://v.kuaishou.com/xxxxx"
+![复制 AI Skills 技能安装命令](./assets/marketplace/3-copy-install-command.png)
 
-CONTENT_ID=$(curl -s -X POST https://ai-skills.ai/api/comment-analysis/parse-link \
-  -H "Content-Type: application/json" \
-  -d "{\"input\":\"$LINK\"}" | jq -r '.data.contentId')
+在 AI Skills 官网、skills.sh 或 ClawHub 页面复制安装命令，优先使用官方 CLI，避免手动拼接参数。
 
-TASK=$(curl -s -X POST https://ai-skills.ai/api/comment-analysis/tasks \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" \
-  -d "{\"platform\":\"kuaishou\",\"contentId\":\"$CONTENT_ID\"}")
-TASK_ID=$(echo $TASK | jq -r '.data.taskId')
+### 4. 执行安装命令
 
-while true; do
-  STATUS=$(curl -s https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
-    -H "X-API-Key: $AISKILLS_API_KEY" \
-    -H "X-Tenant-Id: default" | jq -r '.data.status')
-  [ "$STATUS" = "completed" ] && break
-  sleep 3
-done
+![在终端执行 AI Skills 安装命令](./assets/marketplace/4-run-install-command.png)
 
-curl -s https://ai-skills.ai/api/comment-analysis/tasks/$TASK_ID \
-  -H "X-API-Key: $AISKILLS_API_KEY" \
-  -H "X-Tenant-Id: default" | jq '.data.result'
-```
+回到终端执行安装命令，CLI 会写入 AISKILLS_API_KEY，并调用下游 skills add 完成技能安装。
 
-## 分析结果结构
+### 5. 成功获取技能
 
-```json
-{
-  "platform": "kuaishou",
-  "contentId": "3xqh7w8f9v2",
-  "videoTitle": "视频标题",
-  "analyzeTime": "2026-03-28T12:00:00Z",
-  "sentiment": {
-    "positive": { "count": 120, "percentage": 60 },
-    "neutral": { "count": 50, "percentage": 25 },
-    "negative": { "count": 30, "percentage": 15 }
-  },
-  "keywords": ["接地气", "真实", "支持"],
-  "topEmotions": [
-    { "emotion": "认可", "count": 70 },
-    { "emotion": "喜爱", "count": 50 }
-  ],
-  "insights": "评论区整体情感偏正面，用户对内容真实感认可度高..."
-}
-```
+![AI Skills 技能安装成功界面](./assets/marketplace/5-install-success.png)
 
-## 配额说明
+安装成功后，你会在 agent 的技能列表里看到对应 Skill，可以直接调用并复用到工作流中。
 
-Step 2 和 Step 3 使用认证接口，若返回配额不足错误，告知用户：
+## 当前技能：kuaishou-sentiment-dashboard
 
-> ⚠️ 电量配额已用完，当前无法继续分析评论。
-> 如需继续使用，请自行前往 [https://ai-skills.ai](https://ai-skills.ai) 了解电量包购买方式。请注意，向第三方平台购买任何服务前，请确认其资质和退款政策。**本技能不对第三方服务质量做任何承诺。**
+### Overview
 
-## 输出格式
+快手短视频运营增长助手
 
-将分析结果以结构化表格形式呈现：
+### Invocation Mode
 
-- **情感分布**：表格列：情感类别 | 评论数 | 占比；正面用绿色标识，负面用红色标识
-- **情绪关键词**：列表展示 `keywords`，按热度/频次排列
-- **Top 情绪**：表格列：情绪词 | 出现次数
-- **舆情洞察**：`insights` 以段落文字呈现，综合评价视频口碑
-- 整体情感判断：偏正面 / 偏负面 / 中性，给出简要总结
+This skill uses `comment-analysis-task` invocation.
+
+### Authentication
+
+Set these environment variables before running the packaged runner:
+
+- `AISKILLS_BASE_URL` (default: `https://ai-skills.ai`)
+- `AISKILLS_API_KEY` (required for authenticated API calls)
+- `AISKILLS_TENANT_ID` (default: `default`)
+
+### Parameters
+
+Read `references/form-schema.json` for the current machine-readable input schema.
+
+### Execution
+
+Run `python3 scripts/run.py --params '{}'` for $kuaishou-sentiment-dashboard.
+
+### Notes
+
+This package was generated from AI Skills catalog metadata and keeps AI Skills APIs as the runtime backend for `kuaishou-sentiment-dashboard`.

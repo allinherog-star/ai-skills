@@ -1,12 +1,44 @@
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
-> 大多数人用 AI 还停在「问一句答一句」。AI Skills（ai-skills.ai）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。这篇 README 讲清楚这个站点是什么、装了什么、谁应该怎么用它。
+> 大多数人用 AI 还停在「问一句答一句」。AI Skills（ai-skills.ai）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，这篇 README 先把统一接入路径讲清楚，再带你看这个站点是什么、装了什么、谁应该怎么用它。
 
-![cover](./images/ai-skills-site-readme/cover-wechat-2_35x1.webp)
+![AI Skills 官网场景导览图](./images/ai-skills-site-readme/content-01.webp)
+
+## 5 步接入 AI Skills
+
+无论你最终是在官网、skills.sh、ClawHub 还是其他 Skill Hub 市场里点击到某条 Skill，接入动作都可以统一成下面这 5 步。
+
+### 1. 扫码登录
+
+![扫码登录 AI Skills 账号](./images/ai-skills-site-readme/step/1、扫码登录.png)
+
+先在 AI Skills 官网完成扫码登录。这样后续申请 API Key、复制安装命令、执行技能安装时，都会绑定到同一个账号上下文里。
+
+### 2. 申请 API Key
+
+![在 AI Skills 站点申请 API Key](./images/ai-skills-site-readme/step/2、申请你的API Key.png)
+
+登录后进入 API Key 页面申请你的密钥。对于多数 agent 客户端来说，后续安装和调用技能都会读取 `AISKILLS_API_KEY`，所以这一步是整个工作流的权限入口。
+
+### 3. 复制安装命令
+
+![复制 AI Skills 技能安装命令](./images/ai-skills-site-readme/step/3、复制安装命令.png)
+
+在 Skill 详情页或市场页复制安装命令。推荐直接使用 AI Skills 官方 CLI 提供的命令格式，而不是自己手动拼接参数，这样更不容易在市场分发时出错。
+
+### 4. 执行安装命令
+
+![在终端执行 AI Skills 安装命令](./images/ai-skills-site-readme/step/4、安装命令.png)
+
+回到终端执行安装命令。CLI 会帮你写入 `AISKILLS_API_KEY`，并继续调用下游 `skills add` 完成技能安装，减少不同 agent 平台之间的接入差异。
+
+### 5. 成功获取技能
+
+![AI Skills 技能安装成功界面](./images/ai-skills-site-readme/step/5、成功get技能.png)
+
+当界面提示成功后，你就能在对应的 agent 技能列表里看到这条 Skill。后续无论是单独调用，还是把它串进多步工作流，都会从这里开始。
 
 ## AI Skills 是什么：一个能直接查的技能库
-
-![content-01](./images/ai-skills-site-readme/content-01.webp)
 
 AI Skills（[ai-skills.ai](https://ai-skills.ai/)）是一个面向各行各业的 AI 技能库。站点首屏给的定义很直接：「为你的职业发展、行业竞争力，增加更多可能。」
 
