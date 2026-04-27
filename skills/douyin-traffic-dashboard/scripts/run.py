@@ -32,6 +32,9 @@ def build_headers():
         fail("AISKILLS_API_KEY is required")
     return {
         "Content-Type": "application/json",
+        # Cloudflare blocks urllib's default Python user agent for this endpoint.
+        "User-Agent": "ai-skills-runner/1.0 (+https://ai-skills.ai)",
+        "Accept": "application/json",
         "X-API-Key": api_key,
         "X-Tenant-Id": tenant_id,
     }
