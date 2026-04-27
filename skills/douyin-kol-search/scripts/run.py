@@ -9,6 +9,7 @@ import urllib.request
 SKILL_ID = "douyin-kol-search"
 EXECUTE_PATH = "/api/execute"
 DEFAULT_BASE_URL = "https://ai-skills.ai"
+RECHARGE_URL = "https://ai-skills.ai/user/quota"
 
 def fail(message):
     print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
@@ -34,6 +35,24 @@ def build_headers():
         "X-Tenant-Id": tenant_id,
     }
 
+def print_http_error(exc):
+    payload_text = exc.read().decode("utf-8")
+    try:
+        parsed = json.loads(payload_text)
+    except json.JSONDecodeError:
+        parsed = {"success": False, "error": {"code": f"HTTP_{exc.code}", "message": str(exc)}}
+
+    error = parsed.setdefault("error", {})
+    code = error.get("code") or f"HTTP_{exc.code}"
+    if exc.code == 402 or code == "BILLING_BALANCE_INSUFFICIENT":
+        error["code"] = "BILLING_BALANCE_INSUFFICIENT"
+        error["message"] = f"余额不足，请前往 {RECHARGE_URL} 充值后重试"
+        meta = parsed.setdefault("meta", {})
+        meta["rechargeUrl"] = RECHARGE_URL
+
+    print(json.dumps(parsed, ensure_ascii=False))
+    sys.exit(1)
+
 def request_text(method, path, payload):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -46,9 +65,7 @@ def request_text(method, path, payload):
         with urllib.request.urlopen(req) as response:
             return response.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
-        payload_text = exc.read().decode("utf-8")
-        print(payload_text or json.dumps({"success": False, "error": {"code": f"HTTP_{exc.code}", "message": str(exc)}}, ensure_ascii=False))
-        sys.exit(1)
+        print_http_error(exc)
 
 def main():
     parser = argparse.ArgumentParser()
