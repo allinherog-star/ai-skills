@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import ssl
 import sys
 import time
 import urllib.error
@@ -37,6 +38,29 @@ def build_headers():
         "X-Tenant-Id": tenant_id,
     }
 
+def build_ssl_context():
+    if os.getenv("SSL_CERT_FILE") or os.getenv("SSL_CERT_DIR"):
+        return ssl.create_default_context()
+    try:
+        import certifi
+    except ImportError:
+        return ssl.create_default_context()
+    return ssl.create_default_context(cafile=certifi.where())
+
+SSL_CONTEXT = build_ssl_context()
+
+def print_url_error(exc):
+    reason = getattr(exc, "reason", exc)
+    code = "SSL_CERTIFICATE_VERIFY_FAILED" if isinstance(reason, ssl.SSLCertVerificationError) else "NETWORK_ERROR"
+    message = str(reason)
+    if code == "SSL_CERTIFICATE_VERIFY_FAILED":
+        message = (
+            "HTTPS certificate verification failed. Install certifi or set SSL_CERT_FILE "
+            f"to a valid CA bundle, then retry: {reason}"
+        )
+    print(json.dumps({"success": False, "error": {"code": code, "message": message}}, ensure_ascii=False))
+    sys.exit(1)
+
 def request_json(method, path, payload):
     body = None if payload is None else json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -46,7 +70,7 @@ def request_json(method, path, payload):
         headers=build_headers(),
     )
     try:
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, context=SSL_CONTEXT) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         payload_text = exc.read().decode("utf-8")
@@ -56,6 +80,8 @@ def request_json(method, path, payload):
             parsed = {"success": False, "error": {"code": f"HTTP_{exc.code}", "message": str(exc)}}
         print(json.dumps(parsed, ensure_ascii=False))
         sys.exit(1)
+    except urllib.error.URLError as exc:
+        print_url_error(exc)
 
 def poll_task_until_terminal(task_id, max_attempts=60, interval_seconds=2):
     for _ in range(max_attempts):

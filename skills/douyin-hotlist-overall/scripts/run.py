@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -9,7 +10,7 @@ import urllib.request
 SKILL_ID = "douyin-hotlist-overall"
 EXECUTE_PATH = "/api/execute"
 DEFAULT_BASE_URL = "https://ai-skills.ai"
-RECHARGE_URL = "https://ai-skills.ai/user/quota"
+RECHARGE_URL = "https://ai-skills.ai/user/billing"
 
 def fail(message):
     print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
@@ -34,6 +35,29 @@ def build_headers():
         "X-API-Key": api_key,
         "X-Tenant-Id": tenant_id,
     }
+
+def build_ssl_context():
+    if os.getenv("SSL_CERT_FILE") or os.getenv("SSL_CERT_DIR"):
+        return ssl.create_default_context()
+    try:
+        import certifi
+    except ImportError:
+        return ssl.create_default_context()
+    return ssl.create_default_context(cafile=certifi.where())
+
+SSL_CONTEXT = build_ssl_context()
+
+def print_url_error(exc):
+    reason = getattr(exc, "reason", exc)
+    code = "SSL_CERTIFICATE_VERIFY_FAILED" if isinstance(reason, ssl.SSLCertVerificationError) else "NETWORK_ERROR"
+    message = str(reason)
+    if code == "SSL_CERTIFICATE_VERIFY_FAILED":
+        message = (
+            "HTTPS certificate verification failed. Install certifi or set SSL_CERT_FILE "
+            f"to a valid CA bundle, then retry: {reason}"
+        )
+    print(json.dumps({"success": False, "error": {"code": code, "message": message}}, ensure_ascii=False))
+    sys.exit(1)
 
 def print_http_error(exc):
     payload_text = exc.read().decode("utf-8")
@@ -62,10 +86,12 @@ def request_text(method, path, payload):
         headers=build_headers(),
     )
     try:
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, context=SSL_CONTEXT) as response:
             return response.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
         print_http_error(exc)
+    except urllib.error.URLError as exc:
+        print_url_error(exc)
 
 def main():
     parser = argparse.ArgumentParser()
