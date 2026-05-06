@@ -4,14 +4,14 @@
   "skills": [
     {
       "slug": "ai-article",
-      "question": "自动公众号?",
+      "question": "自动公众号和小红书种草?",
       "skillName": "自动图文助手",
       "invocationMode": "execute",
       "packagePath": "skills/ai-article"
     },
     {
       "slug": "auto-article-images",
-      "question": "配图好麻烦?",
+      "question": "还要配图，好麻烦?",
       "skillName": "智能配图助手",
       "invocationMode": "execute",
       "packagePath": "skills/auto-article-images"
