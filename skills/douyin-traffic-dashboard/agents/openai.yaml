@@ -1,5 +1,5 @@
 interface:
-  display_name: "douyin-traffic-dashboard"
+  display_name: "抖音流量分配大盘"
   short_description: "抖音流量分配大盘"
   default_prompt: "Use $douyin-traffic-dashboard to help with 抖音流量分配大盘"
 

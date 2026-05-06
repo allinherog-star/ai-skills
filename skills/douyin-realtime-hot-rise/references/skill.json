@@ -1,8 +1,8 @@
 {
   "id": "douyin-realtime-hot-rise",
   "slug": "douyin-realtime-hot-rise",
-  "name": "douyin-realtime-hot-rise",
-  "description": "抖音上升热点选题助手",
+  "question": "拍什么会有流量?",
+  "skillName": "抖音上升热点选题助手",
   "tags": [
     "抖音",
     "热点",

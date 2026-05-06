@@ -1,5 +1,5 @@
 interface:
-  display_name: "douyin-kol-search"
+  display_name: "抖音最具商业价值 KOL"
   short_description: "抖音最具商业价值 KOL"
   default_prompt: "Use $douyin-kol-search to help with 抖音最具商业价值 KOL"
 

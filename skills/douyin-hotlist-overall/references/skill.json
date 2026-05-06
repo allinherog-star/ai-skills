@@ -1,8 +1,8 @@
 {
   "id": "douyin-hotlist-overall",
   "slug": "douyin-hotlist-overall",
-  "name": "douyin-hotlist-overall",
-  "description": "抖音全网实时热点",
+  "question": "现在最热门的是什么？",
+  "skillName": "抖音全网实时热点",
   "tags": [
     "抖音",
     "热搜",

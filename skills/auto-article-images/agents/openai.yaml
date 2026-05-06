@@ -1,0 +1,7 @@
+interface:
+  display_name: "智能配图助手"
+  short_description: "智能配图助手"
+  default_prompt: "Use $auto-article-images to help with 智能配图助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,8 +1,8 @@
 {
   "id": "douyin-sentiment-dashboard",
   "slug": "douyin-sentiment-dashboard",
-  "name": "douyin-sentiment-dashboard",
-  "description": "抖音短视频运营增长大盘",
+  "question": "抖音短视频怎么运营?",
+  "skillName": "抖音短视频运营增长大盘",
   "tags": [
     "舆情监控",
     "评论洞察",

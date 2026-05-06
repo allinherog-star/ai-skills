@@ -1,5 +1,5 @@
 interface:
-  display_name: "bilibili-sentiment-dashboard"
+  display_name: "B站短视频运营增长助手"
   short_description: "B站短视频运营增长助手"
   default_prompt: "Use $bilibili-sentiment-dashboard to help with B站短视频运营增长助手"
 

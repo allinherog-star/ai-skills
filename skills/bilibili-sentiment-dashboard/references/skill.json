@@ -1,8 +1,8 @@
 {
   "id": "bilibili-sentiment-dashboard",
   "slug": "bilibili-sentiment-dashboard",
-  "name": "bilibili-sentiment-dashboard",
-  "description": "B站短视频运营增长助手",
+  "question": "B站短视频怎么运营?",
+  "skillName": "B站短视频运营增长助手",
   "tags": [
     "舆情监控",
     "评论洞察",

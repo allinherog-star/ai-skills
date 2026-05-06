@@ -1,8 +1,8 @@
 {
   "id": "kuaishou-sentiment-dashboard",
   "slug": "kuaishou-sentiment-dashboard",
-  "name": "kuaishou-sentiment-dashboard",
-  "description": "快手短视频运营增长助手",
+  "question": "快手短视频如何运营?",
+  "skillName": "快手短视频运营增长助手",
   "tags": [
     "舆情监控",
     "评论洞察",

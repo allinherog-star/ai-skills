@@ -1,0 +1,7 @@
+interface:
+  display_name: "自动图文助手"
+  short_description: "自动图文助手"
+  default_prompt: "Use $ai-article to help with 自动图文助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,67 +1,88 @@
 {
-  "totalSkills": 9,
+  "totalSkills": 12,
   "generatedFrom": "ai-skills-export",
   "skills": [
     {
+      "slug": "ai-article",
+      "question": "自动公众号?",
+      "skillName": "自动图文助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-article"
+    },
+    {
+      "slug": "auto-article-images",
+      "question": "配图好麻烦?",
+      "skillName": "智能配图助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/auto-article-images"
+    },
+    {
+      "slug": "xhs-viral-copywriter",
+      "question": "我的文章赞少互动低?",
+      "skillName": "爆款文案助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/xhs-viral-copywriter"
+    },
+    {
       "slug": "douyin-realtime-hot-rise",
-      "name": "douyin-realtime-hot-rise",
-      "description": "抖音上升热点选题助手",
+      "question": "拍什么会有流量?",
+      "skillName": "抖音上升热点选题助手",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-realtime-hot-rise"
     },
     {
       "slug": "douyin-traffic-dashboard",
-      "name": "douyin-traffic-dashboard",
-      "description": "抖音流量分配大盘",
+      "question": "抖音平台流量在哪?",
+      "skillName": "抖音流量分配大盘",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-traffic-dashboard"
     },
     {
       "slug": "douyin-hotlist-overall",
-      "name": "douyin-hotlist-overall",
-      "description": "抖音全网实时热点",
+      "question": "现在最热门的是什么？",
+      "skillName": "抖音全网实时热点",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-hotlist-overall"
     },
     {
       "slug": "douyin-kol-search",
-      "name": "douyin-kol-search",
-      "description": "抖音最具商业价值 KOL",
+      "question": "谁是最会卖货的博主?",
+      "skillName": "抖音最具商业价值 KOL",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-kol-search"
     },
     {
       "slug": "douyin-sentiment-dashboard",
-      "name": "douyin-sentiment-dashboard",
-      "description": "抖音短视频运营增长大盘",
+      "question": "抖音短视频怎么运营?",
+      "skillName": "抖音短视频运营增长大盘",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/douyin-sentiment-dashboard"
     },
     {
       "slug": "xhs-sentiment-dashboard",
-      "name": "xhs-sentiment-dashboard",
-      "description": "小红书短视频运营增长助手",
+      "question": "小红书短视频怎么运营?",
+      "skillName": "小红书短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/xhs-sentiment-dashboard"
     },
     {
       "slug": "bilibili-sentiment-dashboard",
-      "name": "bilibili-sentiment-dashboard",
-      "description": "B站短视频运营增长助手",
+      "question": "B站短视频怎么运营?",
+      "skillName": "B站短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/bilibili-sentiment-dashboard"
     },
     {
       "slug": "kuaishou-sentiment-dashboard",
-      "name": "kuaishou-sentiment-dashboard",
-      "description": "快手短视频运营增长助手",
+      "question": "快手短视频如何运营?",
+      "skillName": "快手短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/kuaishou-sentiment-dashboard"
     },
     {
       "slug": "software-dev-cost-dashboard",
-      "name": "software-dev-cost-dashboard",
-      "description": "软件成本评估看板",
+      "question": "软件开发成本不可控?",
+      "skillName": "软件成本评估看板",
       "invocationMode": "external-link",
       "packagePath": "skills/software-dev-cost-dashboard"
     }

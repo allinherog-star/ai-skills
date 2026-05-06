@@ -1,0 +1,199 @@
+{
+  "id": "xhs-viral-copywriter",
+  "slug": "xhs-viral-copywriter",
+  "question": "我的文章赞少互动低?",
+  "skillName": "爆款文案助手",
+  "tags": [
+    "小红书",
+    "爆款文案",
+    "种草",
+    "标题",
+    "发布套件"
+  ],
+  "profession": [
+    "blogger-individual",
+    "operations"
+  ],
+  "industry": [
+    "media",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [
+      "topic"
+    ],
+    "x-layout": {
+      "mode": "contextComposer",
+      "primaryField": "topic",
+      "primaryControlFields": [
+        "noteType",
+        "tone"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "sellingPoint",
+        "accountPersona"
+      ],
+      "advancedLabel": "高级选项",
+      "profileContext": true
+    },
+    "x-profile-context": true,
+    "properties": {
+      "topic": {
+        "type": "string",
+        "title": "主题/产品",
+        "x-component": "Textarea",
+        "x-rows": 4
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标人群"
+      },
+      "sellingPoint": {
+        "type": "string",
+        "title": "核心卖点",
+        "x-component": "Textarea",
+        "x-rows": 4
+      },
+      "accountPersona": {
+        "type": "string",
+        "title": "账号人设"
+      },
+      "noteType": {
+        "type": "string",
+        "title": "笔记类型",
+        "enum": [
+          "种草",
+          "测评",
+          "攻略",
+          "避坑",
+          "清单",
+          "复盘"
+        ],
+        "x-options": [
+          {
+            "value": "种草",
+            "label": "种草",
+            "description": "突出使用场景和购买动机",
+            "icon": "Sparkles",
+            "color": "rose",
+            "group": "笔记类型"
+          },
+          {
+            "value": "测评",
+            "label": "测评",
+            "description": "强调真实体验和对比",
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "笔记类型"
+          },
+          {
+            "value": "攻略",
+            "label": "攻略",
+            "description": "步骤化讲清方法和清单",
+            "icon": "BookOpen",
+            "color": "green",
+            "group": "笔记类型"
+          },
+          {
+            "value": "避坑",
+            "label": "避坑",
+            "description": "先给风险，再给建议",
+            "icon": "Shield",
+            "color": "amber",
+            "group": "笔记类型"
+          },
+          {
+            "value": "清单",
+            "label": "清单",
+            "description": "多点位快速浏览",
+            "icon": "ClipboardList",
+            "color": "cyan",
+            "group": "笔记类型"
+          },
+          {
+            "value": "复盘",
+            "label": "复盘",
+            "description": "记录过程、结论和下一步",
+            "icon": "Target",
+            "color": "purple",
+            "group": "笔记类型"
+          }
+        ],
+        "default": "种草"
+      },
+      "tone": {
+        "type": "string",
+        "title": "语气",
+        "enum": [
+          "真实具体",
+          "轻松口语",
+          "专业测评",
+          "强反差",
+          "温柔陪伴"
+        ],
+        "x-options": [
+          {
+            "value": "真实具体",
+            "label": "真实具体",
+            "description": "像亲测后的真实分享",
+            "icon": "MessageCircle",
+            "color": "blue",
+            "group": "语气"
+          },
+          {
+            "value": "轻松口语",
+            "label": "轻松口语",
+            "description": "更像朋友聊天种草",
+            "icon": "Smile",
+            "color": "green",
+            "group": "语气"
+          },
+          {
+            "value": "专业测评",
+            "label": "专业测评",
+            "description": "有维度、有判断、有对比",
+            "icon": "ClipboardList",
+            "color": "indigo",
+            "group": "语气"
+          },
+          {
+            "value": "强反差",
+            "label": "强反差",
+            "description": "先制造冲突，再给结论",
+            "icon": "Zap",
+            "color": "amber",
+            "group": "语气"
+          },
+          {
+            "value": "温柔陪伴",
+            "label": "温柔陪伴",
+            "description": "柔和、共情、低压表达",
+            "icon": "Heart",
+            "color": "pink",
+            "group": "语气"
+          }
+        ],
+        "default": "真实具体"
+      }
+    }
+  },
+  "providerType": "llm",
+  "providerConfig": {
+    "asyncProvider": "skills2api-scheduler",
+    "resultContract": "ResultEnvelope"
+  }
+}

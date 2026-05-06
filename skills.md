@@ -29,8 +29,11 @@ If the user's goal is outside the skill coverage below, say so directly. Do not 
 
 ## Executable Scope
 
-Treat only these 8 skills as directly executable:
+Treat only these 11 skills as directly executable:
 
+- `ai-article`
+- `auto-article-images`
+- `xhs-viral-copywriter`
 - `douyin-realtime-hot-rise`
 - `douyin-traffic-dashboard`
 - `douyin-hotlist-overall`
@@ -82,6 +85,60 @@ If uncertain:
 ---
 
 ## Skill Cards
+
+### `ai-article`
+
+- **核心价值**
+  - 自动图文助手
+- **主要用途**
+  - 自动图文助手
+- **Use when**
+  - the user asks for 自动图文助手
+- **Need**
+  - required `AISKILLS_API_KEY`
+  - read `formSchema` before calling
+- **Returns**
+  - the skill-specific result described in its `SKILL.md`
+- **Do not use when**
+  - the user goal does not match this skill description
+- **Prefer neighbor skill**
+  - compare neighboring skill cards before execution
+
+### `auto-article-images`
+
+- **核心价值**
+  - 智能配图助手
+- **主要用途**
+  - 智能配图助手
+- **Use when**
+  - the user asks for 智能配图助手
+- **Need**
+  - required `AISKILLS_API_KEY`
+  - read `formSchema` before calling
+- **Returns**
+  - the skill-specific result described in its `SKILL.md`
+- **Do not use when**
+  - the user goal does not match this skill description
+- **Prefer neighbor skill**
+  - compare neighboring skill cards before execution
+
+### `xhs-viral-copywriter`
+
+- **核心价值**
+  - 爆款文案助手
+- **主要用途**
+  - 爆款文案助手
+- **Use when**
+  - the user asks for 爆款文案助手
+- **Need**
+  - required `AISKILLS_API_KEY`
+  - read `formSchema` before calling
+- **Returns**
+  - the skill-specific result described in its `SKILL.md`
+- **Do not use when**
+  - the user goal does not match this skill description
+- **Prefer neighbor skill**
+  - compare neighboring skill cards before execution
 
 ### `douyin-realtime-hot-rise`
 

@@ -1,5 +1,5 @@
 interface:
-  display_name: "douyin-hotlist-overall"
+  display_name: "抖音全网实时热点"
   short_description: "抖音全网实时热点"
   default_prompt: "Use $douyin-hotlist-overall to help with 抖音全网实时热点"
 

@@ -1,10 +1,10 @@
 {
   "meta": {
-    "totalSkills": 9
+    "totalSkills": 12
   },
   "stats": {
     "byInvocationMode": {
-      "execute": 4,
+      "execute": 7,
       "comment-analysis-task": 4,
       "external-link": 1,
       "manual": 0
@@ -12,10 +12,757 @@
   },
   "skills": [
     {
+      "id": "ai-article",
+      "slug": "ai-article",
+      "question": "自动公众号?",
+      "skillName": "自动图文助手",
+      "tags": [
+        "图文",
+        "写作",
+        "配图",
+        "公众号",
+        "SEO"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
+      "hidden": false,
+      "auth": {
+        "type": "api-key",
+        "header": "X-API-Key",
+        "tenantHeader": "X-Tenant-Id"
+      },
+      "comingSoon": false,
+      "invocationMode": "execute",
+      "invocation": {
+        "type": "execute",
+        "executePath": "/api/execute"
+      },
+      "formSchema": {
+        "type": "object",
+        "required": [
+          "topic"
+        ],
+        "x-layout": {
+          "mode": "contextComposer",
+          "primaryField": "topic",
+          "primaryControlFields": [
+            "wordCount",
+            "tone"
+          ],
+          "advancedControlFields": [
+            "audience",
+            "keywords",
+            "platform",
+            "brandRequirements",
+            "watermarkMode"
+          ],
+          "advancedLabel": "高级选项",
+          "profileContext": true
+        },
+        "x-profile-context": true,
+        "properties": {
+          "topic": {
+            "type": "string",
+            "title": "想写什么",
+            "x-component": "Textarea",
+            "x-rows": 4
+          },
+          "audience": {
+            "type": "string",
+            "title": "目标读者"
+          },
+          "keywords": {
+            "type": "string",
+            "title": "关键词"
+          },
+          "wordCount": {
+            "type": "number",
+            "title": "目标字数",
+            "default": 1600,
+            "x-unit": "字"
+          },
+          "platform": {
+            "type": "string",
+            "title": "发布平台",
+            "enum": [
+              "all",
+              "wechat",
+              "xhs",
+              "blog",
+              "zhihu"
+            ],
+            "enumNames": [
+              "全平台",
+              "微信公众号",
+              "小红书",
+              "博客/官网",
+              "知乎"
+            ],
+            "x-options": [
+              {
+                "value": "all",
+                "label": "全平台",
+                "description": "一次输出多平台排版建议",
+                "icon": "Globe",
+                "color": "blue",
+                "group": "发布平台"
+              },
+              {
+                "value": "wechat",
+                "label": "微信公众号",
+                "description": "偏长图文和头图结构",
+                "icon": "BookOpen",
+                "color": "green",
+                "group": "发布平台"
+              },
+              {
+                "value": "xhs",
+                "label": "小红书",
+                "description": "偏种草封面和竖图",
+                "icon": "Sparkles",
+                "color": "rose",
+                "group": "发布平台"
+              },
+              {
+                "value": "blog",
+                "label": "博客/官网",
+                "description": "偏 SEO 正文和官网展示",
+                "icon": "FileText",
+                "color": "cyan",
+                "group": "发布平台"
+              },
+              {
+                "value": "zhihu",
+                "label": "知乎",
+                "description": "偏观点论证和问答语气",
+                "icon": "PenTool",
+                "color": "indigo",
+                "group": "发布平台"
+              }
+            ],
+            "default": "all"
+          },
+          "tone": {
+            "type": "string",
+            "title": "语气",
+            "enum": [
+              "practical",
+              "editorial",
+              "warm",
+              "sharp"
+            ],
+            "enumNames": [
+              "实用清晰",
+              "杂志评论",
+              "温和陪伴",
+              "犀利观点"
+            ],
+            "x-options": [
+              {
+                "value": "practical",
+                "label": "实用清晰",
+                "description": "结构清楚，适合知识型内容",
+                "icon": "FileText",
+                "color": "blue",
+                "group": "语气"
+              },
+              {
+                "value": "editorial",
+                "label": "杂志评论",
+                "description": "更像专栏评论，有观点",
+                "icon": "PenTool",
+                "color": "purple",
+                "group": "语气"
+              },
+              {
+                "value": "warm",
+                "label": "温和陪伴",
+                "description": "更柔和，适合陪伴型表达",
+                "icon": "Heart",
+                "color": "green",
+                "group": "语气"
+              },
+              {
+                "value": "sharp",
+                "label": "犀利观点",
+                "description": "观点更鲜明，适合引发讨论",
+                "icon": "Zap",
+                "color": "amber",
+                "group": "语气"
+              }
+            ],
+            "default": "practical"
+          },
+          "generateCovers": {
+            "type": "boolean",
+            "title": "生成多比例封面",
+            "default": true
+          },
+          "generateImages": {
+            "type": "boolean",
+            "title": "生成正文配图",
+            "default": true
+          },
+          "brandRequirements": {
+            "type": "string",
+            "title": "水印/品牌要求",
+            "x-component": "Textarea",
+            "x-rows": 3
+          },
+          "watermarkMode": {
+            "type": "string",
+            "title": "水印",
+            "enum": [
+              "off",
+              "corner",
+              "both"
+            ],
+            "enumNames": [
+              "不加水印",
+              "右下角",
+              "角标 + 平铺"
+            ],
+            "x-options": [
+              {
+                "value": "off",
+                "label": "不加水印",
+                "description": "保持画面干净",
+                "icon": "Shield",
+                "color": "slate",
+                "group": "水印"
+              },
+              {
+                "value": "corner",
+                "label": "右下角",
+                "description": "保留轻量署名",
+                "icon": "Tag",
+                "color": "blue",
+                "group": "水印"
+              },
+              {
+                "value": "both",
+                "label": "角标 + 平铺",
+                "description": "更强品牌露出",
+                "icon": "Tag",
+                "color": "amber",
+                "group": "水印"
+              }
+            ],
+            "default": "off"
+          }
+        }
+      },
+      "providerType": "llm",
+      "providerConfig": {
+        "asyncProvider": "skills2api-scheduler",
+        "resultContract": "ResultEnvelope"
+      }
+    },
+    {
+      "id": "auto-article-images",
+      "slug": "auto-article-images",
+      "question": "配图好麻烦?",
+      "skillName": "智能配图助手",
+      "tags": [
+        "配图",
+        "封面",
+        "文章图片",
+        "公众号",
+        "小红书"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
+      "hidden": false,
+      "auth": {
+        "type": "api-key",
+        "header": "X-API-Key",
+        "tenantHeader": "X-Tenant-Id"
+      },
+      "comingSoon": false,
+      "invocationMode": "execute",
+      "invocation": {
+        "type": "execute",
+        "executePath": "/api/execute"
+      },
+      "formSchema": {
+        "type": "object",
+        "required": [],
+        "x-layout": {
+          "mode": "contextComposer",
+          "primaryField": "sourceText",
+          "primaryTabs": [
+            {
+              "id": "paste",
+              "label": "粘贴正文",
+              "field": "sourceText",
+              "icon": "text"
+            },
+            {
+              "id": "upload",
+              "label": "上传文件",
+              "field": "sourceDocument",
+              "icon": "upload"
+            }
+          ],
+          "primaryControlFields": [
+            "imageCount",
+            "style"
+          ],
+          "advancedControlFields": [
+            "title",
+            "publishPlatform",
+            "brandRequirements",
+            "watermarkMode"
+          ],
+          "advancedLabel": "高级选项",
+          "profileContext": true
+        },
+        "x-profile-context": true,
+        "x-required-any-of": [
+          {
+            "fields": [
+              "sourceText",
+              "sourceDocument"
+            ],
+            "message": "请输入文章内容，或上传 Word/Markdown/TXT 文件"
+          }
+        ],
+        "properties": {
+          "sourceText": {
+            "type": "string",
+            "title": "文章内容",
+            "format": "markdown",
+            "x-rows": 12
+          },
+          "sourceDocument": {
+            "type": "string",
+            "title": "上传文章文件",
+            "format": "binary",
+            "x-component": "FileUpload",
+            "x-accept": ".docx,.md,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/markdown,text/plain",
+            "x-max-size": 10485760
+          },
+          "title": {
+            "type": "string",
+            "title": "标题"
+          },
+          "imageCount": {
+            "type": "number",
+            "title": "正文配图数量",
+            "default": 4,
+            "x-unit": "张"
+          },
+          "coverRatios": {
+            "type": "array",
+            "title": "封面比例",
+            "items": {
+              "type": "string"
+            },
+            "enum": [
+              "2.35:1",
+              "1:1",
+              "16:9",
+              "3:4",
+              "9:16"
+            ],
+            "enumNames": [
+              "公众号头图",
+              "方图",
+              "横图",
+              "小红书竖图",
+              "短视频竖屏"
+            ],
+            "default": [
+              "2.35:1",
+              "1:1",
+              "16:9",
+              "3:4",
+              "9:16"
+            ]
+          },
+          "publishPlatform": {
+            "type": "string",
+            "title": "发布平台",
+            "enum": [
+              "all",
+              "wechat",
+              "xhs",
+              "blog",
+              "zhihu"
+            ],
+            "enumNames": [
+              "全平台",
+              "微信公众号",
+              "小红书",
+              "博客/官网",
+              "知乎"
+            ],
+            "x-options": [
+              {
+                "value": "all",
+                "label": "全平台",
+                "description": "一次输出多平台图片规格",
+                "icon": "Globe",
+                "color": "blue",
+                "group": "发布平台"
+              },
+              {
+                "value": "wechat",
+                "label": "微信公众号",
+                "description": "头图和正文插图优先",
+                "icon": "BookOpen",
+                "color": "green",
+                "group": "发布平台"
+              },
+              {
+                "value": "xhs",
+                "label": "小红书",
+                "description": "竖图封面和种草图优先",
+                "icon": "Sparkles",
+                "color": "rose",
+                "group": "发布平台"
+              },
+              {
+                "value": "blog",
+                "label": "博客/官网",
+                "description": "横图和信息图优先",
+                "icon": "FileText",
+                "color": "cyan",
+                "group": "发布平台"
+              },
+              {
+                "value": "zhihu",
+                "label": "知乎",
+                "description": "解释型配图和图解优先",
+                "icon": "PenTool",
+                "color": "indigo",
+                "group": "发布平台"
+              }
+            ],
+            "default": "all"
+          },
+          "style": {
+            "type": "string",
+            "title": "视觉风格",
+            "enum": [
+              "clean-commercial",
+              "editorial-photo",
+              "soft-illustration",
+              "tech-diagram"
+            ],
+            "enumNames": [
+              "清爽商业",
+              "杂志摄影",
+              "柔和插画",
+              "科技图解"
+            ],
+            "x-options": [
+              {
+                "value": "clean-commercial",
+                "label": "清爽商业",
+                "description": "干净留白，适合商业发布",
+                "icon": "Palette",
+                "color": "cyan",
+                "group": "视觉风格"
+              },
+              {
+                "value": "editorial-photo",
+                "label": "杂志摄影",
+                "description": "更像杂志专题和摄影配图",
+                "icon": "Camera",
+                "color": "purple",
+                "group": "视觉风格"
+              },
+              {
+                "value": "soft-illustration",
+                "label": "柔和插画",
+                "description": "轻松友好，适合生活方式内容",
+                "icon": "Sparkles",
+                "color": "pink",
+                "group": "视觉风格"
+              },
+              {
+                "value": "tech-diagram",
+                "label": "科技图解",
+                "description": "结构清晰，适合知识解释",
+                "icon": "Cpu",
+                "color": "blue",
+                "group": "视觉风格"
+              }
+            ],
+            "default": "clean-commercial"
+          },
+          "brandRequirements": {
+            "type": "string",
+            "title": "水印/品牌要求",
+            "x-component": "Textarea",
+            "x-rows": 3
+          },
+          "watermarkMode": {
+            "type": "string",
+            "title": "水印",
+            "enum": [
+              "off",
+              "corner",
+              "both"
+            ],
+            "enumNames": [
+              "不加水印",
+              "右下角",
+              "角标 + 平铺"
+            ],
+            "x-options": [
+              {
+                "value": "off",
+                "label": "不加水印",
+                "description": "保持画面干净",
+                "icon": "Shield",
+                "color": "slate",
+                "group": "水印"
+              },
+              {
+                "value": "corner",
+                "label": "右下角",
+                "description": "保留轻量署名",
+                "icon": "Tag",
+                "color": "blue",
+                "group": "水印"
+              },
+              {
+                "value": "both",
+                "label": "角标 + 平铺",
+                "description": "更强品牌露出",
+                "icon": "Tag",
+                "color": "amber",
+                "group": "水印"
+              }
+            ],
+            "default": "off"
+          }
+        }
+      },
+      "providerType": "llm",
+      "providerConfig": {
+        "asyncProvider": "skills2api-scheduler",
+        "resultContract": "ResultEnvelope"
+      }
+    },
+    {
+      "id": "xhs-viral-copywriter",
+      "slug": "xhs-viral-copywriter",
+      "question": "我的文章赞少互动低?",
+      "skillName": "爆款文案助手",
+      "tags": [
+        "小红书",
+        "爆款文案",
+        "种草",
+        "标题",
+        "发布套件"
+      ],
+      "profession": [
+        "blogger-individual",
+        "operations"
+      ],
+      "industry": [
+        "media",
+        "ecommerce"
+      ],
+      "hidden": false,
+      "auth": {
+        "type": "api-key",
+        "header": "X-API-Key",
+        "tenantHeader": "X-Tenant-Id"
+      },
+      "comingSoon": false,
+      "invocationMode": "execute",
+      "invocation": {
+        "type": "execute",
+        "executePath": "/api/execute"
+      },
+      "formSchema": {
+        "type": "object",
+        "required": [
+          "topic"
+        ],
+        "x-layout": {
+          "mode": "contextComposer",
+          "primaryField": "topic",
+          "primaryControlFields": [
+            "noteType",
+            "tone"
+          ],
+          "advancedControlFields": [
+            "audience",
+            "sellingPoint",
+            "accountPersona"
+          ],
+          "advancedLabel": "高级选项",
+          "profileContext": true
+        },
+        "x-profile-context": true,
+        "properties": {
+          "topic": {
+            "type": "string",
+            "title": "主题/产品",
+            "x-component": "Textarea",
+            "x-rows": 4
+          },
+          "audience": {
+            "type": "string",
+            "title": "目标人群"
+          },
+          "sellingPoint": {
+            "type": "string",
+            "title": "核心卖点",
+            "x-component": "Textarea",
+            "x-rows": 4
+          },
+          "accountPersona": {
+            "type": "string",
+            "title": "账号人设"
+          },
+          "noteType": {
+            "type": "string",
+            "title": "笔记类型",
+            "enum": [
+              "种草",
+              "测评",
+              "攻略",
+              "避坑",
+              "清单",
+              "复盘"
+            ],
+            "x-options": [
+              {
+                "value": "种草",
+                "label": "种草",
+                "description": "突出使用场景和购买动机",
+                "icon": "Sparkles",
+                "color": "rose",
+                "group": "笔记类型"
+              },
+              {
+                "value": "测评",
+                "label": "测评",
+                "description": "强调真实体验和对比",
+                "icon": "ClipboardList",
+                "color": "blue",
+                "group": "笔记类型"
+              },
+              {
+                "value": "攻略",
+                "label": "攻略",
+                "description": "步骤化讲清方法和清单",
+                "icon": "BookOpen",
+                "color": "green",
+                "group": "笔记类型"
+              },
+              {
+                "value": "避坑",
+                "label": "避坑",
+                "description": "先给风险，再给建议",
+                "icon": "Shield",
+                "color": "amber",
+                "group": "笔记类型"
+              },
+              {
+                "value": "清单",
+                "label": "清单",
+                "description": "多点位快速浏览",
+                "icon": "ClipboardList",
+                "color": "cyan",
+                "group": "笔记类型"
+              },
+              {
+                "value": "复盘",
+                "label": "复盘",
+                "description": "记录过程、结论和下一步",
+                "icon": "Target",
+                "color": "purple",
+                "group": "笔记类型"
+              }
+            ],
+            "default": "种草"
+          },
+          "tone": {
+            "type": "string",
+            "title": "语气",
+            "enum": [
+              "真实具体",
+              "轻松口语",
+              "专业测评",
+              "强反差",
+              "温柔陪伴"
+            ],
+            "x-options": [
+              {
+                "value": "真实具体",
+                "label": "真实具体",
+                "description": "像亲测后的真实分享",
+                "icon": "MessageCircle",
+                "color": "blue",
+                "group": "语气"
+              },
+              {
+                "value": "轻松口语",
+                "label": "轻松口语",
+                "description": "更像朋友聊天种草",
+                "icon": "Smile",
+                "color": "green",
+                "group": "语气"
+              },
+              {
+                "value": "专业测评",
+                "label": "专业测评",
+                "description": "有维度、有判断、有对比",
+                "icon": "ClipboardList",
+                "color": "indigo",
+                "group": "语气"
+              },
+              {
+                "value": "强反差",
+                "label": "强反差",
+                "description": "先制造冲突，再给结论",
+                "icon": "Zap",
+                "color": "amber",
+                "group": "语气"
+              },
+              {
+                "value": "温柔陪伴",
+                "label": "温柔陪伴",
+                "description": "柔和、共情、低压表达",
+                "icon": "Heart",
+                "color": "pink",
+                "group": "语气"
+              }
+            ],
+            "default": "真实具体"
+          }
+        }
+      },
+      "providerType": "llm",
+      "providerConfig": {
+        "asyncProvider": "skills2api-scheduler",
+        "resultContract": "ResultEnvelope"
+      }
+    },
+    {
       "id": "douyin-realtime-hot-rise",
       "slug": "douyin-realtime-hot-rise",
-      "name": "douyin-realtime-hot-rise",
-      "description": "抖音上升热点选题助手",
+      "question": "拍什么会有流量?",
+      "skillName": "抖音上升热点选题助手",
       "tags": [
         "抖音",
         "热点",
@@ -118,8 +865,8 @@
     {
       "id": "douyin-traffic-dashboard",
       "slug": "douyin-traffic-dashboard",
-      "name": "douyin-traffic-dashboard",
-      "description": "抖音流量分配大盘",
+      "question": "抖音平台流量在哪?",
+      "skillName": "抖音流量分配大盘",
       "tags": [
         "抖音",
         "流量分配",
@@ -160,8 +907,8 @@
     {
       "id": "douyin-hotlist-overall",
       "slug": "douyin-hotlist-overall",
-      "name": "douyin-hotlist-overall",
-      "description": "抖音全网实时热点",
+      "question": "现在最热门的是什么？",
+      "skillName": "抖音全网实时热点",
       "tags": [
         "抖音",
         "热搜",
@@ -201,8 +948,8 @@
     {
       "id": "douyin-kol-search",
       "slug": "douyin-kol-search",
-      "name": "douyin-kol-search",
-      "description": "抖音最具商业价值 KOL",
+      "question": "谁是最会卖货的博主?",
+      "skillName": "抖音最具商业价值 KOL",
       "tags": [
         "抖音",
         "KOL",
@@ -294,8 +1041,8 @@
     {
       "id": "douyin-sentiment-dashboard",
       "slug": "douyin-sentiment-dashboard",
-      "name": "douyin-sentiment-dashboard",
-      "description": "抖音短视频运营增长大盘",
+      "question": "抖音短视频怎么运营?",
+      "skillName": "抖音短视频运营增长大盘",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -342,8 +1089,8 @@
     {
       "id": "xhs-sentiment-dashboard",
       "slug": "xhs-sentiment-dashboard",
-      "name": "xhs-sentiment-dashboard",
-      "description": "小红书短视频运营增长助手",
+      "question": "小红书短视频怎么运营?",
+      "skillName": "小红书短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -390,8 +1137,8 @@
     {
       "id": "bilibili-sentiment-dashboard",
       "slug": "bilibili-sentiment-dashboard",
-      "name": "bilibili-sentiment-dashboard",
-      "description": "B站短视频运营增长助手",
+      "question": "B站短视频怎么运营?",
+      "skillName": "B站短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -438,8 +1185,8 @@
     {
       "id": "kuaishou-sentiment-dashboard",
       "slug": "kuaishou-sentiment-dashboard",
-      "name": "kuaishou-sentiment-dashboard",
-      "description": "快手短视频运营增长助手",
+      "question": "快手短视频如何运营?",
+      "skillName": "快手短视频运营增长助手",
       "tags": [
         "舆情监控",
         "评论洞察",
@@ -486,8 +1233,8 @@
     {
       "id": "software-dev-cost-dashboard",
       "slug": "software-dev-cost-dashboard",
-      "name": "software-dev-cost-dashboard",
-      "description": "软件成本评估看板",
+      "question": "软件开发成本不可控?",
+      "skillName": "软件成本评估看板",
       "tags": [
         "成本评估",
         "项目管理",

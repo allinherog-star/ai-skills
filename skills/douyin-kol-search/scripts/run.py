@@ -4,6 +4,7 @@ import json
 import os
 import ssl
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -80,7 +81,7 @@ def print_http_error(exc):
     print(json.dumps(parsed, ensure_ascii=False))
     sys.exit(1)
 
-def request_text(method, path, payload):
+def request_json(method, path, payload):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         f"{build_base_url()}{path}",
@@ -90,18 +91,54 @@ def request_text(method, path, payload):
     )
     try:
         with urllib.request.urlopen(req, context=SSL_CONTEXT) as response:
-            return response.read().decode("utf-8")
+            return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         print_http_error(exc)
     except urllib.error.URLError as exc:
         print_url_error(exc)
 
+def is_async_terminal(data):
+    status = data.get("status")
+    return status in {"completed", "failed", "needs_input", "cancelled"}
+
+def poll_async_result(start_response, max_attempts, interval_seconds):
+    data = start_response.get("data") or {}
+    if data.get("mode") != "async":
+        return start_response
+    if is_async_terminal(data):
+        return start_response
+
+    execution_id = data.get("executionId") or data.get("turnId")
+    job_id = data.get("jobId")
+    if not execution_id and not job_id:
+        return start_response
+
+    for _ in range(max_attempts):
+        time.sleep(interval_seconds)
+        response = request_json("POST", EXECUTE_PATH, {
+            "skillId": SKILL_ID,
+            "params": {},
+            "execution": {
+                "action": "poll",
+                "executionId": execution_id,
+                "jobId": job_id,
+            },
+        })
+        data = response.get("data") or {}
+        if data.get("mode") == "async" and is_async_terminal(data):
+            return response
+
+    fail("Async skill execution did not reach a terminal state in time")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--params", default="{}")
+    parser.add_argument("--poll-attempts", type=int, default=180)
+    parser.add_argument("--poll-interval", type=float, default=2.0)
     args = parser.parse_args()
     params = load_params(args.params)
-    print(request_text("POST", EXECUTE_PATH, {"skillId": SKILL_ID, "params": params}))
+    response = request_json("POST", EXECUTE_PATH, {"skillId": SKILL_ID, "params": params})
+    print(json.dumps(poll_async_result(response, args.poll_attempts, args.poll_interval), ensure_ascii=False))
 
 if __name__ == "__main__":
     main()

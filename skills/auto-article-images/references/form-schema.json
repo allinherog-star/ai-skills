@@ -1,0 +1,257 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "primaryField": "sourceText",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "label": "粘贴正文",
+        "field": "sourceText",
+        "icon": "text"
+      },
+      {
+        "id": "upload",
+        "label": "上传文件",
+        "field": "sourceDocument",
+        "icon": "upload"
+      }
+    ],
+    "primaryControlFields": [
+      "imageCount",
+      "style"
+    ],
+    "advancedControlFields": [
+      "title",
+      "publishPlatform",
+      "brandRequirements",
+      "watermarkMode"
+    ],
+    "advancedLabel": "高级选项",
+    "profileContext": true
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "sourceText",
+        "sourceDocument"
+      ],
+      "message": "请输入文章内容，或上传 Word/Markdown/TXT 文件"
+    }
+  ],
+  "properties": {
+    "sourceText": {
+      "type": "string",
+      "title": "文章内容",
+      "format": "markdown",
+      "x-rows": 12
+    },
+    "sourceDocument": {
+      "type": "string",
+      "title": "上传文章文件",
+      "format": "binary",
+      "x-component": "FileUpload",
+      "x-accept": ".docx,.md,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/markdown,text/plain",
+      "x-max-size": 10485760
+    },
+    "title": {
+      "type": "string",
+      "title": "标题"
+    },
+    "imageCount": {
+      "type": "number",
+      "title": "正文配图数量",
+      "default": 4,
+      "x-unit": "张"
+    },
+    "coverRatios": {
+      "type": "array",
+      "title": "封面比例",
+      "items": {
+        "type": "string"
+      },
+      "enum": [
+        "2.35:1",
+        "1:1",
+        "16:9",
+        "3:4",
+        "9:16"
+      ],
+      "enumNames": [
+        "公众号头图",
+        "方图",
+        "横图",
+        "小红书竖图",
+        "短视频竖屏"
+      ],
+      "default": [
+        "2.35:1",
+        "1:1",
+        "16:9",
+        "3:4",
+        "9:16"
+      ]
+    },
+    "publishPlatform": {
+      "type": "string",
+      "title": "发布平台",
+      "enum": [
+        "all",
+        "wechat",
+        "xhs",
+        "blog",
+        "zhihu"
+      ],
+      "enumNames": [
+        "全平台",
+        "微信公众号",
+        "小红书",
+        "博客/官网",
+        "知乎"
+      ],
+      "x-options": [
+        {
+          "value": "all",
+          "label": "全平台",
+          "description": "一次输出多平台图片规格",
+          "icon": "Globe",
+          "color": "blue",
+          "group": "发布平台"
+        },
+        {
+          "value": "wechat",
+          "label": "微信公众号",
+          "description": "头图和正文插图优先",
+          "icon": "BookOpen",
+          "color": "green",
+          "group": "发布平台"
+        },
+        {
+          "value": "xhs",
+          "label": "小红书",
+          "description": "竖图封面和种草图优先",
+          "icon": "Sparkles",
+          "color": "rose",
+          "group": "发布平台"
+        },
+        {
+          "value": "blog",
+          "label": "博客/官网",
+          "description": "横图和信息图优先",
+          "icon": "FileText",
+          "color": "cyan",
+          "group": "发布平台"
+        },
+        {
+          "value": "zhihu",
+          "label": "知乎",
+          "description": "解释型配图和图解优先",
+          "icon": "PenTool",
+          "color": "indigo",
+          "group": "发布平台"
+        }
+      ],
+      "default": "all"
+    },
+    "style": {
+      "type": "string",
+      "title": "视觉风格",
+      "enum": [
+        "clean-commercial",
+        "editorial-photo",
+        "soft-illustration",
+        "tech-diagram"
+      ],
+      "enumNames": [
+        "清爽商业",
+        "杂志摄影",
+        "柔和插画",
+        "科技图解"
+      ],
+      "x-options": [
+        {
+          "value": "clean-commercial",
+          "label": "清爽商业",
+          "description": "干净留白，适合商业发布",
+          "icon": "Palette",
+          "color": "cyan",
+          "group": "视觉风格"
+        },
+        {
+          "value": "editorial-photo",
+          "label": "杂志摄影",
+          "description": "更像杂志专题和摄影配图",
+          "icon": "Camera",
+          "color": "purple",
+          "group": "视觉风格"
+        },
+        {
+          "value": "soft-illustration",
+          "label": "柔和插画",
+          "description": "轻松友好，适合生活方式内容",
+          "icon": "Sparkles",
+          "color": "pink",
+          "group": "视觉风格"
+        },
+        {
+          "value": "tech-diagram",
+          "label": "科技图解",
+          "description": "结构清晰，适合知识解释",
+          "icon": "Cpu",
+          "color": "blue",
+          "group": "视觉风格"
+        }
+      ],
+      "default": "clean-commercial"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "水印/品牌要求",
+      "x-component": "Textarea",
+      "x-rows": 3
+    },
+    "watermarkMode": {
+      "type": "string",
+      "title": "水印",
+      "enum": [
+        "off",
+        "corner",
+        "both"
+      ],
+      "enumNames": [
+        "不加水印",
+        "右下角",
+        "角标 + 平铺"
+      ],
+      "x-options": [
+        {
+          "value": "off",
+          "label": "不加水印",
+          "description": "保持画面干净",
+          "icon": "Shield",
+          "color": "slate",
+          "group": "水印"
+        },
+        {
+          "value": "corner",
+          "label": "右下角",
+          "description": "保留轻量署名",
+          "icon": "Tag",
+          "color": "blue",
+          "group": "水印"
+        },
+        {
+          "value": "both",
+          "label": "角标 + 平铺",
+          "description": "更强品牌露出",
+          "icon": "Tag",
+          "color": "amber",
+          "group": "水印"
+        }
+      ],
+      "default": "off"
+    }
+  }
+}

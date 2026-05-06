@@ -1,0 +1,7 @@
+interface:
+  display_name: "爆款文案助手"
+  short_description: "爆款文案助手"
+  default_prompt: "Use $xhs-viral-copywriter to help with 爆款文案助手"
+
+policy:
+  allow_implicit_invocation: true

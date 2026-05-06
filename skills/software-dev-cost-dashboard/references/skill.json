@@ -1,8 +1,8 @@
 {
   "id": "software-dev-cost-dashboard",
   "slug": "software-dev-cost-dashboard",
-  "name": "software-dev-cost-dashboard",
-  "description": "软件成本评估看板",
+  "question": "软件开发成本不可控?",
+  "skillName": "软件成本评估看板",
   "tags": [
     "成本评估",
     "项目管理",

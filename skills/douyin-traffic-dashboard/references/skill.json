@@ -1,8 +1,8 @@
 {
   "id": "douyin-traffic-dashboard",
   "slug": "douyin-traffic-dashboard",
-  "name": "douyin-traffic-dashboard",
-  "description": "抖音流量分配大盘",
+  "question": "抖音平台流量在哪?",
+  "skillName": "抖音流量分配大盘",
   "tags": [
     "抖音",
     "流量分配",
