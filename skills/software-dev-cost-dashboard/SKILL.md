@@ -9,9 +9,9 @@ security:
   warning: "此技能为 external-link 模式，不通过导出 runner 直接调用 API。请在访问目标站点前确认其数据安全与隐私政策。"
 ---
 
-# 当前技能：software-dev-cost-dashboard
+# software-dev-cost-dashboard 软件成本评估看板
 
-官网入口：[AI Skills 官网](https://ai-skills.ai/)
+官网入口：<https://ai-skills.ai>
 
 ### 概述
 

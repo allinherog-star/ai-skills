@@ -13,9 +13,9 @@ security:
   warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
 ---
 
-# 当前技能：xhs-viral-copywriter
+# xhs-viral-copywriter 爆款文案助手
 
-官网入口：[AI Skills 官网](https://ai-skills.ai/)
+官网入口：<https://ai-skills.ai>
 
 ### 概述
 

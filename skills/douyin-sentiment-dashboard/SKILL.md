@@ -12,9 +12,9 @@ security:
   warning: "此技能会将用户提供的分享链接发送至 ai-skills.ai 进行解析和评论分析。启用前请确认您信任该平台的数据安全政策。"
 ---
 
-# 当前技能：douyin-sentiment-dashboard
+# douyin-sentiment-dashboard 抖音短视频运营增长大盘
 
-官网入口：[AI Skills 官网](https://ai-skills.ai/)
+官网入口：<https://ai-skills.ai>
 
 ### 概述
 
