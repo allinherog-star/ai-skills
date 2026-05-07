@@ -14,6 +14,7 @@
       "audience",
       "keywords",
       "platform",
+      "imageCount",
       "brandRequirements",
       "watermarkMode"
     ],
@@ -163,6 +164,14 @@
       "type": "boolean",
       "title": "生成正文配图",
       "default": true
+    },
+    "imageCount": {
+      "type": "number",
+      "title": "正文配图数量",
+      "default": 4,
+      "minimum": 1,
+      "maximum": 5,
+      "x-unit": "张"
     },
     "brandRequirements": {
       "type": "string",

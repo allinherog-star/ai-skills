@@ -3,7 +3,7 @@ name: douyin-realtime-hot-rise
 description: "抖音上升热点选题助手. Use this skill when the user asks what to post next; the user asks which topics are rising; the user wants growth-oriented topic selection. Do not use when the user wants the absolute hottest list right now; the user wants benchmark accounts or creators."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
+    description: "从 AI Skills 官网获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
 security:
   thirdPartyDomain: ai-skills.ai
   dataSent:
@@ -13,57 +13,9 @@ security:
   warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
 ---
 
-# AI Skills 技能库：为每一个场景做真正有价值的AI技能库
+# 当前技能：douyin-realtime-hot-rise
 
-> 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，先按这 5 步完成接入，再继续看当前技能说明。
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/content-01.webp" alt="AI Skills 官网场景导览图" />
-</picture>
-
-## 快速开始
-
-### 1. 扫码登录
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/1%E3%80%81%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.png" alt="扫码登录 AI Skills 账号" />
-</picture>
-
-先在 AI Skills 官网完成扫码登录，确保后续 API Key、安装命令和技能调用都绑定到同一个账号。
-
-### 2. 申请 API Key
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/2%E3%80%81%E7%94%B3%E8%AF%B7%E4%BD%A0%E7%9A%84API%20Key.png" alt="在 AI Skills 站点申请 API Key" />
-</picture>
-
-登录后进入 API Key 页面申请密钥，后续 CLI 安装和运行技能都会读取 AISKILLS_API_KEY。
-
-### 3. 复制安装命令
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/3%E3%80%81%E5%A4%8D%E5%88%B6%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4.png" alt="复制 AI Skills 技能安装命令" />
-</picture>
-
-在 AI Skills 官网、skills.sh 或 ClawHub 页面复制安装命令，优先使用官方 CLI，避免手动拼接参数。
-
-### 4. 执行安装命令
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/4%E3%80%81%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A42.png" alt="在终端执行 AI Skills 安装命令" />
-</picture>
-
-回到终端执行安装命令，CLI 会写入 AISKILLS_API_KEY，并调用下游 skills add 完成技能安装。
-
-### 5. 成功获取技能
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/5%E3%80%81%E6%88%90%E5%8A%9Fget%E6%8A%80%E8%83%BD.png" alt="AI Skills 技能安装成功界面" />
-</picture>
-
-安装成功后，你会在 agent 的技能列表里看到对应 Skill，可以直接调用并复用到工作流中。
-
-## 当前技能：douyin-realtime-hot-rise
+官网入口：[AI Skills 官网](https://ai-skills.ai/)
 
 ### 概述
 
@@ -236,7 +188,7 @@ python3 scripts/run.py --params '{"keyword":"奥运","order":"rank_diff"}'
 
 ### 运行前准备
 
-- `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
+- `AISKILLS_BASE_URL`：默认使用 AI Skills 官方服务
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
 

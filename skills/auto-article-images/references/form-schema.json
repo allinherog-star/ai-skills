@@ -64,6 +64,8 @@
       "type": "number",
       "title": "正文配图数量",
       "default": 4,
+      "minimum": 1,
+      "maximum": 5,
       "x-unit": "张"
     },
     "coverRatios": {
