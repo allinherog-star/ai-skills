@@ -3,7 +3,7 @@ name: douyin-traffic-dashboard
 description: "抖音流量分配大盘. Use this skill when the user asks where Douyin traffic is going; the user asks which categories are getting more traffic; the user wants a platform-level directional read. Do not use when the user wants specific rising topics; the user wants a real-time hot list."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
 security:
   thirdPartyDomain: ai-skills.ai
   dataSent:
@@ -16,6 +16,7 @@ security:
 # douyin-traffic-dashboard 抖音流量分配大盘
 
 官网入口：<https://ai-skills.ai>
+快速开始：<https://github.com/allinherog-star/ai-skills/tree/main#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B>
 
 ### 概述
 
@@ -133,7 +134,7 @@ python3 scripts/run.py --params '{}'
 
 ### 运行前准备
 
-- `AISKILLS_BASE_URL`：默认使用 AI Skills 官方服务
+- `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
 
