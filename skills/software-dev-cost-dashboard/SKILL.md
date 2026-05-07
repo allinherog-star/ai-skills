@@ -11,8 +11,8 @@ security:
 
 # software-dev-cost-dashboard 软件成本评估看板
 
-官网入口：<https://ai-skills.ai>
 快速开始：<https://github.com/allinherog-star/ai-skills/tree/main#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B>
+更多技能：<https://ai-skills.ai>
 
 ### 概述
 
