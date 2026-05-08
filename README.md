@@ -31,15 +31,7 @@
 
 先在 AI Skills 官网完成扫码登录。这样后续申请 API Key、复制安装命令和执行安装时，都会绑定在同一个账号上下文里。
 
-### 2. 申请 API Key
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/2%E3%80%81%E7%94%B3%E8%AF%B7%E4%BD%A0%E7%9A%84API%20Key.png" alt="在 AI Skills 站点申请 API Key" />
-</picture>
-
-登录后进入 API Key 页面申请你的密钥。对于大多数 Skill 市场和 agent 客户端来说，后续调用都会读取 `AISKILLS_API_KEY`，所以这一步是权限入口。
-
-### 3. 复制安装命令
+### 2. 复制安装命令
 
 <picture>
   <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/3%E3%80%81%E5%A4%8D%E5%88%B6%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4.png" alt="复制 AI Skills 技能安装命令" />
@@ -47,21 +39,30 @@
 
 在官网、skills.sh 或 ClawHub 的 Skill 页面复制安装命令。推荐直接使用 AI Skills 官方 CLI 提供的命令，避免人工改写参数带来的安装失败。
 
-### 4. 执行安装命令
+### 3. 执行安装命令
 
 <picture>
   <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/4%E3%80%81%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A42.png" alt="在终端执行 AI Skills 安装命令" />
 </picture>
 
-回到终端执行安装命令。CLI 会负责写入 `AISKILLS_API_KEY`，并继续调用下游 `skills add` 完成技能安装，减少不同客户端的接入差异。
+回到终端执行安装命令，就完成安装了。CLI 会负责写入 `AISKILLS_API_KEY`，并继续调用下游 `skills add`。
 
-### 5. 成功获取技能
+### 4. 技能安装成功
 
 <picture>
   <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/5%E3%80%81%E6%88%90%E5%8A%9Fget%E6%8A%80%E8%83%BD.png" alt="AI Skills 技能安装成功界面" />
 </picture>
 
 当界面提示成功后，你就能在自己的 agent 技能列表里看到对应 Skill，并继续把它串进更完整的工作流。
+
+### 5. 重置 API Key（安全机制）
+
+<picture>
+  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/step/2%E3%80%81%E7%94%B3%E8%AF%B7%E4%BD%A0%E7%9A%84API%20Key.png" alt="在 AI Skills 站点申请 API Key" />
+</picture>
+
+登录后进入 API Key 页面申请你的密钥。对于大多数 Skill 市场和 agent 客户端来说，后续调用都会读取 `AISKILLS_API_KEY`，所以这一步是权限入口。
+
 
 ## AI Skills 是什么：一个能直接查的技能库
 
