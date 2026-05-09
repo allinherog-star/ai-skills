@@ -101,7 +101,44 @@ python3 scripts/run.py --params '{"sourceText":"文章内容"}'
 {
   "success": true,
   "data": {
-    "message": "示例结果请以技能真实返回结构为准。"
+    "mode": "async",
+    "status": "completed",
+    "resultEnvelope": {
+      "status": "completed",
+      "title": "配图结果已生成",
+      "summary": "已生成正文配图和多比例封面。",
+      "items": [
+        {
+          "id": "image-package",
+          "type": "attachmentGroup",
+          "title": "配图文件",
+          "artifactIds": [
+            "content-01.webp",
+            "cover-wechat-2_35x1.webp"
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "content-01.webp",
+          "name": "content-01.webp",
+          "relativePath": "content-01.webp",
+          "mimeType": "image/webp",
+          "url": "/api/skill-artifacts/job_demo/file/content-01.webp"
+        },
+        {
+          "id": "cover-wechat-2_35x1.webp",
+          "name": "cover-wechat-2_35x1.webp",
+          "relativePath": "cover-wechat-2_35x1.webp",
+          "mimeType": "image/webp",
+          "url": "/api/skill-artifacts/job_demo/file/cover-wechat-2_35x1.webp"
+        }
+      ],
+      "presentation": {
+        "mode": "single"
+      }
+    },
+    "zipUrl": "/api/skill-artifacts/job_demo/archive"
   },
   "meta": {
     "executionTime": 842,
@@ -110,11 +147,22 @@ python3 scripts/run.py --params '{"sourceText":"文章内容"}'
 }
 ```
 
+### 结构化结果约定
+
+异步执行完成时，运行时必须在产物目录根部写出 `result.json`，并使用 `ResultEnvelope` 结构：
+
+- `items` 是预览导航的唯一来源；默认只写一个主结果 `item`。
+- `artifacts` 是可下载产物清单，不会自动变成预览 Tab。
+- `item.artifactIds` 或 `item.artifacts` 只表示某个结果项需要引用这些文件进行展示。
+- 多结构预览必须由技能在 `items` 中显式声明多个结果项，必要时使用 `presentation.mode: "tabs"`。
+- 图文类技能默认只把文章或配图包作为主 `item`；正文图、封面图等附件放在 `artifacts`，不要自动拆成多个预览 Tab。
+- 只有当用户确实需要独立查看附属结果时，才在 `items` 中明确增加如“封面合集”“发布建议”等条目，并设置 `presentation.mode` 为 `tabs`。
+
 ### 结果重点看什么
 
-- `data`：技能主返回结果，先看核心业务字段是否符合预期。
-- `meta.executionTime`：本次执行耗时，便于排查慢请求。
-- `meta.cached`：是否命中缓存，帮助判断结果新鲜度。
+- `data.resultEnvelope.items`：预览内容列表，默认应只有配图文件组这个主结果。
+- `data.resultEnvelope.artifacts`：正文配图和各比例封面图等可下载文件清单。
+- `data.zipUrl`：下载全部图片结果，只有显式写入 `items` 的附属结果才会显示 Tab。
 
 ### 运行前准备
 

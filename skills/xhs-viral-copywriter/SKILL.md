@@ -101,6 +101,15 @@ python3 scripts/run.py --params '{"topic":"主题/产品"}'
 }
 ```
 
+### 结构化结果约定
+
+异步执行完成时，运行时必须在产物目录根部写出 `result.json`，并使用 `ResultEnvelope` 结构：
+
+- `items` 是预览导航的唯一来源；默认只写一个主结果 `item`。
+- `artifacts` 是可下载产物清单，不会自动变成预览 Tab。
+- `item.artifactIds` 或 `item.artifacts` 只表示某个结果项需要引用这些文件进行展示。
+- 多结构预览必须由技能在 `items` 中显式声明多个结果项，必要时使用 `presentation.mode: "tabs"`。
+
 ### 结果重点看什么
 
 - `data`：技能主返回结果，先看核心业务字段是否符合预期。
