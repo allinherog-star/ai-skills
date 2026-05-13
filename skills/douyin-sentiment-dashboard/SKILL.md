@@ -1,6 +1,6 @@
 ---
 name: douyin-sentiment-dashboard
-description: "抖音短视频运营增长大盘. Use this skill when the user gives a Douyin link; the user wants comment sentiment / profile / public opinion / operational insight; the user wants to review a published content asset. Do not use when there is no concrete content link; the user wants hot topics."
+description: "抖音短视频运营增长助手. Use this skill when the user gives a Douyin link; the user wants comment sentiment / profile / public opinion / operational insight; the user wants to review a published content asset. Do not use when there is no concrete content link; the user wants hot topics."
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
@@ -12,7 +12,7 @@ security:
   warning: "此技能会将用户提供的分享链接发送至 ai-skills.ai 进行解析和评论分析。启用前请确认您信任该平台的数据安全政策。"
 ---
 
-# douyin-sentiment-dashboard 抖音短视频运营增长大盘
+# douyin-sentiment-dashboard 抖音短视频运营增长助手
 
 [快速开始](https://github.com/allinherog-star/ai-skills/tree/main#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
 
@@ -20,7 +20,7 @@ security:
 
 ### 概述
 
-抖音短视频运营增长大盘
+抖音短视频运营增长助手
 
 ### 什么时候使用
 

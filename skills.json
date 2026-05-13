@@ -54,7 +54,7 @@
     {
       "slug": "douyin-sentiment-dashboard",
       "question": "抖音短视频怎么运营?",
-      "skillName": "抖音短视频运营增长大盘",
+      "skillName": "抖音短视频运营增长助手",
       "invocationMode": "comment-analysis-task",
       "packagePath": "skills/douyin-sentiment-dashboard"
     },
