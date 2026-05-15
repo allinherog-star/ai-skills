@@ -117,7 +117,6 @@ python3 scripts/run.py --params '{}'
       }
     ],
     "total": 32,
-    "timeRange": "抖音平台实时流量占比",
     "updateTime": "2026-04-24T11:30:00.000Z"
   },
   "meta": {
