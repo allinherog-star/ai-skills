@@ -1,0 +1,7 @@
+interface:
+  display_name: "A/B 测试设计助手"
+  short_description: "A/B 测试设计助手"
+  default_prompt: "Use $ai-ab-testing to help with A/B 测试设计助手"
+
+policy:
+  allow_implicit_invocation: true

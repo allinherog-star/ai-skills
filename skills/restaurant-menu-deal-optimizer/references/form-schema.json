@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴菜单和套餐，建议包含价格、主推菜、成本约束和平台场景",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "menuDealText",
+        "label": "菜单与套餐内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "menuPhotoFile",
+        "label": "上传菜单资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "deliveryShopLink",
+        "label": "店铺或团购链接"
+      }
+    ],
+    "primaryField": "menuDealText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "dealOptimizeFocus"
+    ],
+    "advancedControlFields": [
+      "restaurantContext",
+      "marginConstraintNotes"
+    ]
+  },
+  "properties": {
+    "menuDealText": {
+      "type": "string",
+      "title": "菜单与套餐内容",
+      "x-rows": 10,
+      "description": "粘贴菜单、套餐、价格、毛利假设、主推菜和活动规则。",
+      "x-component": "Textarea"
+    },
+    "menuPhotoFile": {
+      "type": "string",
+      "title": "上传菜单资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传菜单图片、外卖店铺截图、销售数据、成本表或竞品套餐。",
+      "x-component": "FileUpload"
+    },
+    "deliveryShopLink": {
+      "type": "string",
+      "title": "店铺或团购链接",
+      "format": "uri",
+      "description": "填写公开可访问的外卖店铺、团购页、菜单页或点评页。"
+    },
+    "dealOptimizeFocus": {
+      "enum": [
+        "套餐结构",
+        "毛利平衡",
+        "爆品表达",
+        "平台活动"
+      ],
+      "type": "string",
+      "title": "优化重点",
+      "default": "套餐结构",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "优化重点",
+          "label": "套餐结构",
+          "value": "套餐结构",
+          "description": "重点处理套餐结构"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "优化重点",
+          "label": "毛利平衡",
+          "value": "毛利平衡",
+          "description": "重点处理毛利平衡"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "优化重点",
+          "label": "爆品表达",
+          "value": "爆品表达",
+          "description": "重点处理爆品表达"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "优化重点",
+          "label": "平台活动",
+          "value": "平台活动",
+          "description": "重点处理平台活动"
+        }
+      ],
+      "description": "选择本次餐饮菜单套餐优化最需要优先处理的方向。"
+    },
+    "restaurantContext": {
+      "type": "string",
+      "title": "餐厅与客群背景",
+      "x-rows": 3,
+      "description": "说明菜系、商圈、客单价、堂食/外卖比例、目标客群和高峰时段。",
+      "x-component": "Textarea"
+    },
+    "marginConstraintNotes": {
+      "type": "string",
+      "title": "成本与运营限制",
+      "x-rows": 3,
+      "description": "补充食材成本、出餐能力、库存压力、禁用促销和平台规则。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "menuDealText",
+        "menuPhotoFile",
+        "deliveryShopLink"
+      ],
+      "message": "请填写菜单与套餐内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

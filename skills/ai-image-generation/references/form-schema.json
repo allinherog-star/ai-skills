@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "描述你想要的图片主题、主体、风格、用途、比例和任何禁用元素",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴图片创意"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传参考图"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填参考链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "图片目标",
+      "x-rows": 3,
+      "description": "例如提升点击、解释产品、建立品牌质感、社媒传播、广告转化或活动预热。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "观看人群",
+      "x-rows": 3,
+      "description": "说明图片面向的用户、客户、平台观众或内部评审对象。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "图片参考链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的参考图片、落地页、竞品视觉或素材说明链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传图片参考",
+      "format": "binary",
+      "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+      "x-max-size": 20971520,
+      "description": "上传参考图、商品图、品牌视觉资料或风格样张，用于辅助整理图片生成 brief。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "图片创意说明",
+      "x-rows": 10,
+      "description": "粘贴图片主题、商品描述、画面设想、提示词草稿、尺寸比例或发布需求。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与授权限制",
+      "x-rows": 3,
+      "description": "补充品牌色、视觉禁区、必须出现/不能出现的元素、版权授权和合规限制。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴图片创意、上传参考图，或填写公开参考链接"
+    }
+  ]
+}

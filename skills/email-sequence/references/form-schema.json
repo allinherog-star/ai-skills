@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴邮件序列草稿，最好包含主题行、正文、发送顺序、目标分群和每封邮件的 CTA",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴邮件草稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传邮件资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填邮件链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "序列目标",
+      "x-rows": 3,
+      "description": "例如激活、预约、购买、续费、召回、教育、回复、下载资料或完成设置。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "收件人分群",
+      "x-rows": 3,
+      "description": "补充生命周期阶段、来源、购买角色、产品使用状态、主要顾虑和个性化依据。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "邮件预览链接",
+      "format": "uri",
+      "description": "填写公开可访问的邮件预览、活动说明、注册页、产品页或帮助文档链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "序列深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "序列深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "序列深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "序列深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准诊断或深度序列改写。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传邮件资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等邮件资料，适合提交完整序列、活动方案或 CRM 跟进脚本。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "邮件序列草稿",
+      "x-rows": 10,
+      "description": "粘贴主题行、预览文本、正文、发送触发、分群和 CTA；按发送顺序排列更利于诊断。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "邮件场景",
+      "x-rows": 3,
+      "description": "例如营销邮件、销售跟进、生命周期自动化、用户运营、CRM 或交易通知。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "邮件表达要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、禁用表达、退订/偏好提醒、合规提示和必须保留的信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴邮件序列草稿、上传邮件资料，或填写邮件预览链接"
+    }
+  ]
+}

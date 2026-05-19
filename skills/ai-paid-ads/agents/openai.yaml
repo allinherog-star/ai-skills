@@ -1,0 +1,7 @@
+interface:
+  display_name: "付费广告诊断助手"
+  short_description: "付费广告诊断助手"
+  default_prompt: "Use $ai-paid-ads to help with 付费广告诊断助手"
+
+policy:
+  allow_implicit_invocation: true

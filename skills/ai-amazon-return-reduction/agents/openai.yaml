@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 退货诊断助手"
+  short_description: "Amazon 退货诊断助手"
+  default_prompt: "Use $ai-amazon-return-reduction to help with Amazon 退货诊断助手"
+
+policy:
+  allow_implicit_invocation: true

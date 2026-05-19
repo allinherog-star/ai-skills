@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴上市公司公开资料，建议包含公司、用途、时间范围和重点关注",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "companyDisclosureText",
+        "label": "公司公开资料摘录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "disclosureFile",
+        "label": "上传披露资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "companyDisclosureLink",
+        "label": "公开披露链接"
+      }
+    ],
+    "primaryField": "companyDisclosureText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "diligenceSummaryFocus"
+    ],
+    "advancedControlFields": [
+      "diligenceContext",
+      "watchItemNotes"
+    ]
+  },
+  "properties": {
+    "disclosureFile": {
+      "type": "string",
+      "title": "上传披露资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传公告、年报、招股书、新闻清单、尽调表或数据摘录。",
+      "x-component": "FileUpload"
+    },
+    "watchItemNotes": {
+      "type": "string",
+      "title": "关注事项与排除范围",
+      "x-rows": 3,
+      "description": "补充重点关注、已知风险、不得下结论范围和需人工核验事项。",
+      "x-component": "Textarea"
+    },
+    "diligenceContext": {
+      "type": "string",
+      "title": "尽调目的与市场背景",
+      "x-rows": 3,
+      "description": "说明公司、行业、市场、合作/投资/采购目的和时间范围。",
+      "x-component": "Textarea"
+    },
+    "companyDisclosureLink": {
+      "type": "string",
+      "title": "公开披露链接",
+      "format": "uri",
+      "description": "填写公开可访问的交易所公告、公司官网、监管披露或新闻链接。"
+    },
+    "companyDisclosureText": {
+      "type": "string",
+      "title": "公司公开资料摘录",
+      "x-rows": 10,
+      "description": "粘贴公告、年报摘要、新闻、诉讼、股权、业务或风险披露。",
+      "x-component": "Textarea"
+    },
+    "diligenceSummaryFocus": {
+      "enum": [
+        "业务概况",
+        "风险事件",
+        "治理结构",
+        "待核实清单"
+      ],
+      "type": "string",
+      "title": "摘要重点",
+      "default": "业务概况",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "摘要重点",
+          "label": "业务概况",
+          "value": "业务概况",
+          "description": "重点处理业务概况"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "摘要重点",
+          "label": "风险事件",
+          "value": "风险事件",
+          "description": "重点处理风险事件"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "摘要重点",
+          "label": "治理结构",
+          "value": "治理结构",
+          "description": "重点处理治理结构"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "摘要重点",
+          "label": "待核实清单",
+          "value": "待核实清单",
+          "description": "重点处理待核实清单"
+        }
+      ],
+      "description": "选择本次上市公司公开尽调摘要最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "companyDisclosureText",
+        "disclosureFile",
+        "companyDisclosureLink"
+      ],
+      "message": "请填写公司公开资料摘录、上传资料，或提供可访问链接"
+    }
+  ]
+}

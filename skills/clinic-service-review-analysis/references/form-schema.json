@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴诊所评价或投诉记录，建议包含服务项目、城市和近期变化",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "clinicReviewText",
+        "label": "诊所评价文本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "clinicReviewFile",
+        "label": "上传评价导出"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "clinicListingLink",
+        "label": "诊所页面链接"
+      }
+    ],
+    "primaryField": "clinicReviewText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "clinicAnalysisFocus"
+    ],
+    "advancedControlFields": [
+      "clinicServiceContext",
+      "responseToneNotes"
+    ]
+  },
+  "properties": {
+    "clinicReviewFile": {
+      "type": "string",
+      "title": "上传评价导出",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传评价表、客服记录、NPS 明细或投诉汇总。",
+      "x-component": "FileUpload"
+    },
+    "clinicReviewText": {
+      "type": "string",
+      "title": "诊所评价文本",
+      "x-rows": 10,
+      "description": "粘贴大众点评、小红书、私域反馈或客服记录中的脱敏评价。",
+      "x-component": "Textarea"
+    },
+    "clinicListingLink": {
+      "type": "string",
+      "title": "诊所页面链接",
+      "format": "uri",
+      "description": "填写公开可访问的门店页、评价页或服务项目页。"
+    },
+    "responseToneNotes": {
+      "type": "string",
+      "title": "回复口径与改进约束",
+      "x-rows": 3,
+      "description": "补充已有回复模板、禁用表述、服务承诺和整改资源。",
+      "x-component": "Textarea"
+    },
+    "clinicAnalysisFocus": {
+      "enum": [
+        "差评根因",
+        "服务动线",
+        "回复建议",
+        "改进清单"
+      ],
+      "type": "string",
+      "title": "分析重点",
+      "default": "差评根因",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "分析重点",
+          "label": "差评根因",
+          "value": "差评根因",
+          "description": "重点处理差评根因"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "分析重点",
+          "label": "服务动线",
+          "value": "服务动线",
+          "description": "重点处理服务动线"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "分析重点",
+          "label": "回复建议",
+          "value": "回复建议",
+          "description": "重点处理回复建议"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "分析重点",
+          "label": "改进清单",
+          "value": "改进清单",
+          "description": "重点处理改进清单"
+        }
+      ],
+      "description": "选择本次诊所服务评价分析最需要优先处理的方向。"
+    },
+    "clinicServiceContext": {
+      "type": "string",
+      "title": "诊所与服务项目背景",
+      "x-rows": 3,
+      "description": "说明城市、科室、服务项目、客群、价格带和近期运营动作。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "clinicReviewText",
+        "clinicReviewFile",
+        "clinicListingLink"
+      ],
+      "message": "请填写诊所评价文本、上传资料，或提供可访问链接"
+    }
+  ]
+}

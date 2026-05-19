@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon Vine 决策助手"
+  short_description: "Amazon Vine 决策助手"
+  default_prompt: "Use $ai-amazon-vine-program to help with Amazon Vine 决策助手"
+
+policy:
+  allow_implicit_invocation: true

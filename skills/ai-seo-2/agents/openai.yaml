@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO 诊断助手"
+  short_description: "SEO 诊断助手"
+  default_prompt: "Use $ai-seo-2 to help with SEO 诊断助手"
+
+policy:
+  allow_implicit_invocation: true

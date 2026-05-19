@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO 审计助手"
+  short_description: "SEO 审计助手"
+  default_prompt: "Use $ai-seo-audit to help with SEO 审计助手"
+
+policy:
+  allow_implicit_invocation: true

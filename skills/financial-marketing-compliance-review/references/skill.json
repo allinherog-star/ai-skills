@@ -1,0 +1,188 @@
+{
+  "id": "financial-marketing-compliance-review",
+  "slug": "financial-marketing-compliance-review",
+  "question": "价格怎么定才不亏?",
+  "skillName": "财务定价诊断助手",
+  "tags": [
+    "金融资料",
+    "风险提示",
+    "证据审阅",
+    "专业复核"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "technical",
+    "product"
+  ],
+  "industry": [
+    "finance",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "665b38df68c12b49914e0183e9e65be08a859c6c551e3f8f0daf0486f2f9af7b",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "financial-marketing-compliance-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴金融营销文案，建议包含产品类型、渠道、目标客群和风险提示",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "financePromoText",
+          "label": "金融营销文案"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "financePromoFile",
+          "label": "上传营销资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "promoPageLink",
+          "label": "营销页面链接"
+        }
+      ],
+      "primaryField": "financePromoText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "financeComplianceFocus"
+      ],
+      "advancedControlFields": [
+        "financialProductContext",
+        "channelAudienceNotes"
+      ]
+    },
+    "properties": {
+      "promoPageLink": {
+        "type": "string",
+        "title": "营销页面链接",
+        "format": "uri",
+        "description": "填写公开可访问的活动页、产品页、公告或投放落地页。"
+      },
+      "financePromoFile": {
+        "type": "string",
+        "title": "上传营销资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传营销海报、落地页稿、产品说明、审稿表或活动方案。",
+        "x-component": "FileUpload"
+      },
+      "financePromoText": {
+        "type": "string",
+        "title": "金融营销文案",
+        "x-rows": 10,
+        "description": "粘贴海报文案、产品卖点、收益/风险表述、活动页或投放素材。",
+        "x-component": "Textarea"
+      },
+      "channelAudienceNotes": {
+        "type": "string",
+        "title": "受众与禁用表达",
+        "x-rows": 3,
+        "description": "补充风险揭示、历史业绩口径、不可承诺收益和必须保留声明。",
+        "x-component": "Textarea"
+      },
+      "financeComplianceFocus": {
+        "enum": [
+          "收益表述",
+          "风险揭示",
+          "适当性提示",
+          "安全改写"
+        ],
+        "type": "string",
+        "title": "审查重点",
+        "default": "收益表述",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "收益表述",
+            "value": "收益表述",
+            "description": "重点处理收益表述"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审查重点",
+            "label": "风险揭示",
+            "value": "风险揭示",
+            "description": "重点处理风险揭示"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "适当性提示",
+            "value": "适当性提示",
+            "description": "重点处理适当性提示"
+          },
+          {
+            "icon": "Globe",
+            "color": "green",
+            "group": "审查重点",
+            "label": "安全改写",
+            "value": "安全改写",
+            "description": "重点处理安全改写"
+          }
+        ],
+        "description": "选择本次金融营销材料合规审查最需要优先处理的方向。"
+      },
+      "financialProductContext": {
+        "type": "string",
+        "title": "金融产品与渠道背景",
+        "x-rows": 3,
+        "description": "说明产品类型、目标客群、销售渠道、地区和适用规则。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "financePromoText",
+          "financePromoFile",
+          "promoPageLink"
+        ],
+        "message": "请填写金融营销文案、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "id": "travel-itinerary-content-planner",
+  "slug": "travel-itinerary-content-planner",
+  "question": "这段文案能打动人吗?",
+  "skillName": "文案诊断助手",
+  "tags": [
+    "文旅",
+    "路线规划",
+    "小红书",
+    "内容种草"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "retail",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Store"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "9c608b381d281615d6ed137d7c031ad61dd0bded7a312c78e4798da9e7dd0892",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "travel-itinerary-content-planner",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴路线主题和目的地素材，建议包含人群、天数、预算和交通约束",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "itineraryThemeText",
+          "label": "路线主题与素材"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "travelResourceFile",
+          "label": "上传文旅资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "destinationReferenceLink",
+          "label": "目的地参考链接"
+        }
+      ],
+      "primaryField": "itineraryThemeText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "itineraryPlanFocus"
+      ],
+      "advancedControlFields": [
+        "travelerPersonaContext",
+        "scheduleConstraintNotes"
+      ]
+    },
+    "properties": {
+      "itineraryPlanFocus": {
+        "enum": [
+          "路线结构",
+          "内容卖点",
+          "避坑提醒",
+          "转化文案"
+        ],
+        "type": "string",
+        "title": "策划重点",
+        "default": "路线结构",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "策划重点",
+            "label": "路线结构",
+            "value": "路线结构",
+            "description": "重点处理路线结构"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "策划重点",
+            "label": "内容卖点",
+            "value": "内容卖点",
+            "description": "重点处理内容卖点"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "策划重点",
+            "label": "避坑提醒",
+            "value": "避坑提醒",
+            "description": "重点处理避坑提醒"
+          },
+          {
+            "icon": "CircleDollarSign",
+            "color": "green",
+            "group": "策划重点",
+            "label": "转化文案",
+            "value": "转化文案",
+            "description": "重点处理转化文案"
+          }
+        ],
+        "description": "选择本次文旅路线内容策划最需要优先处理的方向。"
+      },
+      "itineraryThemeText": {
+        "type": "string",
+        "title": "路线主题与素材",
+        "x-rows": 10,
+        "description": "粘贴目的地、路线主题、景点、天数、预算、交通和已有文案。",
+        "x-component": "Textarea"
+      },
+      "travelResourceFile": {
+        "type": "string",
+        "title": "上传文旅资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传景点资料、图片说明、活动安排、达人笔记或竞品路线。",
+        "x-component": "FileUpload"
+      },
+      "travelerPersonaContext": {
+        "type": "string",
+        "title": "游客画像与出行场景",
+        "x-rows": 3,
+        "description": "说明亲子/情侣/研学/银发等人群、季节、预算、体力和偏好。",
+        "x-component": "Textarea"
+      },
+      "scheduleConstraintNotes": {
+        "type": "string",
+        "title": "行程约束与商业目标",
+        "x-rows": 3,
+        "description": "补充开放时间、交通限制、合作商家、避坑点、转化目标和禁用说法。",
+        "x-component": "Textarea"
+      },
+      "destinationReferenceLink": {
+        "type": "string",
+        "title": "目的地参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的景区页、攻略页、活动页或路线参考链接。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "itineraryThemeText",
+          "travelResourceFile",
+          "destinationReferenceLink"
+        ],
+        "message": "请填写路线主题与素材、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

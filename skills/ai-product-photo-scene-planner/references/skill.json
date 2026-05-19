@@ -1,0 +1,320 @@
+{
+  "id": "ai-product-photo-scene-planner",
+  "slug": "ai-product-photo-scene-planner",
+  "question": "这张图够发布吗?",
+  "skillName": "视觉质量诊断助手",
+  "tags": [
+    "AI生成",
+    "提示词",
+    "视觉创意",
+    "视频脚本"
+  ],
+  "profession": [
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "2635ad805cc1e53061a21b716852c8cee4010509bb11e9a38f62de990de4bca6",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-product-photo-scene-planner",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 6,
+      "placeholder": "填写商品外观、材质、卖点、包装和希望图片解决的转化问题",
+      "primaryTabs": [
+        {
+          "id": "product",
+          "icon": "Box",
+          "field": "productInfo",
+          "label": "填商品信息"
+        },
+        {
+          "id": "image",
+          "icon": "Image",
+          "field": "imageReferenceFile",
+          "label": "传图片参考"
+        },
+        {
+          "id": "brief",
+          "icon": "FileText",
+          "field": "productImagesBrief",
+          "label": "写图片说明"
+        }
+      ],
+      "primaryField": "productInfo",
+      "advancedLabel": "补充视觉目标",
+      "primaryControlFields": [
+        "targetChannel",
+        "marketRegion",
+        "sceneCount"
+      ],
+      "advancedControlFields": [
+        "brandStyle",
+        "targetAudience",
+        "usageGoal"
+      ]
+    },
+    "properties": {
+      "usageGoal": {
+        "type": "string",
+        "title": "图片目标",
+        "description": "例如提升点击、解释功能、建立质感、突出礼赠、承接促销或降低退货。"
+      },
+      "brandStyle": {
+        "type": "string",
+        "title": "品牌视觉要求",
+        "x-rows": 4,
+        "description": "补充品牌调性、主色、禁用风格、竞品差异、字体或画面限制。",
+        "x-component": "Textarea"
+      },
+      "sceneCount": {
+        "type": "number",
+        "title": "场景数量",
+        "default": 6,
+        "maximum": 12,
+        "minimum": 3,
+        "description": "场景数量"
+      },
+      "productInfo": {
+        "type": "string",
+        "title": "商品信息",
+        "x-rows": 6,
+        "description": "填写品类、外观、材质、规格、价格带、核心卖点、包装和必须真实呈现的细节。",
+        "x-component": "Textarea"
+      },
+      "marketRegion": {
+        "enum": [
+          "中国大陆",
+          "北美",
+          "欧洲",
+          "日本",
+          "韩国",
+          "东南亚",
+          "中东",
+          "拉美",
+          "全球通用"
+        ],
+        "type": "string",
+        "title": "市场区域",
+        "default": "中国大陆",
+        "x-options": [
+          {
+            "icon": "Globe",
+            "color": "green",
+            "group": "市场",
+            "label": "中国大陆",
+            "value": "中国大陆",
+            "description": "面向中国大陆市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Landmark",
+            "color": "green",
+            "group": "市场",
+            "label": "北美",
+            "value": "北美",
+            "description": "面向北美市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Home",
+            "color": "green",
+            "group": "市场",
+            "label": "欧洲",
+            "value": "欧洲",
+            "description": "面向欧洲市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Plane",
+            "color": "green",
+            "group": "市场",
+            "label": "日本",
+            "value": "日本",
+            "description": "面向日本市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Building2",
+            "color": "green",
+            "group": "市场",
+            "label": "韩国",
+            "value": "韩国",
+            "description": "面向韩国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Factory",
+            "color": "green",
+            "group": "市场",
+            "label": "东南亚",
+            "value": "东南亚",
+            "description": "面向东南亚市场的消费语境和本地表达"
+          },
+          {
+            "icon": "FileText",
+            "color": "green",
+            "group": "市场",
+            "label": "中东",
+            "value": "中东",
+            "description": "面向中东市场的消费语境和本地表达"
+          },
+          {
+            "icon": "PenTool",
+            "color": "green",
+            "group": "市场",
+            "label": "拉美",
+            "value": "拉美",
+            "description": "面向拉美市场的消费语境和本地表达"
+          },
+          {
+            "icon": "MessageCircle",
+            "color": "green",
+            "group": "市场",
+            "label": "全球通用",
+            "value": "全球通用",
+            "description": "面向全球通用市场的消费语境和本地表达"
+          }
+        ],
+        "description": "市场区域"
+      },
+      "targetChannel": {
+        "enum": [
+          "电商详情页",
+          "商品主图",
+          "广告投放",
+          "小红书/社媒",
+          "直播间贴片",
+          "独立站",
+          "亚马逊"
+        ],
+        "type": "string",
+        "title": "使用渠道",
+        "default": "电商详情页",
+        "x-options": [
+          {
+            "icon": "LayoutTemplate",
+            "color": "purple",
+            "group": "渠道",
+            "label": "电商详情页",
+            "value": "电商详情页",
+            "description": "用于电商详情页场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "Target",
+            "color": "purple",
+            "group": "渠道",
+            "label": "商品主图",
+            "value": "商品主图",
+            "description": "用于商品主图场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "Megaphone",
+            "color": "purple",
+            "group": "渠道",
+            "label": "广告投放",
+            "value": "广告投放",
+            "description": "用于广告投放场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "Sparkles",
+            "color": "purple",
+            "group": "渠道",
+            "label": "小红书/社媒",
+            "value": "小红书/社媒",
+            "description": "用于小红书/社媒场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "Award",
+            "color": "purple",
+            "group": "渠道",
+            "label": "直播间贴片",
+            "value": "直播间贴片",
+            "description": "用于直播间贴片场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "CircleDollarSign",
+            "color": "purple",
+            "group": "渠道",
+            "label": "独立站",
+            "value": "独立站",
+            "description": "用于独立站场景的画面比例、信息密度和转化目标"
+          },
+          {
+            "icon": "Store",
+            "color": "purple",
+            "group": "渠道",
+            "label": "亚马逊",
+            "value": "亚马逊",
+            "description": "用于亚马逊场景的画面比例、信息密度和转化目标"
+          }
+        ],
+        "description": "使用渠道"
+      },
+      "targetAudience": {
+        "type": "string",
+        "title": "目标人群",
+        "description": "说明购买者、使用者、年龄层、生活方式和使用场景。"
+      },
+      "imageReferenceFile": {
+        "type": "string",
+        "title": "上传图片参考",
+        "format": "binary",
+        "x-accept": ".png,.jpg,.jpeg,.pdf,.docx,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "上传商品图、包装图、参考图或视觉资料包，用于补充场景规划。",
+        "x-component": "FileUpload"
+      },
+      "productImagesBrief": {
+        "type": "string",
+        "title": "现有图片说明",
+        "x-rows": 5,
+        "description": "描述白底图、包装图、模特图、参考图或上传图片中的商品特征。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "productInfo",
+          "productImagesBrief",
+          "imageReferenceFile"
+        ],
+        "message": "请填写商品信息、描述现有图片，或上传图片参考"
+      }
+    ]
+  }
+}

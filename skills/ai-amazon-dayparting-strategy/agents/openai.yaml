@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 分时投放助手"
+  short_description: "Amazon 分时投放助手"
+  default_prompt: "Use $ai-amazon-dayparting-strategy to help with Amazon 分时投放助手"
+
+policy:
+  allow_implicit_invocation: true

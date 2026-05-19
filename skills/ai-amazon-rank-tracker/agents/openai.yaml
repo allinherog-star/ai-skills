@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 排名追踪助手"
+  short_description: "Amazon 排名追踪助手"
+  default_prompt: "Use $ai-amazon-rank-tracker to help with Amazon 排名追踪助手"
+
+policy:
+  allow_implicit_invocation: true

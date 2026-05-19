@@ -1,0 +1,7 @@
+interface:
+  display_name: "市场研究助手"
+  short_description: "市场研究助手"
+  default_prompt: "Use $ai-market-research to help with 市场研究助手"
+
+policy:
+  allow_implicit_invocation: true

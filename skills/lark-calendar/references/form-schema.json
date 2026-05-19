@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴飞书日程标题、时间、参会人、议程、会议说明和需要准备的事项",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴日程安排"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传日程文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填日程链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "日程协作目标",
+      "x-rows": 3,
+      "description": "例如识别冲突、准备议程、安排跟进、生成会议简报或优化会议节奏。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "简报读者",
+      "x-rows": 3,
+      "description": "例如参会人、主持人、助理、项目团队、客户团队或管理者。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "日程链接说明",
+      "format": "uri",
+      "description": "填写飞书日程、会议或相关文档链接，并补充可见内容摘要；系统不会自动打开链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "准备深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "准备深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "准备深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "准备深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速整理、标准准备或深度排期诊断。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传日程导出",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传日程导出、会议安排表、截图 OCR 文本、议程文档或准备材料。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "飞书日程安排",
+      "x-rows": 10,
+      "description": "粘贴日程标题、时间、参会人、会议说明、议程、地点、备注或会议列表。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "会议准备场景",
+      "x-rows": 3,
+      "description": "说明用于飞书日程整理、周会准备、客户会议准备还是管理者日程简报。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "会议沟通要求",
+      "x-rows": 3,
+      "description": "补充会议模板、称谓、沟通语气、保密要求或客户表达边界。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴飞书日程安排、上传日程文件或填写日程链接说明"
+    }
+  ]
+}

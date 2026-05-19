@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴需要分析的页面、报价、活动或漏斗内容，最好包含目标用户、关键承诺和行动路径",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴心理路径"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传营销资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填体验链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "期望行为",
+      "x-rows": 3,
+      "description": "例如建立信任、降低犹豫、完成试用、预约演示、购买、复购或推荐。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标用户心理背景",
+      "x-rows": 3,
+      "description": "补充用户画像、决策角色、认知阶段、主要顾虑、购买动机和使用情境。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "体验或页面链接",
+      "format": "uri",
+      "description": "填写公开可访问的页面、产品、活动、报价页或漏斗预览链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "分析深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "分析深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "分析深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "分析深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准诊断或深度心理路径分析。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传营销资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等资料，适合提交活动方案、页面稿、销售材料或研究摘录。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "心理路径素材",
+      "x-rows": 10,
+      "description": "粘贴页面文案、报价说明、用户反馈、销售话术或漏斗描述，帮助判断动机和阻力。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "触达渠道",
+      "x-rows": 3,
+      "description": "例如官网、落地页、邮件、社媒、广告、应用内、销售演示或线下场景。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "伦理与品牌边界",
+      "x-rows": 3,
+      "description": "补充品牌价值观、禁用表达、合规提醒、必须保留的证据和不能使用的说服方式。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴心理路径素材、上传营销资料，或填写体验/页面链接"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴页面正文、标题结构、关键词备注或已有 SEO/GEO 审计线索",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴页面内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传审计资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写页面链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "审计目标",
+      "x-rows": 3,
+      "description": "例如提升自然流量、改善 AI 引用、修复内容结构、提高询盘或梳理内容缺口。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标搜索用户",
+      "x-rows": 3,
+      "description": "说明搜索人群、采购角色、意图阶段或主要使用场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "待审页面或站点链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的页面、栏目、站点地图或公开案例链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传 SEO 审计资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持网页导出、站点清单、关键词表、内容清单、截图说明或审计文档。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "网站页面与 SEO 线索",
+      "x-rows": 10,
+      "description": "可粘贴页面正文、标题标签、导航结构、关键词备注、搜索表现说明或已有审计发现。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与合规要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、必须保留的事实、禁用表达、行业合规限制或内部规范。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴页面内容、上传 SEO 审计资料，或填写待审公开链接"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴品牌账号资料，建议包含简介、栏目、目标用户和竞品账号",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "accountProfileText",
+        "label": "品牌账号资料"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "accountDataFile",
+        "label": "上传账号数据"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "accountHomeLink",
+        "label": "账号主页链接"
+      }
+    ],
+    "primaryField": "accountProfileText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "accountPositionFocus"
+    ],
+    "advancedControlFields": [
+      "brandAudienceContext",
+      "contentAssetNotes"
+    ]
+  },
+  "properties": {
+    "accountDataFile": {
+      "type": "string",
+      "title": "上传账号数据",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传账号截图、内容表、数据复盘、竞品账号记录或品牌资料。",
+      "x-component": "FileUpload"
+    },
+    "accountHomeLink": {
+      "type": "string",
+      "title": "账号主页链接",
+      "format": "uri",
+      "description": "填写公开可访问的抖音、小红书、视频号、B站或公众号主页。"
+    },
+    "contentAssetNotes": {
+      "type": "string",
+      "title": "内容资产与约束",
+      "x-rows": 3,
+      "description": "补充已有栏目、可用素材、竞品定位、语气边界和短期KPI。",
+      "x-component": "Textarea"
+    },
+    "accountProfileText": {
+      "type": "string",
+      "title": "品牌账号资料",
+      "x-rows": 10,
+      "description": "粘贴账号简介、内容栏目、近30条标题、粉丝反馈、品牌卖点和目标。",
+      "x-component": "Textarea"
+    },
+    "accountPositionFocus": {
+      "enum": [
+        "定位清晰",
+        "栏目结构",
+        "差异化",
+        "增长建议"
+      ],
+      "type": "string",
+      "title": "诊断重点",
+      "default": "定位清晰",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "诊断重点",
+          "label": "定位清晰",
+          "value": "定位清晰",
+          "description": "重点处理定位清晰"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "诊断重点",
+          "label": "栏目结构",
+          "value": "栏目结构",
+          "description": "重点处理栏目结构"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "诊断重点",
+          "label": "差异化",
+          "value": "差异化",
+          "description": "重点处理差异化"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "诊断重点",
+          "label": "增长建议",
+          "value": "增长建议",
+          "description": "重点处理增长建议"
+        }
+      ],
+      "description": "选择本次品牌账号定位诊断最需要优先处理的方向。"
+    },
+    "brandAudienceContext": {
+      "type": "string",
+      "title": "品牌与目标用户",
+      "x-rows": 3,
+      "description": "说明品牌阶段、产品线、人群、价格带、渠道和业务目标。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "accountProfileText",
+        "accountDataFile",
+        "accountHomeLink"
+      ],
+      "message": "请填写品牌账号资料、上传资料，或提供可访问链接"
+    }
+  ]
+}

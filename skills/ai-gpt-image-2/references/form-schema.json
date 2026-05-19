@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "描述希望 GPT Image 2 生成的主体、场景、风格、文字、比例和参考图要求",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "写图片需求"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传参考图"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填参考链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充图片规格",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "图片目标",
+      "x-rows": 3,
+      "description": "例如生成品牌主视觉、广告图、产品场景、社媒配图、概念图或教学插图。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "观看人群",
+      "x-rows": 3,
+      "description": "说明图片面向的观众、客户、平台读者、广告受众或内部评审对象。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "图片参考链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的参考图片、产品页、品牌视觉或素材说明链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传图片参考",
+      "format": "binary",
+      "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+      "x-max-size": 20971520,
+      "description": "上传参考图、产品图、草图、品牌资料或视觉样张，用于 GPT Image 2 参考生成或风格改写。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "GPT 图片生成需求",
+      "x-rows": 10,
+      "description": "粘贴画面描述、提示词草稿、产品说明、文字内容、比例要求或发布场景，用于直接生成图片。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与版权限制",
+      "x-rows": 3,
+      "description": "补充品牌色、字体/文字要求、禁用风格、版权授权、人物授权和合规限制。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴 GPT 图片生成需求、上传图片参考，或填写公开参考链接"
+    }
+  ]
+}

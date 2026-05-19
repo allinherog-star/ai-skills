@@ -1,0 +1,193 @@
+{
+  "id": "polish",
+  "slug": "polish",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "UI设计",
+    "UX审查",
+    "设计系统",
+    "视觉改进"
+  ],
+  "profession": [
+    "product",
+    "operation",
+    "technical"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "education",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "72e85f973e3413f80babcc2fc14441293b4b63d45aa8989c0780b2c87e9c6bc5",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "polish",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴当前界面说明、页面文案或想打磨的区域，最好说明希望提升的观感和交付场景",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴界面说明"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传视觉截图"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写预览链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "精修目标",
+        "x-rows": 3,
+        "description": "说明希望提升的专业感、转化、理解效率、品牌一致性或展示效果。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "观看与使用人群",
+        "x-rows": 3,
+        "description": "说明目标用户、访问者、评审者或客户，以及他们最在意的体验。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "页面或设计预览链接",
+        "format": "uri",
+        "description": "填写公开可访问的页面、原型、设计预览、作品集或参考链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "精修深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "精修深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "精修深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "精修深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速 polish、标准精修建议或深度打磨清单。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传界面截图或视觉稿",
+        "format": "binary",
+        "x-accept": ".pptx,.ppt,.pdf",
+        "x-max-size": 20971520,
+        "description": "支持 UI 截图、视觉稿、标注图、前后对比图、设计文档或 PDF。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "待打磨界面说明",
+        "x-rows": 10,
+        "description": "粘贴界面说明、页面文案、设计目标、当前版本问题或希望重点精修的区域。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "交付载体",
+        "x-rows": 3,
+        "description": "选择 Web、移动端、后台系统、营销页、社媒图、演示页或其它载体。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与样式限制",
+        "x-rows": 3,
+        "description": "补充品牌规范、组件库、色彩/字体限制、客户要求和必须保留的信息。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴待打磨界面说明、上传截图/视觉稿，或填写公开预览链接"
+      }
+    ]
+  }
+}

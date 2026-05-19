@@ -1,0 +1,193 @@
+{
+  "id": "ai-video",
+  "slug": "ai-video",
+  "question": "想生成什么视频?",
+  "skillName": "AI 视频生成策划助手",
+  "tags": [
+    "视频生成",
+    "分镜策划",
+    "提示词优化"
+  ],
+  "profession": [
+    "marketing"
+  ],
+  "industry": [
+    "software",
+    "media",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/coreyhaines31/marketingskills"
+      ],
+      "sourceNotes": "skills_sh_trending: coreyhaines31/marketingskills/video"
+    },
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "video",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh all-time/trending 信号显示 video 有用户需求；平台展示为 media_generation 业务助手目录，输出可复核的视频分镜、生成提示词和生产准备包。",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "designer",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "media_generation"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh all-time/trending 信号显示 video 有用户需求；平台展示为 media_generation 业务助手目录，输出可复核的视频分镜、生成提示词和生产准备包。",
+      "allowedOutputs": [
+        "视觉/创意诊断",
+        "提示词或分镜方案",
+        "发布规格检查"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "851d6a6c43f26523b80e7309e5dd454da67629f28d4e7571c423961e490ef97d",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-video",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "media_generation",
+      "sourceRef": "coreyhaines31/marketingskills",
+      "sourceUrl": "https://www.skills.sh/coreyhaines31/marketingskills",
+      "importedAt": "2026-05-17T09:37:09.831Z",
+      "candidateId": "video",
+      "sourceSignal": "skills_sh_trending",
+      "originalSkillId": "video"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴视频创意 brief、产品信息、目标平台、时长、风格、参考素材和希望生成的镜头效果",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "写视频创意"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传参考素材"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填参考链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充视频范围",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "视频目标",
+        "x-rows": 3,
+        "description": "说明本次希望解决的具体问题、判断目标或交付用途。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标观众",
+        "x-rows": 3,
+        "description": "说明「AI 视频生成策划助手」输出要服务的人群、角色、市场或观看场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的链接；如果链接需要登录、权限或 Cookie，请改为上传文件或粘贴内容。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "参考素材文件",
+        "format": "binary",
+        "x-accept": ".mp4,.mov,.webm,.mp3,.wav,.m4a,.pdf,.docx,.txt",
+        "x-max-size": 20971520,
+        "description": "上传与「AI 视频生成策划助手」相关的参考图、产品资料、脚本、录屏或音视频素材。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "视频创意或生成需求",
+        "x-rows": 8,
+        "description": "粘贴本次要交给「AI 视频生成策划助手」规划的视频创意 brief、产品信息、脚本草稿、镜头想法或生成目标。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与平台限制",
+        "x-rows": 3,
+        "description": "补充品牌语气、平台规则、格式偏好、不可改动事实、合规限制或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写视频创意或生成需求、上传参考素材或提供参考链接"
+      }
+    ]
+  }
+}

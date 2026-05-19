@@ -1,0 +1,148 @@
+{
+  "id": "lark-workflow-meeting-summary",
+  "slug": "lark-workflow-meeting-summary",
+  "question": "这份材料重点是什么?",
+  "skillName": "资料整理助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "5c5db5ddc026f0b2b58659a0bcb455b6a9c8e82964c5bc7fdc20264a51654084",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "lark-workflow-meeting-summary",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴会议纪要、转写或流程记录，并说明要提炼决策、行动项还是会后同步稿",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴会议内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传纪要导出"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写飞书链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "总结目标",
+        "x-rows": 3,
+        "description": "例如会后同步、行动项追踪、流程复盘、风险升级、客户纪要或管理层简报。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "同步对象",
+        "x-rows": 3,
+        "description": "说明总结面向谁，例如参会人、项目组、管理层、客户、执行团队或外部伙伴。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "飞书会议或流程链接",
+        "format": "uri",
+        "description": "填写用户可公开分享的飞书会议、妙记或流程文档链接；仅作人工链接线索，不代表可读取工作区内容。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传会议导出文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传从飞书手动导出的会议纪要、妙记、流程文档或相关表格文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "会议纪要或转写",
+        "x-rows": 10,
+        "description": "可粘贴飞书会议纪要、妙记转写、流程文档、任务记录、聊天摘录或会后补充说明。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "纪要格式与保密要求",
+        "x-rows": 3,
+        "description": "补充组织术语、纪要格式、对外口径、保密边界、必须保留表达和不可外传内容。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴会议/流程内容、上传导出文件，或填写公开飞书链接"
+      }
+    ]
+  }
+}

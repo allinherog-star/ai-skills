@@ -1,0 +1,184 @@
+{
+  "id": "software-cost-quote-review",
+  "slug": "software-cost-quote-review",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "软件成本",
+    "报价",
+    "人天",
+    "项目管理"
+  ],
+  "profession": [
+    "technical",
+    "management"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Code2"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "0593a2668e19827792d3ab4e1decd692f3b1c1916e9d51f1b28b54a21eeaf1c3",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "software-cost-quote-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴软件报价与范围，建议包含人员配置、里程碑和付款节点",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "costQuoteText",
+          "label": "报价与范围说明"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "quoteWorkbookFile",
+          "label": "上传报价资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "vendorProposalLink",
+          "label": "供应商方案链接"
+        }
+      ],
+      "primaryField": "costQuoteText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "quoteReviewFocus"
+      ],
+      "advancedControlFields": [
+        "deliveryScopeContext",
+        "staffingAssumptionNotes"
+      ]
+    },
+    "properties": {
+      "costQuoteText": {
+        "type": "string",
+        "title": "报价与范围说明",
+        "x-rows": 10,
+        "description": "粘贴供应商报价、功能范围、里程碑、人员配置、假设和付款节点。",
+        "x-component": "Textarea"
+      },
+      "quoteReviewFocus": {
+        "enum": [
+          "范围遗漏",
+          "工期人力",
+          "费用异常",
+          "谈判问题"
+        ],
+        "type": "string",
+        "title": "审查重点",
+        "default": "范围遗漏",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "范围遗漏",
+            "value": "范围遗漏",
+            "description": "重点处理范围遗漏"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审查重点",
+            "label": "工期人力",
+            "value": "工期人力",
+            "description": "重点处理工期人力"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "费用异常",
+            "value": "费用异常",
+            "description": "重点处理费用异常"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "审查重点",
+            "label": "谈判问题",
+            "value": "谈判问题",
+            "description": "重点处理谈判问题"
+          }
+        ],
+        "description": "选择本次软件成本报价审查最需要优先处理的方向。"
+      },
+      "quoteWorkbookFile": {
+        "type": "string",
+        "title": "上传报价资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传报价单、WBS、合同草案、排期表或供应商方案。",
+        "x-component": "FileUpload"
+      },
+      "vendorProposalLink": {
+        "type": "string",
+        "title": "供应商方案链接",
+        "format": "uri",
+        "description": "填写公开可访问的方案页、报价说明、服务目录或招标资料链接。"
+      },
+      "deliveryScopeContext": {
+        "type": "string",
+        "title": "交付范围与项目背景",
+        "x-rows": 3,
+        "description": "说明业务目标、系统边界、技术栈、上线时间、验收方式和预算区间。",
+        "x-component": "Textarea"
+      },
+      "staffingAssumptionNotes": {
+        "type": "string",
+        "title": "人力与假设条件",
+        "x-rows": 3,
+        "description": "补充角色配置、工期假设、外包边界、变更机制和风险点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "costQuoteText",
+          "quoteWorkbookFile",
+          "vendorProposalLink"
+        ],
+        "message": "请填写报价与范围说明、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

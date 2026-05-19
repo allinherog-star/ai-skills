@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴接口文档内容，建议包含请求响应字段、错误码和调用限制",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "apiGuideText",
+        "label": "接口文档内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "apiGuideFile",
+        "label": "上传接口资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "apiGuideLink",
+        "label": "接口文档链接"
+      }
+    ],
+    "primaryField": "apiGuideText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "integrationRiskFocus"
+    ],
+    "advancedControlFields": [
+      "integrationScenarioContext",
+      "dependencyConstraintNotes"
+    ]
+  },
+  "properties": {
+    "apiGuideFile": {
+      "type": "string",
+      "title": "上传接口资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传接口文档、字段表、联调记录、错误码表或变更说明。",
+      "x-component": "FileUpload"
+    },
+    "apiGuideLink": {
+      "type": "string",
+      "title": "接口文档链接",
+      "format": "uri",
+      "description": "填写公开可访问的 API 文档、SDK 文档或开发者指南链接。"
+    },
+    "apiGuideText": {
+      "type": "string",
+      "title": "接口文档内容",
+      "x-rows": 10,
+      "description": "粘贴接口说明、鉴权方式、请求响应字段、错误码和调用限制。",
+      "x-component": "Textarea"
+    },
+    "integrationRiskFocus": {
+      "enum": [
+        "字段完整性",
+        "错误处理",
+        "鉴权限流",
+        "联调风险"
+      ],
+      "type": "string",
+      "title": "审查重点",
+      "default": "字段完整性",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "字段完整性",
+          "value": "字段完整性",
+          "description": "重点处理字段完整性"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审查重点",
+          "label": "错误处理",
+          "value": "错误处理",
+          "description": "重点处理错误处理"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "鉴权限流",
+          "value": "鉴权限流",
+          "description": "重点处理鉴权限流"
+        },
+        {
+          "icon": "Scale",
+          "color": "green",
+          "group": "审查重点",
+          "label": "联调风险",
+          "value": "联调风险",
+          "description": "重点处理联调风险"
+        }
+      ],
+      "description": "选择本次API 文档集成风险审查最需要优先处理的方向。"
+    },
+    "dependencyConstraintNotes": {
+      "type": "string",
+      "title": "依赖与联调限制",
+      "x-rows": 3,
+      "description": "补充鉴权方式、限流、回调、幂等、兼容性和待确认字段。",
+      "x-component": "Textarea"
+    },
+    "integrationScenarioContext": {
+      "type": "string",
+      "title": "集成场景与系统边界",
+      "x-rows": 3,
+      "description": "说明接入方、业务流程、调用频率、环境、依赖系统和上线时间。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "apiGuideText",
+        "apiGuideFile",
+        "apiGuideLink"
+      ],
+      "message": "请填写接口文档内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

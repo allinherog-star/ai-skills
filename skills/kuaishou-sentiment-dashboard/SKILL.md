@@ -62,7 +62,7 @@ python3 scripts/run.py --params '{"link":"https://www.kuaishou.com/short-video/3
 
 | 参数 | 类型 | 必填 | 默认 | 说明 |
 | --- | --- | --- | --- | --- |
-| `link` | string | 是 | - | 分享链接；需要传可访问的完整 URL |
+| `videoUrl` | string | 是 | - | 粘贴快手分享链接 |
 
 完整机器可读参数结构见 `references/form-schema.json`。
 

@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴 PDF 正文、OCR 文本或重点章节，并说明希望摘要、审阅还是提取风险点",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴 PDF 摘录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传 PDF"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填 PDF 链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充整理要求",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "阅读目标",
+      "x-rows": 3,
+      "description": "例如快速理解、风险排查、投前阅读、合同初筛、资料转写或生成对外简报。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "报告读者",
+      "x-rows": 3,
+      "description": "说明谁会阅读这份 PDF 审阅结果，例如管理层、客户、法务、研究团队或内部同事。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开 PDF 链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的 PDF 链接；受权限保护的文件请改为上传或粘贴正文。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传 PDF 文件",
+      "format": "binary",
+      "x-accept": ".pdf",
+      "x-max-size": 20971520,
+      "description": "上传需要摘要、审阅、提取要点或转成简报的 PDF 文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "PDF 正文或摘录",
+      "x-rows": 10,
+      "description": "可粘贴 PDF OCR 文本、目录、重点章节、表格摘录或用户已复制出的段落。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "格式与保密要求",
+      "x-rows": 3,
+      "description": "补充术语偏好、敏感信息处理、必须保留的页码线索、不能外传的内容和输出语气。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴 PDF 文本、上传 PDF 文件，或填写公开 PDF 链接"
+    }
+  ]
+}

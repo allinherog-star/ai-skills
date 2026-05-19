@@ -1,0 +1,7 @@
+interface:
+  display_name: "文献综述助手"
+  short_description: "文献综述助手"
+  default_prompt: "Use $ai-research-lit to help with 文献综述助手"
+
+policy:
+  allow_implicit_invocation: true

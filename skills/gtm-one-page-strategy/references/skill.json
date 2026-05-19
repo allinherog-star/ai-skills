@@ -1,0 +1,215 @@
+{
+  "id": "gtm-one-page-strategy",
+  "slug": "gtm-one-page-strategy",
+  "question": "这个改动值得测吗?",
+  "skillName": "转化实验助手",
+  "tags": [
+    "销售赋能",
+    "客户研究",
+    "跟进计划",
+    "GTM"
+  ],
+  "profession": [
+    "seller",
+    "marketing",
+    "operation",
+    "product"
+  ],
+  "industry": [
+    "software",
+    "finance",
+    "education",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "ef620276e28006a206e2daf743fd015bdbfcb08f34610df61743f3b4bc5f9195",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "gtm-one-page-strategy",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 6,
+      "placeholder": "粘贴产品、客户、竞争、渠道和增长目标背景，用于生成 GTM 一页纸",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "Rocket",
+          "field": "productContext",
+          "label": "贴产品背景"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "gtmContextFile",
+          "label": "传 GTM 文件"
+        }
+      ],
+      "primaryField": "productContext",
+      "advancedLabel": "补充市场目标",
+      "primaryControlFields": [
+        "stage",
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "marketContext",
+        "businessGoal"
+      ]
+    },
+    "properties": {
+      "stage": {
+        "enum": [
+          "想法验证",
+          "内测",
+          "正式发布",
+          "增长优化"
+        ],
+        "type": "string",
+        "title": "当前阶段",
+        "default": "正式发布",
+        "x-options": [
+          {
+            "icon": "Sparkles",
+            "color": "amber",
+            "group": "当前阶段",
+            "label": "想法验证",
+            "value": "想法验证",
+            "description": "用于验证问题是否真实存在"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "purple",
+            "group": "当前阶段",
+            "label": "内测",
+            "value": "内测",
+            "description": "用于小范围试用和反馈收集"
+          },
+          {
+            "icon": "Megaphone",
+            "color": "blue",
+            "group": "当前阶段",
+            "label": "正式发布",
+            "value": "正式发布",
+            "description": "用于公开上市和首批获客"
+          },
+          {
+            "icon": "TrendingUp",
+            "color": "green",
+            "group": "当前阶段",
+            "label": "增长优化",
+            "value": "增长优化",
+            "description": "用于优化渠道效率和转化率"
+          }
+        ],
+        "description": "选择产品或增长所在阶段，便于控制策略取舍。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速一页纸",
+          "标准策略",
+          "深度 GTM 计划"
+        ],
+        "type": "string",
+        "title": "策略深度",
+        "default": "标准策略",
+        "x-options": [
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "策略深度",
+            "label": "快速一页纸",
+            "value": "快速一页纸",
+            "description": "快速一页纸级别的策略深度"
+          },
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "策略深度",
+            "label": "标准策略",
+            "value": "标准策略",
+            "description": "标准策略级别的策略深度"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "blue",
+            "group": "策略深度",
+            "label": "深度 GTM 计划",
+            "value": "深度 GTM 计划",
+            "description": "深度 GTM 计划级别的策略深度"
+          }
+        ],
+        "description": "策略深度"
+      },
+      "businessGoal": {
+        "type": "string",
+        "title": "业务目标",
+        "x-rows": 3,
+        "description": "例如首批线索、试点客户、渠道验证、发布活动、销售提效或留存提升。",
+        "x-component": "Textarea"
+      },
+      "marketContext": {
+        "type": "string",
+        "title": "市场与竞争背景",
+        "x-rows": 5,
+        "description": "补充行业、区域、竞品、客户细分、市场约束或已有调研结论。",
+        "x-component": "Textarea"
+      },
+      "gtmContextFile": {
+        "type": "string",
+        "title": "上传 GTM 材料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等产品、市场或增长计划文件。",
+        "x-component": "FileUpload"
+      },
+      "productContext": {
+        "type": "string",
+        "title": "产品与 GTM 背景",
+        "x-rows": 12,
+        "description": "粘贴产品介绍、目标客户、定价、竞争、案例、渠道、当前增长问题或团队约束。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "productContext",
+          "gtmContextFile",
+          "marketContext"
+        ],
+        "message": "请粘贴产品背景、上传 GTM 材料，或填写市场背景"
+      }
+    ]
+  }
+}

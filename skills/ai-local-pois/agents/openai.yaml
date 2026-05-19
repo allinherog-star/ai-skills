@@ -1,0 +1,7 @@
+interface:
+  display_name: "本地 POI 筛选助手"
+  short_description: "本地 POI 筛选助手"
+  default_prompt: "Use $ai-local-pois to help with 本地 POI 筛选助手"
+
+policy:
+  allow_implicit_invocation: true

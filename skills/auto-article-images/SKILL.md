@@ -52,22 +52,22 @@ python3 scripts/run.py --params '{}'
 **带常用参数调用**
 
 ```bash
-python3 scripts/run.py --params '{"sourceText":"文章内容"}'
+python3 scripts/run.py --params '{"style":"clean-commercial"}'
 ```
 
 ### 参数说明
 
 | 参数 | 类型 | 必填 | 默认 | 说明 |
 | --- | --- | --- | --- | --- |
-| `sourceText` | string | 否 | - | 文章内容 |
-| `sourceDocument` | string | 否 | - | 上传文章文件 |
-| `title` | string | 否 | - | 标题 |
-| `imageCount` | number | 否 | `4` | 正文配图数量 |
-| `coverRatios` | array | 否 | `["2.35:1","1:1","16:9","3:4","9:16"]` | 封面比例；可选值：公众号头图（`2.35:1`）、方图（`1:1`）、横图（`16:9`）、小红书竖图（`3:4`）、短视频竖屏（`9:16`） |
-| `publishPlatform` | string | 否 | `all` | 发布平台；可选值：全平台（`all`）、微信公众号（`wechat`）、小红书（`xhs`）、博客/官网（`blog`）、知乎（`zhihu`） |
 | `style` | string | 否 | `clean-commercial` | 视觉风格；可选值：清爽商业（`clean-commercial`）、杂志摄影（`editorial-photo`）、柔和插画（`soft-illustration`）、科技图解（`tech-diagram`） |
-| `brandRequirements` | string | 否 | - | 水印/品牌要求 |
-| `watermarkMode` | string | 否 | `off` | 水印；可选值：不加水印（`off`）、右下角（`corner`）、角标 + 平铺（`both`） |
+| `title` | string | 否 | - | 标题 |
+| `imageCount` | integer | 否 | `4` | 配图数量 |
+| `sourceText` | string | 否 | - | 文章正文或 Markdown |
+| `coverRatios` | array | 否 | `["2.35:1","1:1","16:9","3:4","9:16"]` | 封面比例 |
+| `watermarkMode` | string | 否 | `off` | 水印；可选值：不加（`off`）、右下角（`corner`）、平铺（`tiled`）、两者（`both`） |
+| `sourceDocument` | string | 否 | - | 支持 docx、md、txt 等文本文件 |
+| `publishPlatform` | string | 否 | `all` | 发布平台；可选值：全平台（`all`）、公众号（`wechat`）、小红书（`xhs`）、博客（`blog`）、知乎（`zhihu`） |
+| `brandRequirements` | string | 否 | - | 品牌要求 |
 
 完整机器可读参数结构见 `references/form-schema.json`。
 
@@ -84,14 +84,14 @@ python3 scripts/run.py --params '{"sourceText":"文章内容"}'
 下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
 
 ```bash
-python3 scripts/run.py --params '{"sourceText":"文章内容"}'
+python3 scripts/run.py --params '{"style":"clean-commercial"}'
 ```
 
 等价的 `--params` JSON：
 
 ```json
 {
-  "sourceText": "文章内容"
+  "style": "clean-commercial"
 }
 ```
 

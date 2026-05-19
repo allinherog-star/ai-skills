@@ -1,0 +1,217 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "填写这次私域活动目标、社群情况、商品权益和活动时间",
+    "primaryTabs": [
+      {
+        "id": "goal",
+        "icon": "Target",
+        "field": "campaignGoal",
+        "label": "填活动目标"
+      },
+      {
+        "id": "community",
+        "icon": "Users",
+        "field": "communityContext",
+        "label": "写社群背景"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "campaignFile",
+        "label": "传活动资料"
+      }
+    ],
+    "primaryField": "campaignGoal",
+    "advancedLabel": "补充活动条件",
+    "primaryControlFields": [
+      "targetChannel",
+      "sopDepth"
+    ],
+    "advancedControlFields": [
+      "productOffer",
+      "campaignTimeline",
+      "brandVoice"
+    ]
+  },
+  "properties": {
+    "sopDepth": {
+      "enum": [
+        "快速框架版",
+        "标准执行版",
+        "细化到小时版"
+      ],
+      "type": "string",
+      "title": "SOP 细度",
+      "default": "标准执行版",
+      "x-options": [
+        {
+          "icon": "ListChecks",
+          "color": "purple",
+          "group": "SOP 细度",
+          "label": "快速框架版",
+          "value": "快速框架版",
+          "description": "输出快速框架版的执行颗粒度"
+        },
+        {
+          "icon": "Briefcase",
+          "color": "purple",
+          "group": "SOP 细度",
+          "label": "标准执行版",
+          "value": "标准执行版",
+          "description": "输出标准执行版的执行颗粒度"
+        },
+        {
+          "icon": "Zap",
+          "color": "purple",
+          "group": "SOP 细度",
+          "label": "细化到小时版",
+          "value": "细化到小时版",
+          "description": "输出细化到小时版的执行颗粒度"
+        }
+      ],
+      "description": "SOP 细度"
+    },
+    "brandVoice": {
+      "type": "string",
+      "title": "品牌与话术要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、禁用表达、合规限制、客服边界和必须保留的信息。",
+      "x-component": "Textarea"
+    },
+    "campaignFile": {
+      "type": "string",
+      "title": "上传活动资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv",
+      "x-max-size": 20971520,
+      "description": "支持活动方案、商品资料、社群复盘、话术文档或数据表。",
+      "x-component": "FileUpload"
+    },
+    "campaignGoal": {
+      "type": "string",
+      "title": "活动目标",
+      "x-rows": 3,
+      "description": "填写拉新、促活、转化、复购、清库存、会员日、上新或裂变等目标。",
+      "x-component": "Textarea"
+    },
+    "productOffer": {
+      "type": "string",
+      "title": "商品与权益",
+      "x-rows": 5,
+      "description": "填写商品、价格、优惠、赠品、库存、履约、会员权益和不可承诺事项。",
+      "x-component": "Textarea"
+    },
+    "targetChannel": {
+      "enum": [
+        "微信群",
+        "企微社群",
+        "朋友圈",
+        "公众号",
+        "小程序",
+        "短信",
+        "私信",
+        "多渠道组合"
+      ],
+      "type": "string",
+      "title": "私域渠道",
+      "default": "微信群",
+      "x-options": [
+        {
+          "icon": "LayoutTemplate",
+          "color": "purple",
+          "group": "渠道",
+          "label": "微信群",
+          "value": "微信群",
+          "description": "用于微信群场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "UsersRound",
+          "color": "purple",
+          "group": "渠道",
+          "label": "企微社群",
+          "value": "企微社群",
+          "description": "用于企微社群场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "MessageCircle",
+          "color": "purple",
+          "group": "渠道",
+          "label": "朋友圈",
+          "value": "朋友圈",
+          "description": "用于朋友圈场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "BookOpen",
+          "color": "purple",
+          "group": "渠道",
+          "label": "公众号",
+          "value": "公众号",
+          "description": "用于公众号场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "Code2",
+          "color": "purple",
+          "group": "渠道",
+          "label": "小程序",
+          "value": "小程序",
+          "description": "用于小程序场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "PhoneOutgoing",
+          "color": "purple",
+          "group": "渠道",
+          "label": "短信",
+          "value": "短信",
+          "description": "用于短信场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "Headphones",
+          "color": "purple",
+          "group": "渠道",
+          "label": "私信",
+          "value": "私信",
+          "description": "用于私信场景的画面比例、信息密度和转化目标"
+        },
+        {
+          "icon": "Layers",
+          "color": "purple",
+          "group": "渠道",
+          "label": "多渠道组合",
+          "value": "多渠道组合",
+          "description": "用于多渠道组合场景的画面比例、信息密度和转化目标"
+        }
+      ],
+      "description": "私域渠道"
+    },
+    "campaignTimeline": {
+      "type": "string",
+      "title": "活动时间线",
+      "x-rows": 4,
+      "description": "说明活动日期、预热期、爆发期、收尾期、直播/上新节点和人员排班。",
+      "x-component": "Textarea"
+    },
+    "communityContext": {
+      "type": "string",
+      "title": "社群背景",
+      "x-rows": 5,
+      "description": "补充社群规模、用户分层、活跃度、渠道、历史活动反馈和当前运营问题。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "campaignGoal",
+        "communityContext",
+        "productOffer",
+        "campaignFile"
+      ],
+      "message": "请填写活动目标、社群背景、商品权益，或上传活动资料"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "id": "ai-competitor-alternatives",
+  "slug": "ai-competitor-alternatives",
+  "question": "用户为什么选对手?",
+  "skillName": "竞品替代分析助手",
+  "tags": [
+    "内容生产",
+    "文案优化",
+    "发布准备"
+  ],
+  "profession": [
+    "blogger-individual",
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/coreyhaines31/marketingskills"
+      ],
+      "sourceNotes": "skills_sh_all_time: coreyhaines31/marketingskills/competitors"
+    },
+    "catalog": {
+      "icon": "ListChecks"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "competitor-alternatives",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "竞品替代内容具备明确商业场景和可复核输出。",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "marketing",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "content_marketing"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "竞品替代内容具备明确商业场景和可复核输出。",
+      "allowedOutputs": [
+        "替代页结构",
+        "差异化卖点",
+        "风险表达提示"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "01097eb257bd0928f5f21298293abd72271cbb09b974deffa3a8dac3b11fe683",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-competitor-alternatives",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "content_marketing",
+      "sourceRef": "coreyhaines31/marketingskills",
+      "sourceUrl": "https://www.skills.sh/coreyhaines31/marketingskills",
+      "importedAt": "2026-05-18T06:28:35.072Z",
+      "candidateId": "competitor-alternatives",
+      "sourceSignal": "skills_sh_all_time",
+      "originalSkillId": "competitors"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴业务背景、问题说明、参考资料或目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴材料"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填参考链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景要求",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "处理目标",
+        "x-rows": 3,
+        "description": "说明本次希望解决的问题、判断目标、输出形式或交付用途。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "使用对象",
+        "x-rows": 3,
+        "description": "说明输出要服务的人群、角色、团队或业务场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的页面、资料、参考案例或背景链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "业务资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传业务文档、资料表、参考材料、截图或说明文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "业务材料或问题说明",
+        "x-rows": 8,
+        "description": "粘贴业务背景、问题说明、参考资料、目标、限制或待整理内容。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "边界与复核",
+        "x-rows": 3,
+        "description": "补充格式要求、不可改动事实、限制条件、风险点或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写业务材料、上传资料或提供参考链接"
+      }
+    ]
+  }
+}

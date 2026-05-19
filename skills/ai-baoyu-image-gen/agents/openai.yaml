@@ -1,0 +1,7 @@
+interface:
+  display_name: "图片生成助手"
+  short_description: "图片生成助手"
+  default_prompt: "Use $ai-baoyu-image-gen to help with 图片生成助手"
+
+policy:
+  allow_implicit_invocation: true

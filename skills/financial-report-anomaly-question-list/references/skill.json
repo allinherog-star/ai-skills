@@ -1,0 +1,188 @@
+{
+  "id": "financial-report-anomaly-question-list",
+  "slug": "financial-report-anomaly-question-list",
+  "question": "价格怎么定才不亏?",
+  "skillName": "财务定价诊断助手",
+  "tags": [
+    "金融资料",
+    "风险提示",
+    "证据审阅",
+    "专业复核"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "technical",
+    "product"
+  ],
+  "industry": [
+    "finance",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "ListChecks"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "16289eaa74034efee8c0f3168c980052527d118e350ae646fb1fce516822dab1",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "financial-report-anomaly-question-list",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴财报指标和摘要，建议包含报告期、比较基准和关注科目",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "financialReportText",
+          "label": "财报指标与摘要"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "reportWorkbookFile",
+          "label": "上传财报数据"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "exchangeFilingLink",
+          "label": "财报披露链接"
+        }
+      ],
+      "primaryField": "financialReportText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "anomalyQuestionFocus"
+      ],
+      "advancedControlFields": [
+        "companyPeriodContext",
+        "anomalyBenchmarkNotes"
+      ]
+    },
+    "properties": {
+      "exchangeFilingLink": {
+        "type": "string",
+        "title": "财报披露链接",
+        "format": "uri",
+        "description": "填写公开可访问的交易所公告、公司财报、年报或季报链接。"
+      },
+      "reportWorkbookFile": {
+        "type": "string",
+        "title": "上传财报数据",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传财报、指标表、公告、研报摘录、历史对比表或经营数据。",
+        "x-component": "FileUpload"
+      },
+      "financialReportText": {
+        "type": "string",
+        "title": "财报指标与摘要",
+        "x-rows": 10,
+        "description": "粘贴财报摘要、关键科目、同比环比变化、经营数据和管理层说明。",
+        "x-component": "Textarea"
+      },
+      "anomalyQuestionFocus": {
+        "enum": [
+          "科目异常",
+          "现金流质量",
+          "收入成本",
+          "管理层问题"
+        ],
+        "type": "string",
+        "title": "问询重点",
+        "default": "科目异常",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "问询重点",
+            "label": "科目异常",
+            "value": "科目异常",
+            "description": "重点处理科目异常"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "问询重点",
+            "label": "现金流质量",
+            "value": "现金流质量",
+            "description": "重点处理现金流质量"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "问询重点",
+            "label": "收入成本",
+            "value": "收入成本",
+            "description": "重点处理收入成本"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "问询重点",
+            "label": "管理层问题",
+            "value": "管理层问题",
+            "description": "重点处理管理层问题"
+          }
+        ],
+        "description": "选择本次财报异常问询清单最需要优先处理的方向。"
+      },
+      "companyPeriodContext": {
+        "type": "string",
+        "title": "公司与报告期背景",
+        "x-rows": 3,
+        "description": "说明公司、行业、报告期、比较对象、会计口径和关注科目。",
+        "x-component": "Textarea"
+      },
+      "anomalyBenchmarkNotes": {
+        "type": "string",
+        "title": "异常阈值与对比基准",
+        "x-rows": 3,
+        "description": "补充同比/环比/同行基准、重要性阈值、已知一次性因素和待核实假设。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "financialReportText",
+          "reportWorkbookFile",
+          "exchangeFilingLink"
+        ],
+        "message": "请填写财报指标与摘要、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

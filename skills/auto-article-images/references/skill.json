@@ -12,11 +12,13 @@
   ],
   "profession": [
     "blogger-individual",
-    "operations"
+    "operation",
+    "technical"
   ],
   "industry": [
     "media",
-    "ecommerce"
+    "ecommerce",
+    "education"
   ],
   "hidden": false,
   "auth": {
@@ -25,6 +27,33 @@
     "tenantHeader": "X-Tenant-Id"
   },
   "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "ImageUp",
+      "rating": 4.8,
+      "efficiency": "70%",
+      "displayOrder": 8,
+      "subProfession": [
+        "content-creator",
+        "copywriter"
+      ]
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "0f7e40860ab30499c45ac2745a6a5ffed8e55f0614970dac9f7b8a452701dd84",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "auto-article-images",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
@@ -32,24 +61,25 @@
   },
   "formSchema": {
     "type": "object",
-    "required": [],
     "x-layout": {
       "mode": "contextComposer",
-      "primaryField": "sourceText",
+      "rows": 5,
       "primaryTabs": [
         {
           "id": "paste",
-          "label": "粘贴正文",
+          "icon": "FileText",
           "field": "sourceText",
-          "icon": "text"
+          "label": "粘贴正文"
         },
         {
           "id": "upload",
-          "label": "上传文件",
+          "icon": "Upload",
           "field": "sourceDocument",
-          "icon": "upload"
+          "label": "上传文件"
         }
       ],
+      "primaryField": "sourceText",
+      "advancedLabel": "可选设置",
       "primaryControlFields": [
         "imageCount",
         "style"
@@ -59,145 +89,19 @@
         "publishPlatform",
         "brandRequirements",
         "watermarkMode"
-      ],
-      "advancedLabel": "高级选项",
-      "profileContext": true
+      ]
     },
-    "x-profile-context": true,
-    "x-required-any-of": [
-      {
-        "fields": [
-          "sourceText",
-          "sourceDocument"
-        ],
-        "message": "请输入文章内容，或上传 Word/Markdown/TXT 文件"
-      }
-    ],
     "properties": {
-      "sourceText": {
-        "type": "string",
-        "title": "文章内容",
-        "format": "markdown",
-        "x-rows": 12
-      },
-      "sourceDocument": {
-        "type": "string",
-        "title": "上传文章文件",
-        "format": "binary",
-        "x-component": "FileUpload",
-        "x-accept": ".docx,.md,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/markdown,text/plain",
-        "x-max-size": 10485760
-      },
-      "title": {
-        "type": "string",
-        "title": "标题"
-      },
-      "imageCount": {
-        "type": "number",
-        "title": "正文配图数量",
-        "default": 4,
-        "minimum": 1,
-        "maximum": 5,
-        "x-unit": "张"
-      },
-      "coverRatios": {
-        "type": "array",
-        "title": "封面比例",
-        "items": {
-          "type": "string"
-        },
-        "enum": [
-          "2.35:1",
-          "1:1",
-          "16:9",
-          "3:4",
-          "9:16"
-        ],
-        "enumNames": [
-          "公众号头图",
-          "方图",
-          "横图",
-          "小红书竖图",
-          "短视频竖屏"
-        ],
-        "default": [
-          "2.35:1",
-          "1:1",
-          "16:9",
-          "3:4",
-          "9:16"
-        ]
-      },
-      "publishPlatform": {
-        "type": "string",
-        "title": "发布平台",
-        "enum": [
-          "all",
-          "wechat",
-          "xhs",
-          "blog",
-          "zhihu"
-        ],
-        "enumNames": [
-          "全平台",
-          "微信公众号",
-          "小红书",
-          "博客/官网",
-          "知乎"
-        ],
-        "x-options": [
-          {
-            "value": "all",
-            "label": "全平台",
-            "description": "一次输出多平台图片规格",
-            "icon": "Globe",
-            "color": "blue",
-            "group": "发布平台"
-          },
-          {
-            "value": "wechat",
-            "label": "微信公众号",
-            "description": "头图和正文插图优先",
-            "icon": "BookOpen",
-            "color": "green",
-            "group": "发布平台"
-          },
-          {
-            "value": "xhs",
-            "label": "小红书",
-            "description": "竖图封面和种草图优先",
-            "icon": "Sparkles",
-            "color": "rose",
-            "group": "发布平台"
-          },
-          {
-            "value": "blog",
-            "label": "博客/官网",
-            "description": "横图和信息图优先",
-            "icon": "FileText",
-            "color": "cyan",
-            "group": "发布平台"
-          },
-          {
-            "value": "zhihu",
-            "label": "知乎",
-            "description": "解释型配图和图解优先",
-            "icon": "PenTool",
-            "color": "indigo",
-            "group": "发布平台"
-          }
-        ],
-        "default": "all"
-      },
       "style": {
-        "type": "string",
-        "title": "视觉风格",
         "enum": [
           "clean-commercial",
           "editorial-photo",
           "soft-illustration",
           "tech-diagram"
         ],
+        "type": "string",
+        "title": "视觉风格",
+        "default": "clean-commercial",
         "enumNames": [
           "清爽商业",
           "杂志摄影",
@@ -206,92 +110,264 @@
         ],
         "x-options": [
           {
-            "value": "clean-commercial",
-            "label": "清爽商业",
-            "description": "干净留白，适合商业发布",
             "icon": "Palette",
             "color": "cyan",
-            "group": "视觉风格"
+            "group": "视觉风格",
+            "label": "清爽商业",
+            "value": "clean-commercial",
+            "description": "干净留白，适合商业发布"
           },
           {
-            "value": "editorial-photo",
-            "label": "杂志摄影",
-            "description": "更像杂志专题和摄影配图",
             "icon": "Camera",
             "color": "purple",
-            "group": "视觉风格"
+            "group": "视觉风格",
+            "label": "杂志摄影",
+            "value": "editorial-photo",
+            "description": "更像杂志专题和摄影配图"
           },
           {
-            "value": "soft-illustration",
-            "label": "柔和插画",
-            "description": "轻松友好，适合生活方式内容",
             "icon": "Sparkles",
             "color": "pink",
-            "group": "视觉风格"
+            "group": "视觉风格",
+            "label": "柔和插画",
+            "value": "soft-illustration",
+            "description": "轻松友好，适合生活方式内容"
           },
           {
-            "value": "tech-diagram",
-            "label": "科技图解",
-            "description": "结构清晰，适合知识解释",
             "icon": "Cpu",
             "color": "blue",
-            "group": "视觉风格"
+            "group": "视觉风格",
+            "label": "科技图解",
+            "value": "tech-diagram",
+            "description": "结构清晰，适合知识解释"
           }
-        ],
-        "default": "clean-commercial"
+        ]
       },
-      "brandRequirements": {
+      "title": {
         "type": "string",
-        "title": "水印/品牌要求",
-        "x-component": "Textarea",
-        "x-rows": 3
+        "title": "标题"
+      },
+      "imageCount": {
+        "type": "integer",
+        "title": "配图数量",
+        "x-unit": "张",
+        "default": 4,
+        "maximum": 5,
+        "minimum": 1
+      },
+      "sourceText": {
+        "type": "string",
+        "title": "正文",
+        "x-rows": 10,
+        "description": "文章正文或 Markdown",
+        "x-component": "Textarea"
+      },
+      "coverRatios": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "2.35:1",
+            "1:1",
+            "16:9",
+            "3:4",
+            "9:16"
+          ],
+          "type": "string",
+          "enumNames": [
+            "公众号头图",
+            "方图",
+            "横图",
+            "竖图",
+            "短视频竖屏"
+          ],
+          "x-options": [
+            {
+              "icon": "Image",
+              "color": "blue",
+              "group": "封面比例",
+              "label": "公众号头图",
+              "value": "2.35:1",
+              "description": "适合公众号头图和横幅"
+            },
+            {
+              "icon": "Box",
+              "color": "cyan",
+              "group": "封面比例",
+              "label": "方图",
+              "value": "1:1",
+              "description": "适合方图封面和信息卡"
+            },
+            {
+              "icon": "Video",
+              "color": "green",
+              "group": "封面比例",
+              "label": "横图",
+              "value": "16:9",
+              "description": "适合横图、博客和视频封面"
+            },
+            {
+              "icon": "ImageUp",
+              "color": "rose",
+              "group": "封面比例",
+              "label": "竖图",
+              "value": "3:4",
+              "description": "适合小红书竖图和海报"
+            },
+            {
+              "icon": "Clapperboard",
+              "color": "purple",
+              "group": "封面比例",
+              "label": "短视频竖屏",
+              "value": "9:16",
+              "description": "适合短视频竖屏封面"
+            }
+          ]
+        },
+        "title": "封面比例",
+        "default": [
+          "2.35:1",
+          "1:1",
+          "16:9",
+          "3:4",
+          "9:16"
+        ]
       },
       "watermarkMode": {
-        "type": "string",
-        "title": "水印",
         "enum": [
           "off",
           "corner",
+          "tiled",
           "both"
         ],
+        "type": "string",
+        "title": "水印",
+        "default": "off",
         "enumNames": [
-          "不加水印",
+          "不加",
           "右下角",
-          "角标 + 平铺"
+          "平铺",
+          "两者"
         ],
         "x-options": [
           {
-            "value": "off",
-            "label": "不加水印",
-            "description": "保持画面干净",
             "icon": "Shield",
             "color": "slate",
-            "group": "水印"
+            "group": "水印",
+            "label": "不加",
+            "value": "off",
+            "description": "保持画面干净"
           },
           {
-            "value": "corner",
-            "label": "右下角",
-            "description": "保留轻量署名",
-            "icon": "Tag",
+            "icon": "PenTool",
             "color": "blue",
-            "group": "水印"
+            "group": "水印",
+            "label": "右下角",
+            "value": "corner",
+            "description": "保留轻量署名"
           },
           {
-            "value": "both",
-            "label": "角标 + 平铺",
-            "description": "更强品牌露出",
-            "icon": "Tag",
+            "icon": "Layers",
             "color": "amber",
-            "group": "水印"
+            "group": "水印",
+            "label": "平铺",
+            "value": "tiled",
+            "description": "增加平铺品牌保护"
+          },
+          {
+            "icon": "FileWarning",
+            "color": "amber",
+            "group": "水印",
+            "label": "两者",
+            "value": "both",
+            "description": "角标和平铺同时露出"
           }
+        ]
+      },
+      "sourceDocument": {
+        "type": "string",
+        "title": "上传文档",
+        "format": "binary",
+        "x-accept": ".docx,.md,.txt",
+        "x-max-size": 10485760,
+        "description": "支持 docx、md、txt 等文本文件。",
+        "x-component": "FileUpload"
+      },
+      "publishPlatform": {
+        "enum": [
+          "all",
+          "wechat",
+          "xhs",
+          "blog",
+          "zhihu"
         ],
-        "default": "off"
+        "type": "string",
+        "title": "发布平台",
+        "default": "all",
+        "enumNames": [
+          "全平台",
+          "公众号",
+          "小红书",
+          "博客",
+          "知乎"
+        ],
+        "x-options": [
+          {
+            "icon": "Globe",
+            "color": "blue",
+            "group": "发布平台",
+            "label": "全平台",
+            "value": "all"
+          },
+          {
+            "icon": "BookOpen",
+            "color": "green",
+            "group": "发布平台",
+            "label": "公众号",
+            "value": "wechat",
+            "description": "适配公众号图文和长内容发布"
+          },
+          {
+            "icon": "Sparkles",
+            "color": "rose",
+            "group": "发布平台",
+            "label": "小红书",
+            "value": "xhs",
+            "description": "适配小红书种草、封面和竖图"
+          },
+          {
+            "icon": "FileText",
+            "color": "cyan",
+            "group": "发布平台",
+            "label": "博客",
+            "value": "blog",
+            "description": "适配博客、官网和 SEO 内容"
+          },
+          {
+            "icon": "PenTool",
+            "color": "indigo",
+            "group": "发布平台",
+            "label": "知乎",
+            "value": "zhihu",
+            "description": "适配知乎观点和问答表达"
+          }
+        ]
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌要求",
+        "x-rows": 3,
+        "x-component": "Textarea"
       }
-    }
-  },
-  "providerType": "llm",
-  "providerConfig": {
-    "asyncProvider": "skills2api-scheduler",
-    "resultContract": "ResultEnvelope"
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "sourceText",
+          "sourceDocument"
+        ],
+        "message": "请粘贴正文或上传文档"
+      }
+    ]
   }
 }

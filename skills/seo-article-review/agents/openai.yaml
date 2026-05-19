@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO/AEO 诊断助手"
+  short_description: "SEO/AEO 诊断助手"
+  default_prompt: "Use $seo-article-review to help with SEO/AEO 诊断助手"
+
+policy:
+  allow_implicit_invocation: true

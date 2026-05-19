@@ -1,0 +1,7 @@
+interface:
+  display_name: "页面转化诊断助手"
+  short_description: "页面转化诊断助手"
+  default_prompt: "Use $ai-page-cro to help with 页面转化诊断助手"
+
+policy:
+  allow_implicit_invocation: true

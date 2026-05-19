@@ -1,0 +1,194 @@
+{
+  "id": "ai-amazon-search-optimization",
+  "slug": "ai-amazon-search-optimization",
+  "question": "买家搜得到吗?",
+  "skillName": "Amazon 搜索优化助手",
+  "tags": [
+    "资料整理",
+    "数据清理",
+    "行动项"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/nexscope-ai/amazon-skills"
+      ],
+      "sourceNotes": "skills_sh_hot: nexscope-ai/amazon-skills/amazon-search-optimization"
+    },
+    "catalog": {
+      "icon": "Search"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "amazon-search-optimization",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh hot 信号显示 amazon-search-optimization 有用户需求；平台展示为 ecommerce_retail 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "primaryIndustry": "ecommerce",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "seller",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "ecommerce_retail"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh hot 信号显示 amazon-search-optimization 有用户需求；平台展示为 ecommerce_retail 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "allowedOutputs": [
+        "商品/店铺诊断",
+        "卖点与风险提示",
+        "运营动作建议"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "3366336c8be71b2b4260a18c52551e62e42547d51c76bd67e9292097108dabbb",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-amazon-search-optimization",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "ecommerce_retail",
+      "sourceRef": "nexscope-ai/amazon-skills",
+      "sourceUrl": "https://www.skills.sh/nexscope-ai/amazon-skills",
+      "importedAt": "2026-05-17T09:40:15.898Z",
+      "candidateId": "amazon-search-optimization",
+      "sourceSignal": "skills_sh_hot",
+      "originalSkillId": "amazon-search-optimization"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴页面内容、关键词、站点结构或搜索目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴页面内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传 SEO 资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填页面链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充搜索范围",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "优化目标",
+        "x-rows": 3,
+        "description": "说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标受众",
+        "x-rows": 3,
+        "description": "说明搜索用户、目标市场、行业、购买阶段或内容受众。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "页面或站点链接",
+        "format": "uri",
+        "description": "填写公开可访问的页面、站点、SERP、竞品或参考链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "SEO 资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv,.pdf,.docx,.txt",
+        "x-max-size": 20971520,
+        "description": "上传内容稿、关键词表、站点结构、审计报告或 SEO 规划资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "页面、关键词或内容资料",
+        "x-rows": 8,
+        "description": "粘贴页面内容、关键词、站点结构、搜索目标、竞品摘要或优化问题。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "搜索与发布边界",
+        "x-rows": 3,
+        "description": "补充目标地区、语言、品牌限制、不可改动事实、合规要求或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "id": "live-replay-clip-title-pack",
+  "slug": "live-replay-clip-title-pack",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "内容运营",
+    "新媒体",
+    "选题",
+    "分发"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "1b9ab47ef0ba38d355a331105d021503e2d59d2088b96e8cdcf538b0d6304ee4",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "live-replay-clip-title-pack",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴直播回放片段或转写，建议包含商品、亮点和目标观众",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "replayText",
+          "label": "直播回放片段内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "replayClipFile",
+          "label": "上传回放资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "liveReplayLink",
+          "label": "直播回放链接"
+        }
+      ],
+      "primaryField": "replayText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "titlePackFocus"
+      ],
+      "advancedControlFields": [
+        "productAudienceContext",
+        "clipGoalNotes"
+      ]
+    },
+    "properties": {
+      "replayText": {
+        "type": "string",
+        "title": "直播回放片段内容",
+        "x-rows": 10,
+        "description": "粘贴直播转写、片段摘要、商品介绍、互动问答或高光时间点。",
+        "x-component": "Textarea"
+      },
+      "clipGoalNotes": {
+        "type": "string",
+        "title": "切片目标与限制",
+        "x-rows": 3,
+        "description": "补充切片时长、标题风格、禁用词、活动利益点和发布时间。",
+        "x-component": "Textarea"
+      },
+      "liveReplayLink": {
+        "type": "string",
+        "title": "直播回放链接",
+        "format": "uri",
+        "description": "填写公开可访问的回放、切片、商品页或活动页链接。"
+      },
+      "replayClipFile": {
+        "type": "string",
+        "title": "上传回放资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传直播转写、切片表、商品清单、数据复盘或高光记录。",
+        "x-component": "FileUpload"
+      },
+      "titlePackFocus": {
+        "enum": [
+          "爆款标题",
+          "封面文案",
+          "切片角度",
+          "风险表达"
+        ],
+        "type": "string",
+        "title": "标题包重点",
+        "default": "爆款标题",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "标题包重点",
+            "label": "爆款标题",
+            "value": "爆款标题",
+            "description": "重点处理爆款标题"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "标题包重点",
+            "label": "封面文案",
+            "value": "封面文案",
+            "description": "重点处理封面文案"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "标题包重点",
+            "label": "切片角度",
+            "value": "切片角度",
+            "description": "重点处理切片角度"
+          },
+          {
+            "icon": "Scale",
+            "color": "green",
+            "group": "标题包重点",
+            "label": "风险表达",
+            "value": "风险表达",
+            "description": "重点处理风险表达"
+          }
+        ],
+        "description": "选择本次直播回放切片标题包最需要优先处理的方向。"
+      },
+      "productAudienceContext": {
+        "type": "string",
+        "title": "商品与目标观众",
+        "x-rows": 3,
+        "description": "说明商品品类、用户痛点、平台、账号定位、转化目标和客单价。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "replayText",
+          "replayClipFile",
+          "liveReplayLink"
+        ],
+        "message": "请填写直播回放片段内容、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

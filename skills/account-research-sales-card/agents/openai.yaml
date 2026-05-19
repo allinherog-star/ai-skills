@@ -1,0 +1,7 @@
+interface:
+  display_name: "销售增长助手"
+  short_description: "销售增长助手"
+  default_prompt: "Use $account-research-sales-card to help with 销售增长助手"
+
+policy:
+  allow_implicit_invocation: true

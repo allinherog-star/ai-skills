@@ -1,0 +1,7 @@
+interface:
+  display_name: "运营手册整理助手"
+  short_description: "运营手册整理助手"
+  default_prompt: "Use $ai-operations-manual to help with 运营手册整理助手"
+
+policy:
+  allow_implicit_invocation: true

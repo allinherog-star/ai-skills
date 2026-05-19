@@ -1,0 +1,7 @@
+interface:
+  display_name: "业务诊断助手"
+  short_description: "业务诊断助手"
+  default_prompt: "Use $xhs-note-review to help with 业务诊断助手"
+
+policy:
+  allow_implicit_invocation: true

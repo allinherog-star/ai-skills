@@ -1,0 +1,195 @@
+{
+  "id": "ai-web-quality-audit",
+  "slug": "ai-web-quality-audit",
+  "question": "网站质量够好吗?",
+  "skillName": "网站质量审查助手",
+  "tags": [
+    "性能诊断",
+    "网站质量",
+    "体验指标"
+  ],
+  "profession": [
+    "technical",
+    "product",
+    "marketing"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/addyosmani/web-quality-skills"
+      ],
+      "sourceNotes": "skills_sh_hot: addyosmani/web-quality-skills/web-quality-audit"
+    },
+    "catalog": {
+      "icon": "LayoutTemplate"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "web-quality-audit",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh hot 信号显示 web-quality-audit 有用户需求；平台展示为 local_service_ops 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "primaryIndustry": "local-services",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "operation",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "local_service_ops"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh hot 信号显示 web-quality-audit 有用户需求；平台展示为 local_service_ops 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "allowedOutputs": [
+        "问题归因",
+        "服务改进建议",
+        "SOP 或 FAQ 清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "b0abe0578f7c2316604031c95d04bc4658fbea69ebac40957e5dc464b7f40a73",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-web-quality-audit",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "local_service_ops",
+      "sourceRef": "addyosmani/web-quality-skills",
+      "sourceUrl": "https://www.skills.sh/addyosmani/web-quality-skills",
+      "importedAt": "2026-05-17T09:38:50.153Z",
+      "candidateId": "web-quality-audit",
+      "sourceSignal": "skills_sh_hot",
+      "originalSkillId": "web-quality-audit"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴页面 URL、性能报告、Core Web Vitals 指标或复现场景",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴报告"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传报告"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填页面链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充诊断范围",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "诊断目标",
+        "x-rows": 3,
+        "description": "说明要定位的性能、可用性、搜索、转化或上线检查目标。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "影响对象",
+        "x-rows": 3,
+        "description": "说明受影响的用户、设备、页面类型、地区或业务场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "待诊断页面链接",
+        "format": "uri",
+        "description": "填写公开可访问的待诊断页面、站点、报告或参考链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "性能报告文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传 Lighthouse 报告、性能截图、指标表、页面说明或技术排查资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "页面 URL、报告或问题描述",
+        "x-rows": 8,
+        "description": "粘贴页面 URL、性能报告摘要、Core Web Vitals 指标、复现场景或网站质量问题。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "技术与验证边界",
+        "x-rows": 3,
+        "description": "补充设备网络、浏览器、时间范围、技术栈限制、不可改动项或复测要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写页面/性能资料、上传报告或提供页面链接"
+      }
+    ]
+  }
+}

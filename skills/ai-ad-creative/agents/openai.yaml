@@ -1,0 +1,7 @@
+interface:
+  display_name: "广告创意诊断助手"
+  short_description: "广告创意诊断助手"
+  default_prompt: "Use $ai-ad-creative to help with 广告创意诊断助手"
+
+policy:
+  allow_implicit_invocation: true

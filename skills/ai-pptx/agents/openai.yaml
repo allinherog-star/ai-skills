@@ -1,0 +1,7 @@
+interface:
+  display_name: "PPT 诊断助手"
+  short_description: "PPT 诊断助手"
+  default_prompt: "Use $ai-pptx to help with PPT 诊断助手"
+
+policy:
+  allow_implicit_invocation: true

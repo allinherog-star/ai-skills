@@ -1,0 +1,7 @@
+interface:
+  display_name: "KPI 看板设计助手"
+  short_description: "KPI 看板设计助手"
+  default_prompt: "Use $ai-kpi-dashboard-design to help with KPI 看板设计助手"
+
+policy:
+  allow_implicit_invocation: true

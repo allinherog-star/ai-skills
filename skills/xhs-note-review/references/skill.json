@@ -1,0 +1,205 @@
+{
+  "id": "xhs-note-review",
+  "slug": "xhs-note-review",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "小红书",
+    "笔记诊断",
+    "种草",
+    "标题",
+    "改稿"
+  ],
+  "profession": [
+    "blogger-individual",
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "PenTool"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "be9e85efe42182e84e6e4c9a74930febcf0ad1cfed23c8e99c023af53716af44",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "xhs-note-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴小红书笔记正文，最好包含标题、正文、话题标签和封面文案",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴笔记正文"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传笔记文档"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填笔记链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "targetPlatform",
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "转化目标",
+        "x-rows": 3,
+        "description": "例如提升点击、收藏、评论、关注、私信咨询、种草转化或搜索曝光。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标人群",
+        "x-rows": 3,
+        "description": "说明想吸引的小红书用户，例如新手、宝妈、学生、职场人、同城用户或高意向消费者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "小红书笔记链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的小红书笔记、预览页或公开样稿链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "诊断深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "诊断深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "诊断深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "诊断深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ]
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传笔记文档",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等笔记文档，适合提交完整草稿或团队审稿文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "小红书笔记正文",
+        "x-rows": 10,
+        "description": "可粘贴完整笔记草稿、已发布正文或待改段落；建议保留标题、正文、话题标签和封面文字。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "enum": [
+          "小红书"
+        ],
+        "type": "string",
+        "title": "目标平台",
+        "default": "小红书",
+        "x-options": [
+          {
+            "icon": "Sparkles",
+            "color": "rose",
+            "group": "目标平台",
+            "label": "小红书",
+            "value": "小红书",
+            "description": "适配小红书种草、封面和竖图"
+          }
+        ]
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与限制要求",
+        "x-rows": 3,
+        "description": "补充账号人设、品牌语气、禁用词、必须保留的卖点或不能夸大的承诺。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴笔记正文、上传笔记文档，或填写公开笔记链接"
+      }
+    ]
+  }
+}

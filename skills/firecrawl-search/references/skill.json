@@ -1,0 +1,194 @@
+{
+  "id": "firecrawl-search",
+  "slug": "firecrawl-search",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "网页研究",
+    "公开信息",
+    "竞品分析",
+    "证据整理"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Search"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "a3aaa47a17651f2b1cd941b38a7be639f8f5b102d2230bea480cd7282ae58745",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "firecrawl-search",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴查询词、搜索结果标题摘要、候选来源片段或需要整理的公开链接说明",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴搜索片段"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传搜索资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填结果链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "搜索整理目标",
+        "x-rows": 3,
+        "description": "例如来源筛选、证据矩阵、查询计划、主题聚类或竞品线索整理。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "检索报告读者",
+        "x-rows": 3,
+        "description": "填写研究员、内容编辑、增长团队、销售、产品经理等使用者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "公开结果链接",
+        "format": "uri",
+        "description": "填写公开结果链接列表、搜索结果页 metadata、候选来源 URL 或资料页链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "检索整理深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "检索整理深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "检索整理深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "检索整理深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速来源卡、标准证据简报或深度检索计划。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传搜索研究资料",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传搜索结果导出、竞品资料、研究笔记、PDF、Markdown、CSV 或 TXT。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "搜索片段与查询词",
+        "x-rows": 10,
+        "description": "粘贴查询词、搜索结果标题摘要、公开网页片段、候选来源说明或研究笔记。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "检索用途平台",
+        "x-rows": 3,
+        "description": "说明结果将用于市场研究、内容选题、销售情报、知识库、竞品监控或其他流程。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "来源与引用要求",
+        "x-rows": 3,
+        "description": "补充来源偏好、引用格式、品牌合规、禁用来源、地区或语言口径。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴搜索片段、上传搜索研究资料，或填写公开结果链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "竞品替代分析助手"
+  short_description: "竞品替代分析助手"
+  default_prompt: "Use $ai-competitor-alternatives to help with 竞品替代分析助手"
+
+policy:
+  allow_implicit_invocation: true

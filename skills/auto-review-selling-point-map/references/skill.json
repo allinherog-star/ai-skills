@@ -1,0 +1,184 @@
+{
+  "id": "auto-review-selling-point-map",
+  "slug": "auto-review-selling-point-map",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "汽车",
+    "车评",
+    "舆情",
+    "销售话术"
+  ],
+  "profession": [
+    "operation",
+    "management"
+  ],
+  "industry": [
+    "manufacturing"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Factory"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "9462d1abe293f1369e743745b61a61da2ba641a4c584e1e38bcb37ef338c8aa3",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "auto-review-selling-point-map",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴车型评价或竞品反馈，建议包含车型、价格带和目标客群",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "autoReviewText",
+          "label": "车型评价内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "autoReviewFile",
+          "label": "上传评价资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "vehicleModelLink",
+          "label": "车型公开链接"
+        }
+      ],
+      "primaryField": "autoReviewText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "sellingPointMapFocus"
+      ],
+      "advancedControlFields": [
+        "modelPositioningContext",
+        "competitorModelNotes"
+      ]
+    },
+    "properties": {
+      "autoReviewFile": {
+        "type": "string",
+        "title": "上传评价资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传评价导出、竞品表、口碑记录、销售反馈或调研表。",
+        "x-component": "FileUpload"
+      },
+      "autoReviewText": {
+        "type": "string",
+        "title": "车型评价内容",
+        "x-rows": 10,
+        "description": "粘贴车主评价、媒体评测、竞品评论、销售反馈或社媒讨论。",
+        "x-component": "Textarea"
+      },
+      "vehicleModelLink": {
+        "type": "string",
+        "title": "车型公开链接",
+        "format": "uri",
+        "description": "填写公开可访问的车型页、评测页、口碑页或竞品页。"
+      },
+      "competitorModelNotes": {
+        "type": "string",
+        "title": "竞品与销售约束",
+        "x-rows": 3,
+        "description": "补充竞品卖点、用户顾虑、禁用话术、金融政策和交付情况。",
+        "x-component": "Textarea"
+      },
+      "sellingPointMapFocus": {
+        "enum": [
+          "高频卖点",
+          "用户顾虑",
+          "竞品对比",
+          "销售话术"
+        ],
+        "type": "string",
+        "title": "地图重点",
+        "default": "高频卖点",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "地图重点",
+            "label": "高频卖点",
+            "value": "高频卖点",
+            "description": "重点处理高频卖点"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "地图重点",
+            "label": "用户顾虑",
+            "value": "用户顾虑",
+            "description": "重点处理用户顾虑"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "地图重点",
+            "label": "竞品对比",
+            "value": "竞品对比",
+            "description": "重点处理竞品对比"
+          },
+          {
+            "icon": "CircleDollarSign",
+            "color": "green",
+            "group": "地图重点",
+            "label": "销售话术",
+            "value": "销售话术",
+            "description": "重点处理销售话术"
+          }
+        ],
+        "description": "选择本次车型评价卖点地图最需要优先处理的方向。"
+      },
+      "modelPositioningContext": {
+        "type": "string",
+        "title": "车型与目标客群",
+        "x-rows": 3,
+        "description": "说明车型、价格带、竞品、目标人群、区域和销售场景。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "autoReviewText",
+          "autoReviewFile",
+          "vehicleModelLink"
+        ],
+        "message": "请填写车型评价内容、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴课程转化页文案，建议包含价格、权益、讲师背书和目标学员",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "courseSalesPageText",
+        "label": "课程销售页文案"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "courseSalesPageFile",
+        "label": "上传转化页资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "courseSalesPageLink",
+        "label": "课程页链接"
+      }
+    ],
+    "primaryField": "courseSalesPageText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "coursePageFocus"
+    ],
+    "advancedControlFields": [
+      "targetLearnerContext",
+      "offerConstraintNotes"
+    ]
+  },
+  "properties": {
+    "coursePageFocus": {
+      "enum": [
+        "首屏转化",
+        "信任证明",
+        "权益表达",
+        "FAQ补强"
+      ],
+      "type": "string",
+      "title": "审查重点",
+      "default": "首屏转化",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "首屏转化",
+          "value": "首屏转化",
+          "description": "重点处理首屏转化"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审查重点",
+          "label": "信任证明",
+          "value": "信任证明",
+          "description": "重点处理信任证明"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "权益表达",
+          "value": "权益表达",
+          "description": "重点处理权益表达"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "审查重点",
+          "label": "FAQ补强",
+          "value": "FAQ补强",
+          "description": "重点处理FAQ补强"
+        }
+      ],
+      "description": "选择本次课程转化页审查最需要优先处理的方向。"
+    },
+    "courseSalesPageFile": {
+      "type": "string",
+      "title": "上传转化页资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传销售页稿、截图、投放落地页、竞品页记录或转化数据。",
+      "x-component": "FileUpload"
+    },
+    "courseSalesPageLink": {
+      "type": "string",
+      "title": "课程页链接",
+      "format": "uri",
+      "description": "填写公开可访问的课程销售页、招生页或活动页。"
+    },
+    "courseSalesPageText": {
+      "type": "string",
+      "title": "课程销售页文案",
+      "x-rows": 10,
+      "description": "粘贴课程标题、首屏、痛点、权益、讲师介绍、价格和 FAQ。",
+      "x-component": "Textarea"
+    },
+    "offerConstraintNotes": {
+      "type": "string",
+      "title": "产品权益与承诺边界",
+      "x-rows": 3,
+      "description": "补充课程权益、退款规则、不可承诺效果、证明材料和限时机制。",
+      "x-component": "Textarea"
+    },
+    "targetLearnerContext": {
+      "type": "string",
+      "title": "目标学员与投放场景",
+      "x-rows": 3,
+      "description": "说明目标人群、流量来源、客单价、转化目标和购买顾虑。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "courseSalesPageText",
+        "courseSalesPageFile",
+        "courseSalesPageLink"
+      ],
+      "message": "请填写课程销售页文案、上传资料，或提供可访问链接"
+    }
+  ]
+}

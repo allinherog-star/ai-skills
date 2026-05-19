@@ -1,0 +1,7 @@
+interface:
+  display_name: "研究打磨助手"
+  short_description: "研究打磨助手"
+  default_prompt: "Use $ai-research-refine to help with 研究打磨助手"
+
+policy:
+  allow_implicit_invocation: true

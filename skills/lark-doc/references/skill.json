@@ -1,0 +1,148 @@
+{
+  "id": "lark-doc",
+  "slug": "lark-doc",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "7e7139ee641102e391a5c6f1d9439ab77c954cc05a1cc99a0e70a39201540153",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "lark-doc",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴飞书文档正文、评论摘录或导出文本，并说明要做摘要、审阅还是行动项整理",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴飞书文档"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传导出文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写飞书链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "处理目标",
+        "x-rows": 3,
+        "description": "例如摘要、审阅、改写、行动项整理、风险复盘、对外同步或会议跟进。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "同步对象",
+        "x-rows": 3,
+        "description": "说明这份飞书文档简报面向谁，例如项目组、管理层、客户、评审、协作者或外部伙伴。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "飞书公开链接",
+        "format": "uri",
+        "description": "填写用户可公开分享的飞书文档链接；仅作人工链接线索，不代表可读取工作区内容。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传飞书导出文件",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "上传从飞书手动导出的 docx/pdf/md/txt 文件或其他可解析文档。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "飞书文档正文",
+        "x-rows": 10,
+        "description": "可粘贴飞书文档正文、评论摘录、目录、会议纪要、任务说明或导出的文本内容。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "协作与保密要求",
+        "x-rows": 3,
+        "description": "补充组织术语、输出语气、保密边界、必须保留信息和不可外传内容。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴飞书文档正文、上传导出文件，或填写公开飞书链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "firecrawl",
+  "slug": "firecrawl",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "网页研究",
+    "公开信息",
+    "竞品分析",
+    "证据整理"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "LayoutTemplate"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "cf3894023668c6f504a5d008d021ce703d43e9f2e053a5a2cd07121e93bc9e91",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "firecrawl",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴站点导航、页面清单、公开页面摘录或需要整理的多个页面摘要",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴站点清单"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传研究包"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填站点入口"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "站点研究目标",
+        "x-rows": 3,
+        "description": "例如页面盘点、信息架构梳理、字段设计、竞品研究或后续人工采集规划。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "研究读者",
+        "x-rows": 3,
+        "description": "填写增长团队、研究员、内容团队、销售、产品经理等使用者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "站点公开入口",
+        "format": "uri",
+        "description": "填写无需登录即可访问的站点首页、页面列表链接、站点地图 URL 或链接 metadata。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "研究深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "研究深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "研究深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "研究深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速站点卡、标准研究简报或深度页面地图。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传站点研究包",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传站点地图、页面导出、PDF、Markdown、CSV、TXT 或研究资料包。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "站点页面清单",
+        "x-rows": 10,
+        "description": "粘贴公开站点介绍、导航文本、页面列表、多个页面摘录或搜索摘要。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "研究使用平台",
+        "x-rows": 3,
+        "description": "说明结果将用于内容策略、竞品库、知识库、销售情报、SEO 规划或内部研究。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与引用口径",
+        "x-rows": 3,
+        "description": "补充输出风格、引用规范、禁用表达、行业口径或合规要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴站点页面资料、上传站点研究包，或填写公开站点入口"
+      }
+    ]
+  }
+}

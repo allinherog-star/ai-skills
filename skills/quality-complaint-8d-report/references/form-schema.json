@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴客诉问题和批次背景，建议包含缺陷证据和已采取措施",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "complaintCaseText",
+        "label": "客诉问题描述"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "qualityEvidenceFile",
+        "label": "上传质量证据"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "complaintRecordLink",
+        "label": "客诉资料链接"
+      }
+    ],
+    "primaryField": "complaintCaseText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "eightDReportFocus"
+    ],
+    "advancedControlFields": [
+      "productBatchContext",
+      "containmentActionNotes"
+    ]
+  },
+  "properties": {
+    "complaintCaseText": {
+      "type": "string",
+      "title": "客诉问题描述",
+      "x-rows": 10,
+      "description": "粘贴客户投诉、缺陷描述、发生批次、数量、影响和客户要求。",
+      "x-component": "Textarea"
+    },
+    "eightDReportFocus": {
+      "enum": [
+        "问题定义",
+        "根因假设",
+        "纠正措施",
+        "客户回复"
+      ],
+      "type": "string",
+      "title": "8D重点",
+      "default": "问题定义",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "8D重点",
+          "label": "问题定义",
+          "value": "问题定义",
+          "description": "重点处理问题定义"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "8D重点",
+          "label": "根因假设",
+          "value": "根因假设",
+          "description": "重点处理根因假设"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "8D重点",
+          "label": "纠正措施",
+          "value": "纠正措施",
+          "description": "重点处理纠正措施"
+        },
+        {
+          "icon": "Users",
+          "color": "green",
+          "group": "8D重点",
+          "label": "客户回复",
+          "value": "客户回复",
+          "description": "重点处理客户回复"
+        }
+      ],
+      "description": "选择本次质量客诉 8D 报告草稿最需要优先处理的方向。"
+    },
+    "complaintRecordLink": {
+      "type": "string",
+      "title": "客诉资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的质量标准、产品说明或客诉记录链接。"
+    },
+    "productBatchContext": {
+      "type": "string",
+      "title": "产品批次与工艺背景",
+      "x-rows": 3,
+      "description": "说明产品型号、批次、工序、供应商、检验口径和出货时间。",
+      "x-component": "Textarea"
+    },
+    "qualityEvidenceFile": {
+      "type": "string",
+      "title": "上传质量证据",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传检验记录、图片说明、8D模板、检测数据或客户邮件。",
+      "x-component": "FileUpload"
+    },
+    "containmentActionNotes": {
+      "type": "string",
+      "title": "围堵与纠正措施",
+      "x-rows": 3,
+      "description": "补充已采取围堵、库存隔离、返工、客户沟通和责任人安排。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "complaintCaseText",
+        "qualityEvidenceFile",
+        "complaintRecordLink"
+      ],
+      "message": "请填写客诉问题描述、上传资料，或提供可访问链接"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴课时目标与教学内容，建议说明班级情况和课堂限制",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "lessonPlanGoalText",
+        "label": "课时目标与内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "teachingResourceFile",
+        "label": "上传教学资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "curriculumStandardLink",
+        "label": "课标或参考链接"
+      }
+    ],
+    "primaryField": "lessonPlanGoalText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "lessonDesignFocus"
+    ],
+    "advancedControlFields": [
+      "classProfileContext",
+      "activityConstraintNotes"
+    ]
+  },
+  "properties": {
+    "lessonDesignFocus": {
+      "enum": [
+        "导入活动",
+        "互动练习",
+        "分层任务",
+        "课堂评价"
+      ],
+      "type": "string",
+      "title": "设计重点",
+      "default": "导入活动",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "设计重点",
+          "label": "导入活动",
+          "value": "导入活动",
+          "description": "重点处理导入活动"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "设计重点",
+          "label": "互动练习",
+          "value": "互动练习",
+          "description": "重点处理互动练习"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "设计重点",
+          "label": "分层任务",
+          "value": "分层任务",
+          "description": "重点处理分层任务"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "设计重点",
+          "label": "课堂评价",
+          "value": "课堂评价",
+          "description": "重点处理课堂评价"
+        }
+      ],
+      "description": "选择本次教案活动设计助手最需要优先处理的方向。"
+    },
+    "lessonPlanGoalText": {
+      "type": "string",
+      "title": "课时目标与内容",
+      "x-rows": 10,
+      "description": "粘贴本节课主题、知识点、教学目标、课堂时长和已有流程。",
+      "x-component": "Textarea"
+    },
+    "classProfileContext": {
+      "type": "string",
+      "title": "班级与学员情况",
+      "x-rows": 3,
+      "description": "说明年龄/年级、人数、基础、线上线下、设备条件和课堂限制。",
+      "x-component": "Textarea"
+    },
+    "teachingResourceFile": {
+      "type": "string",
+      "title": "上传教学资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传教案、课件、教材摘录、题目或活动素材。",
+      "x-component": "FileUpload"
+    },
+    "curriculumStandardLink": {
+      "type": "string",
+      "title": "课标或参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的课标、教材目录、课程说明或案例链接。"
+    },
+    "activityConstraintNotes": {
+      "type": "string",
+      "title": "活动约束与评价方式",
+      "x-rows": 3,
+      "description": "补充可用工具、分组方式、禁用活动、作业要求和评价标准。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "lessonPlanGoalText",
+        "teachingResourceFile",
+        "curriculumStandardLink"
+      ],
+      "message": "请填写课时目标与内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

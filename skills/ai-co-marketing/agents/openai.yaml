@@ -1,0 +1,7 @@
+interface:
+  display_name: "联合营销策划助手"
+  short_description: "联合营销策划助手"
+  default_prompt: "Use $ai-co-marketing to help with 联合营销策划助手"
+
+policy:
+  allow_implicit_invocation: true

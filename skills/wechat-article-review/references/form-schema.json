@@ -1,0 +1,150 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 4,
+    "placeholder": "粘贴公众号文章正文，最好包含标题、开头、正文结构和结尾 CTA",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴文章正文"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传文章文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填文章链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "targetPlatform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "转化目标",
+      "x-rows": 3,
+      "description": "例如提升完读率、收藏、转发、咨询、私域导流或品牌信任。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标人群",
+      "x-rows": 3,
+      "description": "说明这篇公众号文章面向的读者，例如行业、身份、认知阶段或关注痛点。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公众号文章链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的公众号文章、预览页或转载页链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ]
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传文章文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等文章文档，适合提交排版稿或团队审稿文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "公众号文章正文",
+      "x-rows": 14,
+      "description": "可粘贴完整草稿、已发布正文或待改段落；建议保留标题、小标题、引用和结尾引导。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "enum": [
+        "公众号"
+      ],
+      "type": "string",
+      "title": "目标平台",
+      "default": "公众号",
+      "x-options": [
+        {
+          "icon": "BookOpen",
+          "color": "green",
+          "group": "目标平台",
+          "label": "公众号",
+          "value": "公众号",
+          "description": "适配公众号图文和长内容发布"
+        }
+      ]
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与限制要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、禁用词、合规限制、必须保留的事实或不希望改动的表达。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴文章正文、上传文章文档，或填写公开文章链接"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "id": "ai-pptx",
+  "slug": "ai-pptx",
+  "question": "PPT 讲清了吗?",
+  "skillName": "PPT 诊断助手",
+  "tags": [
+    "文档处理",
+    "资料审阅",
+    "摘要",
+    "报告"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "marketing",
+    "technical"
+  ],
+  "industry": [
+    "education",
+    "software",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "9d150d842a7285fecef5342b1b8ca08456dbe37822439a316759f363fa7d6852",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-pptx",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴逐页幻灯片文字或讲稿，并说明听众、时长和演示目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴演示内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传 PPT"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填演示链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充演示要求",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "演示目标",
+        "x-rows": 3,
+        "description": "例如融资、销售、汇报、培训、路演、复盘、说服决策或争取资源。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "听众对象",
+        "x-rows": 3,
+        "description": "说明这套演示面向谁，例如投资人、客户、管理层、培训学员或评审委员会。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "公开演示链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的演示文稿链接；受权限保护的 deck 请改为上传或粘贴逐页文字。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传演示文稿",
+        "format": "binary",
+        "x-accept": ".pptx,.ppt,.pdf",
+        "x-max-size": 20971520,
+        "description": "上传需要审阅、重排、优化讲述或生成简报的 pptx/ppt/pdf 文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "幻灯片文字或讲稿",
+        "x-rows": 10,
+        "description": "可粘贴逐页标题、正文、备注、讲稿、目录或平台解析出的幻灯片文本。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与演示限制",
+        "x-rows": 3,
+        "description": "补充品牌调性、术语、视觉限制、必须保留页面、合规要求和不可公开信息。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴幻灯片文字、上传演示文稿，或填写公开演示链接"
+      }
+    ]
+  }
+}

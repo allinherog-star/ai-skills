@@ -1,0 +1,185 @@
+{
+  "id": "local-store-review-business-diagnosis",
+  "slug": "local-store-review-business-diagnosis",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "门店经营",
+    "点评分析",
+    "本地生活",
+    "整改"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "retail",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Store"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "f4f2027619b686556543ff1a558f70e7a06fa1e1630192a36359e2d7fa306c88",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "local-store-review-business-diagnosis",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴门店评价，建议包含城市、品类、客单价和近期运营动作",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "storeReviewText",
+          "label": "门店评价内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "reviewExportFile",
+          "label": "上传评价导出"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "storeListingLink",
+          "label": "门店公开链接"
+        }
+      ],
+      "primaryField": "storeReviewText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "storeDiagnosisFocus"
+      ],
+      "advancedControlFields": [
+        "storeBusinessContext",
+        "recentOperationNotes"
+      ]
+    },
+    "properties": {
+      "storeReviewText": {
+        "type": "string",
+        "title": "门店评价内容",
+        "x-rows": 10,
+        "description": "粘贴点评、美团、小红书、地图评价、客服记录或私域反馈。",
+        "x-component": "Textarea"
+      },
+      "reviewExportFile": {
+        "type": "string",
+        "title": "上传评价导出",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传评价表、订单反馈、客服记录、门店数据或竞品评价。",
+        "x-component": "FileUpload"
+      },
+      "storeListingLink": {
+        "type": "string",
+        "title": "门店公开链接",
+        "format": "uri",
+        "description": "填写公开可访问的门店页、评价页、团购页或地图链接。"
+      },
+      "storeDiagnosisFocus": {
+        "enum": [
+          "差评根因",
+          "服务改进",
+          "卖点提炼",
+          "回复话术"
+        ],
+        "type": "string",
+        "title": "诊断重点",
+        "default": "差评根因",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "诊断重点",
+            "label": "差评根因",
+            "value": "差评根因",
+            "description": "重点处理差评根因"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "诊断重点",
+            "label": "服务改进",
+            "value": "服务改进",
+            "description": "重点处理服务改进"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "诊断重点",
+            "label": "卖点提炼",
+            "value": "卖点提炼",
+            "description": "重点处理卖点提炼"
+          },
+          {
+            "icon": "FileText",
+            "color": "green",
+            "group": "诊断重点",
+            "label": "回复话术",
+            "value": "回复话术",
+            "description": "重点处理回复话术"
+          }
+        ],
+        "description": "选择本次本地门店评价经营诊断最需要优先处理的方向。"
+      },
+      "recentOperationNotes": {
+        "type": "string",
+        "title": "近期运营动作",
+        "x-rows": 3,
+        "description": "补充菜单/服务/价格/人员/装修/活动变化和已做整改。",
+        "x-component": "Textarea"
+      },
+      "storeBusinessContext": {
+        "type": "string",
+        "title": "门店与经营背景",
+        "x-rows": 3,
+        "description": "说明城市、商圈、品类、客单价、营业时段、竞品和近期活动。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "storeReviewText",
+          "reviewExportFile",
+          "storeListingLink"
+        ],
+        "message": "请填写门店评价内容、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

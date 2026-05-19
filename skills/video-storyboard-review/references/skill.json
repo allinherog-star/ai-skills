@@ -1,0 +1,249 @@
+{
+  "id": "video-storyboard-review",
+  "slug": "video-storyboard-review",
+  "question": "这段视频够发布吗?",
+  "skillName": "视频质量诊断助手",
+  "tags": [
+    "视频脚本",
+    "分镜",
+    "口播",
+    "广告片",
+    "节奏"
+  ],
+  "profession": [
+    "blogger-individual",
+    "operation",
+    "marketing",
+    "design"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "entertainment",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Film"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "1fd34d97d990fa6568b062caa2da031ea57ce1f692c5295aafab35e3357bdc98",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "video-storyboard-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 6,
+      "placeholder": "粘贴视频分镜稿，最好包含镜号、画面、旁白、字幕和每镜时长",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴分镜稿"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传分镜文档"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填参考链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "targetPlatform",
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements",
+        "videoDuration"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "转化目标",
+        "x-rows": 3,
+        "description": "例如提升理解效率、情绪感染、转化点击、传播记忆点或拍摄可执行性。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标人群",
+        "x-rows": 3,
+        "description": "说明视频面向的观众，例如品牌方、消费者、投资人、课程学员或内部评审。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "分镜参考链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的分镜、脚本、样片或视频方案链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "诊断深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "诊断深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "诊断深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "诊断深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ]
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传分镜文档",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等分镜文档，适合提交脚本表、拍摄方案或审稿文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "视频分镜稿",
+        "x-rows": 12,
+        "description": "可粘贴分镜表、镜头脚本或拍摄方案；建议保留镜号、画面描述、旁白、字幕和时长。",
+        "x-component": "Textarea"
+      },
+      "videoDuration": {
+        "type": "string",
+        "title": "视频时长",
+        "description": "例如 15 秒、30 秒、60 秒或 3 分钟。"
+      },
+      "targetPlatform": {
+        "enum": [
+          "短视频",
+          "抖音",
+          "视频号",
+          "B站",
+          "广告片"
+        ],
+        "type": "string",
+        "title": "目标平台",
+        "default": "短视频",
+        "x-options": [
+          {
+            "icon": "Video",
+            "color": "rose",
+            "group": "目标平台",
+            "label": "短视频",
+            "value": "短视频",
+            "description": "适合短视频脚本和竖屏内容"
+          },
+          {
+            "icon": "Clapperboard",
+            "color": "rose",
+            "group": "目标平台",
+            "label": "抖音",
+            "value": "抖音",
+            "description": "适配抖音节奏和推荐场景"
+          },
+          {
+            "icon": "FileText",
+            "color": "green",
+            "group": "目标平台",
+            "label": "视频号",
+            "value": "视频号",
+            "description": "适配微信视频号内容表达"
+          },
+          {
+            "icon": "Film",
+            "color": "pink",
+            "group": "目标平台",
+            "label": "B站",
+            "value": "B站",
+            "description": "适配 B 站中长视频和社区语境"
+          },
+          {
+            "icon": "Megaphone",
+            "color": "amber",
+            "group": "目标平台",
+            "label": "广告片",
+            "value": "广告片",
+            "description": "适合品牌广告和转化短片"
+          }
+        ]
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与限制要求",
+        "x-rows": 3,
+        "description": "补充视觉调性、品牌禁区、必须出现的信息、不能出现的镜头或合规限制。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴分镜稿、上传分镜文档，或填写公开参考链接"
+      }
+    ]
+  }
+}

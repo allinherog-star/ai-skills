@@ -46,19 +46,19 @@ security:
 **按必填参数调用**
 
 ```bash
-python3 scripts/run.py --params '{"topic":"主题/产品"}'
+python3 scripts/run.py --params '{"topic":"主题"}'
 ```
 
 ### 参数说明
 
 | 参数 | 类型 | 必填 | 默认 | 说明 |
 | --- | --- | --- | --- | --- |
-| `topic` | string | 是 | - | 主题/产品 |
+| `tone` | string | 否 | `真实具体` | 语气；可选值：`真实具体`、`轻松口语`、`专业测评`、`强反差`、`温柔陪伴` |
+| `topic` | string | 是 | - | 产品、服务、内容主题或卖点 |
 | `audience` | string | 否 | - | 目标人群 |
+| `noteType` | string | 否 | `种草` | 笔记类型；可选值：`种草`、`测评`、`攻略`、`避坑`、`清单`、`复盘` |
 | `sellingPoint` | string | 否 | - | 核心卖点 |
 | `accountPersona` | string | 否 | - | 账号人设 |
-| `noteType` | string | 否 | `种草` | 笔记类型；可选值：`种草`、`测评`、`攻略`、`避坑`、`清单`、`复盘` |
-| `tone` | string | 否 | `真实具体` | 语气；可选值：`真实具体`、`轻松口语`、`专业测评`、`强反差`、`温柔陪伴` |
 
 完整机器可读参数结构见 `references/form-schema.json`。
 
@@ -75,14 +75,14 @@ python3 scripts/run.py --params '{"topic":"主题/产品"}'
 下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
 
 ```bash
-python3 scripts/run.py --params '{"topic":"主题/产品"}'
+python3 scripts/run.py --params '{"topic":"主题"}'
 ```
 
 等价的 `--params` JSON：
 
 ```json
 {
-  "topic": "主题/产品"
+  "topic": "主题"
 }
 ```
 

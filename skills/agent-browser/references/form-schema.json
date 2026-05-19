@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴研究任务说明、公开页面可见文本、候选链接、步骤记录或截图转写",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴研究上下文"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传任务资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填入口链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "代理式浏览目标",
+      "x-rows": 3,
+      "description": "例如资料收集、页面比较、流程观察、证据归档或人工执行手册。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "运行手册读者",
+      "x-rows": 3,
+      "description": "填写研究员、QA、运营、产品经理、销售情报团队、内容团队等使用者。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开入口链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的入口 URL、候选页面链接、页面标题或链接 metadata。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "运行手册深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "运行手册深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "运行手册深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "运行手册深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速任务卡、标准运行手册或深度研究协议。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传任务资料文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传任务资料、页面观察记录、研究包、PDF、Markdown、CSV、TXT 或截图转写。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "浏览研究上下文",
+      "x-rows": 10,
+      "description": "粘贴研究任务说明、公开页面可见文本、候选链接、步骤记录、截图转写或观察笔记。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "研究目标平台",
+      "x-rows": 3,
+      "description": "说明计划面向官网、帮助中心、公开目录、文档站、公开 SaaS 页面或其他页面类型。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "安全与引用要求",
+      "x-rows": 3,
+      "description": "补充品牌口径、合规边界、禁止操作、引用规范、隐私要求或输出格式。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴浏览研究上下文、上传任务资料文件，或填写公开入口链接"
+    }
+  ]
+}

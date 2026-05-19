@@ -1,0 +1,195 @@
+{
+  "id": "ai-kpi-dashboard-design",
+  "slug": "ai-kpi-dashboard-design",
+  "question": "看板讲清 KPI 吗?",
+  "skillName": "KPI 看板设计助手",
+  "tags": [
+    "性能诊断",
+    "网站质量",
+    "体验指标"
+  ],
+  "profession": [
+    "technical",
+    "product",
+    "marketing"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://skillsmp.com/skills/wshobson-agents-plugins-business-analytics-skills-kpi-dashboard-design-skill-md"
+      ],
+      "sourceNotes": "recent_hot_search_signal: wshobson/agents/kpi-dashboard-design"
+    },
+    "catalog": {
+      "icon": "LayoutTemplate"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "skillsmp-market-2026-05-17",
+      "batchId": "skillsmp-market-2026-05-17",
+      "candidateId": "kpi-dashboard-design",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "SkillsMP market signal (35330 stars): Design effective KPI dashboards with metrics selection, visualization best practices, and real-time monitoring patterns. Use this skill when building an executive SaaS metrics dash",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "sales",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "sales_gtm"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "SkillsMP market signal (35330 stars): Design effective KPI dashboards with metrics selection, visualization best practices, and real-time monitoring patterns. Use this skill when building an executive SaaS metrics dash",
+      "allowedOutputs": [
+        "销售策略",
+        "沟通素材",
+        "跟进计划"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "adb0fa2d3df7db11cb9d5e7b265ec1636f46655bca09b50b44917e3864651200",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-kpi-dashboard-design",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "skillsmp-market-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "sales_gtm",
+      "sourceRef": "wshobson/agents",
+      "sourceUrl": "https://skillsmp.com/skills/wshobson-agents-plugins-business-analytics-skills-kpi-dashboard-design-skill-md",
+      "importedAt": "2026-05-17T14:25:05.553Z",
+      "candidateId": "kpi-dashboard-design",
+      "sourceSignal": "recent_hot_search_signal",
+      "originalSkillId": "kpi-dashboard-design"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴视觉 brief、截图说明、品牌规范或修改目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "写视觉 brief"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传素材"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填页面链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充视觉约束",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "审查目标",
+        "x-rows": 3,
+        "description": "说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "使用场景",
+        "x-rows": 3,
+        "description": "说明视觉素材面向的平台、受众、设备、活动或评审场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "页面或素材链接",
+        "format": "uri",
+        "description": "填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "视觉素材文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv,.pdf,.docx,.txt",
+        "x-max-size": 20971520,
+        "description": "上传截图、图片、演示稿、品牌规范、产品图或视觉参考文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "视觉 brief 或截图说明",
+        "x-rows": 8,
+        "description": "粘贴视觉 brief、截图说明、品牌规范、页面问题、平台规格或修改目标。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与规格",
+        "x-rows": 3,
+        "description": "补充品牌规范、尺寸比例、平台限制、不可改动元素、无障碍要求或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "id": "job-description-optimizer-cn",
+  "slug": "job-description-optimizer-cn",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "招聘",
+    "JD",
+    "技能匹配",
+    "雇主品牌"
+  ],
+  "profession": [
+    "hr",
+    "management",
+    "operation"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "7889d1c8c6b0f8071d4557633ff8d09bd5095f7d8d9da00fbc6c06a6991beeb3",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "job-description-optimizer-cn",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴JD文本，建议包含职级、城市、团队背景和硬性要求",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "rolePostingText",
+          "label": "JD文本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "jdDocumentFile",
+          "label": "上传JD资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "hiringPlanLink",
+          "label": "招聘参考链接"
+        }
+      ],
+      "primaryField": "rolePostingText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "jdOptimizeFocus"
+      ],
+      "advancedControlFields": [
+        "roleContext",
+        "compensationConstraintNotes"
+      ]
+    },
+    "properties": {
+      "roleContext": {
+        "type": "string",
+        "title": "岗位与团队背景",
+        "x-rows": 3,
+        "description": "说明职级、汇报线、业务阶段、城市、薪酬区间和招聘紧急度。",
+        "x-component": "Textarea"
+      },
+      "hiringPlanLink": {
+        "type": "string",
+        "title": "招聘参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的招聘页、岗位页、团队介绍或竞品JD链接。"
+      },
+      "jdDocumentFile": {
+        "type": "string",
+        "title": "上传JD资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传JD草稿、岗位画像、绩效要求、竞品JD或招聘复盘。",
+        "x-component": "FileUpload"
+      },
+      "jdOptimizeFocus": {
+        "enum": [
+          "吸引力",
+          "要求清晰",
+          "合规表达",
+          "筛选标准"
+        ],
+        "type": "string",
+        "title": "优化重点",
+        "default": "吸引力",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "优化重点",
+            "label": "吸引力",
+            "value": "吸引力",
+            "description": "重点处理吸引力"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "优化重点",
+            "label": "要求清晰",
+            "value": "要求清晰",
+            "description": "重点处理要求清晰"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "优化重点",
+            "label": "合规表达",
+            "value": "合规表达",
+            "description": "重点处理合规表达"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "优化重点",
+            "label": "筛选标准",
+            "value": "筛选标准",
+            "description": "重点处理筛选标准"
+          }
+        ],
+        "description": "选择本次中文 JD 优化最需要优先处理的方向。"
+      },
+      "rolePostingText": {
+        "type": "string",
+        "title": "JD文本",
+        "x-rows": 10,
+        "description": "粘贴岗位职责、任职要求、加分项、团队介绍和招聘亮点。",
+        "x-component": "Textarea"
+      },
+      "compensationConstraintNotes": {
+        "type": "string",
+        "title": "招聘约束与合规注意",
+        "x-rows": 3,
+        "description": "补充硬性要求、不能承诺内容、年龄/性别等敏感限制排除要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "rolePostingText",
+          "jdDocumentFile",
+          "hiringPlanLink"
+        ],
+        "message": "请填写JD文本、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

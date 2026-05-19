@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴地点需求、筛选条件、预算和出行范围",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "写地点需求"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传清单"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填地点链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充筛选条件",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "筛选目标",
+      "x-rows": 3,
+      "description": "说明要完成的推荐、比较、路线、预算、风险核验或最终决策。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "出行或使用对象",
+      "x-rows": 3,
+      "description": "说明人数、角色、偏好、场景、交通方式或活动类型。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "地点或地图链接",
+      "format": "uri",
+      "description": "填写公开可访问的地图、门店、地点、评价或候选页面链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "地点资料文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传地点清单、评价表、活动需求、预算表或调研资料。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "地点需求或候选清单",
+      "x-rows": 8,
+      "description": "粘贴地点需求、候选清单、预算、出行范围、偏好条件或评价摘录。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "时间与限制",
+      "x-rows": 3,
+      "description": "补充时间范围、预算上限、距离限制、营业要求、避雷条件或人工核验重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写地点需求、上传地点资料或提供地点链接"
+    }
+  ]
+}

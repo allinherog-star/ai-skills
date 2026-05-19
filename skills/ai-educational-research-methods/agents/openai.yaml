@@ -1,0 +1,7 @@
+interface:
+  display_name: "教育研究方法助手"
+  short_description: "教育研究方法助手"
+  default_prompt: "Use $ai-educational-research-methods to help with 教育研究方法助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴表格、CSV 或字段口径，并说明希望检查数据质量、提炼洞察还是生成简报",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴表格数据"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传表格"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填表格链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充数据口径",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "分析目标",
+      "x-rows": 3,
+      "description": "例如数据体检、经营复盘、预算检查、名单清洗、指标解释、异常排查或报表交付。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "报告读者",
+      "x-rows": 3,
+      "description": "说明谁会看这份表格审阅结果，例如业务负责人、财务、运营、销售、数据团队或客户。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开表格链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的表格链接；受权限保护的表格请改为上传或粘贴数据。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传Excel文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传需要审阅、检查、分析或生成简报的 xlsx/xls/csv/tsv 文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "表格数据或CSV",
+      "x-rows": 10,
+      "description": "可粘贴表格、CSV、字段说明、公式片段、指标口径或数据摘录。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "口径与保密要求",
+      "x-rows": 3,
+      "description": "补充指标口径、展示格式、单位规则、必须保留字段、隐私脱敏和对外叙述限制。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴表格数据、上传 Excel/CSV 文件，或填写公开表格链接"
+    }
+  ]
+}

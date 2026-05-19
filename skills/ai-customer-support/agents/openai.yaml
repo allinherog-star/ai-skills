@@ -1,0 +1,7 @@
+interface:
+  display_name: "客服回复助手"
+  short_description: "客服回复助手"
+  default_prompt: "Use $ai-customer-support to help with 客服回复助手"
+
+policy:
+  allow_implicit_invocation: true

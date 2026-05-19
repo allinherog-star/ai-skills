@@ -1,0 +1,188 @@
+{
+  "id": "investment-research-material-compare",
+  "slug": "investment-research-material-compare",
+  "question": "这份材料重点是什么?",
+  "skillName": "资料整理助手",
+  "tags": [
+    "金融资料",
+    "风险提示",
+    "证据审阅",
+    "专业复核"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "technical",
+    "product"
+  ],
+  "industry": [
+    "finance",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "4d785e37b986fa36a7337ca485288ba10e85aff6116383400699d601f7273f88",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "investment-research-material-compare",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴投研资料摘录，建议包含标的、时间范围和需要对比的问题",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "researchNoteText",
+          "label": "投研观点与材料摘录"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "researchPackFile",
+          "label": "上传投研资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "marketDataLink",
+          "label": "公开资料链接"
+        }
+      ],
+      "primaryField": "researchNoteText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "researchCompareFocus"
+      ],
+      "advancedControlFields": [
+        "assetContext",
+        "comparisonBasisNotes"
+      ]
+    },
+    "properties": {
+      "assetContext": {
+        "type": "string",
+        "title": "标的与研究场景",
+        "x-rows": 3,
+        "description": "说明标的、行业、市场、研究目的、时间范围和使用场景。",
+        "x-component": "Textarea"
+      },
+      "marketDataLink": {
+        "type": "string",
+        "title": "公开资料链接",
+        "format": "uri",
+        "description": "填写公开可访问的公告、交易所披露、公司官网、新闻或数据页面。"
+      },
+      "researchNoteText": {
+        "type": "string",
+        "title": "投研观点与材料摘录",
+        "x-rows": 10,
+        "description": "粘贴研报观点、纪要摘要、新闻事实、财务指标或多份材料差异。",
+        "x-component": "Textarea"
+      },
+      "researchPackFile": {
+        "type": "string",
+        "title": "上传投研资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传研报、纪要、财报摘录、公告、数据表或对比材料。",
+        "x-component": "FileUpload"
+      },
+      "comparisonBasisNotes": {
+        "type": "string",
+        "title": "对比口径与限制",
+        "x-rows": 3,
+        "description": "补充需对比的维度、关键假设、不可下结论的范围和待核实事实。",
+        "x-component": "Textarea"
+      },
+      "researchCompareFocus": {
+        "enum": [
+          "观点差异",
+          "事实一致性",
+          "风险因素",
+          "待核实问题"
+        ],
+        "type": "string",
+        "title": "对比重点",
+        "default": "观点差异",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "对比重点",
+            "label": "观点差异",
+            "value": "观点差异",
+            "description": "重点处理观点差异"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "对比重点",
+            "label": "事实一致性",
+            "value": "事实一致性",
+            "description": "重点处理事实一致性"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "对比重点",
+            "label": "风险因素",
+            "value": "风险因素",
+            "description": "重点处理风险因素"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "对比重点",
+            "label": "待核实问题",
+            "value": "待核实问题",
+            "description": "重点处理待核实问题"
+          }
+        ],
+        "description": "选择本次投研资料对比摘要最需要优先处理的方向。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "researchNoteText",
+          "researchPackFile",
+          "marketDataLink"
+        ],
+        "message": "请填写投研观点与材料摘录、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

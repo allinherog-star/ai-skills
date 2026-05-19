@@ -1,0 +1,148 @@
+{
+  "id": "lark-sheets",
+  "slug": "lark-sheets",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "656d4b229ed50d5026449e678c4fc50cfeab5d8dafd959813b78e9c0b7e2b324",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "lark-sheets",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴飞书表格、CSV 或字段口径，并说明要做数据体检、汇总还是异常排查",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴飞书表格"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传表格导出"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写表格链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "处理目标",
+        "x-rows": 3,
+        "description": "例如数据体检、进度汇总、指标解释、异常排查、名单清洗或对外同步。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "报告读者",
+        "x-rows": 3,
+        "description": "说明这份表格简报面向谁，例如项目组、运营、财务、销售、管理层、数据团队或客户。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "飞书表格链接",
+        "format": "uri",
+        "description": "填写用户可公开分享的飞书表格链接；仅作人工链接线索，不代表可读取工作区数据。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传表格导出",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传从飞书手动导出的 xlsx/csv/tsv/pdf 文件或其他可解析表格。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "飞书表格数据",
+        "x-rows": 10,
+        "description": "可粘贴飞书表格、CSV、字段说明、公式片段、指标口径或导出的文本内容。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "口径与协作要求",
+        "x-rows": 3,
+        "description": "补充指标口径、字段命名、展示格式、保密边界、必须保留列和对外叙述限制。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴飞书表格数据、上传表格导出文件，或填写公开飞书表格链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "ai-web-research",
+  "slug": "ai-web-research",
+  "question": "网上资料可信吗?",
+  "skillName": "网页研究助手",
+  "tags": [
+    "研究分析",
+    "来源核验",
+    "证据摘要"
+  ],
+  "profession": [
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://skillsmp.com/skills/accomplish-ai-accomplish-apps-desktop-bundled-skills-web-research-skill-md"
+      ],
+      "sourceNotes": "recent_hot_search_signal: accomplish-ai/accomplish/web-research"
+    },
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "skillsmp-market-2026-05-17",
+      "batchId": "skillsmp-market-2026-05-17",
+      "candidateId": "web-research",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "SkillsMP market signal (10746 stars): Research topics on the web, gather information from multiple sources, and summarize findings.",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "analyst",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "web_research"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "SkillsMP market signal (10746 stars): Research topics on the web, gather information from multiple sources, and summarize findings.",
+      "allowedOutputs": [
+        "研究摘要",
+        "对比洞察",
+        "决策建议"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "4c06fe010a146be9cb4702d0d9d778e5793a4c46f03eac8c43b35ba0a6daa093",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-web-research",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "skillsmp-market-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "web_research",
+      "sourceRef": "accomplish-ai/accomplish",
+      "sourceUrl": "https://skillsmp.com/skills/accomplish-ai-accomplish-apps-desktop-bundled-skills-web-research-skill-md",
+      "importedAt": "2026-05-17T15:01:37.340Z",
+      "candidateId": "web-research",
+      "sourceSignal": "recent_hot_search_signal",
+      "originalSkillId": "web-research"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴要核验的问题、候选来源、网页摘录或比较观点",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "提研究问题"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填网页链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充研究范围",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "研究目标",
+        "x-rows": 3,
+        "description": "说明本次要回答的问题、比较维度、判断标准或交付用途。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "研究受众",
+        "x-rows": 3,
+        "description": "说明研究结论要服务的读者、角色、市场、课程或使用场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "公开网页链接",
+        "format": "uri",
+        "description": "填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "研究资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传研究资料、网页摘录、文献笔记、表格或报告，适合资料较长或需要保留原文时使用。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "研究问题或资料摘录",
+        "x-rows": 8,
+        "description": "粘贴要核验的问题、候选来源、网页摘录、文献线索或比较观点。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "来源与边界",
+        "x-rows": 3,
+        "description": "补充来源范围、时间范围、可信度要求、不可使用来源、结论风险或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写研究问题、上传研究资料或提供公开网页链接"
+      }
+    ]
+  }
+}

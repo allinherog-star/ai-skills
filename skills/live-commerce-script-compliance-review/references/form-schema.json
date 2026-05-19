@@ -1,0 +1,304 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴直播话术，尤其是功效、价格、优惠、限时限量和对比表达",
+    "primaryTabs": [
+      {
+        "id": "script",
+        "icon": "Mic",
+        "field": "liveTalkText",
+        "label": "贴直播话术"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "liveTalkFile",
+        "label": "传脚本资料"
+      }
+    ],
+    "primaryField": "liveTalkText",
+    "advancedLabel": "补充商品与活动",
+    "primaryControlFields": [
+      "platform",
+      "industryCategory",
+      "reviewFocus"
+    ],
+    "advancedControlFields": [
+      "productInfo",
+      "promotionRules"
+    ]
+  },
+  "properties": {
+    "platform": {
+      "enum": [
+        "通用直播电商",
+        "抖音电商",
+        "淘宝直播",
+        "快手电商",
+        "小红书直播",
+        "视频号直播",
+        "TikTok Shop"
+      ],
+      "type": "string",
+      "title": "直播平台",
+      "default": "通用直播电商",
+      "x-options": [
+        {
+          "icon": "Store",
+          "color": "blue",
+          "group": "平台",
+          "label": "通用直播电商",
+          "value": "通用直播电商",
+          "description": "按通用直播电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Clapperboard",
+          "color": "blue",
+          "group": "平台",
+          "label": "抖音电商",
+          "value": "抖音电商",
+          "description": "按抖音电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "LayoutTemplate",
+          "color": "blue",
+          "group": "平台",
+          "label": "淘宝直播",
+          "value": "淘宝直播",
+          "description": "按淘宝直播的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ShoppingBag",
+          "color": "blue",
+          "group": "平台",
+          "label": "快手电商",
+          "value": "快手电商",
+          "description": "按快手电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Sparkles",
+          "color": "blue",
+          "group": "平台",
+          "label": "小红书直播",
+          "value": "小红书直播",
+          "description": "按小红书直播的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Video",
+          "color": "blue",
+          "group": "平台",
+          "label": "视频号直播",
+          "value": "视频号直播",
+          "description": "按视频号直播的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "平台",
+          "label": "TikTok Shop",
+          "value": "TikTok Shop",
+          "description": "按TikTok Shop的页面和用户决策习惯调整诊断重点"
+        }
+      ],
+      "description": "直播平台"
+    },
+    "productInfo": {
+      "type": "string",
+      "title": "商品与资质信息",
+      "x-rows": 5,
+      "description": "补充品类、卖点、适用范围、检测/认证、禁用表达和必须保留的信息。",
+      "x-component": "Textarea"
+    },
+    "reviewFocus": {
+      "enum": [
+        "风险提示与安全改写",
+        "价格优惠话术",
+        "功效卖点话术",
+        "逼单促销话术",
+        "主播提示卡"
+      ],
+      "type": "string",
+      "title": "审稿重点",
+      "default": "风险提示与安全改写",
+      "x-options": [
+        {
+          "icon": "Shield",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "风险提示与安全改写",
+          "value": "风险提示与安全改写",
+          "description": "重点检查风险提示与安全改写"
+        },
+        {
+          "icon": "Target",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "价格优惠话术",
+          "value": "价格优惠话术",
+          "description": "重点检查价格优惠话术"
+        },
+        {
+          "icon": "Award",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "功效卖点话术",
+          "value": "功效卖点话术",
+          "description": "重点检查功效卖点话术"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "逼单促销话术",
+          "value": "逼单促销话术",
+          "description": "重点检查逼单促销话术"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "主播提示卡",
+          "value": "主播提示卡",
+          "description": "重点检查主播提示卡"
+        }
+      ],
+      "description": "审稿重点"
+    },
+    "liveTalkFile": {
+      "type": "string",
+      "title": "上传脚本资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv",
+      "x-max-size": 20971520,
+      "description": "支持直播脚本、商品卡资料、活动方案、审稿表或话术文档。",
+      "x-component": "FileUpload"
+    },
+    "liveTalkText": {
+      "type": "string",
+      "title": "直播话术",
+      "x-rows": 10,
+      "description": "粘贴主播开场、产品介绍、逼单、福利、价格、售后和互动话术。",
+      "x-component": "Textarea"
+    },
+    "promotionRules": {
+      "type": "string",
+      "title": "优惠与活动规则",
+      "x-rows": 4,
+      "description": "填写价格、到手价、优惠门槛、赠品、限时限量、库存、售后和发货说明。",
+      "x-component": "Textarea"
+    },
+    "industryCategory": {
+      "enum": [
+        "通用品类",
+        "食品饮料",
+        "保健营养",
+        "美妆个护",
+        "母婴儿童",
+        "家清日化",
+        "服饰鞋包",
+        "数码家电",
+        "医疗健康",
+        "金融/教育服务"
+      ],
+      "type": "string",
+      "title": "商品行业",
+      "default": "通用品类",
+      "x-options": [
+        {
+          "icon": "Box",
+          "color": "blue",
+          "group": "行业",
+          "label": "通用品类",
+          "value": "通用品类",
+          "description": "按通用品类常见话术风险做审稿"
+        },
+        {
+          "icon": "Scale",
+          "color": "blue",
+          "group": "行业",
+          "label": "食品饮料",
+          "value": "食品饮料",
+          "description": "按食品饮料常见话术风险做审稿"
+        },
+        {
+          "icon": "Shield",
+          "color": "blue",
+          "group": "行业",
+          "label": "保健营养",
+          "value": "保健营养",
+          "description": "按保健营养常见话术风险做审稿"
+        },
+        {
+          "icon": "FileWarning",
+          "color": "blue",
+          "group": "行业",
+          "label": "美妆个护",
+          "value": "美妆个护",
+          "description": "按美妆个护常见话术风险做审稿"
+        },
+        {
+          "icon": "FileText",
+          "color": "blue",
+          "group": "行业",
+          "label": "母婴儿童",
+          "value": "母婴儿童",
+          "description": "按母婴儿童常见话术风险做审稿"
+        },
+        {
+          "icon": "PenTool",
+          "color": "blue",
+          "group": "行业",
+          "label": "家清日化",
+          "value": "家清日化",
+          "description": "按家清日化常见话术风险做审稿"
+        },
+        {
+          "icon": "MessageCircle",
+          "color": "blue",
+          "group": "行业",
+          "label": "服饰鞋包",
+          "value": "服饰鞋包",
+          "description": "按服饰鞋包常见话术风险做审稿"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "行业",
+          "label": "数码家电",
+          "value": "数码家电",
+          "description": "按数码家电常见话术风险做审稿"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "blue",
+          "group": "行业",
+          "label": "医疗健康",
+          "value": "医疗健康",
+          "description": "按医疗健康常见话术风险做审稿"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "行业",
+          "label": "金融/教育服务",
+          "value": "金融/教育服务",
+          "description": "按金融/教育服务常见话术风险做审稿"
+        }
+      ],
+      "description": "商品行业"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "liveTalkText",
+        "liveTalkFile"
+      ],
+      "message": "请粘贴直播话术或上传脚本资料"
+    }
+  ]
+}

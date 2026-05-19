@@ -1,0 +1,7 @@
+interface:
+  display_name: "图文卡片生成助手"
+  short_description: "图文卡片生成助手"
+  default_prompt: "Use $ai-baoyu-image-cards to help with 图文卡片生成助手"
+
+policy:
+  allow_implicit_invocation: true

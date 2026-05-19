@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴 Remotion 代码、动画需求、错误日志或项目背景，并说明希望优化什么",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴代码或问题"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传项目资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填仓库链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充技术边界",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "优化目标",
+      "x-rows": 3,
+      "description": "例如排查渲染问题、优化动画结构、提升可维护性、整理最佳实践或准备交付检查。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "交付对象",
+      "x-rows": 3,
+      "description": "说明结果面向开发者、设计师、客户、内容团队还是内部评审。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "项目或文档链接",
+      "format": "uri",
+      "description": "填写公开可访问的代码仓库、文档、预览页或问题链接；私有内容请上传或粘贴。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传代码或说明文件",
+      "format": "binary",
+      "x-accept": ".ts,.tsx,.js,.jsx,.json,.md,.txt,.log,.png,.jpg,.jpeg,.webp,.pdf",
+      "x-max-size": 20971520,
+      "description": "上传 Remotion 代码、错误日志、需求说明、截图或项目文档。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "Remotion 项目背景",
+      "x-rows": 8,
+      "description": "粘贴 Remotion 组件、动画需求、目录结构、渲染问题或需要评审的代码片段。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "技术与交付限制",
+      "x-rows": 3,
+      "description": "补充 Remotion 版本、性能要求、浏览器限制、视频规格、不可改动代码或上线时间。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写 Remotion 项目背景、上传代码/文件或提供公开链接"
+    }
+  ]
+}

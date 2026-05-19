@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 组合销售助手"
+  short_description: "Amazon 组合销售助手"
+  default_prompt: "Use $ai-amazon-product-bundling to help with Amazon 组合销售助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,194 @@
+{
+  "id": "lark-approval",
+  "slug": "lark-approval",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "78a67fbe468804e1decca061a8b13bd208e9e886bb58786d3f6163ddeede4ec0",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "lark-approval",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴飞书审批表单字段、申请理由、金额、审批意见、流转记录和制度依据",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴审批记录"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传审批材料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填审批链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "审批审阅目标",
+        "x-rows": 3,
+        "description": "例如检查材料完整性、识别审批风险、准备补充说明或形成评审意见。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "审阅对象",
+        "x-rows": 3,
+        "description": "例如申请人、直属主管、财务、法务、采购、人事或管理者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "审批链接说明",
+        "format": "uri",
+        "description": "填写飞书审批或流程说明链接，并补充可见内容摘要；系统不会自动打开链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "审阅深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "审阅深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "审阅深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "审阅深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速自查、标准审阅或深度风险复核。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传审批材料",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传审批截图 OCR 文本、审批导出、附件摘要、制度文件或补充说明。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "飞书审批记录",
+        "x-rows": 10,
+        "description": "粘贴审批标题、表单字段、审批理由、金额、申请人、审批意见、流转记录或制度条款。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "审阅场景",
+        "x-rows": 3,
+        "description": "说明用于飞书审批前自查、主管评审、财务复核、法务复核还是流程复盘。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "制度与措辞要求",
+        "x-rows": 3,
+        "description": "补充企业制度口径、审批模板、合规要求、保密要求或内部措辞规范。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴飞书审批记录、上传审批材料或填写审批链接说明"
+      }
+    ]
+  }
+}

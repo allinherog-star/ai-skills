@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 库存诊断助手"
+  short_description: "Amazon 库存诊断助手"
+  default_prompt: "Use $ai-amazon-inventory-management to help with Amazon 库存诊断助手"
+
+policy:
+  allow_implicit_invocation: true

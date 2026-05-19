@@ -1,0 +1,212 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 4,
+    "placeholder": "粘贴需要去 AI 味的中文文本，最好保留标题、段落和想要发布的平台背景",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴待润色文本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传文本文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填参考链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充表达要求",
+    "primaryControlFields": [
+      "targetPlatform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements",
+      "tonePreference"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "改写目标",
+      "x-rows": 3,
+      "description": "例如更像真人、更口语、更专业、更有观点、更适合发布或降低营销腔。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标读者",
+      "x-rows": 3,
+      "description": "说明读者是谁、他们熟悉什么、对内容最在意什么。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开文本链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的文章、页面、笔记或文档链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速去味",
+        "标准改写",
+        "深度重写"
+      ],
+      "type": "string",
+      "title": "处理深度",
+      "default": "标准改写",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "处理深度",
+          "label": "快速去味",
+          "value": "快速去味",
+          "description": "优先删掉最明显的 AI 腔、套话和机械连接词"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "处理深度",
+          "label": "标准改写",
+          "value": "标准改写",
+          "description": "给出诊断、自然改写稿和关键修改说明"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "处理深度",
+          "label": "深度重写",
+          "value": "深度重写",
+          "description": "在保留事实基础上重排结构、节奏和作者声音"
+        }
+      ],
+      "description": "选择只做快速去味、标准改写，还是深度重写并解释修改原因。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传待改稿件",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等文本稿件，适合提交文章草稿、审稿版或长文材料。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "待去 AI 味文本",
+      "x-rows": 14,
+      "description": "粘贴需要改得更自然的中文内容，可以是 AI 生成文章、营销文案、社媒长文、课程稿或说明文。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "enum": [
+        "通用中文内容",
+        "公众号文章",
+        "小红书笔记",
+        "官网博客",
+        "营销落地页",
+        "课程讲稿",
+        "知识库文档"
+      ],
+      "type": "string",
+      "title": "发布平台",
+      "default": "通用中文内容",
+      "x-options": [
+        {
+          "icon": "FileText",
+          "color": "blue",
+          "group": "发布平台",
+          "label": "通用中文内容",
+          "value": "通用中文内容",
+          "description": "不限定平台，按清楚、自然、可发布的中文表达处理"
+        },
+        {
+          "icon": "Newspaper",
+          "color": "green",
+          "group": "发布平台",
+          "label": "公众号文章",
+          "value": "公众号文章",
+          "description": "适合长文叙述、观点表达和段落节奏调整"
+        },
+        {
+          "icon": "MessageCircle",
+          "color": "pink",
+          "group": "发布平台",
+          "label": "小红书笔记",
+          "value": "小红书笔记",
+          "description": "适合更口语、更具体、更像真实经验分享的表达"
+        },
+        {
+          "icon": "Globe",
+          "color": "cyan",
+          "group": "发布平台",
+          "label": "官网博客",
+          "value": "官网博客",
+          "description": "适合保留专业信息，同时减少模板感和宣传腔"
+        },
+        {
+          "icon": "Megaphone",
+          "color": "orange",
+          "group": "发布平台",
+          "label": "营销落地页",
+          "value": "营销落地页",
+          "description": "适合压缩空话，突出具体卖点和可信表达"
+        },
+        {
+          "icon": "GraduationCap",
+          "color": "purple",
+          "group": "发布平台",
+          "label": "课程讲稿",
+          "value": "课程讲稿",
+          "description": "适合把书面 AI 腔改成更顺口、更像人讲出来的稿子"
+        },
+        {
+          "icon": "BookOpen",
+          "color": "amber",
+          "group": "发布平台",
+          "label": "知识库文档",
+          "value": "知识库文档",
+          "description": "适合保留准确性和结构，去掉机械连接词与套话"
+        }
+      ],
+      "description": "选择文本最终要发布或交付的场景。"
+    },
+    "tonePreference": {
+      "type": "string",
+      "title": "语气偏好",
+      "description": "例如自然口语、专业克制、创作者第一人称、品牌官方但不生硬。"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "必须保留与避开",
+      "x-rows": 3,
+      "description": "补充必须保留的事实、品牌说法、禁用词、合规边界或不能改变的语气。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴待改文本、上传稿件，或填写公开文本链接"
+    }
+  ]
+}

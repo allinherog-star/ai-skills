@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 6,
+    "placeholder": "粘贴销售会议转写或纪要，包含客户需求、异议、承诺事项和下一步讨论",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "MessagesSquare",
+        "field": "meetingNotesText",
+        "label": "贴会议纪要"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "meetingNotesFile",
+        "label": "传会议文件"
+      }
+    ],
+    "primaryField": "meetingNotesText",
+    "advancedLabel": "补充商机背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "productContext",
+      "dealContext",
+      "followUpGoal"
+    ]
+  },
+  "properties": {
+    "dealContext": {
+      "type": "string",
+      "title": "商机背景",
+      "x-rows": 3,
+      "description": "说明客户阶段、联系人、竞争情况、预算时间线或当前推进卡点。",
+      "x-component": "Textarea"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速跟进",
+        "标准方案",
+        "深度复盘"
+      ],
+      "type": "string",
+      "title": "跟进深度",
+      "default": "标准方案",
+      "x-options": [
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "跟进深度",
+          "label": "快速跟进",
+          "value": "快速跟进",
+          "description": "快速跟进级别的跟进深度"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "跟进深度",
+          "label": "标准方案",
+          "value": "标准方案",
+          "description": "标准方案级别的跟进深度"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "blue",
+          "group": "跟进深度",
+          "label": "深度复盘",
+          "value": "深度复盘",
+          "description": "深度复盘级别的跟进深度"
+        }
+      ],
+      "description": "跟进深度"
+    },
+    "followUpGoal": {
+      "type": "string",
+      "title": "跟进目标",
+      "x-rows": 3,
+      "description": "例如约下一次会、发送方案、确认试点、推进采购或唤醒客户。",
+      "x-component": "Textarea"
+    },
+    "productContext": {
+      "type": "string",
+      "title": "产品与方案背景",
+      "x-rows": 4,
+      "description": "补充产品能力、报价、案例、限制条件和会中提到的材料。",
+      "x-component": "Textarea"
+    },
+    "meetingNotesFile": {
+      "type": "string",
+      "title": "上传会议材料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等会议纪要或转写文件。",
+      "x-component": "FileUpload"
+    },
+    "meetingNotesText": {
+      "type": "string",
+      "title": "销售会议纪要",
+      "x-rows": 12,
+      "description": "粘贴会议转写、会后速记、聊天记录或客户沟通摘要。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "meetingNotesText",
+        "meetingNotesFile"
+      ],
+      "message": "请粘贴会议纪要或上传会议材料"
+    }
+  ]
+}

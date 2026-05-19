@@ -1,0 +1,195 @@
+{
+  "id": "ai-video-to-gif",
+  "slug": "ai-video-to-gif",
+  "question": "这段视频怎么转 GIF?",
+  "skillName": "视频转 GIF 优化助手",
+  "tags": [
+    "视频转换",
+    "GIF 优化",
+    "媒体处理"
+  ],
+  "profession": [
+    "marketing",
+    "product",
+    "technical"
+  ],
+  "industry": [
+    "software",
+    "media",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://skillsmp.com/skills/microsoft-hve-core-github-skills-experimental-video-to-gif-skill-md"
+      ],
+      "sourceNotes": "recent_hot_search_signal: microsoft/hve-core/video-to-gif"
+    },
+    "catalog": {
+      "icon": "Clapperboard"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "medium",
+    "bulkSupply": {
+      "wave": "skillsmp-market-2026-05-17",
+      "batchId": "skillsmp-market-2026-05-17",
+      "candidateId": "video-to-gif",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "SkillsMP market signal (1054 stars): Video-to-GIF conversion skill with FFmpeg two-pass optimization - Brought to you by microsoft/hve-core",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "marketing",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "media_processing"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "SkillsMP market signal (1054 stars): Video-to-GIF conversion skill with FFmpeg two-pass optimization - Brought to you by microsoft/hve-core",
+      "allowedOutputs": [
+        "GIF 转换参数建议",
+        "FFmpeg 转换命令",
+        "GIF artifact 或质量检查清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "7e0f6b0c706a86899aba4dfb620fdaf081de4106a9c664ccbffa5f19fd3b6d56",
+    "safetyStatus": "review_required",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-video-to-gif",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "skillsmp-market-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "media_processing",
+      "sourceRef": "microsoft/hve-core",
+      "sourceUrl": "https://skillsmp.com/skills/microsoft-hve-core-github-skills-experimental-video-to-gif-skill-md",
+      "importedAt": "2026-05-17T14:59:54.204Z",
+      "candidateId": "video-to-gif",
+      "sourceSignal": "recent_hot_search_signal",
+      "originalSkillId": "video-to-gif"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "说明要截取的视频片段、目标尺寸、帧率、用途和文件大小限制",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "写转换要求"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传视频"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填视频链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充 GIF 规格",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "截取区间与循环方式",
+        "x-rows": 3,
+        "description": "说明希望截取的开始时间、持续时长、是否循环、是否需要保留完整动作或突出关键步骤。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "GIF 使用场景",
+        "x-rows": 3,
+        "description": "说明「视频转 GIF 优化助手」输出要服务的页面、文档、邮件、社媒、聊天或产品演示场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "视频链接",
+        "format": "uri",
+        "description": "填写公开可访问的链接；如果链接需要登录、权限或 Cookie，请改为上传文件或粘贴内容。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "视频文件",
+        "format": "binary",
+        "x-accept": ".mp4,.mov,.webm,.mp3,.wav,.m4a,.pdf,.docx,.txt",
+        "x-max-size": 20971520,
+        "description": "上传要转换成 GIF 的 mp4、mov 或 webm 视频文件；如果环境可访问视频和 FFmpeg，可交付 GIF artifact。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "视频转 GIF 要求",
+        "x-rows": 8,
+        "description": "粘贴本次要交给「视频转 GIF 优化助手」处理的转换要求，包括截取时间、目标尺寸、帧率、循环次数、用途和文件大小限制。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "尺寸、帧率与大小限制",
+        "x-rows": 3,
+        "description": "补充目标宽度、帧率、文件大小上限、dither 偏好、HDR tonemap 要求或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写转换要求、上传视频或提供视频链接"
+      }
+    ]
+  }
+}

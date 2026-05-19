@@ -1,0 +1,7 @@
+interface:
+  display_name: "视频转 GIF 优化助手"
+  short_description: "视频转 GIF 优化助手"
+  default_prompt: "Use $ai-video-to-gif to help with 视频转 GIF 优化助手"
+
+policy:
+  allow_implicit_invocation: true

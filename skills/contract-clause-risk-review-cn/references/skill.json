@@ -1,0 +1,185 @@
+{
+  "id": "contract-clause-risk-review-cn",
+  "slug": "contract-clause-risk-review-cn",
+  "question": "这里有什么风险?",
+  "skillName": "风险审阅助手",
+  "tags": [
+    "合同",
+    "风险条款",
+    "法务辅助",
+    "问题清单"
+  ],
+  "profession": [
+    "hr",
+    "management",
+    "operation"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "93d817d71c9c02bef7ab91c0fae9818d5cf937e1acd78fe434047cc13ec278b3",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "contract-clause-risk-review-cn",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴合同条款或脱敏文本，建议包含交易背景和最关注的问题",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "contractClauseText",
+          "label": "合同条款文本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "contractFile",
+          "label": "上传合同文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "contractReferenceLink",
+          "label": "合同参考链接"
+        }
+      ],
+      "primaryField": "contractClauseText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "clauseReviewFocus"
+      ],
+      "advancedControlFields": [
+        "transactionContext",
+        "negotiationConcernNotes"
+      ]
+    },
+    "properties": {
+      "contractFile": {
+        "type": "string",
+        "title": "上传合同文件",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传脱敏合同、条款对比表、补充协议或谈判记录。",
+        "x-component": "FileUpload"
+      },
+      "clauseReviewFocus": {
+        "enum": [
+          "责任边界",
+          "付款交付",
+          "违约解除",
+          "谈判问题"
+        ],
+        "type": "string",
+        "title": "审查重点",
+        "default": "责任边界",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "责任边界",
+            "value": "责任边界",
+            "description": "重点处理责任边界"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审查重点",
+            "label": "付款交付",
+            "value": "付款交付",
+            "description": "重点处理付款交付"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "违约解除",
+            "value": "违约解除",
+            "description": "重点处理违约解除"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "审查重点",
+            "label": "谈判问题",
+            "value": "谈判问题",
+            "description": "重点处理谈判问题"
+          }
+        ],
+        "description": "选择本次中文合同条款风险审查最需要优先处理的方向。"
+      },
+      "contractClauseText": {
+        "type": "string",
+        "title": "合同条款文本",
+        "x-rows": 10,
+        "description": "粘贴合同条款、关键摘要、争议条款、付款交付和责任限制。",
+        "x-component": "Textarea"
+      },
+      "transactionContext": {
+        "type": "string",
+        "title": "交易背景",
+        "x-rows": 3,
+        "description": "说明合同类型、交易双方角色、金额、交付物、周期和地区。",
+        "x-component": "Textarea"
+      },
+      "contractReferenceLink": {
+        "type": "string",
+        "title": "合同参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的范本、招标文件、交易说明或政策链接。"
+      },
+      "negotiationConcernNotes": {
+        "type": "string",
+        "title": "谈判关注点与底线",
+        "x-rows": 3,
+        "description": "补充最担心条款、可接受让步、必须保留内容和需律师确认点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "contractClauseText",
+          "contractFile",
+          "contractReferenceLink"
+        ],
+        "message": "请填写合同条款文本、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

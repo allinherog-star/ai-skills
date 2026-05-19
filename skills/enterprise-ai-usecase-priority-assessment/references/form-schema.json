@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴AI候选场景清单，建议包含业务痛点、数据基础和落地约束",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "aiUsecaseListText",
+        "label": "AI场景清单"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "aiUsecaseWorkbookFile",
+        "label": "上传场景表"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "aiStrategyLink",
+        "label": "AI规划参考链接"
+      }
+    ],
+    "primaryField": "aiUsecaseListText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "priorityAssessmentFocus"
+    ],
+    "advancedControlFields": [
+      "enterpriseContext",
+      "dataReadinessNotes"
+    ]
+  },
+  "properties": {
+    "aiStrategyLink": {
+      "type": "string",
+      "title": "AI规划参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的战略材料、行业案例、内部公开页面或说明链接。"
+    },
+    "aiUsecaseListText": {
+      "type": "string",
+      "title": "AI场景清单",
+      "x-rows": 10,
+      "description": "粘贴候选场景、业务流程、痛点、使用人群、预期收益和限制条件。",
+      "x-component": "Textarea"
+    },
+    "enterpriseContext": {
+      "type": "string",
+      "title": "企业与部门背景",
+      "x-rows": 3,
+      "description": "说明行业、部门、规模、数据基础、系统现状和治理要求。",
+      "x-component": "Textarea"
+    },
+    "dataReadinessNotes": {
+      "type": "string",
+      "title": "数据与落地约束",
+      "x-rows": 3,
+      "description": "补充数据可用性、流程 owner、预算、合规边界和落地周期。",
+      "x-component": "Textarea"
+    },
+    "aiUsecaseWorkbookFile": {
+      "type": "string",
+      "title": "上传场景表",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传AI场景池、访谈记录、流程图、ROI测算或项目清单。",
+      "x-component": "FileUpload"
+    },
+    "priorityAssessmentFocus": {
+      "enum": [
+        "价值大小",
+        "落地难度",
+        "数据准备",
+        "试点路线"
+      ],
+      "type": "string",
+      "title": "评估重点",
+      "default": "价值大小",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "评估重点",
+          "label": "价值大小",
+          "value": "价值大小",
+          "description": "重点处理价值大小"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "评估重点",
+          "label": "落地难度",
+          "value": "落地难度",
+          "description": "重点处理落地难度"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "评估重点",
+          "label": "数据准备",
+          "value": "数据准备",
+          "description": "重点处理数据准备"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "评估重点",
+          "label": "试点路线",
+          "value": "试点路线",
+          "description": "重点处理试点路线"
+        }
+      ],
+      "description": "选择本次企业 AI 场景优先级评估最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "aiUsecaseListText",
+        "aiUsecaseWorkbookFile",
+        "aiStrategyLink"
+      ],
+      "message": "请填写AI场景清单、上传资料，或提供可访问链接"
+    }
+  ]
+}

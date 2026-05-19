@@ -1,0 +1,194 @@
+{
+  "id": "ai-job-application-optimizer",
+  "slug": "ai-job-application-optimizer",
+  "question": "简历够匹配岗位吗?",
+  "skillName": "求职材料优化助手",
+  "tags": [
+    "HR 文档",
+    "绩效反馈",
+    "求职材料"
+  ],
+  "profession": [
+    "hr",
+    "manager",
+    "operation"
+  ],
+  "industry": [
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/onewave-ai/claude-skills"
+      ],
+      "sourceNotes": "github_market_signal: onewave-ai/claude-skills/job-application-optimizer"
+    },
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "job-application-optimizer",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "求职材料优化是明确的文档审阅和改稿场景。",
+      "primaryIndustry": "education",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "hr",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "education"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "求职材料优化是明确的文档审阅和改稿场景。",
+      "allowedOutputs": [
+        "匹配差距",
+        "简历优化建议",
+        "面试准备清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "0b01b35e69d647e5f1304b51b804dcf72c13895f4d13eb7c7c5a436c3ce73f3f",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-job-application-optimizer",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "education",
+      "sourceRef": "onewave-ai/claude-skills",
+      "sourceUrl": "https://www.skills.sh/onewave-ai/claude-skills",
+      "importedAt": "2026-05-18T06:28:35.095Z",
+      "candidateId": "job-application-optimizer",
+      "sourceSignal": "github_market_signal",
+      "originalSkillId": "job-application-optimizer"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴岗位描述、简历、绩效素材或人事沟通草稿",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴求职材料"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传简历文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填岗位链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充求职边界",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "处理目标",
+        "x-rows": 3,
+        "description": "说明要完成的匹配分析、绩效反馈、表达优化、面试准备或风险检查。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "相关角色",
+        "x-rows": 3,
+        "description": "说明候选人、员工、管理者、HRBP、面试官或沟通对象。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "岗位或资料链接",
+        "format": "uri",
+        "description": "填写公开可访问的岗位、公司、政策或参考资料链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "HR 资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传简历、岗位说明、绩效记录、人事政策、面试材料或沟通草稿。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "岗位、绩效或求职材料",
+        "x-rows": 8,
+        "description": "粘贴岗位描述、简历、绩效素材、人事沟通草稿、评估标准或反馈目标。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "合规与语气边界",
+        "x-rows": 3,
+        "description": "补充事实依据、敏感信息处理、语气要求、不可承诺内容、法律边界或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写 HR 资料、上传文件或提供岗位/资料链接"
+      }
+    ]
+  }
+}

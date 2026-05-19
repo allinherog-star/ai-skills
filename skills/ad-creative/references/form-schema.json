@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴广告创意脚本或分镜，最好包含 Hook、画面节奏、产品展示、目标平台和 CTA",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴创意脚本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传创意资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填创意链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "创意目标",
+      "x-rows": 3,
+      "description": "例如停留、点击、留资、购买、安装、召回、品牌认知或新品解释。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标受众情境",
+      "x-rows": 3,
+      "description": "补充受众痛点、使用场景、购买阶段、文化语境、创意敏感点和反感表达。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "创意预览链接",
+      "format": "uri",
+      "description": "填写公开可访问的广告预览、素材说明、落地页、产品页或参考链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "创意诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "创意诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "创意诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "创意诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准诊断或深度创意拆解。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传创意资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等创意资料，适合提交脚本、分镜、创意 brief 或素材说明。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "广告创意脚本",
+      "x-rows": 10,
+      "description": "粘贴 Hook、视频脚本、分镜、静态图文案、素材说明、产品卖点或用户反馈。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "创意平台",
+      "x-rows": 3,
+      "description": "例如 TikTok、Meta、YouTube、LinkedIn、小红书、信息流、展示广告或线下屏幕。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "创意表达约束",
+      "x-rows": 3,
+      "description": "补充品牌语气、视觉/文字限制、禁用表达、声明要求和不能夸大的承诺。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴广告创意脚本、上传创意资料，或填写创意预览链接"
+    }
+  ]
+}

@@ -46,24 +46,23 @@ security:
 **按必填参数调用**
 
 ```bash
-python3 scripts/run.py --params '{"topic":"想写什么"}'
+python3 scripts/run.py --params '{"topic":"主题"}'
 ```
 
 ### 参数说明
 
 | 参数 | 类型 | 必填 | 默认 | 说明 |
 | --- | --- | --- | --- | --- |
-| `topic` | string | 是 | - | 想写什么 |
+| `tone` | string | 否 | `practical` | 语气；可选值：实用清晰（`practical`）、故事化（`story`）、专家型（`expert`）、轻松活泼（`lively`） |
+| `topic` | string | 是 | - | 文章主题、关键词或一句话需求 |
 | `audience` | string | 否 | - | 目标读者 |
 | `keywords` | string | 否 | - | 关键词 |
-| `wordCount` | number | 否 | `1600` | 目标字数 |
-| `platform` | string | 否 | `all` | 发布平台；可选值：全平台（`all`）、微信公众号（`wechat`）、小红书（`xhs`）、博客/官网（`blog`）、知乎（`zhihu`） |
-| `tone` | string | 否 | `practical` | 语气；可选值：实用清晰（`practical`）、杂志评论（`editorial`）、温和陪伴（`warm`）、犀利观点（`sharp`） |
-| `generateCovers` | boolean | 否 | `true` | 生成多比例封面 |
-| `generateImages` | boolean | 否 | `true` | 生成正文配图 |
-| `imageCount` | number | 否 | `4` | 正文配图数量 |
-| `brandRequirements` | string | 否 | - | 水印/品牌要求 |
-| `watermarkMode` | string | 否 | `off` | 水印；可选值：不加水印（`off`）、右下角（`corner`）、角标 + 平铺（`both`） |
+| `platform` | string | 否 | `all` | 发布平台；可选值：全平台（`all`）、公众号（`wechat`）、小红书（`xhs`）、博客（`blog`）、知乎（`zhihu`） |
+| `wordCount` | integer | 否 | `1600` | 字数 |
+| `imageCount` | integer | 否 | `3` | 正文配图数量 |
+| `watermarkMode` | string | 否 | `off` | 水印；可选值：不加（`off`）、品牌轻水印（`brand`）、右下角（`corner`）、平铺（`tiled`）、两者（`both`） |
+| `watermarkText` | string | 否 | `ai-skills.ai` | 选择加水印后显示，默认使用 ai-skills.ai，可替换为品牌名、站点或账号 |
+| `brandRequirements` | string | 否 | - | 品牌要求 |
 
 完整机器可读参数结构见 `references/form-schema.json`。
 
@@ -80,14 +79,14 @@ python3 scripts/run.py --params '{"topic":"想写什么"}'
 下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
 
 ```bash
-python3 scripts/run.py --params '{"topic":"想写什么"}'
+python3 scripts/run.py --params '{"topic":"主题"}'
 ```
 
 等价的 `--params` JSON：
 
 ```json
 {
-  "topic": "想写什么"
+  "topic": "主题"
 }
 ```
 

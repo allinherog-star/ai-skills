@@ -1,0 +1,7 @@
+interface:
+  display_name: "转化实验助手"
+  short_description: "转化实验助手"
+  default_prompt: "Use $paywall-upgrade-cro to help with 转化实验助手"
+
+policy:
+  allow_implicit_invocation: true

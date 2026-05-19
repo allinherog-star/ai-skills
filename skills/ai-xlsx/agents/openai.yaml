@@ -1,0 +1,7 @@
+interface:
+  display_name: "XLSX 分析助手"
+  short_description: "XLSX 分析助手"
+  default_prompt: "Use $ai-xlsx to help with XLSX 分析助手"
+
+policy:
+  allow_implicit_invocation: true

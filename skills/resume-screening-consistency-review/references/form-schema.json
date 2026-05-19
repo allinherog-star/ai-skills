@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴脱敏简历摘要和筛选记录，建议包含岗位要求与评分规则",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "resumeBatchSummaryText",
+        "label": "简历摘要与筛选记录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "resumePacketFile",
+        "label": "上传简历筛选资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "screeningCriteriaLink",
+        "label": "筛选标准链接"
+      }
+    ],
+    "primaryField": "resumeBatchSummaryText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "consistencyReviewFocus"
+    ],
+    "advancedControlFields": [
+      "roleRequirementContext",
+      "evaluationRuleNotes"
+    ]
+  },
+  "properties": {
+    "resumePacketFile": {
+      "type": "string",
+      "title": "上传简历筛选资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传脱敏简历包、筛选表、岗位要求或面试记录。",
+      "x-component": "FileUpload"
+    },
+    "evaluationRuleNotes": {
+      "type": "string",
+      "title": "一致性规则与禁用依据",
+      "x-rows": 3,
+      "description": "补充评分规则、不得使用的敏感因素、证据口径和人工复核要求。",
+      "x-component": "Textarea"
+    },
+    "screeningCriteriaLink": {
+      "type": "string",
+      "title": "筛选标准链接",
+      "format": "uri",
+      "description": "填写公开可访问的岗位要求、能力模型或招聘流程说明链接。"
+    },
+    "consistencyReviewFocus": {
+      "enum": [
+        "标准一致",
+        "证据充分",
+        "偏见风险",
+        "复核问题"
+      ],
+      "type": "string",
+      "title": "审查重点",
+      "default": "标准一致",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "标准一致",
+          "value": "标准一致",
+          "description": "重点处理标准一致"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审查重点",
+          "label": "证据充分",
+          "value": "证据充分",
+          "description": "重点处理证据充分"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "偏见风险",
+          "value": "偏见风险",
+          "description": "重点处理偏见风险"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "审查重点",
+          "label": "复核问题",
+          "value": "复核问题",
+          "description": "重点处理复核问题"
+        }
+      ],
+      "description": "选择本次简历筛选一致性审查最需要优先处理的方向。"
+    },
+    "resumeBatchSummaryText": {
+      "type": "string",
+      "title": "简历摘要与筛选记录",
+      "x-rows": 10,
+      "description": "粘贴脱敏简历摘要、筛选结论、候选人标签和疑问点。",
+      "x-component": "Textarea"
+    },
+    "roleRequirementContext": {
+      "type": "string",
+      "title": "岗位要求与筛选阶段",
+      "x-rows": 3,
+      "description": "说明岗位、职级、必须条件、优先项、筛选阶段和团队偏好。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "resumeBatchSummaryText",
+        "resumePacketFile",
+        "screeningCriteriaLink"
+      ],
+      "message": "请填写简历摘要与筛选记录、上传资料，或提供可访问链接"
+    }
+  ]
+}

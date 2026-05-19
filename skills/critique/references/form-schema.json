@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴作品说明、创意背景、当前困惑或希望重点点评的问题，最好说明目标观众和发布场景",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴作品说明"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传作品截图"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写作品链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "作品目标",
+      "x-rows": 3,
+      "description": "说明希望作品达成的传播、理解、转化、信任、审美或展示目标。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标观众",
+      "x-rows": 3,
+      "description": "说明评审者、客户、用户、购买者或目标观众的背景和期待。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "作品或参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的作品页面、设计预览、原型、作品集或参考链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "点评深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "点评深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "点评深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "点评深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速点评、标准 critique 或深度作品评审。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传作品截图或设计文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 UI 截图、海报导出图、作品集页面截图、设计文档、PDF 或作品说明。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "作品说明与自评",
+      "x-rows": 10,
+      "description": "粘贴设计说明、创意背景、页面文案、作品目标、当前困惑或你希望重点点评的问题。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "展示平台",
+      "x-rows": 3,
+      "description": "选择 Web、移动端、海报、作品集、社媒图、演示页或其它展示载体。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "风格与客户要求",
+      "x-rows": 3,
+      "description": "补充品牌调性、视觉规范、客户限制、禁用表达和必须保留的信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴作品说明、上传作品截图/设计文档，或填写公开作品链接"
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "id": "ecommerce-review-root-cause-analysis",
+  "slug": "ecommerce-review-root-cause-analysis",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "电商运营",
+    "商品转化",
+    "用户反馈",
+    "增长改进"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "seller",
+    "product"
+  ],
+  "industry": [
+    "ecommerce",
+    "retail",
+    "media",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "ListChecks"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "d02483791ec973756b83364d8535d37cbe6a39c3f8aa2a0cdf7f152f45f09c21",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ecommerce-review-root-cause-analysis",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴差评、追评、客服记录或退货原因，尽量保留原话但可删去个人信息",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "MessageCircle",
+          "field": "reviewText",
+          "label": "贴差评反馈"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "reviewFile",
+          "label": "传评论数据"
+        }
+      ],
+      "primaryField": "reviewText",
+      "advancedLabel": "补充业务背景",
+      "primaryControlFields": [
+        "analysisGoal",
+        "severityFocus"
+      ],
+      "advancedControlFields": [
+        "productInfo",
+        "orderContext",
+        "customerSegment"
+      ]
+    },
+    "properties": {
+      "reviewFile": {
+        "type": "string",
+        "title": "上传评论数据",
+        "format": "binary",
+        "x-accept": ".xlsx,.csv,.docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持评论导出、客服记录、售后表格或复盘文档。",
+        "x-component": "FileUpload"
+      },
+      "reviewText": {
+        "type": "string",
+        "title": "差评与反馈",
+        "x-rows": 10,
+        "description": "粘贴差评、追评、买家反馈、客服记录、退货原因或售后备注。",
+        "x-component": "Textarea"
+      },
+      "productInfo": {
+        "type": "string",
+        "title": "商品与页面信息",
+        "x-rows": 4,
+        "description": "补充品类、价格、规格、卖点、页面承诺、适用人群和售后政策。",
+        "x-component": "Textarea"
+      },
+      "analysisGoal": {
+        "enum": [
+          "定位根因并给改进清单",
+          "降低差评率",
+          "降低退货率",
+          "优化客服话术",
+          "验证是否异常批次"
+        ],
+        "type": "string",
+        "title": "分析目标",
+        "default": "定位根因并给改进清单",
+        "x-options": [
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "分析目标",
+            "label": "定位根因并给改进清单",
+            "value": "定位根因并给改进清单",
+            "description": "围绕定位根因并给改进清单组织差评归因"
+          },
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "分析目标",
+            "label": "降低差评率",
+            "value": "降低差评率",
+            "description": "围绕降低差评率组织差评归因"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "blue",
+            "group": "分析目标",
+            "label": "降低退货率",
+            "value": "降低退货率",
+            "description": "围绕降低退货率组织差评归因"
+          },
+          {
+            "icon": "Headphones",
+            "color": "blue",
+            "group": "分析目标",
+            "label": "优化客服话术",
+            "value": "优化客服话术",
+            "description": "围绕优化客服话术组织差评归因"
+          },
+          {
+            "icon": "Search",
+            "color": "blue",
+            "group": "分析目标",
+            "label": "验证是否异常批次",
+            "value": "验证是否异常批次",
+            "description": "围绕验证是否异常批次组织差评归因"
+          }
+        ],
+        "description": "分析目标"
+      },
+      "orderContext": {
+        "type": "string",
+        "title": "订单与履约背景",
+        "x-rows": 4,
+        "description": "补充平台、活动、时间范围、批次、物流、包装、客单价或退货率。",
+        "x-component": "Textarea"
+      },
+      "severityFocus": {
+        "enum": [
+          "影响评分和复购的问题",
+          "高频产品问题",
+          "强情绪投诉",
+          "物流包装问题",
+          "客服售后问题",
+          "页面预期不一致"
+        ],
+        "type": "string",
+        "title": "关注重点",
+        "default": "影响评分和复购的问题",
+        "x-options": [
+          {
+            "icon": "FileWarning",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "影响评分和复购的问题",
+            "value": "影响评分和复购的问题",
+            "description": "优先分析影响评分和复购的问题"
+          },
+          {
+            "icon": "BarChart3",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "高频产品问题",
+            "value": "高频产品问题",
+            "description": "优先分析高频产品问题"
+          },
+          {
+            "icon": "LineChart",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "强情绪投诉",
+            "value": "强情绪投诉",
+            "description": "优先分析强情绪投诉"
+          },
+          {
+            "icon": "Calculator",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "物流包装问题",
+            "value": "物流包装问题",
+            "description": "优先分析物流包装问题"
+          },
+          {
+            "icon": "Headphones",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "客服售后问题",
+            "value": "客服售后问题",
+            "description": "优先分析客服售后问题"
+          },
+          {
+            "icon": "LayoutTemplate",
+            "color": "rose",
+            "group": "关注重点",
+            "label": "页面预期不一致",
+            "value": "页面预期不一致",
+            "description": "优先分析页面预期不一致"
+          }
+        ],
+        "description": "关注重点"
+      },
+      "customerSegment": {
+        "type": "string",
+        "title": "用户分层",
+        "description": "说明用户地区、购买场景、新老客、价格敏感度或典型使用方式。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "reviewText",
+          "reviewFile"
+        ],
+        "message": "请粘贴差评反馈或上传评论数据"
+      }
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴飞书任务标题、描述、评论、负责人、截止时间和当前阻塞信息",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴任务记录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传任务文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填任务链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "推进目标",
+      "x-rows": 3,
+      "description": "例如清理逾期任务、明确责任人、准备周会或形成交接清单。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "接收团队",
+      "x-rows": 3,
+      "description": "例如项目负责人、执行成员、管理者、客户成功团队或外部协作方。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "任务链接说明",
+      "format": "uri",
+      "description": "填写飞书任务或项目链接，并补充链接中可见的任务摘要；系统不会自动打开链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "复盘深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "复盘深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "复盘深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "复盘深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速梳理、标准复盘或深度诊断。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传任务协作文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传任务导出、截图 OCR 文本、项目周报、任务清单或协作文档。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "飞书任务记录",
+      "x-rows": 10,
+      "description": "粘贴任务标题、描述、评论、负责人、截止时间、状态变化或导出的任务清单。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "使用场景",
+      "x-rows": 3,
+      "description": "说明报告用于飞书同步、项目周会、管理层汇报还是跨团队交接。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "团队沟通规范",
+      "x-rows": 3,
+      "description": "补充团队术语、保密要求、表达语气、格式规范或对外口径。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴飞书任务记录、上传任务文件或填写任务链接说明"
+    }
+  ]
+}

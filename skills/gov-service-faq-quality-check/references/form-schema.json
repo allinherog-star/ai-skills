@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴政务FAQ或办事指南，建议包含办理条件、材料和政策依据",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "govFaqText",
+        "label": "政务FAQ内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "govFaqFile",
+        "label": "上传FAQ资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "servicePageLink",
+        "label": "办事服务链接"
+      }
+    ],
+    "primaryField": "govFaqText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "faqQualityFocus"
+    ],
+    "advancedControlFields": [
+      "serviceAudienceContext",
+      "policyBasisNotes"
+    ]
+  },
+  "properties": {
+    "govFaqFile": {
+      "type": "string",
+      "title": "上传FAQ资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传政务FAQ、办事指南、政策摘录、热线记录或知识库导出。",
+      "x-component": "FileUpload"
+    },
+    "govFaqText": {
+      "type": "string",
+      "title": "政务FAQ内容",
+      "x-rows": 10,
+      "description": "粘贴办事问答、申请条件、材料清单、流程、时限和联系方式。",
+      "x-component": "Textarea"
+    },
+    "faqQualityFocus": {
+      "enum": [
+        "口径一致",
+        "材料完整",
+        "流程清晰",
+        "群众友好"
+      ],
+      "type": "string",
+      "title": "质检重点",
+      "default": "口径一致",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "质检重点",
+          "label": "口径一致",
+          "value": "口径一致",
+          "description": "重点处理口径一致"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "质检重点",
+          "label": "材料完整",
+          "value": "材料完整",
+          "description": "重点处理材料完整"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "质检重点",
+          "label": "流程清晰",
+          "value": "流程清晰",
+          "description": "重点处理流程清晰"
+        },
+        {
+          "icon": "UsersRound",
+          "color": "green",
+          "group": "质检重点",
+          "label": "群众友好",
+          "value": "群众友好",
+          "description": "重点处理群众友好"
+        }
+      ],
+      "description": "选择本次政务服务 FAQ 质检最需要优先处理的方向。"
+    },
+    "servicePageLink": {
+      "type": "string",
+      "title": "办事服务链接",
+      "format": "uri",
+      "description": "填写公开可访问的政务服务页、办事指南、政策文件或公告链接。"
+    },
+    "policyBasisNotes": {
+      "type": "string",
+      "title": "政策依据与口径限制",
+      "x-rows": 3,
+      "description": "补充政策条款、材料要求、不可承诺内容、更新时间和责任部门。",
+      "x-component": "Textarea"
+    },
+    "serviceAudienceContext": {
+      "type": "string",
+      "title": "服务对象与办理场景",
+      "x-rows": 3,
+      "description": "说明服务对象、地区、线上/线下渠道、办理频率和常见卡点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "govFaqText",
+        "govFaqFile",
+        "servicePageLink"
+      ],
+      "message": "请填写政务FAQ内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

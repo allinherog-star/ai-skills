@@ -1,0 +1,7 @@
+interface:
+  display_name: "微信摘要助手"
+  short_description: "微信摘要助手"
+  default_prompt: "Use $ai-baoyu-wechat-summary to help with 微信摘要助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴PRD草稿，建议包含目标用户、流程、验收标准和业务指标",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "prdDraftText",
+        "label": "PRD草稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "prdDocumentFile",
+        "label": "上传PRD文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "prdReferenceLink",
+        "label": "PRD参考链接"
+      }
+    ],
+    "primaryField": "prdDraftText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "prdReviewFocus"
+    ],
+    "advancedControlFields": [
+      "userScenarioContext",
+      "metricConstraintNotes"
+    ]
+  },
+  "properties": {
+    "prdDraftText": {
+      "type": "string",
+      "title": "PRD草稿",
+      "x-rows": 10,
+      "description": "粘贴需求背景、目标用户、用户故事、功能范围、流程和验收标准。",
+      "x-component": "Textarea"
+    },
+    "prdReviewFocus": {
+      "enum": [
+        "需求清晰度",
+        "边界范围",
+        "验收标准",
+        "风险依赖"
+      ],
+      "type": "string",
+      "title": "评审重点",
+      "default": "需求清晰度",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "评审重点",
+          "label": "需求清晰度",
+          "value": "需求清晰度",
+          "description": "重点处理需求清晰度"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "评审重点",
+          "label": "边界范围",
+          "value": "边界范围",
+          "description": "重点处理边界范围"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "评审重点",
+          "label": "验收标准",
+          "value": "验收标准",
+          "description": "重点处理验收标准"
+        },
+        {
+          "icon": "Scale",
+          "color": "green",
+          "group": "评审重点",
+          "label": "风险依赖",
+          "value": "风险依赖",
+          "description": "重点处理风险依赖"
+        }
+      ],
+      "description": "选择本次SaaS PRD评审助手最需要优先处理的方向。"
+    },
+    "prdDocumentFile": {
+      "type": "string",
+      "title": "上传PRD文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传PRD、原型说明、需求池、评审记录或竞品资料。",
+      "x-component": "FileUpload"
+    },
+    "prdReferenceLink": {
+      "type": "string",
+      "title": "PRD参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的原型、需求文档、竞品页面或帮助文档链接。"
+    },
+    "userScenarioContext": {
+      "type": "string",
+      "title": "用户场景与业务目标",
+      "x-rows": 3,
+      "description": "说明目标用户、核心场景、业务指标、上线节奏和依赖团队。",
+      "x-component": "Textarea"
+    },
+    "metricConstraintNotes": {
+      "type": "string",
+      "title": "指标与约束条件",
+      "x-rows": 3,
+      "description": "补充成功指标、非目标范围、技术约束、合规要求和待决策事项。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "prdDraftText",
+        "prdDocumentFile",
+        "prdReferenceLink"
+      ],
+      "message": "请填写PRD草稿、上传资料，或提供可访问链接"
+    }
+  ]
+}

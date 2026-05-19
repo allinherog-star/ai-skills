@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴付费墙或升级页内容，最好包含触发时机、套餐说明、价格/退款提示、CTA 和用户反馈",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴升级内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传升级资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填升级链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "升级目标",
+      "x-rows": 3,
+      "description": "例如解释高级价值、提升试用到付费、减少犹豫、引导年付、降低误解或提高透明度。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "升级目标用户",
+      "x-rows": 3,
+      "description": "补充免费用户、试用用户、活跃用户、团队管理员、流失风险用户或具体细分人群。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "付费墙或升级页链接",
+      "format": "uri",
+      "description": "填写公开可访问的付费墙预览、升级页、定价页、产品页或帮助文档链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "升级 CRO 深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "升级 CRO 深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "升级 CRO 深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "升级 CRO 深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准诊断或深度升级路径分析。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传升级路径资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等资料，适合提交付费墙截图文字、订阅页草稿、实验 brief 或用户反馈。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "付费墙与升级内容",
+      "x-rows": 10,
+      "description": "粘贴付费墙文案、升级弹窗、订阅页、套餐说明、功能锁提示、取消/降级提示或用户反馈。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "升级触点平台",
+      "x-rows": 3,
+      "description": "例如 Web、移动 Web、iOS、Android、SaaS 控制台、浏览器扩展或桌面应用。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "订阅表达约束",
+      "x-rows": 3,
+      "description": "补充品牌语气、价格/退款承诺、商店规则提醒、禁用表达和必须保留的信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴付费墙与升级内容、上传升级路径资料，或填写付费墙/升级页链接"
+    }
+  ]
+}

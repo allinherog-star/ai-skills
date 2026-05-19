@@ -1,0 +1,146 @@
+{
+  "id": "programmatic-seo",
+  "slug": "programmatic-seo",
+  "question": "页面能批量获客吗?",
+  "skillName": "程序化 SEO 助手",
+  "tags": [
+    "SEO",
+    "GEO",
+    "内容增长",
+    "搜索可见性"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "LayoutTemplate"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "2b6576abb683d6989edbccdc2d13709e65e7ef27f1575b02d0cfb8c8e1a8b486",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "programmatic-seo",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴程序化页面模板、字段样本、关键词/实体列表或目录结构",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴页面样本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传数据样本"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写样本链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "规模化 SEO 目标",
+        "x-rows": 3,
+        "description": "例如覆盖长尾关键词、扩展地区/行业页面、提升 AI 引用或获取线索。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "长尾搜索人群",
+        "x-rows": 3,
+        "description": "说明目标查询场景、地域/行业细分、采购角色或内容消费阶段。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "样本页面或目录链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的样本页、目录页、竞品页或页面模板链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传模板与数据样本",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "支持 CSV、表格、关键词清单、实体数据样本、页面模板、站点结构或需求文档。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "程序化页面样本",
+        "x-rows": 10,
+        "description": "可粘贴页面模板、字段样本、关键词/实体列表、目录结构、页面规则或业务说明。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "页面质量与品牌红线",
+        "x-rows": 3,
+        "description": "补充品牌语气、禁用生成方式、合规限制、必须保留字段和人工复核要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴页面样本、上传模板/数据样本，或填写样本页面链接"
+      }
+    ]
+  }
+}

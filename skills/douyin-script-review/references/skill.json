@@ -1,0 +1,188 @@
+{
+  "id": "douyin-script-review",
+  "slug": "douyin-script-review",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "抖音",
+    "短视频脚本",
+    "口播",
+    "带货",
+    "节奏"
+  ],
+  "profession": [
+    "blogger-individual",
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "entertainment"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Clapperboard"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "9d7207c599fb70a44468b7f5e472c4328a0c1f7d545739c1c532476087a83fc4",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "douyin-script-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴抖音短视频稿，建议包含开头3秒、分镜/口播和目标受众",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "douyinVideoDraftText",
+          "label": "抖音短视频稿"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "douyinDraftFile",
+          "label": "上传短视频资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "referenceVideoLink",
+          "label": "参考视频链接"
+        }
+      ],
+      "primaryField": "douyinVideoDraftText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "douyinReviewFocus"
+      ],
+      "advancedControlFields": [
+        "accountAudienceContext",
+        "hookConcernNotes"
+      ]
+    },
+    "properties": {
+      "douyinDraftFile": {
+        "type": "string",
+        "title": "上传短视频资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传短视频稿、分镜表、素材说明、投放复盘或竞品拆解。",
+        "x-component": "FileUpload"
+      },
+      "hookConcernNotes": {
+        "type": "string",
+        "title": "钩子与表达顾虑",
+        "x-rows": 3,
+        "description": "补充想保留的爆点、不可用表达、转化目标和风险顾虑。",
+        "x-component": "Textarea"
+      },
+      "douyinReviewFocus": {
+        "enum": [
+          "开头钩子",
+          "完播节奏",
+          "转化表达",
+          "风险提示"
+        ],
+        "type": "string",
+        "title": "审稿重点",
+        "default": "开头钩子",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审稿重点",
+            "label": "开头钩子",
+            "value": "开头钩子",
+            "description": "重点处理开头钩子"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审稿重点",
+            "label": "完播节奏",
+            "value": "完播节奏",
+            "description": "重点处理完播节奏"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "审稿重点",
+            "label": "转化表达",
+            "value": "转化表达",
+            "description": "重点处理转化表达"
+          },
+          {
+            "icon": "Scale",
+            "color": "green",
+            "group": "审稿重点",
+            "label": "风险提示",
+            "value": "风险提示",
+            "description": "重点处理风险提示"
+          }
+        ],
+        "description": "选择本次抖音短视频脚本审稿最需要优先处理的方向。"
+      },
+      "referenceVideoLink": {
+        "type": "string",
+        "title": "参考视频链接",
+        "format": "uri",
+        "description": "填写公开可访问的抖音视频、竞品视频、话题页或账号主页。"
+      },
+      "douyinVideoDraftText": {
+        "type": "string",
+        "title": "抖音短视频稿",
+        "x-rows": 10,
+        "description": "粘贴开头钩子、分镜、口播、字幕、转场、CTA和商品/账号信息。",
+        "x-component": "Textarea"
+      },
+      "accountAudienceContext": {
+        "type": "string",
+        "title": "账号与目标受众",
+        "x-rows": 3,
+        "description": "说明账号定位、粉丝画像、发布目标、时长、行业和平台限制。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "douyinVideoDraftText",
+          "douyinDraftFile",
+          "referenceVideoLink"
+        ],
+        "message": "请填写抖音短视频稿、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

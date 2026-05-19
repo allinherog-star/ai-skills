@@ -1,0 +1,146 @@
+{
+  "id": "content-strategy",
+  "slug": "content-strategy",
+  "question": "这段文案能打动人吗?",
+  "skillName": "文案诊断助手",
+  "tags": [
+    "SEO",
+    "GEO",
+    "内容增长",
+    "搜索可见性"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Search"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "62409d956ba30544d736ffce6237ca1bf8d67b980eb9f20e1909a2e66387dd5a",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "content-strategy",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴业务背景、内容盘点、关键词/主题线索、用户问题或销售反馈",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴策略背景"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传内容资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填写栏目链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "内容增长目标",
+        "x-rows": 3,
+        "description": "例如建立主题权威、获取自然流量、提升 AI 引用、教育市场、获取线索或支持销售。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标读者与意图",
+        "x-rows": 3,
+        "description": "说明目标读者、搜索用户、采购角色、行业人群或内容消费阶段。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "现有内容或参考栏目",
+        "format": "uri",
+        "description": "填写无需登录即可访问的网站、博客、知识库、竞品栏目或参考内容链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传内容与关键词资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持内容盘点、关键词表、销售资料、用户调研、产品文档、编辑计划或网站导出文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "内容策略背景",
+        "x-rows": 10,
+        "description": "可粘贴业务介绍、现有内容清单、关键词/主题笔记、用户研究、销售问题或竞争观察。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌内容边界",
+        "x-rows": 3,
+        "description": "补充品牌语气、必须覆盖主题、差异化信息、禁用表达、合规限制和专家审核要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴内容策略背景、上传内容/关键词资料，或填写现有内容链接"
+      }
+    ]
+  }
+}

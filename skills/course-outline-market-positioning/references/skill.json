@@ -1,0 +1,185 @@
+{
+  "id": "course-outline-market-positioning",
+  "slug": "course-outline-market-positioning",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "课程大纲",
+    "定位",
+    "知识付费",
+    "卖点"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "education",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "GraduationCap"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "7048d33a3df2c82052d685df58bc8b5095bef0a9a289256e335be3a9a599360f",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "course-outline-market-positioning",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴课程大纲，建议包含目标学员、模块目录和竞品参考",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "courseOutlineText",
+          "label": "课程大纲草案"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "courseOutlineFile",
+          "label": "上传课程资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "courseBenchmarkLink",
+          "label": "竞品课程链接"
+        }
+      ],
+      "primaryField": "courseOutlineText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "positioningFocus"
+      ],
+      "advancedControlFields": [
+        "learnerPersonaContext",
+        "competitorCourseNotes"
+      ]
+    },
+    "properties": {
+      "positioningFocus": {
+        "enum": [
+          "人群定位",
+          "卖点差异",
+          "课程结构",
+          "转化表达"
+        ],
+        "type": "string",
+        "title": "定位重点",
+        "default": "人群定位",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "定位重点",
+            "label": "人群定位",
+            "value": "人群定位",
+            "description": "重点处理人群定位"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "定位重点",
+            "label": "卖点差异",
+            "value": "卖点差异",
+            "description": "重点处理卖点差异"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "定位重点",
+            "label": "课程结构",
+            "value": "课程结构",
+            "description": "重点处理课程结构"
+          },
+          {
+            "icon": "CircleDollarSign",
+            "color": "green",
+            "group": "定位重点",
+            "label": "转化表达",
+            "value": "转化表达",
+            "description": "重点处理转化表达"
+          }
+        ],
+        "description": "选择本次课程大纲市场定位最需要优先处理的方向。"
+      },
+      "courseOutlineFile": {
+        "type": "string",
+        "title": "上传课程资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传课程大纲、销售页草稿、竞品记录或学员调研。",
+        "x-component": "FileUpload"
+      },
+      "courseOutlineText": {
+        "type": "string",
+        "title": "课程大纲草案",
+        "x-rows": 10,
+        "description": "粘贴课程名称、模块目录、卖点、课时安排和交付形式。",
+        "x-component": "Textarea"
+      },
+      "courseBenchmarkLink": {
+        "type": "string",
+        "title": "竞品课程链接",
+        "format": "uri",
+        "description": "填写公开可访问的竞品课程页、招生页或介绍页。"
+      },
+      "competitorCourseNotes": {
+        "type": "string",
+        "title": "竞品与差异化线索",
+        "x-rows": 3,
+        "description": "补充竞品价格、承诺、模块、评价、转化卖点和不可使用表述。",
+        "x-component": "Textarea"
+      },
+      "learnerPersonaContext": {
+        "type": "string",
+        "title": "目标学员画像",
+        "x-rows": 3,
+        "description": "说明学员基础、学习动机、预算、行业、痛点和决策顾虑。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "courseOutlineText",
+          "courseOutlineFile",
+          "courseBenchmarkLink"
+        ],
+        "message": "请填写课程大纲草案、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

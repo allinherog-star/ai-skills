@@ -1,0 +1,146 @@
+{
+  "id": "ai-video-generation",
+  "slug": "ai-video-generation",
+  "question": "这段视频够发布吗?",
+  "skillName": "视频质量诊断助手",
+  "tags": [
+    "AI生成",
+    "提示词",
+    "视觉创意",
+    "视频脚本"
+  ],
+  "profession": [
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "c3345775ffe0bf0cbfcbbd8d3189aa3406c15ab51520c0f1c1d026a9a3602d33",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-video-generation",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "描述视频主题、时长、平台、镜头风格、旁白字幕和希望观众采取的动作",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴视频脚本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传视频参考"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填视频链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "视频目标",
+        "x-rows": 3,
+        "description": "例如提高完播、讲清产品、引导点击、制造记忆点、培训说明或广告转化。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "观看人群",
+        "x-rows": 3,
+        "description": "说明视频面向的观众，例如消费者、潜在客户、课程学员、投资人或内部评审。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "视频参考链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的参考视频、脚本页面、落地页或竞品视频链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传视频参考",
+        "format": "binary",
+        "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+        "x-max-size": 20971520,
+        "description": "上传参考视频、分镜文档、图片参考、品牌资料或脚本文件，用于辅助整理视频 brief。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "视频创意脚本",
+        "x-rows": 10,
+        "description": "粘贴视频主题、脚本、分镜、口播、镜头想法、提示词草稿或投放需求。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与制作限制",
+        "x-rows": 3,
+        "description": "补充视觉调性、旁白口吻、人物/声音授权、品牌禁区、必须出现的信息和合规限制。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴视频脚本/创意、上传视频参考，或填写公开视频链接"
+      }
+    ]
+  }
+}

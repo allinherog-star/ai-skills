@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴患者宣教内容，建议包含目标患者、使用场景和关键提醒",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "patientEducationText",
+        "label": "患者宣教内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "patientEducationFile",
+        "label": "上传宣教资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "patientEducationLink",
+        "label": "宣教公开链接"
+      }
+    ],
+    "primaryField": "patientEducationText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "readabilityReviewFocus"
+    ],
+    "advancedControlFields": [
+      "patientGroupContext",
+      "readingBarrierNotes"
+    ]
+  },
+  "properties": {
+    "patientGroupContext": {
+      "type": "string",
+      "title": "患者人群与就诊场景",
+      "x-rows": 3,
+      "description": "说明年龄、病程阶段、科室、阅读能力、使用场景和注意事项。",
+      "x-component": "Textarea"
+    },
+    "readingBarrierNotes": {
+      "type": "string",
+      "title": "阅读障碍与敏感点",
+      "x-rows": 3,
+      "description": "补充患者常见误解、术语难点、禁忌提示和必须保留的信息。",
+      "x-component": "Textarea"
+    },
+    "patientEducationFile": {
+      "type": "string",
+      "title": "上传宣教资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传宣教手册、PDF、问答稿、流程图或随访话术。",
+      "x-component": "FileUpload"
+    },
+    "patientEducationLink": {
+      "type": "string",
+      "title": "宣教公开链接",
+      "format": "uri",
+      "description": "填写公开可访问的宣教页面、医院栏目或患者说明链接。"
+    },
+    "patientEducationText": {
+      "type": "string",
+      "title": "患者宣教内容",
+      "x-rows": 10,
+      "description": "粘贴宣教单、术前术后说明、用药提醒或随访说明。",
+      "x-component": "Textarea"
+    },
+    "readabilityReviewFocus": {
+      "enum": [
+        "通俗化",
+        "流程清晰",
+        "风险提示",
+        "行动指引"
+      ],
+      "type": "string",
+      "title": "优化重点",
+      "default": "通俗化",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "优化重点",
+          "label": "通俗化",
+          "value": "通俗化",
+          "description": "重点处理通俗化"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "优化重点",
+          "label": "流程清晰",
+          "value": "流程清晰",
+          "description": "重点处理流程清晰"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "优化重点",
+          "label": "风险提示",
+          "value": "风险提示",
+          "description": "重点处理风险提示"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "优化重点",
+          "label": "行动指引",
+          "value": "行动指引",
+          "description": "重点处理行动指引"
+        }
+      ],
+      "description": "选择本次患者宣教可读性审查最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "patientEducationText",
+        "patientEducationFile",
+        "patientEducationLink"
+      ],
+      "message": "请填写患者宣教内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

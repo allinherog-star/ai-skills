@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 品牌分析助手"
+  short_description: "Amazon 品牌分析助手"
+  default_prompt: "Use $ai-amazon-brand-analytics to help with Amazon 品牌分析助手"
+
+policy:
+  allow_implicit_invocation: true

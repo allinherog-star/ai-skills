@@ -1,0 +1,194 @@
+{
+  "id": "pricing-strategy",
+  "slug": "pricing-strategy",
+  "question": "价格怎么定才不亏?",
+  "skillName": "财务定价诊断助手",
+  "tags": [
+    "转化率",
+    "增长营销",
+    "文案",
+    "A/B测试"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "education",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "b4fdf9e5409a42fcc4ab8490644f88ebb3bffb37723526d3fc13bd511f3d3728",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "pricing-strategy",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴定价页、套餐表或报价说明，最好包含目标客户、套餐差异、价格承诺和升级路径",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴定价内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传定价资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填定价链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "定价目标",
+        "x-rows": 3,
+        "description": "例如提升理解、减少套餐混淆、准备价格测试、促进升级或解释价值。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标客户细分",
+        "x-rows": 3,
+        "description": "补充客户规模、预算敏感度、购买角色、使用场景、采购流程和决策条件。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "定价页链接",
+        "format": "uri",
+        "description": "填写公开可访问的定价页、报价页、升级页、商品页或产品套餐链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "策略深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "策略深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "策略深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "策略深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速体检、标准诊断或深度套餐策略分析。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传定价资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等定价资料，适合提交套餐方案、报价单、销售材料或页面草稿。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "定价与套餐内容",
+        "x-rows": 10,
+        "description": "粘贴定价页文案、套餐表、价格说明、折扣机制、客户异议或竞品摘录。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "定价场景",
+        "x-rows": 3,
+        "description": "例如官网定价页、销售报价、应用内升级页、电商商品页、结账页或续费页。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "价格与品牌约束",
+        "x-rows": 3,
+        "description": "补充品牌语气、折扣政策、价格承诺边界、合规提醒和必须保留的条款。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴定价与套餐内容、上传定价资料，或填写定价页链接"
+      }
+    ]
+  }
+}

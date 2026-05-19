@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴评论或反馈集合，建议包含来源平台、业务背景和回复限制",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "commentCorpusText",
+        "label": "评论与反馈集合"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "commentExportFile",
+        "label": "上传评论导出"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "commentSourceLink",
+        "label": "评论来源链接"
+      }
+    ],
+    "primaryField": "commentCorpusText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "sentimentActionFocus"
+    ],
+    "advancedControlFields": [
+      "brandServiceContext",
+      "responsePolicyNotes"
+    ]
+  },
+  "properties": {
+    "commentCorpusText": {
+      "type": "string",
+      "title": "评论与反馈集合",
+      "x-rows": 10,
+      "description": "粘贴评论、私信、客服反馈、弹幕或社群讨论的脱敏文本。",
+      "x-component": "Textarea"
+    },
+    "commentExportFile": {
+      "type": "string",
+      "title": "上传评论导出",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传评论表、客服工单、社群记录、NPS或标签统计。",
+      "x-component": "FileUpload"
+    },
+    "commentSourceLink": {
+      "type": "string",
+      "title": "评论来源链接",
+      "format": "uri",
+      "description": "填写公开可访问的视频、笔记、商品页、帖子或评价页链接。"
+    },
+    "brandServiceContext": {
+      "type": "string",
+      "title": "品牌与服务场景",
+      "x-rows": 3,
+      "description": "说明产品/服务、渠道、活动节点、用户群、近期争议和运营目标。",
+      "x-component": "Textarea"
+    },
+    "responsePolicyNotes": {
+      "type": "string",
+      "title": "回复口径与处置限制",
+      "x-rows": 3,
+      "description": "补充可承诺事项、不可回应内容、客服规则、升级路径和责任团队。",
+      "x-component": "Textarea"
+    },
+    "sentimentActionFocus": {
+      "enum": [
+        "情绪分类",
+        "根因归纳",
+        "回复建议",
+        "升级处理"
+      ],
+      "type": "string",
+      "title": "动作卡重点",
+      "default": "情绪分类",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "动作卡重点",
+          "label": "情绪分类",
+          "value": "情绪分类",
+          "description": "重点处理情绪分类"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "动作卡重点",
+          "label": "根因归纳",
+          "value": "根因归纳",
+          "description": "重点处理根因归纳"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "动作卡重点",
+          "label": "回复建议",
+          "value": "回复建议",
+          "description": "重点处理回复建议"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "动作卡重点",
+          "label": "升级处理",
+          "value": "升级处理",
+          "description": "重点处理升级处理"
+        }
+      ],
+      "description": "选择本次评论舆情动作卡最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "commentCorpusText",
+        "commentExportFile",
+        "commentSourceLink"
+      ],
+      "message": "请填写评论与反馈集合、上传资料，或提供可访问链接"
+    }
+  ]
+}

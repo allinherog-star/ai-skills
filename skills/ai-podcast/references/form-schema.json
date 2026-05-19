@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴主题、草稿、渠道要求或参考素材",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴草稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传素材"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填参考链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充发布要求",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "内容目标",
+      "x-rows": 3,
+      "description": "说明希望达成的发布目标、转化目标、改写方向或评估标准。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标受众",
+      "x-rows": 3,
+      "description": "说明内容面向的人群、角色、购买阶段或使用场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "参考内容链接",
+      "format": "uri",
+      "description": "填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "内容资料文件",
+      "format": "binary",
+      "x-accept": ".mp4,.mov,.webm,.mp3,.wav,.m4a,.pdf,.docx,.txt",
+      "x-max-size": 20971520,
+      "description": "上传草稿、品牌资料、渠道要求、参考素材或内容规划文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "主题、草稿或参考素材",
+      "x-rows": 8,
+      "description": "粘贴主题、草稿、渠道要求、参考素材、卖点信息或发布目标。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与渠道边界",
+      "x-rows": 3,
+      "description": "补充品牌语气、渠道规则、格式要求、不可改动事实、合规限制或发布前复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写主题/草稿、上传内容资料或提供参考链接"
+    }
+  ]
+}

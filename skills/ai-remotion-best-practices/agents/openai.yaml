@@ -1,0 +1,7 @@
+interface:
+  display_name: "Remotion 实践助手"
+  short_description: "Remotion 实践助手"
+  default_prompt: "Use $ai-remotion-best-practices to help with Remotion 实践助手"
+
+policy:
+  allow_implicit_invocation: true

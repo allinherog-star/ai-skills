@@ -1,0 +1,187 @@
+{
+  "id": "creator-commercial-value-benchmark",
+  "slug": "creator-commercial-value-benchmark",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "内容运营",
+    "新媒体",
+    "选题",
+    "分发"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "FileText"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "821527f3d7e819135de35517da046390371ad18a5b8c17500507ceeecb361a5b",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "creator-commercial-value-benchmark",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴达人资料和报价，建议包含平台、粉丝画像、近期数据和合作目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "creatorProfileText",
+          "label": "达人资料与表现"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "creatorDataFile",
+          "label": "上传达人数据"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "creatorProfileLink",
+          "label": "达人主页链接"
+        }
+      ],
+      "primaryField": "creatorProfileText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "creatorBenchmarkFocus"
+      ],
+      "advancedControlFields": [
+        "collaborationContext",
+        "benchmarkMetricNotes"
+      ]
+    },
+    "properties": {
+      "creatorDataFile": {
+        "type": "string",
+        "title": "上传达人数据",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传达人数据表、报价单、投放复盘、内容样例或竞品合作记录。",
+        "x-component": "FileUpload"
+      },
+      "creatorProfileLink": {
+        "type": "string",
+        "title": "达人主页链接",
+        "format": "uri",
+        "description": "填写公开可访问的达人主页、作品、星图/蒲公英页面或案例链接。"
+      },
+      "creatorProfileText": {
+        "type": "string",
+        "title": "达人资料与表现",
+        "x-rows": 10,
+        "description": "粘贴达人简介、内容方向、粉丝画像、近期数据、报价和合作诉求。",
+        "x-component": "Textarea"
+      },
+      "benchmarkMetricNotes": {
+        "type": "string",
+        "title": "对标指标与约束",
+        "x-rows": 3,
+        "description": "补充竞品达人、历史成本、转化口径、风险顾虑和不可合作类型。",
+        "x-component": "Textarea"
+      },
+      "collaborationContext": {
+        "type": "string",
+        "title": "合作目标与品牌背景",
+        "x-rows": 3,
+        "description": "说明品牌、品类、预算、目标人群、投放目标和合作形式。",
+        "x-component": "Textarea"
+      },
+      "creatorBenchmarkFocus": {
+        "enum": [
+          "匹配度",
+          "内容质量",
+          "成本效率",
+          "风险清单"
+        ],
+        "type": "string",
+        "title": "评估重点",
+        "default": "匹配度",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "评估重点",
+            "label": "匹配度",
+            "value": "匹配度",
+            "description": "重点处理匹配度"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "评估重点",
+            "label": "内容质量",
+            "value": "内容质量",
+            "description": "重点处理内容质量"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "评估重点",
+            "label": "成本效率",
+            "value": "成本效率",
+            "description": "重点处理成本效率"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "评估重点",
+            "label": "风险清单",
+            "value": "风险清单",
+            "description": "重点处理风险清单"
+          }
+        ],
+        "description": "选择本次达人商业价值基准评估最需要优先处理的方向。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "creatorProfileText",
+          "creatorDataFile",
+          "creatorProfileLink"
+        ],
+        "message": "请填写达人资料与表现、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

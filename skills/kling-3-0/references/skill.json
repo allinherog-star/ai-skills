@@ -1,0 +1,146 @@
+{
+  "id": "kling-3-0",
+  "slug": "kling-3-0",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "AI生成",
+    "提示词",
+    "视觉创意",
+    "视频脚本"
+  ],
+  "profession": [
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "software",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "2a77a984101d542ba1cc3e6fdc1bac04c5092d6e4059b2d83292fd6badb0fb60",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "kling-3-0",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "描述面向 Kling 3.0 类工具的视频主体、动作、镜头运动、时长、风格和限制",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴视频需求"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传视频参考"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填视频链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "视频目标",
+        "x-rows": 3,
+        "description": "例如产品展示、剧情叙事、广告转化、氛围营造、活动预热或教学解释。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "观看人群",
+        "x-rows": 3,
+        "description": "说明视频面向的观众，例如消费者、社媒粉丝、广告受众、课程学员或内部评审。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "视频参考链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的参考视频、参考图片、脚本页面、商品页或竞品视频链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传视频/图片参考",
+        "format": "binary",
+        "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+        "x-max-size": 20971520,
+        "description": "上传参考视频、首帧图、尾帧图、产品图、人物图、分镜文档或品牌资料，用于整理 Kling 视频提示包。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "Kling 视频需求",
+        "x-rows": 10,
+        "description": "粘贴视频主题、脚本、分镜、图生视频说明、镜头动作、提示词草稿或发布需求。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "镜头与品牌限制",
+        "x-rows": 3,
+        "description": "补充主体稳定要求、镜头禁区、品牌色、人物/声音授权、版权限制和合规要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴 Kling 视频需求、上传视频/图片参考，或填写公开参考链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "描述原图现状、想改哪里、必须保留什么、不能出现什么和最终用途",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴改图说明"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传待改图"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填图片链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "改图目标",
+      "x-rows": 3,
+      "description": "例如修复瑕疵、换背景、统一风格、提升点击、突出卖点、合规清理或平台适配。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "观看人群",
+      "x-rows": 3,
+      "description": "说明编辑后的图片面向谁，例如消费者、广告受众、社媒粉丝、渠道商或内部审核。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "图片参考链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的原图、参考图、素材说明、商品页或品牌视觉链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传待改图片",
+      "format": "binary",
+      "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+      "x-max-size": 20971520,
+      "description": "上传原图、参考图、品牌素材、局部标注图或视觉资料，用于辅助整理编辑 brief。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "改图需求说明",
+      "x-rows": 10,
+      "description": "粘贴原图说明、要保留/删除/替换的元素、局部编辑目标、提示词草稿或发布要求。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "保留与禁改要求",
+      "x-rows": 3,
+      "description": "补充必须保留元素、禁止修改区域、品牌色、版权授权、输出限制和合规要求。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴改图需求、上传待改图片，或填写公开图片链接"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 4,
+    "placeholder": "粘贴 SEO/AEO 文章稿，最好包含标题层级、关键词和正文段落",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴文章稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传文章稿件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填文章链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "targetPlatform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements",
+      "targetKeyword",
+      "searchIntent"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "转化目标",
+      "x-rows": 3,
+      "description": "例如提升关键词覆盖、搜索排名、AI 摘要引用、线索转化或内容权威感。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标人群",
+      "x-rows": 3,
+      "description": "说明搜索用户画像和意图阶段，例如新手学习、方案比较、采购决策或专家复核。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "文章公开链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的文章页、博客页或搜索落地页链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ]
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传文章稿件",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等文章稿件，适合提交 Markdown、Word 或审稿版文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "SEO/AEO 文章稿",
+      "x-rows": 14,
+      "description": "可粘贴待审文章正文、标题方案或搜索优化草稿；建议保留 H1/H2、关键词和内链标记。",
+      "x-component": "Textarea"
+    },
+    "searchIntent": {
+      "type": "string",
+      "title": "搜索意图",
+      "description": "例如了解概念、比较方案、购买决策、教程操作。"
+    },
+    "targetKeyword": {
+      "type": "string",
+      "title": "目标关键词",
+      "description": "希望覆盖的核心关键词或查询语句。"
+    },
+    "targetPlatform": {
+      "enum": [
+        "SEO/AEO",
+        "官网博客",
+        "知识库"
+      ],
+      "type": "string",
+      "title": "目标平台",
+      "default": "SEO/AEO",
+      "x-options": [
+        {
+          "icon": "Search",
+          "color": "cyan",
+          "group": "目标平台",
+          "label": "SEO/AEO",
+          "value": "SEO/AEO",
+          "description": "适合搜索和 AI 引用优化内容"
+        },
+        {
+          "icon": "FileText",
+          "color": "cyan",
+          "group": "目标平台",
+          "label": "官网博客",
+          "value": "官网博客",
+          "description": "适合长尾搜索和品牌内容沉淀"
+        },
+        {
+          "icon": "BookOpen",
+          "color": "green",
+          "group": "目标平台",
+          "label": "知识库",
+          "value": "知识库",
+          "description": "适合结构化知识和帮助文档"
+        }
+      ]
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与限制要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、必须保留的事实、内部链接要求、合规边界或禁用表达。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴文章稿、上传文章稿件，或填写公开文章链接"
+    }
+  ]
+}

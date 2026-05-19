@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴视觉 brief、截图说明、品牌规范或修改目标",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "写视觉 brief"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传素材"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填页面链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充视觉约束",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "审查目标",
+      "x-rows": 3,
+      "description": "说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "使用场景",
+      "x-rows": 3,
+      "description": "说明视觉素材面向的平台、受众、设备、活动或评审场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "页面或素材链接",
+      "format": "uri",
+      "description": "填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "视觉素材文件",
+      "format": "binary",
+      "x-accept": ".png,.jpg,.jpeg,.webp,.gif",
+      "x-max-size": 20971520,
+      "description": "上传截图、图片、演示稿、品牌规范、产品图或视觉参考文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "视觉 brief 或截图说明",
+      "x-rows": 8,
+      "description": "粘贴视觉 brief、截图说明、品牌规范、页面问题、平台规格或修改目标。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与规格",
+      "x-rows": 3,
+      "description": "补充品牌规范、尺寸比例、平台限制、不可改动元素、无障碍要求或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
+    }
+  ]
+}

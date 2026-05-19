@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴网页文案、页面结构、设计规范或你担心的设计问题，最好说明页面目标和访问者",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴网页说明"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传截图规范"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写网页链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "页面目标",
+      "x-rows": 3,
+      "description": "说明希望页面完成的信息传达、转化、注册、咨询、购买或任务操作。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "访问者画像",
+      "x-rows": 3,
+      "description": "说明访问者身份、设备环境、浏览目的、熟练度和主要顾虑。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "网页或规范链接",
+      "format": "uri",
+      "description": "填写公开可访问的网站页面、原型预览、设计规范或竞品参考链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "审查深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "审查深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "审查深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "审查深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准规范审查或深度审查。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传网页截图或规范文档",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "支持桌面/移动网页截图、设计规范、线框图、PDF、审稿说明或页面标注图。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "网页内容与规范说明",
+      "x-rows": 10,
+      "description": "粘贴网页文案、页面结构、设计规范摘录、组件说明或当前想检查的问题。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "Web 类型",
+      "x-rows": 3,
+      "description": "选择桌面 Web、移动 Web、响应式官网、SaaS 后台或其它页面类型。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与规范要求",
+      "x-rows": 3,
+      "description": "补充品牌视觉规范、组件规则、文案语气、无障碍要求和必须保留的信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴网页说明、上传网页截图/规范文档，或填写公开网页链接"
+    }
+  ]
+}

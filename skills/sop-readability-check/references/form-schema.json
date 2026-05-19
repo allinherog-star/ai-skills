@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴SOP步骤，建议包含岗位、现场场景和强制安全要求",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "sopProcedureText",
+        "label": "SOP步骤文本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "sopDocumentFile",
+        "label": "上传SOP文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "sopReferenceLink",
+        "label": "SOP参考链接"
+      }
+    ],
+    "primaryField": "sopProcedureText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "sopCheckFocus"
+    ],
+    "advancedControlFields": [
+      "operatorScenarioContext",
+      "safetyControlNotes"
+    ]
+  },
+  "properties": {
+    "sopCheckFocus": {
+      "enum": [
+        "步骤清晰",
+        "风险提示",
+        "异常处理",
+        "点检清单"
+      ],
+      "type": "string",
+      "title": "检查重点",
+      "default": "步骤清晰",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "检查重点",
+          "label": "步骤清晰",
+          "value": "步骤清晰",
+          "description": "重点处理步骤清晰"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "检查重点",
+          "label": "风险提示",
+          "value": "风险提示",
+          "description": "重点处理风险提示"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "检查重点",
+          "label": "异常处理",
+          "value": "异常处理",
+          "description": "重点处理异常处理"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "检查重点",
+          "label": "点检清单",
+          "value": "点检清单",
+          "description": "重点处理点检清单"
+        }
+      ],
+      "description": "选择本次SOP 可读性检查最需要优先处理的方向。"
+    },
+    "sopDocumentFile": {
+      "type": "string",
+      "title": "上传SOP文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传SOP、作业指导书、检查表、培训材料或流程图。",
+      "x-component": "FileUpload"
+    },
+    "sopProcedureText": {
+      "type": "string",
+      "title": "SOP步骤文本",
+      "x-rows": 10,
+      "description": "粘贴作业步骤、注意事项、异常处理、责任分工和检查点。",
+      "x-component": "Textarea"
+    },
+    "sopReferenceLink": {
+      "type": "string",
+      "title": "SOP参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的流程标准、设备手册或参考规范链接。"
+    },
+    "safetyControlNotes": {
+      "type": "string",
+      "title": "安全控制与强制要求",
+      "x-rows": 3,
+      "description": "补充必须保留的安全提示、质量点检、停机条件和审批节点。",
+      "x-component": "Textarea"
+    },
+    "operatorScenarioContext": {
+      "type": "string",
+      "title": "操作者与现场场景",
+      "x-rows": 3,
+      "description": "说明岗位、班次、设备、环境、安全风险、培训水平和使用频次。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "sopProcedureText",
+        "sopDocumentFile",
+        "sopReferenceLink"
+      ],
+      "message": "请填写SOP步骤文本、上传资料，或提供可访问链接"
+    }
+  ]
+}

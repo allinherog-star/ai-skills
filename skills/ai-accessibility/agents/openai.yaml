@@ -1,0 +1,7 @@
+interface:
+  display_name: "无障碍体验诊断助手"
+  short_description: "无障碍体验诊断助手"
+  default_prompt: "Use $ai-accessibility to help with 无障碍体验诊断助手"
+
+policy:
+  allow_implicit_invocation: true

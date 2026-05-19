@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴 App 页面说明、移动端流程或当前体验问题，最好说明目标平台、用户场景和希望提升的感觉",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴 App 说明"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传移动截图"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写原型链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "App 体验目标",
+      "x-rows": 3,
+      "description": "说明希望提升的转化、留存、任务完成、首屏理解、信任或高级感目标。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "移动端用户场景",
+      "x-rows": 3,
+      "description": "说明目标用户、使用场景、设备环境、单手/双手操作方式和熟练度。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "App 原型或参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的 App 原型、移动网页、设计预览、产品页面或竞品参考链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "评审深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "评审深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "评审深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "评审深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速移动端点评、标准 App 设计评审或深度 sleek polish。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传移动端截图或设计文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 iOS/Android 截图、移动流程截图、原型导出图、设计文档或 PDF。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "App 页面与流程说明",
+      "x-rows": 10,
+      "description": "粘贴 App 页面说明、移动端流程、功能背景、界面文案、设计目标或当前问题。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "移动平台",
+      "x-rows": 3,
+      "description": "选择 iOS、Android、移动 Web、小程序、跨平台 App 或其它移动载体。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与平台规范",
+      "x-rows": 3,
+      "description": "补充品牌风格、平台规范、组件库限制、色彩/字体要求和必须保留的信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴 App 页面/流程说明、上传移动端截图/设计文档，或填写公开原型链接"
+    }
+  ]
+}

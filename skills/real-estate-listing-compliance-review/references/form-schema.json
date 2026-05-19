@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴房源话术，建议包含城市、项目/小区、价格口径和证照披露",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "propertyListingText",
+        "label": "房源话术文本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "listingAssetFile",
+        "label": "上传房源资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "propertyPageLink",
+        "label": "房源公开链接"
+      }
+    ],
+    "primaryField": "propertyListingText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "listingComplianceFocus"
+    ],
+    "advancedControlFields": [
+      "propertyContext",
+      "licenseDisclosureNotes"
+    ]
+  },
+  "properties": {
+    "propertyContext": {
+      "type": "string",
+      "title": "房源与交易背景",
+      "x-rows": 3,
+      "description": "说明城市、区域、新房/二手、产品类型、客群、交易阶段和渠道。",
+      "x-component": "Textarea"
+    },
+    "listingAssetFile": {
+      "type": "string",
+      "title": "上传房源资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传房源文案、海报、户型资料、价格表、证照说明或审稿表。",
+      "x-component": "FileUpload"
+    },
+    "propertyPageLink": {
+      "type": "string",
+      "title": "房源公开链接",
+      "format": "uri",
+      "description": "填写公开可访问的房源页、小区页、项目页或政策说明链接。"
+    },
+    "propertyListingText": {
+      "type": "string",
+      "title": "房源话术文本",
+      "x-rows": 10,
+      "description": "粘贴房源标题、卖点、户型、学区/交通/价格表述、经纪人话术和海报文案。",
+      "x-component": "Textarea"
+    },
+    "licenseDisclosureNotes": {
+      "type": "string",
+      "title": "证照披露与禁用表达",
+      "x-rows": 3,
+      "description": "补充证照信息、价格口径、学区/落户/收益限制、不能承诺内容和需核实事实。",
+      "x-component": "Textarea"
+    },
+    "listingComplianceFocus": {
+      "enum": [
+        "夸大承诺",
+        "价格口径",
+        "资质披露",
+        "安全改写"
+      ],
+      "type": "string",
+      "title": "审查重点",
+      "default": "夸大承诺",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "夸大承诺",
+          "value": "夸大承诺",
+          "description": "重点处理夸大承诺"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审查重点",
+          "label": "价格口径",
+          "value": "价格口径",
+          "description": "重点处理价格口径"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "审查重点",
+          "label": "资质披露",
+          "value": "资质披露",
+          "description": "重点处理资质披露"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "审查重点",
+          "label": "安全改写",
+          "value": "安全改写",
+          "description": "重点处理安全改写"
+        }
+      ],
+      "description": "选择本次房产房源话术合规审查最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "propertyListingText",
+        "listingAssetFile",
+        "propertyPageLink"
+      ],
+      "message": "请填写房源话术文本、上传资料，或提供可访问链接"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "id": "question-bank-explanation-quality-check",
+  "slug": "question-bank-explanation-quality-check",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "题库",
+    "解析",
+    "教研",
+    "质量检查"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "education",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "GraduationCap"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "b2f105deeb83093eeacfb5e0590cd106756ea364ee7029c6317ff3c66142918b",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "question-bank-explanation-quality-check",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴题目和解析，建议包含答案、知识点、难度和判分口径",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "questionExplanationText",
+          "label": "题目与解析文本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "questionBankFile",
+          "label": "上传题库文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "questionReferenceLink",
+          "label": "题目参考链接"
+        }
+      ],
+      "primaryField": "questionExplanationText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "explanationQualityFocus"
+      ],
+      "advancedControlFields": [
+        "learnerLevelContext",
+        "gradingStandardNotes"
+      ]
+    },
+    "properties": {
+      "questionBankFile": {
+        "type": "string",
+        "title": "上传题库文件",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传题库表、试卷、解析稿、错题记录或标注表。",
+        "x-component": "FileUpload"
+      },
+      "learnerLevelContext": {
+        "type": "string",
+        "title": "学习阶段与考试场景",
+        "x-rows": 3,
+        "description": "说明年级/考试/岗位、难度、题型、目标分数和学员基础。",
+        "x-component": "Textarea"
+      },
+      "gradingStandardNotes": {
+        "type": "string",
+        "title": "判分标准与口径",
+        "x-rows": 3,
+        "description": "补充答案依据、评分规则、知识点边界、易错点和禁用解释。",
+        "x-component": "Textarea"
+      },
+      "questionReferenceLink": {
+        "type": "string",
+        "title": "题目参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的考试说明、知识点页或参考题链接。"
+      },
+      "explanationQualityFocus": {
+        "enum": [
+          "答案一致性",
+          "解析清晰",
+          "知识点覆盖",
+          "易错提醒"
+        ],
+        "type": "string",
+        "title": "检查重点",
+        "default": "答案一致性",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "检查重点",
+            "label": "答案一致性",
+            "value": "答案一致性",
+            "description": "重点处理答案一致性"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "检查重点",
+            "label": "解析清晰",
+            "value": "解析清晰",
+            "description": "重点处理解析清晰"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "检查重点",
+            "label": "知识点覆盖",
+            "value": "知识点覆盖",
+            "description": "重点处理知识点覆盖"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "检查重点",
+            "label": "易错提醒",
+            "value": "易错提醒",
+            "description": "重点处理易错提醒"
+          }
+        ],
+        "description": "选择本次题库解析质量检查最需要优先处理的方向。"
+      },
+      "questionExplanationText": {
+        "type": "string",
+        "title": "题目与解析文本",
+        "x-rows": 10,
+        "description": "粘贴题干、选项、答案、解析、知识点和常见错误。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "questionExplanationText",
+          "questionBankFile",
+          "questionReferenceLink"
+        ],
+        "message": "请填写题目与解析文本、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

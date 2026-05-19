@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO/AEO 博客写作助手"
+  short_description: "SEO/AEO 博客写作助手"
+  default_prompt: "Use $ai-seo-aeo-blog-writer to help with SEO/AEO 博客写作助手"
+
+policy:
+  allow_implicit_invocation: true

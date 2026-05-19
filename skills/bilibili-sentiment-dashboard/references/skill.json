@@ -7,16 +7,25 @@
     "舆情监控",
     "评论洞察",
     "AI分析",
+    "转化潜力",
+    "用户画像",
     "运营建议"
   ],
   "profession": [
-    "operations"
+    "内容创作者",
+    "运营",
+    "品牌方",
+    "电商"
   ],
   "industry": [
-    "media",
-    "ecommerce"
+    "新媒体",
+    "电商",
+    "娱乐",
+    "美妆",
+    "时尚",
+    "生活",
+    "通用"
   ],
-  "platform": "bilibili",
   "hidden": false,
   "auth": {
     "type": "api-key",
@@ -24,6 +33,20 @@
     "tenantHeader": "X-Tenant-Id"
   },
   "comingSoon": false,
+  "providerType": "api",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Tv",
+      "rating": 4.8,
+      "displayOrder": 11,
+      "subProfession": [
+        "content-creator",
+        "analyst"
+      ]
+    },
+    "aiAnalysis": true,
+    "delegateTo": "bilibili-video-comments"
+  },
   "invocationMode": "comment-analysis-task",
   "invocation": {
     "type": "comment-analysis-task",
@@ -35,13 +58,16 @@
   "formSchema": {
     "type": "object",
     "required": [
-      "link"
+      "videoUrl"
     ],
     "properties": {
-      "link": {
+      "videoUrl": {
         "type": "string",
-        "title": "分享链接",
-        "format": "uri"
+        "title": "视频/笔记链接",
+        "description": "粘贴B站分享链接",
+        "x-component-props": {
+          "placeholder": "粘贴B站分享链接..."
+        }
       }
     }
   }

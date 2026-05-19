@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴设备故障时间线，建议包含报警、影响范围和临时处置",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "failureSymptomText",
+        "label": "故障现象描述"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "maintenanceLogFile",
+        "label": "上传维修记录"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "equipmentRecordLink",
+        "label": "设备资料链接"
+      }
+    ],
+    "primaryField": "failureSymptomText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "rcaDraftFocus"
+    ],
+    "advancedControlFields": [
+      "equipmentContext",
+      "downtimeImpactNotes"
+    ]
+  },
+  "properties": {
+    "rcaDraftFocus": {
+      "enum": [
+        "现象归纳",
+        "可能原因",
+        "验证计划",
+        "纠正预防"
+      ],
+      "type": "string",
+      "title": "RCA重点",
+      "default": "现象归纳",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "RCA重点",
+          "label": "现象归纳",
+          "value": "现象归纳",
+          "description": "重点处理现象归纳"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "RCA重点",
+          "label": "可能原因",
+          "value": "可能原因",
+          "description": "重点处理可能原因"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "RCA重点",
+          "label": "验证计划",
+          "value": "验证计划",
+          "description": "重点处理验证计划"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "RCA重点",
+          "label": "纠正预防",
+          "value": "纠正预防",
+          "description": "重点处理纠正预防"
+        }
+      ],
+      "description": "选择本次设备故障 RCA 草稿最需要优先处理的方向。"
+    },
+    "equipmentContext": {
+      "type": "string",
+      "title": "设备与产线背景",
+      "x-rows": 3,
+      "description": "说明设备型号、产线、工序、班次、维护周期、环境和操作条件。",
+      "x-component": "Textarea"
+    },
+    "failureSymptomText": {
+      "type": "string",
+      "title": "故障现象描述",
+      "x-rows": 10,
+      "description": "粘贴故障时间线、现象、报警、影响范围、临时处置和恢复情况。",
+      "x-component": "Textarea"
+    },
+    "maintenanceLogFile": {
+      "type": "string",
+      "title": "上传维修记录",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传点检表、报警日志、维修记录、照片说明或停机报表。",
+      "x-component": "FileUpload"
+    },
+    "downtimeImpactNotes": {
+      "type": "string",
+      "title": "影响与已采取措施",
+      "x-rows": 3,
+      "description": "补充停机时长、良率影响、备件、人员、临时控制和待验证假设。",
+      "x-component": "Textarea"
+    },
+    "equipmentRecordLink": {
+      "type": "string",
+      "title": "设备资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的设备说明、保养规程或故障记录链接。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "failureSymptomText",
+        "maintenanceLogFile",
+        "equipmentRecordLink"
+      ],
+      "message": "请填写故障现象描述、上传资料，或提供可访问链接"
+    }
+  ]
+}

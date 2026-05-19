@@ -1,0 +1,188 @@
+{
+  "id": "account-research-sales-card",
+  "slug": "account-research-sales-card",
+  "question": "客户为什么不推进?",
+  "skillName": "销售增长助手",
+  "tags": [
+    "销售赋能",
+    "客户研究",
+    "跟进计划",
+    "GTM"
+  ],
+  "profession": [
+    "seller",
+    "marketing",
+    "operation",
+    "product"
+  ],
+  "industry": [
+    "software",
+    "finance",
+    "education",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "ecc0c0ea8c1ea6dbf62f170447af6e0c1bd43f13a057b06a021bf0a87215cdd3",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "account-research-sales-card",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴目标账户资料，例如公司介绍、新闻、线索备注、CRM 摘要或官网摘录",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "Building2",
+          "field": "targetAccountInfo",
+          "label": "贴账户资料"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "accountResearchFile",
+          "label": "传账户文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "accountSourceUrl",
+          "label": "填资料链接"
+        }
+      ],
+      "primaryField": "targetAccountInfo",
+      "advancedLabel": "补充销售背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "productContext",
+        "salesObjective",
+        "buyerPersona"
+      ]
+    },
+    "properties": {
+      "reviewDepth": {
+        "enum": [
+          "快速作战卡",
+          "标准作战卡",
+          "深度账户计划"
+        ],
+        "type": "string",
+        "title": "作战卡深度",
+        "default": "标准作战卡",
+        "x-options": [
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "作战卡深度",
+            "label": "快速作战卡",
+            "value": "快速作战卡",
+            "description": "快速作战卡级别的作战卡深度"
+          },
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "作战卡深度",
+            "label": "标准作战卡",
+            "value": "标准作战卡",
+            "description": "标准作战卡级别的作战卡深度"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "blue",
+            "group": "作战卡深度",
+            "label": "深度账户计划",
+            "value": "深度账户计划",
+            "description": "深度账户计划级别的作战卡深度"
+          }
+        ],
+        "description": "作战卡深度"
+      },
+      "buyerPersona": {
+        "type": "string",
+        "title": "已知买方角色",
+        "x-rows": 3,
+        "description": "填写已知联系人、部门、角色或希望优先影响的买方群体。",
+        "x-component": "Textarea"
+      },
+      "productContext": {
+        "type": "string",
+        "title": "我方产品背景",
+        "x-rows": 4,
+        "description": "说明产品价值、目标行业、客户案例、竞争差异和交付限制。",
+        "x-component": "Textarea"
+      },
+      "salesObjective": {
+        "type": "string",
+        "title": "销售目标",
+        "x-rows": 3,
+        "description": "例如冷启动触达、会前准备、推进商机、唤醒沉默线索。",
+        "x-component": "Textarea"
+      },
+      "accountSourceUrl": {
+        "type": "string",
+        "title": "账户资料链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的公司官网、新闻稿、案例页或公开资料链接。"
+      },
+      "targetAccountInfo": {
+        "type": "string",
+        "title": "目标账户资料",
+        "x-rows": 10,
+        "description": "粘贴公司背景、官网摘录、新闻、线索备注、CRM 摘要或手工调研内容。",
+        "x-component": "Textarea"
+      },
+      "accountResearchFile": {
+        "type": "string",
+        "title": "上传账户资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等账户研究材料。",
+        "x-component": "FileUpload"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "targetAccountInfo",
+          "accountResearchFile",
+          "accountSourceUrl"
+        ],
+        "message": "请粘贴账户资料、上传账户文件，或填写公开资料链接"
+      }
+    ]
+  }
+}

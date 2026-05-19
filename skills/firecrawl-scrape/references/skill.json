@@ -1,0 +1,194 @@
+{
+  "id": "firecrawl-scrape",
+  "slug": "firecrawl-scrape",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "网页研究",
+    "公开信息",
+    "竞品分析",
+    "证据整理"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "LayoutTemplate"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "6e56fd82318d5d74d6cd37c6a585058b025037c2dd7f00972f02a4130320d9a1",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "firecrawl-scrape",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴单个公开页面的正文、页面片段、产品页文本、FAQ 或公告内容",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴单页正文"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传单页资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填单页链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "单页提取目标",
+        "x-rows": 3,
+        "description": "例如字段定义、页面摘要、证据归档、合规复核或导入前整理。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "提取表读者",
+        "x-rows": 3,
+        "description": "填写数据整理人员、内容编辑、运营、销售、研究员等使用者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "单页公开链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的单页 URL、页面标题、canonical 链接或链接 metadata。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "单页提取深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "单页提取深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "单页提取深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "单页提取深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速单页卡、标准提取表或深度证据表。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传单页资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "上传单页保存稿、截图转写、PDF、Markdown、TXT 或页面资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "单页正文摘录",
+        "x-rows": 10,
+        "description": "粘贴单个公开页面正文、产品页文本、文章摘录、FAQ、公告或页面可见片段。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "提取落地系统",
+        "x-rows": 3,
+        "description": "说明结果将用于数据库、内容管理、商品表、线索表、知识库或其他系统。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "字段与引用要求",
+        "x-rows": 3,
+        "description": "补充输出口径、引用规范、品牌合规、字段命名规则或禁用表达。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴单页正文、上传单页资料，或填写单页公开链接"
+      }
+    ]
+  }
+}

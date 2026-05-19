@@ -1,0 +1,195 @@
+{
+  "id": "ai-seo-aeo-keyword-research",
+  "slug": "ai-seo-aeo-keyword-research",
+  "question": "关键词机会在哪?",
+  "skillName": "SEO/AEO 关键词助手",
+  "tags": [
+    "SEO",
+    "内容增长",
+    "搜索优化"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "blogger-individual"
+  ],
+  "industry": [
+    "software",
+    "media",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://skillsmp.com/skills/sickn33-antigravity-awesome-skills-plugins-antigravity-awesome-skills-claude-skills-seo-aeo-keyword-research-skill-md"
+      ],
+      "sourceNotes": "recent_hot_search_signal: sickn33/antigravity-awesome-skills/seo-aeo-keyword-research"
+    },
+    "catalog": {
+      "icon": "Search"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "skillsmp-market-2026-05-17",
+      "batchId": "skillsmp-market-2026-05-17",
+      "candidateId": "seo-aeo-keyword-research",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "SkillsMP market signal (37471 stars): Researches and prioritises SEO keywords with AEO question queries, difficulty tiers, cannibalization checks, and a content map. Activate when the user wants to find keywords, resea",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "marketing",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "content_marketing"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "SkillsMP market signal (37471 stars): Researches and prioritises SEO keywords with AEO question queries, difficulty tiers, cannibalization checks, and a content map. Activate when the user wants to find keywords, resea",
+      "allowedOutputs": [
+        "内容诊断",
+        "优化建议",
+        "执行清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "0982cb8c7e7fcc7e415d93a817ad3275b52b73e1858d68e1badade6bc574c750",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-seo-aeo-keyword-research",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "skillsmp-market-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "content_marketing",
+      "sourceRef": "sickn33/antigravity-awesome-skills",
+      "sourceUrl": "https://skillsmp.com/skills/sickn33-antigravity-awesome-skills-plugins-antigravity-awesome-skills-claude-skills-seo-aeo-keyword-research-skill-md",
+      "importedAt": "2026-05-17T14:54:15.431Z",
+      "candidateId": "seo-aeo-keyword-research",
+      "sourceSignal": "recent_hot_search_signal",
+      "originalSkillId": "seo-aeo-keyword-research"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴页面内容、关键词、站点结构或搜索目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴页面内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传 SEO 资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填页面链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充搜索范围",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "优化目标",
+        "x-rows": 3,
+        "description": "说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标受众",
+        "x-rows": 3,
+        "description": "说明搜索用户、目标市场、行业、购买阶段或内容受众。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "页面或站点链接",
+        "format": "uri",
+        "description": "填写公开可访问的页面、站点、SERP、竞品或参考链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "SEO 资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传内容稿、关键词表、站点结构、审计报告或 SEO 规划资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "页面、关键词或内容资料",
+        "x-rows": 8,
+        "description": "粘贴页面内容、关键词、站点结构、搜索目标、竞品摘要或优化问题。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "搜索与发布边界",
+        "x-rows": 3,
+        "description": "补充目标地区、语言、品牌限制、不可改动事实、合规要求或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
+      }
+    ]
+  }
+}

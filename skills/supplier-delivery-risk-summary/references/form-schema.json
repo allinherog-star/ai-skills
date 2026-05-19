@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴供应商交付异常，建议包含订单、交期、库存和影响范围",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "supplierDeliveryText",
+        "label": "交付情况说明"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "deliveryDataFile",
+        "label": "上传交付数据"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "supplierPortalLink",
+        "label": "供应商资料链接"
+      }
+    ],
+    "primaryField": "supplierDeliveryText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "deliveryRiskFocus"
+    ],
+    "advancedControlFields": [
+      "supplierContext",
+      "purchaseImpactNotes"
+    ]
+  },
+  "properties": {
+    "supplierContext": {
+      "type": "string",
+      "title": "供应商与物料背景",
+      "x-rows": 3,
+      "description": "说明供应商等级、物料类别、采购周期、替代来源和合同约束。",
+      "x-component": "Textarea"
+    },
+    "deliveryDataFile": {
+      "type": "string",
+      "title": "上传交付数据",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传订单、排产表、到货记录、库存表或供应商邮件。",
+      "x-component": "FileUpload"
+    },
+    "deliveryRiskFocus": {
+      "enum": [
+        "延期风险",
+        "缺料影响",
+        "替代方案",
+        "沟通清单"
+      ],
+      "type": "string",
+      "title": "摘要重点",
+      "default": "延期风险",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "摘要重点",
+          "label": "延期风险",
+          "value": "延期风险",
+          "description": "重点处理延期风险"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "摘要重点",
+          "label": "缺料影响",
+          "value": "缺料影响",
+          "description": "重点处理缺料影响"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "摘要重点",
+          "label": "替代方案",
+          "value": "替代方案",
+          "description": "重点处理替代方案"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "摘要重点",
+          "label": "沟通清单",
+          "value": "沟通清单",
+          "description": "重点处理沟通清单"
+        }
+      ],
+      "description": "选择本次供应商交付风险摘要最需要优先处理的方向。"
+    },
+    "supplierPortalLink": {
+      "type": "string",
+      "title": "供应商资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的供应商公告、物流页面或资料链接。"
+    },
+    "purchaseImpactNotes": {
+      "type": "string",
+      "title": "业务影响与应对动作",
+      "x-rows": 3,
+      "description": "补充安全库存、客户交期、替代料、加急成本和责任人。",
+      "x-component": "Textarea"
+    },
+    "supplierDeliveryText": {
+      "type": "string",
+      "title": "交付情况说明",
+      "x-rows": 10,
+      "description": "粘贴供应商延期、缺货、质量异常、排产变更或沟通记录。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "supplierDeliveryText",
+        "deliveryDataFile",
+        "supplierPortalLink"
+      ],
+      "message": "请填写交付情况说明、上传资料，或提供可访问链接"
+    }
+  ]
+}

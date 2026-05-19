@@ -1,0 +1,7 @@
+interface:
+  display_name: "财务定价诊断助手"
+  short_description: "财务定价诊断助手"
+  default_prompt: "Use $pricing-strategy to help with 财务定价诊断助手"
+
+policy:
+  allow_implicit_invocation: true

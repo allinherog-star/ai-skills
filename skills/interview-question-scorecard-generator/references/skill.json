@@ -1,0 +1,185 @@
+{
+  "id": "interview-question-scorecard-generator",
+  "slug": "interview-question-scorecard-generator",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "面试",
+    "评分表",
+    "招聘",
+    "能力模型"
+  ],
+  "profession": [
+    "hr",
+    "management",
+    "operation"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "9d8a87c8943d785879fd97a6a64bf9885786572392eed45aabd6422975ebcb4b",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "interview-question-scorecard-generator",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴面试需求，建议包含岗位能力项、轮次和评分规则",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "interviewRequirementText",
+          "label": "面试需求说明"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "interviewGuideFile",
+          "label": "上传面试资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "competencyModelLink",
+          "label": "能力模型链接"
+        }
+      ],
+      "primaryField": "interviewRequirementText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "scorecardFocus"
+      ],
+      "advancedControlFields": [
+        "roleInterviewContext",
+        "scoringRuleNotes"
+      ]
+    },
+    "properties": {
+      "scorecardFocus": {
+        "enum": [
+          "行为问题",
+          "案例题",
+          "评分锚点",
+          "追问清单"
+        ],
+        "type": "string",
+        "title": "生成重点",
+        "default": "行为问题",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "生成重点",
+            "label": "行为问题",
+            "value": "行为问题",
+            "description": "重点处理行为问题"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "生成重点",
+            "label": "案例题",
+            "value": "案例题",
+            "description": "重点处理案例题"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "生成重点",
+            "label": "评分锚点",
+            "value": "评分锚点",
+            "description": "重点处理评分锚点"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "生成重点",
+            "label": "追问清单",
+            "value": "追问清单",
+            "description": "重点处理追问清单"
+          }
+        ],
+        "description": "选择本次面试题与评分卡生成最需要优先处理的方向。"
+      },
+      "scoringRuleNotes": {
+        "type": "string",
+        "title": "评分规则与限制",
+        "x-rows": 3,
+        "description": "补充评分等级、淘汰项、敏感问题禁区和人工复核要求。",
+        "x-component": "Textarea"
+      },
+      "interviewGuideFile": {
+        "type": "string",
+        "title": "上传面试资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传岗位画像、能力模型、历史题库、面试记录或评分模板。",
+        "x-component": "FileUpload"
+      },
+      "competencyModelLink": {
+        "type": "string",
+        "title": "能力模型链接",
+        "format": "uri",
+        "description": "填写公开可访问的能力模型、岗位说明或面试流程链接。"
+      },
+      "roleInterviewContext": {
+        "type": "string",
+        "title": "岗位与面试场景",
+        "x-rows": 3,
+        "description": "说明岗位、职级、业务线、面试时长、面试官角色和轮次目标。",
+        "x-component": "Textarea"
+      },
+      "interviewRequirementText": {
+        "type": "string",
+        "title": "面试需求说明",
+        "x-rows": 10,
+        "description": "粘贴岗位要求、能力项、面试轮次、候选人级别和考察重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "interviewRequirementText",
+          "interviewGuideFile",
+          "competencyModelLink"
+        ],
+        "message": "请填写面试需求说明、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

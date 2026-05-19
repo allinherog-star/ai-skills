@@ -1,0 +1,7 @@
+interface:
+  display_name: "HR 专业助手"
+  short_description: "HR 专业助手"
+  default_prompt: "Use $ai-hr-pro to help with HR 专业助手"
+
+policy:
+  allow_implicit_invocation: true

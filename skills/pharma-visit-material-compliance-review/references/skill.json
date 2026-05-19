@@ -1,0 +1,185 @@
+{
+  "id": "pharma-visit-material-compliance-review",
+  "slug": "pharma-visit-material-compliance-review",
+  "question": "这里有什么风险?",
+  "skillName": "风险审阅助手",
+  "tags": [
+    "医药营销",
+    "拜访材料",
+    "合规提示",
+    "话术审查"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "healthcare",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Stethoscope"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "68807588a0536ada98c3daae013beceebf8da7b9de7015870ce9cc5046ded043",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "pharma-visit-material-compliance-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴药企拜访材料，建议包含产品背景、目标科室和沟通场景",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "pharmaVisitMaterialText",
+          "label": "拜访材料文本"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "pharmaVisitMaterialFile",
+          "label": "上传拜访资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "pharmaVisitMaterialLink",
+          "label": "资料公开链接"
+        }
+      ],
+      "primaryField": "pharmaVisitMaterialText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "pharmaReviewFocus"
+      ],
+      "advancedControlFields": [
+        "productApprovalContext",
+        "audienceVisitScenario"
+      ]
+    },
+    "properties": {
+      "pharmaReviewFocus": {
+        "enum": [
+          "适应症一致性",
+          "证据边界",
+          "推广表达",
+          "代表提示卡"
+        ],
+        "type": "string",
+        "title": "审查重点",
+        "default": "适应症一致性",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "适应症一致性",
+            "value": "适应症一致性",
+            "description": "重点处理适应症一致性"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审查重点",
+            "label": "证据边界",
+            "value": "证据边界",
+            "description": "重点处理证据边界"
+          },
+          {
+            "icon": "Megaphone",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "推广表达",
+            "value": "推广表达",
+            "description": "重点处理推广表达"
+          },
+          {
+            "icon": "Award",
+            "color": "green",
+            "group": "审查重点",
+            "label": "代表提示卡",
+            "value": "代表提示卡",
+            "description": "重点处理代表提示卡"
+          }
+        ],
+        "description": "选择本次药企拜访材料合规审查最需要优先处理的方向。"
+      },
+      "audienceVisitScenario": {
+        "type": "string",
+        "title": "拜访场景与限制",
+        "x-rows": 3,
+        "description": "补充会议/院内/线上沟通场景、不可承诺内容和必须核对依据。",
+        "x-component": "Textarea"
+      },
+      "productApprovalContext": {
+        "type": "string",
+        "title": "产品适应症与资质背景",
+        "x-rows": 3,
+        "description": "说明产品类别、获批适应症、目标科室、拜访对象和资料用途。",
+        "x-component": "Textarea"
+      },
+      "pharmaVisitMaterialFile": {
+        "type": "string",
+        "title": "上传拜访资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传代表拜访材料、培训课件、产品卡或审稿表。",
+        "x-component": "FileUpload"
+      },
+      "pharmaVisitMaterialLink": {
+        "type": "string",
+        "title": "资料公开链接",
+        "format": "uri",
+        "description": "填写公开可访问的产品说明、指南摘要或学术资料链接。"
+      },
+      "pharmaVisitMaterialText": {
+        "type": "string",
+        "title": "拜访材料文本",
+        "x-rows": 10,
+        "description": "粘贴药企拜访话术、产品介绍、学术沟通材料或推广页内容。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "pharmaVisitMaterialText",
+          "pharmaVisitMaterialFile",
+          "pharmaVisitMaterialLink"
+        ],
+        "message": "请填写拜访材料文本、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

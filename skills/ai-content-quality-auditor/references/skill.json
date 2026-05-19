@@ -1,0 +1,195 @@
+{
+  "id": "ai-content-quality-auditor",
+  "slug": "ai-content-quality-auditor",
+  "question": "这段文案能打动人吗?",
+  "skillName": "文案诊断助手",
+  "tags": [
+    "内容生产",
+    "文案优化",
+    "发布准备"
+  ],
+  "profession": [
+    "blogger-individual",
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/aaron-he-zhu/seo-geo-claude-skills"
+      ],
+      "sourceNotes": "skills_sh_hot: aaron-he-zhu/seo-geo-claude-skills/content-quality-auditor"
+    },
+    "catalog": {
+      "icon": "ListChecks"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "content-quality-auditor",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh hot 信号显示 content-quality-auditor 有用户需求；平台展示为 content_marketing 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "marketing",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "content_marketing"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh hot 信号显示 content-quality-auditor 有用户需求；平台展示为 content_marketing 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "allowedOutputs": [
+        "内容诊断",
+        "结构化优化建议",
+        "可执行发布清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "1d03edb69076dfb7eca9f76fdb19c99c583a0941fc4c99468c80d324ee22550e",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-content-quality-auditor",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "content_marketing",
+      "sourceRef": "aaron-he-zhu/seo-geo-claude-skills",
+      "sourceUrl": "https://www.skills.sh/aaron-he-zhu/seo-geo-claude-skills",
+      "importedAt": "2026-05-17T09:39:33.000Z",
+      "candidateId": "content-quality-auditor",
+      "sourceSignal": "skills_sh_hot",
+      "originalSkillId": "content-quality-auditor"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴主题、草稿、渠道要求或参考素材",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴草稿"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传素材"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填参考链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充发布要求",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "内容目标",
+        "x-rows": 3,
+        "description": "说明希望达成的发布目标、转化目标、改写方向或评估标准。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标受众",
+        "x-rows": 3,
+        "description": "说明内容面向的人群、角色、购买阶段或使用场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "参考内容链接",
+        "format": "uri",
+        "description": "填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "内容资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传草稿、品牌资料、渠道要求、参考素材或内容规划文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "主题、草稿或参考素材",
+        "x-rows": 8,
+        "description": "粘贴主题、草稿、渠道要求、参考素材、卖点信息或发布目标。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与渠道边界",
+        "x-rows": 3,
+        "description": "补充品牌语气、渠道规则、格式要求、不可改动事实、合规限制或发布前复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写主题/草稿、上传内容资料或提供参考链接"
+      }
+    ]
+  }
+}

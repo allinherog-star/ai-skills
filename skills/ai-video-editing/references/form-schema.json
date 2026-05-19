@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "说明已有视频素材、转写稿、目标平台、成片时长、想保留/删除的片段和剪辑风格",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "写剪辑需求"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传视频素材"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填素材链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充剪辑范围",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "成片目标与时长",
+      "x-rows": 3,
+      "description": "说明本次希望解决的剪辑问题、目标时长、成片用途或需要产出的版本。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标平台与受众",
+      "x-rows": 3,
+      "description": "说明「AI 视频剪辑诊断助手」输出要服务的平台、观看人群、角色、市场或使用场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "素材或参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的视频、素材或参考成片链接；如果链接需要登录、权限或 Cookie，请改为上传文件或粘贴内容。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "原始视频或转写文件",
+      "format": "binary",
+      "x-accept": ".mp4,.mov,.webm,.mp3,.wav,.m4a,.pdf,.docx,.txt",
+      "x-max-size": 20971520,
+      "description": "上传 raw footage、录屏、访谈、直播片段、转写稿或脚本文件，便于生成剪辑决策表。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "剪辑需求或素材说明",
+      "x-rows": 8,
+      "description": "粘贴本次要交给「AI 视频剪辑诊断助手」处理的素材说明、转写稿、时间点、剪辑目标或当前成片问题。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "剪辑风格与不可删内容",
+      "x-rows": 3,
+      "description": "补充品牌语气、平台规格、剪辑风格、必须保留内容、不可改动事实、合规限制或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写剪辑需求、上传视频素材或提供素材链接"
+    }
+  ]
+}

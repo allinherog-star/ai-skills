@@ -1,0 +1,7 @@
+interface:
+  display_name: "文案诊断助手"
+  short_description: "文案诊断助手"
+  default_prompt: "Use $wechat-article-review to help with 文案诊断助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,193 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴品牌表达样稿，最好包含品牌语气、禁用表达或必须保留的信息",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴品牌样稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传品牌文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填品牌链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "targetPlatform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements",
+      "brandPersona",
+      "referenceSamples"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "转化目标",
+      "x-rows": 3,
+      "description": "例如统一品牌语气、提升信任感、降低冒犯风险、强化专业感或促进咨询。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标人群",
+      "x-rows": 3,
+      "description": "说明品牌表达面向的对象，例如潜在客户、合作伙伴、招聘候选人、媒体或老用户。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "品牌内容链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的官网页面、品牌介绍、公开文档或社媒内容链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ]
+    },
+    "brandPersona": {
+      "type": "string",
+      "title": "品牌人设",
+      "x-rows": 3,
+      "description": "例如专业可信、年轻活泼、温和克制、效率优先。",
+      "x-component": "Textarea"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传品牌文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等品牌文档，适合提交品牌手册节选、文案稿或对外话术。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "品牌表达样稿",
+      "x-rows": 10,
+      "description": "可粘贴官网段落、社媒文案、品牌介绍、客服话术或活动文案；建议附上希望保留的品牌语气。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "enum": [
+        "通用",
+        "社媒",
+        "客服",
+        "PR"
+      ],
+      "type": "string",
+      "title": "目标平台",
+      "default": "通用",
+      "x-options": [
+        {
+          "icon": "Globe",
+          "color": "slate",
+          "group": "目标平台",
+          "label": "通用",
+          "value": "通用",
+          "description": "适合不限定平台的通用内容场景"
+        },
+        {
+          "icon": "MessageCircle",
+          "color": "rose",
+          "group": "目标平台",
+          "label": "社媒",
+          "value": "社媒",
+          "description": "适合评论、私信和社交互动口吻"
+        },
+        {
+          "icon": "Headphones",
+          "color": "green",
+          "group": "目标平台",
+          "label": "客服",
+          "value": "客服",
+          "description": "适合服务回应和问题解释"
+        },
+        {
+          "icon": "Megaphone",
+          "color": "amber",
+          "group": "目标平台",
+          "label": "PR",
+          "value": "PR",
+          "description": "适合公关声明和对外口径"
+        }
+      ]
+    },
+    "referenceSamples": {
+      "type": "string",
+      "title": "参考样例",
+      "x-rows": 5,
+      "description": "粘贴 1-3 段符合品牌调性的参考文案。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与限制要求",
+      "x-rows": 3,
+      "description": "补充品牌性格、口吻边界、禁用表达、竞品差异和必须保留的关键词。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴品牌样稿、上传品牌文档，或填写品牌内容链接"
+    }
+  ]
+}

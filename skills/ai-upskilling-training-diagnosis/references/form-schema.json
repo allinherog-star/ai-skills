@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴AI培训需求，建议包含岗位画像、当前工具和业务场景",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "trainingNeedText",
+        "label": "培训需求描述"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "skillSurveyFile",
+        "label": "上传调研资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "orgLearningLink",
+        "label": "组织学习资料链接"
+      }
+    ],
+    "primaryField": "trainingNeedText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "trainingDiagnosisFocus"
+    ],
+    "advancedControlFields": [
+      "teamProfileContext",
+      "currentToolUsageNotes"
+    ]
+  },
+  "properties": {
+    "orgLearningLink": {
+      "type": "string",
+      "title": "组织学习资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的培训计划、能力模型或学习资源链接。"
+    },
+    "skillSurveyFile": {
+      "type": "string",
+      "title": "上传调研资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传技能调研、岗位矩阵、培训反馈、课程表或访谈记录。",
+      "x-component": "FileUpload"
+    },
+    "trainingNeedText": {
+      "type": "string",
+      "title": "培训需求描述",
+      "x-rows": 10,
+      "description": "粘贴团队目标、岗位类型、当前工具使用、痛点和期望能力。",
+      "x-component": "Textarea"
+    },
+    "teamProfileContext": {
+      "type": "string",
+      "title": "团队画像与业务场景",
+      "x-rows": 3,
+      "description": "说明部门、人数、岗位、业务流程、工具权限和管理目标。",
+      "x-component": "Textarea"
+    },
+    "currentToolUsageNotes": {
+      "type": "string",
+      "title": "现状与约束",
+      "x-rows": 3,
+      "description": "补充已用AI工具、数据限制、安全要求、时间预算和学习偏好。",
+      "x-component": "Textarea"
+    },
+    "trainingDiagnosisFocus": {
+      "enum": [
+        "能力缺口",
+        "课程模块",
+        "实战任务",
+        "评估方式"
+      ],
+      "type": "string",
+      "title": "诊断重点",
+      "default": "能力缺口",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "诊断重点",
+          "label": "能力缺口",
+          "value": "能力缺口",
+          "description": "重点处理能力缺口"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "诊断重点",
+          "label": "课程模块",
+          "value": "课程模块",
+          "description": "重点处理课程模块"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "诊断重点",
+          "label": "实战任务",
+          "value": "实战任务",
+          "description": "重点处理实战任务"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "诊断重点",
+          "label": "评估方式",
+          "value": "评估方式",
+          "description": "重点处理评估方式"
+        }
+      ],
+      "description": "选择本次AI 培训需求诊断最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "trainingNeedText",
+        "skillSurveyFile",
+        "orgLearningLink"
+      ],
+      "message": "请填写培训需求描述、上传资料，或提供可访问链接"
+    }
+  ]
+}

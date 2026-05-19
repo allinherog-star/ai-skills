@@ -1,0 +1,7 @@
+interface:
+  display_name: "视觉质量诊断助手"
+  short_description: "视觉质量诊断助手"
+  default_prompt: "Use $ai-gpt-image-2 to help with 视觉质量诊断助手"
+
+policy:
+  allow_implicit_invocation: true

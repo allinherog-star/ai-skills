@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴商品信息、店铺页面、评论素材或销售目标",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴商品资料"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传电商资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填商品链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充运营约束",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "运营目标",
+      "x-rows": 3,
+      "description": "说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标买家",
+      "x-rows": 3,
+      "description": "说明目标买家、市场、平台、渠道或使用场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "商品或店铺链接",
+      "format": "uri",
+      "description": "填写公开可访问的商品、店铺、竞品、评价或平台页面链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "电商资料文件",
+      "format": "binary",
+      "x-accept": ".png,.jpg,.jpeg,.webp,.gif,.pdf,.pptx,.docx,.txt",
+      "x-max-size": 20971520,
+      "description": "上传商品资料、评论表、竞品截图、运营数据、店铺规划或素材文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "商品、店铺或运营资料",
+      "x-rows": 8,
+      "description": "粘贴商品信息、店铺页面、评论素材、竞品信息、销售目标或渠道要求。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "平台与商品边界",
+      "x-rows": 3,
+      "description": "补充平台规则、价格边界、库存约束、品牌限制、不可承诺内容或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 4,
+    "placeholder": "粘贴竞品价格、优惠、卖点、评价摘要和截图时间",
+    "primaryTabs": [
+      {
+        "id": "snapshot",
+        "icon": "Search",
+        "field": "competitorSnapshot",
+        "label": "贴竞品快照"
+      },
+      {
+        "id": "links",
+        "icon": "Link",
+        "field": "competitorLinks",
+        "label": "填竞品链接"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "watchFile",
+        "label": "传巡检资料"
+      }
+    ],
+    "primaryField": "competitorSnapshot",
+    "advancedLabel": "补充自家商品",
+    "primaryControlFields": [
+      "platform",
+      "marketRegion",
+      "watchGoal"
+    ],
+    "advancedControlFields": [
+      "ownProductInfo",
+      "responseStyle"
+    ]
+  },
+  "properties": {
+    "platform": {
+      "enum": [
+        "通用电商",
+        "淘宝/天猫",
+        "京东",
+        "拼多多",
+        "抖音电商",
+        "小红书店铺",
+        "独立站",
+        "亚马逊",
+        "TikTok Shop"
+      ],
+      "type": "string",
+      "title": "巡检平台",
+      "default": "通用电商",
+      "x-options": [
+        {
+          "icon": "Store",
+          "color": "blue",
+          "group": "平台",
+          "label": "通用电商",
+          "value": "通用电商",
+          "description": "按通用电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "LayoutTemplate",
+          "color": "blue",
+          "group": "平台",
+          "label": "淘宝/天猫",
+          "value": "淘宝/天猫",
+          "description": "按淘宝/天猫的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ShoppingBag",
+          "color": "blue",
+          "group": "平台",
+          "label": "京东",
+          "value": "京东",
+          "description": "按京东的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ShoppingCart",
+          "color": "blue",
+          "group": "平台",
+          "label": "拼多多",
+          "value": "拼多多",
+          "description": "按拼多多的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Clapperboard",
+          "color": "blue",
+          "group": "平台",
+          "label": "抖音电商",
+          "value": "抖音电商",
+          "description": "按抖音电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Sparkles",
+          "color": "blue",
+          "group": "平台",
+          "label": "小红书店铺",
+          "value": "小红书店铺",
+          "description": "按小红书店铺的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "平台",
+          "label": "独立站",
+          "value": "独立站",
+          "description": "按独立站的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "平台",
+          "label": "亚马逊",
+          "value": "亚马逊",
+          "description": "按亚马逊的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "平台",
+          "label": "TikTok Shop",
+          "value": "TikTok Shop",
+          "description": "按TikTok Shop的页面和用户决策习惯调整诊断重点"
+        }
+      ],
+      "description": "巡检平台"
+    },
+    "watchFile": {
+      "type": "string",
+      "title": "上传巡检资料",
+      "format": "binary",
+      "x-accept": ".xlsx,.csv,.docx,.pdf,.md,.txt,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "支持竞品截图、价格表、巡检表、运营复盘或对比文档。",
+      "x-component": "FileUpload"
+    },
+    "watchGoal": {
+      "enum": [
+        "价格与卖点变化解读",
+        "判断是否跟价",
+        "优化主图卖点",
+        "制定促销应对",
+        "竞品周报"
+      ],
+      "type": "string",
+      "title": "巡检目标",
+      "default": "价格与卖点变化解读",
+      "x-options": [
+        {
+          "icon": "Search",
+          "color": "blue",
+          "group": "巡检目标",
+          "label": "价格与卖点变化解读",
+          "value": "价格与卖点变化解读",
+          "description": "围绕价格与卖点变化解读解读竞品变化"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "巡检目标",
+          "label": "判断是否跟价",
+          "value": "判断是否跟价",
+          "description": "围绕判断是否跟价解读竞品变化"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "blue",
+          "group": "巡检目标",
+          "label": "优化主图卖点",
+          "value": "优化主图卖点",
+          "description": "围绕优化主图卖点解读竞品变化"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "巡检目标",
+          "label": "制定促销应对",
+          "value": "制定促销应对",
+          "description": "围绕制定促销应对解读竞品变化"
+        },
+        {
+          "icon": "FileWarning",
+          "color": "blue",
+          "group": "巡检目标",
+          "label": "竞品周报",
+          "value": "竞品周报",
+          "description": "围绕竞品周报解读竞品变化"
+        }
+      ],
+      "description": "巡检目标"
+    },
+    "marketRegion": {
+      "enum": [
+        "中国大陆",
+        "北美",
+        "欧洲",
+        "日本",
+        "韩国",
+        "东南亚",
+        "中东",
+        "拉美",
+        "全球通用"
+      ],
+      "type": "string",
+      "title": "市场区域",
+      "default": "中国大陆",
+      "x-options": [
+        {
+          "icon": "Globe",
+          "color": "green",
+          "group": "市场",
+          "label": "中国大陆",
+          "value": "中国大陆",
+          "description": "面向中国大陆市场的消费语境和本地表达"
+        },
+        {
+          "icon": "Landmark",
+          "color": "green",
+          "group": "市场",
+          "label": "北美",
+          "value": "北美",
+          "description": "面向北美市场的消费语境和本地表达"
+        },
+        {
+          "icon": "Home",
+          "color": "green",
+          "group": "市场",
+          "label": "欧洲",
+          "value": "欧洲",
+          "description": "面向欧洲市场的消费语境和本地表达"
+        },
+        {
+          "icon": "Plane",
+          "color": "green",
+          "group": "市场",
+          "label": "日本",
+          "value": "日本",
+          "description": "面向日本市场的消费语境和本地表达"
+        },
+        {
+          "icon": "Building2",
+          "color": "green",
+          "group": "市场",
+          "label": "韩国",
+          "value": "韩国",
+          "description": "面向韩国市场的消费语境和本地表达"
+        },
+        {
+          "icon": "Factory",
+          "color": "green",
+          "group": "市场",
+          "label": "东南亚",
+          "value": "东南亚",
+          "description": "面向东南亚市场的消费语境和本地表达"
+        },
+        {
+          "icon": "FileText",
+          "color": "green",
+          "group": "市场",
+          "label": "中东",
+          "value": "中东",
+          "description": "面向中东市场的消费语境和本地表达"
+        },
+        {
+          "icon": "PenTool",
+          "color": "green",
+          "group": "市场",
+          "label": "拉美",
+          "value": "拉美",
+          "description": "面向拉美市场的消费语境和本地表达"
+        },
+        {
+          "icon": "MessageCircle",
+          "color": "green",
+          "group": "市场",
+          "label": "全球通用",
+          "value": "全球通用",
+          "description": "面向全球通用市场的消费语境和本地表达"
+        }
+      ],
+      "description": "市场区域"
+    },
+    "responseStyle": {
+      "enum": [
+        "保守观察",
+        "稳健应对",
+        "积极反击"
+      ],
+      "type": "string",
+      "title": "应对偏好",
+      "default": "稳健应对",
+      "x-options": [
+        {
+          "icon": "BarChart3",
+          "color": "orange",
+          "group": "应对偏好",
+          "label": "保守观察",
+          "value": "保守观察",
+          "description": "按保守观察制定价格和卖点动作"
+        },
+        {
+          "icon": "Briefcase",
+          "color": "orange",
+          "group": "应对偏好",
+          "label": "稳健应对",
+          "value": "稳健应对",
+          "description": "按稳健应对制定价格和卖点动作"
+        },
+        {
+          "icon": "Zap",
+          "color": "orange",
+          "group": "应对偏好",
+          "label": "积极反击",
+          "value": "积极反击",
+          "description": "按积极反击制定价格和卖点动作"
+        }
+      ],
+      "description": "应对偏好"
+    },
+    "ownProductInfo": {
+      "type": "string",
+      "title": "自家商品信息",
+      "x-rows": 5,
+      "description": "补充自家价格、到手价、毛利、库存、卖点、赠品、售后和不可调整的限制。",
+      "x-component": "Textarea"
+    },
+    "competitorLinks": {
+      "type": "string",
+      "title": "竞品链接",
+      "x-rows": 4,
+      "description": "填写公开商品链接、店铺链接或榜单链接；也可一行一个链接。",
+      "x-component": "Textarea"
+    },
+    "competitorSnapshot": {
+      "type": "string",
+      "title": "竞品快照",
+      "x-rows": 8,
+      "description": "粘贴竞品价格、优惠、主图卖点、详情页摘要、评价摘要、更新时间和截图文字。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "competitorLinks",
+        "competitorSnapshot",
+        "watchFile"
+      ],
+      "message": "请填写竞品链接、粘贴竞品快照，或上传巡检资料"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI 视频剪辑诊断助手"
+  short_description: "AI 视频剪辑诊断助手"
+  default_prompt: "Use $ai-video-editing to help with AI 视频剪辑诊断助手"
+
+policy:
+  allow_implicit_invocation: true

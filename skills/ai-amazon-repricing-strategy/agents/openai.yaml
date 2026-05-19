@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 调价诊断助手"
+  short_description: "Amazon 调价诊断助手"
+  default_prompt: "Use $ai-amazon-repricing-strategy to help with Amazon 调价诊断助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,194 @@
+{
+  "id": "ai-amazon-repricing-strategy",
+  "slug": "ai-amazon-repricing-strategy",
+  "question": "价格怎么调才稳?",
+  "skillName": "Amazon 调价诊断助手",
+  "tags": [
+    "资料整理",
+    "数据清理",
+    "行动项"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/nexscope-ai/amazon-skills"
+      ],
+      "sourceNotes": "skills_sh_hot: nexscope-ai/amazon-skills/amazon-repricing-strategy"
+    },
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "amazon-repricing-strategy",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh hot 信号显示 amazon-repricing-strategy 有用户需求；平台展示为 ecommerce_retail 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "primaryIndustry": "ecommerce",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "seller",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "ecommerce_retail"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh hot 信号显示 amazon-repricing-strategy 有用户需求；平台展示为 ecommerce_retail 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "allowedOutputs": [
+        "商品/店铺诊断",
+        "卖点与风险提示",
+        "运营动作建议"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "f965e940b944452840d4687fe20ee2ac5cced317b0b7e49fda9a71a8041ce067",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-amazon-repricing-strategy",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "ecommerce_retail",
+      "sourceRef": "nexscope-ai/amazon-skills",
+      "sourceUrl": "https://www.skills.sh/nexscope-ai/amazon-skills",
+      "importedAt": "2026-05-17T09:40:01.184Z",
+      "candidateId": "amazon-repricing-strategy",
+      "sourceSignal": "skills_sh_hot",
+      "originalSkillId": "amazon-repricing-strategy"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴商品信息、店铺页面、评论素材或销售目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴商品资料"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传电商资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填商品链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充运营约束",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "运营目标",
+        "x-rows": 3,
+        "description": "说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标买家",
+        "x-rows": 3,
+        "description": "说明目标买家、市场、平台、渠道或使用场景。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "商品或店铺链接",
+        "format": "uri",
+        "description": "填写公开可访问的商品、店铺、竞品、评价或平台页面链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "电商资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv,.pdf,.docx,.txt",
+        "x-max-size": 20971520,
+        "description": "上传商品资料、评论表、竞品截图、运营数据、店铺规划或素材文件。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "商品、店铺或运营资料",
+        "x-rows": 8,
+        "description": "粘贴商品信息、店铺页面、评论素材、竞品信息、销售目标或渠道要求。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "平台与商品边界",
+        "x-rows": 3,
+        "description": "补充平台规则、价格边界、库存约束、品牌限制、不可承诺内容或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
+      }
+    ]
+  }
+}

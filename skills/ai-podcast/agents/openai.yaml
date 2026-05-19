@@ -1,0 +1,7 @@
+interface:
+  display_name: "播客策划助手"
+  short_description: "播客策划助手"
+  default_prompt: "Use $ai-podcast to help with 播客策划助手"
+
+policy:
+  allow_implicit_invocation: true

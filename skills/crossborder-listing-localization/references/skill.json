@@ -1,0 +1,572 @@
+{
+  "id": "crossborder-listing-localization",
+  "slug": "crossborder-listing-localization",
+  "question": "这个改动值得测吗?",
+  "skillName": "转化实验助手",
+  "tags": [
+    "电商运营",
+    "商品转化",
+    "用户反馈",
+    "增长改进"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "seller",
+    "product"
+  ],
+  "industry": [
+    "ecommerce",
+    "retail",
+    "media",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "8be559830683ad1e9d1f9e2551e5d4cc1982f9a09f7de3f257ca16036dbbd939",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "crossborder-listing-localization",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴需要本地化的标题、五点、描述或关键词，并补充目标市场",
+      "primaryTabs": [
+        {
+          "id": "listing",
+          "icon": "Globe",
+          "field": "listingText",
+          "label": "贴原始 Listing"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "listingFile",
+          "label": "传 Listing 资料"
+        }
+      ],
+      "primaryField": "listingText",
+      "advancedLabel": "补充商品与关键词",
+      "primaryControlFields": [
+        "sourceLanguage",
+        "targetLanguage",
+        "marketRegion",
+        "platform"
+      ],
+      "advancedControlFields": [
+        "productInfo",
+        "keywordRequirements",
+        "localizationGoal"
+      ]
+    },
+    "properties": {
+      "platform": {
+        "enum": [
+          "Amazon",
+          "TikTok Shop",
+          "Shopee",
+          "Lazada",
+          "eBay",
+          "Etsy",
+          "独立站",
+          "通用跨境平台"
+        ],
+        "type": "string",
+        "title": "发布平台",
+        "default": "Amazon",
+        "x-options": [
+          {
+            "icon": "Store",
+            "color": "blue",
+            "group": "平台",
+            "label": "Amazon",
+            "value": "Amazon",
+            "description": "按Amazon的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "LayoutTemplate",
+            "color": "blue",
+            "group": "平台",
+            "label": "TikTok Shop",
+            "value": "TikTok Shop",
+            "description": "按TikTok Shop的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "ShoppingBag",
+            "color": "blue",
+            "group": "平台",
+            "label": "Shopee",
+            "value": "Shopee",
+            "description": "按Shopee的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "ShoppingCart",
+            "color": "blue",
+            "group": "平台",
+            "label": "Lazada",
+            "value": "Lazada",
+            "description": "按Lazada的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "平台",
+            "label": "eBay",
+            "value": "eBay",
+            "description": "按eBay的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "平台",
+            "label": "Etsy",
+            "value": "Etsy",
+            "description": "按Etsy的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "平台",
+            "label": "独立站",
+            "value": "独立站",
+            "description": "按独立站的页面和用户决策习惯调整诊断重点"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "blue",
+            "group": "平台",
+            "label": "通用跨境平台",
+            "value": "通用跨境平台",
+            "description": "按通用跨境平台的页面和用户决策习惯调整诊断重点"
+          }
+        ],
+        "description": "发布平台"
+      },
+      "listingFile": {
+        "type": "string",
+        "title": "上传 Listing 资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv",
+        "x-max-size": 20971520,
+        "description": "支持 Listing 文档、关键词表、竞品摘录、商品资料或翻译稿。",
+        "x-component": "FileUpload"
+      },
+      "listingText": {
+        "type": "string",
+        "title": "原始 Listing",
+        "x-rows": 10,
+        "description": "粘贴标题、五点、描述、A+ 文案、搜索词或需要本地化的商品页面内容。",
+        "x-component": "Textarea"
+      },
+      "productInfo": {
+        "type": "string",
+        "title": "商品事实",
+        "x-rows": 5,
+        "description": "补充规格、材质、功能、适用场景、认证、包装、售后和必须保留的信息。",
+        "x-component": "Textarea"
+      },
+      "marketRegion": {
+        "enum": [
+          "美国",
+          "英国",
+          "加拿大",
+          "德国",
+          "法国",
+          "意大利",
+          "西班牙",
+          "日本",
+          "韩国",
+          "澳大利亚",
+          "中东",
+          "东南亚",
+          "拉美"
+        ],
+        "type": "string",
+        "title": "目标市场",
+        "default": "美国",
+        "x-options": [
+          {
+            "icon": "Globe",
+            "color": "green",
+            "group": "市场",
+            "label": "美国",
+            "value": "美国",
+            "description": "面向美国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Landmark",
+            "color": "green",
+            "group": "市场",
+            "label": "英国",
+            "value": "英国",
+            "description": "面向英国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Home",
+            "color": "green",
+            "group": "市场",
+            "label": "加拿大",
+            "value": "加拿大",
+            "description": "面向加拿大市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Plane",
+            "color": "green",
+            "group": "市场",
+            "label": "德国",
+            "value": "德国",
+            "description": "面向德国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Building2",
+            "color": "green",
+            "group": "市场",
+            "label": "法国",
+            "value": "法国",
+            "description": "面向法国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Factory",
+            "color": "green",
+            "group": "市场",
+            "label": "意大利",
+            "value": "意大利",
+            "description": "面向意大利市场的消费语境和本地表达"
+          },
+          {
+            "icon": "FileText",
+            "color": "green",
+            "group": "市场",
+            "label": "西班牙",
+            "value": "西班牙",
+            "description": "面向西班牙市场的消费语境和本地表达"
+          },
+          {
+            "icon": "PenTool",
+            "color": "green",
+            "group": "市场",
+            "label": "日本",
+            "value": "日本",
+            "description": "面向日本市场的消费语境和本地表达"
+          },
+          {
+            "icon": "MessageCircle",
+            "color": "green",
+            "group": "市场",
+            "label": "韩国",
+            "value": "韩国",
+            "description": "面向韩国市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Store",
+            "color": "green",
+            "group": "市场",
+            "label": "澳大利亚",
+            "value": "澳大利亚",
+            "description": "面向澳大利亚市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Users",
+            "color": "green",
+            "group": "市场",
+            "label": "中东",
+            "value": "中东",
+            "description": "面向中东市场的消费语境和本地表达"
+          },
+          {
+            "icon": "Newspaper",
+            "color": "green",
+            "group": "市场",
+            "label": "东南亚",
+            "value": "东南亚",
+            "description": "面向东南亚市场的消费语境和本地表达"
+          },
+          {
+            "icon": "WalletCards",
+            "color": "green",
+            "group": "市场",
+            "label": "拉美",
+            "value": "拉美",
+            "description": "面向拉美市场的消费语境和本地表达"
+          }
+        ],
+        "description": "目标市场"
+      },
+      "sourceLanguage": {
+        "enum": [
+          "中文",
+          "英语",
+          "日语",
+          "韩语",
+          "德语",
+          "法语",
+          "西班牙语",
+          "其他"
+        ],
+        "type": "string",
+        "title": "原语言",
+        "default": "中文",
+        "x-options": [
+          {
+            "icon": "Globe",
+            "color": "slate",
+            "group": "原语言",
+            "label": "中文",
+            "value": "中文",
+            "description": "原始内容主要使用中文"
+          },
+          {
+            "icon": "FileText",
+            "color": "slate",
+            "group": "原语言",
+            "label": "英语",
+            "value": "英语",
+            "description": "原始内容主要使用英语"
+          },
+          {
+            "icon": "PenTool",
+            "color": "slate",
+            "group": "原语言",
+            "label": "日语",
+            "value": "日语",
+            "description": "原始内容主要使用日语"
+          },
+          {
+            "icon": "MessageCircle",
+            "color": "slate",
+            "group": "原语言",
+            "label": "韩语",
+            "value": "韩语",
+            "description": "原始内容主要使用韩语"
+          },
+          {
+            "icon": "Landmark",
+            "color": "slate",
+            "group": "原语言",
+            "label": "德语",
+            "value": "德语",
+            "description": "原始内容主要使用德语"
+          },
+          {
+            "icon": "Plane",
+            "color": "slate",
+            "group": "原语言",
+            "label": "法语",
+            "value": "法语",
+            "description": "原始内容主要使用法语"
+          },
+          {
+            "icon": "Building2",
+            "color": "slate",
+            "group": "原语言",
+            "label": "西班牙语",
+            "value": "西班牙语",
+            "description": "原始内容主要使用西班牙语"
+          },
+          {
+            "icon": "Factory",
+            "color": "slate",
+            "group": "原语言",
+            "label": "其他",
+            "value": "其他",
+            "description": "原始内容主要使用其他"
+          }
+        ],
+        "description": "原语言"
+      },
+      "targetLanguage": {
+        "enum": [
+          "英语",
+          "日语",
+          "韩语",
+          "德语",
+          "法语",
+          "西班牙语",
+          "意大利语",
+          "葡萄牙语",
+          "阿拉伯语"
+        ],
+        "type": "string",
+        "title": "目标语言",
+        "default": "英语",
+        "x-options": [
+          {
+            "icon": "Globe",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "英语",
+            "value": "英语",
+            "description": "输出适合英语读者的自然表达"
+          },
+          {
+            "icon": "FileText",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "日语",
+            "value": "日语",
+            "description": "输出适合日语读者的自然表达"
+          },
+          {
+            "icon": "PenTool",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "韩语",
+            "value": "韩语",
+            "description": "输出适合韩语读者的自然表达"
+          },
+          {
+            "icon": "MessageCircle",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "德语",
+            "value": "德语",
+            "description": "输出适合德语读者的自然表达"
+          },
+          {
+            "icon": "Landmark",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "法语",
+            "value": "法语",
+            "description": "输出适合法语读者的自然表达"
+          },
+          {
+            "icon": "Plane",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "西班牙语",
+            "value": "西班牙语",
+            "description": "输出适合西班牙语读者的自然表达"
+          },
+          {
+            "icon": "Building2",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "意大利语",
+            "value": "意大利语",
+            "description": "输出适合意大利语读者的自然表达"
+          },
+          {
+            "icon": "Factory",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "葡萄牙语",
+            "value": "葡萄牙语",
+            "description": "输出适合葡萄牙语读者的自然表达"
+          },
+          {
+            "icon": "Store",
+            "color": "blue",
+            "group": "目标语言",
+            "label": "阿拉伯语",
+            "value": "阿拉伯语",
+            "description": "输出适合阿拉伯语读者的自然表达"
+          }
+        ],
+        "description": "目标语言"
+      },
+      "localizationGoal": {
+        "enum": [
+          "提升自然搜索和转化",
+          "降低直译感",
+          "优化标题五点",
+          "适配目标市场",
+          "降低风险表达"
+        ],
+        "type": "string",
+        "title": "优化目标",
+        "default": "提升自然搜索和转化",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "amber",
+            "group": "优化目标",
+            "label": "提升自然搜索和转化",
+            "value": "提升自然搜索和转化",
+            "description": "围绕提升自然搜索和转化调整 Listing 结构和措辞"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "amber",
+            "group": "优化目标",
+            "label": "降低直译感",
+            "value": "降低直译感",
+            "description": "围绕降低直译感调整 Listing 结构和措辞"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "amber",
+            "group": "优化目标",
+            "label": "优化标题五点",
+            "value": "优化标题五点",
+            "description": "围绕优化标题五点调整 Listing 结构和措辞"
+          },
+          {
+            "icon": "Plane",
+            "color": "amber",
+            "group": "优化目标",
+            "label": "适配目标市场",
+            "value": "适配目标市场",
+            "description": "围绕适配目标市场调整 Listing 结构和措辞"
+          },
+          {
+            "icon": "Scale",
+            "color": "amber",
+            "group": "优化目标",
+            "label": "降低风险表达",
+            "value": "降低风险表达",
+            "description": "围绕降低风险表达调整 Listing 结构和措辞"
+          }
+        ],
+        "description": "优化目标"
+      },
+      "keywordRequirements": {
+        "type": "string",
+        "title": "关键词要求",
+        "x-rows": 4,
+        "description": "填写目标关键词、必须保留词、禁用词、竞品关键词或搜索词报告摘要。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "listingText",
+          "listingFile",
+          "productInfo"
+        ],
+        "message": "请粘贴原始 Listing、上传 Listing 资料，或填写商品事实"
+      }
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴飞书妙记转写或会议纪要，包含议题、结论、行动项、分歧和待确认事项",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴会议纪要"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传纪要文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填纪要链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "会议复盘目标",
+      "x-rows": 3,
+      "description": "例如提炼结论、明确行动项、生成会后同步、识别风险或准备下次会议。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "纪要读者",
+      "x-rows": 3,
+      "description": "例如参会人、未参会成员、项目负责人、客户或管理者。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "纪要链接说明",
+      "format": "uri",
+      "description": "填写飞书妙记或会议纪要链接，并补充可见内容摘要；系统不会自动打开链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "复盘深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "复盘深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "复盘深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "复盘深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速摘要、标准复盘或深度追踪。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传会议纪要文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传会议纪要导出、转写文件、截图 OCR 文本、议程或相关材料。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "飞书会议纪要",
+      "x-rows": 10,
+      "description": "粘贴飞书妙记转写、会议纪要、聊天记录、发言摘要或会后速记。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "同步场景",
+      "x-rows": 3,
+      "description": "说明用于飞书群同步、项目周会复盘、客户会议纪要还是管理层汇报。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "纪要口径要求",
+      "x-rows": 3,
+      "description": "补充会议纪要模板、称谓、语气、保密要求或对客户表达边界。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴飞书会议纪要、上传纪要文件或填写纪要链接说明"
+    }
+  ]
+}

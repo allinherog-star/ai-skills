@@ -1,13 +1,937 @@
 {
-  "totalSkills": 12,
+  "totalSkills": 245,
   "generatedFrom": "ai-skills-export",
   "skills": [
+    {
+      "slug": "account-research-sales-card",
+      "question": "客户为什么不推进?",
+      "skillName": "销售增长助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/account-research-sales-card"
+    },
+    {
+      "slug": "ad-copy-compliance-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ad-copy-compliance-review"
+    },
+    {
+      "slug": "ad-creative",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ad-creative"
+    },
+    {
+      "slug": "agent-browser",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/agent-browser"
+    },
+    {
+      "slug": "ai-ab-testing",
+      "question": "这个改动值得测吗?",
+      "skillName": "A/B 测试设计助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-ab-testing"
+    },
+    {
+      "slug": "ai-accessibility",
+      "question": "这个页面好用吗?",
+      "skillName": "无障碍体验诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-accessibility"
+    },
+    {
+      "slug": "ai-account-research",
+      "question": "这个客户怎么切入?",
+      "skillName": "客户研究助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-account-research"
+    },
+    {
+      "slug": "ai-ad-creative",
+      "question": "这条广告会被点吗?",
+      "skillName": "广告创意诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-ad-creative"
+    },
+    {
+      "slug": "ai-amazon-brand-analytics",
+      "question": "品牌数据说明什么?",
+      "skillName": "Amazon 品牌分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-brand-analytics"
+    },
+    {
+      "slug": "ai-amazon-dayparting-strategy",
+      "question": "广告几点投更值?",
+      "skillName": "Amazon 分时投放助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-dayparting-strategy"
+    },
+    {
+      "slug": "ai-amazon-international-listings",
+      "question": "海外 Listing 说对了吗?",
+      "skillName": "Amazon 本地化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-international-listings"
+    },
+    {
+      "slug": "ai-amazon-inventory-management",
+      "question": "库存会拖住利润吗?",
+      "skillName": "Amazon 库存诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-inventory-management"
+    },
+    {
+      "slug": "ai-amazon-listing-images",
+      "question": "主图能让人买吗?",
+      "skillName": "Amazon 图片诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-listing-images"
+    },
+    {
+      "slug": "ai-amazon-product-bundling",
+      "question": "怎么组合更好卖?",
+      "skillName": "Amazon 组合销售助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-product-bundling"
+    },
+    {
+      "slug": "ai-amazon-rank-tracker",
+      "question": "排名为什么波动?",
+      "skillName": "Amazon 排名追踪助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-rank-tracker"
+    },
+    {
+      "slug": "ai-amazon-repricing-strategy",
+      "question": "价格怎么调才稳?",
+      "skillName": "Amazon 调价诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-repricing-strategy"
+    },
+    {
+      "slug": "ai-amazon-return-reduction",
+      "question": "退货为什么变多?",
+      "skillName": "Amazon 退货诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-return-reduction"
+    },
+    {
+      "slug": "ai-amazon-search-optimization",
+      "question": "买家搜得到吗?",
+      "skillName": "Amazon 搜索优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-search-optimization"
+    },
+    {
+      "slug": "ai-amazon-storefront-design",
+      "question": "店铺首页能转化吗?",
+      "skillName": "Amazon 店铺优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-storefront-design"
+    },
+    {
+      "slug": "ai-amazon-subscribe-save",
+      "question": "订阅省能留住人吗?",
+      "skillName": "Amazon 订阅优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-subscribe-save"
+    },
+    {
+      "slug": "ai-amazon-vine-program",
+      "question": "Vine 值得做吗?",
+      "skillName": "Amazon Vine 决策助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-amazon-vine-program"
+    },
     {
       "slug": "ai-article",
       "question": "自动公众号和种草?",
       "skillName": "自动图文助手",
       "invocationMode": "execute",
       "packagePath": "skills/ai-article"
+    },
+    {
+      "slug": "ai-audit-website",
+      "question": "网站哪里拖后腿?",
+      "skillName": "网站诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-audit-website"
+    },
+    {
+      "slug": "ai-avatar-video",
+      "question": "这段视频够发布吗?",
+      "skillName": "视频质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-avatar-video"
+    },
+    {
+      "slug": "ai-backlink-analyzer",
+      "question": "这些外链有价值吗?",
+      "skillName": "外链质量分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-backlink-analyzer"
+    },
+    {
+      "slug": "ai-baoyu-article-illustrator",
+      "question": "文章配图够好吗?",
+      "skillName": "文章配图助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-article-illustrator"
+    },
+    {
+      "slug": "ai-baoyu-compress-image",
+      "question": "图片能再小一点吗?",
+      "skillName": "图片压缩助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-compress-image"
+    },
+    {
+      "slug": "ai-baoyu-cover-image",
+      "question": "封面能吸引点击吗?",
+      "skillName": "封面图生成助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-cover-image"
+    },
+    {
+      "slug": "ai-baoyu-image-cards",
+      "question": "卡片图好读吗?",
+      "skillName": "图文卡片生成助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-image-cards"
+    },
+    {
+      "slug": "ai-baoyu-image-gen",
+      "question": "这张图能用吗?",
+      "skillName": "图片生成助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-image-gen"
+    },
+    {
+      "slug": "ai-baoyu-wechat-summary",
+      "question": "微信文章怎么总结?",
+      "skillName": "微信摘要助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-baoyu-wechat-summary"
+    },
+    {
+      "slug": "ai-brand-consistency-checker",
+      "question": "品牌表达统一吗?",
+      "skillName": "品牌一致性诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-brand-consistency-checker"
+    },
+    {
+      "slug": "ai-churn-prevention",
+      "question": "客户为什么要走?",
+      "skillName": "流失预警诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-churn-prevention"
+    },
+    {
+      "slug": "ai-cold-email",
+      "question": "客户为什么不回我?",
+      "skillName": "冷邮件诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-cold-email"
+    },
+    {
+      "slug": "ai-co-marketing",
+      "question": "合作营销怎么做?",
+      "skillName": "联合营销策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-co-marketing"
+    },
+    {
+      "slug": "ai-community-marketing",
+      "question": "社群怎么活起来?",
+      "skillName": "社群运营策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-community-marketing"
+    },
+    {
+      "slug": "ai-competitor-alternatives",
+      "question": "用户为什么选对手?",
+      "skillName": "竞品替代分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-competitor-alternatives"
+    },
+    {
+      "slug": "ai-competitor-profiling",
+      "question": "对手强在哪里?",
+      "skillName": "竞品画像助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-competitor-profiling"
+    },
+    {
+      "slug": "ai-content-creator",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-creator"
+    },
+    {
+      "slug": "ai-content-marketer",
+      "question": "内容能带来增长吗?",
+      "skillName": "内容营销诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-marketer"
+    },
+    {
+      "slug": "ai-content-quality-auditor",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-quality-auditor"
+    },
+    {
+      "slug": "ai-content-research-writer",
+      "question": "这份材料重点是什么?",
+      "skillName": "资料整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-research-writer"
+    },
+    {
+      "slug": "ai-content-strategy",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-strategy"
+    },
+    {
+      "slug": "ai-content-writer",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-content-writer"
+    },
+    {
+      "slug": "ai-copy-editing",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-copy-editing"
+    },
+    {
+      "slug": "ai-copywriting",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-copywriting"
+    },
+    {
+      "slug": "ai-copywriting-psychologist",
+      "question": "这句文案有说服力吗?",
+      "skillName": "说服力文案助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-copywriting-psychologist"
+    },
+    {
+      "slug": "ai-core-web-vitals",
+      "question": "页面速度拖转化吗?",
+      "skillName": "Core Web Vitals 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-core-web-vitals"
+    },
+    {
+      "slug": "ai-crm-cleanup",
+      "question": "CRM 数据还能用吗?",
+      "skillName": "CRM 清理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-crm-cleanup"
+    },
+    {
+      "slug": "ai-csv-excel-merger",
+      "question": "这份材料重点是什么?",
+      "skillName": "资料整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-csv-excel-merger"
+    },
+    {
+      "slug": "ai-customer-journey-map",
+      "question": "用户卡在哪一步?",
+      "skillName": "用户旅程地图助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-customer-journey-map"
+    },
+    {
+      "slug": "ai-customer-pulse",
+      "question": "客户现在满意吗?",
+      "skillName": "客户脉搏诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-customer-pulse"
+    },
+    {
+      "slug": "ai-customer-research",
+      "question": "用户到底想要什么?",
+      "skillName": "用户研究助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-customer-research"
+    },
+    {
+      "slug": "ai-customer-review-aggregator",
+      "question": "评论里藏着什么?",
+      "skillName": "客户评论洞察助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-customer-review-aggregator"
+    },
+    {
+      "slug": "ai-customer-support",
+      "question": "客服怎么回更稳?",
+      "skillName": "客服回复助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-customer-support"
+    },
+    {
+      "slug": "ai-design-brief",
+      "question": "设计需求说清了吗?",
+      "skillName": "设计 Brief 助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-design-brief"
+    },
+    {
+      "slug": "ai-design-taste-frontend",
+      "question": "这个界面高级吗?",
+      "skillName": "前端审美诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-design-taste-frontend"
+    },
+    {
+      "slug": "ai-docx",
+      "question": "DOCX 重点是什么?",
+      "skillName": "DOCX 整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-docx"
+    },
+    {
+      "slug": "ai-ecommerce-checkout-optimization",
+      "question": "结账为什么流失?",
+      "skillName": "结账转化诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-ecommerce-checkout-optimization"
+    },
+    {
+      "slug": "ai-ecommerce-search",
+      "question": "站内搜索好用吗?",
+      "skillName": "电商搜索诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-ecommerce-search"
+    },
+    {
+      "slug": "ai-educational-research-methods",
+      "question": "研究方法选对了吗?",
+      "skillName": "教育研究方法助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-educational-research-methods"
+    },
+    {
+      "slug": "ai-education-data-explorer",
+      "question": "教学数据说明什么?",
+      "skillName": "教育数据分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-education-data-explorer"
+    },
+    {
+      "slug": "ai-email-sequence",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-email-sequence"
+    },
+    {
+      "slug": "ai-entity-optimizer",
+      "question": "品牌能被 AI 识别吗?",
+      "skillName": "实体优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-entity-optimizer"
+    },
+    {
+      "slug": "ai-gpt-image-2",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-gpt-image-2"
+    },
+    {
+      "slug": "ai-higgsfield-marketplace-cards",
+      "question": "商品卡片够吸睛吗?",
+      "skillName": "商品卡片图助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-higgsfield-marketplace-cards"
+    },
+    {
+      "slug": "ai-higgsfield-product-photoshoot",
+      "question": "产品图有质感吗?",
+      "skillName": "产品写真助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-higgsfield-product-photoshoot"
+    },
+    {
+      "slug": "ai-high-end-visual-design",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-high-end-visual-design"
+    },
+    {
+      "slug": "ai-hr-performance-review",
+      "question": "绩效反馈怎么写?",
+      "skillName": "绩效评语助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-hr-performance-review"
+    },
+    {
+      "slug": "ai-hr-pro",
+      "question": "HR 文档怎么更稳?",
+      "skillName": "HR 专业助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-hr-pro"
+    },
+    {
+      "slug": "ai-humanizer-zh",
+      "question": "这段话像 AI 吗?",
+      "skillName": "中文润色去 AI 助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-humanizer-zh"
+    },
+    {
+      "slug": "ai-image",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-image"
+    },
+    {
+      "slug": "ai-image-generation",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-image-generation"
+    },
+    {
+      "slug": "ai-image-gen-guide",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-image-gen-guide"
+    },
+    {
+      "slug": "ai-industrial-brutalist-ui",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-industrial-brutalist-ui"
+    },
+    {
+      "slug": "ai-internal-linking-optimizer",
+      "question": "内链该怎么连?",
+      "skillName": "内链优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-internal-linking-optimizer"
+    },
+    {
+      "slug": "ai-job-application-optimizer",
+      "question": "简历够匹配岗位吗?",
+      "skillName": "求职材料优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-job-application-optimizer"
+    },
+    {
+      "slug": "ai-kpi-dashboard-design",
+      "question": "看板讲清 KPI 吗?",
+      "skillName": "KPI 看板设计助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-kpi-dashboard-design"
+    },
+    {
+      "slug": "ai-launch",
+      "question": "发布准备好了吗?",
+      "skillName": "产品发布策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-launch"
+    },
+    {
+      "slug": "ai-lead-magnets",
+      "question": "这个诱饵能获客吗?",
+      "skillName": "获客钩子策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-lead-magnets"
+    },
+    {
+      "slug": "ai-local-places",
+      "question": "附近去哪合适?",
+      "skillName": "本地地点推荐助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-local-places"
+    },
+    {
+      "slug": "ai-local-pois",
+      "question": "周边 POI 怎么选?",
+      "skillName": "本地 POI 筛选助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-local-pois"
+    },
+    {
+      "slug": "ai-marketing-ideas",
+      "question": "营销还能怎么做?",
+      "skillName": "营销创意助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-marketing-ideas"
+    },
+    {
+      "slug": "ai-market-research",
+      "question": "这个市场有机会吗?",
+      "skillName": "市场研究助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-market-research"
+    },
+    {
+      "slug": "ai-meeting-to-tasks",
+      "question": "会议后该做什么?",
+      "skillName": "会议待办整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-meeting-to-tasks"
+    },
+    {
+      "slug": "ai-minimalist-ui",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-minimalist-ui"
+    },
+    {
+      "slug": "ai-onboarding",
+      "question": "新用户会卡住吗?",
+      "skillName": "新手引导诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-onboarding"
+    },
+    {
+      "slug": "ai-operations-manual",
+      "question": "流程手册清楚吗?",
+      "skillName": "运营手册整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-operations-manual"
+    },
+    {
+      "slug": "ai-page-cro",
+      "question": "页面为什么不转化?",
+      "skillName": "页面转化诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-page-cro"
+    },
+    {
+      "slug": "ai-paid-ads",
+      "question": "广告钱花值了吗?",
+      "skillName": "付费广告诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-paid-ads"
+    },
+    {
+      "slug": "ai-paywall-upgrade-cro",
+      "question": "付费墙能转化吗?",
+      "skillName": "付费墙优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-paywall-upgrade-cro"
+    },
+    {
+      "slug": "ai-pdf",
+      "question": "PDF 重点是什么?",
+      "skillName": "PDF 整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-pdf"
+    },
+    {
+      "slug": "ai-performance",
+      "question": "性能哪里拖慢了?",
+      "skillName": "性能诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-performance"
+    },
+    {
+      "slug": "ai-podcast",
+      "question": "播客内容够吸引吗?",
+      "skillName": "播客策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-podcast"
+    },
+    {
+      "slug": "ai-pptx",
+      "question": "PPT 讲清了吗?",
+      "skillName": "PPT 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-pptx"
+    },
+    {
+      "slug": "ai-presentation-deck",
+      "question": "这套演示讲清了吗?",
+      "skillName": "演示稿优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-presentation-deck"
+    },
+    {
+      "slug": "ai-presentation-design-enhancer",
+      "question": "这套演示讲清了吗?",
+      "skillName": "演示稿优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-presentation-design-enhancer"
+    },
+    {
+      "slug": "ai-product-marketing",
+      "question": "卖点说清了吗?",
+      "skillName": "产品营销助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-product-marketing"
+    },
+    {
+      "slug": "ai-product-photo-scene-planner",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-product-photo-scene-planner"
+    },
+    {
+      "slug": "ai-programmatic-seo",
+      "question": "页面能批量获客吗?",
+      "skillName": "程序化 SEO 助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-programmatic-seo"
+    },
+    {
+      "slug": "ai-remotion-best-practices",
+      "question": "视频代码够稳吗?",
+      "skillName": "Remotion 实践助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-remotion-best-practices"
+    },
+    {
+      "slug": "ai-research-lit",
+      "question": "文献重点是什么?",
+      "skillName": "文献综述助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-research-lit"
+    },
+    {
+      "slug": "ai-research-refine",
+      "question": "研究问题清楚吗?",
+      "skillName": "研究打磨助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-research-refine"
+    },
+    {
+      "slug": "ai-revops",
+      "question": "收入流程哪里堵?",
+      "skillName": "RevOps 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-revops"
+    },
+    {
+      "slug": "ai-sales-call-prep",
+      "question": "销售话术怎么准备?",
+      "skillName": "销售话术准备助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-sales-call-prep"
+    },
+    {
+      "slug": "ai-sales-coaching",
+      "question": "话术哪里弱?",
+      "skillName": "销售辅导助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-sales-coaching"
+    },
+    {
+      "slug": "ai-sales-compensation",
+      "question": "提成方案公平吗?",
+      "skillName": "销售薪酬诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-sales-compensation"
+    },
+    {
+      "slug": "ai-sales-enablement",
+      "question": "销售材料够有力吗?",
+      "skillName": "销售赋能助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-sales-enablement"
+    },
+    {
+      "slug": "ai-sales-qualification",
+      "question": "这个线索值得跟吗?",
+      "skillName": "销售线索判断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-sales-qualification"
+    },
+    {
+      "slug": "ai-schema-markup",
+      "question": "结构化数据对吗?",
+      "skillName": "Schema 标记助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-schema-markup"
+    },
+    {
+      "slug": "ai-seo",
+      "question": "这篇能被 AI 引用吗?",
+      "skillName": "SEO/AEO 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo"
+    },
+    {
+      "slug": "ai-seo-2",
+      "question": "网站 SEO 哪里弱?",
+      "skillName": "SEO 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-2"
+    },
+    {
+      "slug": "ai-seo-3",
+      "question": "内容能被搜到吗?",
+      "skillName": "SEO 内容优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-3"
+    },
+    {
+      "slug": "ai-seo-aeo-blog-writer",
+      "question": "这篇该怎么写?",
+      "skillName": "SEO/AEO 博客写作助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-aeo-blog-writer"
+    },
+    {
+      "slug": "ai-seo-aeo-content-cluster",
+      "question": "内容集群怎么搭?",
+      "skillName": "SEO/AEO 内容集群助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-aeo-content-cluster"
+    },
+    {
+      "slug": "ai-seo-aeo-internal-linking",
+      "question": "AI 会顺着内链读吗?",
+      "skillName": "SEO/AEO 内链助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-aeo-internal-linking"
+    },
+    {
+      "slug": "ai-seo-aeo-keyword-research",
+      "question": "关键词机会在哪?",
+      "skillName": "SEO/AEO 关键词助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-aeo-keyword-research"
+    },
+    {
+      "slug": "ai-seo-audit",
+      "question": "网站 SEO 健康吗?",
+      "skillName": "SEO 审计助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-audit"
+    },
+    {
+      "slug": "ai-seo-content-writer",
+      "question": "这篇能带搜索流量吗?",
+      "skillName": "SEO 内容写作助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-seo-content-writer"
+    },
+    {
+      "slug": "ai-serp-analysis",
+      "question": "SERP 告诉我什么?",
+      "skillName": "SERP 分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-serp-analysis"
+    },
+    {
+      "slug": "ai-signup",
+      "question": "注册流程卡人吗?",
+      "skillName": "注册转化诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-signup"
+    },
+    {
+      "slug": "ai-social",
+      "question": "这条内容会被看吗?",
+      "skillName": "社媒内容助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-social"
+    },
+    {
+      "slug": "ai-stitch-design-taste",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-stitch-design-taste"
+    },
+    {
+      "slug": "ai-upskilling-training-diagnosis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-upskilling-training-diagnosis"
+    },
+    {
+      "slug": "ai-video",
+      "question": "想生成什么视频?",
+      "skillName": "AI 视频生成策划助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-video"
+    },
+    {
+      "slug": "ai-video-editing",
+      "question": "这段素材怎么剪?",
+      "skillName": "AI 视频剪辑诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-video-editing"
+    },
+    {
+      "slug": "ai-video-generation",
+      "question": "这段视频够发布吗?",
+      "skillName": "视频质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-video-generation"
+    },
+    {
+      "slug": "ai-video-to-gif",
+      "question": "这段视频怎么转 GIF?",
+      "skillName": "视频转 GIF 优化助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-video-to-gif"
+    },
+    {
+      "slug": "ai-visual-prompt-review",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-visual-prompt-review"
+    },
+    {
+      "slug": "ai-web-quality-audit",
+      "question": "网站质量够好吗?",
+      "skillName": "网站质量审查助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-web-quality-audit"
+    },
+    {
+      "slug": "ai-web-research",
+      "question": "网上资料可信吗?",
+      "skillName": "网页研究助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-web-research"
+    },
+    {
+      "slug": "ai-xlsx",
+      "question": "表格里重点在哪?",
+      "skillName": "XLSX 分析助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ai-xlsx"
+    },
+    {
+      "slug": "api-doc-integration-risk-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/api-doc-integration-risk-review"
     },
     {
       "slug": "auto-article-images",
@@ -17,25 +941,144 @@
       "packagePath": "skills/auto-article-images"
     },
     {
-      "slug": "xhs-viral-copywriter",
-      "question": "我的文章赞少互动低?",
-      "skillName": "爆款文案助手",
+      "slug": "auto-review-selling-point-map",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
       "invocationMode": "execute",
-      "packagePath": "skills/xhs-viral-copywriter"
+      "packagePath": "skills/auto-review-selling-point-map"
     },
     {
-      "slug": "douyin-realtime-hot-rise",
-      "question": "拍什么会有流量?",
-      "skillName": "抖音上升热点选题助手",
-      "invocationMode": "execute",
-      "packagePath": "skills/douyin-realtime-hot-rise"
+      "slug": "bilibili-sentiment-dashboard",
+      "question": "B站短视频怎么运营?",
+      "skillName": "B站短视频运营增长助手",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/bilibili-sentiment-dashboard"
     },
     {
-      "slug": "douyin-traffic-dashboard",
-      "question": "抖音平台流量在哪?",
-      "skillName": "抖音流量分配大盘",
+      "slug": "brand-account-positioning-diagnosis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
       "invocationMode": "execute",
-      "packagePath": "skills/douyin-traffic-dashboard"
+      "packagePath": "skills/brand-account-positioning-diagnosis"
+    },
+    {
+      "slug": "brand-voice-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/brand-voice-review"
+    },
+    {
+      "slug": "browser-use",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/browser-use"
+    },
+    {
+      "slug": "churn-prevention",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/churn-prevention"
+    },
+    {
+      "slug": "clinic-service-review-analysis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/clinic-service-review-analysis"
+    },
+    {
+      "slug": "comment-sentiment-action-cards",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/comment-sentiment-action-cards"
+    },
+    {
+      "slug": "competitor-alternatives",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/competitor-alternatives"
+    },
+    {
+      "slug": "competitor-price-selling-point-watch",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/competitor-price-selling-point-watch"
+    },
+    {
+      "slug": "content-material-audit",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/content-material-audit"
+    },
+    {
+      "slug": "content-strategy",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/content-strategy"
+    },
+    {
+      "slug": "contract-clause-risk-review-cn",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/contract-clause-risk-review-cn"
+    },
+    {
+      "slug": "copywriting",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/copywriting"
+    },
+    {
+      "slug": "course-landing-page-conversion-review",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/course-landing-page-conversion-review"
+    },
+    {
+      "slug": "course-outline-market-positioning",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/course-outline-market-positioning"
+    },
+    {
+      "slug": "creator-commercial-value-benchmark",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/creator-commercial-value-benchmark"
+    },
+    {
+      "slug": "critique",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/critique"
+    },
+    {
+      "slug": "crossborder-listing-localization",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/crossborder-listing-localization"
+    },
+    {
+      "slug": "customer-service-kb-gap-analysis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/customer-service-kb-gap-analysis"
     },
     {
       "slug": "douyin-hotlist-overall",
@@ -46,10 +1089,24 @@
     },
     {
       "slug": "douyin-kol-search",
-      "question": "谁是最会卖货的博主?",
-      "skillName": "抖音最具商业价值 KOL",
+      "question": "如何找对标账号?",
+      "skillName": "抖音最具商业价值意见领袖（KOL）",
       "invocationMode": "execute",
       "packagePath": "skills/douyin-kol-search"
+    },
+    {
+      "slug": "douyin-realtime-hot-rise",
+      "question": "拍什么会有流量?",
+      "skillName": "抖音上升热点选题助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-realtime-hot-rise"
+    },
+    {
+      "slug": "douyin-script-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-script-review"
     },
     {
       "slug": "douyin-sentiment-dashboard",
@@ -59,18 +1116,186 @@
       "packagePath": "skills/douyin-sentiment-dashboard"
     },
     {
-      "slug": "xhs-sentiment-dashboard",
-      "question": "小红书短视频怎么运营?",
-      "skillName": "小红书短视频运营增长助手",
-      "invocationMode": "comment-analysis-task",
-      "packagePath": "skills/xhs-sentiment-dashboard"
+      "slug": "douyin-traffic-dashboard",
+      "question": "抖音平台流量在哪?",
+      "skillName": "抖音流量分配大盘",
+      "invocationMode": "execute",
+      "packagePath": "skills/douyin-traffic-dashboard"
     },
     {
-      "slug": "bilibili-sentiment-dashboard",
-      "question": "B站短视频怎么运营?",
-      "skillName": "B站短视频运营增长助手",
-      "invocationMode": "comment-analysis-task",
-      "packagePath": "skills/bilibili-sentiment-dashboard"
+      "slug": "ecommerce-review-root-cause-analysis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ecommerce-review-root-cause-analysis"
+    },
+    {
+      "slug": "email-sequence",
+      "question": "邮件能让人行动吗?",
+      "skillName": "邮件序列助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/email-sequence"
+    },
+    {
+      "slug": "enterprise-ai-usecase-priority-assessment",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/enterprise-ai-usecase-priority-assessment"
+    },
+    {
+      "slug": "equipment-failure-rca-draft",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/equipment-failure-rca-draft"
+    },
+    {
+      "slug": "extract-design-system",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/extract-design-system"
+    },
+    {
+      "slug": "financial-marketing-compliance-review",
+      "question": "价格怎么定才不亏?",
+      "skillName": "财务定价诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/financial-marketing-compliance-review"
+    },
+    {
+      "slug": "financial-report-anomaly-question-list",
+      "question": "价格怎么定才不亏?",
+      "skillName": "财务定价诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/financial-report-anomaly-question-list"
+    },
+    {
+      "slug": "firecrawl",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/firecrawl"
+    },
+    {
+      "slug": "firecrawl-scrape",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/firecrawl-scrape"
+    },
+    {
+      "slug": "firecrawl-search",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/firecrawl-search"
+    },
+    {
+      "slug": "frontend-design",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/frontend-design"
+    },
+    {
+      "slug": "gov-service-faq-quality-check",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/gov-service-faq-quality-check"
+    },
+    {
+      "slug": "gtm-one-page-strategy",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/gtm-one-page-strategy"
+    },
+    {
+      "slug": "gws-docs",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/gws-docs"
+    },
+    {
+      "slug": "gws-gmail",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/gws-gmail"
+    },
+    {
+      "slug": "gws-sheets",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/gws-sheets"
+    },
+    {
+      "slug": "image-edit",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/image-edit"
+    },
+    {
+      "slug": "image-to-video",
+      "question": "这段视频够发布吗?",
+      "skillName": "视频质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/image-to-video"
+    },
+    {
+      "slug": "insurance-policy-faq-explainer",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/insurance-policy-faq-explainer"
+    },
+    {
+      "slug": "interview-question-scorecard-generator",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/interview-question-scorecard-generator"
+    },
+    {
+      "slug": "investment-research-material-compare",
+      "question": "这份材料重点是什么?",
+      "skillName": "资料整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/investment-research-material-compare"
+    },
+    {
+      "slug": "job-description-optimizer-cn",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/job-description-optimizer-cn"
+    },
+    {
+      "slug": "just-scrape",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/just-scrape"
+    },
+    {
+      "slug": "kling-3-0",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/kling-3-0"
+    },
+    {
+      "slug": "knowledge-base-launch-quality-check",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/knowledge-base-launch-quality-check"
     },
     {
       "slug": "kuaishou-sentiment-dashboard",
@@ -80,11 +1305,417 @@
       "packagePath": "skills/kuaishou-sentiment-dashboard"
     },
     {
+      "slug": "landing-page-copy-review",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/landing-page-copy-review"
+    },
+    {
+      "slug": "lark-approval",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-approval"
+    },
+    {
+      "slug": "lark-calendar",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-calendar"
+    },
+    {
+      "slug": "lark-doc",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-doc"
+    },
+    {
+      "slug": "lark-drive",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-drive"
+    },
+    {
+      "slug": "lark-minutes",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-minutes"
+    },
+    {
+      "slug": "lark-sheets",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-sheets"
+    },
+    {
+      "slug": "lark-task",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-task"
+    },
+    {
+      "slug": "lark-workflow-meeting-summary",
+      "question": "这份材料重点是什么?",
+      "skillName": "资料整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lark-workflow-meeting-summary"
+    },
+    {
+      "slug": "lesson-plan-activity-designer",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/lesson-plan-activity-designer"
+    },
+    {
+      "slug": "live-commerce-script-compliance-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/live-commerce-script-compliance-review"
+    },
+    {
+      "slug": "live-replay-clip-title-pack",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/live-replay-clip-title-pack"
+    },
+    {
+      "slug": "local-store-review-business-diagnosis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/local-store-review-business-diagnosis"
+    },
+    {
+      "slug": "marketing-psychology",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/marketing-psychology"
+    },
+    {
+      "slug": "medical-content-compliance-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/medical-content-compliance-review"
+    },
+    {
+      "slug": "medical-literature-evidence-map",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/medical-literature-evidence-map"
+    },
+    {
+      "slug": "multi-platform-article-rewrite-pack",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/multi-platform-article-rewrite-pack"
+    },
+    {
+      "slug": "page-cro",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/page-cro"
+    },
+    {
+      "slug": "paid-ads",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/paid-ads"
+    },
+    {
+      "slug": "patient-education-readability-review",
+      "question": "这份材料重点是什么?",
+      "skillName": "资料整理助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/patient-education-readability-review"
+    },
+    {
+      "slug": "paywall-upgrade-cro",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/paywall-upgrade-cro"
+    },
+    {
+      "slug": "pharma-visit-material-compliance-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/pharma-visit-material-compliance-review"
+    },
+    {
+      "slug": "policy-execution-checklist-generator",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/policy-execution-checklist-generator"
+    },
+    {
+      "slug": "polish",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/polish"
+    },
+    {
+      "slug": "pricing-strategy",
+      "question": "价格怎么定才不亏?",
+      "skillName": "财务定价诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/pricing-strategy"
+    },
+    {
+      "slug": "privacy-policy-data-map-check-cn",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/privacy-policy-data-map-check-cn"
+    },
+    {
+      "slug": "private-domain-campaign-sop-generator",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/private-domain-campaign-sop-generator"
+    },
+    {
+      "slug": "product-detail-page-conversion-review",
+      "question": "这个改动值得测吗?",
+      "skillName": "转化实验助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/product-detail-page-conversion-review"
+    },
+    {
+      "slug": "programmatic-seo",
+      "question": "页面能批量获客吗?",
+      "skillName": "程序化 SEO 助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/programmatic-seo"
+    },
+    {
+      "slug": "proposal-risk-response-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/proposal-risk-response-review"
+    },
+    {
+      "slug": "public-company-due-diligence-summary",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/public-company-due-diligence-summary"
+    },
+    {
+      "slug": "quality-complaint-8d-report",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/quality-complaint-8d-report"
+    },
+    {
+      "slug": "question-bank-explanation-quality-check",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/question-bank-explanation-quality-check"
+    },
+    {
+      "slug": "real-estate-listing-compliance-review",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/real-estate-listing-compliance-review"
+    },
+    {
+      "slug": "restaurant-menu-deal-optimizer",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/restaurant-menu-deal-optimizer"
+    },
+    {
+      "slug": "resume-screening-consistency-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/resume-screening-consistency-review"
+    },
+    {
+      "slug": "saas-prd-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/saas-prd-review"
+    },
+    {
+      "slug": "sales-meeting-follow-up-plan",
+      "question": "客户为什么不推进?",
+      "skillName": "销售增长助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/sales-meeting-follow-up-plan"
+    },
+    {
+      "slug": "schema-markup",
+      "question": "这篇能被 AI 引用吗?",
+      "skillName": "SEO/AEO 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/schema-markup"
+    },
+    {
+      "slug": "seedance-v2",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/seedance-v2"
+    },
+    {
+      "slug": "seo-article-review",
+      "question": "这篇能被 AI 引用吗?",
+      "skillName": "SEO/AEO 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/seo-article-review"
+    },
+    {
+      "slug": "seo-audit",
+      "question": "这篇能被 AI 引用吗?",
+      "skillName": "SEO/AEO 诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/seo-audit"
+    },
+    {
+      "slug": "sku-trend-opportunity-report",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/sku-trend-opportunity-report"
+    },
+    {
+      "slug": "sleek-design-mobile-apps",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/sleek-design-mobile-apps"
+    },
+    {
+      "slug": "social-rising-topic-radar-cn",
+      "question": "这条内容会被看吗?",
+      "skillName": "社媒内容助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/social-rising-topic-radar-cn"
+    },
+    {
+      "slug": "software-cost-quote-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/software-cost-quote-review"
+    },
+    {
       "slug": "software-dev-cost-dashboard",
       "question": "软件开发成本不可控?",
       "skillName": "软件成本评估看板",
       "invocationMode": "external-link",
       "packagePath": "skills/software-dev-cost-dashboard"
+    },
+    {
+      "slug": "sop-readability-check",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/sop-readability-check"
+    },
+    {
+      "slug": "student-feedback-retention-analysis",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/student-feedback-retention-analysis"
+    },
+    {
+      "slug": "supplier-delivery-risk-summary",
+      "question": "这里有什么风险?",
+      "skillName": "风险审阅助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/supplier-delivery-risk-summary"
+    },
+    {
+      "slug": "travel-itinerary-content-planner",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/travel-itinerary-content-planner"
+    },
+    {
+      "slug": "ui-ux-pro-max",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/ui-ux-pro-max"
+    },
+    {
+      "slug": "video-storyboard-review",
+      "question": "这段视频够发布吗?",
+      "skillName": "视频质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/video-storyboard-review"
+    },
+    {
+      "slug": "vulnerability-advisory-impact-brief",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/vulnerability-advisory-impact-brief"
+    },
+    {
+      "slug": "web-design-guidelines",
+      "question": "这张图够发布吗?",
+      "skillName": "视觉质量诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/web-design-guidelines"
+    },
+    {
+      "slug": "wechat-article-review",
+      "question": "这段文案能打动人吗?",
+      "skillName": "文案诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/wechat-article-review"
+    },
+    {
+      "slug": "xhs-note-review",
+      "question": "这件事该怎么做?",
+      "skillName": "业务诊断助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/xhs-note-review"
+    },
+    {
+      "slug": "xhs-sentiment-dashboard",
+      "question": "小红书短视频怎么运营?",
+      "skillName": "小红书短视频运营增长助手",
+      "invocationMode": "comment-analysis-task",
+      "packagePath": "skills/xhs-sentiment-dashboard"
+    },
+    {
+      "slug": "xhs-viral-copywriter",
+      "question": "小红书怎么写才有人看?",
+      "skillName": "爆款文案助手",
+      "invocationMode": "execute",
+      "packagePath": "skills/xhs-viral-copywriter"
     }
   ]
 }

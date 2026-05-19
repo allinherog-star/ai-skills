@@ -1,0 +1,7 @@
+interface:
+  display_name: "说服力文案助手"
+  short_description: "说服力文案助手"
+  default_prompt: "Use $ai-copywriting-psychologist to help with 说服力文案助手"
+
+policy:
+  allow_implicit_invocation: true

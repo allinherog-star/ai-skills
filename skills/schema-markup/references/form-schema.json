@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴需要生成 Schema 的页面正文、FAQ、产品信息、组织资料或实体事实",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴页面事实"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传实体资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写页面链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "结构化数据目标",
+      "x-rows": 3,
+      "description": "例如争取富结果展示、帮助实体识别、规范 FAQ、强化产品或服务页理解。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标搜索受众",
+      "x-rows": 3,
+      "description": "说明搜索用户、购买者、读者或实体受众，以及他们需要理解的关键信息。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "需要标记的公开页面",
+      "format": "uri",
+      "description": "填写无需登录即可访问的产品页、服务页、文章页、FAQ 页或组织介绍链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传页面与实体资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持页面文档、产品表、FAQ 文件、实体资料、内容清单或现有结构化数据草稿。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "结构化数据页面内容",
+      "x-rows": 10,
+      "description": "可粘贴产品页、服务页、文章页、FAQ、组织介绍、活动信息或实体事实。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "实体事实与限制",
+      "x-rows": 3,
+      "description": "补充品牌名称、法定实体名、地址、联系方式、价格口径、资质和合规边界。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴页面事实、上传实体资料，或填写需要标记的公开页面链接"
+    }
+  ]
+}

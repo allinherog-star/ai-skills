@@ -1,0 +1,7 @@
+interface:
+  display_name: "教育数据分析助手"
+  short_description: "教育数据分析助手"
+  default_prompt: "Use $ai-education-data-explorer to help with 教育数据分析助手"
+
+policy:
+  allow_implicit_invocation: true

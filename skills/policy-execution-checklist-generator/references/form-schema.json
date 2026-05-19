@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴制度条款，建议包含适用场景、责任岗位和审批节点",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "policyRuleText",
+        "label": "制度条款内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "policyDocumentFile",
+        "label": "上传制度文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "policyReferenceLink",
+        "label": "制度参考链接"
+      }
+    ],
+    "primaryField": "policyRuleText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "checklistGenerationFocus"
+    ],
+    "advancedControlFields": [
+      "rolloutScenarioContext",
+      "responsibleTeamNotes"
+    ]
+  },
+  "properties": {
+    "policyRuleText": {
+      "type": "string",
+      "title": "制度条款内容",
+      "x-rows": 10,
+      "description": "粘贴制度、流程要求、审批规则、岗位责任和例外处理。",
+      "x-component": "Textarea"
+    },
+    "policyDocumentFile": {
+      "type": "string",
+      "title": "上传制度文件",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传制度文件、流程图、检查表、会议纪要或内控要求。",
+      "x-component": "FileUpload"
+    },
+    "policyReferenceLink": {
+      "type": "string",
+      "title": "制度参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的制度说明、政策文件、流程页面或公告链接。"
+    },
+    "responsibleTeamNotes": {
+      "type": "string",
+      "title": "责任分工与检查要求",
+      "x-rows": 3,
+      "description": "补充责任人、审批节点、证据留存、例外条件和检查周期。",
+      "x-component": "Textarea"
+    },
+    "rolloutScenarioContext": {
+      "type": "string",
+      "title": "执行场景与组织背景",
+      "x-rows": 3,
+      "description": "说明适用部门、岗位、流程频次、系统工具和管理目标。",
+      "x-component": "Textarea"
+    },
+    "checklistGenerationFocus": {
+      "enum": [
+        "步骤拆解",
+        "责任分工",
+        "证据留存",
+        "检查节奏"
+      ],
+      "type": "string",
+      "title": "生成重点",
+      "default": "步骤拆解",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "生成重点",
+          "label": "步骤拆解",
+          "value": "步骤拆解",
+          "description": "重点处理步骤拆解"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "生成重点",
+          "label": "责任分工",
+          "value": "责任分工",
+          "description": "重点处理责任分工"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "生成重点",
+          "label": "证据留存",
+          "value": "证据留存",
+          "description": "重点处理证据留存"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "生成重点",
+          "label": "检查节奏",
+          "value": "检查节奏",
+          "description": "重点处理检查节奏"
+        }
+      ],
+      "description": "选择本次制度执行清单生成最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "policyRuleText",
+        "policyDocumentFile",
+        "policyReferenceLink"
+      ],
+      "message": "请填写制度条款内容、上传资料，或提供可访问链接"
+    }
+  ]
+}

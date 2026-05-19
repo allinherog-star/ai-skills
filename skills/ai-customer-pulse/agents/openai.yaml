@@ -1,0 +1,7 @@
+interface:
+  display_name: "客户脉搏诊断助手"
+  short_description: "客户脉搏诊断助手"
+  default_prompt: "Use $ai-customer-pulse to help with 客户脉搏诊断助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "绩效评语助手"
+  short_description: "绩效评语助手"
+  default_prompt: "Use $ai-hr-performance-review to help with 绩效评语助手"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO 内容优化助手"
+  short_description: "SEO 内容优化助手"
+  default_prompt: "Use $ai-seo-3 to help with SEO 内容优化助手"
+
+policy:
+  allow_implicit_invocation: true

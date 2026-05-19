@@ -1,0 +1,7 @@
+interface:
+  display_name: "营销创意助手"
+  short_description: "营销创意助手"
+  default_prompt: "Use $ai-marketing-ideas to help with 营销创意助手"
+
+policy:
+  allow_implicit_invocation: true

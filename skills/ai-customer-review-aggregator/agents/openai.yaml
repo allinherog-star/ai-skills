@@ -1,0 +1,7 @@
+interface:
+  display_name: "客户评论洞察助手"
+  short_description: "客户评论洞察助手"
+  default_prompt: "Use $ai-customer-review-aggregator to help with 客户评论洞察助手"
+
+policy:
+  allow_implicit_invocation: true

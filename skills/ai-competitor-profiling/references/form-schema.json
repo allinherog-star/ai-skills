@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴业务背景、问题说明、参考资料或目标",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴材料"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填参考链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景要求",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "处理目标",
+      "x-rows": 3,
+      "description": "说明本次希望解决的问题、判断目标、输出形式或交付用途。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "使用对象",
+      "x-rows": 3,
+      "description": "说明输出要服务的人群、角色、团队或业务场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "参考链接",
+      "format": "uri",
+      "description": "填写公开可访问的页面、资料、参考案例或背景链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "业务资料文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传业务文档、资料表、参考材料、截图或说明文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "业务材料或问题说明",
+      "x-rows": 8,
+      "description": "粘贴业务背景、问题说明、参考资料、目标、限制或待整理内容。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "边界与复核",
+      "x-rows": 3,
+      "description": "补充格式要求、不可改动事实、限制条件、风险点或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写业务材料、上传资料或提供参考链接"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "multi-platform-article-rewrite-pack",
+  "slug": "multi-platform-article-rewrite-pack",
+  "question": "这段文案能打动人吗?",
+  "skillName": "文案诊断助手",
+  "tags": [
+    "内容运营",
+    "新媒体",
+    "选题",
+    "分发"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "MessageCircle"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "7b10a0e801e56d39e27801890056d38700924b39e627661baf4ebc63880c8afd",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "multi-platform-article-rewrite-pack",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴原始文章稿，建议说明目标平台、读者和必须保留的信息",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "articleDraftText",
+          "label": "原始文章稿"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "articleFile",
+          "label": "上传文章资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "articleSourceLink",
+          "label": "文章参考链接"
+        }
+      ],
+      "primaryField": "articleDraftText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "rewritePackFocus"
+      ],
+      "advancedControlFields": [
+        "publishChannelContext",
+        "brandVoiceNotes"
+      ]
+    },
+    "properties": {
+      "articleFile": {
+        "type": "string",
+        "title": "上传文章资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传文章稿、采访记录、素材包、品牌规范或历史爆文。",
+        "x-component": "FileUpload"
+      },
+      "brandVoiceNotes": {
+        "type": "string",
+        "title": "品牌语气与改写限制",
+        "x-rows": 3,
+        "description": "补充必须保留的信息、禁用表达、口吻要求、长度和合规边界。",
+        "x-component": "Textarea"
+      },
+      "articleDraftText": {
+        "type": "string",
+        "title": "原始文章稿",
+        "x-rows": 10,
+        "description": "粘贴文章标题、正文、核心观点、案例、引用和希望保留的段落。",
+        "x-component": "Textarea"
+      },
+      "rewritePackFocus": {
+        "enum": [
+          "小红书版",
+          "公众号版",
+          "短视频口播",
+          "标题摘要"
+        ],
+        "type": "string",
+        "title": "改写重点",
+        "default": "小红书版",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "改写重点",
+            "label": "小红书版",
+            "value": "小红书版",
+            "description": "重点处理小红书版"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "改写重点",
+            "label": "公众号版",
+            "value": "公众号版",
+            "description": "重点处理公众号版"
+          },
+          {
+            "icon": "Clapperboard",
+            "color": "blue",
+            "group": "改写重点",
+            "label": "短视频口播",
+            "value": "短视频口播",
+            "description": "重点处理短视频口播"
+          },
+          {
+            "icon": "Award",
+            "color": "green",
+            "group": "改写重点",
+            "label": "标题摘要",
+            "value": "标题摘要",
+            "description": "重点处理标题摘要"
+          }
+        ],
+        "description": "选择本次多平台文章改写包最需要优先处理的方向。"
+      },
+      "articleSourceLink": {
+        "type": "string",
+        "title": "文章参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的原文、参考文章、品牌页或资料链接。"
+      },
+      "publishChannelContext": {
+        "type": "string",
+        "title": "发布平台与受众",
+        "x-rows": 3,
+        "description": "说明目标平台、读者画像、账号定位、内容目标和转化路径。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "articleDraftText",
+          "articleFile",
+          "articleSourceLink"
+        ],
+        "message": "请填写原始文章稿、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴文档、表格、会议记录或待整理资料",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴记录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填资料链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充整理要求",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "整理目标",
+      "x-rows": 3,
+      "description": "说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "使用对象",
+      "x-rows": 3,
+      "description": "说明整理结果要服务的人群、团队、角色或业务场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "资料文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传文档、表格、会议纪要、客户资料或评论数据文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "文档、表格或记录",
+      "x-rows": 8,
+      "description": "粘贴文档、表格、会议记录、客户反馈、评论文本或待整理资料。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "口径与边界",
+      "x-rows": 3,
+      "description": "补充字段口径、时间范围、格式要求、不可改动事实、敏感信息处理或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写记录内容、上传资料文件或提供资料链接"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴医疗科普稿，建议包含标题、正文、引用依据和目标读者",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "healthArticleText",
+        "label": "医疗科普稿"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "healthArticleFile",
+        "label": "上传科普文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "healthArticleLink",
+        "label": "科普公开链接"
+      }
+    ],
+    "primaryField": "healthArticleText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "medicalReviewFocus"
+    ],
+    "advancedControlFields": [
+      "targetReaderContext",
+      "claimEvidenceNotes"
+    ]
+  },
+  "properties": {
+    "healthArticleFile": {
+      "type": "string",
+      "title": "上传科普文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传科普稿、审稿表、引用材料或宣传物料。",
+      "x-component": "FileUpload"
+    },
+    "healthArticleLink": {
+      "type": "string",
+      "title": "科普公开链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的科普文章、公众号预览或官网页面。"
+    },
+    "healthArticleText": {
+      "type": "string",
+      "title": "医疗科普稿",
+      "x-rows": 10,
+      "description": "粘贴标题、正文、引用依据、行动建议和目标读者说明。",
+      "x-component": "Textarea"
+    },
+    "claimEvidenceNotes": {
+      "type": "string",
+      "title": "证据与禁用表达",
+      "x-rows": 3,
+      "description": "补充引用来源、资质依据、不能出现的诊疗化或功效化表达。",
+      "x-component": "Textarea"
+    },
+    "medicalReviewFocus": {
+      "enum": [
+        "风险表述",
+        "证据依据",
+        "安全改稿",
+        "发布清单"
+      ],
+      "type": "string",
+      "title": "审稿重点",
+      "default": "风险表述",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "审稿重点",
+          "label": "风险表述",
+          "value": "风险表述",
+          "description": "重点处理风险表述"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "证据依据",
+          "value": "证据依据",
+          "description": "重点处理证据依据"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "审稿重点",
+          "label": "安全改稿",
+          "value": "安全改稿",
+          "description": "重点处理安全改稿"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "审稿重点",
+          "label": "发布清单",
+          "value": "发布清单",
+          "description": "重点处理发布清单"
+        }
+      ],
+      "description": "选择本次医疗科普内容合规审稿最需要优先处理的方向。"
+    },
+    "targetReaderContext": {
+      "type": "string",
+      "title": "目标读者与发布场景",
+      "x-rows": 3,
+      "description": "说明读者人群、发布渠道、疾病/健康主题、机构类型和地区限制。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "healthArticleText",
+        "healthArticleFile",
+        "healthArticleLink"
+      ],
+      "message": "请填写医疗科普稿、上传资料，或提供可访问链接"
+    }
+  ]
+}

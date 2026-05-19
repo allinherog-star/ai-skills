@@ -7,15 +7,20 @@
     "抖音",
     "流量分配",
     "热点",
-    "大盘"
+    "大盘",
+    "实时"
   ],
   "profession": [
-    "blogger-individual",
-    "operations"
+    "内容创作者",
+    "运营",
+    "电商",
+    "营销"
   ],
   "industry": [
-    "media",
-    "ecommerce"
+    "新媒体",
+    "电商",
+    "娱乐",
+    "通用"
   ],
   "hidden": false,
   "auth": {
@@ -24,6 +29,21 @@
     "tenantHeader": "X-Tenant-Id"
   },
   "comingSoon": false,
+  "providerType": "api",
+  "providerConfig": {
+    "catalog": {
+      "icon": "BarChart3",
+      "rating": 4.9,
+      "displayOrder": 1,
+      "subProfession": [
+        "content-creator",
+        "analyst"
+      ]
+    },
+    "endpoint": "/api/v1/douyin/billboard/fetch_hot_rise_list",
+    "apiSource": "tikhub",
+    "aggregateMode": "traffic-distribution"
+  },
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
@@ -32,11 +52,5 @@
   "formSchema": {
     "type": "object",
     "properties": {}
-  },
-  "providerType": "api",
-  "providerConfig": {
-    "apiSource": "tikhub",
-    "endpoint": "/api/v1/douyin/billboard/fetch_hot_rise_list",
-    "aggregateMode": "traffic-distribution"
   }
 }

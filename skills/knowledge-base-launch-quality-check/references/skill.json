@@ -1,0 +1,184 @@
+{
+  "id": "knowledge-base-launch-quality-check",
+  "slug": "knowledge-base-launch-quality-check",
+  "question": "这段文案能打动人吗?",
+  "skillName": "文案诊断助手",
+  "tags": [
+    "知识库",
+    "AI问答",
+    "上线检查",
+    "治理"
+  ],
+  "profession": [
+    "technical",
+    "management"
+  ],
+  "industry": [
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Code2"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "748a30435e74c4bc6ad5ab2d324c12305ccd26b4cbb541c039458b01e87efe46",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "knowledge-base-launch-quality-check",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴知识库文章或FAQ，建议包含分类、关键词和常见工单场景",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "kbArticleSetText",
+          "label": "知识库文章内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "kbExportFile",
+          "label": "上传知识库导出"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "kbPreviewLink",
+          "label": "知识库预览链接"
+        }
+      ],
+      "primaryField": "kbArticleSetText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "kbLaunchFocus"
+      ],
+      "advancedControlFields": [
+        "supportScenarioContext",
+        "ownerWorkflowNotes"
+      ]
+    },
+    "properties": {
+      "kbExportFile": {
+        "type": "string",
+        "title": "上传知识库导出",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传知识库导出、FAQ表、客服问答、截图说明或标签表。",
+        "x-component": "FileUpload"
+      },
+      "kbLaunchFocus": {
+        "enum": [
+          "覆盖完整",
+          "搜索可找",
+          "表达一致",
+          "维护清单"
+        ],
+        "type": "string",
+        "title": "质检重点",
+        "default": "覆盖完整",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "质检重点",
+            "label": "覆盖完整",
+            "value": "覆盖完整",
+            "description": "重点处理覆盖完整"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "质检重点",
+            "label": "搜索可找",
+            "value": "搜索可找",
+            "description": "重点处理搜索可找"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "质检重点",
+            "label": "表达一致",
+            "value": "表达一致",
+            "description": "重点处理表达一致"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "质检重点",
+            "label": "维护清单",
+            "value": "维护清单",
+            "description": "重点处理维护清单"
+          }
+        ],
+        "description": "选择本次知识库上线质检最需要优先处理的方向。"
+      },
+      "kbPreviewLink": {
+        "type": "string",
+        "title": "知识库预览链接",
+        "format": "uri",
+        "description": "填写公开可访问的帮助中心、预览页、FAQ页面或产品文档链接。"
+      },
+      "kbArticleSetText": {
+        "type": "string",
+        "title": "知识库文章内容",
+        "x-rows": 10,
+        "description": "粘贴FAQ、帮助中心文章、分类目录、搜索关键词和关键流程说明。",
+        "x-component": "Textarea"
+      },
+      "ownerWorkflowNotes": {
+        "type": "string",
+        "title": "维护分工与发布限制",
+        "x-rows": 3,
+        "description": "补充文章 owner、更新频率、审核流程、禁用说法和必须覆盖问题。",
+        "x-component": "Textarea"
+      },
+      "supportScenarioContext": {
+        "type": "string",
+        "title": "客服与用户场景",
+        "x-rows": 3,
+        "description": "说明产品模块、用户类型、常见工单、服务时段和上线目标。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "kbArticleSetText",
+          "kbExportFile",
+          "kbPreviewLink"
+        ],
+        "message": "请填写知识库文章内容、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

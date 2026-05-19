@@ -1,0 +1,132 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴 B2B 落地页文案，最好包含首屏、核心卖点、客户证据、FAQ 和 CTA",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "landingPageText",
+        "label": "贴页面文案"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "landingPageFile",
+        "label": "传页面文档"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "landingPageUrl",
+        "label": "填页面链接"
+      }
+    ],
+    "primaryField": "landingPageText",
+    "advancedLabel": "补充 B2B 背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "targetBuyer",
+      "conversionGoal",
+      "productContext"
+    ]
+  },
+  "properties": {
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "诊断深度"
+    },
+    "targetBuyer": {
+      "type": "string",
+      "title": "目标买方角色",
+      "x-rows": 3,
+      "description": "例如创始人、市场负责人、销售负责人、IT 负责人、采购负责人或业务负责人。",
+      "x-component": "Textarea"
+    },
+    "conversionGoal": {
+      "type": "string",
+      "title": "转化目标",
+      "x-rows": 3,
+      "description": "例如预约演示、提交表单、下载白皮书、联系销售、注册试用或报名活动。",
+      "x-component": "Textarea"
+    },
+    "landingPageUrl": {
+      "type": "string",
+      "title": "落地页链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的官网页、产品页、活动页或页面预览链接。"
+    },
+    "productContext": {
+      "type": "string",
+      "title": "产品与证据背景",
+      "x-rows": 4,
+      "description": "补充产品价值、行业、案例、资质、价格、差异化和不能夸大的承诺。",
+      "x-component": "Textarea"
+    },
+    "landingPageFile": {
+      "type": "string",
+      "title": "上传页面文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等页面文档，适合提交线框文案、审稿版或 PRD 截稿。",
+      "x-component": "FileUpload"
+    },
+    "landingPageText": {
+      "type": "string",
+      "title": "B2B 落地页文案",
+      "x-rows": 10,
+      "description": "粘贴首屏、卖点、客户证据、FAQ、表单说明和 CTA；保留页面区块顺序更利于诊断。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "landingPageText",
+        "landingPageFile",
+        "landingPageUrl"
+      ],
+      "message": "请粘贴页面文案、上传页面文档，或填写公开页面链接"
+    }
+  ]
+}

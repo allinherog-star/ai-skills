@@ -1,0 +1,7 @@
+interface:
+  display_name: "结账转化诊断助手"
+  short_description: "结账转化诊断助手"
+  default_prompt: "Use $ai-ecommerce-checkout-optimization to help with 结账转化诊断助手"
+
+policy:
+  allow_implicit_invocation: true

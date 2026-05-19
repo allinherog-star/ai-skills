@@ -1,0 +1,187 @@
+{
+  "id": "social-rising-topic-radar-cn",
+  "slug": "social-rising-topic-radar-cn",
+  "question": "这条内容会被看吗?",
+  "skillName": "社媒内容助手",
+  "tags": [
+    "内容运营",
+    "新媒体",
+    "选题",
+    "分发"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education",
+    "software"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Search"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "fdf09a1102db3e7ce1089a6e7c22916bafec75ff8a08e4590e7a10398c1c658e",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "social-rising-topic-radar-cn",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴热点信号或选题线索，建议包含平台、赛道、目标人群和竞品参考",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "trendSignalText",
+          "label": "趋势信号与选题线索"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "trendSignalFile",
+          "label": "上传趋势资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "trendSourceLink",
+          "label": "趋势来源链接"
+        }
+      ],
+      "primaryField": "trendSignalText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "radarOutputFocus"
+      ],
+      "advancedControlFields": [
+        "audienceNicheContext",
+        "competitorTopicNotes"
+      ]
+    },
+    "properties": {
+      "trendSignalFile": {
+        "type": "string",
+        "title": "上传趋势资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传热点截图、选题表、竞品内容、数据导出或运营复盘。",
+        "x-component": "FileUpload"
+      },
+      "trendSignalText": {
+        "type": "string",
+        "title": "趋势信号与选题线索",
+        "x-rows": 10,
+        "description": "粘贴热点榜单、评论摘录、竞品标题、平台观察或选题想法。",
+        "x-component": "Textarea"
+      },
+      "trendSourceLink": {
+        "type": "string",
+        "title": "趋势来源链接",
+        "format": "uri",
+        "description": "填写公开可访问的榜单、搜索页、话题页、竞品内容或报道链接。"
+      },
+      "radarOutputFocus": {
+        "enum": [
+          "上升选题",
+          "内容角度",
+          "平台打法",
+          "发布节奏"
+        ],
+        "type": "string",
+        "title": "雷达重点",
+        "default": "上升选题",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "雷达重点",
+            "label": "上升选题",
+            "value": "上升选题",
+            "description": "重点处理上升选题"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "雷达重点",
+            "label": "内容角度",
+            "value": "内容角度",
+            "description": "重点处理内容角度"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "雷达重点",
+            "label": "平台打法",
+            "value": "平台打法",
+            "description": "重点处理平台打法"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "green",
+            "group": "雷达重点",
+            "label": "发布节奏",
+            "value": "发布节奏",
+            "description": "重点处理发布节奏"
+          }
+        ],
+        "description": "选择本次中国热点上升选题雷达最需要优先处理的方向。"
+      },
+      "audienceNicheContext": {
+        "type": "string",
+        "title": "目标人群与账号赛道",
+        "x-rows": 3,
+        "description": "说明账号定位、目标用户、平台、内容形式、商业目标和禁区。",
+        "x-component": "Textarea"
+      },
+      "competitorTopicNotes": {
+        "type": "string",
+        "title": "竞品与发布限制",
+        "x-rows": 3,
+        "description": "补充竞品账号、已有选题、不可碰话题、发布时间和素材资源。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "trendSignalText",
+          "trendSignalFile",
+          "trendSourceLink"
+        ],
+        "message": "请填写趋势信号与选题线索、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

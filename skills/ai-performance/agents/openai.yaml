@@ -1,0 +1,7 @@
+interface:
+  display_name: "性能诊断助手"
+  short_description: "性能诊断助手"
+  default_prompt: "Use $ai-performance to help with 性能诊断助手"
+
+policy:
+  allow_implicit_invocation: true

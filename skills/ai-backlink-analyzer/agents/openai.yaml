@@ -1,0 +1,7 @@
+interface:
+  display_name: "外链质量分析助手"
+  short_description: "外链质量分析助手"
+  default_prompt: "Use $ai-backlink-analyzer to help with 外链质量分析助手"
+
+policy:
+  allow_implicit_invocation: true

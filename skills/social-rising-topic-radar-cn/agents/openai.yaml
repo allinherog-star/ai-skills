@@ -1,0 +1,7 @@
+interface:
+  display_name: "社媒内容助手"
+  short_description: "社媒内容助手"
+  default_prompt: "Use $social-rising-topic-radar-cn to help with 社媒内容助手"
+
+policy:
+  allow_implicit_invocation: true

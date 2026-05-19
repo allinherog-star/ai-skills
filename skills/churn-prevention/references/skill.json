@@ -1,0 +1,194 @@
+{
+  "id": "churn-prevention",
+  "slug": "churn-prevention",
+  "question": "这个改动值得测吗?",
+  "skillName": "转化实验助手",
+  "tags": [
+    "转化率",
+    "增长营销",
+    "文案",
+    "A/B测试"
+  ],
+  "profession": [
+    "marketing",
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce",
+    "education",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "bfe4e371aaff932b4c0c5e8954add6122d05792052f36360652139b7a63559d4",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "churn-prevention",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴取消反馈、续费提示或留存消息，最好包含用户阶段、流失原因、触发时机和当前话术",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴留存内容"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传留存资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填触点链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "留存目标",
+        "x-rows": 3,
+        "description": "例如降低取消、解释价值、引导成功设置、召回沉默用户、减少退款或提高续费意愿。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "流失风险人群",
+        "x-rows": 3,
+        "description": "补充订阅阶段、使用频率、客户细分、主要异议、历史行为和是否适合人工介入。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "留存触点链接",
+        "format": "uri",
+        "description": "填写公开可访问的取消页、帮助文档、续费页、产品页、反馈表或消息预览链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "留存分析深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "留存分析深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "留存分析深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "留存分析深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速体检、标准诊断或深度留存策略分析。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传留存资料",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等留存资料，适合提交反馈汇总、客服摘录、触点文案或研究记录。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "流失与留存内容",
+        "x-rows": 10,
+        "description": "粘贴取消原因、客服记录、用户反馈、续费提示、召回邮件、应用内消息或取消页文案。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "留存触点",
+        "x-rows": 3,
+        "description": "例如应用内消息、邮件、客服话术、取消页、续费页、CRM、社群或帮助中心。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "留存沟通边界",
+        "x-rows": 3,
+        "description": "补充品牌语气、服务承诺边界、隐私提醒、禁用表达和必须保留的信息。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴流失与留存内容、上传留存资料，或填写留存触点链接"
+      }
+    ]
+  }
+}

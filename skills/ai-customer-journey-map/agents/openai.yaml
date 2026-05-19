@@ -1,0 +1,7 @@
+interface:
+  display_name: "用户旅程地图助手"
+  short_description: "用户旅程地图助手"
+  default_prompt: "Use $ai-customer-journey-map to help with 用户旅程地图助手"
+
+policy:
+  allow_implicit_invocation: true

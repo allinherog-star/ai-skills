@@ -1,0 +1,7 @@
+interface:
+  display_name: "销售辅导助手"
+  short_description: "销售辅导助手"
+  default_prompt: "Use $ai-sales-coaching to help with 销售辅导助手"
+
+policy:
+  allow_implicit_invocation: true

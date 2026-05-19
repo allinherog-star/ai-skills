@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴保险条款或用户问题，建议包含险种、读者角色和最关注条款",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "policyClauseText",
+        "label": "保险条款摘录"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "policyDocumentFile",
+        "label": "上传保单资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "insurerPageLink",
+        "label": "保险产品链接"
+      }
+    ],
+    "primaryField": "policyClauseText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "insuranceExplainFocus"
+    ],
+    "advancedControlFields": [
+      "policyholderContext",
+      "exceptionClauseNotes"
+    ]
+  },
+  "properties": {
+    "insurerPageLink": {
+      "type": "string",
+      "title": "保险产品链接",
+      "format": "uri",
+      "description": "填写公开可访问的保险产品页、条款页、监管披露或客服说明。"
+    },
+    "policyClauseText": {
+      "type": "string",
+      "title": "保险条款摘录",
+      "x-rows": 10,
+      "description": "粘贴保险条款、责任免除、等待期、理赔条件、费率或用户问题。",
+      "x-component": "Textarea"
+    },
+    "policyDocumentFile": {
+      "type": "string",
+      "title": "上传保单资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传保险条款、产品说明书、FAQ、理赔案例或用户咨询记录。",
+      "x-component": "FileUpload"
+    },
+    "policyholderContext": {
+      "type": "string",
+      "title": "读者身份与使用场景",
+      "x-rows": 3,
+      "description": "说明投保人/被保人角色、险种、年龄段、咨询目的和关注问题。",
+      "x-component": "Textarea"
+    },
+    "exceptionClauseNotes": {
+      "type": "string",
+      "title": "免责与需核实条款",
+      "x-rows": 3,
+      "description": "补充重点条款、免责情形、理赔材料、不可解释为承诺的内容。",
+      "x-component": "Textarea"
+    },
+    "insuranceExplainFocus": {
+      "enum": [
+        "通俗解释",
+        "责任边界",
+        "理赔材料",
+        "FAQ整理"
+      ],
+      "type": "string",
+      "title": "解释重点",
+      "default": "通俗解释",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "解释重点",
+          "label": "通俗解释",
+          "value": "通俗解释",
+          "description": "重点处理通俗解释"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "解释重点",
+          "label": "责任边界",
+          "value": "责任边界",
+          "description": "重点处理责任边界"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "解释重点",
+          "label": "理赔材料",
+          "value": "理赔材料",
+          "description": "重点处理理赔材料"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "解释重点",
+          "label": "FAQ整理",
+          "value": "FAQ整理",
+          "description": "重点处理FAQ整理"
+        }
+      ],
+      "description": "选择本次保险条款 FAQ 解释最需要优先处理的方向。"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "policyClauseText",
+        "policyDocumentFile",
+        "insurerPageLink"
+      ],
+      "message": "请填写保险条款摘录、上传资料，或提供可访问链接"
+    }
+  ]
+}

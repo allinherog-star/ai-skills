@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴需要做 AI 搜索/GEO 优化的页面正文、FAQ、产品说明或知识库内容",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴优化内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传内容资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填写目标链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "GEO 优化目标",
+      "x-rows": 3,
+      "description": "例如提升 AI 摘要可引用性、强化实体识别、改善 FAQ 覆盖或提高线索转化。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标提问者",
+      "x-rows": 3,
+      "description": "说明用户会向 AI 搜索提出的问题、角色、意图阶段或决策场景。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "AI 搜索目标页面",
+      "format": "uri",
+      "description": "填写无需登录即可访问的页面、文章、文档或参考链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传 GEO 内容资料",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "支持文章草稿、页面文档、知识库文件、产品资料或 FAQ 表。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "AI 搜索优化内容",
+      "x-rows": 10,
+      "description": "可粘贴页面正文、产品说明、FAQ、知识库条目、实体介绍或需要提升 AI 摘要质量的内容。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "实体与品牌要求",
+      "x-rows": 3,
+      "description": "补充品牌命名、事实边界、必须保留的描述、禁用表达和合规限制。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴 AI 搜索优化内容、上传 GEO 资料，或填写目标页面链接"
+    }
+  ]
+}

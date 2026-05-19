@@ -1,0 +1,190 @@
+{
+  "id": "ai-visual-prompt-review",
+  "slug": "ai-visual-prompt-review",
+  "question": "这张图够发布吗?",
+  "skillName": "视觉质量诊断助手",
+  "tags": [
+    "AI绘图",
+    "提示词",
+    "豆包",
+    "即梦",
+    "视频生成"
+  ],
+  "profession": [
+    "design",
+    "operation",
+    "marketing",
+    "blogger-individual"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "entertainment",
+    "retail"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "WandSparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "3e75dbb466769fc64be49eea46829fca7c009b0d559630b0566a3f63cc8c3c65",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-visual-prompt-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴AI视觉提示词，建议包含主体、场景、风格、画幅和参考图说明",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "visualPromptText",
+          "label": "视觉生成提示词"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "promptAssetFile",
+          "label": "上传视觉参考"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "imageReferenceLink",
+          "label": "视觉参考链接"
+        }
+      ],
+      "primaryField": "visualPromptText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "visualReviewFocus"
+      ],
+      "advancedControlFields": [
+        "visualGoalContext",
+        "brandStyleNotes"
+      ]
+    },
+    "properties": {
+      "brandStyleNotes": {
+        "type": "string",
+        "title": "风格限制与风险点",
+        "x-rows": 3,
+        "description": "补充禁用元素、版权顾虑、人物/品牌限制、色彩和构图偏好。",
+        "x-component": "Textarea"
+      },
+      "promptAssetFile": {
+        "type": "string",
+        "title": "上传视觉参考",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传参考图、品牌视觉规范、产品图、分镜或生成结果。",
+        "x-component": "FileUpload"
+      },
+      "visualPromptText": {
+        "type": "string",
+        "title": "视觉生成提示词",
+        "x-rows": 10,
+        "description": "粘贴中文/英文提示词、负面提示、构图、主体、风格和用途说明。",
+        "x-component": "Textarea"
+      },
+      "visualGoalContext": {
+        "type": "string",
+        "title": "生成目标与使用场景",
+        "x-rows": 3,
+        "description": "说明用途、画幅、平台、目标受众、品牌要求和交付规格。",
+        "x-component": "Textarea"
+      },
+      "visualReviewFocus": {
+        "enum": [
+          "清晰度",
+          "风格一致",
+          "可控性",
+          "风险提示"
+        ],
+        "type": "string",
+        "title": "审查重点",
+        "default": "清晰度",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "清晰度",
+            "value": "清晰度",
+            "description": "重点处理清晰度"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "审查重点",
+            "label": "风格一致",
+            "value": "风格一致",
+            "description": "重点处理风格一致"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "审查重点",
+            "label": "可控性",
+            "value": "可控性",
+            "description": "重点处理可控性"
+          },
+          {
+            "icon": "Scale",
+            "color": "green",
+            "group": "审查重点",
+            "label": "风险提示",
+            "value": "风险提示",
+            "description": "重点处理风险提示"
+          }
+        ],
+        "description": "选择本次AI视觉Prompt审查最需要优先处理的方向。"
+      },
+      "imageReferenceLink": {
+        "type": "string",
+        "title": "视觉参考链接",
+        "format": "uri",
+        "description": "填写公开可访问的参考图、商品页、风格案例或素材链接。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "visualPromptText",
+          "promptAssetFile",
+          "imageReferenceLink"
+        ],
+        "message": "请填写视觉生成提示词、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

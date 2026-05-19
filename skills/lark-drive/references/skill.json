@@ -1,0 +1,194 @@
+{
+  "id": "lark-drive",
+  "slug": "lark-drive",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "6cf02ef71fb7e81ac7949020544f14f2245176c2625dd2dce36b447eff83000e",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "lark-drive",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴飞书云文档标题、目录结构、owner 线索、权限说明和需要整理的问题",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴文档清单"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传云文档"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填文档链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "文档治理目标",
+        "x-rows": 3,
+        "description": "例如盘点文档、识别缺口、准备迁移、整理权限或输出交接清单。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "报告读者",
+        "x-rows": 3,
+        "description": "例如文档 owner、项目团队、运营团队、管理者或外部合作方。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "云文档链接说明",
+        "format": "uri",
+        "description": "填写飞书云文档、文件夹或知识库链接，并补充可见内容摘要；系统不会自动打开链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "审查深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "审查深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "审查深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "审查深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速盘点、标准审查或深度治理。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传云文档导出",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传云文档导出、文件夹清单、截图 OCR 文本、知识库目录或交接资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "飞书云文档清单",
+        "x-rows": 10,
+        "description": "粘贴文档标题、目录、摘要、评论、权限说明、文件夹清单或导出文本。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "整理场景",
+        "x-rows": 3,
+        "description": "说明用于飞书云文档整理、知识库迁移、团队交接还是外部共享前检查。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "目录与共享规范",
+        "x-rows": 3,
+        "description": "补充团队命名规范、目录规范、保密要求、共享口径或格式要求。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴飞书云文档清单、上传云文档资料或填写云文档链接说明"
+      }
+    ]
+  }
+}

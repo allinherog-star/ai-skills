@@ -1,0 +1,195 @@
+{
+  "id": "ai-lead-magnets",
+  "slug": "ai-lead-magnets",
+  "question": "这个诱饵能获客吗?",
+  "skillName": "获客钩子策划助手",
+  "tags": [
+    "内容生产",
+    "文案优化",
+    "发布准备"
+  ],
+  "profession": [
+    "blogger-individual",
+    "marketing",
+    "operation"
+  ],
+  "industry": [
+    "media",
+    "ecommerce",
+    "education"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://www.skills.sh/coreyhaines31/marketingskills"
+      ],
+      "sourceNotes": "skills_sh_trending: coreyhaines31/marketingskills/lead-magnets"
+    },
+    "catalog": {
+      "icon": "ListChecks"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "bulkSupply": {
+      "wave": "external-hot-open-source-2026-05-17",
+      "batchId": "external-hot-open-source-2026-05-17",
+      "candidateId": "lead-magnets",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "skills.sh all-time/trending 信号显示 lead-magnets 有用户需求；平台展示为 growth_cro_sales 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "primaryIndustry": "software",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "marketing",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "sales_gtm"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "skills.sh all-time/trending 信号显示 lead-magnets 有用户需求；平台展示为 growth_cro_sales 业务助手目录，输出可复核诊断、建议或生产准备包。",
+      "allowedOutputs": [
+        "转化问题优先级",
+        "可复制改稿",
+        "实验或跟进行动清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "89d1ad4baa8747189fa90edf8341670b91bac6a6b30753086e4506c6029595c5",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-lead-magnets",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "external-hot-open-source-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "sales_gtm",
+      "sourceRef": "coreyhaines31/marketingskills",
+      "sourceUrl": "https://www.skills.sh/coreyhaines31/marketingskills",
+      "importedAt": "2026-05-17T09:35:48.774Z",
+      "candidateId": "lead-magnets",
+      "sourceSignal": "skills_sh_trending",
+      "originalSkillId": "lead-magnets"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴客户资料、沟通记录、邮件草稿或成交目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "粘贴客户信息"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传销售资料"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填客户链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充成交背景",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "推进目标",
+        "x-rows": 3,
+        "description": "说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "客户角色",
+        "x-rows": 3,
+        "description": "说明客户角色、行业、阶段、决策链或沟通对象。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "客户或公司链接",
+        "format": "uri",
+        "description": "填写公开可访问的客户公司、产品、竞品或背景资料链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "销售资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传客户背景、销售材料、会议纪要、邮件记录或 pipeline 资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "客户资料或沟通记录",
+        "x-rows": 8,
+        "description": "粘贴客户资料、沟通记录、邮件草稿、通话摘要、异议信息或成交目标。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "销售边界",
+        "x-rows": 3,
+        "description": "补充价格边界、承诺限制、竞品信息、风险点、不可使用表述或人工复核重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写客户资料、上传销售资料或提供客户相关链接"
+      }
+    ]
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴商品详情页文案，最好包含标题、主图卖点、规格、评价或 FAQ",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "productPageText",
+        "label": "贴详情页文案"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "pageFile",
+        "label": "传页面资料"
+      },
+      {
+        "id": "competitor",
+        "icon": "Link",
+        "field": "competitorLinks",
+        "label": "填竞品信息"
+      }
+    ],
+    "primaryField": "productPageText",
+    "advancedLabel": "补充商品背景",
+    "primaryControlFields": [
+      "platform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "productImagesBrief",
+      "productInfo",
+      "customerConcerns",
+      "targetAudience"
+    ]
+  },
+  "properties": {
+    "pageFile": {
+      "type": "string",
+      "title": "上传页面资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "支持详情页截图、文案文档、图片 brief 或运营资料包。",
+      "x-component": "FileUpload"
+    },
+    "platform": {
+      "enum": [
+        "通用电商",
+        "淘宝/天猫",
+        "京东",
+        "拼多多",
+        "抖音电商",
+        "小红书店铺",
+        "独立站",
+        "亚马逊"
+      ],
+      "type": "string",
+      "title": "销售平台",
+      "default": "通用电商",
+      "x-options": [
+        {
+          "icon": "Store",
+          "color": "blue",
+          "group": "平台",
+          "label": "通用电商",
+          "value": "通用电商",
+          "description": "按通用电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "LayoutTemplate",
+          "color": "blue",
+          "group": "平台",
+          "label": "淘宝/天猫",
+          "value": "淘宝/天猫",
+          "description": "按淘宝/天猫的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ShoppingBag",
+          "color": "blue",
+          "group": "平台",
+          "label": "京东",
+          "value": "京东",
+          "description": "按京东的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "ShoppingCart",
+          "color": "blue",
+          "group": "平台",
+          "label": "拼多多",
+          "value": "拼多多",
+          "description": "按拼多多的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Clapperboard",
+          "color": "blue",
+          "group": "平台",
+          "label": "抖音电商",
+          "value": "抖音电商",
+          "description": "按抖音电商的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Sparkles",
+          "color": "blue",
+          "group": "平台",
+          "label": "小红书店铺",
+          "value": "小红书店铺",
+          "description": "按小红书店铺的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "平台",
+          "label": "独立站",
+          "value": "独立站",
+          "description": "按独立站的页面和用户决策习惯调整诊断重点"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "平台",
+          "label": "亚马逊",
+          "value": "亚马逊",
+          "description": "按亚马逊的页面和用户决策习惯调整诊断重点"
+        }
+      ],
+      "description": "销售平台"
+    },
+    "productInfo": {
+      "type": "string",
+      "title": "商品基础信息",
+      "x-rows": 4,
+      "description": "补充品类、价格带、规格、核心卖点、履约信息、促销机制和必须保留的事实。",
+      "x-component": "Textarea"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速诊断",
+        "标准诊断",
+        "深度优化"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "ListChecks",
+          "color": "purple",
+          "group": "深度",
+          "label": "快速诊断",
+          "value": "快速诊断",
+          "description": "按快速诊断输出诊断颗粒度"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "purple",
+          "group": "深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "按标准诊断输出诊断颗粒度"
+        },
+        {
+          "icon": "Search",
+          "color": "purple",
+          "group": "深度",
+          "label": "深度优化",
+          "value": "深度优化",
+          "description": "按深度优化输出诊断颗粒度"
+        }
+      ],
+      "description": "诊断深度"
+    },
+    "targetAudience": {
+      "type": "string",
+      "title": "目标人群",
+      "description": "说明主要购买者、使用者、送礼对象或细分场景。"
+    },
+    "competitorLinks": {
+      "type": "string",
+      "title": "竞品链接或要点",
+      "x-rows": 4,
+      "description": "填写公开竞品链接，或粘贴竞品标题、价格、主图卖点、评价摘要和详情页结构。",
+      "x-component": "Textarea"
+    },
+    "productPageText": {
+      "type": "string",
+      "title": "详情页文案",
+      "x-rows": 10,
+      "description": "粘贴商品标题、首屏卖点、详情说明、规格参数、FAQ、保障说明等页面内容。",
+      "x-component": "Textarea"
+    },
+    "customerConcerns": {
+      "type": "string",
+      "title": "用户顾虑",
+      "x-rows": 4,
+      "description": "补充客服高频问题、差评摘要、退货原因、购买犹豫点或售后争议。",
+      "x-component": "Textarea"
+    },
+    "productImagesBrief": {
+      "type": "string",
+      "title": "商品图片说明",
+      "x-rows": 5,
+      "description": "描述主图、场景图、细节图、对比图、证书图和当前图片里的文字信息。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "productPageText",
+        "productImagesBrief",
+        "pageFile",
+        "competitorLinks"
+      ],
+      "message": "请粘贴详情页文案、描述商品图片、上传页面资料，或填写竞品信息"
+    }
+  ]
+}

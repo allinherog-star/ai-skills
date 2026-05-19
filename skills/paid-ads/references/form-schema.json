@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴广告文案或投放简报，最好包含平台、受众、目标、落地页和必须遵守的表达限制",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴广告内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传广告资料"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填广告链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "投放目标",
+      "x-rows": 3,
+      "description": "例如点击、留资、购买、安装、预约、再营销、品牌认知或活动报名。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标受众与意图",
+      "x-rows": 3,
+      "description": "补充搜索意图、兴趣、行业、地区、漏斗阶段、再营销条件或排除人群。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "广告或落地页链接",
+      "format": "uri",
+      "description": "填写公开可访问的广告预览、落地页、产品页、活动页或素材说明链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "投放诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "投放诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "投放诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "投放诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速体检、标准诊断或深度投放简报。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传广告资料",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt 等广告资料，适合提交投放 brief、创意清单、关键词表或页面草稿。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "广告投放内容",
+      "x-rows": 10,
+      "description": "粘贴广告标题、主文案、描述、关键词、受众假设、预算背景、落地页摘要或投放简报。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "广告平台",
+      "x-rows": 3,
+      "description": "例如 Google Ads、Meta、TikTok、LinkedIn、小红书、Bing、Amazon Ads 或程序化广告。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "广告表达约束",
+      "x-rows": 3,
+      "description": "补充品牌语气、禁用词、声明要求、行业限制、素材规范和不能夸大的承诺。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴广告投放内容、上传广告资料，或填写广告/落地页链接"
+    }
+  ]
+}

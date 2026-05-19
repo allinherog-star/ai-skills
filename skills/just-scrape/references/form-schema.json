@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴公开网页正文、标题摘要、页面片段或需要结构化提取的可见文本",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴网页正文"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传网页文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填公开链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "提取目标",
+      "x-rows": 3,
+      "description": "例如快速摘要、字段抽取、证据归档、线索初筛或后续采集规划。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "简报读者",
+      "x-rows": 3,
+      "description": "填写运营、销售、研究员、内容编辑、产品经理等使用者。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开页面链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的页面 URL、页面标题或链接 metadata。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "提取深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "提取深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "提取深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "提取深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速提取、标准提取或深度结构化。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传网页摘录文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传网页保存稿、截图转写、PDF、Markdown、TXT 或相关资料包。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "待提取网页正文",
+      "x-rows": 10,
+      "description": "粘贴公开页面可见文本、标题摘要、HTML 可见内容或手工摘录。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "结果使用平台",
+      "x-rows": 3,
+      "description": "说明提取结果将用于内容库、CRM、表格、知识库、竞品库或其他系统。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "引用与口径要求",
+      "x-rows": 3,
+      "description": "补充品牌合规、引用格式、禁用表达、保密要求或输出格式。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴网页正文、上传网页摘录文件，或填写公开页面链接"
+    }
+  ]
+}

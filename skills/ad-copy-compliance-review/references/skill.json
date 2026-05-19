@@ -1,0 +1,242 @@
+{
+  "id": "ad-copy-compliance-review",
+  "slug": "ad-copy-compliance-review",
+  "question": "这里有什么风险?",
+  "skillName": "风险审阅助手",
+  "tags": [
+    "广告文案",
+    "合规",
+    "转化",
+    "风险词",
+    "投放"
+  ],
+  "profession": [
+    "operation",
+    "marketing",
+    "seller",
+    "legal"
+  ],
+  "industry": [
+    "ecommerce",
+    "retail",
+    "education",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Scale"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "2219430e6b35262490c32cee81e9ad3ff347f8ba3ef0470c0762463120ea5cd8",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ad-copy-compliance-review",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴广告文案，最好包含标题、正文、卖点、CTA 和投放平台",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴广告文案"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传广告文档"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填落地链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "targetPlatform",
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements",
+        "complianceRules"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "转化目标",
+        "x-rows": 3,
+        "description": "例如提升点击率、降低审核风险、提高线索质量、促成咨询或下单。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "目标人群",
+        "x-rows": 3,
+        "description": "说明广告面向的人群和投放场景，例如信息流新客、搜索高意向用户或再营销人群。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "广告落地链接",
+        "format": "uri",
+        "description": "填写无需登录即可访问的广告页、商品页、活动页或投放预览链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "诊断深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "诊断深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "诊断深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "诊断深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ]
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传广告文档",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt",
+        "x-max-size": 20971520,
+        "description": "支持 docx、pdf、md、txt 等广告文档，适合提交多版本广告语、脚本或审核稿。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "广告投放文案",
+        "x-rows": 10,
+        "description": "可粘贴广告标题、正文、卖点、CTA 或口播词；建议保留投放平台和审核敏感表达。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "enum": [
+          "广告投放",
+          "信息流",
+          "搜索广告",
+          "朋友圈广告"
+        ],
+        "type": "string",
+        "title": "目标平台",
+        "default": "广告投放",
+        "x-options": [
+          {
+            "icon": "Megaphone",
+            "color": "amber",
+            "group": "目标平台",
+            "label": "广告投放",
+            "value": "广告投放",
+            "description": "适合付费投放素材和广告文案"
+          },
+          {
+            "icon": "TrendingUp",
+            "color": "rose",
+            "group": "目标平台",
+            "label": "信息流",
+            "value": "信息流",
+            "description": "适配推荐流素材和首屏点击"
+          },
+          {
+            "icon": "Search",
+            "color": "cyan",
+            "group": "目标平台",
+            "label": "搜索广告",
+            "value": "搜索广告",
+            "description": "围绕搜索意图和关键词转化"
+          },
+          {
+            "icon": "UsersRound",
+            "color": "green",
+            "group": "目标平台",
+            "label": "朋友圈广告",
+            "value": "朋友圈广告",
+            "description": "适配社交场景和信任背书"
+          }
+        ]
+      },
+      "complianceRules": {
+        "type": "string",
+        "title": "合规要求",
+        "x-rows": 4,
+        "description": "行业禁用词、平台审核要求或品牌法务要求。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "品牌与限制要求",
+        "x-rows": 3,
+        "description": "补充平台限制、行业合规要求、禁用词、必须保留的优惠或产品事实。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴广告文案、上传广告文档，或填写公开广告落地链接"
+      }
+    ]
+  }
+}

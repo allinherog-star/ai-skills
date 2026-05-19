@@ -1,0 +1,194 @@
+{
+  "id": "gws-gmail",
+  "slug": "gws-gmail",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "办公协作",
+    "会议纪要",
+    "任务拆解",
+    "工作流"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "technical",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "education",
+    "finance",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "bcf2d05c6a653e96cbb9037f5af56d1440d53622ed990605f2eb86331c541a79",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "gws-gmail",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴 Gmail 邮件线程、关键往来、对方诉求、已承诺事项和希望回复的目标",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "贴邮件线程"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "传邮件文件"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填邮件链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充背景",
+      "primaryControlFields": [
+        "reviewDepth"
+      ],
+      "advancedControlFields": [
+        "audience",
+        "goal"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "邮件跟进目标",
+        "x-rows": 3,
+        "description": "例如总结线程、准备回复、识别承诺、升级风险或制定跟进计划。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "邮件对象",
+        "x-rows": 3,
+        "description": "例如客户、供应商、候选人、合作伙伴、内部团队或管理者。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "邮件链接说明",
+        "format": "uri",
+        "description": "填写 Gmail 线程或相关文档链接，并补充可见内容摘要；系统不会自动打开链接。"
+      },
+      "reviewDepth": {
+        "enum": [
+          "快速体检",
+          "标准诊断",
+          "深度改稿"
+        ],
+        "type": "string",
+        "title": "复盘深度",
+        "default": "标准诊断",
+        "x-options": [
+          {
+            "icon": "Zap",
+            "color": "amber",
+            "group": "复盘深度",
+            "label": "快速体检",
+            "value": "快速体检",
+            "description": "快速定位最明显的问题"
+          },
+          {
+            "icon": "ClipboardList",
+            "color": "blue",
+            "group": "复盘深度",
+            "label": "标准诊断",
+            "value": "标准诊断",
+            "description": "兼顾评分、问题和修改建议"
+          },
+          {
+            "icon": "FileText",
+            "color": "purple",
+            "group": "复盘深度",
+            "label": "深度改稿",
+            "value": "深度改稿",
+            "description": "给出更完整的重写和优化方案"
+          }
+        ],
+        "description": "选择快速摘要、标准回复准备或深度风险复盘。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "上传邮件导出",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传邮件导出、eml 文本、pdf、截图 OCR 文本、附件摘要或相关背景资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "Gmail 邮件线程",
+        "x-rows": 10,
+        "description": "粘贴邮件正文、线程摘要、发件人/收件人线索、时间线、附件摘要或历史回复。",
+        "x-component": "Textarea"
+      },
+      "targetPlatform": {
+        "type": "string",
+        "title": "邮件处理场景",
+        "x-rows": 3,
+        "description": "说明用于 Gmail 回复、客户跟进、内部同步、升级处理还是法务或财务确认。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "邮件语气要求",
+        "x-rows": 3,
+        "description": "补充品牌语气、称谓、签名风格、合规边界、保密要求或对外沟通规范。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请粘贴 Gmail 邮件线程、上传邮件文件或填写邮件链接说明"
+      }
+    ]
+  }
+}

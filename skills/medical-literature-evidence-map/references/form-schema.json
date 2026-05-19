@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴研究问题和文献摘要，建议说明 PICO、纳排标准和目标用途",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "literatureAbstractsText",
+        "label": "文献摘要与问题"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "literatureEvidenceFile",
+        "label": "上传文献表格"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "literatureSearchLink",
+        "label": "检索结果链接"
+      }
+    ],
+    "primaryField": "literatureAbstractsText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "evidenceMapFocus"
+    ],
+    "advancedControlFields": [
+      "researchQuestionContext",
+      "inclusionCriteriaNotes"
+    ]
+  },
+  "properties": {
+    "evidenceMapFocus": {
+      "enum": [
+        "证据分层",
+        "研究差异",
+        "结论边界",
+        "待补文献"
+      ],
+      "type": "string",
+      "title": "整理重点",
+      "default": "证据分层",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "整理重点",
+          "label": "证据分层",
+          "value": "证据分层",
+          "description": "重点处理证据分层"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "整理重点",
+          "label": "研究差异",
+          "value": "研究差异",
+          "description": "重点处理研究差异"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "整理重点",
+          "label": "结论边界",
+          "value": "结论边界",
+          "description": "重点处理结论边界"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "整理重点",
+          "label": "待补文献",
+          "value": "待补文献",
+          "description": "重点处理待补文献"
+        }
+      ],
+      "description": "选择本次医学文献证据地图最需要优先处理的方向。"
+    },
+    "literatureSearchLink": {
+      "type": "string",
+      "title": "检索结果链接",
+      "format": "uri",
+      "description": "填写公开可访问的 PubMed、期刊、指南或数据库检索链接。"
+    },
+    "inclusionCriteriaNotes": {
+      "type": "string",
+      "title": "纳排标准与证据限制",
+      "x-rows": 3,
+      "description": "补充时间范围、研究类型、排除条件、语言限制和偏倚关注点。",
+      "x-component": "Textarea"
+    },
+    "literatureEvidenceFile": {
+      "type": "string",
+      "title": "上传文献表格",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传文献清单、摘要导出、证据表或阅读笔记。",
+      "x-component": "FileUpload"
+    },
+    "literatureAbstractsText": {
+      "type": "string",
+      "title": "文献摘要与问题",
+      "x-rows": 10,
+      "description": "粘贴研究问题、PICO、文献摘要、结论片段或证据摘录。",
+      "x-component": "Textarea"
+    },
+    "researchQuestionContext": {
+      "type": "string",
+      "title": "研究问题与使用场景",
+      "x-rows": 3,
+      "description": "说明疾病/干预/人群/结局、内部汇报或内容支持目的。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "literatureAbstractsText",
+        "literatureEvidenceFile",
+        "literatureSearchLink"
+      ],
+      "message": "请填写文献摘要与问题、上传资料，或提供可访问链接"
+    }
+  ]
+}

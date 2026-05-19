@@ -1,0 +1,7 @@
+interface:
+  display_name: "资料整理助手"
+  short_description: "资料整理助手"
+  default_prompt: "Use $lark-workflow-meeting-summary to help with 资料整理助手"
+
+policy:
+  allow_implicit_invocation: true

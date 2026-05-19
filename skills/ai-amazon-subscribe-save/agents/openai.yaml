@@ -1,0 +1,7 @@
+interface:
+  display_name: "Amazon 订阅优化助手"
+  short_description: "Amazon 订阅优化助手"
+  default_prompt: "Use $ai-amazon-subscribe-save to help with Amazon 订阅优化助手"
+
+policy:
+  allow_implicit_invocation: true

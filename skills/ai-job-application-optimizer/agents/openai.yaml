@@ -1,0 +1,7 @@
+interface:
+  display_name: "求职材料优化助手"
+  short_description: "求职材料优化助手"
+  default_prompt: "Use $ai-job-application-optimizer to help with 求职材料优化助手"
+
+policy:
+  allow_implicit_invocation: true

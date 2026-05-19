@@ -1,0 +1,138 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴页面可见文本、错误提示、步骤记录、截图转写或需要规划的浏览观察场景",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴页面状态"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传观察文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填页面链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "浏览任务目标",
+      "x-rows": 3,
+      "description": "例如页面理解、流程复核、问题定位、内容检查或人工验收清单。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "任务执行者",
+      "x-rows": 3,
+      "description": "填写 QA、运营、产品经理、研究员、内容编辑、客服团队等使用者。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "页面公开链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的页面 URL、页面标题、链接 metadata 或页面路径说明。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "任务计划深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "任务计划深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "任务计划深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "任务计划深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ],
+      "description": "选择快速观察卡、标准任务计划或深度验收清单。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传页面观察文件",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "上传截图转写、页面记录、QA 笔记、PDF、Markdown、TXT 或流程资料。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "页面状态记录",
+      "x-rows": 10,
+      "description": "粘贴页面可见文本、步骤记录、错误提示、表单标签、截图转写或浏览观察笔记。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "type": "string",
+      "title": "浏览场景平台",
+      "x-rows": 3,
+      "description": "说明任务计划面向官网、SaaS 控制台公开页、帮助中心、落地页、移动 Web 等。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "操作与引用边界",
+      "x-rows": 3,
+      "description": "补充品牌口径、合规边界、禁止操作、截图/引用规范或输出格式要求。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴页面状态、上传页面观察文件，或填写公开页面链接"
+    }
+  ]
+}

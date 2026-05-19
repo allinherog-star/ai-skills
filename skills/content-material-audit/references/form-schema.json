@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴待体检内容，最好说明它面向谁、发布在哪里、希望达成什么目标",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "贴待审内容"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "传内容文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填内容链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充背景",
+    "primaryControlFields": [
+      "targetPlatform",
+      "reviewDepth"
+    ],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "转化目标",
+      "x-rows": 3,
+      "description": "例如提升理解、信任、点击、收藏、咨询、转发、报名或成交。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标人群",
+      "x-rows": 3,
+      "description": "说明这次内容面向的人群，例如潜在客户、社群成员、平台读者、内部评审或合作方。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "内容公开链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的文章、页面、文档、活动页或公开资料链接。"
+    },
+    "reviewDepth": {
+      "enum": [
+        "快速体检",
+        "标准诊断",
+        "深度改稿"
+      ],
+      "type": "string",
+      "title": "诊断深度",
+      "default": "标准诊断",
+      "x-options": [
+        {
+          "icon": "Zap",
+          "color": "amber",
+          "group": "诊断深度",
+          "label": "快速体检",
+          "value": "快速体检",
+          "description": "快速定位最明显的问题"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "blue",
+          "group": "诊断深度",
+          "label": "标准诊断",
+          "value": "标准诊断",
+          "description": "兼顾评分、问题和修改建议"
+        },
+        {
+          "icon": "FileText",
+          "color": "purple",
+          "group": "诊断深度",
+          "label": "深度改稿",
+          "value": "深度改稿",
+          "description": "给出更完整的重写和优化方案"
+        }
+      ]
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传内容文件",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.pptx,.xlsx,.csv",
+      "x-max-size": 20971520,
+      "description": "支持 docx、pdf、md、txt、pptx、xlsx、csv 等内容文件，适合提交跨格式草稿、表格或资料包。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "待体检内容",
+      "x-rows": 10,
+      "description": "可粘贴文案、文章、脚本、页面文案、提示词或活动说明；内容越完整，诊断越容易落到具体修改点。",
+      "x-component": "Textarea"
+    },
+    "targetPlatform": {
+      "enum": [
+        "通用",
+        "小红书",
+        "抖音",
+        "公众号",
+        "SEO/AEO",
+        "落地页",
+        "广告投放"
+      ],
+      "type": "string",
+      "title": "目标平台",
+      "default": "通用",
+      "x-options": [
+        {
+          "icon": "Globe",
+          "color": "slate",
+          "group": "目标平台",
+          "label": "通用",
+          "value": "通用",
+          "description": "适合不限定平台的通用内容场景"
+        },
+        {
+          "icon": "Sparkles",
+          "color": "rose",
+          "group": "目标平台",
+          "label": "小红书",
+          "value": "小红书",
+          "description": "适配小红书种草、封面和竖图"
+        },
+        {
+          "icon": "Clapperboard",
+          "color": "rose",
+          "group": "目标平台",
+          "label": "抖音",
+          "value": "抖音",
+          "description": "适配抖音节奏和推荐场景"
+        },
+        {
+          "icon": "BookOpen",
+          "color": "green",
+          "group": "目标平台",
+          "label": "公众号",
+          "value": "公众号",
+          "description": "适配公众号图文和长内容发布"
+        },
+        {
+          "icon": "Search",
+          "color": "cyan",
+          "group": "目标平台",
+          "label": "SEO/AEO",
+          "value": "SEO/AEO",
+          "description": "适合搜索和 AI 引用优化内容"
+        },
+        {
+          "icon": "LayoutTemplate",
+          "color": "purple",
+          "group": "目标平台",
+          "label": "落地页",
+          "value": "落地页",
+          "description": "适合转化页、官网页和活动页"
+        },
+        {
+          "icon": "Megaphone",
+          "color": "amber",
+          "group": "目标平台",
+          "label": "广告投放",
+          "value": "广告投放",
+          "description": "适合付费投放素材和广告文案"
+        }
+      ]
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "品牌与限制要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、禁用表达、合规限制、必须保留的信息和不可改动的事实。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴待体检内容、上传内容文件，或填写公开内容链接"
+    }
+  ]
+}

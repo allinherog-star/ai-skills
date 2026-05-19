@@ -1,0 +1,7 @@
+interface:
+  display_name: "销售赋能助手"
+  short_description: "销售赋能助手"
+  default_prompt: "Use $ai-sales-enablement to help with 销售赋能助手"
+
+policy:
+  allow_implicit_invocation: true

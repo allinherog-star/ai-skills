@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴岗位描述、简历、绩效素材或人事沟通草稿",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴求职材料"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传简历文件"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填岗位链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充求职边界",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal",
+      "brandRequirements"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "处理目标",
+      "x-rows": 3,
+      "description": "说明要完成的匹配分析、绩效反馈、表达优化、面试准备或风险检查。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "相关角色",
+      "x-rows": 3,
+      "description": "说明候选人、员工、管理者、HRBP、面试官或沟通对象。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "岗位或资料链接",
+      "format": "uri",
+      "description": "填写公开可访问的岗位、公司、政策或参考资料链接。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "HR 资料文件",
+      "format": "binary",
+      "x-accept": ".xlsx,.xls,.csv,.tsv",
+      "x-max-size": 20971520,
+      "description": "上传简历、岗位说明、绩效记录、人事政策、面试材料或沟通草稿。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "岗位、绩效或求职材料",
+      "x-rows": 8,
+      "description": "粘贴岗位描述、简历、绩效素材、人事沟通草稿、评估标准或反馈目标。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "合规与语气边界",
+      "x-rows": 3,
+      "description": "补充事实依据、敏感信息处理、语气要求、不可承诺内容、法律边界或人工复核重点。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请填写 HR 资料、上传文件或提供岗位/资料链接"
+    }
+  ]
+}

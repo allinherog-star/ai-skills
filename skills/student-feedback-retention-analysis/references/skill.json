@@ -1,0 +1,185 @@
+{
+  "id": "student-feedback-retention-analysis",
+  "slug": "student-feedback-retention-analysis",
+  "question": "这件事该怎么做?",
+  "skillName": "业务诊断助手",
+  "tags": [
+    "学员反馈",
+    "续费",
+    "社群运营",
+    "教培"
+  ],
+  "profession": [
+    "operation",
+    "marketing"
+  ],
+  "industry": [
+    "education",
+    "media"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "catalog": {
+      "icon": "GraduationCap"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "none",
+    "safetySha256": "eea0a50706a6063ccb415429146488e343ead71a80adb0f3fe9ec2e0b5419ae5",
+    "safetyStatus": "allowed",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "student-feedback-retention-analysis",
+    "resultContract": "ResultEnvelope",
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴学员反馈和续费顾虑，建议包含班型、阶段和运营动作",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "studentFeedbackText",
+          "label": "学员反馈记录"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "feedbackExportFile",
+          "label": "上传反馈导出"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "surveyDashboardLink",
+          "label": "问卷或看板链接"
+        }
+      ],
+      "primaryField": "studentFeedbackText",
+      "advancedLabel": "补充场景",
+      "primaryControlFields": [
+        "retentionAnalysisFocus"
+      ],
+      "advancedControlFields": [
+        "learnerCohortContext",
+        "retentionEventNotes"
+      ]
+    },
+    "properties": {
+      "feedbackExportFile": {
+        "type": "string",
+        "title": "上传反馈导出",
+        "format": "binary",
+        "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+        "x-max-size": 20971520,
+        "description": "上传问卷、NPS、社群反馈、客服记录或续费表。",
+        "x-component": "FileUpload"
+      },
+      "retentionEventNotes": {
+        "type": "string",
+        "title": "留存事件与运营动作",
+        "x-rows": 3,
+        "description": "补充开营、作业、直播、社群、续费活动和异常时间点。",
+        "x-component": "Textarea"
+      },
+      "studentFeedbackText": {
+        "type": "string",
+        "title": "学员反馈记录",
+        "x-rows": 10,
+        "description": "粘贴学员评价、续费顾虑、退课原因、社群反馈或访谈摘录。",
+        "x-component": "Textarea"
+      },
+      "surveyDashboardLink": {
+        "type": "string",
+        "title": "问卷或看板链接",
+        "format": "uri",
+        "description": "填写公开可访问的问卷结果、反馈页面或复盘链接。"
+      },
+      "learnerCohortContext": {
+        "type": "string",
+        "title": "班型与学员批次",
+        "x-rows": 3,
+        "description": "说明课程类型、班型、学员阶段、价格、交付周期和续费节点。",
+        "x-component": "Textarea"
+      },
+      "retentionAnalysisFocus": {
+        "enum": [
+          "流失原因",
+          "续费障碍",
+          "服务改进",
+          "挽回动作"
+        ],
+        "type": "string",
+        "title": "分析重点",
+        "default": "流失原因",
+        "x-options": [
+          {
+            "icon": "Target",
+            "color": "blue",
+            "group": "分析重点",
+            "label": "流失原因",
+            "value": "流失原因",
+            "description": "重点处理流失原因"
+          },
+          {
+            "icon": "ListChecks",
+            "color": "green",
+            "group": "分析重点",
+            "label": "续费障碍",
+            "value": "续费障碍",
+            "description": "重点处理续费障碍"
+          },
+          {
+            "icon": "Award",
+            "color": "blue",
+            "group": "分析重点",
+            "label": "服务改进",
+            "value": "服务改进",
+            "description": "重点处理服务改进"
+          },
+          {
+            "icon": "Briefcase",
+            "color": "green",
+            "group": "分析重点",
+            "label": "挽回动作",
+            "value": "挽回动作",
+            "description": "重点处理挽回动作"
+          }
+        ],
+        "description": "选择本次学员反馈留存分析最需要优先处理的方向。"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "studentFeedbackText",
+          "feedbackExportFile",
+          "surveyDashboardLink"
+        ],
+        "message": "请填写学员反馈记录、上传资料，或提供可访问链接"
+      }
+    ]
+  }
+}

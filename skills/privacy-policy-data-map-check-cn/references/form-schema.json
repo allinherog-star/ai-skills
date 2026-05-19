@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴隐私政策和数据清单，建议包含数据项、处理目的和第三方共享",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "privacyPolicyText",
+        "label": "隐私政策文本"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "dataMapFile",
+        "label": "上传数据清单"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "privacyNoticeLink",
+        "label": "隐私页面链接"
+      }
+    ],
+    "primaryField": "privacyPolicyText",
+    "advancedLabel": "补充场景",
+    "primaryControlFields": [
+      "dataMapCheckFocus"
+    ],
+    "advancedControlFields": [
+      "productDataContext",
+      "processingActivityNotes"
+    ]
+  },
+  "properties": {
+    "dataMapFile": {
+      "type": "string",
+      "title": "上传数据清单",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt,.xlsx,.csv,.png,.jpg,.jpeg",
+      "x-max-size": 20971520,
+      "description": "上传个人信息清单、数据流图、SDK清单、权限表或合规自查表。",
+      "x-component": "FileUpload"
+    },
+    "dataMapCheckFocus": {
+      "enum": [
+        "数据项映射",
+        "告知缺口",
+        "敏感信息",
+        "整改清单"
+      ],
+      "type": "string",
+      "title": "检查重点",
+      "default": "数据项映射",
+      "x-options": [
+        {
+          "icon": "Target",
+          "color": "blue",
+          "group": "检查重点",
+          "label": "数据项映射",
+          "value": "数据项映射",
+          "description": "重点处理数据项映射"
+        },
+        {
+          "icon": "ListChecks",
+          "color": "green",
+          "group": "检查重点",
+          "label": "告知缺口",
+          "value": "告知缺口",
+          "description": "重点处理告知缺口"
+        },
+        {
+          "icon": "Award",
+          "color": "blue",
+          "group": "检查重点",
+          "label": "敏感信息",
+          "value": "敏感信息",
+          "description": "重点处理敏感信息"
+        },
+        {
+          "icon": "ClipboardList",
+          "color": "green",
+          "group": "检查重点",
+          "label": "整改清单",
+          "value": "整改清单",
+          "description": "重点处理整改清单"
+        }
+      ],
+      "description": "选择本次隐私政策数据地图检查最需要优先处理的方向。"
+    },
+    "privacyNoticeLink": {
+      "type": "string",
+      "title": "隐私页面链接",
+      "format": "uri",
+      "description": "填写公开可访问的隐私政策、App说明、官网告知或帮助页链接。"
+    },
+    "privacyPolicyText": {
+      "type": "string",
+      "title": "隐私政策文本",
+      "x-rows": 10,
+      "description": "粘贴隐私政策、数据收集说明、权限弹窗、SDK说明或用户告知文案。",
+      "x-component": "Textarea"
+    },
+    "productDataContext": {
+      "type": "string",
+      "title": "产品与数据场景",
+      "x-rows": 3,
+      "description": "说明产品类型、用户群、收集数据、处理目的、第三方共享和地区。",
+      "x-component": "Textarea"
+    },
+    "processingActivityNotes": {
+      "type": "string",
+      "title": "处理活动与风险点",
+      "x-rows": 3,
+      "description": "补充敏感信息、未成年人、跨境、SDK、撤回同意和保存期限。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "privacyPolicyText",
+        "dataMapFile",
+        "privacyNoticeLink"
+      ],
+      "message": "请填写隐私政策文本、上传资料，或提供可访问链接"
+    }
+  ]
+}

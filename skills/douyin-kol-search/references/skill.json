@@ -1,21 +1,28 @@
 {
   "id": "douyin-kol-search",
   "slug": "douyin-kol-search",
-  "question": "谁是最会卖货的博主?",
-  "skillName": "抖音最具商业价值 KOL",
+  "question": "如何找对标账号?",
+  "skillName": "抖音最具商业价值意见领袖（KOL）",
   "tags": [
     "抖音",
     "KOL",
+    "搜索",
+    "合作",
+    "对标账号",
     "达人",
-    "带货"
+    "筛选"
   ],
   "profession": [
-    "blogger-individual",
-    "operations"
+    "内容创作者",
+    "运营",
+    "营销",
+    "品牌方"
   ],
   "industry": [
-    "media",
-    "ecommerce"
+    "新媒体",
+    "电商",
+    "营销",
+    "通用"
   ],
   "hidden": false,
   "auth": {
@@ -24,6 +31,20 @@
     "tenantHeader": "X-Tenant-Id"
   },
   "comingSoon": false,
+  "providerType": "api",
+  "providerConfig": {
+    "catalog": {
+      "icon": "Search",
+      "rating": 4.8,
+      "displayOrder": 4,
+      "subProfession": [
+        "content-creator",
+        "ads"
+      ]
+    },
+    "endpoint": "/api/v1/douyin/xingtu/search_kol_v2",
+    "apiSource": "tikhub"
+  },
   "invocationMode": "execute",
   "invocation": {
     "type": "execute",
@@ -31,63 +52,84 @@
   },
   "formSchema": {
     "type": "object",
-    "x-at-least-one-of": [
-      "keyword",
-      "contentTag"
+    "required": [
+      "keyword"
     ],
     "properties": {
-      "contentTag": {
-        "type": "string",
-        "title": "内容分类",
-        "description": "内容标签编码，传入 tag-{id}。可只填该字段按赛道搜索，具体映射见下方「contentTag 取值参考」。",
-        "x-component": "CategorySelect",
-        "x-direction-map": {
-          "美妆": "tag-1",
-          "时尚": "tag-6",
-          "萌宠": "tag-11",
-          "测评": "tag-15",
-          "游戏": "tag-23",
-          "二次元": "tag-25",
-          "旅行": "tag-27",
-          "汽车": "tag-31",
-          "生活": "tag-36",
-          "音乐": "tag-41",
-          "舞蹈": "tag-46",
-          "美食": "tag-48",
-          "母婴亲子": "tag-55",
-          "运动健身": "tag-60",
-          "科技数码": "tag-64",
-          "教育培训": "tag-68",
-          "颜值达人": "tag-72",
-          "才艺技能": "tag-79",
-          "影视娱乐": "tag-85",
-          "艺术文化": "tag-87",
-          "财经投资": "tag-91",
-          "三农": "tag-95",
-          "剧情搞笑": "tag-97",
-          "情感": "tag-100",
-          "园艺": "tag-102",
-          "随拍": "tag-130",
-          "房产": "tag-139",
-          "生活家居": "tag-1001",
-          "媒体号": "tag-1002"
-        }
+      "page": {
+        "type": "number",
+        "title": "页码",
+        "default": 1,
+        "minimum": 1,
+        "description": "页码，从1开始"
       },
       "keyword": {
         "type": "string",
-        "title": "搜索词",
-        "description": "赛道关键词，如「深圳烧烤酒吧」。与 `contentTag` 至少填写一个。"
+        "title": "搜索关键词",
+        "description": "输入关键词搜索 KOL（如：美妆、美食、穿搭...）",
+        "x-component-props": {
+          "maxLength": 100,
+          "placeholder": "输入关键词搜索 KOL"
+        }
       },
-      "followerRange": {
+      "contentTag": {
+        "enum": [
+          "",
+          "tag-1",
+          "tag-6",
+          "tag-11",
+          "tag-15",
+          "tag-23",
+          "tag-25",
+          "tag-27",
+          "tag-31",
+          "tag-36",
+          "tag-41",
+          "tag-48",
+          "tag-55",
+          "tag-60",
+          "tag-64",
+          "tag-68",
+          "tag-72",
+          "tag-79",
+          "tag-85",
+          "tag-87",
+          "tag-91",
+          "tag-97",
+          "tag-139",
+          "tag-1001"
+        ],
         "type": "string",
-        "title": "粉丝范围",
-        "description": "格式为「最小值-最大值」，单位是万，例如 `10-100` 表示 10 万到 100 万粉丝。"
+        "title": "内容标签",
+        "default": "",
+        "enumNames": [
+          "不限",
+          "美妆",
+          "时尚",
+          "萌宠",
+          "测评",
+          "游戏",
+          "二次元",
+          "旅行",
+          "汽车",
+          "生活",
+          "音乐",
+          "美食",
+          "母婴亲子",
+          "运动健身",
+          "科技数码",
+          "教育培训",
+          "颜值达人",
+          "才艺技能",
+          "影视娱乐",
+          "艺术文化",
+          "财经投资",
+          "剧情搞笑",
+          "房产",
+          "生活家居"
+        ],
+        "description": "选择内容分类标签进行筛选"
       }
     }
-  },
-  "providerType": "api",
-  "providerConfig": {
-    "apiSource": "tikhub",
-    "endpoint": "/api/v1/douyin/xingtu/search_kol_v2"
   }
 }

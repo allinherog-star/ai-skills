@@ -1,0 +1,7 @@
+interface:
+  display_name: "风险审阅助手"
+  short_description: "风险审阅助手"
+  default_prompt: "Use $api-doc-integration-risk-review to help with 风险审阅助手"
+
+policy:
+  allow_implicit_invocation: true

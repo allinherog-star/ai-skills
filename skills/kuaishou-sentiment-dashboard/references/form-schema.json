@@ -1,13 +1,16 @@
 {
   "type": "object",
   "required": [
-    "link"
+    "videoUrl"
   ],
   "properties": {
-    "link": {
+    "videoUrl": {
       "type": "string",
-      "title": "分享链接",
-      "format": "uri"
+      "title": "视频/笔记链接",
+      "description": "粘贴快手分享链接",
+      "x-component-props": {
+        "placeholder": "粘贴快手分享链接..."
+      }
     }
   }
 }

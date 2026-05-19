@@ -1,0 +1,7 @@
+interface:
+  display_name: "演示稿优化助手"
+  short_description: "演示稿优化助手"
+  default_prompt: "Use $ai-presentation-design-enhancer to help with 演示稿优化助手"
+
+policy:
+  allow_implicit_invocation: true

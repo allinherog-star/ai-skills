@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [],
+  "x-layout": {
+    "mode": "contextComposer",
+    "rows": 5,
+    "placeholder": "粘贴 Word 正文或章节片段，并说明读者、用途和希望重点审阅的问题",
+    "primaryTabs": [
+      {
+        "id": "paste",
+        "icon": "FileText",
+        "field": "materialText",
+        "label": "粘贴文档正文"
+      },
+      {
+        "id": "upload",
+        "icon": "Upload",
+        "field": "materialFile",
+        "label": "上传 Word"
+      },
+      {
+        "id": "link",
+        "icon": "Link",
+        "field": "materialUrl",
+        "label": "填文档链接"
+      }
+    ],
+    "primaryField": "materialText",
+    "advancedLabel": "补充文档要求",
+    "primaryControlFields": [],
+    "advancedControlFields": [
+      "audience",
+      "goal"
+    ]
+  },
+  "properties": {
+    "goal": {
+      "type": "string",
+      "title": "文档目标",
+      "x-rows": 3,
+      "description": "例如汇报、说服、培训、说明、申请、交付、审稿或对外发布。",
+      "x-component": "Textarea"
+    },
+    "audience": {
+      "type": "string",
+      "title": "目标读者",
+      "x-rows": 3,
+      "description": "说明文档面向谁，例如客户、领导、员工、评审、候选人或合作方。",
+      "x-component": "Textarea"
+    },
+    "materialUrl": {
+      "type": "string",
+      "title": "公开文档链接",
+      "format": "uri",
+      "description": "填写无需登录即可访问的文档链接；受权限保护的文件请改为上传或粘贴正文。"
+    },
+    "materialFile": {
+      "type": "string",
+      "title": "上传 Word 文档",
+      "format": "binary",
+      "x-accept": ".docx,.pdf,.md,.txt",
+      "x-max-size": 20971520,
+      "description": "上传需要审阅、润色、改写或生成简报的 docx/doc/txt/md 文件。",
+      "x-component": "FileUpload"
+    },
+    "materialText": {
+      "type": "string",
+      "title": "Word 正文或片段",
+      "x-rows": 10,
+      "description": "可粘贴文档正文、章节片段、批注摘录、目录或平台解析出的文本。",
+      "x-component": "Textarea"
+    },
+    "brandRequirements": {
+      "type": "string",
+      "title": "写作与格式要求",
+      "x-rows": 3,
+      "description": "补充品牌语气、术语表、格式偏好、合规限制、必须保留段落和不可改动事实。",
+      "x-component": "Textarea"
+    }
+  },
+  "x-profile-context": true,
+  "x-required-any-of": [
+    {
+      "fields": [
+        "materialText",
+        "materialFile",
+        "materialUrl"
+      ],
+      "message": "请粘贴 Word 正文、上传文档文件，或填写公开文档链接"
+    }
+  ]
+}

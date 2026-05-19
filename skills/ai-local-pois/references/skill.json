@@ -1,0 +1,194 @@
+{
+  "id": "ai-local-pois",
+  "slug": "ai-local-pois",
+  "question": "周边 POI 怎么选?",
+  "skillName": "本地 POI 筛选助手",
+  "tags": [
+    "资料整理",
+    "数据清理",
+    "行动项"
+  ],
+  "profession": [
+    "operation",
+    "product",
+    "seller"
+  ],
+  "industry": [
+    "software",
+    "ecommerce"
+  ],
+  "hidden": false,
+  "auth": {
+    "type": "api-key",
+    "header": "X-API-Key",
+    "tenantHeader": "X-Tenant-Id"
+  },
+  "comingSoon": false,
+  "providerType": "llm",
+  "providerConfig": {
+    "trend": {
+      "sourceGap": "外部开源资料 需先安装到 技能目录 目录，再由平台 manifest/sync 归一化。",
+      "sourceIds": [
+        "https://skillsmp.com/skills/brave-brave-search-skills-skills-local-pois-skill-md"
+      ],
+      "sourceNotes": "recent_hot_search_signal: brave/brave-search-skills/local-pois"
+    },
+    "catalog": {
+      "icon": "Sparkles"
+    },
+    "managedBy": "worker-skill-local-sync",
+    "riskLevel": "medium",
+    "bulkSupply": {
+      "wave": "skillsmp-market-2026-05-17",
+      "batchId": "skillsmp-market-2026-05-17",
+      "candidateId": "local-pois",
+      "sourceShard": "external-open-source",
+      "coverageNotes": "SkillsMP market signal (129 stars): USE FOR getting local business/POI details. Requires POI IDs obtained from web-search (with result_filter=locations). Returns full business information including ratings, hours, co",
+      "primaryIndustry": "local_services",
+      "generatorVersion": "manual-curated-2026-05-17",
+      "primaryProfession": "owner",
+      "taxonomySourceVersion": "external-open-source-skill-intake-v1"
+    },
+    "compliance": {
+      "riskTier": "R1",
+      "launchGate": "sample_required",
+      "riskDomains": [
+        "local_services"
+      ],
+      "reviewStatus": "auto_screened",
+      "sourceLimits": "外部开源资料 只作为能力来源，平台输出必须以用户提交材料和公开可见信息为依据。",
+      "riskRationale": "SkillsMP market signal (129 stars): USE FOR getting local business/POI details. Requires POI IDs obtained from web-search (with result_filter=locations). Returns full business information including ratings, hours, co",
+      "allowedOutputs": [
+        "经营诊断",
+        "本地营销建议",
+        "执行清单"
+      ],
+      "forbiddenOutputs": [
+        "不得输出未经核验的确定性专业结论",
+        "不得代替用户执行第三方平台操作"
+      ],
+      "humanReviewRequired": false
+    },
+    "safetySha256": "9bd6294d30270e19ded520264a7e07071fe39f527ab77b9e1ab57356977bb938",
+    "safetyStatus": "review_required",
+    "asyncProvider": "skills2api-scheduler",
+    "workerSkillId": "ai-local-pois",
+    "resultContract": "ResultEnvelope",
+    "externalOpenSource": {
+      "batchId": "skillsmp-market-2026-05-17",
+      "license": "unknown_pending_verification",
+      "category": "local_services",
+      "sourceRef": "brave/brave-search-skills",
+      "sourceUrl": "https://skillsmp.com/skills/brave-brave-search-skills-skills-local-pois-skill-md",
+      "importedAt": "2026-05-17T14:25:18.389Z",
+      "candidateId": "local-pois",
+      "sourceSignal": "recent_hot_search_signal",
+      "originalSkillId": "local-pois"
+    },
+    "resultRequirements": {
+      "mustInclude": [
+        "summary",
+        "items",
+        "artifacts"
+      ]
+    }
+  },
+  "invocationMode": "execute",
+  "invocation": {
+    "type": "execute",
+    "executePath": "/api/execute"
+  },
+  "formSchema": {
+    "type": "object",
+    "required": [],
+    "x-layout": {
+      "mode": "contextComposer",
+      "rows": 5,
+      "placeholder": "粘贴地点需求、筛选条件、预算和出行范围",
+      "primaryTabs": [
+        {
+          "id": "paste",
+          "icon": "FileText",
+          "field": "materialText",
+          "label": "写地点需求"
+        },
+        {
+          "id": "upload",
+          "icon": "Upload",
+          "field": "materialFile",
+          "label": "上传清单"
+        },
+        {
+          "id": "link",
+          "icon": "Link",
+          "field": "materialUrl",
+          "label": "填地点链接"
+        }
+      ],
+      "primaryField": "materialText",
+      "advancedLabel": "补充筛选条件",
+      "primaryControlFields": [],
+      "advancedControlFields": [
+        "audience",
+        "goal",
+        "brandRequirements"
+      ]
+    },
+    "properties": {
+      "goal": {
+        "type": "string",
+        "title": "筛选目标",
+        "x-rows": 3,
+        "description": "说明要完成的推荐、比较、路线、预算、风险核验或最终决策。",
+        "x-component": "Textarea"
+      },
+      "audience": {
+        "type": "string",
+        "title": "出行或使用对象",
+        "x-rows": 3,
+        "description": "说明人数、角色、偏好、场景、交通方式或活动类型。",
+        "x-component": "Textarea"
+      },
+      "materialUrl": {
+        "type": "string",
+        "title": "地点或地图链接",
+        "format": "uri",
+        "description": "填写公开可访问的地图、门店、地点、评价或候选页面链接。"
+      },
+      "materialFile": {
+        "type": "string",
+        "title": "地点资料文件",
+        "format": "binary",
+        "x-accept": ".xlsx,.xls,.csv,.tsv",
+        "x-max-size": 20971520,
+        "description": "上传地点清单、评价表、活动需求、预算表或调研资料。",
+        "x-component": "FileUpload"
+      },
+      "materialText": {
+        "type": "string",
+        "title": "地点需求或候选清单",
+        "x-rows": 8,
+        "description": "粘贴地点需求、候选清单、预算、出行范围、偏好条件或评价摘录。",
+        "x-component": "Textarea"
+      },
+      "brandRequirements": {
+        "type": "string",
+        "title": "时间与限制",
+        "x-rows": 3,
+        "description": "补充时间范围、预算上限、距离限制、营业要求、避雷条件或人工核验重点。",
+        "x-component": "Textarea"
+      }
+    },
+    "x-profile-context": true,
+    "x-required-any-of": [
+      {
+        "fields": [
+          "materialText",
+          "materialFile",
+          "materialUrl"
+        ],
+        "message": "请填写地点需求、上传地点资料或提供地点链接"
+      }
+    ]
+  }
+}

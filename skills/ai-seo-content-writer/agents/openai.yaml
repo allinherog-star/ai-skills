@@ -1,0 +1,7 @@
+interface:
+  display_name: "SEO 内容写作助手"
+  short_description: "SEO 内容写作助手"
+  default_prompt: "Use $ai-seo-content-writer to help with SEO 内容写作助手"
+
+policy:
+  allow_implicit_invocation: true
