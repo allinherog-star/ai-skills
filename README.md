@@ -2,16 +2,6 @@
 >
 > AI Skills 官网是整个技能库的统一入口，可以按技能、职业、行业和应用场景查找内容，也能直接进入具体 Skill 的介绍与使用页面。下面用一组移动端截图快速看一下站点形态。
 
-## 发布包生成口径
-
-平台全量 `skills-release` 由 `ai-skills-service` 从目标数据库只读生成：
-
-```bash
-cd ../ai-skills-service
-npm run skills-release:export
-```
-
-该命令导出 `as_skills` 中 `status='active'` 且 `visibility='public'` 的可安装/可展示技能，写入本仓库受管产物 `canonical-skills.json`、`skills.json`、`skills.md` 和 `skills/`。无数据库环境时可用 `--source worker-manifest` 从本地 `skills2api-worker/skills/*/references/platform-skill.json` 生成候选包，但候选包只代表本地 manifest，不代表线上平台真实上线集合。
 
 <p align="center">
   <picture><img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/mobile/%E9%A6%96%E9%A1%B5mobile.jpg" alt="AI Skills 官网首页（Mobile）" width="15%" /></picture>
@@ -26,7 +16,7 @@ npm run skills-release:export
 
 # AI Skills 技能库：为每一个场景做真正有价值的AI技能库
 
-> 大多数人用 AI 还停在「问一句答一句」。AI Skills（[ai-skills.ai](https://ai-skills.ai/)）想换一种姿势：把 AI 能力拆成一条条能直接执行的 Skill，像查字典一样调出来用。无论你从 AI Skills 官网、skills.sh 还是 ClawHub 进入，这里都先给你同一套品牌开场和接入步骤，再进入具体 Skill 与站点内容。
+> AI Skills 官网是整个技能库的统一入口，可以按技能、职业、行业和应用场景归类的技能库。
 
 <picture>
   <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/content-01.webp" alt="AI Skills 官网场景导览图" />
