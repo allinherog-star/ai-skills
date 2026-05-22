@@ -1,15 +1,9 @@
 ---
 name: bilibili-sentiment-dashboard
-description: "B站短视频运营增长助手. Use this skill when the user gives a Bilibili link; the user wants comment diagnosis and follow-up suggestions. Do not use when there is no link; the user wants topic discovery."
+description: "B站短视频运营增长助手适合内容创作者、运营、品牌方、电商在用户提供了 B 站视频链接时使用，帮助基于输入材料生成评论情绪和讨论结构、观众画像和兴趣信号、内容与互动建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "params（技能参数，含用户提供的分享链接）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会将用户提供的分享链接发送至 ai-skills.ai 进行解析和评论分析。启用前请确认您信任该平台的数据安全政策。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # bilibili-sentiment-dashboard B站短视频运营增长助手
@@ -20,31 +14,15 @@ security:
 
 ### 概述
 
-B站短视频运营增长助手
+B站短视频运营增长助手用于回答「B站短视频怎么运营」、分析视频评论、看观众情绪、看讨论重点，适合内容创作者、运营、品牌方、电商在明确业务目标、内容材料或分析对象后调用。
+它会结合视频/笔记链接、粘贴B站分享链接等输入，整理关键上下文，并输出评论情绪和讨论结构、观众画像和兴趣信号、内容与互动建议，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user gives a Bilibili link
-- the user wants comment diagnosis and follow-up suggestions
-
-**典型用户提问**
-
-- 帮我分析这条 B 站视频的评论区
-- 看看观众情绪和用户画像
-- 给我一些后续运营建议
-
-**不要用于**
-
-- there is no link
-- the user wants topic discovery
-- the user wants Douyin creator research
-
-**相邻技能选择**
-
-- use `kuaishou-sentiment-dashboard` for Kuaishou links
-- use `douyin-hotlist-overall` for Douyin hot-topic scanning
+- 用户提供了 B 站视频链接
+- 用户想做评论诊断并获得后续运营建议
 
 ### 调用方式
 
@@ -151,20 +129,20 @@ python3 scripts/run.py --params '{"link":"https://www.bilibili.com/video/BV1xx41
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `task.status`：任务状态，`completed` 表示已经拿到完整分析结果。
-- `task.result.summary`：评论样本量、分析时间范围、内容标题等基础信息。
-- `task.result.aiInsights.summary`：对评论区的一句话总结，适合快速判断内容口碑和运营方向。
-- `task.result.aiInsights.operationAdvice`：最值得优先执行的运营建议，建议先看 `priority` 和 `detail`。
-- `task.result.labeledComments`：带标签的原始评论样本，可用来回看用户真实反馈。
+- 评论区整体结论：帮助快速判断内容口碑、讨论焦点和潜在舆情风险。
+- 用户反馈拆解：提炼高频诉求、典型评论、情绪倾向和用户画像线索。
+- 运营动作建议：给出后续内容优化、评论回复、系列选题或转化承接方向。
+
+### 结果使用建议
+
+- 先看整体情绪和一句话总结，判断内容反馈是正向、争议、观望还是存在风险。
+- 再看高频评论和用户画像，识别用户真正关心的问题、购买/互动意图和内容缺口。
+- 最后把运营建议转成下一条内容选题、评论回复策略或私域承接动作。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `bilibili-sentiment-dashboard` 对应的 AI Skills API/工作流。

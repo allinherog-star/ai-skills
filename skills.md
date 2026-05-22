@@ -1,35 +1,35 @@
-# AI Skills Agent Playbook
+# AI Skills 技能索引
 
-> Read this file at session start.
+> 会话开始时先阅读本索引，用它判断用户需求最适合调用哪个 AI Skills。
 >
-> This is not a full integration spec. This is the operating handbook for choosing and using the currently executable AI Skills.
+> 本文件聚焦技能选择、适用场景和交付结果，不作为底层接口规范。
 
 ---
 
-## Role
+## 使用角色
 
-When you use AI Skills, act like:
+使用 AI Skills 时，把自己当作：
 
-- a senior operations strategist
-- a growth analyst
-- a content planning advisor
-- a creator commercialization consultant
+- 资深运营策略顾问
+- 增长分析师
+- 内容规划顾问
+- 创作者商业化顾问
 
-Think in this order:
+推荐判断顺序：
 
-1. identify the user's business goal
-2. choose the closest-fit skill
-3. read the skill detail and `formSchema`
-4. execute only if the skill matches the goal
-5. answer with conclusions first, then evidence and suggestions
+1. 先识别用户真实业务目标。
+2. 选择最贴近目标的技能。
+3. 阅读该技能的 `SKILL.md`、参数说明和 `formSchema`。
+4. 根据用户已有材料构造参数。
+5. 回复时先给结论，再给依据和行动建议。
 
-If the user's goal is outside the skill coverage below, say so directly. Do not force a bad skill match.
+如果用户目标和现有技能覆盖范围差距较大，直接说明当前没有完全匹配的技能，并给出最接近的候选方向。
 
 ---
 
-## Executable Scope
+## 可直接运行的技能
 
-Treat only these 244 skills as directly executable:
+以下 244 个技能可通过导出包直接运行：
 
 - `account-research-sales-card`
 - `ad-copy-compliance-review`
@@ -276,4647 +276,5352 @@ Treat only these 244 skills as directly executable:
 - `xhs-sentiment-dashboard`
 - `xhs-viral-copywriter`
 
-Do not treat these as directly executable:
-
-- external-link skills
-- service-delivery skills
-- hidden skills
-- coming-soon skills
-
-Current non-executable public skills:
+以下公开技能属于外部入口、服务交接或预览类能力，需要阅读对应技能包后按其说明继续：
 
 - `software-dev-cost-dashboard` (external-link)
 
 ---
 
-## Quick Routing
+## 快速选择
 
-Use this routing map first.
+优先按用户意图选择技能：
 
-- If the user asks what to create next, what topic may rise, or what may get traffic:
-  - choose `douyin-realtime-hot-rise`
-- If the user asks what is hottest right now:
-  - choose `douyin-hotlist-overall`
-- If the user asks where platform traffic is flowing:
-  - choose `douyin-traffic-dashboard`
-- If the user asks who is worth collaborating with, who sells best, or which creator is commercially strong:
-  - choose `douyin-kol-search`
-- If the user asks for **抖音对标账号**, same-track accounts, competitor accounts, or similar creators:
-  - choose `douyin-kol-search`
-  - this rule is currently limited to **Douyin benchmark accounts**
-- If the user provides a content link and wants comment insight, sentiment, user profile, public opinion, or operational suggestions:
-  - choose the platform-specific sentiment dashboard
-- If the user asks for software project cost estimation, budget planning, or quote planning:
-  - treat `software-dev-cost-dashboard` as an external handoff, not an API-executable skill
+- 用户想找下一步创作选题、上升热点或流量机会：
+  - 选择 `douyin-realtime-hot-rise`
+- 用户想看此刻最热的抖音热点：
+  - 选择 `douyin-hotlist-overall`
+- 用户想看平台流量流向或分类分布：
+  - 选择 `douyin-traffic-dashboard`
+- 用户想找合作达人、带货达人、商业价值高的创作者或抖音对标账号：
+  - 选择 `douyin-kol-search`
+- 用户提供内容链接，并想看评论洞察、情绪、画像、舆情或运营建议：
+  - 选择对应平台的评论舆情分析技能
+- 用户想估算软件项目成本、做预算规划或报价规划：
+  - 将 `software-dev-cost-dashboard` 作为外部站点交接入口
 
-If uncertain:
+当用户意图还不够清晰时：
 
-1. return 1-3 candidate skills
-2. explain what each is best for
-3. recommend one
+1. 给出 1-3 个候选技能。
+2. 说明每个技能最适合解决什么问题。
+3. 推荐一个当前最值得先试的技能。
 
 ---
 
-## Skill Cards
+## 技能卡片
 
 ### `account-research-sales-card`
 
 - **核心价值**
-  - 销售增长助手
+  - 销售增长助手用于处理客户为什么不推进相关任务。
+  - 适合销售、市场营销、运营、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 销售增长助手
-- **Use when**
-  - the user asks for 销售增长助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售赋能
+  - 客户研究
+  - 跟进计划
+  - GTM
+- **适用场景**
+  - 用户提出“客户为什么不推进”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、产品需要围绕销售增长助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了作战卡深度（作战卡深度）、已知买方角色（填写已知联系人、部门、角色或希望优先影响的买方群体。）、我方产品背景（说明产品价值、目标行业、客户案例、竞争差异和交付限制。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售增长助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ad-copy-compliance-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、销售、法务把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 广告文案
+  - 合规
+  - 转化
+  - 风险词
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、法务需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升点击率、降低审核风险、提高线索质量、促成咨询或下单。）、目标人群（说明广告面向的人群和投放场景，例如信息流新客、搜索高意向用户或再营销人群。）、广告落地链接（填写无需登录即可访问的广告页、商品页、活动页或投放预览链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ad-creative`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了创意目标（例如停留、点击、留资、购买、安装、召回、品牌认知或新品解释。）、目标受众情境（补充受众痛点、使用场景、购买阶段、文化语境、创意敏感点和反感表达。）、创意预览链接（填写公开可访问的广告预览、素材说明、落地页、产品页或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `agent-browser`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了代理式浏览目标（例如资料收集、页面比较、流程观察、证据归档或人工执行手册。）、运行手册读者（填写研究员、QA、运营、产品经理、销售情报团队、内容团队等使用者。）、公开入口链接（填写无需登录即可访问的入口 URL、候选页面链接、页面标题或链接 metadata。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-ab-testing`
 
 - **核心价值**
-  - A/B 测试设计助手
+  - A/B 测试设计助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、产品、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - A/B 测试设计助手
-- **Use when**
-  - the user asks for A/B 测试设计助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 增长实验
+  - 转化优化
+  - 数据决策
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、运营、software需要围绕A/B 测试设计助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把A/B 测试设计助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-accessibility`
 
 - **核心价值**
-  - 无障碍体验诊断助手
+  - 无障碍体验诊断助手用于处理这个页面好用吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成问题归因、服务改进建议、SOP 或 FAQ 清单。
 - **主要用途**
   - 无障碍体验诊断助手
-- **Use when**
-  - the user asks for 无障碍体验诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这个页面好用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕无障碍体验诊断助手生成问题归因、服务改进建议、SOP 或 FAQ 清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把无障碍体验诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 问题归因、服务改进建议、SOP 或 FAQ 清单
 
 ### `ai-account-research`
 
 - **核心价值**
-  - 客户研究助手
+  - 客户研究助手用于处理这个客户怎么切入相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - 客户研究助手
-- **Use when**
-  - the user asks for 客户研究助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“这个客户怎么切入”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕客户研究助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把客户研究助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-ad-creative`
 
 - **核心价值**
-  - 广告创意诊断助手
+  - 广告创意诊断助手用于处理这条广告会被点吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成创意诊断、卖点强化建议、迭代方向。
 - **主要用途**
   - 广告创意诊断助手
-- **Use when**
-  - the user asks for 广告创意诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“这条广告会被点吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕广告创意诊断助手生成创意诊断、卖点强化建议、迭代方向
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把广告创意诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 创意诊断、卖点强化建议、迭代方向
 
 ### `ai-amazon-brand-analytics`
 
 - **核心价值**
-  - Amazon 品牌分析助手
+  - Amazon 品牌分析助手用于处理品牌数据说明什么相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 品牌分析助手
-- **Use when**
-  - the user asks for Amazon 品牌分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“品牌数据说明什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 品牌分析助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 品牌分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-dayparting-strategy`
 
 - **核心价值**
-  - Amazon 分时投放助手
+  - Amazon 分时投放助手用于处理广告几点投更值相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 分时投放助手
-- **Use when**
-  - the user asks for Amazon 分时投放助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“广告几点投更值”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 分时投放助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 分时投放助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-international-listings`
 
 - **核心价值**
-  - Amazon 本地化助手
+  - Amazon 本地化助手用于处理海外 Listing 说对了吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 本地化助手
-- **Use when**
-  - the user asks for Amazon 本地化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“海外 Listing 说对了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 本地化助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 本地化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-inventory-management`
 
 - **核心价值**
-  - Amazon 库存诊断助手
+  - Amazon 库存诊断助手用于处理库存会拖住利润吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 库存诊断助手
-- **Use when**
-  - the user asks for Amazon 库存诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“库存会拖住利润吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 库存诊断助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 库存诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-listing-images`
 
 - **核心价值**
-  - Amazon 图片诊断助手
+  - Amazon 图片诊断助手用于处理主图能让人买吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 图片诊断助手
-- **Use when**
-  - the user asks for Amazon 图片诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“主图能让人买吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 图片诊断助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 图片诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-product-bundling`
 
 - **核心价值**
-  - Amazon 组合销售助手
+  - Amazon 组合销售助手用于处理怎么组合更好卖相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 组合销售助手
-- **Use when**
-  - the user asks for Amazon 组合销售助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“怎么组合更好卖”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 组合销售助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 组合销售助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-rank-tracker`
 
 - **核心价值**
-  - Amazon 排名追踪助手
+  - Amazon 排名追踪助手用于处理排名为什么波动相关任务。
+  - 适合销售、运营、市场营销、电商把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - Amazon 排名追踪助手
-- **Use when**
-  - the user asks for Amazon 排名追踪助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - Amazon
+  - 增长诊断
+- **适用场景**
+  - 用户提出“排名为什么波动”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、运营、市场营销、电商需要围绕Amazon 排名追踪助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 排名追踪助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-amazon-repricing-strategy`
 
 - **核心价值**
-  - Amazon 调价诊断助手
+  - Amazon 调价诊断助手用于处理价格怎么调才稳相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 调价诊断助手
-- **Use when**
-  - the user asks for Amazon 调价诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“价格怎么调才稳”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 调价诊断助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 调价诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-return-reduction`
 
 - **核心价值**
-  - Amazon 退货诊断助手
+  - Amazon 退货诊断助手用于处理退货为什么变多相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 退货诊断助手
-- **Use when**
-  - the user asks for Amazon 退货诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“退货为什么变多”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 退货诊断助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 退货诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-search-optimization`
 
 - **核心价值**
-  - Amazon 搜索优化助手
+  - Amazon 搜索优化助手用于处理买家搜得到吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 搜索优化助手
-- **Use when**
-  - the user asks for Amazon 搜索优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“买家搜得到吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 搜索优化助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 搜索优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-storefront-design`
 
 - **核心价值**
-  - Amazon 店铺优化助手
+  - Amazon 店铺优化助手用于处理店铺首页能转化吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 店铺优化助手
-- **Use when**
-  - the user asks for Amazon 店铺优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“店铺首页能转化吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 店铺优化助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 店铺优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-subscribe-save`
 
 - **核心价值**
-  - Amazon 订阅优化助手
+  - Amazon 订阅优化助手用于处理订阅省能留住人吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon 订阅优化助手
-- **Use when**
-  - the user asks for Amazon 订阅优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“订阅省能留住人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon 订阅优化助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon 订阅优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-amazon-vine-program`
 
 - **核心价值**
-  - Amazon Vine 决策助手
+  - Amazon Vine 决策助手用于处理Vine 值得做吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - Amazon Vine 决策助手
-- **Use when**
-  - the user asks for Amazon Vine 决策助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“Vine 值得做吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕Amazon Vine 决策助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Amazon Vine 决策助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-article`
 
 - **核心价值**
-  - 自动图文助手
+  - 自动图文助手用于处理自动公众号和种草相关任务。
+  - 适合内容创作者、运营、technical、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 自动图文助手
-- **Use when**
-  - the user asks for 自动图文助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 图文
+  - 写作
+  - 配图
+  - 公众号
+- **适用场景**
+  - 用户提出“自动公众号和种草”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、technical、内容媒体需要围绕自动图文助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了语气、主题（文章主题、关键词或一句话需求）、目标读者，希望整理成可执行的分析或优化结果
+  - 用户需要把自动图文助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-audit-website`
 
 - **核心价值**
-  - 网站诊断助手
+  - 网站诊断助手用于处理网站哪里拖后腿相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成研究摘要、关键发现、引用/验证清单。
 - **主要用途**
   - 网站诊断助手
-- **Use when**
-  - the user asks for 网站诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“网站哪里拖后腿”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕网站诊断助手生成研究摘要、关键发现、引用/验证清单
+  - 用户已经准备了诊断目标（说明要定位的性能、可用性、搜索、转化或上线检查目标。）、影响对象（说明受影响的用户、设备、页面类型、地区或业务场景。）、待诊断页面链接（填写公开可访问的待诊断页面、站点、报告或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把网站诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 研究摘要、关键发现、引用/验证清单
 
 ### `ai-avatar-video`
 
 - **核心价值**
-  - 视频质量诊断助手
+  - 视频质量诊断助手用于处理这段视频够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视频质量诊断助手
-- **Use when**
-  - the user asks for 视频质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这段视频够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视频质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了口播目标（例如讲解产品、引导咨询、培训说明、活动预热、品牌背书或降低客服压力。）、观看人群（说明视频面向的观众，例如潜在客户、课程学员、员工、投资人或社媒粉丝。）、口播参考链接（填写无需登录即可访问的参考口播视频、品牌页面、脚本页面或形象说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视频质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-backlink-analyzer`
 
 - **核心价值**
-  - 外链质量分析助手
+  - 外链质量分析助手用于处理这些外链有价值吗相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 外链质量分析助手
-- **Use when**
-  - the user asks for 外链质量分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“这些外链有价值吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕外链质量分析助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把外链质量分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-baoyu-article-illustrator`
 
 - **核心价值**
-  - 文章配图助手
+  - 文章配图助手用于处理文章配图够好吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 文章配图助手
-- **Use when**
-  - the user asks for 文章配图助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“文章配图够好吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文章配图助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文章配图助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-baoyu-compress-image`
 
 - **核心价值**
-  - 图片压缩助手
+  - 图片压缩助手用于处理图片能再小一点吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 图片压缩助手
-- **Use when**
-  - the user asks for 图片压缩助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“图片能再小一点吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕图片压缩助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把图片压缩助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-baoyu-cover-image`
 
 - **核心价值**
-  - 封面图生成助手
+  - 封面图生成助手用于处理封面能吸引点击吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 封面图生成助手
-- **Use when**
-  - the user asks for 封面图生成助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“封面能吸引点击吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕封面图生成助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把封面图生成助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-baoyu-image-cards`
 
 - **核心价值**
-  - 图文卡片生成助手
+  - 图文卡片生成助手用于处理卡片图好读吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 图文卡片生成助手
-- **Use when**
-  - the user asks for 图文卡片生成助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“卡片图好读吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕图文卡片生成助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把图文卡片生成助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-baoyu-image-gen`
 
 - **核心价值**
-  - 图片生成助手
+  - 图片生成助手用于处理这张图能用吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 图片生成助手
-- **Use when**
-  - the user asks for 图片生成助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这张图能用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕图片生成助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把图片生成助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-baoyu-wechat-summary`
 
 - **核心价值**
-  - 微信摘要助手
+  - 微信摘要助手用于处理微信文章怎么总结相关任务。
+  - 适合运营、产品、销售、software把输入材料转成结构化摘要、问题/风险清单、可下载或可复制报告。
 - **主要用途**
   - 微信摘要助手
-- **Use when**
-  - the user asks for 微信摘要助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“微信文章怎么总结”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕微信摘要助手生成结构化摘要、问题/风险清单、可下载或可复制报告
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把微信摘要助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 结构化摘要、问题/风险清单、可下载或可复制报告
 
 ### `ai-brand-consistency-checker`
 
 - **核心价值**
-  - 品牌一致性诊断助手
+  - 品牌一致性诊断助手用于处理品牌表达统一吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成调性偏差、改写建议、一致性清单。
 - **主要用途**
   - 品牌一致性诊断助手
-- **Use when**
-  - the user asks for 品牌一致性诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“品牌表达统一吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕品牌一致性诊断助手生成调性偏差、改写建议、一致性清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把品牌一致性诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 调性偏差、改写建议、一致性清单
 
 ### `ai-churn-prevention`
 
 - **核心价值**
-  - 流失预警诊断助手
+  - 流失预警诊断助手用于处理客户为什么要走相关任务。
+  - 适合运营、产品、销售、software把输入材料转成流失归因、挽回优先级、触达建议。
 - **主要用途**
   - 流失预警诊断助手
-- **Use when**
-  - the user asks for 流失预警诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“客户为什么要走”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕流失预警诊断助手生成流失归因、挽回优先级、触达建议
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把流失预警诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 流失归因、挽回优先级、触达建议
 
 ### `ai-cold-email`
 
 - **核心价值**
-  - 冷邮件诊断助手
+  - 冷邮件诊断助手用于处理客户为什么不回我相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 冷邮件诊断助手
-- **Use when**
-  - the user asks for 冷邮件诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“客户为什么不回我”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕冷邮件诊断助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把冷邮件诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-co-marketing`
 
 - **核心价值**
-  - 联合营销策划助手
+  - 联合营销策划助手用于处理合作营销怎么做相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 联合营销策划助手
-- **Use when**
-  - the user asks for 联合营销策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“合作营销怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕联合营销策划助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把联合营销策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-community-marketing`
 
 - **核心价值**
-  - 社群运营策划助手
+  - 社群运营策划助手用于处理社群怎么活起来相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 社群运营策划助手
-- **Use when**
-  - the user asks for 社群运营策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“社群怎么活起来”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕社群运营策划助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把社群运营策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-competitor-alternatives`
 
 - **核心价值**
-  - 竞品替代分析助手
+  - 竞品替代分析助手用于处理用户为什么选对手相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成替代页结构、差异化卖点、风险表达提示。
 - **主要用途**
   - 竞品替代分析助手
-- **Use when**
-  - the user asks for 竞品替代分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“用户为什么选对手”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕竞品替代分析助手生成替代页结构、差异化卖点、风险表达提示
+  - 用户已经准备了处理目标（说明本次希望解决的问题、判断目标、输出形式或交付用途。）、使用对象（说明输出要服务的人群、角色、团队或业务场景。）、参考链接（填写公开可访问的页面、资料、参考案例或背景链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把竞品替代分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 替代页结构、差异化卖点、风险表达提示
 
 ### `ai-competitor-profiling`
 
 - **核心价值**
-  - 竞品画像助手
+  - 竞品画像助手用于处理对手强在哪里相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 竞品画像助手
-- **Use when**
-  - the user asks for 竞品画像助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“对手强在哪里”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕竞品画像助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了处理目标（说明本次希望解决的问题、判断目标、输出形式或交付用途。）、使用对象（说明输出要服务的人群、角色、团队或业务场景。）、参考链接（填写公开可访问的页面、资料、参考案例或背景链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把竞品画像助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-content-creator`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文案诊断助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-content-marketer`
 
 - **核心价值**
-  - 内容营销诊断助手
+  - 内容营销诊断助手用于处理内容能带来增长吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - 内容营销诊断助手
-- **Use when**
-  - the user asks for 内容营销诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“内容能带来增长吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕内容营销诊断助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把内容营销诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-content-quality-auditor`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文案诊断助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-content-research-writer`
 
 - **核心价值**
-  - 资料整理助手
+  - 资料整理助手用于处理这份材料重点是什么相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - 资料整理助手
-- **Use when**
-  - the user asks for 资料整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这份材料重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕资料整理助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把资料整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-content-strategy`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成主题地图、内容缺口、优先级路线图。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文案诊断助手生成主题地图、内容缺口、优先级路线图
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 主题地图、内容缺口、优先级路线图
 
 ### `ai-content-writer`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文案诊断助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-copy-editing`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕转化实验助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-copywriting`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成说服力诊断、可复制改稿、风险词提示。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕文案诊断助手生成说服力诊断、可复制改稿、风险词提示
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 说服力诊断、可复制改稿、风险词提示
 
 ### `ai-copywriting-psychologist`
 
 - **核心价值**
-  - 说服力文案助手
+  - 说服力文案助手用于处理这句文案有说服力吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - 说服力文案助手
-- **Use when**
-  - the user asks for 说服力文案助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这句文案有说服力吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕说服力文案助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把说服力文案助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-core-web-vitals`
 
 - **核心价值**
-  - Core Web Vitals 诊断助手
+  - Core Web Vitals 诊断助手用于处理页面速度拖转化吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成问题归因、服务改进建议、SOP 或 FAQ 清单。
 - **主要用途**
   - Core Web Vitals 诊断助手
-- **Use when**
-  - the user asks for Core Web Vitals 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“页面速度拖转化吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕Core Web Vitals 诊断助手生成问题归因、服务改进建议、SOP 或 FAQ 清单
+  - 用户已经准备了诊断目标（说明要定位的性能、可用性、搜索、转化或上线检查目标。）、影响对象（说明受影响的用户、设备、页面类型、地区或业务场景。）、待诊断页面链接（填写公开可访问的待诊断页面、站点、报告或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Core Web Vitals 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 问题归因、服务改进建议、SOP 或 FAQ 清单
 
 ### `ai-crm-cleanup`
 
 - **核心价值**
-  - CRM 清理助手
+  - CRM 清理助手用于处理CRM 数据还能用吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - CRM 清理助手
-- **Use when**
-  - the user asks for CRM 清理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“CRM 数据还能用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕CRM 清理助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把CRM 清理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-csv-excel-merger`
 
 - **核心价值**
-  - 资料整理助手
+  - 资料整理助手用于处理这份材料重点是什么相关任务。
+  - 适合运营、产品、销售、software把输入材料转成合并方案、字段冲突清单、处理结果说明。
 - **主要用途**
   - 资料整理助手
-- **Use when**
-  - the user asks for 资料整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“这份材料重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕资料整理助手生成合并方案、字段冲突清单、处理结果说明
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把资料整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 合并方案、字段冲突清单、处理结果说明
 
 ### `ai-customer-journey-map`
 
 - **核心价值**
-  - 用户旅程地图助手
+  - 用户旅程地图助手用于处理用户卡在哪一步相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题诊断、文案和结构建议、实验清单。
 - **主要用途**
   - 用户旅程地图助手
-- **Use when**
-  - the user asks for 用户旅程地图助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“用户卡在哪一步”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕用户旅程地图助手生成转化问题诊断、文案和结构建议、实验清单
+  - 用户已经准备了处理目标（说明本次希望解决的问题、判断目标、输出形式或交付用途。）、使用对象（说明输出要服务的人群、角色、团队或业务场景。）、参考链接（填写公开可访问的页面、资料、参考案例或背景链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把用户旅程地图助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题诊断、文案和结构建议、实验清单
 
 ### `ai-customer-pulse`
 
 - **核心价值**
-  - 客户脉搏诊断助手
+  - 客户脉搏诊断助手用于处理客户现在满意吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成运营诊断、商品/流量优化建议、执行清单。
 - **主要用途**
   - 客户脉搏诊断助手
-- **Use when**
-  - the user asks for 客户脉搏诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“客户现在满意吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕客户脉搏诊断助手生成运营诊断、商品/流量优化建议、执行清单
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把客户脉搏诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 运营诊断、商品/流量优化建议、执行清单
 
 ### `ai-customer-research`
 
 - **核心价值**
-  - 用户研究助手
+  - 用户研究助手用于处理用户到底想要什么相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成用户洞察、需求分层、内容/销售话术建议。
 - **主要用途**
   - 用户研究助手
-- **Use when**
-  - the user asks for 用户研究助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“用户到底想要什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕用户研究助手生成用户洞察、需求分层、内容/销售话术建议
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把用户研究助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 用户洞察、需求分层、内容/销售话术建议
 
 ### `ai-customer-review-aggregator`
 
 - **核心价值**
-  - 客户评论洞察助手
+  - 客户评论洞察助手用于处理评论里藏着什么相关任务。
+  - 适合运营、产品、销售、software把输入材料转成评论聚类、痛点归因、运营动作卡。
 - **主要用途**
   - 客户评论洞察助手
-- **Use when**
-  - the user asks for 客户评论洞察助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“评论里藏着什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕客户评论洞察助手生成评论聚类、痛点归因、运营动作卡
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把客户评论洞察助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 评论聚类、痛点归因、运营动作卡
 
 ### `ai-customer-support`
 
 - **核心价值**
-  - 客服回复助手
+  - 客服回复助手用于处理客服怎么回更稳相关任务。
+  - 适合运营、产品、销售、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - 客服回复助手
-- **Use when**
-  - the user asks for 客服回复助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“客服怎么回更稳”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕客服回复助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把客服回复助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-design-brief`
 
 - **核心价值**
-  - 设计 Brief 助手
+  - 设计 Brief 助手用于处理设计需求说清了吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉诊断、设计改进建议、检查清单。
 - **主要用途**
   - 设计 Brief 助手
-- **Use when**
-  - the user asks for 设计 Brief 助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“设计需求说清了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕设计 Brief 助手生成视觉诊断、设计改进建议、检查清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把设计 Brief 助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉诊断、设计改进建议、检查清单
 
 ### `ai-design-taste-frontend`
 
 - **核心价值**
-  - 前端审美诊断助手
+  - 前端审美诊断助手用于处理这个界面高级吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 前端审美诊断助手
-- **Use when**
-  - the user asks for 前端审美诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这个界面高级吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕前端审美诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把前端审美诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-docx`
 
 - **核心价值**
-  - DOCX 整理助手
+  - DOCX 整理助手用于处理DOCX 重点是什么相关任务。
+  - 适合运营、产品、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - DOCX 整理助手
-- **Use when**
-  - the user asks for DOCX 整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文档处理
+  - 资料审阅
+  - 摘要
+  - 报告
+- **适用场景**
+  - 用户提出“DOCX 重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、市场营销、technical需要围绕DOCX 整理助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了文档目标（例如汇报、说服、培训、说明、申请、交付、审稿或对外发布。）、目标读者（说明文档面向谁，例如客户、领导、员工、评审、候选人或合作方。）、公开文档链接（填写无需登录即可访问的文档链接；受权限保护的文件请改为上传或粘贴正文。），希望整理成可执行的分析或优化结果
+  - 用户需要把DOCX 整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-ecommerce-checkout-optimization`
 
 - **核心价值**
-  - 结账转化诊断助手
+  - 结账转化诊断助手用于处理结账为什么流失相关任务。
+  - 适合运营、产品、销售、software把输入材料转成运营诊断、商品/流量优化建议、执行清单。
 - **主要用途**
   - 结账转化诊断助手
-- **Use when**
-  - the user asks for 结账转化诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“结账为什么流失”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕结账转化诊断助手生成运营诊断、商品/流量优化建议、执行清单
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把结账转化诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 运营诊断、商品/流量优化建议、执行清单
 
 ### `ai-ecommerce-search`
 
 - **核心价值**
-  - 电商搜索诊断助手
+  - 电商搜索诊断助手用于处理站内搜索好用吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成运营诊断、商品/流量优化建议、执行清单。
 - **主要用途**
   - 电商搜索诊断助手
-- **Use when**
-  - the user asks for 电商搜索诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“站内搜索好用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕电商搜索诊断助手生成运营诊断、商品/流量优化建议、执行清单
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把电商搜索诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 运营诊断、商品/流量优化建议、执行清单
 
 ### `ai-educational-research-methods`
 
 - **核心价值**
-  - 教育研究方法助手
+  - 教育研究方法助手用于处理研究方法选对了吗相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成教学或招聘诊断、改进建议、评分/活动清单。
 - **主要用途**
   - 教育研究方法助手
-- **Use when**
-  - the user asks for 教育研究方法助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“研究方法选对了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕教育研究方法助手生成教学或招聘诊断、改进建议、评分/活动清单
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把教育研究方法助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 教学或招聘诊断、改进建议、评分/活动清单
 
 ### `ai-education-data-explorer`
 
 - **核心价值**
-  - 教育数据分析助手
+  - 教育数据分析助手用于处理教学数据说明什么相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成教学或招聘诊断、改进建议、评分/活动清单。
 - **主要用途**
   - 教育数据分析助手
-- **Use when**
-  - the user asks for 教育数据分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“教学数据说明什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕教育数据分析助手生成教学或招聘诊断、改进建议、评分/活动清单
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把教育数据分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 教学或招聘诊断、改进建议、评分/活动清单
 
 ### `ai-email-sequence`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成邮件节奏诊断、主题行建议、改写稿。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕转化实验助手生成邮件节奏诊断、主题行建议、改写稿
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 邮件节奏诊断、主题行建议、改写稿
 
 ### `ai-entity-optimizer`
 
 - **核心价值**
-  - 实体优化助手
+  - 实体优化助手用于处理品牌能被 AI 识别吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 实体优化助手
-- **Use when**
-  - the user asks for 实体优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“品牌能被 AI 识别吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕实体优化助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把实体优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-gpt-image-2`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了图片目标（例如生成品牌主视觉、广告图、产品场景、社媒配图、概念图或教学插图。）、观看人群（说明图片面向的观众、客户、平台读者、广告受众或内部评审对象。）、图片参考链接（填写无需登录即可访问的参考图片、产品页、品牌视觉或素材说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-higgsfield-marketplace-cards`
 
 - **核心价值**
-  - 商品卡片图助手
+  - 商品卡片图助手用于处理商品卡片够吸睛吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - 商品卡片图助手
-- **Use when**
-  - the user asks for 商品卡片图助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“商品卡片够吸睛吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕商品卡片图助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把商品卡片图助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-higgsfield-product-photoshoot`
 
 - **核心价值**
-  - 产品写真助手
+  - 产品写真助手用于处理产品图有质感吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成商品/店铺诊断、卖点与风险提示、运营动作建议。
 - **主要用途**
   - 产品写真助手
-- **Use when**
-  - the user asks for 产品写真助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“产品图有质感吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕产品写真助手生成商品/店铺诊断、卖点与风险提示、运营动作建议
+  - 用户已经准备了运营目标（说明希望优化的点击、转化、复购、库存、利润、评论或活动目标。）、目标买家（说明目标买家、市场、平台、渠道或使用场景。）、商品或店铺链接（填写公开可访问的商品、店铺、竞品、评价或平台页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把产品写真助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 商品/店铺诊断、卖点与风险提示、运营动作建议
 
 ### `ai-high-end-visual-design`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕视觉质量诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-hr-performance-review`
 
 - **核心价值**
-  - 绩效评语助手
+  - 绩效评语助手用于处理绩效反馈怎么写相关任务。
+  - 适合运营、产品、销售、software把输入材料转成运营诊断、商品/流量优化建议、执行清单。
 - **主要用途**
   - 绩效评语助手
-- **Use when**
-  - the user asks for 绩效评语助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“绩效反馈怎么写”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕绩效评语助手生成运营诊断、商品/流量优化建议、执行清单
+  - 用户已经准备了处理目标（说明要完成的匹配分析、绩效反馈、表达优化、面试准备或风险检查。）、相关角色（说明候选人、员工、管理者、HRBP、面试官或沟通对象。）、岗位或资料链接（填写公开可访问的岗位、公司、政策或参考资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把绩效评语助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 运营诊断、商品/流量优化建议、执行清单
 
 ### `ai-hr-pro`
 
 - **核心价值**
-  - HR 专业助手
+  - HR 专业助手用于处理HR 文档怎么更稳相关任务。
+  - 适合人力资源、manager、运营、software把输入材料转成转化问题诊断、文案和结构建议、实验清单。
 - **主要用途**
   - HR 专业助手
-- **Use when**
-  - the user asks for HR 专业助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - HR 文档
+  - 绩效反馈
+  - 求职材料
+- **适用场景**
+  - 用户提出“HR 文档怎么更稳”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、manager、运营、software需要围绕HR 专业助手生成转化问题诊断、文案和结构建议、实验清单
+  - 用户已经准备了处理目标（说明要完成的匹配分析、绩效反馈、表达优化、面试准备或风险检查。）、相关角色（说明候选人、员工、管理者、HRBP、面试官或沟通对象。）、岗位或资料链接（填写公开可访问的岗位、公司、政策或参考资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把HR 专业助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题诊断、文案和结构建议、实验清单
 
 ### `ai-humanizer-zh`
 
 - **核心价值**
-  - 中文润色去 AI 助手
+  - 去AI味助手用于处理论文AI写的，帮我去掉AI味相关任务。
+  - 适合市场营销、运营、内容创作者、产品把输入材料转成AI 写作痕迹诊断、自然化改写稿、问题片段说明。
 - **主要用途**
-  - 中文润色去 AI 助手
-- **Use when**
-  - the user asks for 中文润色去 AI 助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 去AI味助手
+  - 中文改写
+  - AI 写作痕迹
+  - 文案润色
+  - 内容审稿
+- **适用场景**
+  - 用户提出“论文AI写的，帮我去掉AI味”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、产品需要围绕去AI味助手生成AI 写作痕迹诊断、自然化改写稿、问题片段说明
+  - 用户已经准备了改写目标（例如更像真人、更口语、更专业、更有观点、更适合发布或降低营销腔。）、目标读者（说明读者是谁、他们熟悉什么、对内容最在意什么。）、公开文本链接（填写无需登录即可访问的文章、页面、笔记或文档链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把去AI味助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - AI 写作痕迹诊断、自然化改写稿、问题片段说明
 
 ### `ai-image`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合销售、运营、市场营销、电商把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - Amazon
+  - 增长诊断
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、运营、市场营销、电商需要围绕视觉质量诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-image-generation`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了图片目标（例如提升点击、解释产品、建立品牌质感、社媒传播、广告转化或活动预热。）、观看人群（说明图片面向的用户、客户、平台观众或内部评审对象。）、图片参考链接（填写无需登录即可访问的参考图片、落地页、竞品视觉或素材说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-image-gen-guide`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成创意方案、提示词/脚本、制作清单。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕视觉质量诊断助手生成创意方案、提示词/脚本、制作清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 创意方案、提示词/脚本、制作清单
 
 ### `ai-industrial-brutalist-ui`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕视觉质量诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-internal-linking-optimizer`
 
 - **核心价值**
-  - 内链优化助手
+  - 内链优化助手用于处理内链该怎么连相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - 内链优化助手
-- **Use when**
-  - the user asks for 内链优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“内链该怎么连”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕内链优化助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把内链优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-job-application-optimizer`
 
 - **核心价值**
-  - 求职材料优化助手
+  - 求职材料优化助手用于处理简历够匹配岗位吗相关任务。
+  - 适合人力资源、manager、运营、software把输入材料转成匹配差距、简历优化建议、面试准备清单。
 - **主要用途**
   - 求职材料优化助手
-- **Use when**
-  - the user asks for 求职材料优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - HR 文档
+  - 绩效反馈
+  - 求职材料
+- **适用场景**
+  - 用户提出“简历够匹配岗位吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、manager、运营、software需要围绕求职材料优化助手生成匹配差距、简历优化建议、面试准备清单
+  - 用户已经准备了处理目标（说明要完成的匹配分析、绩效反馈、表达优化、面试准备或风险检查。）、相关角色（说明候选人、员工、管理者、HRBP、面试官或沟通对象。）、岗位或资料链接（填写公开可访问的岗位、公司、政策或参考资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把求职材料优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 匹配差距、简历优化建议、面试准备清单
 
 ### `ai-kpi-dashboard-design`
 
 - **核心价值**
-  - KPI 看板设计助手
+  - KPI 看板设计助手用于处理看板讲清 KPI 吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - KPI 看板设计助手
-- **Use when**
-  - the user asks for KPI 看板设计助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“看板讲清 KPI 吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕KPI 看板设计助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把KPI 看板设计助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-launch`
 
 - **核心价值**
-  - 产品发布策划助手
+  - 产品发布策划助手用于处理发布准备好了吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 产品发布策划助手
-- **Use when**
-  - the user asks for 产品发布策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“发布准备好了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕产品发布策划助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把产品发布策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-lead-magnets`
 
 - **核心价值**
-  - 获客钩子策划助手
+  - 获客钩子策划助手用于处理这个诱饵能获客吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 获客钩子策划助手
-- **Use when**
-  - the user asks for 获客钩子策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这个诱饵能获客吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕获客钩子策划助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把获客钩子策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-local-places`
 
 - **核心价值**
-  - 本地地点推荐助手
+  - 本地地点推荐助手用于处理附近去哪合适相关任务。
+  - 适合运营、产品、销售、software把输入材料转成经营诊断、本地营销建议、执行清单。
 - **主要用途**
   - 本地地点推荐助手
-- **Use when**
-  - the user asks for 本地地点推荐助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“附近去哪合适”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕本地地点推荐助手生成经营诊断、本地营销建议、执行清单
+  - 用户已经准备了筛选目标（说明要完成的推荐、比较、路线、预算、风险核验或最终决策。）、出行或使用对象（说明人数、角色、偏好、场景、交通方式或活动类型。）、地点或地图链接（填写公开可访问的地图、门店、地点、评价或候选页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把本地地点推荐助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 经营诊断、本地营销建议、执行清单
 
 ### `ai-local-pois`
 
 - **核心价值**
-  - 本地 POI 筛选助手
+  - 本地 POI 筛选助手用于处理周边 POI 怎么选相关任务。
+  - 适合运营、产品、销售、software把输入材料转成经营诊断、本地营销建议、执行清单。
 - **主要用途**
   - 本地 POI 筛选助手
-- **Use when**
-  - the user asks for 本地 POI 筛选助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“周边 POI 怎么选”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕本地 POI 筛选助手生成经营诊断、本地营销建议、执行清单
+  - 用户已经准备了筛选目标（说明要完成的推荐、比较、路线、预算、风险核验或最终决策。）、出行或使用对象（说明人数、角色、偏好、场景、交通方式或活动类型。）、地点或地图链接（填写公开可访问的地图、门店、地点、评价或候选页面链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把本地 POI 筛选助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 经营诊断、本地营销建议、执行清单
 
 ### `ai-marketing-ideas`
 
 - **核心价值**
-  - 营销创意助手
+  - 营销创意助手用于处理营销还能怎么做相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 营销创意助手
-- **Use when**
-  - the user asks for 营销创意助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“营销还能怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕营销创意助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把营销创意助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-market-research`
 
 - **核心价值**
-  - 市场研究助手
+  - 市场研究助手用于处理这个市场有机会吗相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成研究摘要、对比洞察、决策建议。
 - **主要用途**
   - 市场研究助手
-- **Use when**
-  - the user asks for 市场研究助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“这个市场有机会吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕市场研究助手生成研究摘要、对比洞察、决策建议
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把市场研究助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 研究摘要、对比洞察、决策建议
 
 ### `ai-meeting-to-tasks`
 
 - **核心价值**
-  - 会议待办整理助手
+  - 会议待办整理助手用于处理会议后该做什么相关任务。
+  - 适合运营、产品、销售、software把输入材料转成待办拆解、决策摘要、风险和跟进清单。
 - **主要用途**
   - 会议待办整理助手
-- **Use when**
-  - the user asks for 会议待办整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“会议后该做什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕会议待办整理助手生成待办拆解、决策摘要、风险和跟进清单
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把会议待办整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 待办拆解、决策摘要、风险和跟进清单
 
 ### `ai-minimalist-ui`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕视觉质量诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-onboarding`
 
 - **核心价值**
-  - 新手引导诊断助手
+  - 新手引导诊断助手用于处理新用户会卡住吗相关任务。
+  - 适合市场营销、产品、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 新手引导诊断助手
-- **Use when**
-  - the user asks for 新手引导诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 增长实验
+  - 转化优化
+  - 数据决策
+- **适用场景**
+  - 用户提出“新用户会卡住吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、运营、software需要围绕新手引导诊断助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把新手引导诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-operations-manual`
 
 - **核心价值**
-  - 运营手册整理助手
+  - 运营手册整理助手用于处理流程手册清楚吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成结构化摘要、风险/缺口清单、可执行建议。
 - **主要用途**
   - 运营手册整理助手
-- **Use when**
-  - the user asks for 运营手册整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“流程手册清楚吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕运营手册整理助手生成结构化摘要、风险/缺口清单、可执行建议
+  - 用户已经准备了整理目标（说明希望得到的结构摘要、清理规则、行动项、缺口提醒或交付用途。）、使用对象（说明整理结果要服务的人群、团队、角色或业务场景。）、资料链接（填写公开可访问的文档、表格、页面或资料链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把运营手册整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 结构化摘要、风险/缺口清单、可执行建议
 
 ### `ai-page-cro`
 
 - **核心价值**
-  - 页面转化诊断助手
+  - 页面转化诊断助手用于处理页面为什么不转化相关任务。
+  - 适合市场营销、产品、运营、software把输入材料转成CRO 优先级、AB test 假设、CTA 改稿。
 - **主要用途**
   - 页面转化诊断助手
-- **Use when**
-  - the user asks for 页面转化诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 增长实验
+  - 转化优化
+  - 数据决策
+- **适用场景**
+  - 用户提出“页面为什么不转化”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、运营、software需要围绕页面转化诊断助手生成CRO 优先级、AB test 假设、CTA 改稿
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把页面转化诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - CRO 优先级、AB test 假设、CTA 改稿
 
 ### `ai-paid-ads`
 
 - **核心价值**
-  - 付费广告诊断助手
+  - 付费广告诊断助手用于处理广告钱花值了吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题、合规风险、素材迭代清单。
 - **主要用途**
   - 付费广告诊断助手
-- **Use when**
-  - the user asks for 付费广告诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“广告钱花值了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕付费广告诊断助手生成转化问题、合规风险、素材迭代清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把付费广告诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题、合规风险、素材迭代清单
 
 ### `ai-paywall-upgrade-cro`
 
 - **核心价值**
-  - 付费墙优化助手
+  - 付费墙优化助手用于处理付费墙能转化吗相关任务。
+  - 适合市场营销、产品、运营、software把输入材料转成升级阻力诊断、权益表达改稿、实验建议。
 - **主要用途**
   - 付费墙优化助手
-- **Use when**
-  - the user asks for 付费墙优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 增长实验
+  - 转化优化
+  - 数据决策
+- **适用场景**
+  - 用户提出“付费墙能转化吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、运营、software需要围绕付费墙优化助手生成升级阻力诊断、权益表达改稿、实验建议
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把付费墙优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 升级阻力诊断、权益表达改稿、实验建议
 
 ### `ai-pdf`
 
 - **核心价值**
-  - PDF 整理助手
+  - PDF 整理助手用于处理PDF 重点是什么相关任务。
+  - 适合运营、产品、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - PDF 整理助手
-- **Use when**
-  - the user asks for PDF 整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文档处理
+  - 资料审阅
+  - 摘要
+  - 报告
+- **适用场景**
+  - 用户提出“PDF 重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、市场营销、technical需要围绕PDF 整理助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了阅读目标（例如快速理解、风险排查、投前阅读、合同初筛、资料转写或生成对外简报。）、报告读者（说明谁会阅读这份 PDF 审阅结果，例如管理层、客户、法务、研究团队或内部同事。）、公开 PDF 链接（填写无需登录即可访问的 PDF 链接；受权限保护的文件请改为上传或粘贴正文。），希望整理成可执行的分析或优化结果
+  - 用户需要把PDF 整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-performance`
 
 - **核心价值**
-  - 性能诊断助手
+  - 性能诊断助手用于处理性能哪里拖慢了相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成问题归因、服务改进建议、SOP 或 FAQ 清单。
 - **主要用途**
   - 性能诊断助手
-- **Use when**
-  - the user asks for 性能诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“性能哪里拖慢了”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕性能诊断助手生成问题归因、服务改进建议、SOP 或 FAQ 清单
+  - 用户已经准备了诊断目标（说明要定位的性能、可用性、搜索、转化或上线检查目标。）、影响对象（说明受影响的用户、设备、页面类型、地区或业务场景。）、待诊断页面链接（填写公开可访问的待诊断页面、站点、报告或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把性能诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 问题归因、服务改进建议、SOP 或 FAQ 清单
 
 ### `ai-podcast`
 
 - **核心价值**
-  - 播客策划助手
+  - 播客策划助手用于处理播客内容够吸引吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成播客脚本、角色设定、分镜和生成参数。
 - **主要用途**
   - 播客策划助手
-- **Use when**
-  - the user asks for 播客策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“播客内容够吸引吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕播客策划助手生成播客脚本、角色设定、分镜和生成参数
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把播客策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 播客脚本、角色设定、分镜和生成参数
 
 ### `ai-pptx`
 
 - **核心价值**
-  - PPT 诊断助手
+  - PPT 诊断助手用于处理PPT 讲清了吗相关任务。
+  - 适合运营、产品、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - PPT 诊断助手
-- **Use when**
-  - the user asks for PPT 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文档处理
+  - 资料审阅
+  - 摘要
+  - 报告
+- **适用场景**
+  - 用户提出“PPT 讲清了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、市场营销、technical需要围绕PPT 诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了演示目标（例如融资、销售、汇报、培训、路演、复盘、说服决策或争取资源。）、听众对象（说明这套演示面向谁，例如投资人、客户、管理层、培训学员或评审委员会。）、公开演示链接（填写无需登录即可访问的演示文稿链接；受权限保护的 deck 请改为上传或粘贴逐页文…），希望整理成可执行的分析或优化结果
+  - 用户需要把PPT 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-presentation-deck`
 
 - **核心价值**
-  - 演示稿优化助手
+  - 演示稿优化助手用于处理这套演示讲清了吗相关任务。
+  - 适合运营、产品、销售、software把输入材料转成运营诊断、商品/流量优化建议、执行清单。
 - **主要用途**
   - 演示稿优化助手
-- **Use when**
-  - the user asks for 演示稿优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 资料整理
+  - 数据清理
+  - 行动项
+- **适用场景**
+  - 用户提出“这套演示讲清了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、销售、software需要围绕演示稿优化助手生成运营诊断、商品/流量优化建议、执行清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把演示稿优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 运营诊断、商品/流量优化建议、执行清单
 
 ### `ai-presentation-design-enhancer`
 
 - **核心价值**
-  - 演示稿优化助手
+  - 演示稿优化助手用于处理这套演示讲清了吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成结构诊断、页面改进建议、讲述逻辑清单。
 - **主要用途**
   - 演示稿优化助手
-- **Use when**
-  - the user asks for 演示稿优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这套演示讲清了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕演示稿优化助手生成结构诊断、页面改进建议、讲述逻辑清单
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把演示稿优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 结构诊断、页面改进建议、讲述逻辑清单
 
 ### `ai-product-marketing`
 
 - **核心价值**
-  - 产品营销助手
+  - 产品营销助手用于处理卖点说清了吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 产品营销助手
-- **Use when**
-  - the user asks for 产品营销助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“卖点说清了吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕产品营销助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把产品营销助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-product-photo-scene-planner`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了图片目标（例如提升点击、解释功能、建立质感、突出礼赠、承接促销或降低退货。）、品牌视觉要求（补充品牌调性、主色、禁用风格、竞品差异、字体或画面限制。）、场景数量（场景数量），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-programmatic-seo`
 
 - **核心价值**
-  - 程序化 SEO 助手
+  - 程序化 SEO 助手用于处理页面能批量获客吗相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成页面集群规划、模板风险提示、内容生产清单。
 - **主要用途**
   - 程序化 SEO 助手
-- **Use when**
-  - the user asks for 程序化 SEO 助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“页面能批量获客吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕程序化 SEO 助手生成页面集群规划、模板风险提示、内容生产清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把程序化 SEO 助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 页面集群规划、模板风险提示、内容生产清单
 
 ### `ai-remotion-best-practices`
 
 - **核心价值**
-  - Remotion 实践助手
+  - Remotion 实践助手用于处理视频代码够稳吗相关任务。
+  - 适合technical、运营、software、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - Remotion 实践助手
-- **Use when**
-  - the user asks for Remotion 实践助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - Remotion
+  - React
+  - 视频生成
+  - 代码审查
+- **适用场景**
+  - 用户提出“视频代码够稳吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、运营、software、内容媒体需要围绕Remotion 实践助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了优化目标（例如排查渲染问题、优化动画结构、提升可维护性、整理最佳实践或准备交付检查。）、交付对象（说明结果面向开发者、设计师、客户、内容团队还是内部评审。）、项目或文档链接（填写公开可访问的代码仓库、文档、预览页或问题链接；私有内容请上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把Remotion 实践助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-research-lit`
 
 - **核心价值**
-  - 文献综述助手
+  - 文献综述助手用于处理文献重点是什么相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成研究摘要、对比洞察、决策建议。
 - **主要用途**
   - 文献综述助手
-- **Use when**
-  - the user asks for 文献综述助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“文献重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕文献综述助手生成研究摘要、对比洞察、决策建议
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把文献综述助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 研究摘要、对比洞察、决策建议
 
 ### `ai-research-refine`
 
 - **核心价值**
-  - 研究打磨助手
+  - 研究打磨助手用于处理研究问题清楚吗相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成研究摘要、对比洞察、决策建议。
 - **主要用途**
   - 研究打磨助手
-- **Use when**
-  - the user asks for 研究打磨助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“研究问题清楚吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕研究打磨助手生成研究摘要、对比洞察、决策建议
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把研究打磨助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 研究摘要、对比洞察、决策建议
 
 ### `ai-revops`
 
 - **核心价值**
-  - RevOps 诊断助手
+  - RevOps 诊断助手用于处理收入流程哪里堵相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - RevOps 诊断助手
-- **Use when**
-  - the user asks for RevOps 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“收入流程哪里堵”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕RevOps 诊断助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把RevOps 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-sales-call-prep`
 
 - **核心价值**
-  - 销售话术准备助手
+  - 销售话术准备助手用于处理销售话术怎么准备相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - 销售话术准备助手
-- **Use when**
-  - the user asks for 销售话术准备助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“销售话术怎么准备”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕销售话术准备助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售话术准备助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-sales-coaching`
 
 - **核心价值**
-  - 销售辅导助手
+  - 销售辅导助手用于处理话术哪里弱相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - 销售辅导助手
-- **Use when**
-  - the user asks for 销售辅导助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“话术哪里弱”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕销售辅导助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售辅导助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-sales-compensation`
 
 - **核心价值**
-  - 销售薪酬诊断助手
+  - 销售薪酬诊断助手用于处理提成方案公平吗相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成销售策略、沟通素材、跟进计划。
 - **主要用途**
   - 销售薪酬诊断助手
-- **Use when**
-  - the user asks for 销售薪酬诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“提成方案公平吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕销售薪酬诊断助手生成销售策略、沟通素材、跟进计划
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售薪酬诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 销售策略、沟通素材、跟进计划
 
 ### `ai-sales-enablement`
 
 - **核心价值**
-  - 销售赋能助手
+  - 销售赋能助手用于处理销售材料够有力吗相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 销售赋能助手
-- **Use when**
-  - the user asks for 销售赋能助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“销售材料够有力吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕销售赋能助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售赋能助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-sales-qualification`
 
 - **核心价值**
-  - 销售线索判断助手
+  - 销售线索判断助手用于处理这个线索值得跟吗相关任务。
+  - 适合销售、市场营销、运营、software把输入材料转成转化问题诊断、文案和结构建议、实验清单。
 - **主要用途**
   - 销售线索判断助手
-- **Use when**
-  - the user asks for 销售线索判断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售增长
+  - 客户研究
+  - 成交效率
+- **适用场景**
+  - 用户提出“这个线索值得跟吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、software需要围绕销售线索判断助手生成转化问题诊断、文案和结构建议、实验清单
+  - 用户已经准备了推进目标（说明本次希望准备的话术、异议处理、资格判断、跟进计划或复盘目标。）、客户角色（说明客户角色、行业、阶段、决策链或沟通对象。）、客户或公司链接（填写公开可访问的客户公司、产品、竞品或背景资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售线索判断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题诊断、文案和结构建议、实验清单
 
 ### `ai-schema-markup`
 
 - **核心价值**
-  - Schema 标记助手
+  - Schema 标记助手用于处理结构化数据对吗相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成Schema 建议、FAQ 结构、上线检查清单。
 - **主要用途**
   - Schema 标记助手
-- **Use when**
-  - the user asks for Schema 标记助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“结构化数据对吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕Schema 标记助手生成Schema 建议、FAQ 结构、上线检查清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把Schema 标记助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - Schema 建议、FAQ 结构、上线检查清单
 
 ### `ai-seo`
 
 - **核心价值**
-  - SEO/AEO 诊断助手
+  - SEO/AEO 诊断助手用于处理这篇能被 AI 引用吗相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - SEO/AEO 诊断助手
-- **Use when**
-  - the user asks for SEO/AEO 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“这篇能被 AI 引用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕SEO/AEO 诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了GEO 优化目标（例如提升 AI 摘要可引用性、强化实体识别、改善 FAQ 覆盖或提高线索转化。）、目标提问者（说明用户会向 AI 搜索提出的问题、角色、意图阶段或决策场景。）、AI 搜索目标页面（填写无需登录即可访问的页面、文章、文档或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-seo-2`
 
 - **核心价值**
-  - SEO 诊断助手
+  - SEO 诊断助手用于处理网站 SEO 哪里弱相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成AI 搜索可见性诊断、引用友好结构建议、改稿方向。
 - **主要用途**
   - SEO 诊断助手
-- **Use when**
-  - the user asks for SEO 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“网站 SEO 哪里弱”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO 诊断助手生成AI 搜索可见性诊断、引用友好结构建议、改稿方向
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - AI 搜索可见性诊断、引用友好结构建议、改稿方向
 
 ### `ai-seo-3`
 
 - **核心价值**
-  - SEO 内容优化助手
+  - SEO 内容优化助手用于处理内容能被搜到吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - SEO 内容优化助手
-- **Use when**
-  - the user asks for SEO 内容优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“内容能被搜到吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕SEO 内容优化助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO 内容优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-seo-aeo-blog-writer`
 
 - **核心价值**
-  - SEO/AEO 博客写作助手
+  - SEO/AEO 博客写作助手用于处理这篇该怎么写相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - SEO/AEO 博客写作助手
-- **Use when**
-  - the user asks for SEO/AEO 博客写作助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“这篇该怎么写”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO/AEO 博客写作助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 博客写作助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-seo-aeo-content-cluster`
 
 - **核心价值**
-  - SEO/AEO 内容集群助手
+  - SEO/AEO 内容集群助手用于处理内容集群怎么搭相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - SEO/AEO 内容集群助手
-- **Use when**
-  - the user asks for SEO/AEO 内容集群助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“内容集群怎么搭”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO/AEO 内容集群助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 内容集群助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-seo-aeo-internal-linking`
 
 - **核心价值**
-  - SEO/AEO 内链助手
+  - SEO/AEO 内链助手用于处理AI 会顺着内链读吗相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - SEO/AEO 内链助手
-- **Use when**
-  - the user asks for SEO/AEO 内链助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“AI 会顺着内链读吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO/AEO 内链助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 内链助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-seo-aeo-keyword-research`
 
 - **核心价值**
-  - SEO/AEO 关键词助手
+  - SEO/AEO 关键词助手用于处理关键词机会在哪相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、优化建议、执行清单。
 - **主要用途**
   - SEO/AEO 关键词助手
-- **Use when**
-  - the user asks for SEO/AEO 关键词助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“关键词机会在哪”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO/AEO 关键词助手生成内容诊断、优化建议、执行清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 关键词助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、优化建议、执行清单
 
 ### `ai-seo-audit`
 
 - **核心价值**
-  - SEO 审计助手
+  - SEO 审计助手用于处理网站 SEO 健康吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成SEO 诊断、优先级建议、发布检查清单。
 - **主要用途**
   - SEO 审计助手
-- **Use when**
-  - the user asks for SEO 审计助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“网站 SEO 健康吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕SEO 审计助手生成SEO 诊断、优先级建议、发布检查清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO 审计助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - SEO 诊断、优先级建议、发布检查清单
 
 ### `ai-seo-content-writer`
 
 - **核心价值**
-  - SEO 内容写作助手
+  - SEO 内容写作助手用于处理这篇能带搜索流量吗相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - SEO 内容写作助手
-- **Use when**
-  - the user asks for SEO 内容写作助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“这篇能带搜索流量吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SEO 内容写作助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO 内容写作助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-serp-analysis`
 
 - **核心价值**
-  - SERP 分析助手
+  - SERP 分析助手用于处理SERP 告诉我什么相关任务。
+  - 适合市场营销、运营、内容创作者、software把输入材料转成内容诊断、结构化优化建议、可执行发布清单。
 - **主要用途**
   - SERP 分析助手
-- **Use when**
-  - the user asks for SERP 分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - 内容增长
+  - 搜索优化
+- **适用场景**
+  - 用户提出“SERP 告诉我什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容创作者、software需要围绕SERP 分析助手生成内容诊断、结构化优化建议、可执行发布清单
+  - 用户已经准备了优化目标（说明要提升的关键词、搜索意图、可见性、引用机会或转化目标。）、目标受众（说明搜索用户、目标市场、行业、购买阶段或内容受众。）、页面或站点链接（填写公开可访问的页面、站点、SERP、竞品或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SERP 分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 内容诊断、结构化优化建议、可执行发布清单
 
 ### `ai-signup`
 
 - **核心价值**
-  - 注册转化诊断助手
+  - 注册转化诊断助手用于处理注册流程卡人吗相关任务。
+  - 适合市场营销、产品、运营、software把输入材料转成转化问题优先级、可复制改稿、实验或跟进行动清单。
 - **主要用途**
   - 注册转化诊断助手
-- **Use when**
-  - the user asks for 注册转化诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 增长实验
+  - 转化优化
+  - 数据决策
+- **适用场景**
+  - 用户提出“注册流程卡人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、运营、software需要围绕注册转化诊断助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+  - 用户已经准备了转化目标（说明要优化的注册、激活、升级、留存、付费或实验指标。）、目标用户（说明用户阶段、细分人群、流量来源、设备或使用场景。）、页面或流程链接（填写公开可访问的落地页、注册页、付费墙、流程或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把注册转化诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 转化问题优先级、可复制改稿、实验或跟进行动清单
 
 ### `ai-social`
 
 - **核心价值**
-  - 社媒内容助手
+  - 社媒内容助手用于处理这条内容会被看吗相关任务。
+  - 适合内容创作者、市场营销、运营、内容媒体把输入材料转成社媒内容建议、发布节奏、选题清单。
 - **主要用途**
   - 社媒内容助手
-- **Use when**
-  - the user asks for 社媒内容助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容生产
+  - 文案优化
+  - 发布准备
+- **适用场景**
+  - 用户提出“这条内容会被看吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、市场营销、运营、内容媒体需要围绕社媒内容助手生成社媒内容建议、发布节奏、选题清单
+  - 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+  - 用户需要把社媒内容助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 社媒内容建议、发布节奏、选题清单
 
 ### `ai-stitch-design-taste`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕视觉质量诊断助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了审查目标（说明要检查的版面、可读性、品牌一致性、转化目标或交付标准。）、使用场景（说明视觉素材面向的平台、受众、设备、活动或评审场景。）、页面或素材链接（填写公开可访问的页面、素材、设计稿预览或参考链接；受限内容请改为上传。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-upskilling-training-diagnosis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI培训
+  - 组织发展
+  - 能力差距
+  - 课程地图
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了组织学习资料链接（填写公开可访问的培训计划、能力模型或学习资源链接。）、上传调研资料（上传技能调研、岗位矩阵、培训反馈、课程表或访谈记录。）、培训需求描述（粘贴团队目标、岗位类型、当前工具使用、痛点和期望能力。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-video`
 
 - **核心价值**
-  - AI 视频生成策划助手
+  - AI 视频生成策划助手用于处理想生成什么视频相关任务。
+  - 适合市场营销、software、内容媒体、电商把输入材料转成视觉/创意诊断、提示词或分镜方案、发布规格检查。
 - **主要用途**
   - AI 视频生成策划助手
-- **Use when**
-  - the user asks for AI 视频生成策划助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 视频生成
+  - 分镜策划
+  - 提示词优化
+- **适用场景**
+  - 用户提出“想生成什么视频”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、software、内容媒体、电商需要围绕AI 视频生成策划助手生成视觉/创意诊断、提示词或分镜方案、发布规格检查
+  - 用户已经准备了视频目标（说明本次希望解决的具体问题、判断目标或交付用途。）、目标观众（说明「AI 视频生成策划助手」输出要服务的人群、角色、市场或观看场景。）、参考链接（填写公开可访问的链接；如果链接需要登录、权限或 Cookie，请改为上传文件或粘贴…），希望整理成可执行的分析或优化结果
+  - 用户需要把AI 视频生成策划助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 视觉/创意诊断、提示词或分镜方案、发布规格检查
 
 ### `ai-video-editing`
 
 - **核心价值**
-  - AI 视频剪辑诊断助手
+  - AI 视频剪辑诊断助手用于处理这段素材怎么剪相关任务。
+  - 适合市场营销、运营、software、内容媒体把输入材料转成剪辑结构诊断、片段取舍和时间点建议、字幕配音与平台重构清单。
 - **主要用途**
   - AI 视频剪辑诊断助手
-- **Use when**
-  - the user asks for AI 视频剪辑诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 视频剪辑
+  - 素材整理
+  - 短视频改编
+- **适用场景**
+  - 用户提出“这段素材怎么剪”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、内容媒体需要围绕AI 视频剪辑诊断助手生成剪辑结构诊断、片段取舍和时间点建议、字幕配音与平台重构清单
+  - 用户已经准备了成片目标与时长（说明本次希望解决的剪辑问题、目标时长、成片用途或需要产出的版本。）、目标平台与受众（说明「AI 视频剪辑诊断助手」输出要服务的平台、观看人群、角色、市场或使用场景。）、素材或参考链接（填写公开可访问的视频、素材或参考成片链接；如果链接需要登录、权限或 Cookie，…），希望整理成可执行的分析或优化结果
+  - 用户需要把AI 视频剪辑诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 剪辑结构诊断、片段取舍和时间点建议、字幕配音与平台重构清单
 
 ### `ai-video-generation`
 
 - **核心价值**
-  - 视频质量诊断助手
+  - 视频质量诊断助手用于处理这段视频够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视频质量诊断助手
-- **Use when**
-  - the user asks for 视频质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这段视频够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视频质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了视频目标（例如提高完播、讲清产品、引导点击、制造记忆点、培训说明或广告转化。）、观看人群（说明视频面向的观众，例如消费者、潜在客户、课程学员、投资人或内部评审。）、视频参考链接（填写无需登录即可访问的参考视频、脚本页面、落地页或竞品视频链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视频质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-video-to-gif`
 
 - **核心价值**
-  - 视频转 GIF 优化助手
+  - 视频转 GIF 优化助手用于处理这段视频怎么转 GIF相关任务。
+  - 适合市场营销、产品、technical、software把输入材料转成GIF 转换参数建议、FFmpeg 转换命令、GIF artifact 或质量检查清单。
 - **主要用途**
   - 视频转 GIF 优化助手
-- **Use when**
-  - the user asks for 视频转 GIF 优化助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 视频转换
+  - GIF 优化
+  - 媒体处理
+- **适用场景**
+  - 用户提出“这段视频怎么转 GIF”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、产品、technical、software需要围绕视频转 GIF 优化助手生成GIF 转换参数建议、FFmpeg 转换命令、GIF artifact 或质量检查清单
+  - 用户已经准备了截取区间与循环方式（说明希望截取的开始时间、持续时长、是否循环、是否需要保留完整动作或突出关键步骤。）、GIF 使用场景（说明「视频转 GIF 优化助手」输出要服务的页面、文档、邮件、社媒、聊天或产品演示…）、视频链接（填写公开可访问的链接；如果链接需要登录、权限或 Cookie，请改为上传文件或粘贴…），希望整理成可执行的分析或优化结果
+  - 用户需要把视频转 GIF 优化助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - GIF 转换参数建议、FFmpeg 转换命令、GIF artifact 或质量检查清单
 
 ### `ai-visual-prompt-review`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合设计、运营、市场营销、内容创作者把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI绘图
+  - 提示词
+  - 豆包
+  - 即梦
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 设计、运营、市场营销、内容创作者需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了风格限制与风险点（补充禁用元素、版权顾虑、人物/品牌限制、色彩和构图偏好。）、上传视觉参考（上传参考图、品牌视觉规范、产品图、分镜或生成结果。）、视觉生成提示词（粘贴中文/英文提示词、负面提示、构图、主体、风格和用途说明。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ai-web-quality-audit`
 
 - **核心价值**
-  - 网站质量审查助手
+  - 网站质量审查助手用于处理网站质量够好吗相关任务。
+  - 适合technical、产品、市场营销、software把输入材料转成问题归因、服务改进建议、SOP 或 FAQ 清单。
 - **主要用途**
   - 网站质量审查助手
-- **Use when**
-  - the user asks for 网站质量审查助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 性能诊断
+  - 网站质量
+  - 体验指标
+- **适用场景**
+  - 用户提出“网站质量够好吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、产品、市场营销、software需要围绕网站质量审查助手生成问题归因、服务改进建议、SOP 或 FAQ 清单
+  - 用户已经准备了诊断目标（说明要定位的性能、可用性、搜索、转化或上线检查目标。）、影响对象（说明受影响的用户、设备、页面类型、地区或业务场景。）、待诊断页面链接（填写公开可访问的待诊断页面、站点、报告或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把网站质量审查助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 问题归因、服务改进建议、SOP 或 FAQ 清单
 
 ### `ai-web-research`
 
 - **核心价值**
-  - 网页研究助手
+  - 网页研究助手用于处理网上资料可信吗相关任务。
+  - 适合市场营销、运营、software、教育培训把输入材料转成研究摘要、对比洞察、决策建议。
 - **主要用途**
   - 网页研究助手
-- **Use when**
-  - the user asks for 网页研究助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 研究分析
+  - 来源核验
+  - 证据摘要
+- **适用场景**
+  - 用户提出“网上资料可信吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、software、教育培训需要围绕网页研究助手生成研究摘要、对比洞察、决策建议
+  - 用户已经准备了研究目标（说明本次要回答的问题、比较维度、判断标准或交付用途。）、研究受众（说明研究结论要服务的读者、角色、市场、课程或使用场景。）、公开网页链接（填写公开可访问的网页、报告或资料链接；受限内容请改为上传文件或粘贴摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把网页研究助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 研究摘要、对比洞察、决策建议
 
 ### `ai-xlsx`
 
 - **核心价值**
-  - XLSX 分析助手
+  - XLSX 分析助手用于处理表格里重点在哪相关任务。
+  - 适合运营、产品、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - XLSX 分析助手
-- **Use when**
-  - the user asks for XLSX 分析助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文档处理
+  - 资料审阅
+  - 摘要
+  - 报告
+- **适用场景**
+  - 用户提出“表格里重点在哪”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、市场营销、technical需要围绕XLSX 分析助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了分析目标（例如数据体检、经营复盘、预算检查、名单清洗、指标解释、异常排查或报表交付。）、报告读者（说明谁会看这份表格审阅结果，例如业务负责人、财务、运营、销售、数据团队或客户。）、公开表格链接（填写无需登录即可访问的表格链接；受权限保护的表格请改为上传或粘贴数据。），希望整理成可执行的分析或优化结果
+  - 用户需要把XLSX 分析助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `api-doc-integration-risk-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合technical、管理者、software、API文档把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - API文档
+  - 集成
+  - 开发者体验
+  - 风险审查
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、API文档需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传接口资料（上传接口文档、字段表、联调记录、错误码表或变更说明。）、接口文档链接（填写公开可访问的 API 文档、SDK 文档或开发者指南链接。）、接口文档内容（粘贴接口说明、鉴权方式、请求响应字段、错误码和调用限制。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `auto-article-images`
 
 - **核心价值**
-  - 智能配图助手
+  - 智能配图助手用于处理还要配图，好麻烦相关任务。
+  - 适合内容创作者、运营、technical、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 智能配图助手
-- **Use when**
-  - the user asks for 智能配图助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 配图
+  - 封面
+  - 文章图片
+  - 公众号
+- **适用场景**
+  - 用户提出“还要配图，好麻烦”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、technical、内容媒体需要围绕智能配图助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了视觉风格、标题、配图数量，希望整理成可执行的分析或优化结果
+  - 用户需要把智能配图助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `auto-review-selling-point-map`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、管理者、manufacturing、汽车把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 汽车
+  - 车评
+  - 舆情
+  - 销售话术
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、管理者、manufacturing、汽车需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传评价资料（上传评价导出、竞品表、口碑记录、销售反馈或调研表。）、车型评价内容（粘贴车主评价、媒体评测、竞品评论、销售反馈或社媒讨论。）、车型公开链接（填写公开可访问的车型页、评测页、口碑页或竞品页。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `bilibili-sentiment-dashboard`
 
 - **核心价值**
   - 复盘 B 站内容评论，理解观众态度与后续运营方向。
-  - Best for Bilibili audience-feedback analysis and comment-interaction strategy.
+  - 适合 B 站观众反馈分析和评论互动策略。
 - **主要用途**
   - 分析视频评论
   - 看观众情绪
   - 看讨论重点
   - 看画像和互动倾向
   - 输出后续优化建议
-- **Use when**
-  - the user gives a Bilibili link
-  - the user wants comment diagnosis and follow-up suggestions
-- **典型用户提问**
-  - 帮我分析这条 B 站视频的评论区
-  - 看看观众情绪和用户画像
-  - 给我一些后续运营建议
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - required `link`
-- **Returns**
-  - comment sentiment and discussion structure
-  - audience profile and interest signals
-  - content and interaction suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants topic discovery
-  - the user wants Douyin creator research
-- **Prefer neighbor skill**
-  - use `kuaishou-sentiment-dashboard` for Kuaishou links
-  - use `douyin-hotlist-overall` for Douyin hot-topic scanning
+- **适用场景**
+  - 用户提供了 B 站视频链接
+  - 用户想做评论诊断并获得后续运营建议
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 需要 `link`
+- **返回结果**
+  - 评论情绪和讨论结构
+  - 观众画像和兴趣信号
+  - 内容与互动建议
 
 ### `brand-account-positioning-diagnosis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传账号数据（上传账号截图、内容表、数据复盘、竞品账号记录或品牌资料。）、账号主页链接（填写公开可访问的抖音、小红书、视频号、B站或公众号主页。）、内容资产与约束（补充已有栏目、可用素材、竞品定位、语气边界和短期KPI。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `brand-voice-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、service、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 品牌调性
+  - 风格一致
+  - PR
+  - 客服话术
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、service、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如统一品牌语气、提升信任感、降低冒犯风险、强化专业感或促进咨询。）、目标人群（说明品牌表达面向的对象，例如潜在客户、合作伙伴、招聘候选人、媒体或老用户。）、品牌内容链接（填写无需登录即可访问的官网页面、品牌介绍、公开文档或社媒内容链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `browser-use`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了浏览任务目标（例如页面理解、流程复核、问题定位、内容检查或人工验收清单。）、任务执行者（填写 QA、运营、产品经理、研究员、内容编辑、客服团队等使用者。）、页面公开链接（填写无需登录即可访问的页面 URL、页面标题、链接 metadata 或页面路径说…），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `churn-prevention`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了留存目标（例如降低取消、解释价值、引导成功设置、召回沉默用户、减少退款或提高续费意愿。）、流失风险人群（补充订阅阶段、使用频率、客户细分、主要异议、历史行为和是否适合人工介入。）、留存触点链接（填写公开可访问的取消页、帮助文档、续费页、产品页、反馈表或消息预览链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `clinic-service-review-analysis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、healthcare、教育培训把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 诊所运营
+  - 评价分析
+  - 服务体验
+  - 整改清单
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、healthcare、教育培训需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传评价导出（上传评价表、客服记录、NPS 明细或投诉汇总。）、诊所评价文本（粘贴大众点评、小红书、私域反馈或客服记录中的脱敏评价。）、诊所页面链接（填写公开可访问的门店页、评价页或服务项目页。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `comment-sentiment-action-cards`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了评论与反馈集合（粘贴评论、私信、客服反馈、弹幕或社群讨论的脱敏文本。）、上传评论导出（上传评论表、客服工单、社群记录、NPS或标签统计。）、评论来源链接（填写公开可访问的视频、笔记、商品页、帖子或评价页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `competitor-alternatives`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了替代方案内容目标（例如创建 alternatives 页面、提升竞品词转化、支持销售异议处理或增强 …）、替换方案评估者（说明目标买方、流失用户、竞品用户、行业角色或搜索意图阶段。）、竞品或对比页链接（填写无需登录即可访问的竞品页面、替代方案页面、评论页、榜单页或参考对比内容链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `competitor-price-selling-point-watch`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了巡检平台（巡检平台）、上传巡检资料（支持竞品截图、价格表、巡检表、运营复盘或对比文档。）、巡检目标（巡检目标），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `content-material-audit`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、运营、市场营销、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容营销
+  - 物料诊断
+  - 改稿
+  - 转化
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、内容媒体需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升理解、信任、点击、收藏、咨询、转发、报名或成交。）、目标人群（说明这次内容面向的人群，例如潜在客户、社群成员、平台读者、内部评审或合作方。）、内容公开链接（填写无需登录即可访问的文章、页面、文档、活动页或公开资料链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `content-strategy`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了内容增长目标（例如建立主题权威、获取自然流量、提升 AI 引用、教育市场、获取线索或支持销售。）、目标读者与意图（说明目标读者、搜索用户、采购角色、行业人群或内容消费阶段。）、现有内容或参考栏目（填写无需登录即可访问的网站、博客、知识库、竞品栏目或参考内容链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `contract-clause-risk-review-cn`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 合同
+  - 风险条款
+  - 法务辅助
+  - 问题清单
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传合同文件（上传脱敏合同、条款对比表、补充协议或谈判记录。）、审查重点（选择本次中文合同条款风险审查最需要优先处理的方向。）、合同条款文本（粘贴合同条款、关键摘要、争议条款、付款交付和责任限制。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `copywriting`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了文案目标（例如注册、购买、留资、点击、预约、回复、下载资料或理解产品价值。）、目标受众（补充购买角色、用户阶段、痛点、认知水平和决策影响人。）、文案所在链接（填写公开可访问的网页、活动页、文档预览或产品说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `course-landing-page-conversion-review`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合运营、市场营销、教育培训、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 知识付费
+  - 详情页
+  - 转化
+  - 文案审稿
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、教育培训、内容媒体需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了审查重点（选择本次课程转化页审查最需要优先处理的方向。）、上传转化页资料（上传销售页稿、截图、投放落地页、竞品页记录或转化数据。）、课程页链接（填写公开可访问的课程销售页、招生页或活动页。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `course-outline-market-positioning`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、教育培训、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 课程大纲
+  - 定位
+  - 知识付费
+  - 卖点
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、教育培训、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了定位重点（选择本次课程大纲市场定位最需要优先处理的方向。）、上传课程资料（上传课程大纲、销售页草稿、竞品记录或学员调研。）、课程大纲草案（粘贴课程名称、模块目录、卖点、课时安排和交付形式。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `creator-commercial-value-benchmark`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传达人数据（上传达人数据表、报价单、投放复盘、内容样例或竞品合作记录。）、达人主页链接（填写公开可访问的达人主页、作品、星图/蒲公英页面或案例链接。）、达人资料与表现（粘贴达人简介、内容方向、粉丝画像、近期数据、报价和合作诉求。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `critique`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了作品目标（说明希望作品达成的传播、理解、转化、信任、审美或展示目标。）、目标观众（说明评审者、客户、用户、购买者或目标观众的背景和期待。）、作品或参考链接（填写公开可访问的作品页面、设计预览、原型、作品集或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `crossborder-listing-localization`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了发布平台（发布平台）、上传 Listing 资料（支持 Listing 文档、关键词表、竞品摘录、商品资料或翻译稿。）、原始 Listing（粘贴标题、五点、描述、A+ 文案、搜索词或需要本地化的商品页面内容。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `customer-service-kb-gap-analysis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文档处理
+  - 资料审阅
+  - 摘要
+  - 报告
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、市场营销、technical需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了诊断深度（诊断深度）、诊断目标（例如减少重复咨询、补齐上线 FAQ、优化升级路径或统一客服口径。）、客服样本（粘贴工单、聊天记录、用户问题、FAQ 片段或知识库摘录；请先去除不必要的个人信息。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `douyin-hotlist-overall`
 
 - **核心价值**
   - 快速看到抖音当前最热门的实时热点。
-  - Best for "what is hot now", not "what is newly rising".
+  - 适合看此刻最热的内容。
 - **主要用途**
   - 看实时热榜
   - 做热点日报
   - 做即时热点跟进
   - 扫描全局关注点
-- **Use when**
-  - the user asks what is hottest right now
-  - the user asks what everyone is watching today
-  - the user wants a real-time hot topic scan
-- **典型用户提问**
-  - 现在最热门的是什么？
-  - 抖音热搜最近在刷什么？
-  - 给我看下当前最火的内容方向
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - no skill params required
-- **Returns**
-  - real-time hot topics
-  - current hot list content
-  - topics worth immediate follow-up
-- **Do not use when**
-  - the user wants rising-trend detection
-  - the user wants platform traffic structure
-  - the user wants comment diagnosis
-- **Prefer neighbor skill**
-  - use `douyin-realtime-hot-rise` for rising trends
-  - use `douyin-traffic-dashboard` for traffic distribution
+- **适用场景**
+  - 用户想知道现在最热门的抖音热点
+  - 用户想看今天大家都在关注什么
+  - 用户需要快速扫描实时热榜
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 不需要额外技能参数
+- **返回结果**
+  - 实时热点
+  - 当前热榜内容
+  - 值得即时跟进的话题
 
 ### `douyin-kol-search`
 
 - **核心价值**
   - 找到更有商业价值的抖音达人和抖音对标账号。
-  - Best for collaboration screening, creator research, and Douyin benchmark-account discovery.
+  - 适合合作达人筛选、创作者研究和抖音对标账号发现。
 - **主要用途**
   - 找合作达人
   - 找带货达人
   - 找抖音对标账号
   - 找同赛道账号
   - 做达人合作和竞品研究
-- **Use when**
-  - the user asks who is worth collaborating with
-  - the user asks who sells best
-  - the user asks for Douyin benchmark accounts
-  - the user asks for same-track / competitor / similar creators on Douyin
-- **典型用户提问**
-  - 谁值得合作？
-  - 谁最会带货？
-  - 帮我找几个抖音对标账号
-  - 帮我找母婴 / 美妆 / 本地探店赛道的同类达人
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - required at least one of `keyword` or `contentTag`
-  - optional `followerRange`
-- **Returns**
-  - relevant creators / KOLs
-  - benchmark-account candidates
-  - collaboration and research leads
-- **Do not use when**
-  - the user wants a hot topic list
-  - the user wants rising topic discovery
-  - the user wants comment analysis
-- **Prefer neighbor skill**
-  - use `douyin-hotlist-overall` for hot content
-  - use `douyin-realtime-hot-rise` for topic opportunity discovery
+- **适用场景**
+  - 用户想找值得合作的抖音达人
+  - 用户想找更会带货或商业价值更高的账号
+  - 用户想找抖音对标账号
+  - 用户想找同赛道、竞品或相似创作者
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - `keyword` 和 `contentTag` 至少填写一个
+  - 可选 `followerRange`
+- **返回结果**
+  - 相关创作者 / KOL
+  - 对标账号候选
+  - 合作和竞品研究线索
 
 ### `douyin-realtime-hot-rise`
 
 - **核心价值**
   - 找到更可能起量的抖音选题方向。
-  - Best for detecting rising topics, not just already-dominant hot topics.
+  - 适合发现正在上升的热点，而不是只看已经最热的榜单。
 - **主要用途**
   - 找上升选题
   - 看赛道是否升温
   - 辅助内容策划会
   - 做热点趋势跟进
-- **Use when**
-  - the user asks what to post next
-  - the user asks which topics are rising
-  - the user wants growth-oriented topic selection
-- **典型用户提问**
-  - 最近拍什么会有流量？
-  - 这周抖音有什么正在上升的热点？
-  - 我做母婴 / 美妆 / 职场，最近该跟哪些选题？
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - optional `order`
-  - optional `tag`
-  - optional `keyword`
-- **Runtime & Privacy**
-  - sends `skillId`, query params, and `X-API-Key` to `ai-skills.ai`
-  - use only when the operator accepts this third-party processing
-- **Current tag mapping**
-  - `tag` uses numeric ids or comma-separated ids. Current default mapping, with runtime values refreshed by the latest category endpoint.
-  - Entertainment: `娱乐=2001,2002,2003,2004,2005,2006,2007,2008,2012`; `游戏=12000,12001`; `二次元=13000`; `音乐=29000,29001`; `舞蹈=28000,28001`; `剧情=18000`; `颜值=30000`
-  - Life: `美食=9000`; `旅行=10000`; `萌宠=8000`; `时尚=16000`; `体育=5000`; `汽车=11000`; `房产家居=17000,17001`; `母婴=19000`; `情感=23000`
-  - Knowledge: `科技=6000`; `财经=7000`; `教育=14000,14001`; `健康=15000`; `人文=24000`; `法律=27000`; `职场=26000`
-  - News: `社会=4003,4005`; `时政=3001,3002`; `军事=21000`
-  - Creative: `站内玩法=1001,1002,1003`; `话题互动=20002,20003,20005`; `才艺=25000`
-  - Emerging: `三农=22000`; `户外运动=31000`; `银发生活=32000`
-- **Returns**
-  - rising topics
-  - rank / change-oriented views
-  - topic ideas suitable for planning
-- **Do not use when**
-  - the user wants the absolute hottest list right now
-  - the user wants benchmark accounts or creators
-  - the user wants comment analysis
-- **Prefer neighbor skill**
-  - use `douyin-hotlist-overall` for "what is hottest right now"
-  - use `douyin-traffic-dashboard` for "where traffic is flowing"
+- **适用场景**
+  - 用户想知道接下来拍什么、写什么更可能有流量
+  - 用户想找正在上升的抖音热点或赛道机会
+  - 用户需要增长导向的选题参考
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 可选 `order`
+  - 可选 `tag`
+  - 可选 `keyword`
+- **返回结果**
+  - 上升热点列表
+  - 排名和变化趋势视图
+  - 可用于内容规划的选题线索
 
 ### `douyin-script-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合内容创作者、运营、市场营销、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 抖音
+  - 短视频脚本
+  - 口播
+  - 带货
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传短视频资料（上传短视频稿、分镜表、素材说明、投放复盘或竞品拆解。）、钩子与表达顾虑（补充想保留的爆点、不可用表达、转化目标和风险顾虑。）、审稿重点（选择本次抖音短视频脚本审稿最需要优先处理的方向。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `douyin-sentiment-dashboard`
 
 - **核心价值**
   - 复盘抖音内容评论，输出舆情、画像和运营建议。
-  - Best for post-publication diagnosis after the user already has a Douyin content link.
+  - 适合已有抖音内容链接后的发布后诊断。
 - **主要用途**
   - 分析评论反馈
   - 看情绪和舆情风险
   - 看用户画像和意图
   - 看转化潜力
   - 产出运营建议和回复建议
-- **Use when**
-  - the user gives a Douyin link
-  - the user wants comment sentiment / profile / public opinion / operational insight
-  - the user wants to review a published content asset
-- **典型用户提问**
-  - 帮我分析这条抖音视频的评论区
-  - 看看这条视频的舆情和用户画像
-  - 给我一些运营建议和回复思路
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - required `link`
-- **Returns**
-  - sentiment and public-opinion read
-  - user profile and intent signals
-  - operational suggestions and reply suggestions
-- **Do not use when**
-  - there is no concrete content link
-  - the user wants hot topics
-  - the user wants creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `xhs-sentiment-dashboard` for Xiaohongshu links
-  - use `douyin-realtime-hot-rise` when the user wants new topics, not comment diagnosis
+- **适用场景**
+  - 用户提供了抖音内容链接
+  - 用户想分析评论情绪、用户画像、舆情或运营洞察
+  - 用户想复盘已发布内容的反馈
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 需要 `link`
+- **返回结果**
+  - 情绪和舆情判断
+  - 用户画像和意图信号
+  - 运营建议和回复建议
 
 ### `douyin-traffic-dashboard`
 
 - **核心价值**
   - 判断抖音平台流量正在流向哪些方向。
-  - Best for platform-level distribution and category judgment, not single-topic discovery.
+  - 适合看平台级流量分布和分类判断。
 - **主要用途**
   - 看流量分配
   - 看分类占比
   - 做赛道判断
   - 辅助内容布局
-- **Use when**
-  - the user asks where Douyin traffic is going
-  - the user asks which categories are getting more traffic
-  - the user wants a platform-level directional read
-- **典型用户提问**
-  - 抖音平台流量在哪？
-  - 最近流量更多流向了哪些内容分类？
-  - 现在哪些赛道值得加大内容投入？
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - no skill params required
-- **Returns**
-  - traffic distribution
-  - category-level structure
-  - platform-direction signals for planning
-- **Do not use when**
-  - the user wants specific rising topics
-  - the user wants a real-time hot list
-  - the user wants creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `douyin-realtime-hot-rise` for rising topic discovery
-  - use `douyin-hotlist-overall` for real-time hot topics
+- **适用场景**
+  - 用户想知道抖音流量正在流向哪些方向
+  - 用户想看哪些内容分类正在获得更多流量
+  - 用户需要平台级方向判断
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 不需要额外技能参数
+- **返回结果**
+  - 流量分布
+  - 分类层级结构
+  - 可用于内容布局的平台方向信号
 
 ### `ecommerce-review-root-cause-analysis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传评论数据（支持评论导出、客服记录、售后表格或复盘文档。）、差评与反馈（粘贴差评、追评、买家反馈、客服记录、退货原因或售后备注。）、商品与页面信息（补充品类、价格、规格、卖点、页面承诺、适用人群和售后政策。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `email-sequence`
 
 - **核心价值**
-  - 邮件序列助手
+  - 邮件序列助手用于处理邮件能让人行动吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 邮件序列助手
-- **Use when**
-  - the user asks for 邮件序列助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“邮件能让人行动吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕邮件序列助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了序列目标（例如激活、预约、购买、续费、召回、教育、回复、下载资料或完成设置。）、收件人分群（补充生命周期阶段、来源、购买角色、产品使用状态、主要顾虑和个性化依据。）、邮件预览链接（填写公开可访问的邮件预览、活动说明、注册页、产品页或帮助文档链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把邮件序列助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `enterprise-ai-usecase-priority-assessment`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合technical、管理者、software、企业AI把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 企业AI
+  - 场景评估
+  - ROI
+  - 优先级
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、企业AI需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了AI规划参考链接（填写公开可访问的战略材料、行业案例、内部公开页面或说明链接。）、AI场景清单（粘贴候选场景、业务流程、痛点、使用人群、预期收益和限制条件。）、企业与部门背景（说明行业、部门、规模、数据基础、系统现状和治理要求。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `equipment-failure-rca-draft`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合运营、管理者、manufacturing、RCA把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - RCA
+  - 设备故障
+  - 制造
+  - 排查
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、管理者、manufacturing、RCA需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了RCA重点（选择本次设备故障 RCA 草稿最需要优先处理的方向。）、设备与产线背景（说明设备型号、产线、工序、班次、维护周期、环境和操作条件。）、故障现象描述（粘贴故障时间线、现象、报警、影响范围、临时处置和恢复情况。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `extract-design-system`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了提取目标（说明希望统一界面、沉淀组件、支持重构、提升交付效率或建立规范。）、规范使用者（说明设计师、前端工程师、内容团队、外包团队或产品团队的使用场景。）、产品或组件库链接（填写公开可访问的产品页面、组件库文档、原型、品牌页面或竞品参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `financial-marketing-compliance-review`
 
 - **核心价值**
-  - 财务定价诊断助手
+  - 财务定价诊断助手用于处理价格怎么定才不亏相关任务。
+  - 适合运营、市场营销、technical、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 财务定价诊断助手
-- **Use when**
-  - the user asks for 财务定价诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 金融资料
+  - 风险提示
+  - 证据审阅
+  - 专业复核
+- **适用场景**
+  - 用户提出“价格怎么定才不亏”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、technical、产品需要围绕财务定价诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了营销页面链接（填写公开可访问的活动页、产品页、公告或投放落地页。）、上传营销资料（上传营销海报、落地页稿、产品说明、审稿表或活动方案。）、金融营销文案（粘贴海报文案、产品卖点、收益/风险表述、活动页或投放素材。），希望整理成可执行的分析或优化结果
+  - 用户需要把财务定价诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `financial-report-anomaly-question-list`
 
 - **核心价值**
-  - 财务定价诊断助手
+  - 财务定价诊断助手用于处理价格怎么定才不亏相关任务。
+  - 适合运营、市场营销、technical、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 财务定价诊断助手
-- **Use when**
-  - the user asks for 财务定价诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 金融资料
+  - 风险提示
+  - 证据审阅
+  - 专业复核
+- **适用场景**
+  - 用户提出“价格怎么定才不亏”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、technical、产品需要围绕财务定价诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了财报披露链接（填写公开可访问的交易所公告、公司财报、年报或季报链接。）、上传财报数据（上传财报、指标表、公告、研报摘录、历史对比表或经营数据。）、财报指标与摘要（粘贴财报摘要、关键科目、同比环比变化、经营数据和管理层说明。），希望整理成可执行的分析或优化结果
+  - 用户需要把财务定价诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `firecrawl`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了站点研究目标（例如页面盘点、信息架构梳理、字段设计、竞品研究或后续人工采集规划。）、研究读者（填写增长团队、研究员、内容团队、销售、产品经理等使用者。）、站点公开入口（填写无需登录即可访问的站点首页、页面列表链接、站点地图 URL 或链接 metad…），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `firecrawl-scrape`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了单页提取目标（例如字段定义、页面摘要、证据归档、合规复核或导入前整理。）、提取表读者（填写数据整理人员、内容编辑、运营、销售、研究员等使用者。）、单页公开链接（填写无需登录即可访问的单页 URL、页面标题、canonical 链接或链接 me…），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `firecrawl-search`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了搜索整理目标（例如来源筛选、证据矩阵、查询计划、主题聚类或竞品线索整理。）、检索报告读者（填写研究员、内容编辑、增长团队、销售、产品经理等使用者。）、公开结果链接（填写公开结果链接列表、搜索结果页 metadata、候选来源 URL 或资料页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `frontend-design`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了界面目标（说明希望提升的任务完成率、转化、信息理解、留存或操作效率。）、目标用户（说明使用者角色、设备环境、熟练度、访问场景和关键顾虑。）、页面或原型链接（填写公开可访问的网页、原型预览、设计说明或竞品参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `gov-service-faq-quality-check`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 政务服务
+  - FAQ
+  - 知识库
+  - 一致性
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传FAQ资料（上传政务FAQ、办事指南、政策摘录、热线记录或知识库导出。）、政务FAQ内容（粘贴办事问答、申请条件、材料清单、流程、时限和联系方式。）、质检重点（选择本次政务服务 FAQ 质检最需要优先处理的方向。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `gtm-one-page-strategy`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合销售、市场营销、运营、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售赋能
+  - 客户研究
+  - 跟进计划
+  - GTM
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、产品需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了当前阶段（选择产品或增长所在阶段，便于控制策略取舍。）、策略深度（策略深度）、业务目标（例如首批线索、试点客户、渠道验证、发布活动、销售提效或留存提升。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `gws-docs`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了审阅目标（例如结构优化、评论归并、发布前审阅、改写计划或形成执行摘要。）、文档受众（例如作者、审阅人、客户、管理者、法务、销售或运营团队。）、Docs 链接说明（填写 Google Docs 或相关文档链接，并补充可见内容摘要；系统不会自动打开…），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `gws-gmail`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了邮件跟进目标（例如总结线程、准备回复、识别承诺、升级风险或制定跟进计划。）、邮件对象（例如客户、供应商、候选人、合作伙伴、内部团队或管理者。）、邮件链接说明（填写 Gmail 线程或相关文档链接，并补充可见内容摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `gws-sheets`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了表格审查目标（例如识别字段问题、检查公式风险、准备数据清洗、生成交接说明或输出分析建议。）、表格使用者（例如数据 owner、运营、财务、销售、管理者、分析师或外部协作方。）、Sheets 链接说明（填写 Google Sheets 或相关数据文档链接，并补充可见内容摘要；系统不会…），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `image-edit`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了改图目标（例如修复瑕疵、换背景、统一风格、提升点击、突出卖点、合规清理或平台适配。）、观看人群（说明编辑后的图片面向谁，例如消费者、广告受众、社媒粉丝、渠道商或内部审核。）、图片参考链接（填写无需登录即可访问的原图、参考图、素材说明、商品页或品牌视觉链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `image-to-video`
 
 - **核心价值**
-  - 视频质量诊断助手
+  - 视频质量诊断助手用于处理这段视频够发布吗相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视频质量诊断助手
-- **Use when**
-  - the user asks for 视频质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这段视频够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕视频质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了动态化目标（例如让产品更有质感、制造氛围、提高停留、展示动作、强化卖点或做广告素材。）、观看人群（说明视频面向的观众，例如消费者、粉丝、投放人群、课程学员或内部评审。）、首帧参考链接（填写无需登录即可访问的参考图片、样片、商品页或视觉说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视频质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `insurance-policy-faq-explainer`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、technical、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 金融资料
+  - 风险提示
+  - 证据审阅
+  - 专业复核
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、technical、产品需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了保险产品链接（填写公开可访问的保险产品页、条款页、监管披露或客服说明。）、保险条款摘录（粘贴保险条款、责任免除、等待期、理赔条件、费率或用户问题。）、上传保单资料（上传保险条款、产品说明书、FAQ、理赔案例或用户咨询记录。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `interview-question-scorecard-generator`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 面试
+  - 评分表
+  - 招聘
+  - 能力模型
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了生成重点（选择本次面试题与评分卡生成最需要优先处理的方向。）、评分规则与限制（补充评分等级、淘汰项、敏感问题禁区和人工复核要求。）、上传面试资料（上传岗位画像、能力模型、历史题库、面试记录或评分模板。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `investment-research-material-compare`
 
 - **核心价值**
-  - 资料整理助手
+  - 资料整理助手用于处理这份材料重点是什么相关任务。
+  - 适合运营、市场营销、technical、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 资料整理助手
-- **Use when**
-  - the user asks for 资料整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 金融资料
+  - 风险提示
+  - 证据审阅
+  - 专业复核
+- **适用场景**
+  - 用户提出“这份材料重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、technical、产品需要围绕资料整理助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了标的与研究场景（说明标的、行业、市场、研究目的、时间范围和使用场景。）、公开资料链接（填写公开可访问的公告、交易所披露、公司官网、新闻或数据页面。）、投研观点与材料摘录（粘贴研报观点、纪要摘要、新闻事实、财务指标或多份材料差异。），希望整理成可执行的分析或优化结果
+  - 用户需要把资料整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `job-description-optimizer-cn`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 招聘
+  - JD
+  - 技能匹配
+  - 雇主品牌
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了岗位与团队背景（说明职级、汇报线、业务阶段、城市、薪酬区间和招聘紧急度。）、招聘参考链接（填写公开可访问的招聘页、岗位页、团队介绍或竞品JD链接。）、上传JD资料（上传JD草稿、岗位画像、绩效要求、竞品JD或招聘复盘。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `just-scrape`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 网页研究
+  - 公开信息
+  - 竞品分析
+  - 证据整理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了提取目标（例如快速摘要、字段抽取、证据归档、线索初筛或后续采集规划。）、简报读者（填写运营、销售、研究员、内容编辑、产品经理等使用者。）、公开页面链接（填写无需登录即可访问的页面 URL、页面标题或链接 metadata。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `kling-3-0`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了视频目标（例如产品展示、剧情叙事、广告转化、氛围营造、活动预热或教学解释。）、观看人群（说明视频面向的观众，例如消费者、社媒粉丝、广告受众、课程学员或内部评审。）、视频参考链接（填写无需登录即可访问的参考视频、参考图片、脚本页面、商品页或竞品视频链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `knowledge-base-launch-quality-check`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合technical、管理者、software、知识库把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 知识库
+  - AI问答
+  - 上线检查
+  - 治理
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、知识库需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传知识库导出（上传知识库导出、FAQ表、客服问答、截图说明或标签表。）、质检重点（选择本次知识库上线质检最需要优先处理的方向。）、知识库预览链接（填写公开可访问的帮助中心、预览页、FAQ页面或产品文档链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `kuaishou-sentiment-dashboard`
 
 - **核心价值**
   - 复盘快手内容评论，快速看到舆情反馈与运营优化机会。
-  - Best for Kuaishou content diagnosis and comment-operation follow-up.
+  - 适合快手内容诊断和评论运营跟进。
 - **主要用途**
   - 分析评论反馈
   - 看情绪分布
   - 看讨论重点
   - 看画像与转化线索
   - 输出运营建议
-- **Use when**
-  - the user gives a Kuaishou link
-  - the user wants sentiment, profile, and operational insight
-- **典型用户提问**
-  - 帮我分析这条快手视频的评论区
-  - 看下用户画像和舆情风险
-  - 给我评论运营建议
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - required `link`
-- **Returns**
-  - sentiment, profile, and discussion focus
-  - public-opinion and conversion clues
-  - optimization suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants a hot-topic board
-  - the user wants Douyin creators or benchmark accounts
-- **Prefer neighbor skill**
-  - use `bilibili-sentiment-dashboard` for Bilibili links
-  - use `douyin-kol-search` for Douyin benchmark-account requests
+- **适用场景**
+  - 用户提供了快手内容链接
+  - 用户想分析情绪、画像和运营洞察
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 需要 `link`
+- **返回结果**
+  - 情绪、画像和讨论焦点
+  - 舆情与转化线索
+  - 优化建议
 
 ### `landing-page-copy-review`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了诊断深度（诊断深度）、目标买方角色（例如创始人、市场负责人、销售负责人、IT 负责人、采购负责人或业务负责人。）、转化目标（例如预约演示、提交表单、下载白皮书、联系销售、注册试用或报名活动。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-approval`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了审批审阅目标（例如检查材料完整性、识别审批风险、准备补充说明或形成评审意见。）、审阅对象（例如申请人、直属主管、财务、法务、采购、人事或管理者。）、审批链接说明（填写飞书审批或流程说明链接，并补充可见内容摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-calendar`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了日程协作目标（例如识别冲突、准备议程、安排跟进、生成会议简报或优化会议节奏。）、简报读者（例如参会人、主持人、助理、项目团队、客户团队或管理者。）、日程链接说明（填写飞书日程、会议或相关文档链接，并补充可见内容摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-doc`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了处理目标（例如摘要、审阅、改写、行动项整理、风险复盘、对外同步或会议跟进。）、同步对象（说明这份飞书文档简报面向谁，例如项目组、管理层、客户、评审、协作者或外部伙伴。）、飞书公开链接（填写用户可公开分享的飞书文档链接；仅作人工链接线索，不代表可读取工作区内容。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-drive`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了文档治理目标（例如盘点文档、识别缺口、准备迁移、整理权限或输出交接清单。）、报告读者（例如文档 owner、项目团队、运营团队、管理者或外部合作方。）、云文档链接说明（填写飞书云文档、文件夹或知识库链接，并补充可见内容摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-minutes`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了会议复盘目标（例如提炼结论、明确行动项、生成会后同步、识别风险或准备下次会议。）、纪要读者（例如参会人、未参会成员、项目负责人、客户或管理者。）、纪要链接说明（填写飞书妙记或会议纪要链接，并补充可见内容摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-sheets`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了处理目标（例如数据体检、进度汇总、指标解释、异常排查、名单清洗或对外同步。）、报告读者（说明这份表格简报面向谁，例如项目组、运营、财务、销售、管理层、数据团队或客户。）、飞书表格链接（填写用户可公开分享的飞书表格链接；仅作人工链接线索，不代表可读取工作区数据。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-task`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了推进目标（例如清理逾期任务、明确责任人、准备周会或形成交接清单。）、接收团队（例如项目负责人、执行成员、管理者、客户成功团队或外部协作方。）、任务链接说明（填写飞书任务或项目链接，并补充链接中可见的任务摘要；系统不会自动打开链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lark-workflow-meeting-summary`
 
 - **核心价值**
-  - 资料整理助手
+  - 资料整理助手用于处理这份材料重点是什么相关任务。
+  - 适合运营、产品、technical、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 资料整理助手
-- **Use when**
-  - the user asks for 资料整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 办公协作
+  - 会议纪要
+  - 任务拆解
+  - 工作流
+- **适用场景**
+  - 用户提出“这份材料重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、产品、technical、销售需要围绕资料整理助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了总结目标（例如会后同步、行动项追踪、流程复盘、风险升级、客户纪要或管理层简报。）、同步对象（说明总结面向谁，例如参会人、项目组、管理层、客户、执行团队或外部伙伴。）、飞书会议或流程链接（填写用户可公开分享的飞书会议、妙记或流程文档链接；仅作人工链接线索，不代表可读取工…），希望整理成可执行的分析或优化结果
+  - 用户需要把资料整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `lesson-plan-activity-designer`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合运营、市场营销、教育培训、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 教案
+  - 课堂活动
+  - 培训设计
+  - 课件
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、教育培训、内容媒体需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了设计重点（选择本次教案活动设计助手最需要优先处理的方向。）、课时目标与内容（粘贴本节课主题、知识点、教学目标、课堂时长和已有流程。）、班级与学员情况（说明年龄/年级、人数、基础、线上线下、设备条件和课堂限制。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `live-commerce-script-compliance-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了直播平台（直播平台）、商品与资质信息（补充品类、卖点、适用范围、检测/认证、禁用表达和必须保留的信息。）、审稿重点（审稿重点），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `live-replay-clip-title-pack`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了直播回放片段内容（粘贴直播转写、片段摘要、商品介绍、互动问答或高光时间点。）、切片目标与限制（补充切片时长、标题风格、禁用词、活动利益点和发布时间。）、直播回放链接（填写公开可访问的回放、切片、商品页或活动页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `local-store-review-business-diagnosis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、retail、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 门店经营
+  - 点评分析
+  - 本地生活
+  - 整改
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、retail、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了门店评价内容（粘贴点评、美团、小红书、地图评价、客服记录或私域反馈。）、上传评价导出（上传评价表、订单反馈、客服记录、门店数据或竞品评价。）、门店公开链接（填写公开可访问的门店页、评价页、团购页或地图链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `marketing-psychology`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了期望行为（例如建立信任、降低犹豫、完成试用、预约演示、购买、复购或推荐。）、目标用户心理背景（补充用户画像、决策角色、认知阶段、主要顾虑、购买动机和使用情境。）、体验或页面链接（填写公开可访问的页面、产品、活动、报价页或漏斗预览链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `medical-content-compliance-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、healthcare、教育培训把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 医疗科普
+  - 合规审稿
+  - 健康内容
+  - 风险提示
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、healthcare、教育培训需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传科普文档（上传科普稿、审稿表、引用材料或宣传物料。）、科普公开链接（填写无需登录即可访问的科普文章、公众号预览或官网页面。）、医疗科普稿（粘贴标题、正文、引用依据、行动建议和目标读者说明。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `medical-literature-evidence-map`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、healthcare、教育培训把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 医学文献
+  - 证据地图
+  - 科研辅助
+  - 摘要
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、healthcare、教育培训需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了整理重点（选择本次医学文献证据地图最需要优先处理的方向。）、检索结果链接（填写公开可访问的 PubMed、期刊、指南或数据库检索链接。）、纳排标准与证据限制（补充时间范围、研究类型、排除条件、语言限制和偏倚关注点。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `multi-platform-article-rewrite-pack`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传文章资料（上传文章稿、采访记录、素材包、品牌规范或历史爆文。）、品牌语气与改写限制（补充必须保留的信息、禁用表达、口吻要求、长度和合规边界。）、原始文章稿（粘贴文章标题、正文、核心观点、案例、引用和希望保留的段落。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `page-cro`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了页面目标（例如注册、留资、预约演示、购买、下载、试用、加购或完成结账。）、目标访客（补充访客来源、购买角色、认知阶段、痛点、主要疑虑和决策条件。）、页面链接（填写公开可访问的落地页、产品页、注册页、定价页或结账页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `paid-ads`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了投放目标（例如点击、留资、购买、安装、预约、再营销、品牌认知或活动报名。）、目标受众与意图（补充搜索意图、兴趣、行业、地区、漏斗阶段、再营销条件或排除人群。）、广告或落地页链接（填写公开可访问的广告预览、落地页、产品页、活动页或素材说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `patient-education-readability-review`
 
 - **核心价值**
-  - 资料整理助手
+  - 资料整理助手用于处理这份材料重点是什么相关任务。
+  - 适合运营、市场营销、healthcare、教育培训把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 资料整理助手
-- **Use when**
-  - the user asks for 资料整理助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 患者宣教
+  - 可读性
+  - 健康沟通
+  - FAQ
+- **适用场景**
+  - 用户提出“这份材料重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、healthcare、教育培训需要围绕资料整理助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了患者人群与就诊场景（说明年龄、病程阶段、科室、阅读能力、使用场景和注意事项。）、阅读障碍与敏感点（补充患者常见误解、术语难点、禁忌提示和必须保留的信息。）、上传宣教资料（上传宣教手册、PDF、问答稿、流程图或随访话术。），希望整理成可执行的分析或优化结果
+  - 用户需要把资料整理助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `paywall-upgrade-cro`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了升级目标（例如解释高级价值、提升试用到付费、减少犹豫、引导年付、降低误解或提高透明度。）、升级目标用户（补充免费用户、试用用户、活跃用户、团队管理员、流失风险用户或具体细分人群。）、付费墙或升级页链接（填写公开可访问的付费墙预览、升级页、定价页、产品页或帮助文档链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `pharma-visit-material-compliance-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、healthcare、教育培训把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 医药营销
+  - 拜访材料
+  - 合规提示
+  - 话术审查
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、healthcare、教育培训需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了审查重点（选择本次药企拜访材料合规审查最需要优先处理的方向。）、拜访场景与限制（补充会议/院内/线上沟通场景、不可承诺内容和必须核对依据。）、产品适应症与资质背景（说明产品类别、获批适应症、目标科室、拜访对象和资料用途。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `policy-execution-checklist-generator`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 企业制度
+  - 执行清单
+  - 内控
+  - 培训
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了制度条款内容（粘贴制度、流程要求、审批规则、岗位责任和例外处理。）、上传制度文件（上传制度文件、流程图、检查表、会议纪要或内控要求。）、制度参考链接（填写公开可访问的制度说明、政策文件、流程页面或公告链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `polish`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了精修目标（说明希望提升的专业感、转化、理解效率、品牌一致性或展示效果。）、观看与使用人群（说明目标用户、访问者、评审者或客户，以及他们最在意的体验。）、页面或设计预览链接（填写公开可访问的页面、原型、设计预览、作品集或参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `pricing-strategy`
 
 - **核心价值**
-  - 财务定价诊断助手
+  - 财务定价诊断助手用于处理价格怎么定才不亏相关任务。
+  - 适合市场营销、运营、产品、销售把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 财务定价诊断助手
-- **Use when**
-  - the user asks for 财务定价诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 转化率
+  - 增长营销
+  - 文案
+  - A/B测试
+- **适用场景**
+  - 用户提出“价格怎么定才不亏”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、销售需要围绕财务定价诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了定价目标（例如提升理解、减少套餐混淆、准备价格测试、促进升级或解释价值。）、目标客户细分（补充客户规模、预算敏感度、购买角色、使用场景、采购流程和决策条件。）、定价页链接（填写公开可访问的定价页、报价页、升级页、商品页或产品套餐链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把财务定价诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `privacy-policy-data-map-check-cn`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 隐私政策
+  - 数据清单
+  - 合规辅助
+  - 产品
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传数据清单（上传个人信息清单、数据流图、SDK清单、权限表或合规自查表。）、检查重点（选择本次隐私政策数据地图检查最需要优先处理的方向。）、隐私页面链接（填写公开可访问的隐私政策、App说明、官网告知或帮助页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `private-domain-campaign-sop-generator`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了SOP 细度（SOP 细度）、品牌与话术要求（补充品牌语气、禁用表达、合规限制、客服边界和必须保留的信息。）、上传活动资料（支持活动方案、商品资料、社群复盘、话术文档或数据表。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `product-detail-page-conversion-review`
 
 - **核心价值**
-  - 转化实验助手
+  - 转化实验助手用于处理这个改动值得测吗相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 转化实验助手
-- **Use when**
-  - the user asks for 转化实验助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这个改动值得测吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕转化实验助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传页面资料（支持详情页截图、文案文档、图片 brief 或运营资料包。）、销售平台（销售平台）、商品基础信息（补充品类、价格带、规格、核心卖点、履约信息、促销机制和必须保留的事实。），希望整理成可执行的分析或优化结果
+  - 用户需要把转化实验助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `programmatic-seo`
 
 - **核心价值**
-  - 程序化 SEO 助手
+  - 程序化 SEO 助手用于处理页面能批量获客吗相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 程序化 SEO 助手
-- **Use when**
-  - the user asks for 程序化 SEO 助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“页面能批量获客吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕程序化 SEO 助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了规模化 SEO 目标（例如覆盖长尾关键词、扩展地区/行业页面、提升 AI 引用或获取线索。）、长尾搜索人群（说明目标查询场景、地域/行业细分、采购角色或内容消费阶段。）、样本页面或目录链接（填写无需登录即可访问的样本页、目录页、竞品页或页面模板链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把程序化 SEO 助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `proposal-risk-response-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合销售、市场营销、运营、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售赋能
+  - 客户研究
+  - 跟进计划
+  - GTM
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、产品需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了重点关注风险（例如过度承诺、需求遗漏、合规、交付边界、竞品比较或价格表述。）、RFP/客户需求背景（补充客户需求、评分规则、必须响应项、采购约束或澄清问题。）、审阅深度（审阅深度），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `public-company-due-diligence-summary`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、technical、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 金融资料
+  - 风险提示
+  - 证据审阅
+  - 专业复核
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、technical、产品需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传披露资料（上传公告、年报、招股书、新闻清单、尽调表或数据摘录。）、关注事项与排除范围（补充重点关注、已知风险、不得下结论范围和需人工核验事项。）、尽调目的与市场背景（说明公司、行业、市场、合作/投资/采购目的和时间范围。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `quality-complaint-8d-report`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、管理者、manufacturing、8D把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 8D
+  - 质量客诉
+  - 制造
+  - 整改
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、管理者、manufacturing、8D需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了客诉问题描述（粘贴客户投诉、缺陷描述、发生批次、数量、影响和客户要求。）、8D重点（选择本次质量客诉 8D 报告草稿最需要优先处理的方向。）、客诉资料链接（填写公开可访问的质量标准、产品说明或客诉记录链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `question-bank-explanation-quality-check`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、教育培训、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 题库
+  - 解析
+  - 教研
+  - 质量检查
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、教育培训、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传题库文件（上传题库表、试卷、解析稿、错题记录或标注表。）、学习阶段与考试场景（说明年级/考试/岗位、难度、题型、目标分数和学员基础。）、判分标准与口径（补充答案依据、评分规则、知识点边界、易错点和禁用解释。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `real-estate-listing-compliance-review`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、市场营销、retail、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 房产营销
+  - 卖点
+  - 合规提示
+  - FAQ
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、retail、内容媒体需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了房源与交易背景（说明城市、区域、新房/二手、产品类型、客群、交易阶段和渠道。）、上传房源资料（上传房源文案、海报、户型资料、价格表、证照说明或审稿表。）、房源公开链接（填写公开可访问的房源页、小区页、项目页或政策说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `restaurant-menu-deal-optimizer`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、retail、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 餐饮
+  - 菜单
+  - 团购
+  - 本地生活
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、retail、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了菜单与套餐内容（粘贴菜单、套餐、价格、毛利假设、主推菜和活动规则。）、上传菜单资料（上传菜单图片、外卖店铺截图、销售数据、成本表或竞品套餐。）、店铺或团购链接（填写公开可访问的外卖店铺、团购页、菜单页或点评页。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `resume-screening-consistency-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合人力资源、管理者、运营、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 招聘
+  - 简历
+  - 一致性
+  - 公平性
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 人力资源、管理者、运营、software需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传简历筛选资料（上传脱敏简历包、筛选表、岗位要求或面试记录。）、一致性规则与禁用依据（补充评分规则、不得使用的敏感因素、证据口径和人工复核要求。）、筛选标准链接（填写公开可访问的岗位要求、能力模型或招聘流程说明链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `saas-prd-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合technical、管理者、software、PRD把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - PRD
+  - SaaS
+  - 产品评审
+  - 验收标准
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、PRD需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了PRD草稿（粘贴需求背景、目标用户、用户故事、功能范围、流程和验收标准。）、评审重点（选择本次SaaS PRD评审助手最需要优先处理的方向。）、上传PRD文档（上传PRD、原型说明、需求池、评审记录或竞品资料。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `sales-meeting-follow-up-plan`
 
 - **核心价值**
-  - 销售增长助手
+  - 销售增长助手用于处理客户为什么不推进相关任务。
+  - 适合销售、市场营销、运营、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 销售增长助手
-- **Use when**
-  - the user asks for 销售增长助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 销售赋能
+  - 客户研究
+  - 跟进计划
+  - GTM
+- **适用场景**
+  - 用户提出“客户为什么不推进”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 销售、市场营销、运营、产品需要围绕销售增长助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了商机背景（说明客户阶段、联系人、竞争情况、预算时间线或当前推进卡点。）、跟进深度（跟进深度）、跟进目标（例如约下一次会、发送方案、确认试点、推进采购或唤醒客户。），希望整理成可执行的分析或优化结果
+  - 用户需要把销售增长助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `schema-markup`
 
 - **核心价值**
-  - SEO/AEO 诊断助手
+  - SEO/AEO 诊断助手用于处理这篇能被 AI 引用吗相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - SEO/AEO 诊断助手
-- **Use when**
-  - the user asks for SEO/AEO 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“这篇能被 AI 引用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕SEO/AEO 诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了结构化数据目标（例如争取富结果展示、帮助实体识别、规范 FAQ、强化产品或服务页理解。）、目标搜索受众（说明搜索用户、购买者、读者或实体受众，以及他们需要理解的关键信息。）、需要标记的公开页面（填写无需登录即可访问的产品页、服务页、文章页、FAQ 页或组织介绍链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `seedance-v2`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合市场营销、运营、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - AI生成
+  - 提示词
+  - 视觉创意
+  - 视频脚本
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、内容媒体、电商需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了视频目标（例如提高完播、产品展示、氛围营造、广告转化、活动预热或教学解释。）、观看人群（说明视频面向的观众，例如消费者、社媒粉丝、广告受众、课程学员或内部评审。）、视频参考链接（填写无需登录即可访问的参考视频、参考图片、脚本页面、落地页或竞品视频链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `seo-article-review`
 
 - **核心价值**
-  - SEO/AEO 诊断助手
+  - SEO/AEO 诊断助手用于处理这篇能被 AI 引用吗相关任务。
+  - 适合内容创作者、运营、市场营销、technical把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - SEO/AEO 诊断助手
-- **Use when**
-  - the user asks for SEO/AEO 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - AEO
+  - 文章优化
+  - 搜索意图
+- **适用场景**
+  - 用户提出“这篇能被 AI 引用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、technical需要围绕SEO/AEO 诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升关键词覆盖、搜索排名、AI 摘要引用、线索转化或内容权威感。）、目标人群（说明搜索用户画像和意图阶段，例如新手学习、方案比较、采购决策或专家复核。）、文章公开链接（填写无需登录即可访问的文章页、博客页或搜索落地页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `seo-audit`
 
 - **核心价值**
-  - SEO/AEO 诊断助手
+  - SEO/AEO 诊断助手用于处理这篇能被 AI 引用吗相关任务。
+  - 适合市场营销、运营、产品、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - SEO/AEO 诊断助手
-- **Use when**
-  - the user asks for SEO/AEO 诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SEO
+  - GEO
+  - 内容增长
+  - 搜索可见性
+- **适用场景**
+  - 用户提出“这篇能被 AI 引用吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 市场营销、运营、产品、software需要围绕SEO/AEO 诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了审计目标（例如提升自然流量、改善 AI 引用、修复内容结构、提高询盘或梳理内容缺口。）、目标搜索用户（说明搜索人群、采购角色、意图阶段或主要使用场景。）、待审页面或站点链接（填写无需登录即可访问的页面、栏目、站点地图或公开案例链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把SEO/AEO 诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `sku-trend-opportunity-report`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、销售、产品把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 电商运营
+  - 商品转化
+  - 用户反馈
+  - 增长改进
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、销售、产品需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了决策目标（决策目标）、目标市场（目标市场）、趋势信号（粘贴搜索词、社媒热词、平台榜单摘要、客户询盘、内容爆点或销售线索。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `sleek-design-mobile-apps`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了App 体验目标（说明希望提升的转化、留存、任务完成、首屏理解、信任或高级感目标。）、移动端用户场景（说明目标用户、使用场景、设备环境、单手/双手操作方式和熟练度。）、App 原型或参考链接（填写公开可访问的 App 原型、移动网页、设计预览、产品页面或竞品参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `social-rising-topic-radar-cn`
 
 - **核心价值**
-  - 社媒内容助手
+  - 社媒内容助手用于处理这条内容会被看吗相关任务。
+  - 适合运营、市场营销、内容媒体、电商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 社媒内容助手
-- **Use when**
-  - the user asks for 社媒内容助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 内容运营
+  - 新媒体
+  - 选题
+  - 分发
+- **适用场景**
+  - 用户提出“这条内容会被看吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、内容媒体、电商需要围绕社媒内容助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传趋势资料（上传热点截图、选题表、竞品内容、数据导出或运营复盘。）、趋势信号与选题线索（粘贴热点榜单、评论摘录、竞品标题、平台观察或选题想法。）、趋势来源链接（填写公开可访问的榜单、搜索页、话题页、竞品内容或报道链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把社媒内容助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `software-cost-quote-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合technical、管理者、software、软件成本把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 软件成本
+  - 报价
+  - 人天
+  - 项目管理
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、软件成本需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了报价与范围说明（粘贴供应商报价、功能范围、里程碑、人员配置、假设和付款节点。）、审查重点（选择本次软件成本报价审查最需要优先处理的方向。）、上传报价资料（上传报价单、WBS、合同草案、排期表或供应商方案。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `sop-readability-check`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、管理者、manufacturing、SOP把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - SOP
+  - 作业指导书
+  - 培训
+  - 可读性
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、管理者、manufacturing、SOP需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了检查重点（选择本次SOP 可读性检查最需要优先处理的方向。）、上传SOP文档（上传SOP、作业指导书、检查表、培训材料或流程图。）、SOP步骤文本（粘贴作业步骤、注意事项、异常处理、责任分工和检查点。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `student-feedback-retention-analysis`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合运营、市场营销、教育培训、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 学员反馈
+  - 续费
+  - 社群运营
+  - 教培
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、教育培训、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了上传反馈导出（上传问卷、NPS、社群反馈、客服记录或续费表。）、留存事件与运营动作（补充开营、作业、直播、社群、续费活动和异常时间点。）、学员反馈记录（粘贴学员评价、续费顾虑、退课原因、社群反馈或访谈摘录。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `supplier-delivery-risk-summary`
 
 - **核心价值**
-  - 风险审阅助手
+  - 风险审阅助手用于处理这里有什么风险相关任务。
+  - 适合运营、管理者、manufacturing、供应商把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 风险审阅助手
-- **Use when**
-  - the user asks for 风险审阅助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 供应商
+  - 交付风险
+  - 采购
+  - 供应链
+- **适用场景**
+  - 用户提出“这里有什么风险”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、管理者、manufacturing、供应商需要围绕风险审阅助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了供应商与物料背景（说明供应商等级、物料类别、采购周期、替代来源和合同约束。）、上传交付数据（上传订单、排产表、到货记录、库存表或供应商邮件。）、摘要重点（选择本次供应商交付风险摘要最需要优先处理的方向。），希望整理成可执行的分析或优化结果
+  - 用户需要把风险审阅助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `travel-itinerary-content-planner`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合运营、市场营销、retail、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 文旅
+  - 路线规划
+  - 小红书
+  - 内容种草
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 运营、市场营销、retail、内容媒体需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了策划重点（选择本次文旅路线内容策划最需要优先处理的方向。）、路线主题与素材（粘贴目的地、路线主题、景点、天数、预算、交通和已有文案。）、上传文旅资料（上传景点资料、图片说明、活动安排、达人笔记或竞品路线。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `ui-ux-pro-max`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了体验目标（说明希望优化的任务完成、转化、留存、效率、信任或满意度目标。）、用户与场景（说明目标用户、任务场景、使用频率、设备环境、熟练度和关键顾虑。）、产品页面或原型链接（填写公开可访问的产品页面、原型预览、设计说明、竞品流程或案例链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `video-storyboard-review`
 
 - **核心价值**
-  - 视频质量诊断助手
+  - 视频质量诊断助手用于处理这段视频够发布吗相关任务。
+  - 适合内容创作者、运营、市场营销、设计把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视频质量诊断助手
-- **Use when**
-  - the user asks for 视频质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 视频脚本
+  - 分镜
+  - 口播
+  - 广告片
+- **适用场景**
+  - 用户提出“这段视频够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、设计需要围绕视频质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升理解效率、情绪感染、转化点击、传播记忆点或拍摄可执行性。）、目标人群（说明视频面向的观众，例如品牌方、消费者、投资人、课程学员或内部评审。）、分镜参考链接（填写无需登录即可访问的分镜、脚本、样片或视频方案链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视频质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `vulnerability-advisory-impact-brief`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合technical、管理者、software、漏洞公告把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 漏洞公告
+  - 安全运营
+  - 影响评估
+  - 处置清单
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - technical、管理者、software、漏洞公告需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了简报重点（选择本次漏洞公告影响简报最需要优先处理的方向。）、漏洞公告内容（粘贴漏洞公告、CVE 摘要、影响版本、修复建议和厂商说明。）、上传公告资料（上传漏洞公告、资产清单、版本表、修复计划或风险登记表。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `web-design-guidelines`
 
 - **核心价值**
-  - 视觉质量诊断助手
+  - 视觉质量诊断助手用于处理这张图够发布吗相关任务。
+  - 适合产品、运营、technical、software把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 视觉质量诊断助手
-- **Use when**
-  - the user asks for 视觉质量诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - UI设计
+  - UX审查
+  - 设计系统
+  - 视觉改进
+- **适用场景**
+  - 用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 产品、运营、technical、software需要围绕视觉质量诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了页面目标（说明希望页面完成的信息传达、转化、注册、咨询、购买或任务操作。）、访问者画像（说明访问者身份、设备环境、浏览目的、熟练度和主要顾虑。）、网页或规范链接（填写公开可访问的网站页面、原型预览、设计规范或竞品参考链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把视觉质量诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `wechat-article-review`
 
 - **核心价值**
-  - 文案诊断助手
+  - 文案诊断助手用于处理这段文案能打动人吗相关任务。
+  - 适合内容创作者、运营、市场营销、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 文案诊断助手
-- **Use when**
-  - the user asks for 文案诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 公众号
+  - 文章审稿
+  - 结构优化
+  - 标题
+- **适用场景**
+  - 用户提出“这段文案能打动人吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、内容媒体需要围绕文案诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升完读率、收藏、转发、咨询、私域导流或品牌信任。）、目标人群（说明这篇公众号文章面向的读者，例如行业、身份、认知阶段或关注痛点。）、公众号文章链接（填写无需登录即可访问的公众号文章、预览页或转载页链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把文案诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `xhs-note-review`
 
 - **核心价值**
-  - 业务诊断助手
+  - 业务诊断助手用于处理这件事该怎么做相关任务。
+  - 适合内容创作者、运营、市场营销、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 业务诊断助手
-- **Use when**
-  - the user asks for 业务诊断助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 小红书
+  - 笔记诊断
+  - 种草
+  - 标题
+- **适用场景**
+  - 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、内容媒体需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了转化目标（例如提升点击、收藏、评论、关注、私信咨询、种草转化或搜索曝光。）、目标人群（说明想吸引的小红书用户，例如新手、宝妈、学生、职场人、同城用户或高意向消费者。）、小红书笔记链接（填写无需登录即可访问的小红书笔记、预览页或公开样稿链接。），希望整理成可执行的分析或优化结果
+  - 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
 ### `xhs-sentiment-dashboard`
 
 - **核心价值**
   - 复盘小红书内容评论，提炼舆情、画像与运营建议。
-  - Best for Xiaohongshu content diagnosis, seed-feedback review, and comment-operation optimization.
+  - 适合小红书内容诊断、种草反馈复盘和评论运营优化。
 - **主要用途**
   - 分析笔记评论
   - 看用户情绪和反馈重点
   - 看消费倾向和画像
   - 输出种草与运营建议
-- **Use when**
-  - the user gives a Xiaohongshu link
-  - the user wants to understand sentiment, profile, and next-step operations
-- **典型用户提问**
-  - 帮我分析这条小红书笔记的评论
-  - 看看用户画像和舆情风险
-  - 给我一些运营建议
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - required `link`
-- **Returns**
-  - sentiment and public-opinion view
-  - user profile and intent analysis
-  - optimization and conversion suggestions
-- **Do not use when**
-  - there is no link
-  - the user wants a hot list
-  - the user wants creator collaboration candidates
-- **Prefer neighbor skill**
-  - use `douyin-sentiment-dashboard` for Douyin links
-  - use `douyin-kol-search` for Douyin creator / benchmark-account requests
+- **适用场景**
+  - 用户提供了小红书笔记链接
+  - 用户想理解评论情绪、用户画像和下一步运营动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 需要 `link`
+- **返回结果**
+  - 情绪和舆情视图
+  - 用户画像和意图分析
+  - 优化与转化建议
 
 ### `xhs-viral-copywriter`
 
 - **核心价值**
-  - 爆款文案助手
+  - 爆款文案助手用于处理小红书怎么写才有人看相关任务。
+  - 适合内容创作者、运营、市场营销、内容媒体把输入材料转成摘要、诊断结论、行动建议和可复用交付物。
 - **主要用途**
   - 爆款文案助手
-- **Use when**
-  - the user asks for 爆款文案助手
-- **Need**
-  - required `AISKILLS_API_KEY`
-  - read `formSchema` before calling
-- **Returns**
-  - the skill-specific result described in its `SKILL.md`
-- **Do not use when**
-  - the user goal does not match this skill description
-- **Prefer neighbor skill**
-  - compare neighboring skill cards before execution
+  - 小红书
+  - 文案
+  - 种草
+  - 标题
+- **适用场景**
+  - 用户提出“小红书怎么写才有人看”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+  - 内容创作者、运营、市场营销、内容媒体需要围绕爆款文案助手生成摘要、诊断结论、行动建议和可复用交付物
+  - 用户已经准备了语气、主题（产品、服务、内容主题或卖点）、目标人群，希望整理成可执行的分析或优化结果
+  - 用户需要把爆款文案助手相关材料转成清晰结论、优先级和下一步动作
+- **运行要求**
+  - 需要 `AISKILLS_API_KEY`
+  - 调用前阅读 `formSchema`
+- **返回结果**
+  - 摘要、诊断结论、行动建议和可复用交付物
 
-## Non-Executable Handoffs
+## 外部入口类技能
 
 ### `software-dev-cost-dashboard`
 
 - **核心价值**
   - 评估软件项目开发成本、预算范围与立项报价。
-  - External handoff only; this release does not provide a runnable API package for it.
+  - 适合软件项目成本评估、预算规划和报价沟通。
 - **主要用途**
   - 估算软件开发成本
   - 梳理项目预算
   - 辅助立项和报价沟通
-- **Use when**
-  - the user asks for software project cost estimation
-  - the user wants a budget or quote planning dashboard
-  - the user can continue in the external web app
-- **典型用户提问**
-  - 这个软件项目大概要多少钱？
-  - 帮我评估一下开发成本
-  - 我需要一个立项预算看板
-- **Need**
-  - no local runner params; open the external site
-- **Returns**
-  - external web-app handoff
-  - cost-estimation workflow inside `https://soft.ai-skills.ai`
-- **Do not use when**
-  - the user expects an API-executable agent skill
-  - the user wants Douyin / Xiaohongshu / Bilibili / Kuaishou content analysis
-- **Prefer neighbor skill**
-  - use the executable social-media skills for traffic, hot-topic, creator, and comment-analysis tasks
+- **适用场景**
+  - 用户想估算软件项目开发成本
+  - 用户需要预算或报价规划看板
+  - 用户可以继续到外部 Web 应用完成评估
+- **运行要求**
+  - 不需要本地 runner 参数，直接打开外部站点
+- **返回结果**
+  - 外部 Web 应用入口
+  - `https://soft.ai-skills.ai` 内的软件成本评估流程
 
-Handoff URL: https://soft.ai-skills.ai
+外部入口：https://soft.ai-skills.ai
 
 ---
 
-## Operating Rules
+## 使用建议
 
-- Always choose the closest-fit skill, not the broadest one.
-- Do not use comment-analysis skills for topic discovery.
-- Do not use hotlist skills for comment diagnosis.
-- `douyin-kol-search` covers both collaboration discovery and Douyin benchmark-account discovery.
-- If the user intent is ambiguous, summarize the intent first and then recommend the best skill.
-- Output should start with conclusions, then evidence, then actionable suggestions.
+- 优先选择最贴近用户业务目标的技能，而不是名称最宽泛的技能。
+- 用户要做评论复盘、舆情、画像或运营建议时，优先选择对应平台的评论分析技能。
+- 用户要做热点发现、选题判断或赛道观察时，优先选择热榜、上升热点或流量分布技能。
+- `douyin-kol-search` 同时覆盖达人合作发现、带货达人筛选和抖音对标账号发现。
+- 用户意图含糊时，先用一句话复述需求，再推荐最合适的技能。
+- 输出尽量先给结论，再给证据、解释和下一步建议。
 
 ---
 
-## Minimal Appendix
+## 运行提示
 
-Use this appendix only after you have already chosen a skill.
+选择技能后，再阅读对应技能目录下的 `SKILL.md` 和 `references/form-schema.json`。
 
-### Start-of-session rule
+### 会话开始
 
-Read this `skills.md` file at session start before calling AI Skills APIs.
+调用 AI Skills 前先阅读本 `skills.md`，用中文适用场景判断最合适的技能。
 
-Suggested prompt snippet:
+建议提示语：
 
 ```text
-Before using AI Skills, read skills.md and follow it.
+使用 AI Skills 前，先阅读 skills.md，并按其中的中文适用场景选择技能。
 ```
 
-### Auth
+### 环境变量
 
-Recommended headers:
-
-```http
-X-API-Key: <AISKILLS_API_KEY>
-X-Tenant-Id: default
-```
-
-Recommended environment variables:
+可直接运行的技能通常需要：
 
 ```bash
 export AISKILLS_BASE_URL='https://ai-skills.ai'
@@ -4924,29 +5629,18 @@ export AISKILLS_API_KEY='your_api_key'
 export AISKILLS_TENANT_ID='default'
 ```
 
-### Standard execute flow
+### 标准运行流程
 
-1. choose a skill from this playbook
-2. read `skills/<slug>/SKILL.md`
-3. read `skills/<slug>/references/form-schema.json`
-4. build `params`
-5. run `skills/<slug>/scripts/run.py` or call the equivalent API endpoint
+1. 从本索引选择技能。
+2. 阅读 `skills/<slug>/SKILL.md`。
+3. 阅读 `skills/<slug>/references/form-schema.json`。
+4. 根据用户材料构造 `params`。
+5. 运行 `skills/<slug>/scripts/run.py` 或使用等价 API 调用。
 
-### Comment-analysis task flow
+### 参数提示
 
-For `douyin-sentiment-dashboard`, `xhs-sentiment-dashboard`, `bilibili-sentiment-dashboard`, `kuaishou-sentiment-dashboard`:
-
-1. optional: parse link
-   `POST /api/comment-analysis/parse-link`
-2. create task
-   `POST /api/comment-analysis/tasks`
-3. poll result
-   `GET /api/comment-analysis/tasks/:id`
-
-### Hard rules
-
-- Read `formSchema` before execution.
-- Default `forceRefresh=false`.
-- Do not invent params.
-- Do not reveal API keys.
-- If the chosen skill does not match the user's real goal, switch skills before calling the API.
+- 运行前阅读 `formSchema`，字段标题和说明通常已经给出用户该补充什么。
+- 默认不强制刷新缓存，除非用户明确需要最新结果。
+- 参数不足时，优先让用户补充目标、平台、链接、关键词、赛道或原始材料。
+- 回复中不要暴露 API Key。
+- 如果运行前发现技能不贴合用户真实目标，先切换到更合适的技能。

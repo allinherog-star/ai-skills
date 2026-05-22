@@ -1,16 +1,9 @@
 ---
 name: douyin-traffic-dashboard
-description: "抖音流量分配大盘. Use this skill when the user asks where Douyin traffic is going; the user asks which categories are getting more traffic; the user wants a platform-level directional read. Do not use when the user wants specific rising topics; the user wants a real-time hot list."
+description: "抖音流量分配大盘适合内容创作者、运营、电商、营销在用户想知道抖音流量正在流向哪些方向时使用，帮助基于输入材料生成流量分布、分类层级结构、可用于内容布局的平台方向信号。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # douyin-traffic-dashboard 抖音流量分配大盘
@@ -21,32 +14,16 @@ security:
 
 ### 概述
 
-抖音流量分配大盘
+抖音流量分配大盘用于回答「抖音平台流量在哪」、看流量分配、看分类占比、做赛道判断，适合内容创作者、运营、电商、营销在明确业务目标、内容材料或分析对象后调用。
+它会结合用户输入的业务背景和目标等输入，整理关键上下文，并输出流量分布、分类层级结构、可用于内容布局的平台方向信号，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks where Douyin traffic is going
-- the user asks which categories are getting more traffic
-- the user wants a platform-level directional read
-
-**典型用户提问**
-
-- 抖音平台流量在哪？
-- 最近流量更多流向了哪些内容分类？
-- 现在哪些赛道值得加大内容投入？
-
-**不要用于**
-
-- the user wants specific rising topics
-- the user wants a real-time hot list
-- the user wants creators or benchmark accounts
-
-**相邻技能选择**
-
-- use `douyin-realtime-hot-rise` for rising topic discovery
-- use `douyin-hotlist-overall` for real-time hot topics
+- 用户想知道抖音流量正在流向哪些方向
+- 用户想看哪些内容分类正在获得更多流量
+- 用户需要平台级方向判断
 
 ### 调用方式
 
@@ -126,18 +103,20 @@ python3 scripts/run.py --params '{}'
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `data.categories`：平台流量分类列表，重点看 `percentage` 和 `hotCount`。
-- `category.value`：分类编码，可直接复用到其它技能的筛选参数。
-- `data.updateTime`：流量分布快照时间。
+- 平台流量分布：展示不同内容分类的热度占比和热点数量。
+- 赛道判断线索：帮助判断当前哪些内容方向更值得投入。
+- 分类参考：可继续用于抖音热点筛选、内容布局和运营复盘。
+
+### 结果使用建议
+
+- 先看流量占比和热点数量高的分类，再结合账号能力判断是否值得投入。
+- 适合做赛道层面的内容布局，不直接替代具体选题判断。
+- 可把分类结果继续用于筛选上升热点或规划内容矩阵。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `douyin-traffic-dashboard` 对应的 AI Skills API/工作流。

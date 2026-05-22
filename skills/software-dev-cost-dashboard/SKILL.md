@@ -1,12 +1,7 @@
 ---
 name: software-dev-cost-dashboard
-description: "软件成本评估看板. Use this skill when the user asks for software project cost estimation; the user wants a budget or quote planning dashboard; the user can continue in the external web app. Do not use when the user expects an API-executable agent skill; the user wants Douyin / Xiaohongshu / Bilibili / Kuaishou content analysis."
+description: "软件成本评估看板适合管理、技术、软件、通用在用户想估算软件项目开发成本时使用，帮助基于输入材料生成外部 Web 应用入口、`https://soft.ai-skills.ai` 内的软件成本评估流程。"
 requiredEnvVars: []
-security:
-  thirdPartyDomain: soft.ai-skills.ai
-  dataSent:
-    - "用户在浏览器中直接访问 https://soft.ai-skills.ai 输入的内容（技能本身不经导出 runner 传递数据）"
-  warning: "此技能为 external-link 模式，不通过导出 runner 直接调用 API。请在访问目标站点前确认其数据安全与隐私政策。"
 ---
 
 # software-dev-cost-dashboard 软件成本评估看板
@@ -17,30 +12,16 @@ security:
 
 ### 概述
 
-软件成本评估看板
+软件成本评估看板用于回答「软件开发成本不可控」、估算软件开发成本、梳理项目预算、辅助立项和报价沟通，适合管理、技术、软件、通用在明确业务目标、内容材料或分析对象后调用。
+它会结合用户输入的业务背景和目标等输入，整理关键上下文，并输出外部 Web 应用入口、`https://soft.ai-skills.ai` 内的软件成本评估流程，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks for software project cost estimation
-- the user wants a budget or quote planning dashboard
-- the user can continue in the external web app
-
-**典型用户提问**
-
-- 这个软件项目大概要多少钱？
-- 帮我评估一下开发成本
-- 我需要一个立项预算看板
-
-**不要用于**
-
-- the user expects an API-executable agent skill
-- the user wants Douyin / Xiaohongshu / Bilibili / Kuaishou content analysis
-
-**相邻技能选择**
-
-- use the executable social-media skills for traffic, hot-topic, creator, and comment-analysis tasks
+- 用户想估算软件项目开发成本
+- 用户需要预算或报价规划看板
+- 用户可以继续到外部 Web 应用完成评估
 
 ### 调用方式
 
@@ -80,15 +61,16 @@ security:
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `data.externalLink`：外部站点入口，打开后继续使用技能。
-- `data.externalLinkLabel`：目标站点显示名称，便于在市场中识别跳转目标。
+- 打开成本看板的外部操作入口。
+- 面向业务用户的表单、看板或工作流页面，用于继续完成评估和交付。
+
+### 结果使用建议
+
+- 进入外部页面后，优先补全项目背景、目标范围和约束条件，结果会更适合直接用于决策。
+- 把评估结果用于预算讨论、方案对齐或后续报价沟通，而不是只看单一数字。
 
 ### 运行前准备
 
 - 当前技能不依赖本地 API Key 环境变量。
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `software-dev-cost-dashboard` 对应的 AI Skills API/工作流。

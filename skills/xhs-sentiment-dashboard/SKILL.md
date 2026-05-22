@@ -1,15 +1,9 @@
 ---
 name: xhs-sentiment-dashboard
-description: "小红书短视频运营增长助手. Use this skill when the user gives a Xiaohongshu link; the user wants to understand sentiment, profile, and next-step operations. Do not use when there is no link; the user wants a hot list."
+description: "小红书短视频运营增长助手适合内容创作者、运营、品牌方、电商在用户提供了小红书笔记链接时使用，帮助基于输入材料生成情绪和舆情视图、用户画像和意图分析、优化与转化建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "params（技能参数，含用户提供的分享链接）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会将用户提供的分享链接发送至 ai-skills.ai 进行解析和评论分析。启用前请确认您信任该平台的数据安全政策。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # xhs-sentiment-dashboard 小红书短视频运营增长助手
@@ -20,31 +14,15 @@ security:
 
 ### 概述
 
-小红书短视频运营增长助手
+小红书短视频运营增长助手用于回答「小红书短视频怎么运营」、分析笔记评论、看用户情绪和反馈重点、看消费倾向和画像，适合内容创作者、运营、品牌方、电商在明确业务目标、内容材料或分析对象后调用。
+它会结合视频/笔记链接、粘贴小红书分享链接等输入，整理关键上下文，并输出情绪和舆情视图、用户画像和意图分析、优化与转化建议，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user gives a Xiaohongshu link
-- the user wants to understand sentiment, profile, and next-step operations
-
-**典型用户提问**
-
-- 帮我分析这条小红书笔记的评论
-- 看看用户画像和舆情风险
-- 给我一些运营建议
-
-**不要用于**
-
-- there is no link
-- the user wants a hot list
-- the user wants creator collaboration candidates
-
-**相邻技能选择**
-
-- use `douyin-sentiment-dashboard` for Douyin links
-- use `douyin-kol-search` for Douyin creator / benchmark-account requests
+- 用户提供了小红书笔记链接
+- 用户想理解评论情绪、用户画像和下一步运营动作
 
 ### 调用方式
 
@@ -151,20 +129,20 @@ python3 scripts/run.py --params '{"link":"https://www.xiaohongshu.com/explore/66
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `task.status`：任务状态，`completed` 表示已经拿到完整分析结果。
-- `task.result.summary`：评论样本量、分析时间范围、内容标题等基础信息。
-- `task.result.aiInsights.summary`：对评论区的一句话总结，适合快速判断内容口碑和运营方向。
-- `task.result.aiInsights.operationAdvice`：最值得优先执行的运营建议，建议先看 `priority` 和 `detail`。
-- `task.result.labeledComments`：带标签的原始评论样本，可用来回看用户真实反馈。
+- 评论区整体结论：帮助快速判断内容口碑、讨论焦点和潜在舆情风险。
+- 用户反馈拆解：提炼高频诉求、典型评论、情绪倾向和用户画像线索。
+- 运营动作建议：给出后续内容优化、评论回复、系列选题或转化承接方向。
+
+### 结果使用建议
+
+- 先看整体情绪和一句话总结，判断内容反馈是正向、争议、观望还是存在风险。
+- 再看高频评论和用户画像，识别用户真正关心的问题、购买/互动意图和内容缺口。
+- 最后把运营建议转成下一条内容选题、评论回复策略或私域承接动作。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `xhs-sentiment-dashboard` 对应的 AI Skills API/工作流。

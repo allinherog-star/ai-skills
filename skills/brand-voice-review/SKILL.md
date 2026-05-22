@@ -1,16 +1,9 @@
 ---
 name: brand-voice-review
-description: "业务诊断助手. Use this skill when the user asks for 业务诊断助手. Do not use when the user goal does not match this skill description."
+description: "业务诊断助手适合市场营销、运营、service、销售在用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成摘要、诊断结论、行动建议和可复用交付物。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # brand-voice-review 业务诊断助手
@@ -21,21 +14,17 @@ security:
 
 ### 概述
 
-业务诊断助手
+业务诊断助手用于回答「这件事该怎么做」、品牌调性、风格一致、PR，适合市场营销、运营、service、销售在明确业务目标、内容材料或分析对象后调用。
+它会结合品牌表达样稿、可粘贴官网段落、社媒文案、品牌介绍、客服话术或活动文案；建议附上希…等输入，整理关键上下文，并输出摘要、诊断结论、行动建议和可复用交付物，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks for 业务诊断助手
-
-**不要用于**
-
-- the user goal does not match this skill description
-
-**相邻技能选择**
-
-- compare neighboring skill cards before execution
+- 用户提出“这件事该怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+- 市场营销、运营、service、销售需要围绕业务诊断助手生成摘要、诊断结论、行动建议和可复用交付物
+- 用户已经准备了转化目标（例如统一品牌语气、提升信任感、降低冒犯风险、强化专业感或促进咨询。）、目标人群（说明品牌表达面向的对象，例如潜在客户、合作伙伴、招聘候选人、媒体或老用户。）、品牌内容链接（填写无需登录即可访问的官网页面、品牌介绍、公开文档或社媒内容链接。），希望整理成可执行的分析或优化结果
+- 用户需要把业务诊断助手相关材料转成清晰结论、优先级和下一步动作
 
 ### 调用方式
 
@@ -111,27 +100,20 @@ python3 scripts/run.py --params '{"goal":"转化目标"}'
 }
 ```
 
-### 结构化结果约定
+### 交付内容
 
-异步执行完成时，运行时必须在产物目录根部写出 `result.json`，并使用 `ResultEnvelope` 结构：
+- 摘要、诊断结论、行动建议和可复用交付物：围绕用户目标整理可直接阅读、复盘或交付的核心结果。
+- 输入材料解读：结合转化目标（例如统一品牌语气、提升信任感、降低冒犯风险、强化专业感或促进咨询。）、目标人群（说明品牌表达面向的对象，例如潜在客户、合作伙伴、招聘候选人、媒体或老用户。）、品牌内容链接（填写无需登录即可访问的官网页面、品牌介绍、公开文档或社媒内容链接。）提炼关键上下文和判断依据。
+- 下一步动作：给出优先级、执行建议或可继续加工的内容框架。
 
-- `items` 是预览导航的唯一来源；默认只写一个主结果 `item`。
-- `artifacts` 是可下载产物清单，不会自动变成预览 Tab。
-- `item.artifactIds` 或 `item.artifacts` 只表示某个结果项需要引用这些文件进行展示。
-- 多结构预览必须由技能在 `items` 中显式声明多个结果项，必要时使用 `presentation.mode: "tabs"`。
+### 结果使用建议
 
-### 结果重点看什么
-
-- `data`：技能主返回结果，先看核心业务字段是否符合预期。
-- `meta.executionTime`：本次执行耗时，便于排查慢请求。
-- `meta.cached`：是否命中缓存，帮助判断结果新鲜度。
+- 先判断输出是否回答了用户关于「业务诊断助手」的核心问题。
+- 再检查结果是否覆盖摘要、诊断结论、行动建议和可复用交付物，以及是否给出明确下一步动作。
+- 如果输入材料较少，建议让用户补充目标、受众、限制条件或原始材料后再运行。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `brand-voice-review` 对应的 AI Skills API/工作流。

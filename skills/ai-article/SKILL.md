@@ -1,16 +1,9 @@
 ---
 name: ai-article
-description: "自动图文助手. Use this skill when the user asks for 自动图文助手. Do not use when the user goal does not match this skill description."
+description: "自动图文助手适合内容创作者、运营、technical、内容媒体在用户提出“自动公众号和种草”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成摘要、诊断结论、行动建议和可复用交付物。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # ai-article 自动图文助手
@@ -21,21 +14,17 @@ security:
 
 ### 概述
 
-自动图文助手
+自动图文助手用于回答「自动公众号和种草」、图文、写作、配图，适合内容创作者、运营、technical、内容媒体在明确业务目标、内容材料或分析对象后调用。
+它会结合主题、文章主题、关键词或一句话需求等输入，整理关键上下文，并输出摘要、诊断结论、行动建议和可复用交付物，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks for 自动图文助手
-
-**不要用于**
-
-- the user goal does not match this skill description
-
-**相邻技能选择**
-
-- compare neighboring skill cards before execution
+- 用户提出“自动公众号和种草”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+- 内容创作者、运营、technical、内容媒体需要围绕自动图文助手生成摘要、诊断结论、行动建议和可复用交付物
+- 用户已经准备了语气、主题（文章主题、关键词或一句话需求）、目标读者，希望整理成可执行的分析或优化结果
+- 用户需要把自动图文助手相关材料转成清晰结论、优先级和下一步动作
 
 ### 调用方式
 
@@ -141,29 +130,20 @@ python3 scripts/run.py --params '{"topic":"主题"}'
 }
 ```
 
-### 结构化结果约定
+### 交付内容
 
-异步执行完成时，运行时必须在产物目录根部写出 `result.json`，并使用 `ResultEnvelope` 结构：
+- 完整中文图文文章：包含标题、正文结构、段落内容和适合发布的 Markdown 文稿。
+- 文章配图与封面素材：用于公众号、博客或内容平台的视觉配套。
+- 可下载交付包：便于把正文和图片继续交给编辑、发布或归档流程。
 
-- `items` 是预览导航的唯一来源；默认只写一个主结果 `item`。
-- `artifacts` 是可下载产物清单，不会自动变成预览 Tab。
-- `item.artifactIds` 或 `item.artifacts` 只表示某个结果项需要引用这些文件进行展示。
-- 多结构预览必须由技能在 `items` 中显式声明多个结果项，必要时使用 `presentation.mode: "tabs"`。
-- 图文类技能默认只把文章或配图包作为主 `item`；正文图、封面图等附件放在 `artifacts`，不要自动拆成多个预览 Tab。
-- 只有当用户确实需要独立查看附属结果时，才在 `items` 中明确增加如“封面合集”“发布建议”等条目，并设置 `presentation.mode` 为 `tabs`。
+### 结果使用建议
 
-### 结果重点看什么
-
-- `data.resultEnvelope.items`：预览内容列表，默认应只有文章正文这个主结果。
-- `data.resultEnvelope.artifacts`：文章 Markdown、正文配图和封面图等可下载文件清单。
-- `data.zipUrl`：下载全部结果文件，附件图片不会自动变成预览 Tab。
+- 先检查标题、开头和分段结构是否贴合目标读者，再判断正文是否适合直接发布。
+- 配图和封面用于提升可读性与传播感，发布前仍建议结合品牌风格做最后筛选。
+- 如果用户已有关键词、受众或平台要求，尽量在输入里明确说明。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `ai-article` 对应的 AI Skills API/工作流。

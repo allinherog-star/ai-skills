@@ -1,16 +1,9 @@
 ---
 name: ai-marketing-ideas
-description: "营销创意助手. Use this skill when the user asks for 营销创意助手. Do not use when the user goal does not match this skill description."
+description: "营销创意助手适合内容创作者、市场营销、运营、内容媒体在用户提出“营销还能怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成转化问题优先级、可复制改稿、实验或跟进行动清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # ai-marketing-ideas 营销创意助手
@@ -21,21 +14,18 @@ security:
 
 ### 概述
 
-营销创意助手
+营销创意助手用于回答「营销还能怎么做」、内容生产、文案优化、发布准备，适合内容创作者、市场营销、运营、内容媒体在明确业务目标、内容材料或分析对象后调用。
+它会结合主题、草稿或参考素材、粘贴主题、草稿、渠道要求、参考素材、卖点信息或发布目标。等输入，整理关键上下文，并输出转化问题优先级、可复制改稿、实验或跟进行动清单，便于继续执行、复盘或交付。
+能力定位补充：skills.sh all-time/trending 信号显示 marketing-ideas 有用户需求；平台展示为 growth_cro_sales 业务助手目录，输出可复核诊断、建议或生产准备包。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks for 营销创意助手
-
-**不要用于**
-
-- the user goal does not match this skill description
-
-**相邻技能选择**
-
-- compare neighboring skill cards before execution
+- 用户提出“营销还能怎么做”这类问题，需要快速拆解目标、判断重点并形成可执行结果
+- 内容创作者、市场营销、运营、内容媒体需要围绕营销创意助手生成转化问题优先级、可复制改稿、实验或跟进行动清单
+- 用户已经准备了内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。），希望整理成可执行的分析或优化结果
+- 用户需要把营销创意助手相关材料转成清晰结论、优先级和下一步动作
 
 ### 调用方式
 
@@ -107,27 +97,20 @@ python3 scripts/run.py --params '{"goal":"内容目标"}'
 }
 ```
 
-### 结构化结果约定
+### 交付内容
 
-异步执行完成时，运行时必须在产物目录根部写出 `result.json`，并使用 `ResultEnvelope` 结构：
+- 转化问题优先级、可复制改稿、实验或跟进行动清单：围绕用户目标整理可直接阅读、复盘或交付的核心结果。
+- 输入材料解读：结合内容目标（说明希望达成的发布目标、转化目标、改写方向或评估标准。）、目标受众（说明内容面向的人群、角色、购买阶段或使用场景。）、参考内容链接（填写公开可访问的文章、页面、竞品内容或参考链接；受限内容请改为上传或粘贴。）提炼关键上下文和判断依据。
+- 下一步动作：给出优先级、执行建议或可继续加工的内容框架。
 
-- `items` 是预览导航的唯一来源；默认只写一个主结果 `item`。
-- `artifacts` 是可下载产物清单，不会自动变成预览 Tab。
-- `item.artifactIds` 或 `item.artifacts` 只表示某个结果项需要引用这些文件进行展示。
-- 多结构预览必须由技能在 `items` 中显式声明多个结果项，必要时使用 `presentation.mode: "tabs"`。
+### 结果使用建议
 
-### 结果重点看什么
-
-- `data`：技能主返回结果，先看核心业务字段是否符合预期。
-- `meta.executionTime`：本次执行耗时，便于排查慢请求。
-- `meta.cached`：是否命中缓存，帮助判断结果新鲜度。
+- 先判断输出是否回答了用户关于「营销创意助手」的核心问题。
+- 再检查结果是否覆盖转化问题优先级、可复制改稿、实验或跟进行动清单，以及是否给出明确下一步动作。
+- 如果输入材料较少，建议让用户补充目标、受众、限制条件或原始材料后再运行。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `ai-marketing-ideas` 对应的 AI Skills API/工作流。

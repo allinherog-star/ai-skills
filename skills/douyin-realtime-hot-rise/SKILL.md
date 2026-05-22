@@ -1,16 +1,9 @@
 ---
 name: douyin-realtime-hot-rise
-description: "抖音上升热点选题助手. Use this skill when the user asks what to post next; the user asks which topics are rising; the user wants growth-oriented topic selection. Do not use when the user wants the absolute hottest list right now; the user wants benchmark accounts or creators."
+description: "抖音上升热点选题助手适合内容创作者、运营、电商、营销在用户想知道接下来拍什么、写什么更可能有流量时使用，帮助基于输入材料生成上升热点列表、排名和变化趋势视图、可用于内容规划的选题线索。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # douyin-realtime-hot-rise 抖音上升热点选题助手
@@ -21,32 +14,16 @@ security:
 
 ### 概述
 
-抖音上升热点选题助手
+抖音上升热点选题助手用于回答「拍什么会有流量」、找上升选题、看赛道是否升温、辅助内容策划会，适合内容创作者、运营、电商、营销在明确业务目标、内容材料或分析对象后调用。
+它会结合搜索词、搜索特定关键词的热点等输入，整理关键上下文，并输出上升热点列表、排名和变化趋势视图、可用于内容规划的选题线索，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks what to post next
-- the user asks which topics are rising
-- the user wants growth-oriented topic selection
-
-**典型用户提问**
-
-- 最近拍什么会有流量？
-- 这周抖音有什么正在上升的热点？
-- 我做母婴 / 美妆 / 职场，最近该跟哪些选题？
-
-**不要用于**
-
-- the user wants the absolute hottest list right now
-- the user wants benchmark accounts or creators
-- the user wants comment analysis
-
-**相邻技能选择**
-
-- use `douyin-hotlist-overall` for "what is hottest right now"
-- use `douyin-traffic-dashboard` for "where traffic is flowing"
+- 用户想知道接下来拍什么、写什么更可能有流量
+- 用户想找正在上升的抖音热点或赛道机会
+- 用户需要增长导向的选题参考
 
 ### 调用方式
 
@@ -145,18 +122,20 @@ python3 scripts/run.py --params '{"keyword":"奥运","order":"rank_diff"}'
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `data.items`：热点条目列表，重点看 `keyword`、`rankDiff`、`tagName`。
-- `data.pagination`：当前返回页码、单页数量和总量信息。
-- `item.trends`：热点分数的时间序列，适合判断是否继续上升。
+- 上升热点清单：给出关键词、分类、排名变化和热度趋势。
+- 趋势判断依据：帮助判断热点是刚开始升温、持续走高还是已经接近峰值。
+- 选题参考：可直接用于短视频脚本、内容会选题和赛道观察。
+
+### 结果使用建议
+
+- 优先关注排名变化明显、仍在上升、且与账号赛道匹配的关键词。
+- 结合分类和趋势变化判断跟进窗口，尽量把热点转成具体脚本角度。
+- 适合内容会、选题池更新和临时热点响应。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `douyin-realtime-hot-rise` 对应的 AI Skills API/工作流。

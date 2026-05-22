@@ -1,16 +1,9 @@
 ---
 name: douyin-kol-search
-description: "抖音最具商业价值意见领袖（KOL）. Use this skill when the user asks who is worth collaborating with; the user asks who sells best; the user asks for Douyin benchmark accounts; the user asks for same-track / competitor / similar creators on Douyin. Do not use when the user wants a hot topic list; the user wants rising topic discovery."
+description: "抖音最具商业价值意见领袖（KOL）适合内容创作者、运营、营销、品牌方在用户想找值得合作的抖音达人时使用，帮助基于输入材料生成相关创作者 / KOL、对标账号候选、合作和竞品研究线索。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # douyin-kol-search 抖音最具商业价值意见领袖（KOL）
@@ -21,34 +14,17 @@ security:
 
 ### 概述
 
-抖音最具商业价值意见领袖（KOL）
+抖音最具商业价值意见领袖（KOL）用于回答「如何找对标账号」、找合作达人、找带货达人、找抖音对标账号，适合内容创作者、运营、营销、品牌方在明确业务目标、内容材料或分析对象后调用。
+它会结合搜索关键词、输入关键词搜索 KOL（如：美妆、美食、穿搭...）等输入，整理关键上下文，并输出相关创作者 / KOL、对标账号候选、合作和竞品研究线索，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks who is worth collaborating with
-- the user asks who sells best
-- the user asks for Douyin benchmark accounts
-- the user asks for same-track / competitor / similar creators on Douyin
-
-**典型用户提问**
-
-- 谁值得合作？
-- 谁最会带货？
-- 帮我找几个抖音对标账号
-- 帮我找母婴 / 美妆 / 本地探店赛道的同类达人
-
-**不要用于**
-
-- the user wants a hot topic list
-- the user wants rising topic discovery
-- the user wants comment analysis
-
-**相邻技能选择**
-
-- use `douyin-hotlist-overall` for hot content
-- use `douyin-realtime-hot-rise` for topic opportunity discovery
+- 用户想找值得合作的抖音达人
+- 用户想找更会带货或商业价值更高的账号
+- 用户想找抖音对标账号
+- 用户想找同赛道、竞品或相似创作者
 
 ### 调用方式
 
@@ -155,18 +131,20 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `data.items`：达人列表，优先看 `starIndex`、`convertIndex`、`spreadIndex`。
-- `data.searchStrategy`：是否发生了筛选回退，便于判断结果是否为宽松匹配。
-- `item.contentTags`：达人赛道标签，用来核对分类筛选是否准确。
+- 达人候选列表：包含账号定位、粉丝规模和内容标签等合作筛选信息。
+- 商业价值线索：重点辅助判断传播能力、转化潜力和综合合作优先级。
+- 对标账号参考：用于找同赛道创作者、竞品账号和可学习的内容样本。
+
+### 结果使用建议
+
+- 先按赛道和关键词圈定候选，再用商业价值、传播能力和转化潜力做优先级排序。
+- 找合作达人时重点看账号定位是否匹配品牌；找对标账号时重点看内容标签和受众相似度。
+- 如果筛选条件过窄导致结果少，可以放宽粉丝量或关键词后再比较。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `douyin-kol-search` 对应的 AI Skills API/工作流。

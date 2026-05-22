@@ -1,16 +1,9 @@
 ---
 name: douyin-hotlist-overall
-description: "抖音全网实时热点. Use this skill when the user asks what is hottest right now; the user asks what everyone is watching today; the user wants a real-time hot topic scan. Do not use when the user wants rising-trend detection; the user wants platform traffic structure."
+description: "抖音全网实时热点适合内容创作者、运营、电商、营销在用户想知道现在最热门的抖音热点时使用，帮助基于输入材料生成实时热点、当前热榜内容、值得即时跟进的话题。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key。运行脚本时会随请求发送至 ai-skills.ai 服务器。"
-security:
-  thirdPartyDomain: ai-skills.ai
-  dataSent:
-    - "skillId（技能标识符）"
-    - "params（技能参数，不含用户对话上下文）"
-    - "X-API-Key（认证密钥）"
-  warning: "此技能会调用 AI Skills API。启用前请确认您信任 ai-skills.ai 的数据安全政策，并使用可随时撤销的 API Key。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
 ---
 
 # douyin-hotlist-overall 抖音全网实时热点
@@ -21,32 +14,16 @@ security:
 
 ### 概述
 
-抖音全网实时热点
+抖音全网实时热点用于回答「现在最热门的是什么」、看实时热榜、做热点日报、做即时热点跟进，适合内容创作者、运营、电商、营销在明确业务目标、内容材料或分析对象后调用。
+它会结合用户输入的业务背景和目标等输入，整理关键上下文，并输出实时热点、当前热榜内容、值得即时跟进的话题，便于继续执行、复盘或交付。
 
 ### 什么时候使用
 
 **适用场景**
 
-- the user asks what is hottest right now
-- the user asks what everyone is watching today
-- the user wants a real-time hot topic scan
-
-**典型用户提问**
-
-- 现在最热门的是什么？
-- 抖音热搜最近在刷什么？
-- 给我看下当前最火的内容方向
-
-**不要用于**
-
-- the user wants rising-trend detection
-- the user wants platform traffic structure
-- the user wants comment diagnosis
-
-**相邻技能选择**
-
-- use `douyin-realtime-hot-rise` for rising trends
-- use `douyin-traffic-dashboard` for traffic distribution
+- 用户想知道现在最热门的抖音热点
+- 用户想看今天大家都在关注什么
+- 用户需要快速扫描实时热榜
 
 ### 调用方式
 
@@ -132,18 +109,20 @@ python3 scripts/run.py --params '{}'
 }
 ```
 
-### 结果重点看什么
+### 交付内容
 
-- `data.wordList`：抖音热搜总榜主列表，优先看前几名关键词和热度值。
-- `data.trendingList`：实时上升中的热点，适合抓新趋势和临时选题。
-- `data.updateTime`：本次榜单更新时间，便于判断结果新鲜度。
+- 抖音实时热榜：展示当前最受关注的热点词和热度信号。
+- 上升热点线索：辅助判断哪些话题正在升温、值得即时跟进。
+- 榜单时间信息：帮助判断当前结果是否适合用于当日选题和热点复盘。
+
+### 结果使用建议
+
+- 优先看热度高且与账号定位相关的话题，避免只追和自身内容无关的泛热点。
+- 把实时热榜用于热点扫描、日报整理和即时选题，不要只凭单个词判断长期趋势。
+- 适合和上升热点、流量分类结果一起看，形成更完整的选题判断。
 
 ### 运行前准备
 
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
-
-### 备注
-
-当前导出包由 AI Skills 站点目录自动生成，运行时后端仍然指向 `douyin-hotlist-overall` 对应的 AI Skills API/工作流。

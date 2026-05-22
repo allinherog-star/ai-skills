@@ -13640,8 +13640,8 @@
     {
       "id": "ai-humanizer-zh",
       "slug": "ai-humanizer-zh",
-      "question": "这段话像 AI 吗?",
-      "skillName": "中文润色去 AI 助手",
+      "question": "论文AI写的，帮我去掉AI味?",
+      "skillName": "去AI味助手",
       "tags": [
         "中文改写",
         "AI 写作痕迹",
