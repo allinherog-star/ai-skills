@@ -3,7 +3,7 @@ name: ai-docx
 description: "DOCX 整理助手适合运营、产品、市场营销、technical在用户提出“DOCX 重点是什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成摘要、诊断结论、行动建议和可复用交付物。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-docx DOCX 整理助手

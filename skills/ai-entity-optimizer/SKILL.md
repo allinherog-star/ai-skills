@@ -3,7 +3,7 @@ name: ai-entity-optimizer
 description: "实体优化助手适合内容创作者、市场营销、运营、内容媒体在用户提出“品牌能被 AI 识别吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成内容诊断、结构化优化建议、可执行发布清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-entity-optimizer 实体优化助手

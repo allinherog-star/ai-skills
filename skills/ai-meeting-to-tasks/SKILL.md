@@ -3,7 +3,7 @@ name: ai-meeting-to-tasks
 description: "会议待办整理助手适合运营、产品、销售、software在用户提出“会议后该做什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成待办拆解、决策摘要、风险和跟进清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-meeting-to-tasks 会议待办整理助手

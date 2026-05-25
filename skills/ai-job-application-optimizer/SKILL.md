@@ -3,7 +3,7 @@ name: ai-job-application-optimizer
 description: "求职材料优化助手适合人力资源、manager、运营、software在用户提出“简历够匹配岗位吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成匹配差距、简历优化建议、面试准备清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-job-application-optimizer 求职材料优化助手

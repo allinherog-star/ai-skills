@@ -3,7 +3,7 @@ name: ai-market-research
 description: "市场研究助手适合市场营销、运营、software、教育培训在用户提出“这个市场有机会吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成研究摘要、对比洞察、决策建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-market-research 市场研究助手

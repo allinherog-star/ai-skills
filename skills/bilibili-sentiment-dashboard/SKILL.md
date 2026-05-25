@@ -3,7 +3,7 @@ name: bilibili-sentiment-dashboard
 description: "B站短视频运营增长助手适合内容创作者、运营、品牌方、电商在用户提供了 B 站视频链接时使用，帮助基于输入材料生成评论情绪和讨论结构、观众画像和兴趣信号、内容与互动建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # bilibili-sentiment-dashboard B站短视频运营增长助手

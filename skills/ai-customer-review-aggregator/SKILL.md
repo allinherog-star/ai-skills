@@ -3,7 +3,7 @@ name: ai-customer-review-aggregator
 description: "客户评论洞察助手适合运营、产品、销售、software在用户提出“评论里藏着什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成评论聚类、痛点归因、运营动作卡。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-customer-review-aggregator 客户评论洞察助手

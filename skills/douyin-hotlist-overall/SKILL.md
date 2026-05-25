@@ -3,7 +3,7 @@ name: douyin-hotlist-overall
 description: "抖音全网实时热点适合内容创作者、运营、电商、营销在用户想知道现在最热门的抖音热点时使用，帮助基于输入材料生成实时热点、当前热榜内容、值得即时跟进的话题。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # douyin-hotlist-overall 抖音全网实时热点

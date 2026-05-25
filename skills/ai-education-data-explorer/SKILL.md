@@ -3,7 +3,7 @@ name: ai-education-data-explorer
 description: "教育数据分析助手适合市场营销、运营、software、教育培训在用户提出“教学数据说明什么”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成教学或招聘诊断、改进建议、评分/活动清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-education-data-explorer 教育数据分析助手

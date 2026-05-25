@@ -3,7 +3,7 @@ name: ai-remotion-best-practices
 description: "Remotion 实践助手适合technical、运营、software、内容媒体在用户提出“视频代码够稳吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成摘要、诊断结论、行动建议和可复用交付物。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-remotion-best-practices Remotion 实践助手

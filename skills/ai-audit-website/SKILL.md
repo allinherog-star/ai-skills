@@ -3,7 +3,7 @@ name: ai-audit-website
 description: "网站诊断助手适合市场营销、运营、software、教育培训在用户提出“网站哪里拖后腿”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成研究摘要、关键发现、引用/验证清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-audit-website 网站诊断助手

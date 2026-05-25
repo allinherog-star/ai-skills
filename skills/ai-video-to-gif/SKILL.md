@@ -3,7 +3,7 @@ name: ai-video-to-gif
 description: "视频转 GIF 优化助手适合市场营销、产品、technical、software在用户提出“这段视频怎么转 GIF”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成GIF 转换参数建议、FFmpeg 转换命…"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-video-to-gif 视频转 GIF 优化助手

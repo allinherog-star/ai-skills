@@ -3,7 +3,7 @@ name: ai-video-editing
 description: "AI 视频剪辑诊断助手适合市场营销、运营、software、内容媒体在用户提出“这段素材怎么剪”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成剪辑结构诊断、片段取舍和时间点建议、字幕配音与平台重构清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-video-editing AI 视频剪辑诊断助手

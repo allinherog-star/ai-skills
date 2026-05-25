@@ -3,7 +3,7 @@ name: douyin-realtime-hot-rise
 description: "抖音上升热点选题助手适合内容创作者、运营、电商、营销在用户想知道接下来拍什么、写什么更可能有流量时使用，帮助基于输入材料生成上升热点列表、排名和变化趋势视图、可用于内容规划的选题线索。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # douyin-realtime-hot-rise 抖音上升热点选题助手

@@ -3,7 +3,7 @@ name: ai-amazon-repricing-strategy
 description: "Amazon 调价诊断助手适合运营、产品、销售、software在用户提出“价格怎么调才稳”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成商品/店铺诊断、卖点与风险提示、运营动作建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-amazon-repricing-strategy Amazon 调价诊断助手

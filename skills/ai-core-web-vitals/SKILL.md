@@ -3,7 +3,7 @@ name: ai-core-web-vitals
 description: "Core Web Vitals 诊断助手适合technical、产品、市场营销、software在用户提出“页面速度拖转化吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成问题归因、服务改进建议、SOP …"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-core-web-vitals Core Web Vitals 诊断助手

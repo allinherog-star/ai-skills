@@ -3,7 +3,7 @@ name: ai-seo-aeo-content-cluster
 description: "SEO/AEO 内容集群助手适合市场营销、运营、内容创作者、software在用户提出“内容集群怎么搭”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成内容诊断、优化建议、执行清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-seo-aeo-content-cluster SEO/AEO 内容集群助手

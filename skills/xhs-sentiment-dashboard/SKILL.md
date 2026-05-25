@@ -3,7 +3,7 @@ name: xhs-sentiment-dashboard
 description: "小红书短视频运营增长助手适合内容创作者、运营、品牌方、电商在用户提供了小红书笔记链接时使用，帮助基于输入材料生成情绪和舆情视图、用户画像和意图分析、优化与转化建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # xhs-sentiment-dashboard 小红书短视频运营增长助手

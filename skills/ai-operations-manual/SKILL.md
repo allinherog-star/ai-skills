@@ -3,7 +3,7 @@ name: ai-operations-manual
 description: "运营手册整理助手适合运营、产品、销售、software在用户提出“流程手册清楚吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成结构化摘要、风险/缺口清单、可执行建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-operations-manual 运营手册整理助手

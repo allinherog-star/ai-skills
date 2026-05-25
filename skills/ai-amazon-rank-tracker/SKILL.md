@@ -3,7 +3,7 @@ name: ai-amazon-rank-tracker
 description: "Amazon 排名追踪助手适合销售、运营、市场营销、电商在用户提出“排名为什么波动”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成内容诊断、结构化优化建议、可执行发布清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-amazon-rank-tracker Amazon 排名追踪助手

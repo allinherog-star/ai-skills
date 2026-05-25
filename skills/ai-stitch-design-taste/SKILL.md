@@ -3,7 +3,7 @@ name: ai-stitch-design-taste
 description: "视觉质量诊断助手适合technical、产品、市场营销、software在用户提出“这张图够发布吗”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成视觉/创意诊断、提示词或分镜方案、发布规格检查。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-stitch-design-taste 视觉质量诊断助手

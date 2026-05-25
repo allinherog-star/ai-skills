@@ -64,6 +64,37 @@
 
 登录后进入 API Key 页面申请你的密钥。对于大多数 Skill 市场和 agent 客户端来说，后续调用都会读取 `AISKILLS_API_KEY`，所以这一步是权限入口。
 
+## 发布到 skills.sh 的同步说明
+
+`skills-release` 是发布到 GitHub 仓库 `allinherog-star/ai-skills` 的技能发布包。`ai-skills-service` 负责从平台数据导出 `skills-release/skills/*/SKILL.md`，`skills-release` 子模块再提交并推送到 GitHub。
+
+skills.sh 的搜索和榜单不是单纯读取 GitHub 文件列表。直接访问 `https://www.skills.sh/allinherog-star/ai-skills/<skill-id>` 可能已经可用，但搜索结果仍可能滞后；搜索索引主要由官方 `skills` CLI 的远程安装/匿名 telemetry 触发。
+
+推荐发布顺序：
+
+```bash
+cd ai-skills-service
+npm run skills-release:export
+
+cd ../skills-release
+git status
+git add .
+git commit -m "更新技能发布包"
+git push
+
+cd ..
+node scripts/check-skills-release-search.mjs --skills douyin-hotlist-overall,ai-article
+node scripts/sync-skills-release-search.mjs --yes
+node scripts/check-skills-release-search.mjs
+```
+
+注意事项：
+
+- `sync-skills-release-search.mjs` 必须从临时目录运行官方 CLI，并固定使用远程源 `allinherog-star/ai-skills`，不要用本地路径触发。
+- 该同步会透明地产生一次真实 publisher install 信号，目的是让 skills.sh 发现公开发布包，不用于人为刷安装量。
+- 如果环境里设置了 `DISABLE_TELEMETRY`、`DO_NOT_TRACK` 或 CI 变量，同步脚本会拒绝运行。
+- 全量同步后 skills.sh 仍可能有缓存或索引延迟，重新运行 `check-skills-release-search.mjs` 确认可搜索状态。
+
 
 ## AI Skills 是什么：一个能直接查的技能库
 

@@ -3,7 +3,7 @@ name: ai-hr-pro
 description: "HR 专业助手适合人力资源、manager、运营、software在用户提出“HR 文档怎么更稳”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成转化问题诊断、文案和结构建议、实验清单。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-hr-pro HR 专业助手

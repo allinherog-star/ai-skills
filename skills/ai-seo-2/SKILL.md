@@ -3,7 +3,7 @@ name: ai-seo-2
 description: "SEO 诊断助手适合市场营销、运营、内容创作者、software在用户提出“网站 SEO 哪里弱”这类问题，需要快速拆解目标、判断重点并形成可执行结果时使用，帮助基于输入材料生成AI 搜索可见性诊断、引用友好结构建议、改稿方向。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # ai-seo-2 SEO 诊断助手

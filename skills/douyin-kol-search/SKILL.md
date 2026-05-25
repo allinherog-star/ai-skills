@@ -3,7 +3,7 @@ name: douyin-kol-search
 description: "抖音最具商业价值意见领袖（KOL）适合内容创作者、运营、营销、品牌方在用户想找值得合作的抖音达人时使用，帮助基于输入材料生成相关创作者 / KOL、对标账号候选、合作和竞品研究线索。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # douyin-kol-search 抖音最具商业价值意见领袖（KOL）

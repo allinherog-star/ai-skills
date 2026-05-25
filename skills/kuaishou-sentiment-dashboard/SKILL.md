@@ -3,7 +3,7 @@ name: kuaishou-sentiment-dashboard
 description: "快手短视频运营增长助手适合内容创作者、运营、品牌方、电商在用户提供了快手内容链接时使用，帮助基于输入材料生成情绪、画像和讨论焦点、舆情与转化线索、优化建议。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "从 AI Skills 官网 https://ai-skills.ai 获取的 API Key，用于运行导出的技能调用。"
+    description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
 # kuaishou-sentiment-dashboard 快手短视频运营增长助手
