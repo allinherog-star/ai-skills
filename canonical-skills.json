@@ -1,6 +1,9 @@
 {
   "meta": {
-    "totalSkills": 245
+    "totalSkills": 245,
+    "generatedAt": "2026-05-27T11:55:17.247Z",
+    "dataSource": "public-catalog",
+    "engagementStats": "included"
   },
   "stats": {
     "byInvocationMode": {
@@ -197,7 +200,14 @@
             "message": "请粘贴账户资料、上传账户文件，或填写公开资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "下一步清楚，机会才会前进",
+      "scenario": "适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。",
+      "usage": "客户作战卡 / 跟进计划 / GTM 简报 / 风险回应",
+      "downloadCount": 1000,
+      "collectionCount": 17061,
+      "shareCount": 3824,
+      "reviewCount": 12
     },
     {
       "id": "ad-copy-compliance-review",
@@ -439,7 +449,14 @@
             "message": "请粘贴广告文案、上传广告文档，或填写公开广告落地链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于信息流广告、搜索广告、朋友圈广告、短信和活动促销文案发布前检查。",
+      "usage": "转化诊断 / 风险词提示 / 夸大承诺审查 / 替代表达 / 合规改稿",
+      "downloadCount": 4489,
+      "collectionCount": 4631,
+      "shareCount": 4131,
+      "reviewCount": 12
     },
     {
       "id": "ad-creative",
@@ -633,7 +650,14 @@
             "message": "请粘贴广告创意脚本、上传创意资料，或填写创意预览链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 8419,
+      "shareCount": 5850,
+      "reviewCount": 12
     },
     {
       "id": "agent-browser",
@@ -827,7 +851,14 @@
             "message": "请粘贴浏览研究上下文、上传任务资料文件，或填写公开入口链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 12292,
+      "shareCount": 4999,
+      "reviewCount": 12
     },
     {
       "id": "ai-ab-testing",
@@ -1021,7 +1052,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈实验",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "实验设计 / 转化诊断 / 假设梳理 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 11950,
+      "shareCount": 1784,
+      "reviewCount": 8
     },
     {
       "id": "ai-accessibility",
@@ -1216,7 +1254,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "能被更多人使用，才是好体验",
+      "scenario": "适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 8428,
+      "shareCount": 3546,
+      "reviewCount": 8
     },
     {
       "id": "ai-account-research",
@@ -1409,7 +1454,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先懂客户，再写话术",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 4920,
+      "shareCount": 1997,
+      "reviewCount": 8
     },
     {
       "id": "ai-ad-creative",
@@ -1604,7 +1656,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先抓注意力，再谈转化",
+      "scenario": "适用于已经准备好创意 brief、广告图/视频描述、投放目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1200,
+      "collectionCount": 7971,
+      "shareCount": 5121,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-brand-analytics",
@@ -1798,7 +1857,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "数据会暴露真实机会",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 17965,
+      "shareCount": 4535,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-dayparting-strategy",
@@ -1992,7 +2058,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "预算要花在高意图时段",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 8730,
+      "shareCount": 1944,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-international-listings",
@@ -2186,7 +2259,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "本地买家听懂才会买",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 11939,
+      "shareCount": 1061,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-inventory-management",
@@ -2380,7 +2460,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "不断货，也不压死现金",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 7293,
+      "shareCount": 2214,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-listing-images",
@@ -2574,7 +2661,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看懂卖点，再谈点击",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 13560,
+      "shareCount": 4730,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-product-bundling",
@@ -2768,7 +2862,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "组合要提高客单，也要守住利润",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 9422,
+      "shareCount": 1332,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-rank-tracker",
@@ -2962,7 +3063,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "排名变化要看关键词和动作",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "店铺诊断 / 优化建议 / 行动清单 / 风险提示",
+      "downloadCount": 1200,
+      "collectionCount": 6987,
+      "shareCount": 3059,
+      "reviewCount": 10
     },
     {
       "id": "ai-amazon-repricing-strategy",
@@ -3156,7 +3264,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "赢得竞争，也守住利润",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 16807,
+      "shareCount": 3472,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-return-reduction",
@@ -3350,7 +3465,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "退货原因就是增长漏点",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 10125,
+      "shareCount": 4283,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-search-optimization",
@@ -3544,7 +3666,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "关键词对了，Listing 才有入口",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 9100,
+      "shareCount": 4277,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-storefront-design",
@@ -3738,7 +3867,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "店铺要让买家快速相信",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 14923,
+      "shareCount": 2690,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-subscribe-save",
@@ -3932,7 +4068,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "复购理由清楚，订阅才成立",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 5041,
+      "shareCount": 4541,
+      "reviewCount": 8
     },
     {
       "id": "ai-amazon-vine-program",
@@ -4126,7 +4269,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "先算评价机会，再算风险",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 3341,
+      "shareCount": 2808,
+      "reviewCount": 8
     },
     {
       "id": "ai-article",
@@ -4442,7 +4592,14 @@
           }
         },
         "x-profile-context": true
-      }
+      },
+      "coreValue": "一句话需求，结合实时热点，图文并茂写好高质量文章",
+      "scenario": "适用于内容创作者、品牌运营、知识博主和需要稳定产出长图文的团队。",
+      "usage": "文章生成 / 封面生成 / 正文配图 / 发布建议",
+      "downloadCount": 5137,
+      "collectionCount": 17872,
+      "shareCount": 4727,
+      "reviewCount": 12
     },
     {
       "id": "ai-audit-website",
@@ -4635,7 +4792,14 @@
             "message": "请填写页面/性能资料、上传报告或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先找关键问题，再排优化顺序",
+      "scenario": "适用于已经准备好研究主题、公开资料或竞品线索、需要回答的问题等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 5923,
+      "shareCount": 1632,
+      "reviewCount": 8
     },
     {
       "id": "ai-avatar-video",
@@ -4781,7 +4945,14 @@
             "message": "请粘贴数字人口播需求、上传形象/视频参考，或填写公开口播链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才可能看下去",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 12428,
+      "shareCount": 3979,
+      "reviewCount": 12
     },
     {
       "id": "ai-backlink-analyzer",
@@ -4976,7 +5147,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "链接质量比数量更重要",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 6800,
+      "shareCount": 1157,
+      "reviewCount": 10
     },
     {
       "id": "ai-baoyu-article-illustrator",
@@ -5171,7 +5349,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "图要帮内容更快被看懂",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 9489,
+      "shareCount": 5555,
+      "reviewCount": 8
     },
     {
       "id": "ai-baoyu-compress-image",
@@ -5366,7 +5551,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "文件更轻，画面仍要清楚",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 14639,
+      "shareCount": 1731,
+      "reviewCount": 8
     },
     {
       "id": "ai-baoyu-cover-image",
@@ -5561,7 +5753,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "封面先抓住注意力",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 13478,
+      "shareCount": 3379,
+      "reviewCount": 8
     },
     {
       "id": "ai-baoyu-image-cards",
@@ -5756,7 +5955,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "信息要一眼看懂",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 15691,
+      "shareCount": 2570,
+      "reviewCount": 8
     },
     {
       "id": "ai-baoyu-image-gen",
@@ -5951,7 +6157,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "画面要服务内容目标",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 17587,
+      "shareCount": 5784,
+      "reviewCount": 8
     },
     {
       "id": "ai-baoyu-wechat-summary",
@@ -6145,7 +6358,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "先抓主线，再提金句",
+      "scenario": "适用于已经准备好文档、表格、会议记录或大纲、关注问题、输出格式要求等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 9387,
+      "shareCount": 1799,
+      "reviewCount": 8
     },
     {
       "id": "ai-brand-consistency-checker",
@@ -6340,7 +6560,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "每个触点都该说同一种品牌话",
+      "scenario": "适用于已经准备好品牌规范、待审文案、渠道等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 17907,
+      "shareCount": 1906,
+      "reviewCount": 8
     },
     {
       "id": "ai-churn-prevention",
@@ -6534,7 +6761,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "流失信号越早看见，越能挽回",
+      "scenario": "适用于已经准备好用户反馈、使用记录摘要、流失信号等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 11214,
+      "shareCount": 5518,
+      "reviewCount": 8
     },
     {
       "id": "ai-cold-email",
@@ -6728,7 +6962,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "开场说对，回复才有机会",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 8350,
+      "shareCount": 1473,
+      "reviewCount": 8
     },
     {
       "id": "ai-co-marketing",
@@ -6923,7 +7164,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "好合作要让双方都能增长",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 4472,
+      "shareCount": 3972,
+      "reviewCount": 8
     },
     {
       "id": "ai-community-marketing",
@@ -7118,7 +7366,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "成员有参与感，社群才会增长",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 12684,
+      "shareCount": 1375,
+      "reviewCount": 8
     },
     {
       "id": "ai-competitor-alternatives",
@@ -7313,7 +7568,14 @@
             "message": "请填写业务材料、上传资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "替代理由，就是定位机会",
+      "scenario": "适用于已经准备好自家产品信息、竞品页面、目标关键词等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 10559,
+      "shareCount": 3987,
+      "reviewCount": 8
     },
     {
       "id": "ai-competitor-profiling",
@@ -7508,7 +7770,14 @@
             "message": "请填写业务材料、上传资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "看清对手，才知道怎么赢",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 12078,
+      "shareCount": 1679,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-creator",
@@ -7703,7 +7972,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 8202,
+      "shareCount": 5865,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-marketer",
@@ -7898,7 +8174,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "内容要服务获客和转化",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1500,
+      "collectionCount": 13883,
+      "shareCount": 4087,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-quality-auditor",
@@ -8093,7 +8376,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 3974,
+      "shareCount": 2397,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-research-writer",
@@ -8288,7 +8578,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再拆行动",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 4562,
+      "shareCount": 3300,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-strategy",
@@ -8483,7 +8780,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于已经准备好业务目标、受众、现有内容等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 5994,
+      "shareCount": 5396,
+      "reviewCount": 8
     },
     {
       "id": "ai-content-writer",
@@ -8678,7 +8982,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 6304,
+      "shareCount": 3240,
+      "reviewCount": 8
     },
     {
       "id": "ai-copy-editing",
@@ -8873,7 +9184,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 3533,
+      "shareCount": 3033,
+      "reviewCount": 8
     },
     {
       "id": "ai-copywriting",
@@ -9068,7 +9386,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于已经准备好原始文案、目标用户、转化目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 15170,
+      "shareCount": 3353,
+      "reviewCount": 8
     },
     {
       "id": "ai-copywriting-psychologist",
@@ -9263,7 +9588,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "动机说对，行动才会发生",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 7566,
+      "shareCount": 2345,
+      "reviewCount": 8
     },
     {
       "id": "ai-core-web-vitals",
@@ -9458,7 +9790,14 @@
             "message": "请填写页面/性能资料、上传报告或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "体验指标会直接影响信任",
+      "scenario": "适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1200,
+      "collectionCount": 4190,
+      "shareCount": 3232,
+      "reviewCount": 8
     },
     {
       "id": "ai-crm-cleanup",
@@ -9652,7 +9991,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "数据干净，销售动作才准",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 9147,
+      "shareCount": 5038,
+      "reviewCount": 8
     },
     {
       "id": "ai-csv-excel-merger",
@@ -9846,7 +10192,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再拆行动",
+      "scenario": "适用于已经准备好CSV/XLSX 文件、合并规则、字段口径等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 8930,
+      "shareCount": 4880,
+      "reviewCount": 8
     },
     {
       "id": "ai-customer-journey-map",
@@ -10041,7 +10394,14 @@
             "message": "请填写业务材料、上传资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "转化断点藏在每一步体验里",
+      "scenario": "适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 5264,
+      "shareCount": 3722,
+      "reviewCount": 8
     },
     {
       "id": "ai-customer-pulse",
@@ -10235,7 +10595,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "情绪变化要比投诉更早看见",
+      "scenario": "适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 10822,
+      "shareCount": 2200,
+      "reviewCount": 10
     },
     {
       "id": "ai-customer-research",
@@ -10428,7 +10795,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "真需求来自证据，不来自猜测",
+      "scenario": "适用于已经准备好访谈记录、评论反馈、目标用户描述等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 11193,
+      "shareCount": 1069,
+      "reviewCount": 8
     },
     {
       "id": "ai-customer-review-aggregator",
@@ -10622,7 +10996,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "评论会说出产品真问题",
+      "scenario": "适用于已经准备好评论文本、产品/门店信息、时间范围等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 14972,
+      "shareCount": 1236,
+      "reviewCount": 8
     },
     {
       "id": "ai-customer-support",
@@ -10816,7 +11197,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "先安抚情绪，再解决问题",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 13419,
+      "shareCount": 1406,
+      "reviewCount": 8
     },
     {
       "id": "ai-design-brief",
@@ -11011,7 +11399,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "需求越清楚，返工越少",
+      "scenario": "适用于已经准备好设计稿/截图/页面说明、品牌约束、使用场景等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 16793,
+      "shareCount": 1495,
+      "reviewCount": 8
     },
     {
       "id": "ai-design-taste-frontend",
@@ -11206,7 +11601,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "好看之前，先要有秩序",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 14529,
+      "shareCount": 4027,
+      "reviewCount": 8
     },
     {
       "id": "ai-docx",
@@ -11354,7 +11756,14 @@
             "message": "请粘贴 Word 正文、上传文档文件，或填写公开文档链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再方便复用",
+      "scenario": "适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。",
+      "usage": "文档摘要 / 结构化提取 / 风险问题 / 行动清单",
+      "downloadCount": 1200,
+      "collectionCount": 17786,
+      "shareCount": 5892,
+      "reviewCount": 8
     },
     {
       "id": "ai-ecommerce-checkout-optimization",
@@ -11548,7 +11957,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "每多一步犹豫，都会少一次成交",
+      "scenario": "适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 9478,
+      "shareCount": 1969,
+      "reviewCount": 8
     },
     {
       "id": "ai-ecommerce-search",
@@ -11742,7 +12158,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜得到，才可能买得到",
+      "scenario": "适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 10723,
+      "shareCount": 5670,
+      "reviewCount": 8
     },
     {
       "id": "ai-educational-research-methods",
@@ -11935,7 +12358,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "方法对了，结论才站得住",
+      "scenario": "适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 15092,
+      "shareCount": 3086,
+      "reviewCount": 8
     },
     {
       "id": "ai-education-data-explorer",
@@ -12128,7 +12558,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "数据先讲清问题，再谈改进",
+      "scenario": "适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 10983,
+      "shareCount": 5395,
+      "reviewCount": 8
     },
     {
       "id": "ai-email-sequence",
@@ -12323,7 +12760,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于已经准备好邮件草稿、客户阶段、触达目标等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 6279,
+      "shareCount": 5779,
+      "reviewCount": 8
     },
     {
       "id": "ai-entity-optimizer",
@@ -12518,7 +12962,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "实体清楚，AI 才容易引用",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 8105,
+      "shareCount": 4980,
+      "reviewCount": 8
     },
     {
       "id": "ai-gpt-image-2",
@@ -12664,7 +13115,14 @@
             "message": "请粘贴 GPT 图片生成需求、上传图片参考，或填写公开参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于把品牌主视觉、广告图、产品场景图、社媒配图、概念图或参考图改写需求生成图片成品。",
+      "usage": "图片生成 / 参考图改写 / Prompt package / 授权检查",
+      "downloadCount": 1500,
+      "collectionCount": 8455,
+      "shareCount": 4725,
+      "reviewCount": 8
     },
     {
       "id": "ai-higgsfield-marketplace-cards",
@@ -12858,7 +13316,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "第一眼要说清卖点",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 4854,
+      "shareCount": 4354,
+      "reviewCount": 8
     },
     {
       "id": "ai-higgsfield-product-photoshoot",
@@ -13052,7 +13517,14 @@
             "message": "请填写商品/店铺资料、上传电商文件或提供商品链接"
           }
         ]
-      }
+      },
+      "coreValue": "场景对了，产品才有想象力",
+      "scenario": "适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 16387,
+      "shareCount": 2095,
+      "reviewCount": 8
     },
     {
       "id": "ai-high-end-visual-design",
@@ -13247,7 +13719,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 11924,
+      "shareCount": 2851,
+      "reviewCount": 8
     },
     {
       "id": "ai-hr-performance-review",
@@ -13441,7 +13920,14 @@
             "message": "请填写 HR 资料、上传文件或提供岗位/资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "反馈要具体，也要可行动",
+      "scenario": "适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 5344,
+      "shareCount": 4087,
+      "reviewCount": 8
     },
     {
       "id": "ai-hr-pro",
@@ -13635,7 +14121,14 @@
             "message": "请填写 HR 资料、上传文件或提供岗位/资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "人事判断要清楚，也要留边界",
+      "scenario": "适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。",
+      "usage": "材料诊断 / 表达建议 / 风险提醒 / 跟进清单",
+      "downloadCount": 1200,
+      "collectionCount": 12747,
+      "shareCount": 2185,
+      "reviewCount": 8
     },
     {
       "id": "ai-humanizer-zh",
@@ -13954,7 +14447,14 @@
             "message": "请粘贴待改文本、上传稿件，或填写公开文本链接"
           }
         ]
-      }
+      },
+      "coreValue": "像人说话，才容易被相信",
+      "scenario": "适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI 味审稿。",
+      "usage": "AI 痕迹诊断 / 中文自然化改写 / 语气保真 / 发布前检查",
+      "downloadCount": 1200,
+      "collectionCount": 17198,
+      "shareCount": 2970,
+      "reviewCount": 8
     },
     {
       "id": "ai-image",
@@ -14148,7 +14648,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "店铺诊断 / 优化建议 / 行动清单 / 风险提示",
+      "downloadCount": 1200,
+      "collectionCount": 10291,
+      "shareCount": 5427,
+      "reviewCount": 8
     },
     {
       "id": "ai-image-generation",
@@ -14294,7 +14801,14 @@
             "message": "请粘贴图片创意、上传参考图，或填写公开参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 7061,
+      "shareCount": 2630,
+      "reviewCount": 12
     },
     {
       "id": "ai-image-gen-guide",
@@ -14489,7 +15003,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好产品/主题信息、平台规格、风格要求等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 15415,
+      "shareCount": 2223,
+      "reviewCount": 8
     },
     {
       "id": "ai-industrial-brutalist-ui",
@@ -14684,7 +15205,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 15799,
+      "shareCount": 2156,
+      "reviewCount": 8
     },
     {
       "id": "ai-internal-linking-optimizer",
@@ -14879,7 +15407,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "好内链让内容互相托举",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 9239,
+      "shareCount": 1040,
+      "reviewCount": 8
     },
     {
       "id": "ai-job-application-optimizer",
@@ -15073,7 +15608,14 @@
             "message": "请填写 HR 资料、上传文件或提供岗位/资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "匹配度说清，机会才更大",
+      "scenario": "适用于已经准备好简历、目标 JD、求职方向等材料的用户。",
+      "usage": "材料诊断 / 表达建议 / 风险提醒 / 跟进清单",
+      "downloadCount": 1200,
+      "collectionCount": 5449,
+      "shareCount": 3827,
+      "reviewCount": 8
     },
     {
       "id": "ai-kpi-dashboard-design",
@@ -15268,7 +15810,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "指标有层次，决策才快",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1500,
+      "collectionCount": 10828,
+      "shareCount": 4780,
+      "reviewCount": 8
     },
     {
       "id": "ai-launch",
@@ -15463,7 +16012,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "上线前先把风险和节奏排清",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 9161,
+      "shareCount": 2074,
+      "reviewCount": 8
     },
     {
       "id": "ai-lead-magnets",
@@ -15658,7 +16214,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "用户愿意留下线索，才算诱饵",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 4771,
+      "shareCount": 3479,
+      "reviewCount": 8
     },
     {
       "id": "ai-local-places",
@@ -15852,7 +16415,14 @@
             "message": "请填写地点需求、上传地点资料或提供地点链接"
           }
         ]
-      }
+      },
+      "coreValue": "地点推荐要匹配场景",
+      "scenario": "适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1500,
+      "collectionCount": 9481,
+      "shareCount": 1399,
+      "reviewCount": 8
     },
     {
       "id": "ai-local-pois",
@@ -16046,7 +16616,14 @@
             "message": "请填写地点需求、上传地点资料或提供地点链接"
           }
         ]
-      }
+      },
+      "coreValue": "先定目的，再筛地点",
+      "scenario": "适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 14764,
+      "shareCount": 2117,
+      "reviewCount": 8
     },
     {
       "id": "ai-marketing-ideas",
@@ -16241,7 +16818,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "好创意要能落到行动",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 14747,
+      "shareCount": 5670,
+      "reviewCount": 8
     },
     {
       "id": "ai-market-research",
@@ -16434,7 +17018,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "机会要看需求、竞品和切入口",
+      "scenario": "适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1500,
+      "collectionCount": 11299,
+      "shareCount": 5718,
+      "reviewCount": 8
     },
     {
       "id": "ai-meeting-to-tasks",
@@ -16628,7 +17219,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "讨论要落到负责人和下一步",
+      "scenario": "适用于已经准备好会议纪要、项目背景、负责人信息等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 15072,
+      "shareCount": 3636,
+      "reviewCount": 8
     },
     {
       "id": "ai-minimalist-ui",
@@ -16823,7 +17421,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 13338,
+      "shareCount": 2749,
+      "reviewCount": 8
     },
     {
       "id": "ai-onboarding",
@@ -17017,7 +17622,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "第一次体验决定后面是否留下",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "实验设计 / 转化诊断 / 假设梳理 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 11231,
+      "shareCount": 3628,
+      "reviewCount": 8
     },
     {
       "id": "ai-operations-manual",
@@ -17211,7 +17823,14 @@
             "message": "请填写记录内容、上传资料文件或提供资料链接"
           }
         ]
-      }
+      },
+      "coreValue": "流程写清楚，交接才稳",
+      "scenario": "适用于已经准备好文档/表格/会议材料、处理目标、输出格式要求等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 14317,
+      "shareCount": 3946,
+      "reviewCount": 8
     },
     {
       "id": "ai-page-cro",
@@ -17405,7 +18024,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先找阻力，再改页面",
+      "scenario": "适用于已经准备好落地页 URL、页面文案、转化目标等材料的用户。",
+      "usage": "实验设计 / 转化诊断 / 假设梳理 / 执行清单",
+      "downloadCount": 1500,
+      "collectionCount": 12419,
+      "shareCount": 3366,
+      "reviewCount": 8
     },
     {
       "id": "ai-paid-ads",
@@ -17600,7 +18226,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "预算要买来有效行动",
+      "scenario": "适用于已经准备好广告文案、投放平台、目标人群等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 10265,
+      "shareCount": 5346,
+      "reviewCount": 8
     },
     {
       "id": "ai-paywall-upgrade-cro",
@@ -17794,7 +18427,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "价值先讲清，升级才自然",
+      "scenario": "适用于已经准备好升级页文案、会员权益、转化目标等材料的用户。",
+      "usage": "实验设计 / 转化诊断 / 假设梳理 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 4397,
+      "shareCount": 3897,
+      "reviewCount": 8
     },
     {
       "id": "ai-pdf",
@@ -17942,7 +18582,14 @@
             "message": "请粘贴 PDF 文本、上传 PDF 文件，或填写公开 PDF 链接"
           }
         ]
-      }
+      },
+      "coreValue": "长文档要先变成可读重点",
+      "scenario": "适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。",
+      "usage": "文档摘要 / 结构化提取 / 风险问题 / 行动清单",
+      "downloadCount": 1200,
+      "collectionCount": 3105,
+      "shareCount": 2605,
+      "reviewCount": 8
     },
     {
       "id": "ai-performance",
@@ -18137,7 +18784,14 @@
             "message": "请填写页面/性能资料、上传报告或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "慢点找准，优化才有效",
+      "scenario": "适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1500,
+      "collectionCount": 17314,
+      "shareCount": 4499,
+      "reviewCount": 8
     },
     {
       "id": "ai-podcast",
@@ -18333,7 +18987,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "好节目要有清楚钩子",
+      "scenario": "适用于已经准备好播客主题、嘉宾角色、目标平台等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 14789,
+      "shareCount": 1005,
+      "reviewCount": 8
     },
     {
       "id": "ai-pptx",
@@ -18481,7 +19142,14 @@
             "message": "请粘贴幻灯片文字、上传演示文稿，或填写公开演示链接"
           }
         ]
-      }
+      },
+      "coreValue": "每页都该服务一个判断",
+      "scenario": "适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。",
+      "usage": "文档摘要 / 结构化提取 / 风险问题 / 行动清单",
+      "downloadCount": 1200,
+      "collectionCount": 3802,
+      "shareCount": 3302,
+      "reviewCount": 8
     },
     {
       "id": "ai-presentation-deck",
@@ -18675,7 +19343,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "每页都该推动判断",
+      "scenario": "适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。",
+      "usage": "资料整理 / 结构摘要 / 缺口提醒 / 行动项",
+      "downloadCount": 1200,
+      "collectionCount": 12289,
+      "shareCount": 5265,
+      "reviewCount": 8
     },
     {
       "id": "ai-presentation-design-enhancer",
@@ -18870,7 +19545,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "每页都该推动判断",
+      "scenario": "适用于已经准备好PPT 文件或大纲、演示目标、受众等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1200,
+      "collectionCount": 16825,
+      "shareCount": 4964,
+      "reviewCount": 8
     },
     {
       "id": "ai-product-marketing",
@@ -19065,7 +19747,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "用户先懂价值，才会行动",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 13812,
+      "shareCount": 4980,
+      "reviewCount": 8
     },
     {
       "id": "ai-product-photo-scene-planner",
@@ -19385,7 +20074,14 @@
             "message": "请填写商品信息、描述现有图片，或上传图片参考"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 5671,
+      "shareCount": 3907,
+      "reviewCount": 12
     },
     {
       "id": "ai-programmatic-seo",
@@ -19580,7 +20276,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "模板对了，长尾才会增长",
+      "scenario": "适用于已经准备好关键词集合、页面模板、数据字段等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 15272,
+      "shareCount": 2890,
+      "reviewCount": 8
     },
     {
       "id": "ai-remotion-best-practices",
@@ -19727,7 +20430,14 @@
             "message": "请填写 Remotion 项目背景、上传代码/文件或提供公开链接"
           }
         ]
-      }
+      },
+      "coreValue": "动画可维护，交付才可靠",
+      "scenario": "适用于排查 Remotion 组件、Composition、字幕、音频、转场、3D、图表和渲染问题。",
+      "usage": "代码审查 / 视频实现建议 / 渲染排查 / 发布检查",
+      "downloadCount": 1200,
+      "collectionCount": 10285,
+      "shareCount": 5689,
+      "reviewCount": 8
     },
     {
       "id": "ai-research-lit",
@@ -19920,7 +20630,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看共识，再看争议",
+      "scenario": "适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1200,
+      "collectionCount": 6760,
+      "shareCount": 2586,
+      "reviewCount": 8
     },
     {
       "id": "ai-research-refine",
@@ -20113,7 +20830,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "问题越清楚，研究越有方向",
+      "scenario": "适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1500,
+      "collectionCount": 8078,
+      "shareCount": 4817,
+      "reviewCount": 8
     },
     {
       "id": "ai-revops",
@@ -20307,7 +21031,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "增长漏点藏在流程交接里",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 13728,
+      "shareCount": 4004,
+      "reviewCount": 8
     },
     {
       "id": "ai-sales-call-prep",
@@ -20501,7 +21232,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有背景，通话才有推进力",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 15554,
+      "shareCount": 3058,
+      "reviewCount": 8
     },
     {
       "id": "ai-sales-coaching",
@@ -20695,7 +21433,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "成交问题会在对话里暴露",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 14318,
+      "shareCount": 4450,
+      "reviewCount": 8
     },
     {
       "id": "ai-sales-compensation",
@@ -20889,7 +21634,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "激励对齐，团队才会动",
+      "scenario": "适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 5878,
+      "shareCount": 1162,
+      "reviewCount": 8
     },
     {
       "id": "ai-sales-enablement",
@@ -21083,7 +21835,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "材料要让销售更快推进",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 3155,
+      "shareCount": 2655,
+      "reviewCount": 8
     },
     {
       "id": "ai-sales-qualification",
@@ -21277,7 +22036,14 @@
             "message": "请填写客户资料、上传销售资料或提供客户相关链接"
           }
         ]
-      }
+      },
+      "coreValue": "先筛准客户，再投入精力",
+      "scenario": "适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。",
+      "usage": "客户分析 / 话术建议 / 销售诊断 / 跟进计划",
+      "downloadCount": 1200,
+      "collectionCount": 7523,
+      "shareCount": 1589,
+      "reviewCount": 8
     },
     {
       "id": "ai-schema-markup",
@@ -21472,7 +22238,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "机器读懂，内容才更容易展示",
+      "scenario": "适用于已经准备好页面 URL、页面类型、正文结构等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1500,
+      "collectionCount": 7352,
+      "shareCount": 3390,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo",
@@ -21618,7 +22391,14 @@
             "message": "请粘贴 AI 搜索优化内容、上传 GEO 资料，或填写目标页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜索意图对了，内容才有机会",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 7989,
+      "shareCount": 5029,
+      "reviewCount": 12
     },
     {
       "id": "ai-seo-2",
@@ -21813,7 +22593,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先找搜索短板，再排优化动作",
+      "scenario": "适用于已经准备好文章正文、目标搜索意图、品牌实体信息等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 6910,
+      "shareCount": 5316,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-3",
@@ -22008,7 +22795,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜索意图对了，内容才有机会",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1200,
+      "collectionCount": 13647,
+      "shareCount": 3135,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-aeo-blog-writer",
@@ -22203,7 +22997,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先匹配意图，再补足证据",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1500,
+      "collectionCount": 5828,
+      "shareCount": 2473,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-aeo-content-cluster",
@@ -22398,7 +23199,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "主题成体系，搜索才会积累",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 7225,
+      "shareCount": 2288,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-aeo-internal-linking",
@@ -22593,7 +23401,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "链接结构清楚，权重才会流动",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 9451,
+      "shareCount": 5079,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-aeo-keyword-research",
@@ -22788,7 +23603,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看意图，再选关键词",
+      "scenario": "适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1500,
+      "collectionCount": 4864,
+      "shareCount": 3669,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-audit",
@@ -22983,7 +23805,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "问题分清轻重，优化才有顺序",
+      "scenario": "适用于已经准备好公开页面 URL、目标关键词、页面正文等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1500,
+      "collectionCount": 11793,
+      "shareCount": 4188,
+      "reviewCount": 8
     },
     {
       "id": "ai-seo-content-writer",
@@ -23178,7 +24007,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "可搜索，也要可相信",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 16139,
+      "shareCount": 2178,
+      "reviewCount": 8
     },
     {
       "id": "ai-serp-analysis",
@@ -23373,7 +24209,14 @@
             "message": "请填写页面/关键词资料、上传 SEO 文件或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "排名页面会暴露搜索意图",
+      "scenario": "适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。",
+      "usage": "搜索诊断 / 内容优化 / 关键词建议 / 执行清单",
+      "downloadCount": 1500,
+      "collectionCount": 10200,
+      "shareCount": 4206,
+      "reviewCount": 8
     },
     {
       "id": "ai-signup",
@@ -23567,7 +24410,14 @@
             "message": "请填写转化材料、上传资料或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "少一点阻力，多一次开始",
+      "scenario": "适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。",
+      "usage": "实验设计 / 转化诊断 / 假设梳理 / 执行清单",
+      "downloadCount": 1200,
+      "collectionCount": 6581,
+      "shareCount": 5614,
+      "reviewCount": 8
     },
     {
       "id": "ai-social",
@@ -23762,7 +24612,14 @@
             "message": "请填写主题/草稿、上传内容资料或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先抓注意力，再给分享理由",
+      "scenario": "适用于已经准备好平台、账号定位、内容素材等材料的用户。",
+      "usage": "内容诊断 / 改写建议 / 可复制稿件 / 发布清单",
+      "downloadCount": 1500,
+      "collectionCount": 6683,
+      "shareCount": 4311,
+      "reviewCount": 8
     },
     {
       "id": "ai-stitch-design-taste",
@@ -23957,7 +24814,14 @@
             "message": "请填写视觉 brief、上传素材或提供页面/素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1200,
+      "collectionCount": 15831,
+      "shareCount": 1007,
+      "reviewCount": 8
     },
     {
       "id": "ai-upskilling-training-diagnosis",
@@ -24142,7 +25006,14 @@
             "message": "请填写培训需求描述、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于L&D、HRBP、业务负责人规划团队AI转型培训。",
+      "usage": "能力差距 / 课程地图 / 实践任务 / 验收标准",
+      "downloadCount": 1000,
+      "collectionCount": 12736,
+      "shareCount": 5956,
+      "reviewCount": 12
     },
     {
       "id": "ai-video",
@@ -24335,7 +25206,14 @@
             "message": "请填写视频创意或生成需求、上传参考素材或提供参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先定分镜，再交给模型生成",
+      "scenario": "适用于已经准备好视频创意 brief 或产品信息、目标平台、时长与风格、品牌约束和参考素材等材料的用户。",
+      "usage": "创意 Brief / 分镜脚本 / 生成提示词 / 发布规格检查",
+      "downloadCount": 1500,
+      "collectionCount": 14909,
+      "shareCount": 1338,
+      "reviewCount": 8
     },
     {
       "id": "ai-video-editing",
@@ -24529,7 +25407,14 @@
             "message": "请填写剪辑需求、上传视频素材或提供素材链接"
           }
         ]
-      }
+      },
+      "coreValue": "先找节奏，再压缩成片",
+      "scenario": "适用于已经准备好raw footage、录屏或转写稿、目标平台、成片时长和受众、剪辑风格与不可删内容等材料的用户。",
+      "usage": "素材诊断 / 剪辑决策表 / 字幕配音建议 / 平台重构清单",
+      "downloadCount": 1200,
+      "collectionCount": 10299,
+      "shareCount": 1446,
+      "reviewCount": 8
     },
     {
       "id": "ai-video-generation",
@@ -24675,7 +25560,14 @@
             "message": "请粘贴视频脚本/创意、上传视频参考，或填写公开视频链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才可能看下去",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 7760,
+      "shareCount": 2594,
+      "reviewCount": 12
     },
     {
       "id": "ai-video-to-gif",
@@ -24870,7 +25762,14 @@
             "message": "请填写转换要求、上传视频或提供视频链接"
           }
         ]
-      }
+      },
+      "coreValue": "文件更轻，动效仍要清楚",
+      "scenario": "适用于已经准备好视频文件或公开视频链接、截取时间段和循环方式、目标尺寸、帧率和文件大小限制等材料的用户。",
+      "usage": "视频转 GIF / 截取区间 / 帧率尺寸优化 / 文件大小控制",
+      "downloadCount": 1200,
+      "collectionCount": 11323,
+      "shareCount": 1582,
+      "reviewCount": 8
     },
     {
       "id": "ai-visual-prompt-review",
@@ -25060,7 +25959,14 @@
             "message": "请填写视觉生成提示词、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于使用豆包 Seedream/Seedance、即梦、可灵、Midjourney 等生成图片或视频前优化提示词。",
+      "usage": "提示词诊断 / 缺失元素 / 冲突描述 / 优化提示词 / 负面词建议",
+      "downloadCount": 4832,
+      "collectionCount": 5959,
+      "shareCount": 4500,
+      "reviewCount": 12
     },
     {
       "id": "ai-web-quality-audit",
@@ -25255,7 +26161,14 @@
             "message": "请填写页面/性能资料、上传报告或提供页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "可信网站要同时好看、好用、好找",
+      "scenario": "适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。",
+      "usage": "指标解读 / 页面诊断 / 优先级建议 / 修复清单",
+      "downloadCount": 1200,
+      "collectionCount": 12729,
+      "shareCount": 4116,
+      "reviewCount": 8
     },
     {
       "id": "ai-web-research",
@@ -25448,7 +26361,14 @@
             "message": "请填写研究问题、上传研究资料或提供公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先核来源，再下判断",
+      "scenario": "适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。",
+      "usage": "公开资料核验 / 来源对比 / 研究摘要 / 决策简报",
+      "downloadCount": 1500,
+      "collectionCount": 6084,
+      "shareCount": 2178,
+      "reviewCount": 8
     },
     {
       "id": "ai-xlsx",
@@ -25596,7 +26516,14 @@
             "message": "请粘贴表格数据、上传 Excel/CSV 文件，或填写公开表格链接"
           }
         ]
-      }
+      },
+      "coreValue": "数据先理清，结论才可靠",
+      "scenario": "适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。",
+      "usage": "文档摘要 / 结构化提取 / 风险问题 / 行动清单",
+      "downloadCount": 1200,
+      "collectionCount": 13510,
+      "shareCount": 1371,
+      "reviewCount": 8
     },
     {
       "id": "api-doc-integration-risk-review",
@@ -25780,7 +26707,14 @@
             "message": "请填写接口文档内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于开放平台、后端团队、开发者关系和售前技术支持发布API前审查文档。",
+      "usage": "文档审查 / 字段缺口 / 示例修复 / 集成风险",
+      "downloadCount": 1000,
+      "collectionCount": 15936,
+      "shareCount": 3274,
+      "reviewCount": 12
     },
     {
       "id": "auto-article-images",
@@ -26153,7 +27087,14 @@
             "message": "请粘贴正文或上传文档"
           }
         ]
-      }
+      },
+      "coreValue": "结合文章上下文，智能插图",
+      "scenario": "适用于已有文章草稿、需要快速补齐封面和正文图片的内容团队。",
+      "usage": "文章配图 / 封面候选 / 插入建议 / 图片包",
+      "downloadCount": 6234,
+      "collectionCount": 5069,
+      "shareCount": 4569,
+      "reviewCount": 12
     },
     {
       "id": "auto-review-selling-point-map",
@@ -26337,7 +27278,14 @@
             "message": "请填写车型评价内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于汽车品牌、经销商、内容运营和销售培训团队做车型传播复盘。",
+      "usage": "评论归因 / 卖点地图 / 竞品对照 / 话术建议",
+      "downloadCount": 1000,
+      "collectionCount": 11368,
+      "shareCount": 3004,
+      "reviewCount": 12
     },
     {
       "id": "bilibili-sentiment-dashboard",
@@ -26377,7 +27325,7 @@
       "providerType": "api",
       "providerConfig": {
         "catalog": {
-          "icon": "Tv",
+          "icon": "Sparkles",
           "rating": 4.8,
           "displayOrder": 11,
           "subProfession": [
@@ -26411,7 +27359,14 @@
             }
           }
         }
-      }
+      },
+      "coreValue": "挖掘用户需求，控制舆情风险，助力流量增长",
+      "scenario": "适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。",
+      "usage": "舆情监控 / 转化分析 / 用户画像 / 智能回复",
+      "downloadCount": 1715,
+      "collectionCount": 6419,
+      "shareCount": 3828,
+      "reviewCount": 13
     },
     {
       "id": "brand-account-positioning-diagnosis",
@@ -26598,7 +27553,14 @@
             "message": "请填写品牌账号资料、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 12822,
+      "shareCount": 1797,
+      "reviewCount": 12
     },
     {
       "id": "brand-voice-review",
@@ -26848,7 +27810,14 @@
             "message": "请粘贴品牌样稿、上传品牌文档，或填写品牌内容链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于品牌社媒、PR 稿、客服话术、活动文案和跨团队内容审核。",
+      "usage": "调性评分 / 不一致表达 / 替换建议 / 品牌化改稿 / 话术统一",
+      "downloadCount": 4554,
+      "collectionCount": 6194,
+      "shareCount": 1215,
+      "reviewCount": 12
     },
     {
       "id": "browser-use",
@@ -27042,7 +28011,14 @@
             "message": "请粘贴页面状态、上传页面观察文件，或填写公开页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 4276,
+      "shareCount": 3776,
+      "reviewCount": 12
     },
     {
       "id": "churn-prevention",
@@ -27236,7 +28212,14 @@
             "message": "请粘贴流失与留存内容、上传留存资料，或填写留存触点链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 8697,
+      "shareCount": 4462,
+      "reviewCount": 12
     },
     {
       "id": "clinic-service-review-analysis",
@@ -27421,7 +28404,14 @@
             "message": "请填写诊所评价文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于民营医院、诊所、口腔机构、医美机构和客服运营复盘服务体验。",
+      "usage": "评价归因 / 服务短板 / 整改优先级 / 回复话术",
+      "downloadCount": 1000,
+      "collectionCount": 17033,
+      "shareCount": 3160,
+      "reviewCount": 12
     },
     {
       "id": "comment-sentiment-action-cards",
@@ -27608,7 +28598,14 @@
             "message": "请填写评论与反馈集合、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 5372,
+      "shareCount": 3903,
+      "reviewCount": 12
     },
     {
       "id": "competitor-alternatives",
@@ -27754,7 +28751,14 @@
             "message": "请粘贴竞品替代方案材料、上传竞品对比资料，或填写竞品/对比页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 11203,
+      "shareCount": 2378,
+      "reviewCount": 12
     },
     {
       "id": "competitor-price-selling-point-watch",
@@ -28167,7 +29171,14 @@
             "message": "请填写竞品链接、粘贴竞品快照，或上传巡检资料"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 5790,
+      "shareCount": 1321,
+      "reviewCount": 12
     },
     {
       "id": "content-material-audit",
@@ -28426,7 +29437,14 @@
             "message": "请粘贴待体检内容、上传内容文件，或填写公开内容链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于运营、品牌、电商和自媒体在发布前快速检查文案、脚本、文章和活动物料。",
+      "usage": "通用审稿 / 评分诊断 / 问题清单 / 优化改稿",
+      "downloadCount": 8727,
+      "collectionCount": 7203,
+      "shareCount": 2994,
+      "reviewCount": 12
     },
     {
       "id": "content-strategy",
@@ -28572,7 +29590,14 @@
             "message": "请粘贴内容策略背景、上传内容/关键词资料，或填写现有内容链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 4247,
+      "shareCount": 3747,
+      "reviewCount": 12
     },
     {
       "id": "contract-clause-risk-review-cn",
@@ -28757,7 +29782,14 @@
             "message": "请填写合同条款文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于中小企业、业务负责人和法务助理在专业审核前整理合同风险。",
+      "usage": "条款摘要 / 风险提示 / 问题清单 / 谈判关注点",
+      "downloadCount": 1000,
+      "collectionCount": 4074,
+      "shareCount": 3574,
+      "reviewCount": 12
     },
     {
       "id": "copywriting",
@@ -28951,7 +29983,14 @@
             "message": "请粘贴文案草稿、上传文案文件，或填写文案所在链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 9116,
+      "shareCount": 2381,
+      "reviewCount": 12
     },
     {
       "id": "course-landing-page-conversion-review",
@@ -29136,7 +30175,14 @@
             "message": "请填写课程销售页文案、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于课程主理人、运营和教培市场团队在投放或发布前优化详情页。",
+      "usage": "详情页诊断 / 卖点重写 / FAQ / 转化清单",
+      "downloadCount": 1000,
+      "collectionCount": 13793,
+      "shareCount": 2677,
+      "reviewCount": 12
     },
     {
       "id": "course-outline-market-positioning",
@@ -29321,7 +30367,14 @@
             "message": "请填写课程大纲草案、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于知识付费、训练营、企业培训和教培机构在上线前打磨课程定位。",
+      "usage": "定位诊断 / 学员画像 / 大纲优化 / 卖点重构",
+      "downloadCount": 1000,
+      "collectionCount": 15759,
+      "shareCount": 2041,
+      "reviewCount": 12
     },
     {
       "id": "creator-commercial-value-benchmark",
@@ -29508,7 +30561,14 @@
             "message": "请填写达人资料与表现、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 6594,
+      "shareCount": 4881,
+      "reviewCount": 12
     },
     {
       "id": "critique",
@@ -29701,7 +30761,14 @@
             "message": "请粘贴作品说明、上传作品截图/设计文档，或填写公开作品链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 11154,
+      "shareCount": 3225,
+      "reviewCount": 12
     },
     {
       "id": "crossborder-listing-localization",
@@ -30273,7 +31340,14 @@
             "message": "请粘贴原始 Listing、上传 Listing 资料，或填写商品事实"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 11790,
+      "shareCount": 1484,
+      "reviewCount": 12
     },
     {
       "id": "customer-service-kb-gap-analysis",
@@ -30448,7 +31522,14 @@
             "message": "请粘贴客服样本或上传客服材料"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。",
+      "usage": "文档摘要 / 结构化提取 / 风险问题 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 12558,
+      "shareCount": 1609,
+      "reviewCount": 12
     },
     {
       "id": "douyin-hotlist-overall",
@@ -30504,7 +31585,14 @@
       "formSchema": {
         "type": "object",
         "properties": {}
-      }
+      },
+      "coreValue": "先有热点方向，再有视频内容生产",
+      "scenario": "适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。",
+      "usage": "热搜总榜 / 实时上升热点 / 全网热度",
+      "downloadCount": 4115,
+      "collectionCount": 8902,
+      "shareCount": 5627,
+      "reviewCount": 12
     },
     {
       "id": "douyin-kol-search",
@@ -30639,7 +31727,14 @@
             "description": "选择内容分类标签进行筛选"
           }
         }
-      }
+      },
+      "coreValue": "不仅仅是流量，而是账号的商业价值，降低试错成本",
+      "scenario": "适用于品牌方、MCN 机构、内容创作者，帮助快速找到合适的 KOL 进行合作或学习对标。",
+      "usage": "KOL 搜索 / 合作筛选 / 对标分析",
+      "downloadCount": 2593,
+      "collectionCount": 12463,
+      "shareCount": 2516,
+      "reviewCount": 12
     },
     {
       "id": "douyin-realtime-hot-rise",
@@ -30733,7 +31828,14 @@
             }
           }
         }
-      }
+      },
+      "coreValue": "正在上升的热点，你才有空间，助力内容选题。",
+      "scenario": "适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。",
+      "usage": "热点追踪 / 爆款选题 / 流量分析",
+      "downloadCount": 16800,
+      "collectionCount": 8948,
+      "shareCount": 4618,
+      "reviewCount": 12
     },
     {
       "id": "douyin-script-review",
@@ -30921,7 +32023,14 @@
             "message": "请填写抖音短视频稿、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于抖音短视频、直播切片、口播广告和带货视频发布前审稿。",
+      "usage": "脚本诊断 / 时间轴改写 / 镜头建议 / 口播优化 / 评论区引导",
+      "downloadCount": 3411,
+      "collectionCount": 13578,
+      "shareCount": 2525,
+      "reviewCount": 12
     },
     {
       "id": "douyin-sentiment-dashboard",
@@ -30995,7 +32104,14 @@
             }
           }
         }
-      }
+      },
+      "coreValue": "挖掘用户需求，控制舆情风险，助力流量增长",
+      "scenario": "适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。",
+      "usage": "舆情监控 / 转化分析 / 用户画像 / 智能回复",
+      "downloadCount": 8377,
+      "collectionCount": 13557,
+      "shareCount": 5627,
+      "reviewCount": 16
     },
     {
       "id": "douyin-traffic-dashboard",
@@ -31051,7 +32167,14 @@
       "formSchema": {
         "type": "object",
         "properties": {}
-      }
+      },
+      "coreValue": "账号定位，选对方向，就已经成功了一半",
+      "scenario": "适用于需要快速了解全平台流量分布、不限定单一方向的运营与创作者。",
+      "usage": "流量大盘 / 方向占比 / 实时分配",
+      "downloadCount": 5759,
+      "collectionCount": 11677,
+      "shareCount": 4063,
+      "reviewCount": 14
     },
     {
       "id": "ecommerce-review-root-cause-analysis",
@@ -31307,7 +32430,14 @@
             "message": "请粘贴差评反馈或上传评论数据"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 3153,
+      "shareCount": 2567,
+      "reviewCount": 12
     },
     {
       "id": "email-sequence",
@@ -31501,7 +32631,14 @@
             "message": "请粘贴邮件序列草稿、上传邮件资料，或填写邮件预览链接"
           }
         ]
-      }
+      },
+      "coreValue": "每封邮件都要推进一步",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 8543,
+      "shareCount": 5398,
+      "reviewCount": 12
     },
     {
       "id": "enterprise-ai-usecase-priority-assessment",
@@ -31685,7 +32822,14 @@
             "message": "请填写AI场景清单、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于CIO、业务负责人和AI项目团队从试点清单中选择MVP。",
+      "usage": "场景评分 / 优先级矩阵 / MVP路线 / 风险闸口",
+      "downloadCount": 1000,
+      "collectionCount": 15705,
+      "shareCount": 4575,
+      "reviewCount": 12
     },
     {
       "id": "equipment-failure-rca-draft",
@@ -31869,7 +33013,14 @@
             "message": "请填写故障现象描述、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于设备工程、运维、制造现场和质量团队整理故障复盘材料。",
+      "usage": "故障摘要 / 原因假设 / 排查清单 / RCA草案",
+      "downloadCount": 1000,
+      "collectionCount": 4262,
+      "shareCount": 3762,
+      "reviewCount": 12
     },
     {
       "id": "extract-design-system",
@@ -32062,7 +33213,14 @@
             "message": "请粘贴界面/组件说明、上传截图/品牌规范，或填写公开产品/组件库链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 16915,
+      "shareCount": 1224,
+      "reviewCount": 12
     },
     {
       "id": "financial-marketing-compliance-review",
@@ -32250,7 +33408,14 @@
             "message": "请填写金融营销文案、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "利润算清楚，价格才稳",
+      "scenario": "适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。",
+      "usage": "资料摘要 / 风险提示 / 证据缺口 / 复核问题",
+      "downloadCount": 1000,
+      "collectionCount": 3268,
+      "shareCount": 2768,
+      "reviewCount": 12
     },
     {
       "id": "financial-report-anomaly-question-list",
@@ -32438,7 +33603,14 @@
             "message": "请填写财报指标与摘要、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "利润算清楚，价格才稳",
+      "scenario": "适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。",
+      "usage": "资料摘要 / 风险提示 / 证据缺口 / 复核问题",
+      "downloadCount": 1000,
+      "collectionCount": 12626,
+      "shareCount": 2433,
+      "reviewCount": 12
     },
     {
       "id": "firecrawl",
@@ -32632,7 +33804,14 @@
             "message": "请粘贴站点页面资料、上传站点研究包，或填写公开站点入口"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 3965,
+      "shareCount": 2283,
+      "reviewCount": 12
     },
     {
       "id": "firecrawl-scrape",
@@ -32826,7 +34005,14 @@
             "message": "请粘贴单页正文、上传单页资料，或填写单页公开链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 5869,
+      "shareCount": 5369,
+      "reviewCount": 12
     },
     {
       "id": "firecrawl-search",
@@ -33020,7 +34206,14 @@
             "message": "请粘贴搜索片段、上传搜索研究资料，或填写公开结果链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 16523,
+      "shareCount": 1037,
+      "reviewCount": 12
     },
     {
       "id": "frontend-design",
@@ -33213,7 +34406,14 @@
             "message": "请粘贴界面说明、上传截图/设计文档，或填写公开页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 3037,
+      "shareCount": 2537,
+      "reviewCount": 12
     },
     {
       "id": "gov-service-faq-quality-check",
@@ -33398,7 +34598,14 @@
             "message": "请填写政务FAQ内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于政务服务、公共热线和园区服务团队上线问答知识库前质检。",
+      "usage": "FAQ质检 / 政策一致性 / 缺口清单 / 通俗改写",
+      "downloadCount": 1000,
+      "collectionCount": 10994,
+      "shareCount": 2392,
+      "reviewCount": 12
     },
     {
       "id": "gtm-one-page-strategy",
@@ -33613,7 +34820,14 @@
             "message": "请粘贴产品背景、上传 GTM 材料，或填写市场背景"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。",
+      "usage": "客户作战卡 / 跟进计划 / GTM 简报 / 风险回应",
+      "downloadCount": 1000,
+      "collectionCount": 9399,
+      "shareCount": 4237,
+      "reviewCount": 12
     },
     {
       "id": "gws-docs",
@@ -33807,7 +35021,14 @@
             "message": "请粘贴 Google 文档内容、上传 Docs 导出或填写 Docs 链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 3552,
+      "shareCount": 1573,
+      "reviewCount": 12
     },
     {
       "id": "gws-gmail",
@@ -34001,7 +35222,14 @@
             "message": "请粘贴 Gmail 邮件线程、上传邮件文件或填写邮件链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 17769,
+      "shareCount": 5895,
+      "reviewCount": 12
     },
     {
       "id": "gws-sheets",
@@ -34195,7 +35423,14 @@
             "message": "请粘贴 Google 表格数据、上传 Sheets 导出或填写 Sheets 链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 7378,
+      "shareCount": 2684,
+      "reviewCount": 12
     },
     {
       "id": "image-edit",
@@ -34341,7 +35576,14 @@
             "message": "请粘贴改图需求、上传待改图片，或填写公开图片链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 13634,
+      "shareCount": 2416,
+      "reviewCount": 12
     },
     {
       "id": "image-to-video",
@@ -34487,7 +35729,14 @@
             "message": "请粘贴首帧运动说明、上传参考图片，或填写公开首帧链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才可能看下去",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 16310,
+      "shareCount": 2649,
+      "reviewCount": 12
     },
     {
       "id": "insurance-policy-faq-explainer",
@@ -34675,7 +35924,14 @@
             "message": "请填写保险条款摘录、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。",
+      "usage": "资料摘要 / 风险提示 / 证据缺口 / 复核问题",
+      "downloadCount": 1000,
+      "collectionCount": 3353,
+      "shareCount": 2853,
+      "reviewCount": 12
     },
     {
       "id": "interview-question-scorecard-generator",
@@ -34860,7 +36116,14 @@
             "message": "请填写面试需求说明、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于招聘经理、HRBP和面试官准备结构化面试。",
+      "usage": "题库生成 / 追问设计 / 评分表 / 红旗信号",
+      "downloadCount": 1000,
+      "collectionCount": 5902,
+      "shareCount": 3949,
+      "reviewCount": 12
     },
     {
       "id": "investment-research-material-compare",
@@ -35048,7 +36311,14 @@
             "message": "请填写投研观点与材料摘录、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再拆行动",
+      "scenario": "适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。",
+      "usage": "资料摘要 / 风险提示 / 证据缺口 / 复核问题",
+      "downloadCount": 1000,
+      "collectionCount": 6201,
+      "shareCount": 4144,
+      "reviewCount": 12
     },
     {
       "id": "job-description-optimizer-cn",
@@ -35233,7 +36503,14 @@
             "message": "请填写JD文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于HR、招聘经理和业务负责人发布岗位前优化JD。",
+      "usage": "JD诊断 / 技能标签 / 吸引力改稿 / 面试重点",
+      "downloadCount": 1000,
+      "collectionCount": 4114,
+      "shareCount": 3579,
+      "reviewCount": 12
     },
     {
       "id": "just-scrape",
@@ -35427,7 +36704,14 @@
             "message": "请粘贴网页正文、上传网页摘录文件，或填写公开页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。",
+      "usage": "公开资料整理 / 证据矩阵 / 研究计划 / 竞品简报",
+      "downloadCount": 1000,
+      "collectionCount": 6791,
+      "shareCount": 2964,
+      "reviewCount": 12
     },
     {
       "id": "kling-3-0",
@@ -35573,7 +36857,14 @@
             "message": "请粘贴 Kling 视频需求、上传视频/图片参考，或填写公开参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 17501,
+      "shareCount": 2863,
+      "reviewCount": 12
     },
     {
       "id": "knowledge-base-launch-quality-check",
@@ -35757,7 +37048,14 @@
             "message": "请填写知识库文章内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于企业AI团队、客服团队和内部知识库负责人上线RAG或FAQ前做质检。",
+      "usage": "知识缺口 / 重复冲突 / 权限提示 / 上线清单",
+      "downloadCount": 1000,
+      "collectionCount": 11870,
+      "shareCount": 1767,
+      "reviewCount": 12
     },
     {
       "id": "kuaishou-sentiment-dashboard",
@@ -35797,7 +37095,7 @@
       "providerType": "api",
       "providerConfig": {
         "catalog": {
-          "icon": "Radio",
+          "icon": "Sparkles",
           "rating": 4.8,
           "displayOrder": 12,
           "subProfession": [
@@ -35831,7 +37129,14 @@
             }
           }
         }
-      }
+      },
+      "coreValue": "挖掘用户需求，控制舆情风险，助力流量增长",
+      "scenario": "适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。",
+      "usage": "舆情监控 / 转化分析 / 用户画像 / 智能回复",
+      "downloadCount": 5262,
+      "collectionCount": 6705,
+      "shareCount": 5453,
+      "reviewCount": 13
     },
     {
       "id": "landing-page-copy-review",
@@ -36019,7 +37324,14 @@
             "message": "请粘贴页面文案、上传页面文档，或填写公开页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 8511,
+      "collectionCount": 13991,
+      "shareCount": 4011,
+      "reviewCount": 12
     },
     {
       "id": "lark-approval",
@@ -36213,7 +37525,14 @@
             "message": "请粘贴飞书审批记录、上传审批材料或填写审批链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 5014,
+      "shareCount": 4430,
+      "reviewCount": 12
     },
     {
       "id": "lark-calendar",
@@ -36407,7 +37726,14 @@
             "message": "请粘贴飞书日程安排、上传日程文件或填写日程链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 4416,
+      "shareCount": 3916,
+      "reviewCount": 12
     },
     {
       "id": "lark-doc",
@@ -36555,7 +37881,14 @@
             "message": "请粘贴飞书文档正文、上传导出文件，或填写公开飞书链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 5993,
+      "shareCount": 2175,
+      "reviewCount": 12
     },
     {
       "id": "lark-drive",
@@ -36749,7 +38082,14 @@
             "message": "请粘贴飞书云文档清单、上传云文档资料或填写云文档链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 3935,
+      "shareCount": 3435,
+      "reviewCount": 12
     },
     {
       "id": "lark-minutes",
@@ -36943,7 +38283,14 @@
             "message": "请粘贴飞书会议纪要、上传纪要文件或填写纪要链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 3275,
+      "shareCount": 2775,
+      "reviewCount": 12
     },
     {
       "id": "lark-sheets",
@@ -37091,7 +38438,14 @@
             "message": "请粘贴飞书表格数据、上传表格导出文件，或填写公开飞书表格链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 15364,
+      "shareCount": 1380,
+      "reviewCount": 12
     },
     {
       "id": "lark-task",
@@ -37285,7 +38639,14 @@
             "message": "请粘贴飞书任务记录、上传任务文件或填写任务链接说明"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 17062,
+      "shareCount": 2940,
+      "reviewCount": 12
     },
     {
       "id": "lark-workflow-meeting-summary",
@@ -37433,7 +38794,14 @@
             "message": "请粘贴会议/流程内容、上传导出文件，或填写公开飞书链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再拆行动",
+      "scenario": "适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和交接简报。",
+      "usage": "协作复盘 / 会议总结 / 任务拆解 / 跟进草稿",
+      "downloadCount": 1000,
+      "collectionCount": 5123,
+      "shareCount": 4623,
+      "reviewCount": 12
     },
     {
       "id": "lesson-plan-activity-designer",
@@ -37618,7 +38986,14 @@
             "message": "请填写课时目标与内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于教师、培训师、企业内训和课程研发人员快速设计一节可执行课程。",
+      "usage": "教案生成 / 活动设计 / 练习题 / 课件结构",
+      "downloadCount": 1000,
+      "collectionCount": 3831,
+      "shareCount": 2057,
+      "reviewCount": 12
     },
     {
       "id": "live-commerce-script-compliance-review",
@@ -37978,7 +39353,14 @@
             "message": "请粘贴直播话术或上传脚本资料"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 16756,
+      "shareCount": 2354,
+      "reviewCount": 12
     },
     {
       "id": "live-replay-clip-title-pack",
@@ -38165,7 +39547,14 @@
             "message": "请填写直播回放片段内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 13473,
+      "shareCount": 5957,
+      "reviewCount": 12
     },
     {
       "id": "local-store-review-business-diagnosis",
@@ -38350,7 +39739,14 @@
             "message": "请填写门店评价内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于餐饮、美业、亲子、酒店、健身等本地生活门店复盘点评。",
+      "usage": "点评归因 / 经营短板 / 回复话术 / 整改优先级",
+      "downloadCount": 1000,
+      "collectionCount": 16001,
+      "shareCount": 5198,
+      "reviewCount": 12
     },
     {
       "id": "marketing-psychology",
@@ -38544,7 +39940,14 @@
             "message": "请粘贴心理路径素材、上传营销资料，或填写体验/页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 12274,
+      "shareCount": 3736,
+      "reviewCount": 12
     },
     {
       "id": "medical-content-compliance-review",
@@ -38729,7 +40132,14 @@
             "message": "请填写医疗科普稿、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于医院、诊所、药企市场和健康内容团队在发布科普前做表达风险初筛。",
+      "usage": "科普审稿 / 风险表述 / 安全改稿 / 审核清单",
+      "downloadCount": 1000,
+      "collectionCount": 4972,
+      "shareCount": 4472,
+      "reviewCount": 12
     },
     {
       "id": "medical-literature-evidence-map",
@@ -38914,7 +40324,14 @@
             "message": "请填写文献摘要与问题、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于医学内容、科研助理、医学事务和市场团队做文献阅读与证据整理。",
+      "usage": "文献摘要 / 证据表 / 研究限制 / 引用问题",
+      "downloadCount": 1000,
+      "collectionCount": 3958,
+      "shareCount": 3458,
+      "reviewCount": 12
     },
     {
       "id": "multi-platform-article-rewrite-pack",
@@ -39101,7 +40518,14 @@
             "message": "请填写原始文章稿、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 16613,
+      "shareCount": 4543,
+      "reviewCount": 12
     },
     {
       "id": "page-cro",
@@ -39295,7 +40719,14 @@
             "message": "请粘贴转化页面内容、上传页面资料，或填写页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 3112,
+      "shareCount": 1566,
+      "reviewCount": 12
     },
     {
       "id": "paid-ads",
@@ -39489,7 +40920,14 @@
             "message": "请粘贴广告投放内容、上传广告资料，或填写广告/落地页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 11394,
+      "shareCount": 5834,
+      "reviewCount": 12
     },
     {
       "id": "patient-education-readability-review",
@@ -39674,7 +41112,14 @@
             "message": "请填写患者宣教内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先提重点，再拆行动",
+      "scenario": "适用于医院、诊所、药房和健康管理团队优化术前说明、随访提示和健康教育材料。",
+      "usage": "可读性评分 / 通俗改写 / FAQ / 注意事项清单",
+      "downloadCount": 1000,
+      "collectionCount": 7847,
+      "shareCount": 5842,
+      "reviewCount": 12
     },
     {
       "id": "paywall-upgrade-cro",
@@ -39868,7 +41313,14 @@
             "message": "请粘贴付费墙与升级内容、上传升级路径资料，或填写付费墙/升级页链接"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 15183,
+      "shareCount": 1853,
+      "reviewCount": 12
     },
     {
       "id": "pharma-visit-material-compliance-review",
@@ -40053,7 +41505,14 @@
             "message": "请填写拜访材料文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于药企市场、销售培训和医学事务团队在内部审核前整理风险点。",
+      "usage": "材料审查 / 风险定位 / 替代表达 / 审核问题清单",
+      "downloadCount": 1000,
+      "collectionCount": 14116,
+      "shareCount": 5963,
+      "reviewCount": 12
     },
     {
       "id": "policy-execution-checklist-generator",
@@ -40238,7 +41697,14 @@
             "message": "请填写制度条款内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于行政、人事、合规、运营团队把制度发布为可执行流程。",
+      "usage": "制度摘要 / 执行清单 / 岗位责任 / 培训FAQ",
+      "downloadCount": 1000,
+      "collectionCount": 11454,
+      "shareCount": 1134,
+      "reviewCount": 12
     },
     {
       "id": "polish",
@@ -40431,7 +41897,14 @@
             "message": "请粘贴待打磨界面说明、上传截图/视觉稿，或填写公开预览链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 4688,
+      "shareCount": 1687,
+      "reviewCount": 12
     },
     {
       "id": "pricing-strategy",
@@ -40625,7 +42098,14 @@
             "message": "请粘贴定价与套餐内容、上传定价资料，或填写定价页链接"
           }
         ]
-      }
+      },
+      "coreValue": "利润算清楚，价格才稳",
+      "scenario": "适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。",
+      "usage": "转化诊断 / 文案改写 / 实验假设 / 上线检查",
+      "downloadCount": 1000,
+      "collectionCount": 16771,
+      "shareCount": 2416,
+      "reviewCount": 12
     },
     {
       "id": "privacy-policy-data-map-check-cn",
@@ -40810,7 +42290,14 @@
             "message": "请填写隐私政策文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于产品、运营、法务和数据治理团队做隐私文档发布前自查。",
+      "usage": "数据地图 / 授权缺口 / 文案问题 / 复核清单",
+      "downloadCount": 1000,
+      "collectionCount": 6924,
+      "shareCount": 4842,
+      "reviewCount": 12
     },
     {
       "id": "private-domain-campaign-sop-generator",
@@ -41081,7 +42568,14 @@
             "message": "请填写活动目标、社群背景、商品权益，或上传活动资料"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 4863,
+      "shareCount": 4363,
+      "reviewCount": 12
     },
     {
       "id": "product-detail-page-conversion-review",
@@ -41360,7 +42854,14 @@
             "message": "请粘贴详情页文案、描述商品图片、上传页面资料，或填写竞品信息"
           }
         ]
-      }
+      },
+      "coreValue": "先有假设，再谈增长",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 4330,
+      "shareCount": 3830,
+      "reviewCount": 12
     },
     {
       "id": "programmatic-seo",
@@ -41506,7 +43007,14 @@
             "message": "请粘贴页面样本、上传模板/数据样本，或填写样本页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "模板对了，长尾才会增长",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 9036,
+      "shareCount": 3298,
+      "reviewCount": 12
     },
     {
       "id": "proposal-risk-response-review",
@@ -41681,7 +43189,14 @@
             "message": "请粘贴方案文本或上传方案文件"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。",
+      "usage": "客户作战卡 / 跟进计划 / GTM 简报 / 风险回应",
+      "downloadCount": 1000,
+      "collectionCount": 3698,
+      "shareCount": 3198,
+      "reviewCount": 12
     },
     {
       "id": "public-company-due-diligence-summary",
@@ -41869,7 +43384,14 @@
             "message": "请填写公司公开资料摘录、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。",
+      "usage": "资料摘要 / 风险提示 / 证据缺口 / 复核问题",
+      "downloadCount": 1000,
+      "collectionCount": 14297,
+      "shareCount": 5981,
+      "reviewCount": 12
     },
     {
       "id": "quality-complaint-8d-report",
@@ -42053,7 +43575,14 @@
             "message": "请填写客诉问题描述、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于质量工程师、售后、供应商质量和制造团队处理客户投诉。",
+      "usage": "客诉摘要 / 8D草案 / 遏制措施 / 验证清单",
+      "downloadCount": 1000,
+      "collectionCount": 13868,
+      "shareCount": 3278,
+      "reviewCount": 12
     },
     {
       "id": "question-bank-explanation-quality-check",
@@ -42238,7 +43767,14 @@
             "message": "请填写题目与解析文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于题库产品、教研团队和考试培训机构在批量发布题目前做质量初筛。",
+      "usage": "题目质检 / 解析改写 / 歧义提示 / 知识点表",
+      "downloadCount": 1000,
+      "collectionCount": 3646,
+      "shareCount": 1642,
+      "reviewCount": 12
     },
     {
       "id": "real-estate-listing-compliance-review",
@@ -42423,7 +43959,14 @@
             "message": "请填写房源话术文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于房产营销、经纪团队和楼盘运营发布项目介绍前做表达风险初筛。",
+      "usage": "话术审稿 / 风险表达 / FAQ改写 / 信息补充清单",
+      "downloadCount": 1000,
+      "collectionCount": 3351,
+      "shareCount": 2851,
+      "reviewCount": 12
     },
     {
       "id": "restaurant-menu-deal-optimizer",
@@ -42608,7 +44151,14 @@
             "message": "请填写菜单与套餐内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于餐饮商家、代运营和门店负责人优化菜单、套餐和团购页。",
+      "usage": "菜单诊断 / 套餐设计 / 卖点重写 / 上架清单",
+      "downloadCount": 1000,
+      "collectionCount": 10375,
+      "shareCount": 3835,
+      "reviewCount": 12
     },
     {
       "id": "resume-screening-consistency-review",
@@ -42793,7 +44343,14 @@
             "message": "请填写简历摘要与筛选记录、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于招聘团队校准筛选标准、减少主观偏差和整理面试问题。",
+      "usage": "标准一致性 / 偏差提示 / 面试追问 / 复核清单",
+      "downloadCount": 1000,
+      "collectionCount": 8006,
+      "shareCount": 2389,
+      "reviewCount": 12
     },
     {
       "id": "saas-prd-review",
@@ -42977,7 +44534,14 @@
             "message": "请填写PRD草稿、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于产品经理、创业者和研发负责人在需求评审前提高PRD质量。",
+      "usage": "PRD诊断 / 缺口清单 / 验收标准 / 风险提示",
+      "downloadCount": 1000,
+      "collectionCount": 13051,
+      "shareCount": 3086,
+      "reviewCount": 12
     },
     {
       "id": "sales-meeting-follow-up-plan",
@@ -43152,7 +44716,14 @@
             "message": "请粘贴会议纪要或上传会议材料"
           }
         ]
-      }
+      },
+      "coreValue": "下一步清楚，机会才会前进",
+      "scenario": "适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。",
+      "usage": "客户作战卡 / 跟进计划 / GTM 简报 / 风险回应",
+      "downloadCount": 1000,
+      "collectionCount": 11084,
+      "shareCount": 4089,
+      "reviewCount": 12
     },
     {
       "id": "schema-markup",
@@ -43298,7 +44869,14 @@
             "message": "请粘贴页面事实、上传实体资料，或填写需要标记的公开页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜索意图对了，内容才有机会",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 9088,
+      "shareCount": 3739,
+      "reviewCount": 12
     },
     {
       "id": "seedance-v2",
@@ -43444,7 +45022,14 @@
             "message": "请粘贴 Seedance 视频需求、上传视频/首帧参考，或填写公开参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。",
+      "usage": "视觉 brief / 提示词包 / 分镜脚本 / 授权检查",
+      "downloadCount": 1000,
+      "collectionCount": 9282,
+      "shareCount": 2061,
+      "reviewCount": 12
     },
     {
       "id": "seo-article-review",
@@ -43681,7 +45266,14 @@
             "message": "请粘贴文章稿、上传文章稿件，或填写公开文章链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜索意图对了，内容才有机会",
+      "scenario": "适用于官网博客、教程、评测、知识库和需要搜索曝光的长内容。",
+      "usage": "搜索意图匹配 / 标题结构 / 内容缺口 / FAQ 建议 / SEO 改稿",
+      "downloadCount": 5841,
+      "collectionCount": 10198,
+      "shareCount": 4957,
+      "reviewCount": 12
     },
     {
       "id": "seo-audit",
@@ -43827,7 +45419,14 @@
             "message": "请粘贴页面内容、上传 SEO 审计资料，或填写待审公开链接"
           }
         ]
-      }
+      },
+      "coreValue": "搜索意图对了，内容才有机会",
+      "scenario": "适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。",
+      "usage": "SEO/GEO 诊断 / 内容结构 / 证据补齐 / 优化路线图",
+      "downloadCount": 1000,
+      "collectionCount": 16116,
+      "shareCount": 5094,
+      "reviewCount": 12
     },
     {
       "id": "sku-trend-opportunity-report",
@@ -44250,7 +45849,14 @@
             "message": "请填写品类方向、候选 SKU、趋势信号、上传选品资料或填写竞品信息"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。",
+      "usage": "商品诊断 / 评论归因 / 卖点优化 / 行动清单",
+      "downloadCount": 1000,
+      "collectionCount": 6207,
+      "shareCount": 5687,
+      "reviewCount": 12
     },
     {
       "id": "sleek-design-mobile-apps",
@@ -44443,7 +46049,14 @@
             "message": "请粘贴 App 页面/流程说明、上传移动端截图/设计文档，或填写公开原型链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 17867,
+      "shareCount": 3425,
+      "reviewCount": 12
     },
     {
       "id": "social-rising-topic-radar-cn",
@@ -44630,7 +46243,14 @@
             "message": "请填写趋势信号与选题线索、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先抓注意力，再给分享理由",
+      "scenario": "适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。",
+      "usage": "选题判断 / 内容改稿 / 标题包 / 分发建议",
+      "downloadCount": 1000,
+      "collectionCount": 7858,
+      "shareCount": 2442,
+      "reviewCount": 12
     },
     {
       "id": "software-cost-quote-review",
@@ -44814,7 +46434,14 @@
             "message": "请填写报价与范围说明、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于甲方、外包团队、项目经理和创业者评估软件开发报价。",
+      "usage": "报价拆解 / 范围风险 / 人天提示 / 沟通清单",
+      "downloadCount": 1000,
+      "collectionCount": 14768,
+      "shareCount": 2350,
+      "reviewCount": 12
     },
     {
       "id": "software-dev-cost-dashboard",
@@ -44873,7 +46500,14 @@
         "type": "external-link",
         "externalLink": "https://soft.ai-skills.ai",
         "externalLinkLabel": "打开成本看板"
-      }
+      },
+      "coreValue": "快速评估软件项目成本与工期，支撑立项与报价。",
+      "scenario": "适用于项目经理、架构师、产品经理及需要做软件项目成本评估的团队。",
+      "usage": "成本评估 / 立项 / 报价参考",
+      "downloadCount": 5297,
+      "collectionCount": 4177,
+      "shareCount": 2076,
+      "reviewCount": 12
     },
     {
       "id": "sop-readability-check",
@@ -45057,7 +46691,14 @@
             "message": "请填写SOP步骤文本、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于制造、仓储、门店和服务团队发布SOP前做一线可执行性检查。",
+      "usage": "SOP检查 / 歧义定位 / 步骤重写 / 培训清单",
+      "downloadCount": 1000,
+      "collectionCount": 11505,
+      "shareCount": 5528,
+      "reviewCount": 12
     },
     {
       "id": "student-feedback-retention-analysis",
@@ -45242,7 +46883,14 @@
             "message": "请填写学员反馈记录、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于教培机构、训练营、社群课程和知识付费团队做阶段复盘。",
+      "usage": "反馈归因 / 留存风险 / 服务动作 / 续费沟通建议",
+      "downloadCount": 1000,
+      "collectionCount": 6226,
+      "shareCount": 4499,
+      "reviewCount": 12
     },
     {
       "id": "supplier-delivery-risk-summary",
@@ -45426,7 +47074,14 @@
             "message": "请填写交付情况说明、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先标风险，再交专业复核",
+      "scenario": "适用于采购、供应链计划、项目管理和供应商质量团队做交付风险复盘。",
+      "usage": "风险摘要 / 证据表 / 催办话术 / 备选动作",
+      "downloadCount": 1000,
+      "collectionCount": 7996,
+      "shareCount": 2310,
+      "reviewCount": 12
     },
     {
       "id": "travel-itinerary-content-planner",
@@ -45611,7 +47266,14 @@
             "message": "请填写路线主题与素材、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于文旅运营、酒店民宿、景区和内容创作者制作路线内容。",
+      "usage": "路线设计 / 种草文案 / 拍摄清单 / 注意事项",
+      "downloadCount": 1000,
+      "collectionCount": 12771,
+      "shareCount": 2853,
+      "reviewCount": 12
     },
     {
       "id": "ui-ux-pro-max",
@@ -45804,7 +47466,14 @@
             "message": "请粘贴产品流程说明、上传流程截图/设计文档，或填写公开原型/页面链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 4705,
+      "shareCount": 3848,
+      "reviewCount": 12
     },
     {
       "id": "video-storyboard-review",
@@ -46053,7 +47722,14 @@
             "message": "请粘贴分镜稿、上传分镜文档，或填写公开参考链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才可能看下去",
+      "scenario": "适用于短视频广告、品牌片、课程视频、直播切片和分镜脚本拍摄前检查。",
+      "usage": "分镜诊断 / 节奏评分 / 镜头重排 / 口播优化 / 拍摄清单",
+      "downloadCount": 7981,
+      "collectionCount": 6401,
+      "shareCount": 1931,
+      "reviewCount": 12
     },
     {
       "id": "vulnerability-advisory-impact-brief",
@@ -46237,7 +47913,14 @@
             "message": "请填写漏洞公告内容、上传资料，或提供可访问链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于安全、运维、研发和IT负责人快速理解公开漏洞公告对自有资产的影响。",
+      "usage": "公告摘要 / 影响初判 / 处置清单 / 沟通模板",
+      "downloadCount": 1000,
+      "collectionCount": 4001,
+      "shareCount": 2654,
+      "reviewCount": 12
     },
     {
       "id": "web-design-guidelines",
@@ -46430,7 +48113,14 @@
             "message": "请粘贴网页说明、上传网页截图/规范文档，或填写公开网页链接"
           }
         ]
-      }
+      },
+      "coreValue": "看得懂，才谈高级感",
+      "scenario": "适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。",
+      "usage": "UI/UX 诊断 / 视觉层级 / 设计系统 / 修改建议",
+      "downloadCount": 1000,
+      "collectionCount": 12573,
+      "shareCount": 1295,
+      "reviewCount": 12
     },
     {
       "id": "wechat-article-review",
@@ -46635,7 +48325,14 @@
             "message": "请粘贴文章正文、上传文章文档，或填写公开文章链接"
           }
         ]
-      }
+      },
+      "coreValue": "卖点清楚，转化才有入口",
+      "scenario": "适用于品牌公众号、知识文章、活动推文和深度内容发布前审稿。",
+      "usage": "标题审查 / 导语优化 / 段落结构 / 长文改稿 / 摘要提炼",
+      "downloadCount": 2552,
+      "collectionCount": 3046,
+      "shareCount": 2546,
+      "reviewCount": 12
     },
     {
       "id": "xhs-note-review",
@@ -46840,7 +48537,14 @@
             "message": "请粘贴笔记正文、上传笔记文档，或填写公开笔记链接"
           }
         ]
-      }
+      },
+      "coreValue": "先看清问题，再决定下一步",
+      "scenario": "适用于小红书博主、品牌运营和电商团队发布笔记前做互动与种草质量检查。",
+      "usage": "标题诊断 / 开头钩子 / 广告感降低 / 标签建议 / 正文改稿",
+      "downloadCount": 6785,
+      "collectionCount": 6489,
+      "shareCount": 1172,
+      "reviewCount": 12
     },
     {
       "id": "xhs-sentiment-dashboard",
@@ -46880,7 +48584,7 @@
       "providerType": "api",
       "providerConfig": {
         "catalog": {
-          "icon": "MessagesSquare",
+          "icon": "Sparkles",
           "rating": 4.8,
           "displayOrder": 10,
           "subProfession": [
@@ -46914,7 +48618,14 @@
             }
           }
         }
-      }
+      },
+      "coreValue": "挖掘用户需求，控制舆情风险，助力流量增长",
+      "scenario": "适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。",
+      "usage": "舆情监控 / 转化分析 / 用户画像 / 智能回复",
+      "downloadCount": 8194,
+      "collectionCount": 17244,
+      "shareCount": 3400,
+      "reviewCount": 13
     },
     {
       "id": "xhs-viral-copywriter",
@@ -47142,7 +48853,14 @@
           }
         },
         "x-profile-context": true
-      }
+      },
+      "coreValue": "结合实时热点，迎合受众口味，生成可直接发布的小红书文案",
+      "scenario": "适用于内容运营、品牌商家和需要快速生成小红书发布素材的人群。",
+      "usage": "笔记标题 / 正文 / 封面字 / 标签 / 首评 / 发布时间建议",
+      "downloadCount": 5765,
+      "collectionCount": 7241,
+      "shareCount": 1963,
+      "reviewCount": 12
     }
   ]
 }
