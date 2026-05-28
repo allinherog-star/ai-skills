@@ -1,6 +1,6 @@
 > 官网站点：[ai-skills.ai](https://ai-skills.ai/)
 >
-> AI Skills 官网是整个技能库的统一入口，可以按技能、职业、行业和应用场景查找内容，也能直接进入具体 Skill 的介绍与使用页面。下面用一组移动端截图快速看一下站点形态。
+> AI Skills（ai-skills.ai）是一个面向各行各业的 AI 技能库。可直接用于openclaw，Hermes，qclaw，claude code，codex等智能体平台。为你的职业发展、行业竞争力，增加更多可能。
 
 
 <p align="center">
@@ -143,309 +143,1624 @@
 
 面向抖音、小红书、快手、视频号等平台的热点、账号、评论和流量判断。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/auto-review-selling-point-map) | 先看清问题，再决定下一步 | 适用于汽车品牌、经销商、内容运营和销售培训团队做车型传播复盘。 | 1000 |
-| [B站短视频运营增长助手](https://ai-skills.ai/zh/skills/bilibili-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 1715 |
-| [抖音全网实时热点](https://ai-skills.ai/zh/skills/douyin-hotlist-overall) | 先有热点方向，再有视频内容生产 | 适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。 | 4115 |
-| [抖音最具商业价值意见领袖（KOL）](https://ai-skills.ai/zh/skills/douyin-kol-search) | 不仅仅是流量，而是账号的商业价值，降低试错成本 | 适用于品牌方、MCN 机构、内容创作者，帮助快速找到合适的 KOL 进行合作或学习对标。 | 2593 |
-| [抖音上升热点选题助手](https://ai-skills.ai/zh/skills/douyin-realtime-hot-rise) | 正在上升的热点，你才有空间，助力内容选题。 | 适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。 | 1.7万 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/douyin-script-review) | 先看清问题，再决定下一步 | 适用于抖音短视频、直播切片、口播广告和带货视频发布前审稿。 | 3411 |
-| [抖音短视频运营增长助手](https://ai-skills.ai/zh/skills/douyin-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 8377 |
-| [抖音流量分配大盘](https://ai-skills.ai/zh/skills/douyin-traffic-dashboard) | 账号定位，选对方向，就已经成功了一半 | 适用于需要快速了解全平台流量分布、不限定单一方向的运营与创作者。 | 5759 |
-| [快手短视频运营增长助手](https://ai-skills.ai/zh/skills/kuaishou-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 5262 |
-| [小红书短视频运营增长助手](https://ai-skills.ai/zh/skills/xhs-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 8194 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/auto-review-selling-point-map" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于汽车品牌、经销商、内容运营和销售培训团队做车型传播复盘。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/bilibili-sentiment-dashboard" target="_blank" rel="noopener noreferrer">B站短视频运营增长助手</a></td>
+      <td>挖掘用户需求，控制舆情风险，助力流量增长</td>
+      <td>适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。</td>
+      <td align="right" width="96">1.7k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-hotlist-overall" target="_blank" rel="noopener noreferrer">抖音全网实时热点</a></td>
+      <td>先有热点方向，再有视频内容生产</td>
+      <td>适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。</td>
+      <td align="right" width="96">4.1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-kol-search" target="_blank" rel="noopener noreferrer">抖音最具商业价值意见领袖（KOL）</a></td>
+      <td>不仅仅是流量，而是账号的商业价值，降低试错成本</td>
+      <td>适用于品牌方、MCN 机构、内容创作者，帮助快速找到合适的 KOL 进行合作或学习对标。</td>
+      <td align="right" width="96">2.6k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-realtime-hot-rise" target="_blank" rel="noopener noreferrer">抖音上升热点选题助手</a></td>
+      <td>正在上升的热点，你才有空间，助力内容选题。</td>
+      <td>适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。</td>
+      <td align="right" width="96">17k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-script-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于抖音短视频、直播切片、口播广告和带货视频发布前审稿。</td>
+      <td align="right" width="96">3.4k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-sentiment-dashboard" target="_blank" rel="noopener noreferrer">抖音短视频运营增长助手</a></td>
+      <td>挖掘用户需求，控制舆情风险，助力流量增长</td>
+      <td>适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。</td>
+      <td align="right" width="96">8.4k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/douyin-traffic-dashboard" target="_blank" rel="noopener noreferrer">抖音流量分配大盘</a></td>
+      <td>账号定位，选对方向，就已经成功了一半</td>
+      <td>适用于需要快速了解全平台流量分布、不限定单一方向的运营与创作者。</td>
+      <td align="right" width="96">5.8k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/kuaishou-sentiment-dashboard" target="_blank" rel="noopener noreferrer">快手短视频运营增长助手</a></td>
+      <td>挖掘用户需求，控制舆情风险，助力流量增长</td>
+      <td>适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。</td>
+      <td align="right" width="96">5.3k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/xhs-sentiment-dashboard" target="_blank" rel="noopener noreferrer">小红书短视频运营增长助手</a></td>
+      <td>挖掘用户需求，控制舆情风险，助力流量增长</td>
+      <td>适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。</td>
+      <td align="right" width="96">8.2k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### ✍️ 内容生产
 
 把选题、资料、文案、图文和发布准备转成可交付内容。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [自动图文助手](https://ai-skills.ai/zh/skills/ai-article) | 一句话需求，结合实时热点，图文并茂写好高质量文章 | 适用于内容创作者、品牌运营、知识博主和需要稳定产出长图文的团队。 | 5137 |
-| [文章配图助手](https://ai-skills.ai/zh/skills/ai-baoyu-article-illustrator) | 图要帮内容更快被看懂 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-creator) | 卖点清楚，转化才有入口 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-quality-auditor) | 卖点清楚，转化才有入口 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-strategy) | 卖点清楚，转化才有入口 | 适用于已经准备好业务目标、受众、现有内容等材料的用户。 | 1200 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-writer) | 卖点清楚，转化才有入口 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-copywriting) | 卖点清楚，转化才有入口 | 适用于已经准备好原始文案、目标用户、转化目标等材料的用户。 | 1200 |
-| [说服力文案助手](https://ai-skills.ai/zh/skills/ai-copywriting-psychologist) | 动机说对，行动才会发生 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
-| [去AI味助手](https://ai-skills.ai/zh/skills/ai-humanizer-zh) | 像人说话，才容易被相信 | 适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI 味审稿。 | 1200 |
-| [SEO 内容写作助手](https://ai-skills.ai/zh/skills/ai-seo-content-writer) | 可搜索，也要可相信 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/api-doc-integration-risk-review) | 先标风险，再交专业复核 | 适用于开放平台、后端团队、开发者关系和售前技术支持发布API前审查文档。 | 1000 |
-| [智能配图助手](https://ai-skills.ai/zh/skills/auto-article-images) | 结合文章上下文，智能插图 | 适用于已有文章草稿、需要快速补齐封面和正文图片的内容团队。 | 6234 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/content-material-audit) | 卖点清楚，转化才有入口 | 适用于运营、品牌、电商和自媒体在发布前快速检查文案、脚本、文章和活动物料。 | 8727 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/copywriting) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/equipment-failure-rca-draft) | 看得懂，才谈高级感 | 适用于设备工程、运维、制造现场和质量团队整理故障复盘材料。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/job-description-optimizer-cn) | 先看清问题，再决定下一步 | 适用于HR、招聘经理和业务负责人发布岗位前优化JD。 | 1000 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/knowledge-base-launch-quality-check) | 卖点清楚，转化才有入口 | 适用于企业AI团队、客服团队和内部知识库负责人上线RAG或FAQ前做质检。 | 1000 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/multi-platform-article-rewrite-pack) | 卖点清楚，转化才有入口 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/seo-article-review) | 搜索意图对了，内容才有机会 | 适用于官网博客、教程、评测、知识库和需要搜索曝光的长内容。 | 5841 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/sop-readability-check) | 先看清问题，再决定下一步 | 适用于制造、仓储、门店和服务团队发布SOP前做一线可执行性检查。 | 1000 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/travel-itinerary-content-planner) | 卖点清楚，转化才有入口 | 适用于文旅运营、酒店民宿、景区和内容创作者制作路线内容。 | 1000 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/wechat-article-review) | 卖点清楚，转化才有入口 | 适用于品牌公众号、知识文章、活动推文和深度内容发布前审稿。 | 2552 |
-| [爆款文案助手](https://ai-skills.ai/zh/skills/xhs-viral-copywriter) | 结合实时热点，迎合受众口味，生成可直接发布的小红书文案 | 适用于内容运营、品牌商家和需要快速生成小红书发布素材的人群。 | 5765 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-article" target="_blank" rel="noopener noreferrer">自动图文助手</a></td>
+      <td>一句话需求，结合实时热点，图文并茂写好高质量文章</td>
+      <td>适用于内容创作者、品牌运营、知识博主和需要稳定产出长图文的团队。</td>
+      <td align="right" width="96">5.1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-article-illustrator" target="_blank" rel="noopener noreferrer">文章配图助手</a></td>
+      <td>图要帮内容更快被看懂</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-creator" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-quality-auditor" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-strategy" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于已经准备好业务目标、受众、现有内容等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-writer" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-copywriting" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于已经准备好原始文案、目标用户、转化目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-copywriting-psychologist" target="_blank" rel="noopener noreferrer">说服力文案助手</a></td>
+      <td>动机说对，行动才会发生</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-humanizer-zh" target="_blank" rel="noopener noreferrer">去AI味助手</a></td>
+      <td>像人说话，才容易被相信</td>
+      <td>适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI 味审稿。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-content-writer" target="_blank" rel="noopener noreferrer">SEO 内容写作助手</a></td>
+      <td>可搜索，也要可相信</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/api-doc-integration-risk-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于开放平台、后端团队、开发者关系和售前技术支持发布API前审查文档。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/auto-article-images" target="_blank" rel="noopener noreferrer">智能配图助手</a></td>
+      <td>结合文章上下文，智能插图</td>
+      <td>适用于已有文章草稿、需要快速补齐封面和正文图片的内容团队。</td>
+      <td align="right" width="96">6.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/content-material-audit" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于运营、品牌、电商和自媒体在发布前快速检查文案、脚本、文章和活动物料。</td>
+      <td align="right" width="96">8.7k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/copywriting" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/equipment-failure-rca-draft" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于设备工程、运维、制造现场和质量团队整理故障复盘材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/job-description-optimizer-cn" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于HR、招聘经理和业务负责人发布岗位前优化JD。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/knowledge-base-launch-quality-check" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于企业AI团队、客服团队和内部知识库负责人上线RAG或FAQ前做质检。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/multi-platform-article-rewrite-pack" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/seo-article-review" target="_blank" rel="noopener noreferrer">SEO/AEO 诊断助手</a></td>
+      <td>搜索意图对了，内容才有机会</td>
+      <td>适用于官网博客、教程、评测、知识库和需要搜索曝光的长内容。</td>
+      <td align="right" width="96">5.8k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/sop-readability-check" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于制造、仓储、门店和服务团队发布SOP前做一线可执行性检查。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/travel-itinerary-content-planner" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于文旅运营、酒店民宿、景区和内容创作者制作路线内容。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/wechat-article-review" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于品牌公众号、知识文章、活动推文和深度内容发布前审稿。</td>
+      <td align="right" width="96">2.6k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/xhs-viral-copywriter" target="_blank" rel="noopener noreferrer">爆款文案助手</a></td>
+      <td>结合实时热点，迎合受众口味，生成可直接发布的小红书文案</td>
+      <td>适用于内容运营、品牌商家和需要快速生成小红书发布素材的人群。</td>
+      <td align="right" width="96">5.8k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 📈 SEO 与增长
 
 覆盖关键词、SERP、站内优化、转化实验和增长策略。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [A/B 测试设计助手](https://ai-skills.ai/zh/skills/ai-ab-testing) | 先有假设，再谈实验 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [外链质量分析助手](https://ai-skills.ai/zh/skills/ai-backlink-analyzer) | 链接质量比数量更重要 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [内链优化助手](https://ai-skills.ai/zh/skills/ai-internal-linking-optimizer) | 好内链让内容互相托举 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [付费广告诊断助手](https://ai-skills.ai/zh/skills/ai-paid-ads) | 预算要买来有效行动 | 适用于已经准备好广告文案、投放平台、目标人群等材料的用户。 | 1200 |
-| [程序化 SEO 助手](https://ai-skills.ai/zh/skills/ai-programmatic-seo) | 模板对了，长尾才会增长 | 适用于已经准备好关键词集合、页面模板、数据字段等材料的用户。 | 1200 |
-| [Schema 标记助手](https://ai-skills.ai/zh/skills/ai-schema-markup) | 机器读懂，内容才更容易展示 | 适用于已经准备好页面 URL、页面类型、正文结构等材料的用户。 | 1500 |
-| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/ai-seo) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
-| [SEO 诊断助手](https://ai-skills.ai/zh/skills/ai-seo-2) | 先找搜索短板，再排优化动作 | 适用于已经准备好文章正文、目标搜索意图、品牌实体信息等材料的用户。 | 1200 |
-| [SEO 内容优化助手](https://ai-skills.ai/zh/skills/ai-seo-3) | 搜索意图对了，内容才有机会 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [SEO/AEO 博客写作助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-blog-writer) | 先匹配意图，再补足证据 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
-| [SEO/AEO 内容集群助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-content-cluster) | 主题成体系，搜索才会积累 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
-| [SEO/AEO 内链助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-internal-linking) | 链接结构清楚，权重才会流动 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
-| [SEO/AEO 关键词助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-keyword-research) | 先看意图，再选关键词 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
-| [SERP 分析助手](https://ai-skills.ai/zh/skills/ai-serp-analysis) | 排名页面会暴露搜索意图 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1500 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/content-strategy) | 卖点清楚，转化才有入口 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/paid-ads) | 先看清问题，再决定下一步 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [程序化 SEO 助手](https://ai-skills.ai/zh/skills/programmatic-seo) | 模板对了，长尾才会增长 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
-| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/schema-markup) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-ab-testing" target="_blank" rel="noopener noreferrer">A/B 测试设计助手</a></td>
+      <td>先有假设，再谈实验</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-backlink-analyzer" target="_blank" rel="noopener noreferrer">外链质量分析助手</a></td>
+      <td>链接质量比数量更重要</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-internal-linking-optimizer" target="_blank" rel="noopener noreferrer">内链优化助手</a></td>
+      <td>好内链让内容互相托举</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-paid-ads" target="_blank" rel="noopener noreferrer">付费广告诊断助手</a></td>
+      <td>预算要买来有效行动</td>
+      <td>适用于已经准备好广告文案、投放平台、目标人群等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-programmatic-seo" target="_blank" rel="noopener noreferrer">程序化 SEO 助手</a></td>
+      <td>模板对了，长尾才会增长</td>
+      <td>适用于已经准备好关键词集合、页面模板、数据字段等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-schema-markup" target="_blank" rel="noopener noreferrer">Schema 标记助手</a></td>
+      <td>机器读懂，内容才更容易展示</td>
+      <td>适用于已经准备好页面 URL、页面类型、正文结构等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo" target="_blank" rel="noopener noreferrer">SEO/AEO 诊断助手</a></td>
+      <td>搜索意图对了，内容才有机会</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-2" target="_blank" rel="noopener noreferrer">SEO 诊断助手</a></td>
+      <td>先找搜索短板，再排优化动作</td>
+      <td>适用于已经准备好文章正文、目标搜索意图、品牌实体信息等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-3" target="_blank" rel="noopener noreferrer">SEO 内容优化助手</a></td>
+      <td>搜索意图对了，内容才有机会</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-aeo-blog-writer" target="_blank" rel="noopener noreferrer">SEO/AEO 博客写作助手</a></td>
+      <td>先匹配意图，再补足证据</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-aeo-content-cluster" target="_blank" rel="noopener noreferrer">SEO/AEO 内容集群助手</a></td>
+      <td>主题成体系，搜索才会积累</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-aeo-internal-linking" target="_blank" rel="noopener noreferrer">SEO/AEO 内链助手</a></td>
+      <td>链接结构清楚，权重才会流动</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-aeo-keyword-research" target="_blank" rel="noopener noreferrer">SEO/AEO 关键词助手</a></td>
+      <td>先看意图，再选关键词</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-serp-analysis" target="_blank" rel="noopener noreferrer">SERP 分析助手</a></td>
+      <td>排名页面会暴露搜索意图</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/content-strategy" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/paid-ads" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/programmatic-seo" target="_blank" rel="noopener noreferrer">程序化 SEO 助手</a></td>
+      <td>模板对了，长尾才会增长</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/schema-markup" target="_blank" rel="noopener noreferrer">SEO/AEO 诊断助手</a></td>
+      <td>搜索意图对了，内容才有机会</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 🛒 电商经营
 
 帮助电商、Amazon 和零售团队处理商品、广告、库存、评价和转化问题。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/ad-creative) | 卖点清楚，转化才有入口 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [广告创意诊断助手](https://ai-skills.ai/zh/skills/ai-ad-creative) | 先抓注意力，再谈转化 | 适用于已经准备好创意 brief、广告图/视频描述、投放目标等材料的用户。 | 1200 |
-| [Amazon 品牌分析助手](https://ai-skills.ai/zh/skills/ai-amazon-brand-analytics) | 数据会暴露真实机会 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 分时投放助手](https://ai-skills.ai/zh/skills/ai-amazon-dayparting-strategy) | 预算要花在高意图时段 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
-| [Amazon 本地化助手](https://ai-skills.ai/zh/skills/ai-amazon-international-listings) | 本地买家听懂才会买 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
-| [Amazon 库存诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-inventory-management) | 不断货，也不压死现金 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 图片诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-listing-images) | 先看懂卖点，再谈点击 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
-| [Amazon 组合销售助手](https://ai-skills.ai/zh/skills/ai-amazon-product-bundling) | 组合要提高客单，也要守住利润 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
-| [Amazon 排名追踪助手](https://ai-skills.ai/zh/skills/ai-amazon-rank-tracker) | 排名变化要看关键词和动作 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [Amazon 调价诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-repricing-strategy) | 赢得竞争，也守住利润 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 退货诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-return-reduction) | 退货原因就是增长漏点 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 搜索优化助手](https://ai-skills.ai/zh/skills/ai-amazon-search-optimization) | 关键词对了，Listing 才有入口 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 店铺优化助手](https://ai-skills.ai/zh/skills/ai-amazon-storefront-design) | 店铺要让买家快速相信 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon 订阅优化助手](https://ai-skills.ai/zh/skills/ai-amazon-subscribe-save) | 复购理由清楚，订阅才成立 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [Amazon Vine 决策助手](https://ai-skills.ai/zh/skills/ai-amazon-vine-program) | 先算评价机会，再算风险 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [图片压缩助手](https://ai-skills.ai/zh/skills/ai-baoyu-compress-image) | 文件更轻，画面仍要清楚 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [封面图生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-cover-image) | 封面先抓住注意力 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [图文卡片生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-image-cards) | 信息要一眼看懂 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [图片生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-image-gen) | 画面要服务内容目标 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [微信摘要助手](https://ai-skills.ai/zh/skills/ai-baoyu-wechat-summary) | 先抓主线，再提金句 | 适用于已经准备好文档、表格、会议记录或大纲、关注问题、输出格式要求等材料的用户。 | 1200 |
-| [品牌一致性诊断助手](https://ai-skills.ai/zh/skills/ai-brand-consistency-checker) | 每个触点都该说同一种品牌话 | 适用于已经准备好品牌规范、待审文案、渠道等材料的用户。 | 1200 |
-| [流失预警诊断助手](https://ai-skills.ai/zh/skills/ai-churn-prevention) | 流失信号越早看见，越能挽回 | 适用于已经准备好用户反馈、使用记录摘要、流失信号等材料的用户。 | 1200 |
-| [联合营销策划助手](https://ai-skills.ai/zh/skills/ai-co-marketing) | 好合作要让双方都能增长 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [社群运营策划助手](https://ai-skills.ai/zh/skills/ai-community-marketing) | 成员有参与感，社群才会增长 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [内容营销诊断助手](https://ai-skills.ai/zh/skills/ai-content-marketer) | 内容要服务获客和转化 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/ai-copy-editing) | 先有假设，再谈增长 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [Core Web Vitals 诊断助手](https://ai-skills.ai/zh/skills/ai-core-web-vitals) | 体验指标会直接影响信任 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1200 |
-| [资料整理助手](https://ai-skills.ai/zh/skills/ai-csv-excel-merger) | 先提重点，再拆行动 | 适用于已经准备好CSV/XLSX 文件、合并规则、字段口径等材料的用户。 | 1200 |
-| [用户旅程地图助手](https://ai-skills.ai/zh/skills/ai-customer-journey-map) | 转化断点藏在每一步体验里 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
-| [设计 Brief 助手](https://ai-skills.ai/zh/skills/ai-design-brief) | 需求越清楚，返工越少 | 适用于已经准备好设计稿/截图/页面说明、品牌约束、使用场景等材料的用户。 | 1200 |
-| [前端审美诊断助手](https://ai-skills.ai/zh/skills/ai-design-taste-frontend) | 好看之前，先要有秩序 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [结账转化诊断助手](https://ai-skills.ai/zh/skills/ai-ecommerce-checkout-optimization) | 每多一步犹豫，都会少一次成交 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
-| [电商搜索诊断助手](https://ai-skills.ai/zh/skills/ai-ecommerce-search) | 搜得到，才可能买得到 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/ai-email-sequence) | 先有假设，再谈增长 | 适用于已经准备好邮件草稿、客户阶段、触达目标等材料的用户。 | 1200 |
-| [实体优化助手](https://ai-skills.ai/zh/skills/ai-entity-optimizer) | 实体清楚，AI 才容易引用 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
-| [商品卡片图助手](https://ai-skills.ai/zh/skills/ai-higgsfield-marketplace-cards) | 第一眼要说清卖点 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [产品写真助手](https://ai-skills.ai/zh/skills/ai-higgsfield-product-photoshoot) | 场景对了，产品才有想象力 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
-| [绩效评语助手](https://ai-skills.ai/zh/skills/ai-hr-performance-review) | 反馈要具体，也要可行动 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image-gen-guide) | 看得懂，才谈高级感 | 适用于已经准备好产品/主题信息、平台规格、风格要求等材料的用户。 | 1500 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-industrial-brutalist-ui) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [KPI 看板设计助手](https://ai-skills.ai/zh/skills/ai-kpi-dashboard-design) | 指标有层次，决策才快 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1500 |
-| [产品发布策划助手](https://ai-skills.ai/zh/skills/ai-launch) | 上线前先把风险和节奏排清 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [获客钩子策划助手](https://ai-skills.ai/zh/skills/ai-lead-magnets) | 用户愿意留下线索，才算诱饵 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
-| [本地地点推荐助手](https://ai-skills.ai/zh/skills/ai-local-places) | 地点推荐要匹配场景 | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | 1500 |
-| [本地 POI 筛选助手](https://ai-skills.ai/zh/skills/ai-local-pois) | 先定目的，再筛地点 | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | 1200 |
-| [营销创意助手](https://ai-skills.ai/zh/skills/ai-marketing-ideas) | 好创意要能落到行动 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
-| [会议待办整理助手](https://ai-skills.ai/zh/skills/ai-meeting-to-tasks) | 讨论要落到负责人和下一步 | 适用于已经准备好会议纪要、项目背景、负责人信息等材料的用户。 | 1200 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-minimalist-ui) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [新手引导诊断助手](https://ai-skills.ai/zh/skills/ai-onboarding) | 第一次体验决定后面是否留下 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [运营手册整理助手](https://ai-skills.ai/zh/skills/ai-operations-manual) | 流程写清楚，交接才稳 | 适用于已经准备好文档/表格/会议材料、处理目标、输出格式要求等材料的用户。 | 1200 |
-| [页面转化诊断助手](https://ai-skills.ai/zh/skills/ai-page-cro) | 先找阻力，再改页面 | 适用于已经准备好落地页 URL、页面文案、转化目标等材料的用户。 | 1500 |
-| [付费墙优化助手](https://ai-skills.ai/zh/skills/ai-paywall-upgrade-cro) | 价值先讲清，升级才自然 | 适用于已经准备好升级页文案、会员权益、转化目标等材料的用户。 | 1200 |
-| [性能诊断助手](https://ai-skills.ai/zh/skills/ai-performance) | 慢点找准，优化才有效 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1500 |
-| [播客策划助手](https://ai-skills.ai/zh/skills/ai-podcast) | 好节目要有清楚钩子 | 适用于已经准备好播客主题、嘉宾角色、目标平台等材料的用户。 | 1200 |
-| [产品营销助手](https://ai-skills.ai/zh/skills/ai-product-marketing) | 用户先懂价值，才会行动 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
-| [Remotion 实践助手](https://ai-skills.ai/zh/skills/ai-remotion-best-practices) | 动画可维护，交付才可靠 | 适用于排查 Remotion 组件、Composition、字幕、音频、转场、3D、图表和渲染问题。 | 1200 |
-| [注册转化诊断助手](https://ai-skills.ai/zh/skills/ai-signup) | 少一点阻力，多一次开始 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [社媒内容助手](https://ai-skills.ai/zh/skills/ai-social) | 先抓注意力，再给分享理由 | 适用于已经准备好平台、账号定位、内容素材等材料的用户。 | 1500 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-stitch-design-taste) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [AI 视频生成策划助手](https://ai-skills.ai/zh/skills/ai-video) | 先定分镜，再交给模型生成 | 适用于已经准备好视频创意 brief 或产品信息、目标平台、时长与风格、品牌约束和参考素材等材料的用户。 | 1500 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/brand-account-positioning-diagnosis) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/brand-voice-review) | 先看清问题，再决定下一步 | 适用于品牌社媒、PR 稿、客服话术、活动文案和跨团队内容审核。 | 4554 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/churn-prevention) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/comment-sentiment-action-cards) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/creator-commercial-value-benchmark) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/critique) | 先看清问题，再决定下一步 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/crossborder-listing-localization) | 先有假设，再谈增长 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/ecommerce-review-root-cause-analysis) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [邮件序列助手](https://ai-skills.ai/zh/skills/email-sequence) | 每封邮件都要推进一步 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/kling-3-0) | 先看清问题，再决定下一步 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/landing-page-copy-review) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 8511 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/live-commerce-script-compliance-review) | 先标风险，再交专业复核 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/live-replay-clip-title-pack) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [文案诊断助手](https://ai-skills.ai/zh/skills/marketing-psychology) | 卖点清楚，转化才有入口 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/page-cro) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/paywall-upgrade-cro) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/polish) | 先看清问题，再决定下一步 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [财务定价诊断助手](https://ai-skills.ai/zh/skills/pricing-strategy) | 利润算清楚，价格才稳 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/private-domain-campaign-sop-generator) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/product-detail-page-conversion-review) | 先有假设，再谈增长 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/real-estate-listing-compliance-review) | 先标风险，再交专业复核 | 适用于房产营销、经纪团队和楼盘运营发布项目介绍前做表达风险初筛。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/seedance-v2) | 先看清问题，再决定下一步 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/sku-trend-opportunity-report) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [社媒内容助手](https://ai-skills.ai/zh/skills/social-rising-topic-radar-cn) | 先抓注意力，再给分享理由 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ui-ux-pro-max) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/xhs-note-review) | 先看清问题，再决定下一步 | 适用于小红书博主、品牌运营和电商团队发布笔记前做互动与种草质量检查。 | 6785 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ad-creative" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-ad-creative" target="_blank" rel="noopener noreferrer">广告创意诊断助手</a></td>
+      <td>先抓注意力，再谈转化</td>
+      <td>适用于已经准备好创意 brief、广告图/视频描述、投放目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-brand-analytics" target="_blank" rel="noopener noreferrer">Amazon 品牌分析助手</a></td>
+      <td>数据会暴露真实机会</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-dayparting-strategy" target="_blank" rel="noopener noreferrer">Amazon 分时投放助手</a></td>
+      <td>预算要花在高意图时段</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-international-listings" target="_blank" rel="noopener noreferrer">Amazon 本地化助手</a></td>
+      <td>本地买家听懂才会买</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-inventory-management" target="_blank" rel="noopener noreferrer">Amazon 库存诊断助手</a></td>
+      <td>不断货，也不压死现金</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-listing-images" target="_blank" rel="noopener noreferrer">Amazon 图片诊断助手</a></td>
+      <td>先看懂卖点，再谈点击</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-product-bundling" target="_blank" rel="noopener noreferrer">Amazon 组合销售助手</a></td>
+      <td>组合要提高客单，也要守住利润</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-rank-tracker" target="_blank" rel="noopener noreferrer">Amazon 排名追踪助手</a></td>
+      <td>排名变化要看关键词和动作</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-repricing-strategy" target="_blank" rel="noopener noreferrer">Amazon 调价诊断助手</a></td>
+      <td>赢得竞争，也守住利润</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-return-reduction" target="_blank" rel="noopener noreferrer">Amazon 退货诊断助手</a></td>
+      <td>退货原因就是增长漏点</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-search-optimization" target="_blank" rel="noopener noreferrer">Amazon 搜索优化助手</a></td>
+      <td>关键词对了，Listing 才有入口</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-storefront-design" target="_blank" rel="noopener noreferrer">Amazon 店铺优化助手</a></td>
+      <td>店铺要让买家快速相信</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-subscribe-save" target="_blank" rel="noopener noreferrer">Amazon 订阅优化助手</a></td>
+      <td>复购理由清楚，订阅才成立</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-amazon-vine-program" target="_blank" rel="noopener noreferrer">Amazon Vine 决策助手</a></td>
+      <td>先算评价机会，再算风险</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-compress-image" target="_blank" rel="noopener noreferrer">图片压缩助手</a></td>
+      <td>文件更轻，画面仍要清楚</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-cover-image" target="_blank" rel="noopener noreferrer">封面图生成助手</a></td>
+      <td>封面先抓住注意力</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-image-cards" target="_blank" rel="noopener noreferrer">图文卡片生成助手</a></td>
+      <td>信息要一眼看懂</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-image-gen" target="_blank" rel="noopener noreferrer">图片生成助手</a></td>
+      <td>画面要服务内容目标</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-baoyu-wechat-summary" target="_blank" rel="noopener noreferrer">微信摘要助手</a></td>
+      <td>先抓主线，再提金句</td>
+      <td>适用于已经准备好文档、表格、会议记录或大纲、关注问题、输出格式要求等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-brand-consistency-checker" target="_blank" rel="noopener noreferrer">品牌一致性诊断助手</a></td>
+      <td>每个触点都该说同一种品牌话</td>
+      <td>适用于已经准备好品牌规范、待审文案、渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-churn-prevention" target="_blank" rel="noopener noreferrer">流失预警诊断助手</a></td>
+      <td>流失信号越早看见，越能挽回</td>
+      <td>适用于已经准备好用户反馈、使用记录摘要、流失信号等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-co-marketing" target="_blank" rel="noopener noreferrer">联合营销策划助手</a></td>
+      <td>好合作要让双方都能增长</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-community-marketing" target="_blank" rel="noopener noreferrer">社群运营策划助手</a></td>
+      <td>成员有参与感，社群才会增长</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-marketer" target="_blank" rel="noopener noreferrer">内容营销诊断助手</a></td>
+      <td>内容要服务获客和转化</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-copy-editing" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals 诊断助手</a></td>
+      <td>体验指标会直接影响信任</td>
+      <td>适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-csv-excel-merger" target="_blank" rel="noopener noreferrer">资料整理助手</a></td>
+      <td>先提重点，再拆行动</td>
+      <td>适用于已经准备好CSV/XLSX 文件、合并规则、字段口径等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-customer-journey-map" target="_blank" rel="noopener noreferrer">用户旅程地图助手</a></td>
+      <td>转化断点藏在每一步体验里</td>
+      <td>适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-design-brief" target="_blank" rel="noopener noreferrer">设计 Brief 助手</a></td>
+      <td>需求越清楚，返工越少</td>
+      <td>适用于已经准备好设计稿/截图/页面说明、品牌约束、使用场景等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-design-taste-frontend" target="_blank" rel="noopener noreferrer">前端审美诊断助手</a></td>
+      <td>好看之前，先要有秩序</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-ecommerce-checkout-optimization" target="_blank" rel="noopener noreferrer">结账转化诊断助手</a></td>
+      <td>每多一步犹豫，都会少一次成交</td>
+      <td>适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-ecommerce-search" target="_blank" rel="noopener noreferrer">电商搜索诊断助手</a></td>
+      <td>搜得到，才可能买得到</td>
+      <td>适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-email-sequence" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于已经准备好邮件草稿、客户阶段、触达目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-entity-optimizer" target="_blank" rel="noopener noreferrer">实体优化助手</a></td>
+      <td>实体清楚，AI 才容易引用</td>
+      <td>适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-higgsfield-marketplace-cards" target="_blank" rel="noopener noreferrer">商品卡片图助手</a></td>
+      <td>第一眼要说清卖点</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-higgsfield-product-photoshoot" target="_blank" rel="noopener noreferrer">产品写真助手</a></td>
+      <td>场景对了，产品才有想象力</td>
+      <td>适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-hr-performance-review" target="_blank" rel="noopener noreferrer">绩效评语助手</a></td>
+      <td>反馈要具体，也要可行动</td>
+      <td>适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-image" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-image-gen-guide" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好产品/主题信息、平台规格、风格要求等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-industrial-brutalist-ui" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-kpi-dashboard-design" target="_blank" rel="noopener noreferrer">KPI 看板设计助手</a></td>
+      <td>指标有层次，决策才快</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-launch" target="_blank" rel="noopener noreferrer">产品发布策划助手</a></td>
+      <td>上线前先把风险和节奏排清</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-lead-magnets" target="_blank" rel="noopener noreferrer">获客钩子策划助手</a></td>
+      <td>用户愿意留下线索，才算诱饵</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-local-places" target="_blank" rel="noopener noreferrer">本地地点推荐助手</a></td>
+      <td>地点推荐要匹配场景</td>
+      <td>适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-local-pois" target="_blank" rel="noopener noreferrer">本地 POI 筛选助手</a></td>
+      <td>先定目的，再筛地点</td>
+      <td>适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-marketing-ideas" target="_blank" rel="noopener noreferrer">营销创意助手</a></td>
+      <td>好创意要能落到行动</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-meeting-to-tasks" target="_blank" rel="noopener noreferrer">会议待办整理助手</a></td>
+      <td>讨论要落到负责人和下一步</td>
+      <td>适用于已经准备好会议纪要、项目背景、负责人信息等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-minimalist-ui" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-onboarding" target="_blank" rel="noopener noreferrer">新手引导诊断助手</a></td>
+      <td>第一次体验决定后面是否留下</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-operations-manual" target="_blank" rel="noopener noreferrer">运营手册整理助手</a></td>
+      <td>流程写清楚，交接才稳</td>
+      <td>适用于已经准备好文档/表格/会议材料、处理目标、输出格式要求等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-page-cro" target="_blank" rel="noopener noreferrer">页面转化诊断助手</a></td>
+      <td>先找阻力，再改页面</td>
+      <td>适用于已经准备好落地页 URL、页面文案、转化目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-paywall-upgrade-cro" target="_blank" rel="noopener noreferrer">付费墙优化助手</a></td>
+      <td>价值先讲清，升级才自然</td>
+      <td>适用于已经准备好升级页文案、会员权益、转化目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-performance" target="_blank" rel="noopener noreferrer">性能诊断助手</a></td>
+      <td>慢点找准，优化才有效</td>
+      <td>适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-podcast" target="_blank" rel="noopener noreferrer">播客策划助手</a></td>
+      <td>好节目要有清楚钩子</td>
+      <td>适用于已经准备好播客主题、嘉宾角色、目标平台等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-product-marketing" target="_blank" rel="noopener noreferrer">产品营销助手</a></td>
+      <td>用户先懂价值，才会行动</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-remotion-best-practices" target="_blank" rel="noopener noreferrer">Remotion 实践助手</a></td>
+      <td>动画可维护，交付才可靠</td>
+      <td>适用于排查 Remotion 组件、Composition、字幕、音频、转场、3D、图表和渲染问题。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-signup" target="_blank" rel="noopener noreferrer">注册转化诊断助手</a></td>
+      <td>少一点阻力，多一次开始</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-social" target="_blank" rel="noopener noreferrer">社媒内容助手</a></td>
+      <td>先抓注意力，再给分享理由</td>
+      <td>适用于已经准备好平台、账号定位、内容素材等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-stitch-design-taste" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-video" target="_blank" rel="noopener noreferrer">AI 视频生成策划助手</a></td>
+      <td>先定分镜，再交给模型生成</td>
+      <td>适用于已经准备好视频创意 brief 或产品信息、目标平台、时长与风格、品牌约束和参考素材等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/brand-account-positioning-diagnosis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/brand-voice-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于品牌社媒、PR 稿、客服话术、活动文案和跨团队内容审核。</td>
+      <td align="right" width="96">4.6k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/churn-prevention" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/comment-sentiment-action-cards" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/creator-commercial-value-benchmark" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/critique" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/crossborder-listing-localization" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ecommerce-review-root-cause-analysis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/email-sequence" target="_blank" rel="noopener noreferrer">邮件序列助手</a></td>
+      <td>每封邮件都要推进一步</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/kling-3-0" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/landing-page-copy-review" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">8.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/live-commerce-script-compliance-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/live-replay-clip-title-pack" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/marketing-psychology" target="_blank" rel="noopener noreferrer">文案诊断助手</a></td>
+      <td>卖点清楚，转化才有入口</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/page-cro" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/paywall-upgrade-cro" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/polish" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/pricing-strategy" target="_blank" rel="noopener noreferrer">财务定价诊断助手</a></td>
+      <td>利润算清楚，价格才稳</td>
+      <td>适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/private-domain-campaign-sop-generator" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/product-detail-page-conversion-review" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/real-estate-listing-compliance-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于房产营销、经纪团队和楼盘运营发布项目介绍前做表达风险初筛。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/seedance-v2" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/sku-trend-opportunity-report" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/social-rising-topic-radar-cn" target="_blank" rel="noopener noreferrer">社媒内容助手</a></td>
+      <td>先抓注意力，再给分享理由</td>
+      <td>适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ui-ux-pro-max" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/xhs-note-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于小红书博主、品牌运营和电商团队发布笔记前做互动与种草质量检查。</td>
+      <td align="right" width="96">6.8k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 🤝 销售与客户
 
 围绕客户研究、线索推进、销售话术、客户旅程和流失预警。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [销售增长助手](https://ai-skills.ai/zh/skills/account-research-sales-card) | 下一步清楚，机会才会前进 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
-| [冷邮件诊断助手](https://ai-skills.ai/zh/skills/ai-cold-email) | 开场说对，回复才有机会 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [CRM 清理助手](https://ai-skills.ai/zh/skills/ai-crm-cleanup) | 数据干净，销售动作才准 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
-| [客户脉搏诊断助手](https://ai-skills.ai/zh/skills/ai-customer-pulse) | 情绪变化要比投诉更早看见 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
-| [客户评论洞察助手](https://ai-skills.ai/zh/skills/ai-customer-review-aggregator) | 评论会说出产品真问题 | 适用于已经准备好评论文本、产品/门店信息、时间范围等材料的用户。 | 1500 |
-| [客服回复助手](https://ai-skills.ai/zh/skills/ai-customer-support) | 先安抚情绪，再解决问题 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1500 |
-| [RevOps 诊断助手](https://ai-skills.ai/zh/skills/ai-revops) | 增长漏点藏在流程交接里 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [销售话术准备助手](https://ai-skills.ai/zh/skills/ai-sales-call-prep) | 先有背景，通话才有推进力 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
-| [销售辅导助手](https://ai-skills.ai/zh/skills/ai-sales-coaching) | 成交问题会在对话里暴露 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
-| [销售薪酬诊断助手](https://ai-skills.ai/zh/skills/ai-sales-compensation) | 激励对齐，团队才会动 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
-| [销售赋能助手](https://ai-skills.ai/zh/skills/ai-sales-enablement) | 材料要让销售更快推进 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [销售线索判断助手](https://ai-skills.ai/zh/skills/ai-sales-qualification) | 先筛准客户，再投入精力 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/quality-complaint-8d-report) | 先看清问题，再决定下一步 | 适用于质量工程师、售后、供应商质量和制造团队处理客户投诉。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/account-research-sales-card" target="_blank" rel="noopener noreferrer">销售增长助手</a></td>
+      <td>下一步清楚，机会才会前进</td>
+      <td>适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-cold-email" target="_blank" rel="noopener noreferrer">冷邮件诊断助手</a></td>
+      <td>开场说对，回复才有机会</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-crm-cleanup" target="_blank" rel="noopener noreferrer">CRM 清理助手</a></td>
+      <td>数据干净，销售动作才准</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-customer-pulse" target="_blank" rel="noopener noreferrer">客户脉搏诊断助手</a></td>
+      <td>情绪变化要比投诉更早看见</td>
+      <td>适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-customer-review-aggregator" target="_blank" rel="noopener noreferrer">客户评论洞察助手</a></td>
+      <td>评论会说出产品真问题</td>
+      <td>适用于已经准备好评论文本、产品/门店信息、时间范围等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-customer-support" target="_blank" rel="noopener noreferrer">客服回复助手</a></td>
+      <td>先安抚情绪，再解决问题</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-revops" target="_blank" rel="noopener noreferrer">RevOps 诊断助手</a></td>
+      <td>增长漏点藏在流程交接里</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-sales-call-prep" target="_blank" rel="noopener noreferrer">销售话术准备助手</a></td>
+      <td>先有背景，通话才有推进力</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-sales-coaching" target="_blank" rel="noopener noreferrer">销售辅导助手</a></td>
+      <td>成交问题会在对话里暴露</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-sales-compensation" target="_blank" rel="noopener noreferrer">销售薪酬诊断助手</a></td>
+      <td>激励对齐，团队才会动</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-sales-enablement" target="_blank" rel="noopener noreferrer">销售赋能助手</a></td>
+      <td>材料要让销售更快推进</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-sales-qualification" target="_blank" rel="noopener noreferrer">销售线索判断助手</a></td>
+      <td>先筛准客户，再投入精力</td>
+      <td>适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/quality-complaint-8d-report" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于质量工程师、售后、供应商质量和制造团队处理客户投诉。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 📋 办公协作
 
 把会议、文档、表格、任务和团队流程整理成清晰行动项。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/ai-upskilling-training-diagnosis) | 先看清问题，再决定下一步 | 适用于L&D、HRBP、业务负责人规划团队AI转型培训。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/gov-service-faq-quality-check) | 先看清问题，再决定下一步 | 适用于政务服务、公共热线和园区服务团队上线问答知识库前质检。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/interview-question-scorecard-generator) | 先看清问题，再决定下一步 | 适用于招聘经理、HRBP和面试官准备结构化面试。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/resume-screening-consistency-review) | 先看清问题，再决定下一步 | 适用于招聘团队校准筛选标准、减少主观偏差和整理面试问题。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-upskilling-training-diagnosis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于L&amp;D、HRBP、业务负责人规划团队AI转型培训。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/gov-service-faq-quality-check" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于政务服务、公共热线和园区服务团队上线问答知识库前质检。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/interview-question-scorecard-generator" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于招聘经理、HRBP和面试官准备结构化面试。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/resume-screening-consistency-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于招聘团队校准筛选标准、减少主观偏差和整理面试问题。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 🎨 设计与多媒体
 
 面向图片、视频、演示、界面、素材和视觉表达的生产与诊断。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [视频质量诊断助手](https://ai-skills.ai/zh/skills/ai-avatar-video) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-gpt-image-2) | 看得懂，才谈高级感 | 适用于把品牌主视觉、广告图、产品场景图、社媒配图、概念图或参考图改写需求生成图片成品。 | 1500 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-high-end-visual-design) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image-generation) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [演示稿优化助手](https://ai-skills.ai/zh/skills/ai-presentation-deck) | 每页都该推动判断 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
-| [演示稿优化助手](https://ai-skills.ai/zh/skills/ai-presentation-design-enhancer) | 每页都该推动判断 | 适用于已经准备好PPT 文件或大纲、演示目标、受众等材料的用户。 | 1200 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-product-photo-scene-planner) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [AI 视频剪辑诊断助手](https://ai-skills.ai/zh/skills/ai-video-editing) | 先找节奏，再压缩成片 | 适用于已经准备好raw footage、录屏或转写稿、目标平台、成片时长和受众、剪辑风格与不可删内容等… | 1200 |
-| [视频质量诊断助手](https://ai-skills.ai/zh/skills/ai-video-generation) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-visual-prompt-review) | 看得懂，才谈高级感 | 适用于使用豆包 Seedream/Seedance、即梦、可灵、Midjourney 等生成图片或视频… | 4832 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/extract-design-system) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/frontend-design) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/image-edit) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [视频质量诊断助手](https://ai-skills.ai/zh/skills/image-to-video) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/lesson-plan-activity-designer) | 看得懂，才谈高级感 | 适用于教师、培训师、企业内训和课程研发人员快速设计一节可执行课程。 | 1000 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/sleek-design-mobile-apps) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
-| [视频质量诊断助手](https://ai-skills.ai/zh/skills/video-storyboard-review) | 看得懂，才可能看下去 | 适用于短视频广告、品牌片、课程视频、直播切片和分镜脚本拍摄前检查。 | 7981 |
-| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/web-design-guidelines) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-avatar-video" target="_blank" rel="noopener noreferrer">视频质量诊断助手</a></td>
+      <td>看得懂，才可能看下去</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-gpt-image-2" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于把品牌主视觉、广告图、产品场景图、社媒配图、概念图或参考图改写需求生成图片成品。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-high-end-visual-design" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-image-generation" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-presentation-deck" target="_blank" rel="noopener noreferrer">演示稿优化助手</a></td>
+      <td>每页都该推动判断</td>
+      <td>适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-presentation-design-enhancer" target="_blank" rel="noopener noreferrer">演示稿优化助手</a></td>
+      <td>每页都该推动判断</td>
+      <td>适用于已经准备好PPT 文件或大纲、演示目标、受众等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-product-photo-scene-planner" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-video-editing" target="_blank" rel="noopener noreferrer">AI 视频剪辑诊断助手</a></td>
+      <td>先找节奏，再压缩成片</td>
+      <td>适用于已经准备好raw footage、录屏或转写稿、目标平台、成片时长和受众、剪辑风格与不可删内容等…</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-video-generation" target="_blank" rel="noopener noreferrer">视频质量诊断助手</a></td>
+      <td>看得懂，才可能看下去</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-visual-prompt-review" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于使用豆包 Seedream/Seedance、即梦、可灵、Midjourney 等生成图片或视频…</td>
+      <td align="right" width="96">4.8k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/extract-design-system" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/frontend-design" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/image-edit" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/image-to-video" target="_blank" rel="noopener noreferrer">视频质量诊断助手</a></td>
+      <td>看得懂，才可能看下去</td>
+      <td>适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lesson-plan-activity-designer" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于教师、培训师、企业内训和课程研发人员快速设计一节可执行课程。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/sleek-design-mobile-apps" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/video-storyboard-review" target="_blank" rel="noopener noreferrer">视频质量诊断助手</a></td>
+      <td>看得懂，才可能看下去</td>
+      <td>适用于短视频广告、品牌片、课程视频、直播切片和分镜脚本拍摄前检查。</td>
+      <td align="right" width="96">8k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/web-design-guidelines" target="_blank" rel="noopener noreferrer">视觉质量诊断助手</a></td>
+      <td>看得懂，才谈高级感</td>
+      <td>适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 🔎 数据与研究
 
 用于市场研究、竞品分析、资料核验、数据清洗和证据摘要。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/agent-browser) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [客户研究助手](https://ai-skills.ai/zh/skills/ai-account-research) | 先懂客户，再写话术 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
-| [网站诊断助手](https://ai-skills.ai/zh/skills/ai-audit-website) | 先找关键问题，再排优化顺序 | 适用于已经准备好研究主题、公开资料或竞品线索、需要回答的问题等材料的用户。 | 1200 |
-| [竞品替代分析助手](https://ai-skills.ai/zh/skills/ai-competitor-alternatives) | 替代理由，就是定位机会 | 适用于已经准备好自家产品信息、竞品页面、目标关键词等材料的用户。 | 1200 |
-| [竞品画像助手](https://ai-skills.ai/zh/skills/ai-competitor-profiling) | 看清对手，才知道怎么赢 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
-| [资料整理助手](https://ai-skills.ai/zh/skills/ai-content-research-writer) | 先提重点，再拆行动 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
-| [用户研究助手](https://ai-skills.ai/zh/skills/ai-customer-research) | 真需求来自证据，不来自猜测 | 适用于已经准备好访谈记录、评论反馈、目标用户描述等材料的用户。 | 1200 |
-| [教育数据分析助手](https://ai-skills.ai/zh/skills/ai-education-data-explorer) | 数据先讲清问题，再谈改进 | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | 1200 |
-| [教育研究方法助手](https://ai-skills.ai/zh/skills/ai-educational-research-methods) | 方法对了，结论才站得住 | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | 1200 |
-| [市场研究助手](https://ai-skills.ai/zh/skills/ai-market-research) | 机会要看需求、竞品和切入口 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
-| [文献综述助手](https://ai-skills.ai/zh/skills/ai-research-lit) | 先看共识，再看争议 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1200 |
-| [研究打磨助手](https://ai-skills.ai/zh/skills/ai-research-refine) | 问题越清楚，研究越有方向 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
-| [SEO 审计助手](https://ai-skills.ai/zh/skills/ai-seo-audit) | 问题分清轻重，优化才有顺序 | 适用于已经准备好公开页面 URL、目标关键词、页面正文等材料的用户。 | 1500 |
-| [网站质量审查助手](https://ai-skills.ai/zh/skills/ai-web-quality-audit) | 可信网站要同时好看、好用、好找 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1200 |
-| [网页研究助手](https://ai-skills.ai/zh/skills/ai-web-research) | 先核来源，再下判断 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/browser-use) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/competitor-alternatives) | 先看清问题，再决定下一步 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/competitor-price-selling-point-watch) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl-scrape) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl-search) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/just-scrape) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/local-store-review-business-diagnosis) | 先看清问题，再决定下一步 | 适用于餐饮、美业、亲子、酒店、健身等本地生活门店复盘点评。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/privacy-policy-data-map-check-cn) | 先标风险，再交专业复核 | 适用于产品、运营、法务和数据治理团队做隐私文档发布前自查。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/restaurant-menu-deal-optimizer) | 先看清问题，再决定下一步 | 适用于餐饮商家、代运营和门店负责人优化菜单、套餐和团购页。 | 1000 |
-| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/seo-audit) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
-| [软件成本评估看板](https://ai-skills.ai/zh/skills/software-dev-cost-dashboard) | 快速评估软件项目成本与工期，支撑立项与报价。 | 适用于项目经理、架构师、产品经理及需要做软件项目成本评估的团队。 | 5297 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/student-feedback-retention-analysis) | 先看清问题，再决定下一步 | 适用于教培机构、训练营、社群课程和知识付费团队做阶段复盘。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/vulnerability-advisory-impact-brief) | 先看清问题，再决定下一步 | 适用于安全、运维、研发和IT负责人快速理解公开漏洞公告对自有资产的影响。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/agent-browser" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-account-research" target="_blank" rel="noopener noreferrer">客户研究助手</a></td>
+      <td>先懂客户，再写话术</td>
+      <td>适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-audit-website" target="_blank" rel="noopener noreferrer">网站诊断助手</a></td>
+      <td>先找关键问题，再排优化顺序</td>
+      <td>适用于已经准备好研究主题、公开资料或竞品线索、需要回答的问题等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-competitor-alternatives" target="_blank" rel="noopener noreferrer">竞品替代分析助手</a></td>
+      <td>替代理由，就是定位机会</td>
+      <td>适用于已经准备好自家产品信息、竞品页面、目标关键词等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-competitor-profiling" target="_blank" rel="noopener noreferrer">竞品画像助手</a></td>
+      <td>看清对手，才知道怎么赢</td>
+      <td>适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-content-research-writer" target="_blank" rel="noopener noreferrer">资料整理助手</a></td>
+      <td>先提重点，再拆行动</td>
+      <td>适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-customer-research" target="_blank" rel="noopener noreferrer">用户研究助手</a></td>
+      <td>真需求来自证据，不来自猜测</td>
+      <td>适用于已经准备好访谈记录、评论反馈、目标用户描述等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-education-data-explorer" target="_blank" rel="noopener noreferrer">教育数据分析助手</a></td>
+      <td>数据先讲清问题，再谈改进</td>
+      <td>适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-educational-research-methods" target="_blank" rel="noopener noreferrer">教育研究方法助手</a></td>
+      <td>方法对了，结论才站得住</td>
+      <td>适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-market-research" target="_blank" rel="noopener noreferrer">市场研究助手</a></td>
+      <td>机会要看需求、竞品和切入口</td>
+      <td>适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-research-lit" target="_blank" rel="noopener noreferrer">文献综述助手</a></td>
+      <td>先看共识，再看争议</td>
+      <td>适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-research-refine" target="_blank" rel="noopener noreferrer">研究打磨助手</a></td>
+      <td>问题越清楚，研究越有方向</td>
+      <td>适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-seo-audit" target="_blank" rel="noopener noreferrer">SEO 审计助手</a></td>
+      <td>问题分清轻重，优化才有顺序</td>
+      <td>适用于已经准备好公开页面 URL、目标关键词、页面正文等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-web-quality-audit" target="_blank" rel="noopener noreferrer">网站质量审查助手</a></td>
+      <td>可信网站要同时好看、好用、好找</td>
+      <td>适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-web-research" target="_blank" rel="noopener noreferrer">网页研究助手</a></td>
+      <td>先核来源，再下判断</td>
+      <td>适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/browser-use" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/competitor-alternatives" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/competitor-price-selling-point-watch" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/firecrawl" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/firecrawl-scrape" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/firecrawl-search" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/just-scrape" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/local-store-review-business-diagnosis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于餐饮、美业、亲子、酒店、健身等本地生活门店复盘点评。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/privacy-policy-data-map-check-cn" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于产品、运营、法务和数据治理团队做隐私文档发布前自查。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/restaurant-menu-deal-optimizer" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于餐饮商家、代运营和门店负责人优化菜单、套餐和团购页。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/seo-audit" target="_blank" rel="noopener noreferrer">SEO/AEO 诊断助手</a></td>
+      <td>搜索意图对了，内容才有机会</td>
+      <td>适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/software-dev-cost-dashboard" target="_blank" rel="noopener noreferrer">软件成本评估看板</a></td>
+      <td>快速评估软件项目成本与工期，支撑立项与报价。</td>
+      <td>适用于项目经理、架构师、产品经理及需要做软件项目成本评估的团队。</td>
+      <td align="right" width="96">5.3k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/student-feedback-retention-analysis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于教培机构、训练营、社群课程和知识付费团队做阶段复盘。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/vulnerability-advisory-impact-brief" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于安全、运维、研发和IT负责人快速理解公开漏洞公告对自有资产的影响。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 ### ⚖️ 行业与合规
 
 覆盖教育、金融、医疗、法务、无障碍和风险审阅等垂直场景。
 
-| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
-| --- | --- | --- | ---: |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/ad-copy-compliance-review) | 先标风险，再交专业复核 | 适用于信息流广告、搜索广告、朋友圈广告、短信和活动促销文案发布前检查。 | 4489 |
-| [无障碍体验诊断助手](https://ai-skills.ai/zh/skills/ai-accessibility) | 能被更多人使用，才是好体验 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1500 |
-| [DOCX 整理助手](https://ai-skills.ai/zh/skills/ai-docx) | 先提重点，再方便复用 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
-| [HR 专业助手](https://ai-skills.ai/zh/skills/ai-hr-pro) | 人事判断要清楚，也要留边界 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
-| [求职材料优化助手](https://ai-skills.ai/zh/skills/ai-job-application-optimizer) | 匹配度说清，机会才更大 | 适用于已经准备好简历、目标 JD、求职方向等材料的用户。 | 1200 |
-| [PDF 整理助手](https://ai-skills.ai/zh/skills/ai-pdf) | 长文档要先变成可读重点 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
-| [PPT 诊断助手](https://ai-skills.ai/zh/skills/ai-pptx) | 每页都该服务一个判断 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
-| [视频转 GIF 优化助手](https://ai-skills.ai/zh/skills/ai-video-to-gif) | 文件更轻，动效仍要清楚 | 适用于已经准备好视频文件或公开视频链接、截取时间段和循环方式、目标尺寸、帧率和文件大小限制等材料的用户。 | 1200 |
-| [XLSX 分析助手](https://ai-skills.ai/zh/skills/ai-xlsx) | 数据先理清，结论才可靠 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/clinic-service-review-analysis) | 先看清问题，再决定下一步 | 适用于民营医院、诊所、口腔机构、医美机构和客服运营复盘服务体验。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/contract-clause-risk-review-cn) | 先标风险，再交专业复核 | 适用于中小企业、业务负责人和法务助理在专业审核前整理合同风险。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/course-landing-page-conversion-review) | 先有假设，再谈增长 | 适用于课程主理人、运营和教培市场团队在投放或发布前优化详情页。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/course-outline-market-positioning) | 先看清问题，再决定下一步 | 适用于知识付费、训练营、企业培训和教培机构在上线前打磨课程定位。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/customer-service-kb-gap-analysis) | 先看清问题，再决定下一步 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/enterprise-ai-usecase-priority-assessment) | 先看清问题，再决定下一步 | 适用于CIO、业务负责人和AI项目团队从试点清单中选择MVP。 | 1000 |
-| [财务定价诊断助手](https://ai-skills.ai/zh/skills/financial-marketing-compliance-review) | 利润算清楚，价格才稳 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
-| [财务定价诊断助手](https://ai-skills.ai/zh/skills/financial-report-anomaly-question-list) | 利润算清楚，价格才稳 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
-| [转化实验助手](https://ai-skills.ai/zh/skills/gtm-one-page-strategy) | 先有假设，再谈增长 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-docs) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-gmail) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-sheets) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/insurance-policy-faq-explainer) | 先标风险，再交专业复核 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
-| [资料整理助手](https://ai-skills.ai/zh/skills/investment-research-material-compare) | 先提重点，再拆行动 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-approval) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-calendar) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-doc) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-drive) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-minutes) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-sheets) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-task) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [资料整理助手](https://ai-skills.ai/zh/skills/lark-workflow-meeting-summary) | 先提重点，再拆行动 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/medical-content-compliance-review) | 先标风险，再交专业复核 | 适用于医院、诊所、药企市场和健康内容团队在发布科普前做表达风险初筛。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/medical-literature-evidence-map) | 先看清问题，再决定下一步 | 适用于医学内容、科研助理、医学事务和市场团队做文献阅读与证据整理。 | 1000 |
-| [资料整理助手](https://ai-skills.ai/zh/skills/patient-education-readability-review) | 先提重点，再拆行动 | 适用于医院、诊所、药房和健康管理团队优化术前说明、随访提示和健康教育材料。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/pharma-visit-material-compliance-review) | 先标风险，再交专业复核 | 适用于药企市场、销售培训和医学事务团队在内部审核前整理风险点。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/policy-execution-checklist-generator) | 先标风险，再交专业复核 | 适用于行政、人事、合规、运营团队把制度发布为可执行流程。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/proposal-risk-response-review) | 先标风险，再交专业复核 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/public-company-due-diligence-summary) | 先看清问题，再决定下一步 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/question-bank-explanation-quality-check) | 先看清问题，再决定下一步 | 适用于题库产品、教研团队和考试培训机构在批量发布题目前做质量初筛。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/saas-prd-review) | 先看清问题，再决定下一步 | 适用于产品经理、创业者和研发负责人在需求评审前提高PRD质量。 | 1000 |
-| [销售增长助手](https://ai-skills.ai/zh/skills/sales-meeting-follow-up-plan) | 下一步清楚，机会才会前进 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
-| [业务诊断助手](https://ai-skills.ai/zh/skills/software-cost-quote-review) | 先看清问题，再决定下一步 | 适用于甲方、外包团队、项目经理和创业者评估软件开发报价。 | 1000 |
-| [风险审阅助手](https://ai-skills.ai/zh/skills/supplier-delivery-risk-summary) | 先标风险，再交专业复核 | 适用于采购、供应链计划、项目管理和供应商质量团队做交付风险复盘。 | 1000 |
+<table>
+  <thead>
+    <tr>
+      <th>Skills 名称</th>
+      <th>核心价值</th>
+      <th>适用场景</th>
+      <th align="right" width="96">下载量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ad-copy-compliance-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于信息流广告、搜索广告、朋友圈广告、短信和活动促销文案发布前检查。</td>
+      <td align="right" width="96">4.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-accessibility" target="_blank" rel="noopener noreferrer">无障碍体验诊断助手</a></td>
+      <td>能被更多人使用，才是好体验</td>
+      <td>适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。</td>
+      <td align="right" width="96">1.5k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-docx" target="_blank" rel="noopener noreferrer">DOCX 整理助手</a></td>
+      <td>先提重点，再方便复用</td>
+      <td>适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-hr-pro" target="_blank" rel="noopener noreferrer">HR 专业助手</a></td>
+      <td>人事判断要清楚，也要留边界</td>
+      <td>适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-job-application-optimizer" target="_blank" rel="noopener noreferrer">求职材料优化助手</a></td>
+      <td>匹配度说清，机会才更大</td>
+      <td>适用于已经准备好简历、目标 JD、求职方向等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-pdf" target="_blank" rel="noopener noreferrer">PDF 整理助手</a></td>
+      <td>长文档要先变成可读重点</td>
+      <td>适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-pptx" target="_blank" rel="noopener noreferrer">PPT 诊断助手</a></td>
+      <td>每页都该服务一个判断</td>
+      <td>适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-video-to-gif" target="_blank" rel="noopener noreferrer">视频转 GIF 优化助手</a></td>
+      <td>文件更轻，动效仍要清楚</td>
+      <td>适用于已经准备好视频文件或公开视频链接、截取时间段和循环方式、目标尺寸、帧率和文件大小限制等材料的用户。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-xlsx" target="_blank" rel="noopener noreferrer">XLSX 分析助手</a></td>
+      <td>数据先理清，结论才可靠</td>
+      <td>适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。</td>
+      <td align="right" width="96">1.2k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/clinic-service-review-analysis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于民营医院、诊所、口腔机构、医美机构和客服运营复盘服务体验。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/contract-clause-risk-review-cn" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于中小企业、业务负责人和法务助理在专业审核前整理合同风险。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/course-landing-page-conversion-review" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于课程主理人、运营和教培市场团队在投放或发布前优化详情页。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/course-outline-market-positioning" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于知识付费、训练营、企业培训和教培机构在上线前打磨课程定位。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/customer-service-kb-gap-analysis" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/enterprise-ai-usecase-priority-assessment" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于CIO、业务负责人和AI项目团队从试点清单中选择MVP。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/financial-marketing-compliance-review" target="_blank" rel="noopener noreferrer">财务定价诊断助手</a></td>
+      <td>利润算清楚，价格才稳</td>
+      <td>适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/financial-report-anomaly-question-list" target="_blank" rel="noopener noreferrer">财务定价诊断助手</a></td>
+      <td>利润算清楚，价格才稳</td>
+      <td>适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/gtm-one-page-strategy" target="_blank" rel="noopener noreferrer">转化实验助手</a></td>
+      <td>先有假设，再谈增长</td>
+      <td>适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/gws-docs" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/gws-gmail" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/gws-sheets" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/insurance-policy-faq-explainer" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/investment-research-material-compare" target="_blank" rel="noopener noreferrer">资料整理助手</a></td>
+      <td>先提重点，再拆行动</td>
+      <td>适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-approval" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-calendar" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-doc" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-drive" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-minutes" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-sheets" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-task" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/lark-workflow-meeting-summary" target="_blank" rel="noopener noreferrer">资料整理助手</a></td>
+      <td>先提重点，再拆行动</td>
+      <td>适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和…</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/medical-content-compliance-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于医院、诊所、药企市场和健康内容团队在发布科普前做表达风险初筛。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/medical-literature-evidence-map" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于医学内容、科研助理、医学事务和市场团队做文献阅读与证据整理。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/patient-education-readability-review" target="_blank" rel="noopener noreferrer">资料整理助手</a></td>
+      <td>先提重点，再拆行动</td>
+      <td>适用于医院、诊所、药房和健康管理团队优化术前说明、随访提示和健康教育材料。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/pharma-visit-material-compliance-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于药企市场、销售培训和医学事务团队在内部审核前整理风险点。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/policy-execution-checklist-generator" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于行政、人事、合规、运营团队把制度发布为可执行流程。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/proposal-risk-response-review" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/public-company-due-diligence-summary" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/question-bank-explanation-quality-check" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于题库产品、教研团队和考试培训机构在批量发布题目前做质量初筛。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/saas-prd-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于产品经理、创业者和研发负责人在需求评审前提高PRD质量。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/sales-meeting-follow-up-plan" target="_blank" rel="noopener noreferrer">销售增长助手</a></td>
+      <td>下一步清楚，机会才会前进</td>
+      <td>适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/software-cost-quote-review" target="_blank" rel="noopener noreferrer">业务诊断助手</a></td>
+      <td>先看清问题，再决定下一步</td>
+      <td>适用于甲方、外包团队、项目经理和创业者评估软件开发报价。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+    <tr>
+      <td><a href="https://ai-skills.ai/zh/skills/supplier-delivery-risk-summary" target="_blank" rel="noopener noreferrer">风险审阅助手</a></td>
+      <td>先标风险，再交专业复核</td>
+      <td>适用于采购、供应链计划、项目管理和供应商质量团队做交付风险复盘。</td>
+      <td align="right" width="96">1k</td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- AI_SKILLS_CATALOG_END -->
 
