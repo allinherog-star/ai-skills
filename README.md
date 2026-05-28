@@ -22,7 +22,7 @@
   <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/content-01.webp" alt="AI Skills 官网场景导览图" />
 </picture>
 
-## 快速开始
+## OpenClaw Hermes 安装快速开始
 
 ### 1. 扫码登录
 
@@ -63,67 +63,6 @@
 </picture>
 
 登录后进入 API Key 页面申请你的密钥。对于大多数 Skill 市场和 agent 客户端来说，后续调用都会读取 `AISKILLS_API_KEY`，所以这一步是权限入口。
-
-## 发布到 skills.sh 的同步说明
-
-`skills-release` 是发布到 GitHub 仓库 `allinherog-star/ai-skills` 的技能发布包。`ai-skills-service` 负责从平台数据导出 `skills-release/skills/*/SKILL.md`，`skills-release` 子模块再提交并推送到 GitHub。
-
-skills.sh 的搜索和榜单不是单纯读取 GitHub 文件列表。直接访问 `https://www.skills.sh/allinherog-star/ai-skills/<skill-id>` 可能已经可用，但搜索结果仍可能滞后；搜索索引主要由官方 `skills` CLI 的远程安装/匿名 telemetry 触发。
-
-推荐发布顺序：
-
-```bash
-cd ai-skills-service
-npm run skills-release:export
-
-cd ../skills-release
-git status
-git add .
-git commit -m "更新技能发布包"
-git push
-
-cd ..
-node scripts/check-skills-release-search.mjs --skills douyin-hotlist-overall,ai-article
-node scripts/sync-skills-release-search.mjs --yes
-node scripts/check-skills-release-search.mjs
-```
-
-注意事项：
-
-- `sync-skills-release-search.mjs` 必须从临时目录运行官方 CLI，并固定使用远程源 `allinherog-star/ai-skills`，不要用本地路径触发。
-- 该同步会透明地产生一次真实 publisher install 信号，目的是让 skills.sh 发现公开发布包，不用于人为刷安装量。
-- 如果环境里设置了 `DISABLE_TELEMETRY`、`DO_NOT_TRACK` 或 CI 变量，同步脚本会拒绝运行。
-- 全量同步后 skills.sh 仍可能有缓存或索引延迟，重新运行 `check-skills-release-search.mjs` 确认可搜索状态。
-
-
-## AI Skills 是什么：一个能直接查的技能库
-
-AI Skills（[ai-skills.ai](https://ai-skills.ai/)）是一个面向各行各业的 AI 技能库。站点首屏给的定义很直接：「为你的职业发展、行业竞争力，增加更多可能。」
-
-翻译成人话：这里不放论文、不讲 PPT，只放**能让你明天就用上的 AI 技能**。每个 Skill 都有三个固定栏目：
-
-- **核心价值**——用一句话讲清楚这个技能解决什么问题
-- **主要用途**——列出它最常被用来干什么
-- **使用技能**——一个按钮，点进去就能跑
-
-举首屏的例子：抖音赛道的创作者想知道「平台流量在哪」，对应的 Skill 叫「抖音流量分配大盘」，打开就是实时更新的大盘图和方向占比，不用自己再搭监测脚本。另外两个同系列 Skill 是「抖音全网实时热点」和「抖音上升热点选题助手」——一个告诉你全网最热的是什么，一个帮你把热点拆成可拍的选题。
-
-## Skill 不是 Prompt：中间差了一整套流程
-
-<picture>
-  <img src="https://raw.githubusercontent.com/allinherog-star/aiskillsguides/HEAD/guides/images/ai-skills-site-readme/content-02.webp" alt="content-02" />
-</picture>
-
-很多人第一次看到「AI 技能库」，以为就是 Prompt 合集。这是个常见误会。
-
-Prompt 是一句话，Skill 是一个**能被执行的流程**：它至少包含触发条件、上下文收集、工具调用、输出约束和适用边界。同一个关键词，Prompt 给你一段文本，Skill 给你一份能交付的结果。
-
-这也解释了为什么 AI Skills 上的每个条目都挂着「使用技能」入口——背后接的是已经调通的 Agent 工作流，不是一段需要自己再 debug 的 prompt 模板。这件事意味着两点：
-
-1. **边际质量稳定**：不会因为你 prompt 写得不够好就翻车
-2. **可被二次集成**：同一个 Skill 能被放进不同的客户端（网页、Agent、企业系统）
-
-对多数非 AI 岗位来说，这一层封装非常关键——没人愿意花一个下午去调一句 prompt。
 
 ## 四个主入口：技能列表 / 职业 / 行业 / 应用场景
 
@@ -166,9 +105,9 @@ Prompt 是一句话，Skill 是一个**能被执行的流程**：它至少包含
 
 三种姿势本质上是**同一个 Skill 库的三种触达方式**——底下跑的是同一套执行流程，只是包装不同。
 
-## 产品态度：不堆数量，堆可执行结果
+## 产品目标
 
-站点 footer 有一句小字值得放大看一下：**「面向职业成长与行业竞争力场景，强调可执行结果与持续能力沉淀。」**
+**「面向职业成长与行业竞争力场景，强调可执行结果与持续能力沉淀。」**
 
 翻译成做产品的语言：
 
@@ -179,7 +118,7 @@ Prompt 是一句话，Skill 是一个**能被执行的流程**：它至少包含
 这也是为什么首页愿意公开合作的模型与云服务商（阿里云、豆包、OpenAI、Anthropic、Kimi、DeepSeek、火山引擎）——底层基座会变，上层 Skill 层需要和这些能力源持续同步。
 
 <!-- AI_SKILLS_CATALOG_START -->
-## 平台技能全量目录（EEAT 场景版）
+## Skills列表清单
 
 > 数据更新：2026-05-27；数据源：public-catalog；统计口径：下载、收藏、分享来自平台互动表 `as_skill_engagement_counts.organic_count`，只展示真实事件或明确写入的数据。
 
@@ -192,7 +131,7 @@ Prompt 是一句话，Skill 是一个**能被执行的流程**：它至少包含
 | 累计下载 | 39万 |
 | 累计收藏 | 244万 |
 
-这份目录按用户要解决的问题组织，而不是按内部模块命名组织。每一行都对应一个可安装的 Skill，并把“用户为什么需要它”“它能交付什么结果”“已有互动数据”放在同一个视野里，便于搜索、评估和引用。
+这份目录按用户要解决的问题组织，而不是按内部模块命名组织。每一行都对应一个可安装的 Skill，并把技能详情页、核心价值、适用场景和下载量放在同一个视野里，便于搜索、评估和引用。
 
 ### 可信度与维护口径
 
@@ -204,329 +143,312 @@ Prompt 是一句话，Skill 是一个**能被执行的流程**：它至少包含
 
 面向抖音、小红书、快手、视频号等平台的热点、账号、评论和流量判断。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| 📊 | 适用于汽车品牌、经销商、内容运营和销售培训团队做车型传播复盘。 | [业务诊断助手](./skills/auto-review-selling-point-map/) | 先看清问题，再决定下一步 | 1000 | 1.1万 | 3004 |
-| ✨ | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | [B站短视频运营增长助手](./skills/bilibili-sentiment-dashboard/) | 挖掘用户需求，控制舆情风险，助力流量增长 | 1715 | 6419 | 3828 |
-| 📊 | 适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。 | [抖音全网实时热点](./skills/douyin-hotlist-overall/) | 先有热点方向，再有视频内容生产 | 4115 | 8902 | 5627 |
-| 🔎 | 适用于品牌方、MCN 机构、内容创作者，帮助快速找到合适的 KOL 进行合作或学习… | [抖音最具商业价值意见领袖（KOL）](./skills/douyin-kol-search/) | 不仅仅是流量，而是账号的商业价值，降低试错成本 | 2593 | 1.2万 | 2516 |
-| 📈 | 适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。 | [抖音上升热点选题助手](./skills/douyin-realtime-hot-rise/) | 正在上升的热点，你才有空间，助力内容选题。 | 1.7万 | 8948 | 4618 |
-| 📊 | 适用于抖音短视频、直播切片、口播广告和带货视频发布前审稿。 | [业务诊断助手](./skills/douyin-script-review/) | 先看清问题，再决定下一步 | 3411 | 1.4万 | 2525 |
-| 💬 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | [抖音短视频运营增长助手](./skills/douyin-sentiment-dashboard/) | 挖掘用户需求，控制舆情风险，助力流量增长 | 8377 | 1.4万 | 5627 |
-| 📊 | 适用于需要快速了解全平台流量分布、不限定单一方向的运营与创作者。 | [抖音流量分配大盘](./skills/douyin-traffic-dashboard/) | 账号定位，选对方向，就已经成功了一半 | 5759 | 1.2万 | 4063 |
-| ✨ | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | [快手短视频运营增长助手](./skills/kuaishou-sentiment-dashboard/) | 挖掘用户需求，控制舆情风险，助力流量增长 | 5262 | 6705 | 5453 |
-| ✨ | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | [小红书短视频运营增长助手](./skills/xhs-sentiment-dashboard/) | 挖掘用户需求，控制舆情风险，助力流量增长 | 8194 | 1.7万 | 3400 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/auto-review-selling-point-map) | 先看清问题，再决定下一步 | 适用于汽车品牌、经销商、内容运营和销售培训团队做车型传播复盘。 | 1000 |
+| [B站短视频运营增长助手](https://ai-skills.ai/zh/skills/bilibili-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 1715 |
+| [抖音全网实时热点](https://ai-skills.ai/zh/skills/douyin-hotlist-overall) | 先有热点方向，再有视频内容生产 | 适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。 | 4115 |
+| [抖音最具商业价值意见领袖（KOL）](https://ai-skills.ai/zh/skills/douyin-kol-search) | 不仅仅是流量，而是账号的商业价值，降低试错成本 | 适用于品牌方、MCN 机构、内容创作者，帮助快速找到合适的 KOL 进行合作或学习对标。 | 2593 |
+| [抖音上升热点选题助手](https://ai-skills.ai/zh/skills/douyin-realtime-hot-rise) | 正在上升的热点，你才有空间，助力内容选题。 | 适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。 | 1.7万 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/douyin-script-review) | 先看清问题，再决定下一步 | 适用于抖音短视频、直播切片、口播广告和带货视频发布前审稿。 | 3411 |
+| [抖音短视频运营增长助手](https://ai-skills.ai/zh/skills/douyin-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 8377 |
+| [抖音流量分配大盘](https://ai-skills.ai/zh/skills/douyin-traffic-dashboard) | 账号定位，选对方向，就已经成功了一半 | 适用于需要快速了解全平台流量分布、不限定单一方向的运营与创作者。 | 5759 |
+| [快手短视频运营增长助手](https://ai-skills.ai/zh/skills/kuaishou-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 5262 |
+| [小红书短视频运营增长助手](https://ai-skills.ai/zh/skills/xhs-sentiment-dashboard) | 挖掘用户需求，控制舆情风险，助力流量增长 | 适合专注单平台、希望把评论区价值转化为运营与增长决策的团队。 | 8194 |
 
 ### ✍️ 内容生产
 
 把选题、资料、文案、图文和发布准备转成可交付内容。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| 📄 | 适用于内容创作者、品牌运营、知识博主和需要稳定产出长图文的团队。 | [自动图文助手](./skills/ai-article/) | 一句话需求，结合实时热点，图文并茂写好高质量文章 | 5137 | 1.8万 | 4727 |
-| ✍️ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [文章配图助手](./skills/ai-baoyu-article-illustrator/) | 图要帮内容更快被看懂 | 1200 | 9489 | 5555 |
-| ✅ | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [文案诊断助手](./skills/ai-content-creator/) | 卖点清楚，转化才有入口 | 1200 | 8202 | 5865 |
-| ✅ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [文案诊断助手](./skills/ai-content-quality-auditor/) | 卖点清楚，转化才有入口 | 1200 | 3974 | 2397 |
-| ✅ | 适用于已经准备好业务目标、受众、现有内容等材料的用户。 | [文案诊断助手](./skills/ai-content-strategy/) | 卖点清楚，转化才有入口 | 1200 | 5994 | 5396 |
-| ✅ | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [文案诊断助手](./skills/ai-content-writer/) | 卖点清楚，转化才有入口 | 1200 | 6304 | 3240 |
-| ✅ | 适用于已经准备好原始文案、目标用户、转化目标等材料的用户。 | [文案诊断助手](./skills/ai-copywriting/) | 卖点清楚，转化才有入口 | 1200 | 1.5万 | 3353 |
-| ✅ | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [说服力文案助手](./skills/ai-copywriting-psychologist/) | 动机说对，行动才会发生 | 1500 | 7566 | 2345 |
-| 📄 | 适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI… | [去AI味助手](./skills/ai-humanizer-zh/) | 像人说话，才容易被相信 | 1200 | 1.7万 | 2970 |
-| 🔎 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [SEO 内容写作助手](./skills/ai-seo-content-writer/) | 可搜索，也要可相信 | 1200 | 1.6万 | 2178 |
-| ✍️ | 适用于开放平台、后端团队、开发者关系和售前技术支持发布API前审查文档。 | [风险审阅助手](./skills/api-doc-integration-risk-review/) | 先标风险，再交专业复核 | 1000 | 1.6万 | 3274 |
-| ✍️ | 适用于已有文章草稿、需要快速补齐封面和正文图片的内容团队。 | [智能配图助手](./skills/auto-article-images/) | 结合文章上下文，智能插图 | 6234 | 5069 | 4569 |
-| ✅ | 适用于运营、品牌、电商和自媒体在发布前快速检查文案、脚本、文章和活动物料。 | [文案诊断助手](./skills/content-material-audit/) | 卖点清楚，转化才有入口 | 8727 | 7203 | 2994 |
-| 📄 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [转化实验助手](./skills/copywriting/) | 先有假设，再谈增长 | 1000 | 9116 | 2381 |
-| ✍️ | 适用于设备工程、运维、制造现场和质量团队整理故障复盘材料。 | [视觉质量诊断助手](./skills/equipment-failure-rca-draft/) | 看得懂，才谈高级感 | 1000 | 4262 | 3762 |
-| ⚖️ | 适用于HR、招聘经理和业务负责人发布岗位前优化JD。 | [业务诊断助手](./skills/job-description-optimizer-cn/) | 先看清问题，再决定下一步 | 1000 | 4114 | 3579 |
-| ✍️ | 适用于企业AI团队、客服团队和内部知识库负责人上线RAG或FAQ前做质检。 | [文案诊断助手](./skills/knowledge-base-launch-quality-check/) | 卖点清楚，转化才有入口 | 1000 | 1.2万 | 1767 |
-| 💬 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [文案诊断助手](./skills/multi-platform-article-rewrite-pack/) | 卖点清楚，转化才有入口 | 1000 | 1.7万 | 4543 |
-| 🔎 | 适用于官网博客、教程、评测、知识库和需要搜索曝光的长内容。 | [SEO/AEO 诊断助手](./skills/seo-article-review/) | 搜索意图对了，内容才有机会 | 5841 | 1万 | 4957 |
-| ✍️ | 适用于制造、仓储、门店和服务团队发布SOP前做一线可执行性检查。 | [业务诊断助手](./skills/sop-readability-check/) | 先看清问题，再决定下一步 | 1000 | 1.2万 | 5528 |
-| ✍️ | 适用于文旅运营、酒店民宿、景区和内容创作者制作路线内容。 | [文案诊断助手](./skills/travel-itinerary-content-planner/) | 卖点清楚，转化才有入口 | 1000 | 1.3万 | 2853 |
-| 📖 | 适用于品牌公众号、知识文章、活动推文和深度内容发布前审稿。 | [文案诊断助手](./skills/wechat-article-review/) | 卖点清楚，转化才有入口 | 2552 | 3046 | 2546 |
-| ✨ | 适用于内容运营、品牌商家和需要快速生成小红书发布素材的人群。 | [爆款文案助手](./skills/xhs-viral-copywriter/) | 结合实时热点，迎合受众口味，生成可直接发布的小红书文案 | 5765 | 7241 | 1963 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [自动图文助手](https://ai-skills.ai/zh/skills/ai-article) | 一句话需求，结合实时热点，图文并茂写好高质量文章 | 适用于内容创作者、品牌运营、知识博主和需要稳定产出长图文的团队。 | 5137 |
+| [文章配图助手](https://ai-skills.ai/zh/skills/ai-baoyu-article-illustrator) | 图要帮内容更快被看懂 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-creator) | 卖点清楚，转化才有入口 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-quality-auditor) | 卖点清楚，转化才有入口 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-strategy) | 卖点清楚，转化才有入口 | 适用于已经准备好业务目标、受众、现有内容等材料的用户。 | 1200 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-content-writer) | 卖点清楚，转化才有入口 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ai-copywriting) | 卖点清楚，转化才有入口 | 适用于已经准备好原始文案、目标用户、转化目标等材料的用户。 | 1200 |
+| [说服力文案助手](https://ai-skills.ai/zh/skills/ai-copywriting-psychologist) | 动机说对，行动才会发生 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
+| [去AI味助手](https://ai-skills.ai/zh/skills/ai-humanizer-zh) | 像人说话，才容易被相信 | 适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI 味审稿。 | 1200 |
+| [SEO 内容写作助手](https://ai-skills.ai/zh/skills/ai-seo-content-writer) | 可搜索，也要可相信 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/api-doc-integration-risk-review) | 先标风险，再交专业复核 | 适用于开放平台、后端团队、开发者关系和售前技术支持发布API前审查文档。 | 1000 |
+| [智能配图助手](https://ai-skills.ai/zh/skills/auto-article-images) | 结合文章上下文，智能插图 | 适用于已有文章草稿、需要快速补齐封面和正文图片的内容团队。 | 6234 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/content-material-audit) | 卖点清楚，转化才有入口 | 适用于运营、品牌、电商和自媒体在发布前快速检查文案、脚本、文章和活动物料。 | 8727 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/copywriting) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/equipment-failure-rca-draft) | 看得懂，才谈高级感 | 适用于设备工程、运维、制造现场和质量团队整理故障复盘材料。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/job-description-optimizer-cn) | 先看清问题，再决定下一步 | 适用于HR、招聘经理和业务负责人发布岗位前优化JD。 | 1000 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/knowledge-base-launch-quality-check) | 卖点清楚，转化才有入口 | 适用于企业AI团队、客服团队和内部知识库负责人上线RAG或FAQ前做质检。 | 1000 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/multi-platform-article-rewrite-pack) | 卖点清楚，转化才有入口 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/seo-article-review) | 搜索意图对了，内容才有机会 | 适用于官网博客、教程、评测、知识库和需要搜索曝光的长内容。 | 5841 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/sop-readability-check) | 先看清问题，再决定下一步 | 适用于制造、仓储、门店和服务团队发布SOP前做一线可执行性检查。 | 1000 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/travel-itinerary-content-planner) | 卖点清楚，转化才有入口 | 适用于文旅运营、酒店民宿、景区和内容创作者制作路线内容。 | 1000 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/wechat-article-review) | 卖点清楚，转化才有入口 | 适用于品牌公众号、知识文章、活动推文和深度内容发布前审稿。 | 2552 |
+| [爆款文案助手](https://ai-skills.ai/zh/skills/xhs-viral-copywriter) | 结合实时热点，迎合受众口味，生成可直接发布的小红书文案 | 适用于内容运营、品牌商家和需要快速生成小红书发布素材的人群。 | 5765 |
 
 ### 📈 SEO 与增长
 
 覆盖关键词、SERP、站内优化、转化实验和增长策略。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [A/B 测试设计助手](./skills/ai-ab-testing/) | 先有假设，再谈实验 | 1200 | 1.2万 | 1784 |
-| 🔎 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [外链质量分析助手](./skills/ai-backlink-analyzer/) | 链接质量比数量更重要 | 1200 | 6800 | 1157 |
-| 🔎 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [内链优化助手](./skills/ai-internal-linking-optimizer/) | 好内链让内容互相托举 | 1200 | 9239 | 1040 |
-| ⚖️ | 适用于已经准备好广告文案、投放平台、目标人群等材料的用户。 | [付费广告诊断助手](./skills/ai-paid-ads/) | 预算要买来有效行动 | 1200 | 1万 | 5346 |
-| 🖼️ | 适用于已经准备好关键词集合、页面模板、数据字段等材料的用户。 | [程序化 SEO 助手](./skills/ai-programmatic-seo/) | 模板对了，长尾才会增长 | 1200 | 1.5万 | 2890 |
-| 🔎 | 适用于已经准备好页面 URL、页面类型、正文结构等材料的用户。 | [Schema 标记助手](./skills/ai-schema-markup/) | 机器读懂，内容才更容易展示 | 1500 | 7352 | 3390 |
-| 🔎 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [SEO/AEO 诊断助手](./skills/ai-seo/) | 搜索意图对了，内容才有机会 | 1000 | 7989 | 5029 |
-| 🔎 | 适用于已经准备好文章正文、目标搜索意图、品牌实体信息等材料的用户。 | [SEO 诊断助手](./skills/ai-seo-2/) | 先找搜索短板，再排优化动作 | 1200 | 6910 | 5316 |
-| 🖼️ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [SEO 内容优化助手](./skills/ai-seo-3/) | 搜索意图对了，内容才有机会 | 1200 | 1.4万 | 3135 |
-| 🔎 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [SEO/AEO 博客写作助手](./skills/ai-seo-aeo-blog-writer/) | 先匹配意图，再补足证据 | 1500 | 5828 | 2473 |
-| 🔎 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [SEO/AEO 内容集群助手](./skills/ai-seo-aeo-content-cluster/) | 主题成体系，搜索才会积累 | 1200 | 7225 | 2288 |
-| 🔎 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [SEO/AEO 内链助手](./skills/ai-seo-aeo-internal-linking/) | 链接结构清楚，权重才会流动 | 1200 | 9451 | 5079 |
-| 🔎 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [SEO/AEO 关键词助手](./skills/ai-seo-aeo-keyword-research/) | 先看意图，再选关键词 | 1500 | 4864 | 3669 |
-| 🖼️ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [SERP 分析助手](./skills/ai-serp-analysis/) | 排名页面会暴露搜索意图 | 1500 | 1万 | 4206 |
-| 🔎 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [文案诊断助手](./skills/content-strategy/) | 卖点清楚，转化才有入口 | 1000 | 4247 | 3747 |
-| 🖼️ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [业务诊断助手](./skills/paid-ads/) | 先看清问题，再决定下一步 | 1000 | 1.1万 | 5834 |
-| 🖼️ | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [程序化 SEO 助手](./skills/programmatic-seo/) | 模板对了，长尾才会增长 | 1000 | 9036 | 3298 |
-| ✨ | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [SEO/AEO 诊断助手](./skills/schema-markup/) | 搜索意图对了，内容才有机会 | 1000 | 9088 | 3739 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [A/B 测试设计助手](https://ai-skills.ai/zh/skills/ai-ab-testing) | 先有假设，再谈实验 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [外链质量分析助手](https://ai-skills.ai/zh/skills/ai-backlink-analyzer) | 链接质量比数量更重要 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [内链优化助手](https://ai-skills.ai/zh/skills/ai-internal-linking-optimizer) | 好内链让内容互相托举 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [付费广告诊断助手](https://ai-skills.ai/zh/skills/ai-paid-ads) | 预算要买来有效行动 | 适用于已经准备好广告文案、投放平台、目标人群等材料的用户。 | 1200 |
+| [程序化 SEO 助手](https://ai-skills.ai/zh/skills/ai-programmatic-seo) | 模板对了，长尾才会增长 | 适用于已经准备好关键词集合、页面模板、数据字段等材料的用户。 | 1200 |
+| [Schema 标记助手](https://ai-skills.ai/zh/skills/ai-schema-markup) | 机器读懂，内容才更容易展示 | 适用于已经准备好页面 URL、页面类型、正文结构等材料的用户。 | 1500 |
+| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/ai-seo) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+| [SEO 诊断助手](https://ai-skills.ai/zh/skills/ai-seo-2) | 先找搜索短板，再排优化动作 | 适用于已经准备好文章正文、目标搜索意图、品牌实体信息等材料的用户。 | 1200 |
+| [SEO 内容优化助手](https://ai-skills.ai/zh/skills/ai-seo-3) | 搜索意图对了，内容才有机会 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [SEO/AEO 博客写作助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-blog-writer) | 先匹配意图，再补足证据 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
+| [SEO/AEO 内容集群助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-content-cluster) | 主题成体系，搜索才会积累 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
+| [SEO/AEO 内链助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-internal-linking) | 链接结构清楚，权重才会流动 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
+| [SEO/AEO 关键词助手](https://ai-skills.ai/zh/skills/ai-seo-aeo-keyword-research) | 先看意图，再选关键词 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
+| [SERP 分析助手](https://ai-skills.ai/zh/skills/ai-serp-analysis) | 排名页面会暴露搜索意图 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1500 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/content-strategy) | 卖点清楚，转化才有入口 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/paid-ads) | 先看清问题，再决定下一步 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [程序化 SEO 助手](https://ai-skills.ai/zh/skills/programmatic-seo) | 模板对了，长尾才会增长 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/schema-markup) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
 
 ### 🛒 电商经营
 
 帮助电商、Amazon 和零售团队处理商品、广告、库存、评价和转化问题。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| 🎬 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [文案诊断助手](./skills/ad-creative/) | 卖点清楚，转化才有入口 | 1000 | 8419 | 5850 |
-| 🖼️ | 适用于已经准备好创意 brief、广告图/视频描述、投放目标等材料的用户。 | [广告创意诊断助手](./skills/ai-ad-creative/) | 先抓注意力，再谈转化 | 1200 | 7971 | 5121 |
-| 💬 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 品牌分析助手](./skills/ai-amazon-brand-analytics/) | 数据会暴露真实机会 | 1200 | 1.8万 | 4535 |
-| ⚖️ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 分时投放助手](./skills/ai-amazon-dayparting-strategy/) | 预算要花在高意图时段 | 1500 | 8730 | 1944 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 本地化助手](./skills/ai-amazon-international-listings/) | 本地买家听懂才会买 | 1500 | 1.2万 | 1061 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 库存诊断助手](./skills/ai-amazon-inventory-management/) | 不断货，也不压死现金 | 1200 | 7293 | 2214 |
-| 🛒 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 图片诊断助手](./skills/ai-amazon-listing-images/) | 先看懂卖点，再谈点击 | 1500 | 1.4万 | 4730 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 组合销售助手](./skills/ai-amazon-product-bundling/) | 组合要提高客单，也要守住利润 | 1500 | 9422 | 1332 |
-| ⚖️ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [Amazon 排名追踪助手](./skills/ai-amazon-rank-tracker/) | 排名变化要看关键词和动作 | 1200 | 6987 | 3059 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 调价诊断助手](./skills/ai-amazon-repricing-strategy/) | 赢得竞争，也守住利润 | 1200 | 1.7万 | 3472 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 退货诊断助手](./skills/ai-amazon-return-reduction/) | 退货原因就是增长漏点 | 1200 | 1万 | 4283 |
-| 🔎 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 搜索优化助手](./skills/ai-amazon-search-optimization/) | 关键词对了，Listing 才有入口 | 1200 | 9100 | 4277 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 店铺优化助手](./skills/ai-amazon-storefront-design/) | 店铺要让买家快速相信 | 1200 | 1.5万 | 2690 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon 订阅优化助手](./skills/ai-amazon-subscribe-save/) | 复购理由清楚，订阅才成立 | 1200 | 5041 | 4541 |
-| ⚖️ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [Amazon Vine 决策助手](./skills/ai-amazon-vine-program/) | 先算评价机会，再算风险 | 1200 | 3341 | 2808 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [图片压缩助手](./skills/ai-baoyu-compress-image/) | 文件更轻，画面仍要清楚 | 1200 | 1.5万 | 1731 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [封面图生成助手](./skills/ai-baoyu-cover-image/) | 封面先抓住注意力 | 1200 | 1.3万 | 3379 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [图文卡片生成助手](./skills/ai-baoyu-image-cards/) | 信息要一眼看懂 | 1200 | 1.6万 | 2570 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [图片生成助手](./skills/ai-baoyu-image-gen/) | 画面要服务内容目标 | 1200 | 1.8万 | 5784 |
-| 📖 | 适用于已经准备好文档、表格、会议记录或大纲、关注问题、输出格式要求等材料的用户。 | [微信摘要助手](./skills/ai-baoyu-wechat-summary/) | 先抓主线，再提金句 | 1200 | 9387 | 1799 |
-| 💬 | 适用于已经准备好品牌规范、待审文案、渠道等材料的用户。 | [品牌一致性诊断助手](./skills/ai-brand-consistency-checker/) | 每个触点都该说同一种品牌话 | 1200 | 1.8万 | 1906 |
-| ✨ | 适用于已经准备好用户反馈、使用记录摘要、流失信号等材料的用户。 | [流失预警诊断助手](./skills/ai-churn-prevention/) | 流失信号越早看见，越能挽回 | 1200 | 1.1万 | 5518 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [联合营销策划助手](./skills/ai-co-marketing/) | 好合作要让双方都能增长 | 1200 | 4472 | 3972 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [社群运营策划助手](./skills/ai-community-marketing/) | 成员有参与感，社群才会增长 | 1200 | 1.3万 | 1375 |
-| 🖼️ | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [内容营销诊断助手](./skills/ai-content-marketer/) | 内容要服务获客和转化 | 1500 | 1.4万 | 4087 |
-| ✅ | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [转化实验助手](./skills/ai-copy-editing/) | 先有假设，再谈增长 | 1200 | 3533 | 3033 |
-| 🖼️ | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | [Core Web Vitals 诊断助手](./skills/ai-core-web-vitals/) | 体验指标会直接影响信任 | 1200 | 4190 | 3232 |
-| ✨ | 适用于已经准备好CSV/XLSX 文件、合并规则、字段口径等材料的用户。 | [资料整理助手](./skills/ai-csv-excel-merger/) | 先提重点，再拆行动 | 1200 | 8930 | 4880 |
-| ✅ | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | [用户旅程地图助手](./skills/ai-customer-journey-map/) | 转化断点藏在每一步体验里 | 1200 | 5264 | 3722 |
-| ✅ | 适用于已经准备好设计稿/截图/页面说明、品牌约束、使用场景等材料的用户。 | [设计 Brief 助手](./skills/ai-design-brief/) | 需求越清楚，返工越少 | 1200 | 1.7万 | 1495 |
-| ✅ | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [前端审美诊断助手](./skills/ai-design-taste-frontend/) | 好看之前，先要有秩序 | 1200 | 1.5万 | 4027 |
-| ✨ | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | [结账转化诊断助手](./skills/ai-ecommerce-checkout-optimization/) | 每多一步犹豫，都会少一次成交 | 1200 | 9478 | 1969 |
-| 🔎 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | [电商搜索诊断助手](./skills/ai-ecommerce-search/) | 搜得到，才可能买得到 | 1200 | 1.1万 | 5670 |
-| ✅ | 适用于已经准备好邮件草稿、客户阶段、触达目标等材料的用户。 | [转化实验助手](./skills/ai-email-sequence/) | 先有假设，再谈增长 | 1200 | 6279 | 5779 |
-| 💬 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料… | [实体优化助手](./skills/ai-entity-optimizer/) | 实体清楚，AI 才容易引用 | 1200 | 8105 | 4980 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [商品卡片图助手](./skills/ai-higgsfield-marketplace-cards/) | 第一眼要说清卖点 | 1200 | 4854 | 4354 |
-| ✨ | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用… | [产品写真助手](./skills/ai-higgsfield-product-photoshoot/) | 场景对了，产品才有想象力 | 1200 | 1.6万 | 2095 |
-| ✨ | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | [绩效评语助手](./skills/ai-hr-performance-review/) | 反馈要具体，也要可行动 | 1200 | 5344 | 4087 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [视觉质量诊断助手](./skills/ai-image/) | 看得懂，才谈高级感 | 1200 | 1万 | 5427 |
-| 🛒 | 适用于已经准备好产品/主题信息、平台规格、风格要求等材料的用户。 | [视觉质量诊断助手](./skills/ai-image-gen-guide/) | 看得懂，才谈高级感 | 1500 | 1.5万 | 2223 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [视觉质量诊断助手](./skills/ai-industrial-brutalist-ui/) | 看得懂，才谈高级感 | 1200 | 1.6万 | 2156 |
-| 🖼️ | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [KPI 看板设计助手](./skills/ai-kpi-dashboard-design/) | 指标有层次，决策才快 | 1500 | 1.1万 | 4780 |
-| ⚖️ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [产品发布策划助手](./skills/ai-launch/) | 上线前先把风险和节奏排清 | 1200 | 9161 | 2074 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [获客钩子策划助手](./skills/ai-lead-magnets/) | 用户愿意留下线索，才算诱饵 | 1500 | 4771 | 3479 |
-| ✨ | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | [本地地点推荐助手](./skills/ai-local-places/) | 地点推荐要匹配场景 | 1500 | 9481 | 1399 |
-| ✨ | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | [本地 POI 筛选助手](./skills/ai-local-pois/) | 先定目的，再筛地点 | 1200 | 1.5万 | 2117 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [营销创意助手](./skills/ai-marketing-ideas/) | 好创意要能落到行动 | 1500 | 1.5万 | 5670 |
-| ✨ | 适用于已经准备好会议纪要、项目背景、负责人信息等材料的用户。 | [会议待办整理助手](./skills/ai-meeting-to-tasks/) | 讨论要落到负责人和下一步 | 1200 | 1.5万 | 3636 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [视觉质量诊断助手](./skills/ai-minimalist-ui/) | 看得懂，才谈高级感 | 1200 | 1.3万 | 2749 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [新手引导诊断助手](./skills/ai-onboarding/) | 第一次体验决定后面是否留下 | 1200 | 1.1万 | 3628 |
-| ✨ | 适用于已经准备好文档/表格/会议材料、处理目标、输出格式要求等材料的用户。 | [运营手册整理助手](./skills/ai-operations-manual/) | 流程写清楚，交接才稳 | 1200 | 1.4万 | 3946 |
-| 🖼️ | 适用于已经准备好落地页 URL、页面文案、转化目标等材料的用户。 | [页面转化诊断助手](./skills/ai-page-cro/) | 先找阻力，再改页面 | 1500 | 1.2万 | 3366 |
-| ✅ | 适用于已经准备好升级页文案、会员权益、转化目标等材料的用户。 | [付费墙优化助手](./skills/ai-paywall-upgrade-cro/) | 价值先讲清，升级才自然 | 1200 | 4397 | 3897 |
-| 🖼️ | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | [性能诊断助手](./skills/ai-performance/) | 慢点找准，优化才有效 | 1500 | 1.7万 | 4499 |
-| ✅ | 适用于已经准备好播客主题、嘉宾角色、目标平台等材料的用户。 | [播客策划助手](./skills/ai-podcast/) | 好节目要有清楚钩子 | 1200 | 1.5万 | 1005 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [产品营销助手](./skills/ai-product-marketing/) | 用户先懂价值，才会行动 | 1500 | 1.4万 | 4980 |
-| 🛒 | 适用于排查 Remotion 组件、Composition、字幕、音频、转场、3D… | [Remotion 实践助手](./skills/ai-remotion-best-practices/) | 动画可维护，交付才可靠 | 1200 | 1万 | 5689 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [注册转化诊断助手](./skills/ai-signup/) | 少一点阻力，多一次开始 | 1200 | 6581 | 5614 |
-| ✅ | 适用于已经准备好平台、账号定位、内容素材等材料的用户。 | [社媒内容助手](./skills/ai-social/) | 先抓注意力，再给分享理由 | 1500 | 6683 | 4311 |
-| 🛒 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [视觉质量诊断助手](./skills/ai-stitch-design-taste/) | 看得懂，才谈高级感 | 1200 | 1.6万 | 1007 |
-| 🛒 | 适用于已经准备好视频创意 brief 或产品信息、目标平台、时长与风格、品牌约束和… | [AI 视频生成策划助手](./skills/ai-video/) | 先定分镜，再交给模型生成 | 1500 | 1.5万 | 1338 |
-| 💬 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [业务诊断助手](./skills/brand-account-positioning-diagnosis/) | 先看清问题，再决定下一步 | 1000 | 1.3万 | 1797 |
-| 💬 | 适用于品牌社媒、PR 稿、客服话术、活动文案和跨团队内容审核。 | [业务诊断助手](./skills/brand-voice-review/) | 先看清问题，再决定下一步 | 4554 | 6194 | 1215 |
-| ✨ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [转化实验助手](./skills/churn-prevention/) | 先有假设，再谈增长 | 1000 | 8697 | 4462 |
-| 💬 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [业务诊断助手](./skills/comment-sentiment-action-cards/) | 先看清问题，再决定下一步 | 1000 | 5372 | 3903 |
-| 📄 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [业务诊断助手](./skills/creator-commercial-value-benchmark/) | 先看清问题，再决定下一步 | 1000 | 6594 | 4881 |
-| ✨ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [业务诊断助手](./skills/critique/) | 先看清问题，再决定下一步 | 1000 | 1.1万 | 3225 |
-| ✨ | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [转化实验助手](./skills/crossborder-listing-localization/) | 先有假设，再谈增长 | 1000 | 1.2万 | 1484 |
-| ✅ | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [业务诊断助手](./skills/ecommerce-review-root-cause-analysis/) | 先看清问题，再决定下一步 | 1000 | 3153 | 2567 |
-| ✨ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [邮件序列助手](./skills/email-sequence/) | 每封邮件都要推进一步 | 1000 | 8543 | 5398 |
-| 🛒 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [业务诊断助手](./skills/kling-3-0/) | 先看清问题，再决定下一步 | 1000 | 1.8万 | 2863 |
-| 🖼️ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [转化实验助手](./skills/landing-page-copy-review/) | 先有假设，再谈增长 | 8511 | 1.4万 | 4011 |
-| ⚖️ | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [风险审阅助手](./skills/live-commerce-script-compliance-review/) | 先标风险，再交专业复核 | 1000 | 1.7万 | 2354 |
-| ✨ | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [业务诊断助手](./skills/live-replay-clip-title-pack/) | 先看清问题，再决定下一步 | 1000 | 1.3万 | 5957 |
-| ✨ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [文案诊断助手](./skills/marketing-psychology/) | 卖点清楚，转化才有入口 | 1000 | 1.2万 | 3736 |
-| 🖼️ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [转化实验助手](./skills/page-cro/) | 先有假设，再谈增长 | 1000 | 3112 | 1566 |
-| 🛒 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [转化实验助手](./skills/paywall-upgrade-cro/) | 先有假设，再谈增长 | 1000 | 1.5万 | 1853 |
-| ✨ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [业务诊断助手](./skills/polish/) | 先看清问题，再决定下一步 | 1000 | 4688 | 1687 |
-| ✨ | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | [财务定价诊断助手](./skills/pricing-strategy/) | 利润算清楚，价格才稳 | 1000 | 1.7万 | 2416 |
-| ✨ | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [业务诊断助手](./skills/private-domain-campaign-sop-generator/) | 先看清问题，再决定下一步 | 1000 | 4863 | 4363 |
-| 🛒 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [转化实验助手](./skills/product-detail-page-conversion-review/) | 先有假设，再谈增长 | 1000 | 4330 | 3830 |
-| 🛒 | 适用于房产营销、经纪团队和楼盘运营发布项目介绍前做表达风险初筛。 | [风险审阅助手](./skills/real-estate-listing-compliance-review/) | 先标风险，再交专业复核 | 1000 | 3351 | 2851 |
-| 🛒 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [业务诊断助手](./skills/seedance-v2/) | 先看清问题，再决定下一步 | 1000 | 9282 | 2061 |
-| ✨ | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [业务诊断助手](./skills/sku-trend-opportunity-report/) | 先看清问题，再决定下一步 | 1000 | 6207 | 5687 |
-| 🔎 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | [社媒内容助手](./skills/social-rising-topic-radar-cn/) | 先抓注意力，再给分享理由 | 1000 | 7858 | 2442 |
-| ✅ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [视觉质量诊断助手](./skills/ui-ux-pro-max/) | 看得懂，才谈高级感 | 1000 | 4705 | 3848 |
-| 🛒 | 适用于小红书博主、品牌运营和电商团队发布笔记前做互动与种草质量检查。 | [业务诊断助手](./skills/xhs-note-review/) | 先看清问题，再决定下一步 | 6785 | 6489 | 1172 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/ad-creative) | 卖点清楚，转化才有入口 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [广告创意诊断助手](https://ai-skills.ai/zh/skills/ai-ad-creative) | 先抓注意力，再谈转化 | 适用于已经准备好创意 brief、广告图/视频描述、投放目标等材料的用户。 | 1200 |
+| [Amazon 品牌分析助手](https://ai-skills.ai/zh/skills/ai-amazon-brand-analytics) | 数据会暴露真实机会 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 分时投放助手](https://ai-skills.ai/zh/skills/ai-amazon-dayparting-strategy) | 预算要花在高意图时段 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
+| [Amazon 本地化助手](https://ai-skills.ai/zh/skills/ai-amazon-international-listings) | 本地买家听懂才会买 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
+| [Amazon 库存诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-inventory-management) | 不断货，也不压死现金 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 图片诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-listing-images) | 先看懂卖点，再谈点击 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
+| [Amazon 组合销售助手](https://ai-skills.ai/zh/skills/ai-amazon-product-bundling) | 组合要提高客单，也要守住利润 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1500 |
+| [Amazon 排名追踪助手](https://ai-skills.ai/zh/skills/ai-amazon-rank-tracker) | 排名变化要看关键词和动作 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [Amazon 调价诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-repricing-strategy) | 赢得竞争，也守住利润 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 退货诊断助手](https://ai-skills.ai/zh/skills/ai-amazon-return-reduction) | 退货原因就是增长漏点 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 搜索优化助手](https://ai-skills.ai/zh/skills/ai-amazon-search-optimization) | 关键词对了，Listing 才有入口 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 店铺优化助手](https://ai-skills.ai/zh/skills/ai-amazon-storefront-design) | 店铺要让买家快速相信 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon 订阅优化助手](https://ai-skills.ai/zh/skills/ai-amazon-subscribe-save) | 复购理由清楚，订阅才成立 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [Amazon Vine 决策助手](https://ai-skills.ai/zh/skills/ai-amazon-vine-program) | 先算评价机会，再算风险 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [图片压缩助手](https://ai-skills.ai/zh/skills/ai-baoyu-compress-image) | 文件更轻，画面仍要清楚 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [封面图生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-cover-image) | 封面先抓住注意力 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [图文卡片生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-image-cards) | 信息要一眼看懂 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [图片生成助手](https://ai-skills.ai/zh/skills/ai-baoyu-image-gen) | 画面要服务内容目标 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [微信摘要助手](https://ai-skills.ai/zh/skills/ai-baoyu-wechat-summary) | 先抓主线，再提金句 | 适用于已经准备好文档、表格、会议记录或大纲、关注问题、输出格式要求等材料的用户。 | 1200 |
+| [品牌一致性诊断助手](https://ai-skills.ai/zh/skills/ai-brand-consistency-checker) | 每个触点都该说同一种品牌话 | 适用于已经准备好品牌规范、待审文案、渠道等材料的用户。 | 1200 |
+| [流失预警诊断助手](https://ai-skills.ai/zh/skills/ai-churn-prevention) | 流失信号越早看见，越能挽回 | 适用于已经准备好用户反馈、使用记录摘要、流失信号等材料的用户。 | 1200 |
+| [联合营销策划助手](https://ai-skills.ai/zh/skills/ai-co-marketing) | 好合作要让双方都能增长 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [社群运营策划助手](https://ai-skills.ai/zh/skills/ai-community-marketing) | 成员有参与感，社群才会增长 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [内容营销诊断助手](https://ai-skills.ai/zh/skills/ai-content-marketer) | 内容要服务获客和转化 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1500 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/ai-copy-editing) | 先有假设，再谈增长 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [Core Web Vitals 诊断助手](https://ai-skills.ai/zh/skills/ai-core-web-vitals) | 体验指标会直接影响信任 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1200 |
+| [资料整理助手](https://ai-skills.ai/zh/skills/ai-csv-excel-merger) | 先提重点，再拆行动 | 适用于已经准备好CSV/XLSX 文件、合并规则、字段口径等材料的用户。 | 1200 |
+| [用户旅程地图助手](https://ai-skills.ai/zh/skills/ai-customer-journey-map) | 转化断点藏在每一步体验里 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
+| [设计 Brief 助手](https://ai-skills.ai/zh/skills/ai-design-brief) | 需求越清楚，返工越少 | 适用于已经准备好设计稿/截图/页面说明、品牌约束、使用场景等材料的用户。 | 1200 |
+| [前端审美诊断助手](https://ai-skills.ai/zh/skills/ai-design-taste-frontend) | 好看之前，先要有秩序 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [结账转化诊断助手](https://ai-skills.ai/zh/skills/ai-ecommerce-checkout-optimization) | 每多一步犹豫，都会少一次成交 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
+| [电商搜索诊断助手](https://ai-skills.ai/zh/skills/ai-ecommerce-search) | 搜得到，才可能买得到 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/ai-email-sequence) | 先有假设，再谈增长 | 适用于已经准备好邮件草稿、客户阶段、触达目标等材料的用户。 | 1200 |
+| [实体优化助手](https://ai-skills.ai/zh/skills/ai-entity-optimizer) | 实体清楚，AI 才容易引用 | 适用于已经准备好业务目标或关键词、现有内容或公开 URL、目标受众与发布渠道等材料的用户。 | 1200 |
+| [商品卡片图助手](https://ai-skills.ai/zh/skills/ai-higgsfield-marketplace-cards) | 第一眼要说清卖点 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [产品写真助手](https://ai-skills.ai/zh/skills/ai-higgsfield-product-photoshoot) | 场景对了，产品才有想象力 | 适用于已经准备好商品信息或店铺页面、评论/素材/竞品信息、销售目标与渠道等材料的用户。 | 1200 |
+| [绩效评语助手](https://ai-skills.ai/zh/skills/ai-hr-performance-review) | 反馈要具体，也要可行动 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image-gen-guide) | 看得懂，才谈高级感 | 适用于已经准备好产品/主题信息、平台规格、风格要求等材料的用户。 | 1500 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-industrial-brutalist-ui) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [KPI 看板设计助手](https://ai-skills.ai/zh/skills/ai-kpi-dashboard-design) | 指标有层次，决策才快 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1500 |
+| [产品发布策划助手](https://ai-skills.ai/zh/skills/ai-launch) | 上线前先把风险和节奏排清 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [获客钩子策划助手](https://ai-skills.ai/zh/skills/ai-lead-magnets) | 用户愿意留下线索，才算诱饵 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
+| [本地地点推荐助手](https://ai-skills.ai/zh/skills/ai-local-places) | 地点推荐要匹配场景 | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | 1500 |
+| [本地 POI 筛选助手](https://ai-skills.ai/zh/skills/ai-local-pois) | 先定目的，再筛地点 | 适用于已经准备好门店/服务信息、评论或菜单材料、业务目标等材料的用户。 | 1200 |
+| [营销创意助手](https://ai-skills.ai/zh/skills/ai-marketing-ideas) | 好创意要能落到行动 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
+| [会议待办整理助手](https://ai-skills.ai/zh/skills/ai-meeting-to-tasks) | 讨论要落到负责人和下一步 | 适用于已经准备好会议纪要、项目背景、负责人信息等材料的用户。 | 1200 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-minimalist-ui) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [新手引导诊断助手](https://ai-skills.ai/zh/skills/ai-onboarding) | 第一次体验决定后面是否留下 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [运营手册整理助手](https://ai-skills.ai/zh/skills/ai-operations-manual) | 流程写清楚，交接才稳 | 适用于已经准备好文档/表格/会议材料、处理目标、输出格式要求等材料的用户。 | 1200 |
+| [页面转化诊断助手](https://ai-skills.ai/zh/skills/ai-page-cro) | 先找阻力，再改页面 | 适用于已经准备好落地页 URL、页面文案、转化目标等材料的用户。 | 1500 |
+| [付费墙优化助手](https://ai-skills.ai/zh/skills/ai-paywall-upgrade-cro) | 价值先讲清，升级才自然 | 适用于已经准备好升级页文案、会员权益、转化目标等材料的用户。 | 1200 |
+| [性能诊断助手](https://ai-skills.ai/zh/skills/ai-performance) | 慢点找准，优化才有效 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1500 |
+| [播客策划助手](https://ai-skills.ai/zh/skills/ai-podcast) | 好节目要有清楚钩子 | 适用于已经准备好播客主题、嘉宾角色、目标平台等材料的用户。 | 1200 |
+| [产品营销助手](https://ai-skills.ai/zh/skills/ai-product-marketing) | 用户先懂价值，才会行动 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1500 |
+| [Remotion 实践助手](https://ai-skills.ai/zh/skills/ai-remotion-best-practices) | 动画可维护，交付才可靠 | 适用于排查 Remotion 组件、Composition、字幕、音频、转场、3D、图表和渲染问题。 | 1200 |
+| [注册转化诊断助手](https://ai-skills.ai/zh/skills/ai-signup) | 少一点阻力，多一次开始 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [社媒内容助手](https://ai-skills.ai/zh/skills/ai-social) | 先抓注意力，再给分享理由 | 适用于已经准备好平台、账号定位、内容素材等材料的用户。 | 1500 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-stitch-design-taste) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [AI 视频生成策划助手](https://ai-skills.ai/zh/skills/ai-video) | 先定分镜，再交给模型生成 | 适用于已经准备好视频创意 brief 或产品信息、目标平台、时长与风格、品牌约束和参考素材等材料的用户。 | 1500 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/brand-account-positioning-diagnosis) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/brand-voice-review) | 先看清问题，再决定下一步 | 适用于品牌社媒、PR 稿、客服话术、活动文案和跨团队内容审核。 | 4554 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/churn-prevention) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/comment-sentiment-action-cards) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/creator-commercial-value-benchmark) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/critique) | 先看清问题，再决定下一步 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/crossborder-listing-localization) | 先有假设，再谈增长 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/ecommerce-review-root-cause-analysis) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [邮件序列助手](https://ai-skills.ai/zh/skills/email-sequence) | 每封邮件都要推进一步 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/kling-3-0) | 先看清问题，再决定下一步 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/landing-page-copy-review) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 8511 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/live-commerce-script-compliance-review) | 先标风险，再交专业复核 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/live-replay-clip-title-pack) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [文案诊断助手](https://ai-skills.ai/zh/skills/marketing-psychology) | 卖点清楚，转化才有入口 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/page-cro) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/paywall-upgrade-cro) | 先有假设，再谈增长 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/polish) | 先看清问题，再决定下一步 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [财务定价诊断助手](https://ai-skills.ai/zh/skills/pricing-strategy) | 利润算清楚，价格才稳 | 适用于增长、营销、产品和销售团队审阅页面、广告、邮件、定价和留存沟通。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/private-domain-campaign-sop-generator) | 先看清问题，再决定下一步 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/product-detail-page-conversion-review) | 先有假设，再谈增长 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/real-estate-listing-compliance-review) | 先标风险，再交专业复核 | 适用于房产营销、经纪团队和楼盘运营发布项目介绍前做表达风险初筛。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/seedance-v2) | 先看清问题，再决定下一步 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/sku-trend-opportunity-report) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [社媒内容助手](https://ai-skills.ai/zh/skills/social-rising-topic-radar-cn) | 先抓注意力，再给分享理由 | 适用于内容团队把文章、直播、社媒线索和选题材料转成可发布、可复盘、可分发的内容资产。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ui-ux-pro-max) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/xhs-note-review) | 先看清问题，再决定下一步 | 适用于小红书博主、品牌运营和电商团队发布笔记前做互动与种草质量检查。 | 6785 |
 
 ### 🤝 销售与客户
 
 围绕客户研究、线索推进、销售话术、客户旅程和流失预警。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| ✨ | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | [销售增长助手](./skills/account-research-sales-card/) | 下一步清楚，机会才会前进 | 1000 | 1.7万 | 3824 |
-| 💬 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [冷邮件诊断助手](./skills/ai-cold-email/) | 开场说对，回复才有机会 | 1200 | 8350 | 1473 |
-| ✨ | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [CRM 清理助手](./skills/ai-crm-cleanup/) | 数据干净，销售动作才准 | 1200 | 9147 | 5038 |
-| ✨ | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | [客户脉搏诊断助手](./skills/ai-customer-pulse/) | 情绪变化要比投诉更早看见 | 1200 | 1.1万 | 2200 |
-| ✨ | 适用于已经准备好评论文本、产品/门店信息、时间范围等材料的用户。 | [客户评论洞察助手](./skills/ai-customer-review-aggregator/) | 评论会说出产品真问题 | 1500 | 1.5万 | 1236 |
-| 💬 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [客服回复助手](./skills/ai-customer-support/) | 先安抚情绪，再解决问题 | 1500 | 1.3万 | 1406 |
-| 💬 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [RevOps 诊断助手](./skills/ai-revops/) | 增长漏点藏在流程交接里 | 1200 | 1.4万 | 4004 |
-| 💬 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [销售话术准备助手](./skills/ai-sales-call-prep/) | 先有背景，通话才有推进力 | 1200 | 1.6万 | 3058 |
-| 💬 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [销售辅导助手](./skills/ai-sales-coaching/) | 成交问题会在对话里暴露 | 1200 | 1.4万 | 4450 |
-| 💬 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [销售薪酬诊断助手](./skills/ai-sales-compensation/) | 激励对齐，团队才会动 | 1200 | 5878 | 1162 |
-| 💬 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [销售赋能助手](./skills/ai-sales-enablement/) | 材料要让销售更快推进 | 1200 | 3155 | 2655 |
-| 💬 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | [销售线索判断助手](./skills/ai-sales-qualification/) | 先筛准客户，再投入精力 | 1200 | 7523 | 1589 |
-| 🤝 | 适用于质量工程师、售后、供应商质量和制造团队处理客户投诉。 | [业务诊断助手](./skills/quality-complaint-8d-report/) | 先看清问题，再决定下一步 | 1000 | 1.4万 | 3278 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [销售增长助手](https://ai-skills.ai/zh/skills/account-research-sales-card) | 下一步清楚，机会才会前进 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
+| [冷邮件诊断助手](https://ai-skills.ai/zh/skills/ai-cold-email) | 开场说对，回复才有机会 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [CRM 清理助手](https://ai-skills.ai/zh/skills/ai-crm-cleanup) | 数据干净，销售动作才准 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
+| [客户脉搏诊断助手](https://ai-skills.ai/zh/skills/ai-customer-pulse) | 情绪变化要比投诉更早看见 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
+| [客户评论洞察助手](https://ai-skills.ai/zh/skills/ai-customer-review-aggregator) | 评论会说出产品真问题 | 适用于已经准备好评论文本、产品/门店信息、时间范围等材料的用户。 | 1500 |
+| [客服回复助手](https://ai-skills.ai/zh/skills/ai-customer-support) | 先安抚情绪，再解决问题 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1500 |
+| [RevOps 诊断助手](https://ai-skills.ai/zh/skills/ai-revops) | 增长漏点藏在流程交接里 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [销售话术准备助手](https://ai-skills.ai/zh/skills/ai-sales-call-prep) | 先有背景，通话才有推进力 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
+| [销售辅导助手](https://ai-skills.ai/zh/skills/ai-sales-coaching) | 成交问题会在对话里暴露 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
+| [销售薪酬诊断助手](https://ai-skills.ai/zh/skills/ai-sales-compensation) | 激励对齐，团队才会动 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
+| [销售赋能助手](https://ai-skills.ai/zh/skills/ai-sales-enablement) | 材料要让销售更快推进 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [销售线索判断助手](https://ai-skills.ai/zh/skills/ai-sales-qualification) | 先筛准客户，再投入精力 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/quality-complaint-8d-report) | 先看清问题，再决定下一步 | 适用于质量工程师、售后、供应商质量和制造团队处理客户投诉。 | 1000 |
 
 ### 📋 办公协作
 
 把会议、文档、表格、任务和团队流程整理成清晰行动项。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| ⚖️ | 适用于L&D、HRBP、业务负责人规划团队AI转型培训。 | [业务诊断助手](./skills/ai-upskilling-training-diagnosis/) | 先看清问题，再决定下一步 | 1000 | 1.3万 | 5956 |
-| ⚖️ | 适用于政务服务、公共热线和园区服务团队上线问答知识库前质检。 | [业务诊断助手](./skills/gov-service-faq-quality-check/) | 先看清问题，再决定下一步 | 1000 | 1.1万 | 2392 |
-| ⚖️ | 适用于招聘经理、HRBP和面试官准备结构化面试。 | [业务诊断助手](./skills/interview-question-scorecard-generator/) | 先看清问题，再决定下一步 | 1000 | 5902 | 3949 |
-| ⚖️ | 适用于招聘团队校准筛选标准、减少主观偏差和整理面试问题。 | [业务诊断助手](./skills/resume-screening-consistency-review/) | 先看清问题，再决定下一步 | 1000 | 8006 | 2389 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/ai-upskilling-training-diagnosis) | 先看清问题，再决定下一步 | 适用于L&D、HRBP、业务负责人规划团队AI转型培训。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/gov-service-faq-quality-check) | 先看清问题，再决定下一步 | 适用于政务服务、公共热线和园区服务团队上线问答知识库前质检。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/interview-question-scorecard-generator) | 先看清问题，再决定下一步 | 适用于招聘经理、HRBP和面试官准备结构化面试。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/resume-screening-consistency-review) | 先看清问题，再决定下一步 | 适用于招聘团队校准筛选标准、减少主观偏差和整理面试问题。 | 1000 |
 
 ### 🎨 设计与多媒体
 
 面向图片、视频、演示、界面、素材和视觉表达的生产与诊断。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视频质量诊断助手](./skills/ai-avatar-video/) | 看得懂，才可能看下去 | 1000 | 1.2万 | 3979 |
-| 🎨 | 适用于把品牌主视觉、广告图、产品场景图、社媒配图、概念图或参考图改写需求生成图片成… | [视觉质量诊断助手](./skills/ai-gpt-image-2/) | 看得懂，才谈高级感 | 1500 | 8455 | 4725 |
-| 🎨 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的… | [视觉质量诊断助手](./skills/ai-high-end-visual-design/) | 看得懂，才谈高级感 | 1200 | 1.2万 | 2851 |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视觉质量诊断助手](./skills/ai-image-generation/) | 看得懂，才谈高级感 | 1000 | 7061 | 2630 |
-| ✨ | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | [演示稿优化助手](./skills/ai-presentation-deck/) | 每页都该推动判断 | 1200 | 1.2万 | 5265 |
-| ✅ | 适用于已经准备好PPT 文件或大纲、演示目标、受众等材料的用户。 | [演示稿优化助手](./skills/ai-presentation-design-enhancer/) | 每页都该推动判断 | 1200 | 1.7万 | 4964 |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视觉质量诊断助手](./skills/ai-product-photo-scene-planner/) | 看得懂，才谈高级感 | 1000 | 5671 | 3907 |
-| 🎨 | 适用于已经准备好raw footage、录屏或转写稿、目标平台、成片时长和受众、剪… | [AI 视频剪辑诊断助手](./skills/ai-video-editing/) | 先找节奏，再压缩成片 | 1200 | 1万 | 1446 |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视频质量诊断助手](./skills/ai-video-generation/) | 看得懂，才可能看下去 | 1000 | 7760 | 2594 |
-| 🎨 | 适用于使用豆包 Seedream/Seedance、即梦、可灵、Midjourne… | [视觉质量诊断助手](./skills/ai-visual-prompt-review/) | 看得懂，才谈高级感 | 4832 | 5959 | 4500 |
-| ✨ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [视觉质量诊断助手](./skills/extract-design-system/) | 看得懂，才谈高级感 | 1000 | 1.7万 | 1224 |
-| ✨ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [视觉质量诊断助手](./skills/frontend-design/) | 看得懂，才谈高级感 | 1000 | 3037 | 2537 |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视觉质量诊断助手](./skills/image-edit/) | 看得懂，才谈高级感 | 1000 | 1.4万 | 2416 |
-| 🎨 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | [视频质量诊断助手](./skills/image-to-video/) | 看得懂，才可能看下去 | 1000 | 1.6万 | 2649 |
-| 🎨 | 适用于教师、培训师、企业内训和课程研发人员快速设计一节可执行课程。 | [视觉质量诊断助手](./skills/lesson-plan-activity-designer/) | 看得懂，才谈高级感 | 1000 | 3831 | 2057 |
-| ✨ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [视觉质量诊断助手](./skills/sleek-design-mobile-apps/) | 看得懂，才谈高级感 | 1000 | 1.8万 | 3425 |
-| 🎬 | 适用于短视频广告、品牌片、课程视频、直播切片和分镜脚本拍摄前检查。 | [视频质量诊断助手](./skills/video-storyboard-review/) | 看得懂，才可能看下去 | 7981 | 6401 | 1931 |
-| ⚖️ | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规… | [视觉质量诊断助手](./skills/web-design-guidelines/) | 看得懂，才谈高级感 | 1000 | 1.3万 | 1295 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [视频质量诊断助手](https://ai-skills.ai/zh/skills/ai-avatar-video) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-gpt-image-2) | 看得懂，才谈高级感 | 适用于把品牌主视觉、广告图、产品场景图、社媒配图、概念图或参考图改写需求生成图片成品。 | 1500 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-high-end-visual-design) | 看得懂，才谈高级感 | 适用于已经准备好创意 brief 或截图/参考图、目标平台与风格、品牌约束等材料的用户。 | 1200 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-image-generation) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [演示稿优化助手](https://ai-skills.ai/zh/skills/ai-presentation-deck) | 每页都该推动判断 | 适用于已经准备好商品信息、店铺/平台数据、竞品或评论材料等材料的用户。 | 1200 |
+| [演示稿优化助手](https://ai-skills.ai/zh/skills/ai-presentation-design-enhancer) | 每页都该推动判断 | 适用于已经准备好PPT 文件或大纲、演示目标、受众等材料的用户。 | 1200 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-product-photo-scene-planner) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [AI 视频剪辑诊断助手](https://ai-skills.ai/zh/skills/ai-video-editing) | 先找节奏，再压缩成片 | 适用于已经准备好raw footage、录屏或转写稿、目标平台、成片时长和受众、剪辑风格与不可删内容等… | 1200 |
+| [视频质量诊断助手](https://ai-skills.ai/zh/skills/ai-video-generation) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/ai-visual-prompt-review) | 看得懂，才谈高级感 | 适用于使用豆包 Seedream/Seedance、即梦、可灵、Midjourney 等生成图片或视频… | 4832 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/extract-design-system) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/frontend-design) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/image-edit) | 看得懂，才谈高级感 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [视频质量诊断助手](https://ai-skills.ai/zh/skills/image-to-video) | 看得懂，才可能看下去 | 适用于把图片、视频、数字人或商拍需求整理成可审阅的创意 brief、分镜和提示词包。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/lesson-plan-activity-designer) | 看得懂，才谈高级感 | 适用于教师、培训师、企业内训和课程研发人员快速设计一节可执行课程。 | 1000 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/sleek-design-mobile-apps) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
+| [视频质量诊断助手](https://ai-skills.ai/zh/skills/video-storyboard-review) | 看得懂，才可能看下去 | 适用于短视频广告、品牌片、课程视频、直播切片和分镜脚本拍摄前检查。 | 7981 |
+| [视觉质量诊断助手](https://ai-skills.ai/zh/skills/web-design-guidelines) | 看得懂，才谈高级感 | 适用于产品、设计、前端和运营团队审阅界面截图、页面体验、移动 App 流程和视觉规范。 | 1000 |
 
 ### 🔎 数据与研究
 
 用于市场研究、竞品分析、资料核验、数据清洗和证据摘要。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| ✨ | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/agent-browser/) | 先看清问题，再决定下一步 | 1000 | 1.2万 | 4999 |
-| 💬 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | [客户研究助手](./skills/ai-account-research/) | 先懂客户，再写话术 | 1200 | 4920 | 1997 |
-| ✅ | 适用于已经准备好研究主题、公开资料或竞品线索、需要回答的问题等材料的用户。 | [网站诊断助手](./skills/ai-audit-website/) | 先找关键问题，再排优化顺序 | 1200 | 5923 | 1632 |
-| ✅ | 适用于已经准备好自家产品信息、竞品页面、目标关键词等材料的用户。 | [竞品替代分析助手](./skills/ai-competitor-alternatives/) | 替代理由，就是定位机会 | 1200 | 1.1万 | 3987 |
-| ✅ | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | [竞品画像助手](./skills/ai-competitor-profiling/) | 看清对手，才知道怎么赢 | 1200 | 1.2万 | 1679 |
-| ✅ | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | [资料整理助手](./skills/ai-content-research-writer/) | 先提重点，再拆行动 | 1200 | 4562 | 3300 |
-| ✨ | 适用于已经准备好访谈记录、评论反馈、目标用户描述等材料的用户。 | [用户研究助手](./skills/ai-customer-research/) | 真需求来自证据，不来自猜测 | 1200 | 1.1万 | 1069 |
-| ✨ | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | [教育数据分析助手](./skills/ai-education-data-explorer/) | 数据先讲清问题，再谈改进 | 1200 | 1.1万 | 5395 |
-| ✨ | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | [教育研究方法助手](./skills/ai-educational-research-methods/) | 方法对了，结论才站得住 | 1200 | 1.5万 | 3086 |
-| ✨ | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | [市场研究助手](./skills/ai-market-research/) | 机会要看需求、竞品和切入口 | 1500 | 1.1万 | 5718 |
-| ✨ | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | [文献综述助手](./skills/ai-research-lit/) | 先看共识，再看争议 | 1200 | 6760 | 2586 |
-| ✨ | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | [研究打磨助手](./skills/ai-research-refine/) | 问题越清楚，研究越有方向 | 1500 | 8078 | 4817 |
-| 🖼️ | 适用于已经准备好公开页面 URL、目标关键词、页面正文等材料的用户。 | [SEO 审计助手](./skills/ai-seo-audit/) | 问题分清轻重，优化才有顺序 | 1500 | 1.2万 | 4188 |
-| 🖼️ | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | [网站质量审查助手](./skills/ai-web-quality-audit/) | 可信网站要同时好看、好用、好找 | 1200 | 1.3万 | 4116 |
-| ✨ | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | [网页研究助手](./skills/ai-web-research/) | 先核来源，再下判断 | 1500 | 6084 | 2178 |
-| ✨ | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/browser-use/) | 先看清问题，再决定下一步 | 1000 | 4276 | 3776 |
-| 🔎 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [业务诊断助手](./skills/competitor-alternatives/) | 先看清问题，再决定下一步 | 1000 | 1.1万 | 2378 |
-| ✨ | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | [业务诊断助手](./skills/competitor-price-selling-point-watch/) | 先看清问题，再决定下一步 | 1000 | 5790 | 1321 |
-| 🖼️ | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/firecrawl/) | 先看清问题，再决定下一步 | 1000 | 3965 | 2283 |
-| 🖼️ | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/firecrawl-scrape/) | 先看清问题，再决定下一步 | 1000 | 5869 | 5369 |
-| 🔎 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/firecrawl-search/) | 先看清问题，再决定下一步 | 1000 | 1.7万 | 1037 |
-| ✨ | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证… | [业务诊断助手](./skills/just-scrape/) | 先看清问题，再决定下一步 | 1000 | 6791 | 2964 |
-| 🔎 | 适用于餐饮、美业、亲子、酒店、健身等本地生活门店复盘点评。 | [业务诊断助手](./skills/local-store-review-business-diagnosis/) | 先看清问题，再决定下一步 | 1000 | 1.6万 | 5198 |
-| ⚖️ | 适用于产品、运营、法务和数据治理团队做隐私文档发布前自查。 | [风险审阅助手](./skills/privacy-policy-data-map-check-cn/) | 先标风险，再交专业复核 | 1000 | 6924 | 4842 |
-| 🔎 | 适用于餐饮商家、代运营和门店负责人优化菜单、套餐和团购页。 | [业务诊断助手](./skills/restaurant-menu-deal-optimizer/) | 先看清问题，再决定下一步 | 1000 | 1万 | 3835 |
-| 🔎 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | [SEO/AEO 诊断助手](./skills/seo-audit/) | 搜索意图对了，内容才有机会 | 1000 | 1.6万 | 5094 |
-| 🧮 | 适用于项目经理、架构师、产品经理及需要做软件项目成本评估的团队。 | [软件成本评估看板](./skills/software-dev-cost-dashboard/) | 快速评估软件项目成本与工期，支撑立项与报价。 | 5297 | 4177 | 2076 |
-| 🔎 | 适用于教培机构、训练营、社群课程和知识付费团队做阶段复盘。 | [业务诊断助手](./skills/student-feedback-retention-analysis/) | 先看清问题，再决定下一步 | 1000 | 6226 | 4499 |
-| 🔎 | 适用于安全、运维、研发和IT负责人快速理解公开漏洞公告对自有资产的影响。 | [业务诊断助手](./skills/vulnerability-advisory-impact-brief/) | 先看清问题，再决定下一步 | 1000 | 4001 | 2654 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/agent-browser) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [客户研究助手](https://ai-skills.ai/zh/skills/ai-account-research) | 先懂客户，再写话术 | 适用于已经准备好客户/市场信息、产品卖点、沟通目标等材料的用户。 | 1200 |
+| [网站诊断助手](https://ai-skills.ai/zh/skills/ai-audit-website) | 先找关键问题，再排优化顺序 | 适用于已经准备好研究主题、公开资料或竞品线索、需要回答的问题等材料的用户。 | 1200 |
+| [竞品替代分析助手](https://ai-skills.ai/zh/skills/ai-competitor-alternatives) | 替代理由，就是定位机会 | 适用于已经准备好自家产品信息、竞品页面、目标关键词等材料的用户。 | 1200 |
+| [竞品画像助手](https://ai-skills.ai/zh/skills/ai-competitor-profiling) | 看清对手，才知道怎么赢 | 适用于已经准备好产品/服务信息、待优化页面或文案、转化目标与目标用户等材料的用户。 | 1200 |
+| [资料整理助手](https://ai-skills.ai/zh/skills/ai-content-research-writer) | 先提重点，再拆行动 | 适用于已经准备好目标业务或页面、内容/链接/关键词、受众与目标等材料的用户。 | 1200 |
+| [用户研究助手](https://ai-skills.ai/zh/skills/ai-customer-research) | 真需求来自证据，不来自猜测 | 适用于已经准备好访谈记录、评论反馈、目标用户描述等材料的用户。 | 1200 |
+| [教育数据分析助手](https://ai-skills.ai/zh/skills/ai-education-data-explorer) | 数据先讲清问题，再谈改进 | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | 1200 |
+| [教育研究方法助手](https://ai-skills.ai/zh/skills/ai-educational-research-methods) | 方法对了，结论才站得住 | 适用于已经准备好课程/岗位/学习材料、目标人群、评估标准等材料的用户。 | 1200 |
+| [市场研究助手](https://ai-skills.ai/zh/skills/ai-market-research) | 机会要看需求、竞品和切入口 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
+| [文献综述助手](https://ai-skills.ai/zh/skills/ai-research-lit) | 先看共识，再看争议 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1200 |
+| [研究打磨助手](https://ai-skills.ai/zh/skills/ai-research-refine) | 问题越清楚，研究越有方向 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
+| [SEO 审计助手](https://ai-skills.ai/zh/skills/ai-seo-audit) | 问题分清轻重，优化才有顺序 | 适用于已经准备好公开页面 URL、目标关键词、页面正文等材料的用户。 | 1500 |
+| [网站质量审查助手](https://ai-skills.ai/zh/skills/ai-web-quality-audit) | 可信网站要同时好看、好用、好找 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1200 |
+| [网页研究助手](https://ai-skills.ai/zh/skills/ai-web-research) | 先核来源，再下判断 | 适用于已经准备好研究问题、公开资料/链接、比较维度等材料的用户。 | 1500 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/browser-use) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/competitor-alternatives) | 先看清问题，再决定下一步 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/competitor-price-selling-point-watch) | 先看清问题，再决定下一步 | 适用于电商、零售和内容运营团队分析商品页面、评论、价格、选品和直播材料。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl-scrape) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/firecrawl-search) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/just-scrape) | 先看清问题，再决定下一步 | 适用于用户提供公开页面文本、链接说明或研究材料后，整理研究问题、证据矩阵和后续验证计划。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/local-store-review-business-diagnosis) | 先看清问题，再决定下一步 | 适用于餐饮、美业、亲子、酒店、健身等本地生活门店复盘点评。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/privacy-policy-data-map-check-cn) | 先标风险，再交专业复核 | 适用于产品、运营、法务和数据治理团队做隐私文档发布前自查。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/restaurant-menu-deal-optimizer) | 先看清问题，再决定下一步 | 适用于餐饮商家、代运营和门店负责人优化菜单、套餐和团购页。 | 1000 |
+| [SEO/AEO 诊断助手](https://ai-skills.ai/zh/skills/seo-audit) | 搜索意图对了，内容才有机会 | 适用于内容、增长和产品团队优化页面可见性、搜索意图匹配和 AI 引用友好度。 | 1000 |
+| [软件成本评估看板](https://ai-skills.ai/zh/skills/software-dev-cost-dashboard) | 快速评估软件项目成本与工期，支撑立项与报价。 | 适用于项目经理、架构师、产品经理及需要做软件项目成本评估的团队。 | 5297 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/student-feedback-retention-analysis) | 先看清问题，再决定下一步 | 适用于教培机构、训练营、社群课程和知识付费团队做阶段复盘。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/vulnerability-advisory-impact-brief) | 先看清问题，再决定下一步 | 适用于安全、运维、研发和IT负责人快速理解公开漏洞公告对自有资产的影响。 | 1000 |
 
 ### ⚖️ 行业与合规
 
 覆盖教育、金融、医疗、法务、无障碍和风险审阅等垂直场景。
 
-| 图标 | 用户痛点场景 | 技能名称 | 核心价值 | 下载量 | 收藏量 | 分享量 |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| ⚖️ | 适用于信息流广告、搜索广告、朋友圈广告、短信和活动促销文案发布前检查。 | [风险审阅助手](./skills/ad-copy-compliance-review/) | 先标风险，再交专业复核 | 4489 | 4631 | 4131 |
-| 🖼️ | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | [无障碍体验诊断助手](./skills/ai-accessibility/) | 能被更多人使用，才是好体验 | 1500 | 8428 | 3546 |
-| ✨ | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | [DOCX 整理助手](./skills/ai-docx/) | 先提重点，再方便复用 | 1200 | 1.8万 | 5892 |
-| ⚖️ | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | [HR 专业助手](./skills/ai-hr-pro/) | 人事判断要清楚，也要留边界 | 1200 | 1.3万 | 2185 |
-| ⚖️ | 适用于已经准备好简历、目标 JD、求职方向等材料的用户。 | [求职材料优化助手](./skills/ai-job-application-optimizer/) | 匹配度说清，机会才更大 | 1200 | 5449 | 3827 |
-| ✨ | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | [PDF 整理助手](./skills/ai-pdf/) | 长文档要先变成可读重点 | 1200 | 3105 | 2605 |
-| ✨ | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | [PPT 诊断助手](./skills/ai-pptx/) | 每页都该服务一个判断 | 1200 | 3802 | 3302 |
-| ⚖️ | 适用于已经准备好视频文件或公开视频链接、截取时间段和循环方式、目标尺寸、帧率和文件… | [视频转 GIF 优化助手](./skills/ai-video-to-gif/) | 文件更轻，动效仍要清楚 | 1200 | 1.1万 | 1582 |
-| ✨ | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | [XLSX 分析助手](./skills/ai-xlsx/) | 数据先理清，结论才可靠 | 1200 | 1.4万 | 1371 |
-| ⚖️ | 适用于民营医院、诊所、口腔机构、医美机构和客服运营复盘服务体验。 | [业务诊断助手](./skills/clinic-service-review-analysis/) | 先看清问题，再决定下一步 | 1000 | 1.7万 | 3160 |
-| ⚖️ | 适用于中小企业、业务负责人和法务助理在专业审核前整理合同风险。 | [风险审阅助手](./skills/contract-clause-risk-review-cn/) | 先标风险，再交专业复核 | 1000 | 4074 | 3574 |
-| ⚖️ | 适用于课程主理人、运营和教培市场团队在投放或发布前优化详情页。 | [转化实验助手](./skills/course-landing-page-conversion-review/) | 先有假设，再谈增长 | 1000 | 1.4万 | 2677 |
-| ⚖️ | 适用于知识付费、训练营、企业培训和教培机构在上线前打磨课程定位。 | [业务诊断助手](./skills/course-outline-market-positioning/) | 先看清问题，再决定下一步 | 1000 | 1.6万 | 2041 |
-| 💬 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | [业务诊断助手](./skills/customer-service-kb-gap-analysis/) | 先看清问题，再决定下一步 | 1000 | 1.3万 | 1609 |
-| ⚖️ | 适用于CIO、业务负责人和AI项目团队从试点清单中选择MVP。 | [业务诊断助手](./skills/enterprise-ai-usecase-priority-assessment/) | 先看清问题，再决定下一步 | 1000 | 1.6万 | 4575 |
-| ⚖️ | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | [财务定价诊断助手](./skills/financial-marketing-compliance-review/) | 利润算清楚，价格才稳 | 1000 | 3268 | 2768 |
-| ✅ | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | [财务定价诊断助手](./skills/financial-report-anomaly-question-list/) | 利润算清楚，价格才稳 | 1000 | 1.3万 | 2433 |
-| ✨ | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | [转化实验助手](./skills/gtm-one-page-strategy/) | 先有假设，再谈增长 | 1000 | 9399 | 4237 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/gws-docs/) | 先看清问题，再决定下一步 | 1000 | 3552 | 1573 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/gws-gmail/) | 先看清问题，再决定下一步 | 1000 | 1.8万 | 5895 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/gws-sheets/) | 先看清问题，再决定下一步 | 1000 | 7378 | 2684 |
-| ⚖️ | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | [风险审阅助手](./skills/insurance-policy-faq-explainer/) | 先标风险，再交专业复核 | 1000 | 3353 | 2853 |
-| ⚖️ | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | [资料整理助手](./skills/investment-research-material-compare/) | 先提重点，再拆行动 | 1000 | 6201 | 4144 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-approval/) | 先看清问题，再决定下一步 | 1000 | 5014 | 4430 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-calendar/) | 先看清问题，再决定下一步 | 1000 | 4416 | 3916 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-doc/) | 先看清问题，再决定下一步 | 1000 | 5993 | 2175 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-drive/) | 先看清问题，再决定下一步 | 1000 | 3935 | 3435 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-minutes/) | 先看清问题，再决定下一步 | 1000 | 3275 | 2775 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-sheets/) | 先看清问题，再决定下一步 | 1000 | 1.5万 | 1380 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [业务诊断助手](./skills/lark-task/) | 先看清问题，再决定下一步 | 1000 | 1.7万 | 2940 |
-| ✨ | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成… | [资料整理助手](./skills/lark-workflow-meeting-summary/) | 先提重点，再拆行动 | 1000 | 5123 | 4623 |
-| ⚖️ | 适用于医院、诊所、药企市场和健康内容团队在发布科普前做表达风险初筛。 | [风险审阅助手](./skills/medical-content-compliance-review/) | 先标风险，再交专业复核 | 1000 | 4972 | 4472 |
-| ⚖️ | 适用于医学内容、科研助理、医学事务和市场团队做文献阅读与证据整理。 | [业务诊断助手](./skills/medical-literature-evidence-map/) | 先看清问题，再决定下一步 | 1000 | 3958 | 3458 |
-| ⚖️ | 适用于医院、诊所、药房和健康管理团队优化术前说明、随访提示和健康教育材料。 | [资料整理助手](./skills/patient-education-readability-review/) | 先提重点，再拆行动 | 1000 | 7847 | 5842 |
-| ⚖️ | 适用于药企市场、销售培训和医学事务团队在内部审核前整理风险点。 | [风险审阅助手](./skills/pharma-visit-material-compliance-review/) | 先标风险，再交专业复核 | 1000 | 1.4万 | 5963 |
-| ⚖️ | 适用于行政、人事、合规、运营团队把制度发布为可执行流程。 | [风险审阅助手](./skills/policy-execution-checklist-generator/) | 先标风险，再交专业复核 | 1000 | 1.1万 | 1134 |
-| ⚖️ | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | [风险审阅助手](./skills/proposal-risk-response-review/) | 先标风险，再交专业复核 | 1000 | 3698 | 3198 |
-| ✨ | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | [业务诊断助手](./skills/public-company-due-diligence-summary/) | 先看清问题，再决定下一步 | 1000 | 1.4万 | 5981 |
-| ⚖️ | 适用于题库产品、教研团队和考试培训机构在批量发布题目前做质量初筛。 | [业务诊断助手](./skills/question-bank-explanation-quality-check/) | 先看清问题，再决定下一步 | 1000 | 3646 | 1642 |
-| ⚖️ | 适用于产品经理、创业者和研发负责人在需求评审前提高PRD质量。 | [业务诊断助手](./skills/saas-prd-review/) | 先看清问题，再决定下一步 | 1000 | 1.3万 | 3086 |
-| ✨ | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | [销售增长助手](./skills/sales-meeting-follow-up-plan/) | 下一步清楚，机会才会前进 | 1000 | 1.1万 | 4089 |
-| ⚖️ | 适用于甲方、外包团队、项目经理和创业者评估软件开发报价。 | [业务诊断助手](./skills/software-cost-quote-review/) | 先看清问题，再决定下一步 | 1000 | 1.5万 | 2350 |
-| ⚖️ | 适用于采购、供应链计划、项目管理和供应商质量团队做交付风险复盘。 | [风险审阅助手](./skills/supplier-delivery-risk-summary/) | 先标风险，再交专业复核 | 1000 | 7996 | 2310 |
+| Skills 名称 | 核心价值 | 适用场景 | 下载量 |
+| --- | --- | --- | ---: |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/ad-copy-compliance-review) | 先标风险，再交专业复核 | 适用于信息流广告、搜索广告、朋友圈广告、短信和活动促销文案发布前检查。 | 4489 |
+| [无障碍体验诊断助手](https://ai-skills.ai/zh/skills/ai-accessibility) | 能被更多人使用，才是好体验 | 适用于已经准备好服务说明、评价或知识库材料、目标场景、改进目标等材料的用户。 | 1500 |
+| [DOCX 整理助手](https://ai-skills.ai/zh/skills/ai-docx) | 先提重点，再方便复用 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
+| [HR 专业助手](https://ai-skills.ai/zh/skills/ai-hr-pro) | 人事判断要清楚，也要留边界 | 适用于已经准备好页面/流程材料、转化目标、目标用户等材料的用户。 | 1200 |
+| [求职材料优化助手](https://ai-skills.ai/zh/skills/ai-job-application-optimizer) | 匹配度说清，机会才更大 | 适用于已经准备好简历、目标 JD、求职方向等材料的用户。 | 1200 |
+| [PDF 整理助手](https://ai-skills.ai/zh/skills/ai-pdf) | 长文档要先变成可读重点 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
+| [PPT 诊断助手](https://ai-skills.ai/zh/skills/ai-pptx) | 每页都该服务一个判断 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
+| [视频转 GIF 优化助手](https://ai-skills.ai/zh/skills/ai-video-to-gif) | 文件更轻，动效仍要清楚 | 适用于已经准备好视频文件或公开视频链接、截取时间段和循环方式、目标尺寸、帧率和文件大小限制等材料的用户。 | 1200 |
+| [XLSX 分析助手](https://ai-skills.ai/zh/skills/ai-xlsx) | 数据先理清，结论才可靠 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1200 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/clinic-service-review-analysis) | 先看清问题，再决定下一步 | 适用于民营医院、诊所、口腔机构、医美机构和客服运营复盘服务体验。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/contract-clause-risk-review-cn) | 先标风险，再交专业复核 | 适用于中小企业、业务负责人和法务助理在专业审核前整理合同风险。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/course-landing-page-conversion-review) | 先有假设，再谈增长 | 适用于课程主理人、运营和教培市场团队在投放或发布前优化详情页。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/course-outline-market-positioning) | 先看清问题，再决定下一步 | 适用于知识付费、训练营、企业培训和教培机构在上线前打磨课程定位。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/customer-service-kb-gap-analysis) | 先看清问题，再决定下一步 | 适用于把文档、表格、演示稿或会议材料整理成摘要、风险点、待办和可复核报告。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/enterprise-ai-usecase-priority-assessment) | 先看清问题，再决定下一步 | 适用于CIO、业务负责人和AI项目团队从试点清单中选择MVP。 | 1000 |
+| [财务定价诊断助手](https://ai-skills.ai/zh/skills/financial-marketing-compliance-review) | 利润算清楚，价格才稳 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
+| [财务定价诊断助手](https://ai-skills.ai/zh/skills/financial-report-anomaly-question-list) | 利润算清楚，价格才稳 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
+| [转化实验助手](https://ai-skills.ai/zh/skills/gtm-one-page-strategy) | 先有假设，再谈增长 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-docs) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-gmail) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/gws-sheets) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/insurance-policy-faq-explainer) | 先标风险，再交专业复核 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
+| [资料整理助手](https://ai-skills.ai/zh/skills/investment-research-material-compare) | 先提重点，再拆行动 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-approval) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-calendar) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-doc) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-drive) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-minutes) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-sheets) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/lark-task) | 先看清问题，再决定下一步 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [资料整理助手](https://ai-skills.ai/zh/skills/lark-workflow-meeting-summary) | 先提重点，再拆行动 | 适用于手动提供 Lark、Google Workspace 或邮件协作材料后，生成离线复盘、行动清单和… | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/medical-content-compliance-review) | 先标风险，再交专业复核 | 适用于医院、诊所、药企市场和健康内容团队在发布科普前做表达风险初筛。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/medical-literature-evidence-map) | 先看清问题，再决定下一步 | 适用于医学内容、科研助理、医学事务和市场团队做文献阅读与证据整理。 | 1000 |
+| [资料整理助手](https://ai-skills.ai/zh/skills/patient-education-readability-review) | 先提重点，再拆行动 | 适用于医院、诊所、药房和健康管理团队优化术前说明、随访提示和健康教育材料。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/pharma-visit-material-compliance-review) | 先标风险，再交专业复核 | 适用于药企市场、销售培训和医学事务团队在内部审核前整理风险点。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/policy-execution-checklist-generator) | 先标风险，再交专业复核 | 适用于行政、人事、合规、运营团队把制度发布为可执行流程。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/proposal-risk-response-review) | 先标风险，再交专业复核 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/public-company-due-diligence-summary) | 先看清问题，再决定下一步 | 适用于金融、投研、保险和合规相关材料的初步摘要、问题清单和人工复核准备。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/question-bank-explanation-quality-check) | 先看清问题，再决定下一步 | 适用于题库产品、教研团队和考试培训机构在批量发布题目前做质量初筛。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/saas-prd-review) | 先看清问题，再决定下一步 | 适用于产品经理、创业者和研发负责人在需求评审前提高PRD质量。 | 1000 |
+| [销售增长助手](https://ai-skills.ai/zh/skills/sales-meeting-follow-up-plan) | 下一步清楚，机会才会前进 | 适用于销售、市场和创业团队整理客户研究、会议纪要、GTM 策略和售前方案风险。 | 1000 |
+| [业务诊断助手](https://ai-skills.ai/zh/skills/software-cost-quote-review) | 先看清问题，再决定下一步 | 适用于甲方、外包团队、项目经理和创业者评估软件开发报价。 | 1000 |
+| [风险审阅助手](https://ai-skills.ai/zh/skills/supplier-delivery-risk-summary) | 先标风险，再交专业复核 | 适用于采购、供应链计划、项目管理和供应商质量团队做交付风险复盘。 | 1000 |
 
 <!-- AI_SKILLS_CATALOG_END -->
 
-## FAQ
-
-**Q1：AI Skills 和 ChatGPT、Kimi 这些 AI 应用有什么区别？**
-答：AI Skills 是「场景层」，ChatGPT/Kimi 是「模型层」。前者告诉你「这个岗位具体可以用 AI 干什么、怎么干」，后者提供底层对话能力——两者是配合关系，不是替代关系。
-
-**Q2：Skill 和 Prompt 到底差在哪？**
-答：Prompt 是一句指令，Skill 是一个封装好的流程。Skill 至少包括触发条件、工具调用、输出结构和适用边界，相当于一个 mini Agent，结果稳定且可复用。
-
-**Q3：非技术岗能用吗？**
-答：完全可以。大多数 Skill 在网页端直接「按钮式使用」，不需要写任何代码。高级用户才需要把它挂进 Claude Code / Cursor 做集成。
-
-**Q4：内容是免费的吗？**
-答：基础技能免费浏览和使用；深度定制、私有化部署、行业方案走「企业服务」入口，具体合作方式可通过页脚企微二维码咨询。
-
-**Q5：我的行业没找到对口的 Skill 怎么办？**
-答：先用顶部搜索框搜一遍；实在没有可以走「企业服务」提需求，或在关于页留下反馈——行业路径本身还在持续补齐。
-
 ## 结论
 
-AI Skills（[ai-skills.ai](https://ai-skills.ai/)）给 AI 的用法一个更具体的答案：不是再训练一个更大的模型，而是把已有模型的能力拆成一条条能被你今天就用上的 Skill。打开首页，按职业、行业或应用场景三选一，找到对应的 Skill，点「使用技能」——这就是它希望你的第一次体验。
+AI Skills（[ai-skills.ai](https://ai-skills.ai/)）给 AI 的用法一个更具体的答案：不是再训练一个更大的模型，而是把已有模型的能力拆成一条条能被你今天就用上的 Skill。打开首页，按职业、行业或应用场景三选一，找到对应的 Skill，点「使用技能」——开始快速体验。
