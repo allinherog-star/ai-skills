@@ -179,7 +179,7 @@
     </tr>
     <tr>
       <td><a href="https://ai-skills.ai/zh/skills/douyin-realtime-hot-rise" target="_blank" rel="noopener noreferrer">抖音上升热点选题助手</a></td>
-      <td>正在上升的热点，你才有空间，助力内容选题。</td>
+      <td>正在上升的热点，你才有空间，助力内容选题</td>
       <td>适用于美妆、服饰、美食等赛道的抖音带货达人与品牌自播团队。</td>
       <td align="right" width="96">17k</td>
     </tr>
