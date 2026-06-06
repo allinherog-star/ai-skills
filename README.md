@@ -279,7 +279,7 @@
       <td align="right" width="96">1.5k</td>
     </tr>
     <tr>
-      <td><a href="https://ai-skills.ai/zh/skills/ai-humanizer-zh" target="_blank" rel="noopener noreferrer">去AI味助手</a></td>
+      <td><a href="https://ai-skills.ai/zh/skills/ai-humanizer-zh" target="_blank" rel="noopener noreferrer">中文润色去AI味助手</a></td>
       <td>像人说话，才容易被相信</td>
       <td>适用于公众号、小红书、官网博客、营销页、课程文案、知识库和社媒长文发布前的去 AI 味审稿。</td>
       <td align="right" width="96">1.2k</td>

@@ -1,8 +1,8 @@
 {
   "id": "ai-humanizer-zh",
   "slug": "ai-humanizer-zh",
-  "question": "论文AI写的，帮我去掉AI味?",
-  "skillName": "去AI味助手",
+  "question": "怎么去AI味?",
+  "skillName": "中文润色去AI味助手",
   "tags": [
     "中文改写",
     "AI 写作痕迹",
