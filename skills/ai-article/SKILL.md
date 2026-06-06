@@ -6,7 +6,7 @@ requiredEnvVars:
     description: "从 AI Skills 官网 https://ai-skills.ai 获取API Key，用于运行时技能调用。"
 ---
 
-# ai-article 自动图文助手
+# ai-article 小红书种草笔记（自动配图）
 
 [快速开始](https://github.com/allinherog-star/ai-skills/tree/main#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
 
