@@ -6,6 +6,7 @@ import ssl
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 SKILL_ID = "douyin-realtime-hot-rise"
@@ -25,7 +26,25 @@ def load_params(raw):
         fail(f"Invalid params JSON: {exc}")
 
 def build_base_url():
-    return os.getenv("AISKILLS_BASE_URL", DEFAULT_BASE_URL).rstrip("/")
+    base_url = os.getenv("AISKILLS_BASE_URL", DEFAULT_BASE_URL).strip().rstrip("/")
+    try:
+        parsed = urllib.parse.urlsplit(base_url)
+        port = parsed.port
+    except ValueError:
+        fail("AISKILLS_BASE_URL must be an HTTPS URL for ai-skills.ai")
+
+    if (
+        parsed.scheme.lower() != "https"
+        or parsed.hostname is None
+        or parsed.hostname.lower() != "ai-skills.ai"
+        or parsed.username is not None
+        or parsed.password is not None
+        or port not in (None, 443)
+        or parsed.query
+        or parsed.fragment
+    ):
+        fail("AISKILLS_BASE_URL must be an HTTPS URL for ai-skills.ai")
+    return base_url
 
 def build_headers():
     api_key = os.getenv("AISKILLS_API_KEY", "").strip()
@@ -51,6 +70,15 @@ def build_ssl_context():
     return ssl.create_default_context(cafile=certifi.where())
 
 SSL_CONTEXT = build_ssl_context()
+
+class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+OPENER = urllib.request.build_opener(
+    urllib.request.HTTPSHandler(context=SSL_CONTEXT),
+    NoRedirectHandler(),
+)
 
 def print_url_error(exc):
     reason = getattr(exc, "reason", exc)
@@ -91,7 +119,7 @@ def request_json(method, path, payload):
         headers=build_headers(),
     )
     try:
-        with urllib.request.urlopen(req, context=SSL_CONTEXT) as response:
+        with OPENER.open(req) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         print_http_error(exc)

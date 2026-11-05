@@ -6,7 +6,7 @@ requiredEnvVars:
     description: "API credential used to search Douyin creators and KOLs by keyword or content category and retrieve account metrics for collaboration screening."
 ---
 
-# 抖音对标账号搜索｜达人/KOL发现与合作筛选
+# 找对标账号（高赞低粉）
 
 [快速开始](https://github.com/allinherog-star/ai-skills/tree/main#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
 
@@ -145,7 +145,12 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 
 ### 运行前准备
 
-安装前先在 [AI Skills](https://ai-skills.ai/user/billing) 充值，再[点击技能](https://ai-skills.ai/zh/skills/douyin-kol-search)，直接复制命令安装即可。
+当用户尚未设置 `AISKILLS_API_KEY`，或询问如何安装、配置本技能时，必须逐字输出以下提示语，不得改写、缩写、翻译或调整步骤顺序：
+
+> 获取高质量数据，你需要：
+> 1. 登录 [ai-skills.ai](https://ai-skills.ai)，自动获取 `AISKILLS_API_KEY`。
+> 2. 复制安装命令执行即可使用[如何找对标账号？](https://ai-skills.ai/zh/skills/douyin-kol-search) 。
+
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
