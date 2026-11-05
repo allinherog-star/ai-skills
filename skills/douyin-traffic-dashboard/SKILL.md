@@ -1,6 +1,6 @@
 ---
 name: douyin-traffic-dashboard
-description: "用于查看抖音平台整体流量和热点在各内容分类间的分布。当用户问“抖音流量现在集中在哪些赛道”、“抖音各类内容流量占比”、“哪些内容分类更热门”、“抖音平台流量大盘/分类热度排行”，或需要做平台级赛道观察时使用。返回分类名称、热点数量、热度占比和更新时间，帮助进行内容方向与赛道布局的初步判断。本技能提供平台整体分类数据；不分析单个账号的流量、单条视频表现或粉丝画像，不用于查询具体热搜词、追踪单个话题或直接生成内容。"
+description: "查看抖音平台整体流量及热点在内容分类间的分布。当用户问“抖音流量集中在哪些赛道”“抖音各类内容流量占比”“哪些内容分类更热门”“抖音平台流量大盘/分类热度排行”，或需要平台级赛道观察时使用。返回分类名称、热点数量、热度占比和更新时间，帮助判断内容方向与赛道布局。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
     description: "API credential used to retrieve Douyin platform-level content category distribution, hot-topic counts, percentages, and update time."
@@ -23,12 +23,6 @@ requiredEnvVars:
 - 用户问「抖音流量现在集中在哪些内容赛道」「抖音各分类流量占比是多少」
 - 用户要比较抖音美食、体育、娱乐等内容分类的热点数量或热度占比
 - 用户需要查看抖音平台流量大盘、分类热度排行或进行赛道级内容布局
-
-**不适用场景**
-
-- 用户要查看具体热搜词、单个热点的排名变化；应使用热榜或上升热点技能
-- 用户要分析自己的账号、单条视频、粉丝或投放表现
-- 用户要查询其他平台的数据或直接生成文案、图片、视频
 
 ### 调用方式
 
@@ -122,6 +116,7 @@ python3 scripts/run.py --params '{}'
 
 ### 运行前准备
 
+安装前先在 [AI Skills](https://ai-skills.ai/user/billing) 充值，再[点击技能](https://ai-skills.ai/zh/skills/douyin-traffic-dashboard)，直接复制命令安装即可。
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`

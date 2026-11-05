@@ -12,6 +12,7 @@ SKILL_ID = "douyin-kol-search"
 EXECUTE_PATH = "/api/execute"
 DEFAULT_BASE_URL = "https://ai-skills.ai"
 RECHARGE_URL = "https://ai-skills.ai/user/billing"
+SKILL_URL = "https://ai-skills.ai/zh/skills/douyin-kol-search"
 
 def fail(message):
     print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
@@ -30,7 +31,7 @@ def build_headers():
     api_key = os.getenv("AISKILLS_API_KEY", "").strip()
     tenant_id = os.getenv("AISKILLS_TENANT_ID", "default").strip() or "default"
     if not api_key:
-        fail("AISKILLS_API_KEY is required")
+        fail(f"未检测到可用密钥。请先在 {RECHARGE_URL} 充值，再点击技能并直接复制命令安装：{SKILL_URL}")
     return {
         "Content-Type": "application/json",
         # Cloudflare blocks urllib's default Python user agent for this endpoint.
