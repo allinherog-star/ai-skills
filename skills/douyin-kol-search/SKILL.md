@@ -32,7 +32,9 @@ requiredEnvVars:
 
 ### 命令示例
 
-**按赛道和粉丝范围筛选**
+**按赛道、内容分类和粉丝范围筛选**
+
+`followerRange` 是后端支持的可选参数，单位为万；`10-100` 表示 10 万至 100 万粉丝。数据源可能拒绝某些筛选组合；发生可恢复的参数错误时，服务会逐步放宽筛选，并在 `searchStrategy` 中说明实际丢弃的条件。
 
 ```bash
 python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"tag-48","followerRange":"10-100"}'
@@ -54,15 +56,16 @@ python3 scripts/run.py --params '{"contentTag":"tag-48"}'
 
 | 参数 | 类型 | 必填 | 默认 | 说明 |
 | --- | --- | --- | --- | --- |
-| `page` | number | 否 | `1` | 页码，从1开始 |
-| `keyword` | string | 是 | - | 输入关键词搜索 KOL（如：美妆、美食、穿搭...） |
+| `page` | integer | 否 | `1` | 页码，从 1 开始，最大为 5；每页最多 20 条 |
+| `followerRange` | string | 否 | - | 粉丝范围，单位为万，格式为 `最小值-最大值`，例如 `10-100`；最小值必须小于最大值。 |
+| `keyword` | string | 条件必填 | - | 搜索关键词（如：美妆、美食、穿搭...）。可与 `contentTag` 二选一；只传分类时会用分类名称作为关键词。 |
 | `contentTag` | string | 否 | - | 选择内容分类标签进行筛选；可选值：不限（``）、美妆（`tag-1`）、时尚（`tag-6`）、萌宠（`tag-11`）、测评（`tag-15`）、游戏（`tag-23`）、二次元（`tag-25`）、旅行（`tag-27`）、汽车（`tag-31`）、生活（`tag-36`）、音乐（`tag-41`）、美食（`tag-48`）、母婴亲子（`tag-55`）、运动健身（`tag-60`）、科技数码（`tag-64`）、教育培训（`tag-68`）、颜值达人（`tag-72`）、才艺技能（`tag-79`）、影视娱乐（`tag-85`）、艺术文化（`tag-87`）、财经投资（`tag-91`）、剧情搞笑（`tag-97`）、房产（`tag-139`）、生活家居（`tag-1001`） |
 
 完整机器可读参数结构见 `references/form-schema.json`。
 
 ### 参数取值参考
 
-当前技能没有需要额外查表的分类参数。
+分类 ID 见上表。粉丝范围以“万”为单位，例如 `10-100`，不是原始粉丝数。
 
 ### 支持的输入格式
 
@@ -70,7 +73,7 @@ python3 scripts/run.py --params '{"contentTag":"tag-48"}'
 
 ### 示例请求
 
-用户说“帮我找几个美妆品牌的抖音对标账号”时，将行业或品类作为 `keyword` 搜索，例如 `{"keyword":"美妆品牌"}`。下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。
+用户说“帮我找几个美妆品牌的抖音对标账号”时，将行业或品类作为 `keyword` 搜索，例如 `{"keyword":"美妆品牌"}`。下面的示例参数可直接传给 `scripts/run.py`，runner 会把它们发送给 AI Skills API。示例中的 `followerRange` 已由后端支持；若上游不接受该条件，服务会报告回退策略，不应把回退结果当作严格粉丝范围筛选。
 
 ```bash
 python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"tag-48","followerRange":"10-100"}'
@@ -87,6 +90,8 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 ```
 
 ### 返回结果示例
+
+以下为结构示意，具体字段取决于数据源；当上游拒绝筛选并触发回退时，`searchStrategy.droppedFilters` 会列出被放宽的条件。
 
 ```json
 {
@@ -119,9 +124,9 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
     "searchStrategy": {
       "usedFallback": true,
       "droppedFilters": [
-        "contentTag"
+        "followerRange"
       ],
-      "localContentTagFilterApplied": true
+      "localContentTagFilterApplied": false
     }
   },
   "meta": {
@@ -141,7 +146,7 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 
 - 先按赛道和关键词圈定候选，再用商业价值、传播能力和转化潜力做优先级排序。
 - 找合作达人时重点看账号定位是否匹配品牌；找对标账号时重点看内容标签和受众相似度。
-- 如果筛选条件过窄导致结果少，可以放宽粉丝量或关键词后再比较。
+- 如果结果少，先缩短关键词或放宽条件。检查 `searchStrategy.droppedFilters`：列出的条件未能由上游严格执行；即使返回了结果，也不要据此断言这些结果满足被放宽的筛选条件。
 
 ### 运行前准备
 
@@ -154,3 +159,10 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 - `AISKILLS_BASE_URL`：默认 `https://ai-skills.ai`
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
+
+### 常见问题
+
+- **提示密钥缺失**：确认当前终端已设置 `AISKILLS_API_KEY`，并检查密钥是否复制完整。
+- **提示余额不足**：前往 [账户充值页](https://ai-skills.ai/user/billing) 充值后重试。
+- **提示筛选条件不支持或自动回退**：缩短关键词、减少组合筛选；查看返回的 `searchStrategy.droppedFilters`，被列出的条件没有得到严格筛选。
+- **提示网络超时**：检查网络后重试。runner 单次请求有超时限制；异步任务默认最多轮询 120 秒，可用 `--poll-timeout` 调整等待时长（秒）。

@@ -1,24 +1,23 @@
 {
   "type": "object",
-  "required": [
-    "keyword"
-  ],
   "properties": {
     "page": {
-      "type": "number",
+      "type": "integer",
       "title": "页码",
       "default": 1,
       "minimum": 1,
-      "description": "页码，从1开始"
+      "description": "页码，从1开始，最多5页",
+      "maximum": 5
     },
     "keyword": {
       "type": "string",
       "title": "搜索关键词",
-      "description": "输入关键词搜索 KOL（如：美妆、美食、穿搭...）",
+      "description": "输入关键词搜索 KOL；可与内容标签二选一。",
       "x-component-props": {
         "maxLength": 100,
         "placeholder": "输入关键词搜索 KOL"
-      }
+      },
+      "maxLength": 100
     },
     "contentTag": {
       "enum": [
@@ -77,6 +76,39 @@
         "生活家居"
       ],
       "description": "选择内容分类标签进行筛选"
+    },
+    "followerRange": {
+      "type": "string",
+      "title": "粉丝范围（万）",
+      "description": "可选，单位为万，格式为最小值-最大值，例如 10-100。最小值必须小于最大值。",
+      "pattern": "^\\d+-\\d+$",
+      "x-component-props": {
+        "placeholder": "例如：10-100"
+      }
     }
-  }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "keyword"
+      ],
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    {
+      "required": [
+        "contentTag"
+      ],
+      "properties": {
+        "contentTag": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  ]
 }

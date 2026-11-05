@@ -14,6 +14,7 @@ EXECUTE_PATH = "/api/execute"
 DEFAULT_BASE_URL = "https://ai-skills.ai"
 RECHARGE_URL = "https://ai-skills.ai/user/billing"
 SKILL_URL = "https://ai-skills.ai/zh/skills/douyin-kol-search"
+REQUEST_TIMEOUT_SECONDS = 15
 
 def fail(message):
     print(json.dumps({"success": False, "error": {"code": "RUNNER_ERROR", "message": message}}, ensure_ascii=False))
@@ -110,7 +111,7 @@ def print_http_error(exc):
     print(json.dumps(parsed, ensure_ascii=False))
     sys.exit(1)
 
-def request_json(method, path, payload):
+def request_json(method, path, payload, timeout=REQUEST_TIMEOUT_SECONDS):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         f"{build_base_url()}{path}",
@@ -119,7 +120,7 @@ def request_json(method, path, payload):
         headers=build_headers(),
     )
     try:
-        with OPENER.open(req) as response:
+        with OPENER.open(req, timeout=timeout) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         print_http_error(exc)
@@ -130,7 +131,7 @@ def is_async_terminal(data):
     status = data.get("status")
     return status in {"completed", "failed", "needs_input", "cancelled"}
 
-def poll_async_result(start_response, max_attempts, interval_seconds):
+def poll_async_result(start_response, max_attempts, interval_seconds, timeout_seconds):
     data = start_response.get("data") or {}
     if data.get("mode") != "async":
         return start_response
@@ -142,8 +143,15 @@ def poll_async_result(start_response, max_attempts, interval_seconds):
     if not execution_id and not job_id:
         return start_response
 
+    deadline = time.monotonic() + timeout_seconds
     for _ in range(max_attempts):
-        time.sleep(interval_seconds)
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            break
+        time.sleep(min(interval_seconds, remaining))
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            break
         response = request_json("POST", EXECUTE_PATH, {
             "skillId": SKILL_ID,
             "params": {},
@@ -152,22 +160,25 @@ def poll_async_result(start_response, max_attempts, interval_seconds):
                 "executionId": execution_id,
                 "jobId": job_id,
             },
-        })
+        }, timeout=min(REQUEST_TIMEOUT_SECONDS, remaining))
         data = response.get("data") or {}
         if data.get("mode") == "async" and is_async_terminal(data):
             return response
 
-    fail("Async skill execution did not reach a terminal state in time")
+    fail(f"Async skill execution did not finish within {timeout_seconds:g} seconds; increase --poll-timeout to wait longer")
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--params", default="{}")
-    parser.add_argument("--poll-attempts", type=int, default=180)
-    parser.add_argument("--poll-interval", type=float, default=2.0)
+    parser.add_argument("--poll-attempts", type=int, default=60, help="maximum number of async status checks")
+    parser.add_argument("--poll-interval", type=float, default=2.0, help="seconds between async status checks")
+    parser.add_argument("--poll-timeout", type=float, default=120.0, help="maximum async wait in seconds")
     args = parser.parse_args()
+    if args.poll_attempts < 1 or args.poll_interval <= 0 or args.poll_timeout <= 0:
+        parser.error("poll attempts, interval, and timeout must be positive")
     params = load_params(args.params)
     response = request_json("POST", EXECUTE_PATH, {"skillId": SKILL_ID, "params": params})
-    print(json.dumps(poll_async_result(response, args.poll_attempts, args.poll_interval), ensure_ascii=False))
+    print(json.dumps(poll_async_result(response, args.poll_attempts, args.poll_interval, args.poll_timeout), ensure_ascii=False))
 
 if __name__ == "__main__":
     main()
