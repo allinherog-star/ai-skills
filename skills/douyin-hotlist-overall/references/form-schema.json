@@ -1,4 +1,11 @@
 {
   "type": "object",
-  "properties": {}
+  "properties": {
+    "topicFilter": {
+      "type": "string",
+      "title": "热点主题筛选",
+      "description": "可选。按逗号分隔多个关键词，对实时总榜结果做本地筛选，任一关键词命中即保留。",
+      "examples": ["科技,数码", "人工智能"]
+    }
+  }
 }

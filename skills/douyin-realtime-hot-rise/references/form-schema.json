@@ -4,7 +4,7 @@
     "tag": {
       "type": "string",
       "title": "热点分类",
-      "description": "筛选特定分类的热点（从分类接口获取）",
+      "description": "填写分类接口返回的数字 ID；多个 ID 用英文逗号分隔。不要填写分类名称",
       "x-component": "CategorySelect",
       "x-component-props": {
         "allowClear": true,
@@ -18,17 +18,17 @@
       ],
       "type": "string",
       "title": "排序方式",
-      "default": "rank",
+      "default": "rank_diff",
       "enumNames": [
         "热度排序",
         "变化排序"
       ],
-      "description": "选择热点排序方式"
+      "description": "rank 按热度排序；rank_diff 按排名变化排序。服务端默认 rank_diff"
     },
     "keyword": {
       "type": "string",
       "title": "搜索词",
-      "description": "搜索特定关键词的热点",
+      "description": "搜索关键词，最多 100 个字符",
       "x-component-props": {
         "maxLength": 100,
         "allowClear": true,

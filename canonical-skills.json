@@ -31588,7 +31588,17 @@
       },
       "formSchema": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "topicFilter": {
+            "type": "string",
+            "title": "热点主题筛选",
+            "description": "可选。按逗号分隔多个关键词，对实时总榜结果做本地筛选，任一关键词命中即保留。",
+            "examples": [
+              "科技,数码",
+              "人工智能"
+            ]
+          }
+        }
       },
       "coreValue": "先有热点方向，再有视频内容生产",
       "scenario": "适用于需要快速了解抖音全平台热搜话题、把握内容方向的创作者和运营团队。",
