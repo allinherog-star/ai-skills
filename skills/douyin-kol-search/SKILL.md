@@ -1,9 +1,9 @@
 ---
 name: douyin-kol-search
-description: "用于搜索和分析抖音对标账号。当用户提到“对标账号”“抖音对标账号”“找对标账号”“对标账号分析”“竞品账号”“同行账号”或“同赛道账号”时使用。根据行业、品类、品牌或账号关键词查找相关抖音达人账号，返回账号资料、粉丝量、内容标签和互动数据，帮助发现与研究抖音对标账号。"
+description: "用于搜索和分析抖音对标账号，不仅仅是流量，而是账号的商业价值，降低试错成本。当用户提到“对标账号”“抖音对标账号”“找对标账号”“对标账号分析”“竞品账号”“同行账号”或“同赛道账号”时使用。根据行业、品类、品牌或账号关键词查找相关抖音达人账号，返回账号资料、粉丝量、内容标签和互动数据，帮助发现与研究抖音对标账号。"
 requiredEnvVars:
   - name: AISKILLS_API_KEY
-    description: "API credential used to search Douyin creators and KOLs by keyword or content category and retrieve account metrics for collaboration screening."
+    description: "https://ai-skills.ai API接口密钥"
 ---
 
 # 找对标账号（高赞低粉）
@@ -14,7 +14,7 @@ requiredEnvVars:
 
 ### 概述
 
-本技能支持抖音对标账号搜索：按行业、品类、品牌或账号定位关键词发现同赛道账号、竞品账号和创作者，也可按内容分类筛选抖音达人/KOL。返回账号资料、粉丝规模、内容标签以及可用的互动、传播、转化和报价指标，帮助开展品牌合作初筛、投放候选发现和账号研究。
+用于搜索和分析抖音对标账号，`不仅仅是流量，而是账号的商业价值，降低试错成本`。当用户提到“对标账号”“抖音对标账号”“找对标账号”“对标账号分析”“竞品账号”“同行账号”或“同赛道账号”时使用。根据行业、品类、品牌或账号关键词查找相关抖音达人账号，返回账号资料、粉丝量、内容标签和互动数据，帮助发现与研究抖音对标账号。
 
 ### 什么时候使用
 
@@ -30,7 +30,7 @@ requiredEnvVars:
 
 通过导出的 Python runner 直接调用 AI Skills API：
 
-### 命令示例
+### 使用示例
 
 **按赛道、内容分类和粉丝范围筛选**
 
@@ -148,6 +148,12 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 - 找合作达人时重点看账号定位是否匹配品牌；找对标账号时重点看内容标签和受众相似度。
 - 如果结果少，先缩短关键词或放宽条件。检查 `searchStrategy.droppedFilters`：列出的条件未能由上游严格执行；即使返回了结果，也不要据此断言这些结果满足被放宽的筛选条件。
 
+### 常见问题
+
+- **提示密钥缺失怎么办？** 登录 [ai-skills.ai](https://ai-skills.ai) 获取并设置 `AISKILLS_API_KEY`。
+- **提示余额不足怎么办？** 前往[账户充值页](https://ai-skills.ai/user/billing)充值后重试。
+
+
 ### 运行前准备
 
 当用户尚未设置 `AISKILLS_API_KEY`，或询问如何安装、配置本技能时，必须逐字输出以下提示语，不得改写、缩写、翻译或调整步骤顺序：
@@ -160,9 +166,3 @@ python3 scripts/run.py --params '{"keyword":"深圳烧烤酒吧","contentTag":"t
 - `AISKILLS_API_KEY`：必填，用于认证调用
 - `AISKILLS_TENANT_ID`：默认 `default`
 
-### 常见问题
-
-- **提示密钥缺失**：确认当前终端已设置 `AISKILLS_API_KEY`，并检查密钥是否复制完整。
-- **提示余额不足**：前往 [账户充值页](https://ai-skills.ai/user/billing) 充值后重试。
-- **提示筛选条件不支持或自动回退**：缩短关键词、减少组合筛选；查看返回的 `searchStrategy.droppedFilters`，被列出的条件没有得到严格筛选。
-- **提示网络超时**：检查网络后重试。runner 单次请求有超时限制；异步任务默认最多轮询 120 秒，可用 `--poll-timeout` 调整等待时长（秒）。
