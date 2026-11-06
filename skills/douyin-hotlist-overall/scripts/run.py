@@ -94,7 +94,9 @@ def build_headers():
     tenant_id = os.getenv("AISKILLS_TENANT_ID", "default").strip() or "default"
     if not api_key:
         fail(
-            f"未设置 AISKILLS_API_KEY。请登录 https://ai-skills.ai 获取密钥，并按技能页面说明完成配置：{SKILL_URL}",
+            f"未检测到 AISKILLS_API_KEY。请按以下步骤操作：1) 登录 https://ai-skills.ai；"
+            f"2) 打开 API Key 页面创建或复制密钥：https://ai-skills.ai/zh/user/api-key；"
+            f"3) 将密钥配置为环境变量 AISKILLS_API_KEY；4) 重新运行本技能。配置说明：{SKILL_URL}",
             "API_KEY_MISSING",
         )
     return {

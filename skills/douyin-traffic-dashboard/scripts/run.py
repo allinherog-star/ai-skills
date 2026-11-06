@@ -52,7 +52,11 @@ def build_headers():
     api_key = os.getenv("AISKILLS_API_KEY", "").strip()
     tenant_id = os.getenv("AISKILLS_TENANT_ID", "default").strip() or "default"
     if not api_key:
-        fail(f"未检测到 AISKILLS_API_KEY。请登录 https://ai-skills.ai 获取并设置密钥，再查看技能说明：{SKILL_URL}。若收到余额不足提示，请前往 {RECHARGE_URL} 充值。")
+        fail(
+            f"未检测到 AISKILLS_API_KEY。请按以下步骤操作：1) 登录 https://ai-skills.ai；"
+            f"2) 打开 API Key 页面创建或复制密钥：https://ai-skills.ai/zh/user/api-key；"
+            f"3) 将密钥配置为环境变量 AISKILLS_API_KEY；4) 重新运行本技能。配置说明：{SKILL_URL}"
+        )
     return {
         "Content-Type": "application/json",
         # Cloudflare blocks urllib's default Python user agent for this endpoint.
